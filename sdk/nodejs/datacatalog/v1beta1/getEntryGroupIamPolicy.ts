@@ -26,7 +26,7 @@ export function getEntryGroupIamPolicy(args: GetEntryGroupIamPolicyArgs, opts?: 
 export interface GetEntryGroupIamPolicyArgs {
     entryGroupId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEntryGroupIamPolicyResult {

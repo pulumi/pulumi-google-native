@@ -25,7 +25,7 @@ export function getRegionAutoscaler(args: GetRegionAutoscalerArgs, opts?: pulumi
 
 export interface GetRegionAutoscalerArgs {
     autoscaler: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

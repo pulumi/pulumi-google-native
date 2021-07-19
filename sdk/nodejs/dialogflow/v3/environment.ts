@@ -76,9 +76,6 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.versionConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionConfigs'");
             }
@@ -122,7 +119,7 @@ export interface EnvironmentArgs {
      * The name of the environment. Format: `projects//locations//agents//environments/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */

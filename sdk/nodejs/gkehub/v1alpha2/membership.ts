@@ -106,9 +106,6 @@ export class Membership extends pulumi.CustomResource {
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["authority"] = args ? args.authority : undefined;
             inputs["endpoint"] = args ? args.endpoint : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
@@ -173,5 +170,5 @@ export interface MembershipArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location: pulumi.Input<string>;
     membershipId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

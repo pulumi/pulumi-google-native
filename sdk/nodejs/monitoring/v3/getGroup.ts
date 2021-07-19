@@ -24,7 +24,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetGroupArgs {
     groupId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGroupResult {

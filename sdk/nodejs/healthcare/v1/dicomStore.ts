@@ -65,9 +65,6 @@ export class DicomStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -106,5 +103,5 @@ export interface DicomStoreArgs {
      * Notification destination for new DICOM instances. Supplied by the client.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

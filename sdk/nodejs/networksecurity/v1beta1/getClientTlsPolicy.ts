@@ -26,7 +26,7 @@ export function getClientTlsPolicy(args: GetClientTlsPolicyArgs, opts?: pulumi.I
 export interface GetClientTlsPolicyArgs {
     clientTlsPolicyId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetClientTlsPolicyResult {

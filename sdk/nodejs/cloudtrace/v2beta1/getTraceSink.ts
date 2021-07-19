@@ -23,7 +23,7 @@ export function getTraceSink(args: GetTraceSinkArgs, opts?: pulumi.InvokeOptions
 }
 
 export interface GetTraceSinkArgs {
-    project: string;
+    project?: string;
     traceSinkId: string;
 }
 

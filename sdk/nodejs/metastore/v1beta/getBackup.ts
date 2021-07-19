@@ -27,7 +27,7 @@ export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetBackupArgs {
     backupId: string;
     location: string;
-    project: string;
+    project?: string;
     serviceId: string;
 }
 

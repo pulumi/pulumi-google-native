@@ -73,9 +73,6 @@ export class Template extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["environment"] = args ? args.environment : undefined;
             inputs["gcsPath"] = args ? args.gcsPath : undefined;
             inputs["jobName"] = args ? args.jobName : undefined;
@@ -123,5 +120,5 @@ export interface TemplateArgs {
      * The runtime parameters to pass to the job.
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

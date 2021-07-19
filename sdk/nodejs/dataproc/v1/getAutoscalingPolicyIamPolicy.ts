@@ -26,7 +26,7 @@ export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolic
 export interface GetAutoscalingPolicyIamPolicyArgs {
     autoscalingPolicyId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAutoscalingPolicyIamPolicyResult {

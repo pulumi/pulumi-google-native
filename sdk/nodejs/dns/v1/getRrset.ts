@@ -29,7 +29,7 @@ export interface GetRrsetArgs {
     clientOperationId?: string;
     managedZone: string;
     name: string;
-    project: string;
+    project?: string;
     type: string;
 }
 

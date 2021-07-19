@@ -61,13 +61,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ResponsePolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ResponsePolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["gkeClusters"] = args ? args.gkeClusters : undefined;
@@ -112,7 +109,7 @@ export interface ResponsePolicyArgs {
      * List of network names specifying networks to which this policy is applied.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyNetworkArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * User assigned name for this Response Policy.
      */

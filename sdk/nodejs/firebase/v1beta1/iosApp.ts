@@ -66,13 +66,10 @@ export class IosApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IosAppArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: IosAppArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appStoreId"] = args ? args.appStoreId : undefined;
             inputs["bundleId"] = args ? args.bundleId : undefined;
@@ -121,5 +118,5 @@ export interface IosAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

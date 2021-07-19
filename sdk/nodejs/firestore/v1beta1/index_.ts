@@ -66,9 +66,6 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["collectionId"] = args ? args.collectionId : undefined;
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["fields"] = args ? args.fields : undefined;
@@ -105,7 +102,7 @@ export interface IndexArgs {
      * The resource name of the index. Output only.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The state of the index. Output only.
      */

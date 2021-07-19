@@ -24,7 +24,7 @@ export function getRegionWorkflowTemplateIamPolicy(args: GetRegionWorkflowTempla
 }
 
 export interface GetRegionWorkflowTemplateIamPolicyArgs {
-    project: string;
+    project?: string;
     regionId: string;
     workflowTemplateId: string;
 }

@@ -25,7 +25,7 @@ export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetVersionArgs {
     modelId: string;
-    project: string;
+    project?: string;
     versionId: string;
 }
 

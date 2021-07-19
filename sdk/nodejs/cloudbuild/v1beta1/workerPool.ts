@@ -79,9 +79,6 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
@@ -120,7 +117,7 @@ export interface WorkerPoolArgs {
      * Network configuration for the `WorkerPool`.
      */
     networkConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.NetworkConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */

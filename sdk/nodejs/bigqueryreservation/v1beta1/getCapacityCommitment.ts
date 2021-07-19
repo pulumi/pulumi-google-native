@@ -26,7 +26,7 @@ export function getCapacityCommitment(args: GetCapacityCommitmentArgs, opts?: pu
 export interface GetCapacityCommitmentArgs {
     capacityCommitmentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCapacityCommitmentResult {

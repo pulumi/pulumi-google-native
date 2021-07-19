@@ -91,9 +91,6 @@ export class EntityType extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -158,7 +155,7 @@ export interface EntityTypeArgs {
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      */

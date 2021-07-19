@@ -25,7 +25,7 @@ export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulu
 
 export interface GetTaxonomyIamPolicyArgs {
     location: string;
-    project: string;
+    project?: string;
     taxonomyId: string;
 }
 

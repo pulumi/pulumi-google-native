@@ -163,13 +163,10 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["backendType"] = args ? args.backendType : undefined;
             inputs["connectionName"] = args ? args.connectionName : undefined;
             inputs["currentDiskSize"] = args ? args.currentDiskSize : undefined;
@@ -310,7 +307,7 @@ export interface InstanceArgs {
     /**
      * The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The geographical region. Can be *us-central* (*FIRST_GEN* instances only) *us-central1* (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to *us-central* or *us-central1* depending on the instance type. The region cannot be changed after instance creation.
      */

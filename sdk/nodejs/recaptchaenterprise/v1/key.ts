@@ -75,13 +75,10 @@ export class Key extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["androidSettings"] = args ? args.androidSettings : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -136,7 +133,7 @@ export interface KeyArgs {
      * The resource name for the Key in the format "projects/{project}/keys/{key}".
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Options for user acceptance testing.
      */

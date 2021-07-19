@@ -27,7 +27,7 @@ export function getTaxonomyPolicyTagIamPolicy(args: GetTaxonomyPolicyTagIamPolic
 export interface GetTaxonomyPolicyTagIamPolicyArgs {
     location: string;
     policyTagId: string;
-    project: string;
+    project?: string;
     taxonomyId: string;
 }
 

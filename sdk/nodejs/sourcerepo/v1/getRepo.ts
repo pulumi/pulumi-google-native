@@ -23,7 +23,7 @@ export function getRepo(args: GetRepoArgs, opts?: pulumi.InvokeOptions): Promise
 }
 
 export interface GetRepoArgs {
-    project: string;
+    project?: string;
     repoId: string;
 }
 

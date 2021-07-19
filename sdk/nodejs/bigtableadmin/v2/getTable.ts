@@ -26,7 +26,7 @@ export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetTableArgs {
     instanceId: string;
-    project: string;
+    project?: string;
     tableId: string;
     view?: string;
 }

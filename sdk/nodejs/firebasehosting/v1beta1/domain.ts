@@ -75,9 +75,6 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.site === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'site'");
             }
@@ -119,7 +116,7 @@ export interface DomainArgs {
      * If set, the domain should redirect with the provided parameters.
      */
     domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The site name of the association.
      */

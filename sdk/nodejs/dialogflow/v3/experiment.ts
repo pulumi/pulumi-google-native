@@ -107,9 +107,6 @@ export class Experiment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["definition"] = args ? args.definition : undefined;
@@ -186,7 +183,7 @@ export interface ExperimentArgs {
      * The name of the experiment. Format: projects//locations//agents//environments//experiments/..
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Inference result of the experiment.
      */

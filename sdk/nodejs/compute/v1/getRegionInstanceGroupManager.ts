@@ -25,7 +25,7 @@ export function getRegionInstanceGroupManager(args: GetRegionInstanceGroupManage
 
 export interface GetRegionInstanceGroupManagerArgs {
     instanceGroupManager: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

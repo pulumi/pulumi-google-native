@@ -8,7 +8,8 @@ import * as utilities from "../../utilities";
 /**
  * Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.
  */
-export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
+export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -22,7 +23,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
 }
 
 export interface GetProjectArgs {
-    project: string;
+    project?: string;
 }
 
 export interface GetProjectResult {

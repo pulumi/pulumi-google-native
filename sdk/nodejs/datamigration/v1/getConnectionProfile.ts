@@ -26,7 +26,7 @@ export function getConnectionProfile(args: GetConnectionProfileArgs, opts?: pulu
 export interface GetConnectionProfileArgs {
     connectionProfileId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConnectionProfileResult {

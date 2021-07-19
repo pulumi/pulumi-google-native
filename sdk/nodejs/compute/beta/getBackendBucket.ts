@@ -24,7 +24,7 @@ export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.Invok
 
 export interface GetBackendBucketArgs {
     backendBucket: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetBackendBucketResult {

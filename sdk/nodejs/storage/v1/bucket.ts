@@ -151,13 +151,10 @@ export class Bucket extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BucketArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: BucketArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["billing"] = args ? args.billing : undefined;
             inputs["cors"] = args ? args.cors : undefined;
@@ -306,7 +303,7 @@ export interface BucketArgs {
     owner?: pulumi.Input<inputs.storage.v1.BucketOwnerArgs>;
     predefinedAcl?: pulumi.Input<string>;
     predefinedDefaultObjectAcl?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The project number of the project the bucket belongs to.
      */

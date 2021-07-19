@@ -123,9 +123,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.nodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -212,7 +209,7 @@ export interface InstanceArgs {
      * Optional: User defined parameters to apply to the memcached process on each node.
      */
     parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParametersArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
      */

@@ -26,7 +26,7 @@ export function getRoutine(args: GetRoutineArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetRoutineArgs {
     datasetId: string;
-    project: string;
+    project?: string;
     readMask?: string;
     routineId: string;
 }

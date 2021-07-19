@@ -26,7 +26,7 @@ export function getInspectTemplate(args: GetInspectTemplateArgs, opts?: pulumi.I
 export interface GetInspectTemplateArgs {
     inspectTemplateId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInspectTemplateResult {

@@ -81,9 +81,6 @@ export class MetadataImport extends pulumi.CustomResource {
             if ((!args || args.metadataImportId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataImportId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
@@ -133,7 +130,7 @@ export interface MetadataImportArgs {
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
 }

@@ -24,7 +24,7 @@ export function getVpnGateway(args: GetVpnGatewayArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetVpnGatewayArgs {
-    project: string;
+    project?: string;
     region: string;
     vpnGateway: string;
 }

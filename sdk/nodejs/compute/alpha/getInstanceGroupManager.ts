@@ -25,7 +25,7 @@ export function getInstanceGroupManager(args: GetInstanceGroupManagerArgs, opts?
 
 export interface GetInstanceGroupManagerArgs {
     instanceGroupManager: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

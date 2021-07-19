@@ -23,7 +23,7 @@ export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetWebAppArgs {
-    project: string;
+    project?: string;
     webAppId: string;
 }
 

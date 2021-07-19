@@ -28,7 +28,7 @@ export interface GetEntityTypeArgs {
     entityTypeId: string;
     languageCode?: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEntityTypeResult {

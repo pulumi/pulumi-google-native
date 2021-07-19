@@ -23,7 +23,7 @@ export function getPublicAdvertisedPrefix(args: GetPublicAdvertisedPrefixArgs, o
 }
 
 export interface GetPublicAdvertisedPrefixArgs {
-    project: string;
+    project?: string;
     publicAdvertisedPrefix: string;
 }
 

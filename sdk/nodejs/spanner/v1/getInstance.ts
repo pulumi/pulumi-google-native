@@ -26,7 +26,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     fieldMask?: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceResult {

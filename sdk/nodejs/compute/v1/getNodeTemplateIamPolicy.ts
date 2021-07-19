@@ -26,7 +26,7 @@ export function getNodeTemplateIamPolicy(args: GetNodeTemplateIamPolicyArgs, opt
 
 export interface GetNodeTemplateIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

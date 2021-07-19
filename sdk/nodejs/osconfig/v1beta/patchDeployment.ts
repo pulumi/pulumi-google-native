@@ -100,9 +100,6 @@ export class PatchDeployment extends pulumi.CustomResource {
             if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.recurringSchedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recurringSchedule'");
             }
@@ -168,7 +165,7 @@ export interface PatchDeploymentArgs {
      */
     patchConfig?: pulumi.Input<inputs.osconfig.v1beta.PatchConfigArgs>;
     patchDeploymentId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Schedule recurring executions.
      */

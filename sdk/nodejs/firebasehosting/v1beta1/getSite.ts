@@ -23,7 +23,7 @@ export function getSite(args: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise
 }
 
 export interface GetSiteArgs {
-    project: string;
+    project?: string;
     siteId: string;
 }
 

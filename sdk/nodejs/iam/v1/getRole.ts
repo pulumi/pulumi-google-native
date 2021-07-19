@@ -23,7 +23,7 @@ export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise
 }
 
 export interface GetRoleArgs {
-    project: string;
+    project?: string;
     roleId: string;
 }
 

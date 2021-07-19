@@ -25,7 +25,7 @@ export function getRegionHealthCheck(args: GetRegionHealthCheckArgs, opts?: pulu
 
 export interface GetRegionHealthCheckArgs {
     healthCheck: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

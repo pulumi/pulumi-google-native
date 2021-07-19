@@ -91,9 +91,6 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
@@ -147,7 +144,7 @@ export interface WorkerPoolArgs {
      * Private Pool using a v1 configuration.
      */
     privatePoolV1Config?: pulumi.Input<inputs.cloudbuild.v1.PrivatePoolV1ConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     validateOnly?: pulumi.Input<string>;
     workerPoolId: pulumi.Input<string>;
 }

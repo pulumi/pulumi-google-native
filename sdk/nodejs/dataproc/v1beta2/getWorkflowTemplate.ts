@@ -26,7 +26,7 @@ export function getWorkflowTemplate(args: GetWorkflowTemplateArgs, opts?: pulumi
 
 export interface GetWorkflowTemplateArgs {
     location: string;
-    project: string;
+    project?: string;
     version?: string;
     workflowTemplateId: string;
 }

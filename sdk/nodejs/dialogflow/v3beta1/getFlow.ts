@@ -30,7 +30,7 @@ export interface GetFlowArgs {
     flowId: string;
     languageCode?: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFlowResult {

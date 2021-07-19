@@ -28,7 +28,7 @@ export interface GetCertificateAuthorityArgs {
     caPoolId: string;
     certificateAuthorityId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCertificateAuthorityResult {

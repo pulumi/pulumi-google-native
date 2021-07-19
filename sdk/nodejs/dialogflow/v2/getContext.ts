@@ -30,7 +30,7 @@ export interface GetContextArgs {
     contextId: string;
     environmentId: string;
     location: string;
-    project: string;
+    project?: string;
     sessionId: string;
     userId: string;
 }

@@ -103,9 +103,6 @@ export class RegionUrlMap extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -184,7 +181,7 @@ export interface RegionUrlMapArgs {
      * The list of named PathMatchers to use against the URL.
      */
     pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.beta.PathMatcherArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

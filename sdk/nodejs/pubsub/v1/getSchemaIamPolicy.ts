@@ -25,7 +25,7 @@ export function getSchemaIamPolicy(args: GetSchemaIamPolicyArgs, opts?: pulumi.I
 
 export interface GetSchemaIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     schemaId: string;
 }
 

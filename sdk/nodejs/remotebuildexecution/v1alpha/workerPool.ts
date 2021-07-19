@@ -74,9 +74,6 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["autoscale"] = args ? args.autoscale : undefined;
             inputs["channel"] = args ? args.channel : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -127,7 +124,7 @@ export interface WorkerPoolArgs {
      * ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
     poolId?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */

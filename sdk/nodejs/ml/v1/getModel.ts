@@ -24,7 +24,7 @@ export function getModel(args: GetModelArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetModelArgs {
     modelId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetModelResult {

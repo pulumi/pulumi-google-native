@@ -26,7 +26,7 @@ export function getNamespaceIamPolicy(args: GetNamespaceIamPolicyArgs, opts?: pu
 export interface GetNamespaceIamPolicyArgs {
     location: string;
     namespaceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNamespaceIamPolicyResult {

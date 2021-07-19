@@ -135,13 +135,10 @@ export class Interconnect extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InterconnectArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InterconnectArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
             inputs["customerName"] = args ? args.customerName : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -239,7 +236,7 @@ export interface InterconnectArgs {
      * Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
      */
     nocContactEmail?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.

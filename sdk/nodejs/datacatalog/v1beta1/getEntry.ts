@@ -28,7 +28,7 @@ export interface GetEntryArgs {
     entryGroupId: string;
     entryId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEntryResult {

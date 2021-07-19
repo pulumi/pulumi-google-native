@@ -25,7 +25,7 @@ export function getStoredInfoType(args: GetStoredInfoTypeArgs, opts?: pulumi.Inv
 
 export interface GetStoredInfoTypeArgs {
     location: string;
-    project: string;
+    project?: string;
     storedInfoTypeId: string;
 }
 

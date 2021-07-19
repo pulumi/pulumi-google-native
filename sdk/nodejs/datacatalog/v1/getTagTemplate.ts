@@ -25,7 +25,7 @@ export function getTagTemplate(args: GetTagTemplateArgs, opts?: pulumi.InvokeOpt
 
 export interface GetTagTemplateArgs {
     location: string;
-    project: string;
+    project?: string;
     tagTemplateId: string;
 }
 

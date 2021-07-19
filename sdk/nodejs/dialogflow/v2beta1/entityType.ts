@@ -81,9 +81,6 @@ export class EntityType extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
@@ -138,5 +135,5 @@ export interface EntityTypeArgs {
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

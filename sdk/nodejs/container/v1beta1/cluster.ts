@@ -262,9 +262,6 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["autopilot"] = args ? args.autopilot : undefined;
@@ -519,7 +516,7 @@ export interface ClusterArgs {
      * Configuration for private cluster.
      */
     privateClusterConfig?: pulumi.Input<inputs.container.v1beta1.PrivateClusterConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Release channel configuration.
      */

@@ -26,7 +26,7 @@ export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOpt
 export interface GetManagedZoneArgs {
     clientOperationId?: string;
     managedZone: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetManagedZoneResult {

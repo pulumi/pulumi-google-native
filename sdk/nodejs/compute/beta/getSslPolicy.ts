@@ -23,7 +23,7 @@ export function getSslPolicy(args: GetSslPolicyArgs, opts?: pulumi.InvokeOptions
 }
 
 export interface GetSslPolicyArgs {
-    project: string;
+    project?: string;
     sslPolicy: string;
 }
 

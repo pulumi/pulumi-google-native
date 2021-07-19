@@ -26,7 +26,7 @@ export function getReservationIamPolicy(args: GetReservationIamPolicyArgs, opts?
 
 export interface GetReservationIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
     zone: string;
 }

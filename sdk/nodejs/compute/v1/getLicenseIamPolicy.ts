@@ -25,7 +25,7 @@ export function getLicenseIamPolicy(args: GetLicenseIamPolicyArgs, opts?: pulumi
 
 export interface GetLicenseIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

@@ -24,7 +24,7 @@ export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetSchemaArgs {
-    project: string;
+    project?: string;
     schemaId: string;
     view?: string;
 }

@@ -25,7 +25,7 @@ export function getRegistryIamPolicy(args: GetRegistryIamPolicyArgs, opts?: pulu
 
 export interface GetRegistryIamPolicyArgs {
     location: string;
-    project: string;
+    project?: string;
     registryId: string;
 }
 

@@ -27,7 +27,7 @@ export function getEntryGroup(args: GetEntryGroupArgs, opts?: pulumi.InvokeOptio
 export interface GetEntryGroupArgs {
     entryGroupId: string;
     location: string;
-    project: string;
+    project?: string;
     readMask?: string;
 }
 

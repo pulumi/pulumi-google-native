@@ -66,13 +66,10 @@ export class WebApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WebAppArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: WebAppArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appUrls"] = args ? args.appUrls : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -117,5 +114,5 @@ export interface WebAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

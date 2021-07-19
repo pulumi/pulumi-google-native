@@ -23,7 +23,7 @@ export function getTargetHttpsProxy(args: GetTargetHttpsProxyArgs, opts?: pulumi
 }
 
 export interface GetTargetHttpsProxyArgs {
-    project: string;
+    project?: string;
     targetHttpsProxy: string;
 }
 

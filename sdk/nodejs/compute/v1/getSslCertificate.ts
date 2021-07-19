@@ -23,7 +23,7 @@ export function getSslCertificate(args: GetSslCertificateArgs, opts?: pulumi.Inv
 }
 
 export interface GetSslCertificateArgs {
-    project: string;
+    project?: string;
     sslCertificate: string;
 }
 

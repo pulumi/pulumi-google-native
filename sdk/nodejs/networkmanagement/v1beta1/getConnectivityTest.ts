@@ -24,7 +24,7 @@ export function getConnectivityTest(args: GetConnectivityTestArgs, opts?: pulumi
 
 export interface GetConnectivityTestArgs {
     connectivityTestId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConnectivityTestResult {

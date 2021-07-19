@@ -86,9 +86,6 @@ export class CertificateTemplate extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["certificateTemplateId"] = args ? args.certificateTemplateId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["identityConstraints"] = args ? args.identityConstraints : undefined;
@@ -144,6 +141,6 @@ export interface CertificateTemplateArgs {
      * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
      */
     predefinedValues?: pulumi.Input<inputs.privateca.v1.X509ParametersArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }

@@ -68,13 +68,10 @@ export class Policy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: PolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -135,5 +132,5 @@ export interface PolicyArgs {
      * List of network names specifying networks to which this policy is applied.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetworkArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

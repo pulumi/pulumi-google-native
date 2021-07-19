@@ -24,7 +24,7 @@ export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetSubnetworkArgs {
-    project: string;
+    project?: string;
     region: string;
     subnetwork: string;
 }

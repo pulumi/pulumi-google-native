@@ -26,7 +26,7 @@ export function getConversation(args: GetConversationArgs, opts?: pulumi.InvokeO
 export interface GetConversationArgs {
     conversationId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConversationResult {

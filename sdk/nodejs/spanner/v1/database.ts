@@ -86,9 +86,6 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["createStatement"] = args ? args.createStatement : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["extraStatements"] = args ? args.extraStatements : undefined;
@@ -135,5 +132,5 @@ export interface DatabaseArgs {
      */
     extraStatements?: pulumi.Input<pulumi.Input<string>[]>;
     instanceId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

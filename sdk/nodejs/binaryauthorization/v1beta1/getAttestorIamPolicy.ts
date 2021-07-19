@@ -26,7 +26,7 @@ export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulu
 export interface GetAttestorIamPolicyArgs {
     attestorId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAttestorIamPolicyResult {

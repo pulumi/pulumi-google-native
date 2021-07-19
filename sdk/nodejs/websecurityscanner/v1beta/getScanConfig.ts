@@ -23,7 +23,7 @@ export function getScanConfig(args: GetScanConfigArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetScanConfigArgs {
-    project: string;
+    project?: string;
     scanConfigId: string;
 }
 

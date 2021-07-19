@@ -102,9 +102,6 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
@@ -166,7 +163,7 @@ export interface ConnectivityTestArgs {
      * Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
      */
     name: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */

@@ -91,13 +91,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: UptimeCheckConfigArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: UptimeCheckConfigArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["httpCheck"] = args ? args.httpCheck : undefined;
@@ -168,7 +165,7 @@ export interface UptimeCheckConfigArgs {
      * How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
      */
     period?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The group resource associated with the configuration.
      */

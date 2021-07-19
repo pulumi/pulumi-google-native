@@ -26,7 +26,7 @@ export function getMembership(args: GetMembershipArgs, opts?: pulumi.InvokeOptio
 export interface GetMembershipArgs {
     location: string;
     membershipId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetMembershipResult {

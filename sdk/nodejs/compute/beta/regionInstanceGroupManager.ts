@@ -139,9 +139,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -238,7 +235,7 @@ export interface RegionInstanceGroupManagerArgs {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPortArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

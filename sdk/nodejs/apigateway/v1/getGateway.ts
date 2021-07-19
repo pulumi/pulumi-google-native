@@ -26,7 +26,7 @@ export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): P
 export interface GetGatewayArgs {
     gatewayId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGatewayResult {

@@ -95,9 +95,6 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -160,7 +157,7 @@ export interface PublicDelegatedPrefixArgs {
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      */
     parentPrefix?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */

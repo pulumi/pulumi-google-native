@@ -105,9 +105,6 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
@@ -171,7 +168,7 @@ export interface DomainArgs {
      * The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
     name: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */

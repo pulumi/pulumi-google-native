@@ -25,7 +25,7 @@ export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetRegistryArgs {
     location: string;
-    project: string;
+    project?: string;
     registryId: string;
 }
 

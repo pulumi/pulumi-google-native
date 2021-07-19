@@ -25,7 +25,7 @@ export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetVariableArgs {
     configId: string;
-    project: string;
+    project?: string;
     variableId: string;
 }
 

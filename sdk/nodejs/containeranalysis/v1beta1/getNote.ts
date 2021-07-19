@@ -24,7 +24,7 @@ export function getNote(args: GetNoteArgs, opts?: pulumi.InvokeOptions): Promise
 
 export interface GetNoteArgs {
     noteId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNoteResult {

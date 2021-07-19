@@ -26,7 +26,7 @@ export function getNodeGroupIamPolicy(args: GetNodeGroupIamPolicyArgs, opts?: pu
 
 export interface GetNodeGroupIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
     zone: string;
 }

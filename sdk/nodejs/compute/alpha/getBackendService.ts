@@ -24,7 +24,7 @@ export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.Inv
 
 export interface GetBackendServiceArgs {
     backendService: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetBackendServiceResult {

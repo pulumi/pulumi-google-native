@@ -111,9 +111,6 @@ export class BackupRun extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["backupKind"] = args ? args.backupKind : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
@@ -203,7 +200,7 @@ export interface BackupRunArgs {
      * Location of the backups.
      */
     location?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of this resource.
      */

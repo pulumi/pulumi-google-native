@@ -137,9 +137,6 @@ export class Entry extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
             inputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
             inputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
@@ -240,7 +237,7 @@ export interface EntryArgs {
      */
     linkedResource?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
      */

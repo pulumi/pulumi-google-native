@@ -23,7 +23,7 @@ export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promi
 }
 
 export interface GetTopicArgs {
-    project: string;
+    project?: string;
     topicId: string;
 }
 

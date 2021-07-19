@@ -103,9 +103,6 @@ export class TestMatrix extends pulumi.CustomResource {
             if ((!args || args.environmentMatrix === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentMatrix'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.resultStorage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resultStorage'");
             }
@@ -171,7 +168,7 @@ export interface TestMatrixArgs {
     /**
      * The cloud project that owns the test matrix.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Where the results for the matrix are written.

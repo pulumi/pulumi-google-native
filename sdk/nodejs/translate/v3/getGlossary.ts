@@ -26,7 +26,7 @@ export function getGlossary(args: GetGlossaryArgs, opts?: pulumi.InvokeOptions):
 export interface GetGlossaryArgs {
     glossaryId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGlossaryResult {

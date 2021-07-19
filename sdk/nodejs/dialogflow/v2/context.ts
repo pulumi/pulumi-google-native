@@ -68,9 +68,6 @@ export class Context extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.sessionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sessionId'");
             }
@@ -115,7 +112,7 @@ export interface ContextArgs {
      * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     sessionId: pulumi.Input<string>;
     userId: pulumi.Input<string>;
 }

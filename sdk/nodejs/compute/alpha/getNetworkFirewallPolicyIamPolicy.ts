@@ -25,7 +25,7 @@ export function getNetworkFirewallPolicyIamPolicy(args: GetNetworkFirewallPolicy
 
 export interface GetNetworkFirewallPolicyIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

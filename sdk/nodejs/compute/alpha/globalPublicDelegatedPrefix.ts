@@ -95,13 +95,10 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GlobalPublicDelegatedPrefixArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: GlobalPublicDelegatedPrefixArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
@@ -163,7 +160,7 @@ export interface GlobalPublicDelegatedPrefixArgs {
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      */
     parentPrefix?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */

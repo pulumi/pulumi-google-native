@@ -24,7 +24,7 @@ export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetDatasetArgs {
     datasetId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatasetResult {

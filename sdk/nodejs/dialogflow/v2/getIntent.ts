@@ -30,7 +30,7 @@ export interface GetIntentArgs {
     intentView?: string;
     languageCode?: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetIntentResult {

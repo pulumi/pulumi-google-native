@@ -23,7 +23,7 @@ export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promi
 }
 
 export interface GetRouteArgs {
-    project: string;
+    project?: string;
     route: string;
 }
 

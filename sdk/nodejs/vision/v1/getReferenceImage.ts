@@ -27,7 +27,7 @@ export function getReferenceImage(args: GetReferenceImageArgs, opts?: pulumi.Inv
 export interface GetReferenceImageArgs {
     location: string;
     productId: string;
-    project: string;
+    project?: string;
     referenceImageId: string;
 }
 

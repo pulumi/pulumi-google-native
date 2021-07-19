@@ -65,9 +65,6 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
@@ -104,6 +101,6 @@ export interface ServiceArgs {
      */
     name?: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
 }

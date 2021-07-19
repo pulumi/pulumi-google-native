@@ -26,7 +26,7 @@ export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetPolicyArgs {
     clientOperationId?: string;
     policy: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPolicyResult {

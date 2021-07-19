@@ -26,7 +26,7 @@ export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulu
 
 export interface GetInstanceIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
     zone: string;
 }

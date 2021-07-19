@@ -25,7 +25,7 @@ export function getServiceAccountIamPolicy(args: GetServiceAccountIamPolicyArgs,
 
 export interface GetServiceAccountIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     serviceAccountId: string;
 }
 

@@ -83,9 +83,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -143,5 +140,5 @@ export interface InstanceArgs {
      * The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
      */
     processingUnits?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

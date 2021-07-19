@@ -98,9 +98,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
@@ -161,7 +158,7 @@ export interface InstanceArgs {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.NetworkConfigArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      */

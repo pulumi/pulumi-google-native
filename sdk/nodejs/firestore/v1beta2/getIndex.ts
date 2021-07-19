@@ -28,7 +28,7 @@ export interface GetIndexArgs {
     collectionGroupId: string;
     databaseId: string;
     indexId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetIndexResult {

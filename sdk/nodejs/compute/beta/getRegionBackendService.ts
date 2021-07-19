@@ -25,7 +25,7 @@ export function getRegionBackendService(args: GetRegionBackendServiceArgs, opts?
 
 export interface GetRegionBackendServiceArgs {
     backendService: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

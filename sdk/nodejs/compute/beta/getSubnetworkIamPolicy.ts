@@ -26,7 +26,7 @@ export function getSubnetworkIamPolicy(args: GetSubnetworkIamPolicyArgs, opts?: 
 
 export interface GetSubnetworkIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

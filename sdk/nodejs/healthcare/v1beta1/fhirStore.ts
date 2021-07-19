@@ -98,9 +98,6 @@ export class FhirStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
@@ -167,7 +164,7 @@ export interface FhirStoreArgs {
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Configuration for how FHIR resource can be searched.
      */

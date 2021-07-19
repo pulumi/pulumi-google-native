@@ -98,9 +98,6 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.mimeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mimeType'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["contentUri"] = args ? args.contentUri : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableAutoReload"] = args ? args.enableAutoReload : undefined;
@@ -165,7 +162,7 @@ export interface DocumentArgs {
      * Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */

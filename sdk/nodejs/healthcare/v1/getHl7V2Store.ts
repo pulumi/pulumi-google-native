@@ -28,7 +28,7 @@ export interface GetHl7V2StoreArgs {
     datasetId: string;
     hl7V2StoreId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHl7V2StoreResult {

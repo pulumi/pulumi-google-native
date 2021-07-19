@@ -142,9 +142,6 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["clientRequestId"] = args ? args.clientRequestId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["createdFromSnapshotId"] = args ? args.createdFromSnapshotId : undefined;
@@ -257,7 +254,7 @@ export interface JobArgs {
     /**
      * The ID of the Cloud Platform project that the job belongs to.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
      */

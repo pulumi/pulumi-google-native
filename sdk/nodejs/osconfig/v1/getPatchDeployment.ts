@@ -24,7 +24,7 @@ export function getPatchDeployment(args: GetPatchDeploymentArgs, opts?: pulumi.I
 
 export interface GetPatchDeploymentArgs {
     patchDeploymentId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPatchDeploymentResult {

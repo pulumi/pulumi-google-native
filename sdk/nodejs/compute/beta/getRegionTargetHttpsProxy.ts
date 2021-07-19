@@ -24,7 +24,7 @@ export function getRegionTargetHttpsProxy(args: GetRegionTargetHttpsProxyArgs, o
 }
 
 export interface GetRegionTargetHttpsProxyArgs {
-    project: string;
+    project?: string;
     region: string;
     targetHttpsProxy: string;
 }

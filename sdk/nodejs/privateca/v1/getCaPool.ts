@@ -26,7 +26,7 @@ export function getCaPool(args: GetCaPoolArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetCaPoolArgs {
     caPoolId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCaPoolResult {

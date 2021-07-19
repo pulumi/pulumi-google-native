@@ -80,9 +80,6 @@ export class Annotation extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["annotationSource"] = args ? args.annotationSource : undefined;
             inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
             inputs["customData"] = args ? args.customData : undefined;
@@ -131,7 +128,7 @@ export interface AnnotationArgs {
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Annotations for resource. For example, classification tags.
      */

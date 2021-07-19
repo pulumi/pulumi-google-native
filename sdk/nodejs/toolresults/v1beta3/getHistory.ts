@@ -24,7 +24,7 @@ export function getHistory(args: GetHistoryArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetHistoryArgs {
     historyId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHistoryResult {

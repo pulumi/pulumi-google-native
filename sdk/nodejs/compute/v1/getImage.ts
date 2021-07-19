@@ -24,7 +24,7 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetImageArgs {
     image: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetImageResult {

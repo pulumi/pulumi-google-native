@@ -23,7 +23,7 @@ export function getSecurityPolicy(args: GetSecurityPolicyArgs, opts?: pulumi.Inv
 }
 
 export interface GetSecurityPolicyArgs {
-    project: string;
+    project?: string;
     securityPolicy: string;
 }
 

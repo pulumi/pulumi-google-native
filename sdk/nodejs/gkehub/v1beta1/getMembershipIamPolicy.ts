@@ -28,7 +28,7 @@ export interface GetMembershipIamPolicyArgs {
     location: string;
     membershipId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetMembershipIamPolicyResult {

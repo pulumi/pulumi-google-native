@@ -26,7 +26,7 @@ export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions
 export interface GetNamespaceArgs {
     location: string;
     namespaceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNamespaceResult {

@@ -30,7 +30,7 @@ export interface GetExperimentArgs {
     environmentId: string;
     experimentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetExperimentResult {

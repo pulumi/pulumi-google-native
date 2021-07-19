@@ -87,9 +87,6 @@ export class Provider extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
@@ -160,7 +157,7 @@ export interface ProviderArgs {
      * An OpenId Connect 1.0 identity provider.
      */
     oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     workloadIdentityPoolId: pulumi.Input<string>;
     workloadIdentityPoolProviderId: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ export function getZoneInPlaceSnapshotIamPolicy(args: GetZoneInPlaceSnapshotIamP
 
 export interface GetZoneInPlaceSnapshotIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
     zone: string;
 }

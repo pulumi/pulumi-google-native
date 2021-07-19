@@ -27,7 +27,7 @@ export function getStep(args: GetStepArgs, opts?: pulumi.InvokeOptions): Promise
 export interface GetStepArgs {
     executionId: string;
     historyId: string;
-    project: string;
+    project?: string;
     stepId: string;
 }
 

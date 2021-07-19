@@ -26,7 +26,7 @@ export function getKeyRing(args: GetKeyRingArgs, opts?: pulumi.InvokeOptions): P
 export interface GetKeyRingArgs {
     keyRingId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetKeyRingResult {

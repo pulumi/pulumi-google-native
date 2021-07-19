@@ -25,7 +25,7 @@ export function getRuntime(args: GetRuntimeArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetRuntimeArgs {
     location: string;
-    project: string;
+    project?: string;
     runtimeId: string;
 }
 

@@ -72,13 +72,10 @@ export class CompositeType extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CompositeTypeArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: CompositeTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -123,7 +120,7 @@ export interface CompositeTypeArgs {
      * Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     status?: pulumi.Input<enums.deploymentmanager.alpha.CompositeTypeStatus>;
     /**
      * Files for the template type.

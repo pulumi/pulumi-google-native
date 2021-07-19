@@ -25,7 +25,7 @@ export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.Inv
 
 export interface GetForwardingRuleArgs {
     forwardingRule: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

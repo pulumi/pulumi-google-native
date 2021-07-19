@@ -88,9 +88,6 @@ export class Peering extends pulumi.CustomResource {
             if ((!args || args.peeringId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peeringId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["domainResource"] = args ? args.domainResource : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -135,5 +132,5 @@ export interface PeeringArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     peeringId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

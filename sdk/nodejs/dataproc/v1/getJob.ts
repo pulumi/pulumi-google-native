@@ -25,7 +25,7 @@ export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<G
 
 export interface GetJobArgs {
     jobId: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

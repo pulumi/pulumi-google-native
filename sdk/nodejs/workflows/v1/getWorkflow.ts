@@ -25,7 +25,7 @@ export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetWorkflowArgs {
     location: string;
-    project: string;
+    project?: string;
     workflowId: string;
 }
 

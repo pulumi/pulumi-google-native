@@ -87,9 +87,6 @@ export class Key extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -130,7 +127,7 @@ export interface KeyArgs {
     displayName?: pulumi.Input<string>;
     keyId?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Key restrictions.
      */

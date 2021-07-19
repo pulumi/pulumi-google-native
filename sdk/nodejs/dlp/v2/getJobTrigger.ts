@@ -26,7 +26,7 @@ export function getJobTrigger(args: GetJobTriggerArgs, opts?: pulumi.InvokeOptio
 export interface GetJobTriggerArgs {
     jobTriggerId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetJobTriggerResult {

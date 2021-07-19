@@ -24,7 +24,7 @@ export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetFirewallArgs {
     firewall: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFirewallResult {

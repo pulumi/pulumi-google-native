@@ -60,13 +60,10 @@ export class Ruleset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RulesetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: RulesetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["project"] = args ? args.project : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -89,7 +86,7 @@ export class Ruleset extends pulumi.CustomResource {
  * The set of arguments for constructing a Ruleset resource.
  */
 export interface RulesetArgs {
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * `Source` for the `Ruleset`.
      */

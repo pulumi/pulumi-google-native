@@ -24,7 +24,7 @@ export function getInterconnect(args: GetInterconnectArgs, opts?: pulumi.InvokeO
 
 export interface GetInterconnectArgs {
     interconnect: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInterconnectResult {

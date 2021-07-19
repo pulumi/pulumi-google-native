@@ -26,7 +26,7 @@ export function getModelIamPolicy(args: GetModelIamPolicyArgs, opts?: pulumi.Inv
 export interface GetModelIamPolicyArgs {
     modelId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetModelIamPolicyResult {

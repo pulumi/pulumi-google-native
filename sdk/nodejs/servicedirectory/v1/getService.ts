@@ -27,7 +27,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 export interface GetServiceArgs {
     location: string;
     namespaceId: string;
-    project: string;
+    project?: string;
     serviceId: string;
 }
 

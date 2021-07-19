@@ -25,7 +25,7 @@ export function getPacketMirroring(args: GetPacketMirroringArgs, opts?: pulumi.I
 
 export interface GetPacketMirroringArgs {
     packetMirroring: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

@@ -112,13 +112,10 @@ export class Occurrence extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OccurrenceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: OccurrenceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["buildDetails"] = args ? args.buildDetails : undefined;
             inputs["compliance"] = args ? args.compliance : undefined;
@@ -199,7 +196,7 @@ export interface OccurrenceArgs {
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
     noteName?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the `Note`
      */

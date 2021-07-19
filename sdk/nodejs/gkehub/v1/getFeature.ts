@@ -26,7 +26,7 @@ export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): P
 export interface GetFeatureArgs {
     featureId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFeatureResult {

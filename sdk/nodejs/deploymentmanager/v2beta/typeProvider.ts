@@ -87,13 +87,10 @@ export class TypeProvider extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TypeProviderArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: TypeProviderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["collectionOverrides"] = args ? args.collectionOverrides : undefined;
             inputs["credential"] = args ? args.credential : undefined;
             inputs["customCertificateAuthorityRoots"] = args ? args.customCertificateAuthorityRoots : undefined;
@@ -162,5 +159,5 @@ export interface TypeProviderArgs {
      * Options to apply when handling any resources in this service.
      */
     options?: pulumi.Input<inputs.deploymentmanager.v2beta.OptionsArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

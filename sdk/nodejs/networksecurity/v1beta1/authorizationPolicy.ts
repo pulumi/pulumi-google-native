@@ -84,9 +84,6 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["action"] = args ? args.action : undefined;
             inputs["authorizationPolicyId"] = args ? args.authorizationPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -135,7 +132,7 @@ export interface AuthorizationPolicyArgs {
      * Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
      */

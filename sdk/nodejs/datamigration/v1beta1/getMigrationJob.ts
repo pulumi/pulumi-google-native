@@ -26,7 +26,7 @@ export function getMigrationJob(args: GetMigrationJobArgs, opts?: pulumi.InvokeO
 export interface GetMigrationJobArgs {
     location: string;
     migrationJobId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetMigrationJobResult {

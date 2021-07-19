@@ -28,7 +28,7 @@ export interface GetDicomStoreArgs {
     datasetId: string;
     dicomStoreId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDicomStoreResult {

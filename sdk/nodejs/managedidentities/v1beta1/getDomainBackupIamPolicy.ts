@@ -28,7 +28,7 @@ export interface GetDomainBackupIamPolicyArgs {
     backupId: string;
     domainId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDomainBackupIamPolicyResult {

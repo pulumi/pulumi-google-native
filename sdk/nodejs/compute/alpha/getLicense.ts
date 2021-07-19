@@ -24,7 +24,7 @@ export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetLicenseArgs {
     license: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetLicenseResult {

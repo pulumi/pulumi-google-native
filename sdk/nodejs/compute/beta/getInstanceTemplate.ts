@@ -24,7 +24,7 @@ export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi
 
 export interface GetInstanceTemplateArgs {
     instanceTemplate: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceTemplateResult {

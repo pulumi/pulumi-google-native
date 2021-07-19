@@ -25,7 +25,7 @@ export function getZoneInstantSnapshot(args: GetZoneInstantSnapshotArgs, opts?: 
 
 export interface GetZoneInstantSnapshotArgs {
     instantSnapshot: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

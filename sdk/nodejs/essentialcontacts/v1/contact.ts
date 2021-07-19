@@ -75,9 +75,6 @@ export class Contact extends pulumi.CustomResource {
             if ((!args || args.email === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["email"] = args ? args.email : undefined;
             inputs["languageTag"] = args ? args.languageTag : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -120,7 +117,7 @@ export interface ContactArgs {
      * The categories of notifications that the contact will receive communications for.
      */
     notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<enums.essentialcontacts.v1.ContactNotificationCategorySubscriptionsItem>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
      */

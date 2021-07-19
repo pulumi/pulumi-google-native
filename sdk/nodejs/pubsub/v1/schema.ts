@@ -55,13 +55,10 @@ export class Schema extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SchemaArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SchemaArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["definition"] = args ? args.definition : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -91,7 +88,7 @@ export interface SchemaArgs {
      * Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     schemaId?: pulumi.Input<string>;
     /**
      * The type of the schema definition.

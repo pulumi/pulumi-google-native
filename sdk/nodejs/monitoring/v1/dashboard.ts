@@ -78,9 +78,6 @@ export class Dashboard extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["columnLayout"] = args ? args.columnLayout : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -134,7 +131,7 @@ export interface DashboardArgs {
      * Immutable. The resource name of the dashboard.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */

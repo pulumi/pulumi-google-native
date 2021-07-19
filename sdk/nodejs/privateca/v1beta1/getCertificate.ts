@@ -28,7 +28,7 @@ export interface GetCertificateArgs {
     certificateAuthorityId: string;
     certificateId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCertificateResult {

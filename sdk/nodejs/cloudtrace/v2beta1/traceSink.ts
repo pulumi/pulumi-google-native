@@ -62,9 +62,6 @@ export class TraceSink extends pulumi.CustomResource {
             if ((!args || args.outputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'outputConfig'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["name"] = args ? args.name : undefined;
             inputs["outputConfig"] = args ? args.outputConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -93,5 +90,5 @@ export interface TraceSinkArgs {
      * The export destination.
      */
     outputConfig: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

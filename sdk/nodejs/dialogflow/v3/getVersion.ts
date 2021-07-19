@@ -29,7 +29,7 @@ export interface GetVersionArgs {
     agentId: string;
     flowId: string;
     location: string;
-    project: string;
+    project?: string;
     versionId: string;
 }
 

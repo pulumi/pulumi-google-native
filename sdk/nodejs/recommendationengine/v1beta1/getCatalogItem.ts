@@ -28,7 +28,7 @@ export interface GetCatalogItemArgs {
     catalogId: string;
     catalogItemId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCatalogItemResult {

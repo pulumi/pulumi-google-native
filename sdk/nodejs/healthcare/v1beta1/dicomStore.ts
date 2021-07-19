@@ -69,9 +69,6 @@ export class DicomStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -112,7 +109,7 @@ export interface DicomStoreArgs {
      * Notification destination for new DICOM instances. Supplied by the client.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
      */

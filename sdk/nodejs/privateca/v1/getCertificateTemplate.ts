@@ -26,7 +26,7 @@ export function getCertificateTemplate(args: GetCertificateTemplateArgs, opts?: 
 export interface GetCertificateTemplateArgs {
     certificateTemplateId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCertificateTemplateResult {

@@ -25,7 +25,7 @@ export function getWaiter(args: GetWaiterArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetWaiterArgs {
     configId: string;
-    project: string;
+    project?: string;
     waiterId: string;
 }
 

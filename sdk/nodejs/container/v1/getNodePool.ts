@@ -28,7 +28,7 @@ export interface GetNodePoolArgs {
     clusterId: string;
     location: string;
     nodePoolId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNodePoolResult {

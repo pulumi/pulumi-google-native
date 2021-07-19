@@ -30,7 +30,7 @@ export interface GetInstanceNamespaceIamPolicyArgs {
     location: string;
     namespaceId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceNamespaceIamPolicyResult {

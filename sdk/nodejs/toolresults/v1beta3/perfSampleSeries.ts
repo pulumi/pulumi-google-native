@@ -78,9 +78,6 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.stepId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stepId'");
             }
@@ -115,6 +112,6 @@ export interface PerfSampleSeriesArgs {
     basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeriesArgs>;
     executionId: pulumi.Input<string>;
     historyId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     stepId: pulumi.Input<string>;
 }

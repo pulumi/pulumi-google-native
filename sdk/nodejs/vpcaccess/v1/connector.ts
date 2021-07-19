@@ -97,9 +97,6 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["connectorId"] = args ? args.connectorId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -172,7 +169,7 @@ export interface ConnectorArgs {
      * Name of a VPC network.
      */
     network?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The subnet in which to house the VPC Access Connector.
      */

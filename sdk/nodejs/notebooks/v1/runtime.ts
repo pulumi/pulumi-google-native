@@ -87,9 +87,6 @@ export class Runtime extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.runtimeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeId'");
             }
@@ -132,7 +129,7 @@ export interface RuntimeArgs {
      */
     accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     runtimeId: pulumi.Input<string>;
     /**
      * The config settings for software inside the runtime.

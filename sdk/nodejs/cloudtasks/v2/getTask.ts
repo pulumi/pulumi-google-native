@@ -27,7 +27,7 @@ export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise
 
 export interface GetTaskArgs {
     location: string;
-    project: string;
+    project?: string;
     queueId: string;
     responseView?: string;
     taskId: string;

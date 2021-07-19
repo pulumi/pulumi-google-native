@@ -24,7 +24,7 @@ export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?
 
 export interface GetGlobalForwardingRuleArgs {
     forwardingRule: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGlobalForwardingRuleResult {

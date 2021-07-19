@@ -86,9 +86,6 @@ export class Instruction extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["dataType"] = args ? args.dataType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -135,5 +132,5 @@ export interface InstructionArgs {
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
     pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

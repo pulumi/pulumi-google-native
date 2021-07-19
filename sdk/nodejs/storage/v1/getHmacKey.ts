@@ -25,7 +25,7 @@ export function getHmacKey(args: GetHmacKeyArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetHmacKeyArgs {
     accessId: string;
-    project: string;
+    project?: string;
     userProject?: string;
 }
 

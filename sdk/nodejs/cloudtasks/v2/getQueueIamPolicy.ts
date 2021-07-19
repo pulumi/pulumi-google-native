@@ -25,7 +25,7 @@ export function getQueueIamPolicy(args: GetQueueIamPolicyArgs, opts?: pulumi.Inv
 
 export interface GetQueueIamPolicyArgs {
     location: string;
-    project: string;
+    project?: string;
     queueId: string;
 }
 

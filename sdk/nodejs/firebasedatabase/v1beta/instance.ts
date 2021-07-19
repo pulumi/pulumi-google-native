@@ -70,9 +70,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["databaseUrl"] = args ? args.databaseUrl : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -112,7 +109,7 @@ export interface InstanceArgs {
     /**
      * The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The database's lifecycle state. Read-only.
      */

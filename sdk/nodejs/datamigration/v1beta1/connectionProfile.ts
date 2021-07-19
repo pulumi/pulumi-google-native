@@ -93,9 +93,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
             inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -155,7 +152,7 @@ export interface ConnectionProfileArgs {
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The database provider.
      */

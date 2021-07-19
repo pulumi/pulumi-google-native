@@ -26,7 +26,7 @@ export function getRegionBackendServiceIamPolicy(args: GetRegionBackendServiceIa
 
 export interface GetRegionBackendServiceIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

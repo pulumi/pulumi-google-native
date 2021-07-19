@@ -76,13 +76,10 @@ export class Job extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["configuration"] = args ? args.configuration : undefined;
             inputs["jobReference"] = args ? args.jobReference : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -122,6 +119,6 @@ export interface JobArgs {
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
 }

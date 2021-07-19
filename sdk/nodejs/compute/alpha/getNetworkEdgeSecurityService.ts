@@ -25,7 +25,7 @@ export function getNetworkEdgeSecurityService(args: GetNetworkEdgeSecurityServic
 
 export interface GetNetworkEdgeSecurityServiceArgs {
     networkEdgeSecurityService: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

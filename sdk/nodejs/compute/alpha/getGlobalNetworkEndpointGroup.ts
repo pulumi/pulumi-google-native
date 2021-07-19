@@ -24,7 +24,7 @@ export function getGlobalNetworkEndpointGroup(args: GetGlobalNetworkEndpointGrou
 
 export interface GetGlobalNetworkEndpointGroupArgs {
     networkEndpointGroup: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGlobalNetworkEndpointGroupResult {

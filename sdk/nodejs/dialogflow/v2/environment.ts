@@ -82,9 +82,6 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["agentVersion"] = args ? args.agentVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
@@ -129,7 +126,7 @@ export interface EnvironmentArgs {
      */
     fulfillment?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentArgs>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Text to speech settings for this environment.
      */

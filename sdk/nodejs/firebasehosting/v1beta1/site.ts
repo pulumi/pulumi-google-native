@@ -67,9 +67,6 @@ export class Site extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
@@ -106,6 +103,6 @@ export interface SiteArgs {
      * Optional. User-specified labels for the Hosting site.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
 }

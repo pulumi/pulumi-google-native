@@ -27,7 +27,7 @@ export function getSpokeIamPolicy(args: GetSpokeIamPolicyArgs, opts?: pulumi.Inv
 export interface GetSpokeIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     spokeId: string;
 }
 

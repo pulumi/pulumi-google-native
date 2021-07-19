@@ -26,7 +26,7 @@ export function getJobTemplate(args: GetJobTemplateArgs, opts?: pulumi.InvokeOpt
 export interface GetJobTemplateArgs {
     jobTemplateId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetJobTemplateResult {

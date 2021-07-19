@@ -24,7 +24,7 @@ export function getEvaluationJob(args: GetEvaluationJobArgs, opts?: pulumi.Invok
 
 export interface GetEvaluationJobArgs {
     evaluationJobId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEvaluationJobResult {

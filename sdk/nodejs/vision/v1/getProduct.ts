@@ -26,7 +26,7 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
 export interface GetProductArgs {
     location: string;
     productId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetProductResult {

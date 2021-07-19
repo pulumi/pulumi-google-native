@@ -27,7 +27,7 @@ export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: 
 export interface GetRepositoryIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     repositoryId: string;
 }
 

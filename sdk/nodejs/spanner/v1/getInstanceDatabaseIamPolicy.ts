@@ -26,7 +26,7 @@ export function getInstanceDatabaseIamPolicy(args: GetInstanceDatabaseIamPolicyA
 export interface GetInstanceDatabaseIamPolicyArgs {
     databaseId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceDatabaseIamPolicyResult {

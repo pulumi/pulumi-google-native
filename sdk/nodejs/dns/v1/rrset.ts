@@ -70,9 +70,6 @@ export class Rrset extends pulumi.CustomResource {
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["managedZone"] = args ? args.managedZone : undefined;
@@ -108,7 +105,7 @@ export interface RrsetArgs {
      * For example, www.example.com.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
      */

@@ -99,9 +99,6 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["etag"] = args ? args.etag : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -160,7 +157,7 @@ export interface JobArgs {
      * The current prediction job result.
      */
     predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Input parameters to create a training job.
      */

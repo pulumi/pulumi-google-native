@@ -26,7 +26,7 @@ export function getRegionDiskIamPolicy(args: GetRegionDiskIamPolicyArgs, opts?: 
 
 export interface GetRegionDiskIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

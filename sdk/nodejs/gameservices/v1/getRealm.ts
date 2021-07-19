@@ -25,7 +25,7 @@ export function getRealm(args: GetRealmArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetRealmArgs {
     location: string;
-    project: string;
+    project?: string;
     realmId: string;
 }
 

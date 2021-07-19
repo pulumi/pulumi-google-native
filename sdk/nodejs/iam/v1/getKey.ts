@@ -26,7 +26,7 @@ export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<G
 
 export interface GetKeyArgs {
     keyId: string;
-    project: string;
+    project?: string;
     publicKeyType?: string;
     serviceAccountId: string;
 }

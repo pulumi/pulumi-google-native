@@ -155,9 +155,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -283,7 +280,7 @@ export interface InstanceArgs {
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
     privateInstance?: pulumi.Input<boolean>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Instance type.
      */

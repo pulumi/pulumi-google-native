@@ -23,7 +23,7 @@ export function getTargetGrpcProxy(args: GetTargetGrpcProxyArgs, opts?: pulumi.I
 }
 
 export interface GetTargetGrpcProxyArgs {
-    project: string;
+    project?: string;
     targetGrpcProxy: string;
 }
 

@@ -60,9 +60,6 @@ export class Tag extends pulumi.CustomResource {
             if ((!args || args.packageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'packageId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.repositoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
@@ -94,7 +91,7 @@ export interface TagArgs {
      */
     name?: pulumi.Input<string>;
     packageId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     repositoryId: pulumi.Input<string>;
     tagId?: pulumi.Input<string>;
     /**

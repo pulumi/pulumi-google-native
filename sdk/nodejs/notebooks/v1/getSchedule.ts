@@ -25,7 +25,7 @@ export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetScheduleArgs {
     location: string;
-    project: string;
+    project?: string;
     scheduleId: string;
 }
 

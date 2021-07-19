@@ -23,7 +23,7 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetSecretArgs {
-    project: string;
+    project?: string;
     secretId: string;
 }
 

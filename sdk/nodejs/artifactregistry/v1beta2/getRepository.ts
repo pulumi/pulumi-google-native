@@ -25,7 +25,7 @@ export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptio
 
 export interface GetRepositoryArgs {
     location: string;
-    project: string;
+    project?: string;
     repositoryId: string;
 }
 

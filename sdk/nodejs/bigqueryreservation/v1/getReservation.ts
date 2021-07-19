@@ -25,7 +25,7 @@ export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOpt
 
 export interface GetReservationArgs {
     location: string;
-    project: string;
+    project?: string;
     reservationId: string;
 }
 

@@ -24,7 +24,7 @@ export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulu
 
 export interface GetInstanceIamPolicyArgs {
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceIamPolicyResult {

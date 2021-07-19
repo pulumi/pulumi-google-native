@@ -71,9 +71,6 @@ export class DomainMapping extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -114,7 +111,7 @@ export interface DomainMappingArgs {
      * Metadata associated with this BuildTemplate.
      */
     metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */

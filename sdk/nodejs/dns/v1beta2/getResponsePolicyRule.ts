@@ -26,7 +26,7 @@ export function getResponsePolicyRule(args: GetResponsePolicyRuleArgs, opts?: pu
 
 export interface GetResponsePolicyRuleArgs {
     clientOperationId?: string;
-    project: string;
+    project?: string;
     responsePolicy: string;
     responsePolicyRule: string;
 }

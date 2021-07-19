@@ -25,7 +25,7 @@ export function getBackendBucketIamPolicy(args: GetBackendBucketIamPolicyArgs, o
 
 export interface GetBackendBucketIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

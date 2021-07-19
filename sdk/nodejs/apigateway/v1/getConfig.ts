@@ -29,7 +29,7 @@ export interface GetConfigArgs {
     apiId: string;
     configId: string;
     location: string;
-    project: string;
+    project?: string;
     view?: string;
 }
 

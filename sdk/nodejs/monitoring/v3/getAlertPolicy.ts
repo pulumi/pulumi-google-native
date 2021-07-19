@@ -24,7 +24,7 @@ export function getAlertPolicy(args: GetAlertPolicyArgs, opts?: pulumi.InvokeOpt
 
 export interface GetAlertPolicyArgs {
     alertPolicyId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAlertPolicyResult {

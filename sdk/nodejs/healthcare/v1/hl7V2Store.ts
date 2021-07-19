@@ -73,9 +73,6 @@ export class Hl7V2Store extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -122,7 +119,7 @@ export interface Hl7V2StoreArgs {
      * The configuration for the parser. It determines how the server parses the messages.
      */
     parserConfig?: pulumi.Input<inputs.healthcare.v1.ParserConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
      */

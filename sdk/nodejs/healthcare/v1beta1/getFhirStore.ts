@@ -28,7 +28,7 @@ export interface GetFhirStoreArgs {
     datasetId: string;
     fhirStoreId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFhirStoreResult {

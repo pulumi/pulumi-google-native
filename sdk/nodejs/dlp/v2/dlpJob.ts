@@ -91,9 +91,6 @@ export class DlpJob extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -141,7 +138,7 @@ export interface DlpJobArgs {
      */
     jobId?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.
      */

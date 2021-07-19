@@ -23,7 +23,7 @@ export function getServiceAccount(args: GetServiceAccountArgs, opts?: pulumi.Inv
 }
 
 export interface GetServiceAccountArgs {
-    project: string;
+    project?: string;
     serviceAccountId: string;
 }
 

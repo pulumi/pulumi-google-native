@@ -86,9 +86,6 @@ export class SslCert extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["commonName"] = args ? args.commonName : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -126,5 +123,5 @@ export interface SslCertArgs {
      */
     commonName?: pulumi.Input<string>;
     instance: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

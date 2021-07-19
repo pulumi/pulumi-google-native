@@ -69,9 +69,6 @@ export class EntryGroup extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entryGroupId"] = args ? args.entryGroupId : undefined;
@@ -110,5 +107,5 @@ export interface EntryGroupArgs {
      * The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name. 
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

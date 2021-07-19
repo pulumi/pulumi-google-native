@@ -103,9 +103,6 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.locations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locations'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
@@ -171,7 +168,7 @@ export interface DomainArgs {
      * Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
      */
     managedIdentitiesAdminName?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */

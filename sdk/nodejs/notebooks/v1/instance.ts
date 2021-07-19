@@ -189,9 +189,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.machineType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             inputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
             inputs["bootDiskType"] = args ? args.bootDiskType : undefined;
@@ -356,7 +353,7 @@ export interface InstanceArgs {
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
      */
     postStartupScript?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */

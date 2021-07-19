@@ -109,9 +109,6 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
             inputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
@@ -162,7 +159,7 @@ export interface CryptoKeyVersionArgs {
     externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
     keyRingId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The current state of the CryptoKeyVersion.
      */

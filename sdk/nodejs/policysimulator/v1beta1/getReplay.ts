@@ -25,7 +25,7 @@ export function getReplay(args: GetReplayArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetReplayArgs {
     location: string;
-    project: string;
+    project?: string;
     replayId: string;
 }
 

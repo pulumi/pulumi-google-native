@@ -83,9 +83,6 @@ export class Execution extends pulumi.CustomResource {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["completionTime"] = args ? args.completionTime : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["dimensionDefinitions"] = args ? args.dimensionDefinitions : undefined;
@@ -139,7 +136,7 @@ export interface ExecutionArgs {
      * Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
      */
     outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional

@@ -71,9 +71,6 @@ export class Endpoint extends pulumi.CustomResource {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
@@ -122,6 +119,6 @@ export interface EndpointArgs {
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     port?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
 }

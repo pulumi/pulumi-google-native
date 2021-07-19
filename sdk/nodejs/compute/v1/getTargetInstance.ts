@@ -24,7 +24,7 @@ export function getTargetInstance(args: GetTargetInstanceArgs, opts?: pulumi.Inv
 }
 
 export interface GetTargetInstanceArgs {
-    project: string;
+    project?: string;
     targetInstance: string;
     zone: string;
 }

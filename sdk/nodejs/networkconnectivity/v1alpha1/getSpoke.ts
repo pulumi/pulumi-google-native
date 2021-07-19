@@ -25,7 +25,7 @@ export function getSpoke(args: GetSpokeArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetSpokeArgs {
     location: string;
-    project: string;
+    project?: string;
     spokeId: string;
 }
 

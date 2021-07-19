@@ -23,7 +23,7 @@ export function getTargetTcpProxy(args: GetTargetTcpProxyArgs, opts?: pulumi.Inv
 }
 
 export interface GetTargetTcpProxyArgs {
-    project: string;
+    project?: string;
     targetTcpProxy: string;
 }
 

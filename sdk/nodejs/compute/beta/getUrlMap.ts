@@ -23,7 +23,7 @@ export function getUrlMap(args: GetUrlMapArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetUrlMapArgs {
-    project: string;
+    project?: string;
     urlMap: string;
 }
 

@@ -28,7 +28,7 @@ export interface GetChangeArgs {
     changeId: string;
     clientOperationId?: string;
     managedZone: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetChangeResult {

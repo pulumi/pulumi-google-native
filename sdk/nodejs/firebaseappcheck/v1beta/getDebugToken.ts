@@ -26,7 +26,7 @@ export function getDebugToken(args: GetDebugTokenArgs, opts?: pulumi.InvokeOptio
 export interface GetDebugTokenArgs {
     appId: string;
     debugTokenId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDebugTokenResult {
