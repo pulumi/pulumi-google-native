@@ -18,11 +18,11 @@ class TriggerArgs:
                  destination: pulumi.Input['DestinationArgs'],
                  location: pulumi.Input[str],
                  matching_criteria: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]],
-                 project: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Trigger resource.
@@ -35,13 +35,14 @@ class TriggerArgs:
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "matching_criteria", matching_criteria)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "validate_only", validate_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
 
@@ -77,15 +78,6 @@ class TriggerArgs:
     @matching_criteria.setter
     def matching_criteria(self, value: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]):
         pulumi.set(self, "matching_criteria", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="triggerId")
@@ -128,6 +120,15 @@ class TriggerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -224,8 +225,6 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'matching_criteria'")
             __props__.__dict__["matching_criteria"] = matching_criteria
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             if trigger_id is None and not opts.urn:

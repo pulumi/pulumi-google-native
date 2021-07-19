@@ -17,8 +17,8 @@ class AnnotationSpecSetArgs:
     def __init__(__self__, *,
                  annotation_specs: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]],
                  display_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AnnotationSpecSet resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]] annotation_specs: The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
@@ -27,9 +27,10 @@ class AnnotationSpecSetArgs:
         """
         pulumi.set(__self__, "annotation_specs", annotation_specs)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="annotationSpecs")
@@ -57,15 +58,6 @@ class AnnotationSpecSetArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
@@ -75,6 +67,15 @@ class AnnotationSpecSetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class AnnotationSpecSet(pulumi.CustomResource):
@@ -145,8 +146,6 @@ class AnnotationSpecSet(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["blocking_resources"] = None
             __props__.__dict__["name"] = None

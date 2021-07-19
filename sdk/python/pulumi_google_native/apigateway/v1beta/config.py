@@ -18,14 +18,14 @@ class ConfigArgs:
                  api_config_id: pulumi.Input[str],
                  api_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input['ApigatewayGatewayConfigArgs']] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigFileArgs']]]] = None,
-                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]]] = None):
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
@@ -39,7 +39,6 @@ class ConfigArgs:
         pulumi.set(__self__, "api_config_id", api_config_id)
         pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gateway_config is not None:
@@ -54,6 +53,8 @@ class ConfigArgs:
             pulumi.set(__self__, "managed_service_configs", managed_service_configs)
         if openapi_documents is not None:
             pulumi.set(__self__, "openapi_documents", openapi_documents)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="apiConfigId")
@@ -81,15 +82,6 @@ class ConfigArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -174,6 +166,15 @@ class ConfigArgs:
     @openapi_documents.setter
     def openapi_documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]]]):
         pulumi.set(self, "openapi_documents", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Config(pulumi.CustomResource):
@@ -271,8 +272,6 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["managed_service_configs"] = managed_service_configs
             __props__.__dict__["openapi_documents"] = openapi_documents
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

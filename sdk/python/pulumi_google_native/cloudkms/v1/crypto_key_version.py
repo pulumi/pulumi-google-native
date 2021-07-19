@@ -19,8 +19,8 @@ class CryptoKeyVersionArgs:
                  crypto_key_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  external_protection_level_options: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['CryptoKeyVersionState']] = None):
         """
         The set of arguments for constructing a CryptoKeyVersion resource.
@@ -30,9 +30,10 @@ class CryptoKeyVersionArgs:
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -64,15 +65,6 @@ class CryptoKeyVersionArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']]:
         """
@@ -83,6 +75,15 @@ class CryptoKeyVersionArgs:
     @external_protection_level_options.setter
     def external_protection_level_options(self, value: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']]):
         pulumi.set(self, "external_protection_level_options", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -171,8 +172,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["algorithm"] = None

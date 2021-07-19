@@ -14,10 +14,10 @@ __all__ = ['RrsetArgs', 'Rrset']
 class RrsetArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -31,13 +31,14 @@ class RrsetArgs:
         :param pulumi.Input[str] type: The identifier of a supported record type. See the list of Supported DNS record types.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
-        pulumi.set(__self__, "project", project)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if signature_rrdatas is not None:
@@ -55,15 +56,6 @@ class RrsetArgs:
     @managed_zone.setter
     def managed_zone(self, value: pulumi.Input[str]):
         pulumi.set(self, "managed_zone", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="clientOperationId")
@@ -94,6 +86,15 @@ class RrsetArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -221,8 +222,6 @@ class Rrset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'managed_zone'")
             __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["signature_rrdatas"] = signature_rrdatas

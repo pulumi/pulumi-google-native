@@ -17,9 +17,9 @@ class AutoscalingPolicyIamPolicyArgs:
     def __init__(__self__, *,
                  autoscaling_policy_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AutoscalingPolicyIamPolicy resource.
@@ -29,11 +29,12 @@ class AutoscalingPolicyIamPolicyArgs:
         """
         pulumi.set(__self__, "autoscaling_policy_id", autoscaling_policy_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -54,15 +55,6 @@ class AutoscalingPolicyIamPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -87,6 +79,15 @@ class AutoscalingPolicyIamPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -172,8 +173,6 @@ class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
         super(AutoscalingPolicyIamPolicy, __self__).__init__(

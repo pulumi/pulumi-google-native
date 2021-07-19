@@ -17,10 +17,10 @@ __all__ = ['InspectTemplateArgs', 'InspectTemplate']
 class InspectTemplateArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InspectTemplate resource.
@@ -30,13 +30,14 @@ class InspectTemplateArgs:
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_config is not None:
             pulumi.set(__self__, "inspect_config", inspect_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
 
@@ -48,15 +49,6 @@ class InspectTemplateArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -93,6 +85,15 @@ class InspectTemplateArgs:
     @inspect_config.setter
     def inspect_config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']]):
         pulumi.set(self, "inspect_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="templateId")
@@ -179,8 +180,6 @@ class InspectTemplate(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["create_time"] = None

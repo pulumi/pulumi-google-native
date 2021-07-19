@@ -17,7 +17,6 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  client_request_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_from_snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -29,6 +28,7 @@ class JobArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_description: Optional[pulumi.Input['PipelineDescriptionArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
@@ -44,7 +44,6 @@ class JobArgs:
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] client_request_id: The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
         :param pulumi.Input[str] create_time: The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
         :param pulumi.Input[str] created_from_snapshot_id: If this is specified, the job's initial state is populated from the given snapshot.
@@ -56,6 +55,7 @@ class JobArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
         :param pulumi.Input['PipelineDescriptionArgs'] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+        :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
@@ -69,7 +69,6 @@ class JobArgs:
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if client_request_id is not None:
             pulumi.set(__self__, "client_request_id", client_request_id)
         if create_time is not None:
@@ -92,6 +91,8 @@ class JobArgs:
             pulumi.set(__self__, "name", name)
         if pipeline_description is not None:
             pulumi.set(__self__, "pipeline_description", pipeline_description)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if replace_job_id is not None:
             pulumi.set(__self__, "replace_job_id", replace_job_id)
         if replaced_by_job_id is not None:
@@ -128,18 +129,6 @@ class JobArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The ID of the Cloud Platform project that the job belongs to.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="clientRequestId")
@@ -272,6 +261,18 @@ class JobArgs:
     @pipeline_description.setter
     def pipeline_description(self, value: Optional[pulumi.Input['PipelineDescriptionArgs']]):
         pulumi.set(self, "pipeline_description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Cloud Platform project that the job belongs to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="replaceJobId")
@@ -551,8 +552,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["pipeline_description"] = pipeline_description
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["replace_job_id"] = replace_job_id
             __props__.__dict__["replaced_by_job_id"] = replaced_by_job_id

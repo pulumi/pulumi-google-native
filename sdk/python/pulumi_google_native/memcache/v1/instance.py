@@ -20,7 +20,6 @@ class InstanceArgs:
                  location: pulumi.Input[str],
                  node_config: pulumi.Input['NodeConfigArgs'],
                  node_count: pulumi.Input[int],
-                 project: pulumi.Input[str],
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
@@ -28,6 +27,7 @@ class InstanceArgs:
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -46,7 +46,6 @@ class InstanceArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "project", project)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if display_name is not None:
@@ -61,6 +60,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -105,15 +106,6 @@ class InstanceArgs:
     @node_count.setter
     def node_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "node_count", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -198,6 +190,15 @@ class InstanceArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input['MemcacheParametersArgs']]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -315,8 +316,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_count'")
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["parameters"] = parameters
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None

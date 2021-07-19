@@ -18,9 +18,9 @@ class InstructionArgs:
     def __init__(__self__, *,
                  data_type: pulumi.Input['InstructionDataType'],
                  display_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 pdf_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] = None):
+                 pdf_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instruction resource.
         :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
@@ -30,11 +30,12 @@ class InstructionArgs:
         """
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if pdf_instruction is not None:
             pulumi.set(__self__, "pdf_instruction", pdf_instruction)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="dataType")
@@ -62,15 +63,6 @@ class InstructionArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
@@ -92,6 +84,15 @@ class InstructionArgs:
     @pdf_instruction.setter
     def pdf_instruction(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]):
         pulumi.set(self, "pdf_instruction", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Instruction(pulumi.CustomResource):
@@ -166,8 +167,6 @@ class Instruction(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["pdf_instruction"] = pdf_instruction
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["blocking_resources"] = None
             __props__.__dict__["create_time"] = None

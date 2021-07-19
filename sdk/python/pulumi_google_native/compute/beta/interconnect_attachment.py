@@ -16,7 +16,6 @@ __all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
 @pulumi.input_type
 class InterconnectAttachmentArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input['InterconnectAttachmentBandwidth']] = None,
@@ -32,6 +31,7 @@ class InterconnectAttachmentArgs:
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
                  partner_metadata: Optional[pulumi.Input['InterconnectAttachmentPartnerMetadataArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
@@ -57,7 +57,6 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -87,6 +86,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "partner_asn", partner_asn)
         if partner_metadata is not None:
             pulumi.set(__self__, "partner_metadata", partner_metadata)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if router is not None:
@@ -97,15 +98,6 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "validate_only", validate_only)
         if vlan_tag8021q is not None:
             pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -285,6 +277,15 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "partner_metadata", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -460,8 +461,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["pairing_key"] = pairing_key
             __props__.__dict__["partner_asn"] = partner_asn
             __props__.__dict__["partner_metadata"] = partner_metadata
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

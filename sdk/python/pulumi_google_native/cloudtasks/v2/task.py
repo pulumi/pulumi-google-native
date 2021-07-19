@@ -17,12 +17,12 @@ __all__ = ['TaskArgs', 'Task']
 class TaskArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  queue_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
                  dispatch_deadline: Optional[pulumi.Input[str]] = None,
                  http_request: Optional[pulumi.Input['HttpRequestArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  response_view: Optional[pulumi.Input['TaskResponseView']] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None):
         """
@@ -35,7 +35,6 @@ class TaskArgs:
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
@@ -45,6 +44,8 @@ class TaskArgs:
             pulumi.set(__self__, "http_request", http_request)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if response_view is not None:
             pulumi.set(__self__, "response_view", response_view)
         if schedule_time is not None:
@@ -58,15 +59,6 @@ class TaskArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="queueId")
@@ -124,6 +116,15 @@ class TaskArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="responseView")
@@ -229,8 +230,6 @@ class Task(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if queue_id is None and not opts.urn:
                 raise TypeError("Missing required property 'queue_id'")

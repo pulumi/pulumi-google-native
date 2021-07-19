@@ -17,12 +17,12 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input['HttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input['PubsubTargetArgs']] = None,
                  retry_config: Optional[pulumi.Input['RetryConfigArgs']] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,6 @@ class JobArgs:
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if app_engine_http_target is not None:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
@@ -51,6 +50,8 @@ class JobArgs:
             pulumi.set(__self__, "http_target", http_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if pubsub_target is not None:
             pulumi.set(__self__, "pubsub_target", pubsub_target)
         if retry_config is not None:
@@ -68,15 +69,6 @@ class JobArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -137,6 +129,15 @@ class JobArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pubsubTarget")
@@ -274,8 +275,6 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_target"] = pubsub_target
             __props__.__dict__["retry_config"] = retry_config

@@ -19,13 +19,13 @@ class EntryArgs:
                  entry_group_id: pulumi.Input[str],
                  entry_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']] = None,
                  bigquery_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs']] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,6 @@ class EntryArgs:
         pulumi.set(__self__, "entry_group_id", entry_group_id)
         pulumi.set(__self__, "entry_id", entry_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if bigquery_date_sharded_spec is not None:
             pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
         if bigquery_table_spec is not None:
@@ -59,6 +58,8 @@ class EntryArgs:
             pulumi.set(__self__, "gcs_fileset_spec", gcs_fileset_spec)
         if linked_resource is not None:
             pulumi.set(__self__, "linked_resource", linked_resource)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if type is not None:
@@ -94,15 +95,6 @@ class EntryArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="bigqueryDateShardedSpec")
@@ -175,6 +167,15 @@ class EntryArgs:
     @linked_resource.setter
     def linked_resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "linked_resource", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -328,8 +329,6 @@ class Entry(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["schema"] = schema
             __props__.__dict__["type"] = type

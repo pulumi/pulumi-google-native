@@ -15,13 +15,13 @@ __all__ = ['PublicDelegatedPrefixArgs', 'PublicDelegatedPrefix']
 @pulumi.input_type
 class PublicDelegatedPrefixArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  is_live_migration: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -33,7 +33,6 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]] public_delegated_sub_prefixs: The list of sub public delegated prefixes that exist for this public delegated prefix.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -45,19 +44,12 @@ class PublicDelegatedPrefixArgs:
             pulumi.set(__self__, "name", name)
         if parent_prefix is not None:
             pulumi.set(__self__, "parent_prefix", parent_prefix)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if public_delegated_sub_prefixs is not None:
             pulumi.set(__self__, "public_delegated_sub_prefixs", public_delegated_sub_prefixs)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -127,6 +119,15 @@ class PublicDelegatedPrefixArgs:
     @parent_prefix.setter
     def parent_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_prefix", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="publicDelegatedSubPrefixs")
@@ -227,8 +228,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             __props__.__dict__["is_live_migration"] = is_live_migration
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_prefix"] = parent_prefix
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["public_delegated_sub_prefixs"] = public_delegated_sub_prefixs
             if region is None and not opts.urn:

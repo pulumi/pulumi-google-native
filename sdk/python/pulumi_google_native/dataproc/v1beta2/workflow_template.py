@@ -20,10 +20,10 @@ class WorkflowTemplateArgs:
                  jobs: pulumi.Input[Sequence[pulumi.Input['OrderedJobArgs']]],
                  location: pulumi.Input[str],
                  placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
-                 project: pulumi.Input[str],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateParameterArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
@@ -39,13 +39,14 @@ class WorkflowTemplateArgs:
         pulumi.set(__self__, "jobs", jobs)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "placement", placement)
-        pulumi.set(__self__, "project", project)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -95,15 +96,6 @@ class WorkflowTemplateArgs:
         pulumi.set(self, "placement", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="dagTimeout")
     def dag_timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -138,6 +130,15 @@ class WorkflowTemplateArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -242,8 +243,6 @@ class WorkflowTemplate(pulumi.CustomResource):
             if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None

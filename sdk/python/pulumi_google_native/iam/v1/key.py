@@ -14,30 +14,22 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  service_account_id: pulumi.Input[str],
                  key_algorithm: Optional[pulumi.Input['KeyKeyAlgorithm']] = None,
-                 private_key_type: Optional[pulumi.Input['KeyPrivateKeyType']] = None):
+                 private_key_type: Optional[pulumi.Input['KeyPrivateKeyType']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Key resource.
         :param pulumi.Input['KeyKeyAlgorithm'] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
         :param pulumi.Input['KeyPrivateKeyType'] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_id", service_account_id)
         if key_algorithm is not None:
             pulumi.set(__self__, "key_algorithm", key_algorithm)
         if private_key_type is not None:
             pulumi.set(__self__, "private_key_type", private_key_type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -71,6 +63,15 @@ class KeyArgs:
     @private_key_type.setter
     def private_key_type(self, value: Optional[pulumi.Input['KeyPrivateKeyType']]):
         pulumi.set(self, "private_key_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Key(pulumi.CustomResource):
@@ -135,8 +136,6 @@ class Key(pulumi.CustomResource):
 
             __props__.__dict__["key_algorithm"] = key_algorithm
             __props__.__dict__["private_key_type"] = private_key_type
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if service_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_id'")

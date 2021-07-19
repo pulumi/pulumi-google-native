@@ -16,12 +16,12 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  topic_id: pulumi.Input[str],
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input['MessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  schema_settings: Optional[pulumi.Input['SchemaSettingsArgs']] = None):
         """
@@ -33,7 +33,6 @@ class TopicArgs:
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input['SchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "topic_id", topic_id)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -43,19 +42,12 @@ class TopicArgs:
             pulumi.set(__self__, "message_storage_policy", message_storage_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if schema_settings is not None:
             pulumi.set(__self__, "schema_settings", schema_settings)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="topicId")
@@ -113,6 +105,15 @@ class TopicArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -213,8 +214,6 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["schema_settings"] = schema_settings

@@ -16,13 +16,13 @@ __all__ = ['ProductArgs', 'Product']
 class ProductArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_category: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
-                 product_labels: Optional[pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]]] = None):
+                 product_labels: Optional[pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Product resource.
         :param pulumi.Input[str] description: User-provided metadata to be stored with this product. Must be at most 4096 characters long.
@@ -32,7 +32,6 @@ class ProductArgs:
         :param pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]] product_labels: Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -45,6 +44,8 @@ class ProductArgs:
             pulumi.set(__self__, "product_id", product_id)
         if product_labels is not None:
             pulumi.set(__self__, "product_labels", product_labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -54,15 +55,6 @@ class ProductArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -132,6 +124,15 @@ class ProductArgs:
     @product_labels.setter
     def product_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]]]):
         pulumi.set(self, "product_labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Product(pulumi.CustomResource):
@@ -212,8 +213,6 @@ class Product(pulumi.CustomResource):
             __props__.__dict__["product_category"] = product_category
             __props__.__dict__["product_id"] = product_id
             __props__.__dict__["product_labels"] = product_labels
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(Product, __self__).__init__(
             'google-native:vision/v1:Product',

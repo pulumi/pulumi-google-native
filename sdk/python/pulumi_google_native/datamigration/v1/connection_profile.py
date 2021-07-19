@@ -18,13 +18,13 @@ class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None):
@@ -41,7 +41,6 @@ class ConnectionProfileArgs:
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if cloudsql is not None:
             pulumi.set(__self__, "cloudsql", cloudsql)
         if display_name is not None:
@@ -54,6 +53,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "name", name)
         if postgresql is not None:
             pulumi.set(__self__, "postgresql", postgresql)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
         if request_id is not None:
@@ -78,15 +79,6 @@ class ConnectionProfileArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -159,6 +151,15 @@ class ConnectionProfileArgs:
     @postgresql.setter
     def postgresql(self, value: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']]):
         pulumi.set(self, "postgresql", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -286,8 +287,6 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
             __props__.__dict__["postgresql"] = postgresql
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["provider"] = provider
             __props__.__dict__["request_id"] = request_id

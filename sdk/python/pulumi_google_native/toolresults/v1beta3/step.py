@@ -18,7 +18,6 @@ class StepArgs:
     def __init__(__self__, *,
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  completion_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  creation_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -29,6 +28,7 @@ class StepArgs:
                  multi_step: Optional[pulumi.Input['MultiStepArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  state: Optional[pulumi.Input['StepState']] = None,
@@ -55,7 +55,6 @@ class StepArgs:
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project", project)
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
         if creation_time is not None:
@@ -76,6 +75,8 @@ class StepArgs:
             pulumi.set(__self__, "name", name)
         if outcome is not None:
             pulumi.set(__self__, "outcome", outcome)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if run_duration is not None:
@@ -106,15 +107,6 @@ class StepArgs:
     @history_id.setter
     def history_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "history_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -235,6 +227,15 @@ class StepArgs:
     @outcome.setter
     def outcome(self, value: Optional[pulumi.Input['OutcomeArgs']]):
         pulumi.set(self, "outcome", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -423,8 +424,6 @@ class Step(pulumi.CustomResource):
             __props__.__dict__["multi_step"] = multi_step
             __props__.__dict__["name"] = name
             __props__.__dict__["outcome"] = outcome
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["run_duration"] = run_duration

@@ -14,7 +14,6 @@ __all__ = ['GlobalAddressArgs', 'GlobalAddress']
 @pulumi.input_type
 class GlobalAddressArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input['GlobalAddressAddressType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -23,6 +22,7 @@ class GlobalAddressArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input['GlobalAddressNetworkTier']] = None,
                  prefix_length: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['GlobalAddressPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -39,7 +39,6 @@ class GlobalAddressArgs:
         :param pulumi.Input['GlobalAddressPurpose'] purpose: The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
         """
-        pulumi.set(__self__, "project", project)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if address_type is not None:
@@ -56,21 +55,14 @@ class GlobalAddressArgs:
             pulumi.set(__self__, "network_tier", network_tier)
         if prefix_length is not None:
             pulumi.set(__self__, "prefix_length", prefix_length)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -170,6 +162,15 @@ class GlobalAddressArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input['GlobalAddressPurpose']]:
         """
         The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
@@ -240,7 +241,7 @@ class GlobalAddress(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalAddressArgs,
+                 args: Optional[GlobalAddressArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an address resource in the specified project by using the data included in the request.
@@ -292,8 +293,6 @@ class GlobalAddress(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_tier"] = network_tier
             __props__.__dict__["prefix_length"] = prefix_length
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["request_id"] = request_id

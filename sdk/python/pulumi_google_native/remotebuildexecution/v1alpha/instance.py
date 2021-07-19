@@ -16,11 +16,11 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  feature_policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs'] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
@@ -28,7 +28,6 @@ class InstanceArgs:
         :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
         :param pulumi.Input[str] parent: Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
         """
-        pulumi.set(__self__, "project", project)
         if feature_policy is not None:
             pulumi.set(__self__, "feature_policy", feature_policy)
         if instance_id is not None:
@@ -37,15 +36,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location", location)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="featurePolicy")
@@ -95,6 +87,15 @@ class InstanceArgs:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -122,7 +123,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.
@@ -164,8 +165,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["location"] = location
             __props__.__dict__["parent"] = parent
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["logging_enabled"] = None
             __props__.__dict__["name"] = None

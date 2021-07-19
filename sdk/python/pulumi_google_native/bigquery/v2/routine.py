@@ -18,7 +18,6 @@ class RoutineArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  definition_body: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  routine_reference: pulumi.Input['RoutineReferenceArgs'],
                  routine_type: pulumi.Input['RoutineRoutineType'],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
@@ -26,6 +25,7 @@ class RoutineArgs:
                  determinism_level: Optional[pulumi.Input['RoutineDeterminismLevel']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
                  return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None):
         """
@@ -43,7 +43,6 @@ class RoutineArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "routine_reference", routine_reference)
         pulumi.set(__self__, "routine_type", routine_type)
         if arguments is not None:
@@ -56,6 +55,8 @@ class RoutineArgs:
             pulumi.set(__self__, "imported_libraries", imported_libraries)
         if language is not None:
             pulumi.set(__self__, "language", language)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if return_table_type is not None:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
@@ -81,15 +82,6 @@ class RoutineArgs:
     @definition_body.setter
     def definition_body(self, value: pulumi.Input[str]):
         pulumi.set(self, "definition_body", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="routineReference")
@@ -174,6 +166,15 @@ class RoutineArgs:
     @language.setter
     def language(self, value: Optional[pulumi.Input['RoutineLanguage']]):
         pulumi.set(self, "language", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="returnTableType")
@@ -295,8 +296,6 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["determinism_level"] = determinism_level
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type

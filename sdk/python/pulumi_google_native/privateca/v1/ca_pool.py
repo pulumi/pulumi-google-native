@@ -18,10 +18,10 @@ class CaPoolArgs:
     def __init__(__self__, *,
                  ca_pool_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  tier: pulumi.Input['CaPoolTier'],
                  issuance_policy: Optional[pulumi.Input['IssuancePolicyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  publishing_options: Optional[pulumi.Input['PublishingOptionsArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -33,12 +33,13 @@ class CaPoolArgs:
         """
         pulumi.set(__self__, "ca_pool_id", ca_pool_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tier", tier)
         if issuance_policy is not None:
             pulumi.set(__self__, "issuance_policy", issuance_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if publishing_options is not None:
             pulumi.set(__self__, "publishing_options", publishing_options)
         if request_id is not None:
@@ -61,15 +62,6 @@ class CaPoolArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -106,6 +98,15 @@ class CaPoolArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="publishingOptions")
@@ -207,8 +208,6 @@ class CaPool(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["publishing_options"] = publishing_options
             __props__.__dict__["request_id"] = request_id

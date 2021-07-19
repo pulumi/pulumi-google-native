@@ -18,8 +18,8 @@ class IndexArgs:
     def __init__(__self__, *,
                  collection_group_id: pulumi.Input[str],
                  database_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input['IndexQueryScope']] = None):
         """
         The set of arguments for constructing a Index resource.
@@ -28,9 +28,10 @@ class IndexArgs:
         """
         pulumi.set(__self__, "collection_group_id", collection_group_id)
         pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "project", project)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
 
@@ -54,15 +55,6 @@ class IndexArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]]:
         """
         The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
@@ -72,6 +64,15 @@ class IndexArgs:
     @fields.setter
     def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]]):
         pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="queryScope")
@@ -155,8 +156,6 @@ class Index(pulumi.CustomResource):
                 raise TypeError("Missing required property 'database_id'")
             __props__.__dict__["database_id"] = database_id
             __props__.__dict__["fields"] = fields
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["query_scope"] = query_scope
             __props__.__dict__["name"] = None

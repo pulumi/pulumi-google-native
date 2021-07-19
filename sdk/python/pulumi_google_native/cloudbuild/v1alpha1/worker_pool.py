@@ -16,40 +16,29 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 @pulumi.input_type
 class WorkerPoolArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None,
                  worker_count: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
-        :param pulumi.Input[str] project: The project ID of the GCP project for which the `WorkerPool` is created.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
+        :param pulumi.Input[str] project: The project ID of the GCP project for which the `WorkerPool` is created.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
         """
-        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
         if worker_count is not None:
             pulumi.set(__self__, "worker_count", worker_count)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The project ID of the GCP project for which the `WorkerPool` is created.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -62,6 +51,18 @@ class WorkerPoolArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID of the GCP project for which the `WorkerPool` is created.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -126,7 +127,7 @@ class WorkerPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkerPoolArgs,
+                 args: Optional[WorkerPoolArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a `WorkerPool` to run the builds, and returns the new worker pool.
@@ -164,8 +165,6 @@ class WorkerPool(pulumi.CustomResource):
             __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["regions"] = regions
             __props__.__dict__["worker_config"] = worker_config

@@ -16,12 +16,12 @@ __all__ = ['SslPolicyArgs', 'SslPolicy']
 @pulumi.input_type
 class SslPolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  custom_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input['SslPolicyMinTlsVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input['SslPolicyProfile']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tls_settings: Optional[pulumi.Input['ServerTlsSettingsArgs']] = None):
         """
@@ -33,7 +33,6 @@ class SslPolicyArgs:
         :param pulumi.Input['SslPolicyProfile'] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         :param pulumi.Input['ServerTlsSettingsArgs'] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
-        pulumi.set(__self__, "project", project)
         if custom_features is not None:
             pulumi.set(__self__, "custom_features", custom_features)
         if description is not None:
@@ -44,19 +43,12 @@ class SslPolicyArgs:
             pulumi.set(__self__, "name", name)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if tls_settings is not None:
             pulumi.set(__self__, "tls_settings", tls_settings)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="customFeatures")
@@ -119,6 +111,15 @@ class SslPolicyArgs:
         pulumi.set(self, "profile", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -170,7 +171,7 @@ class SslPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SslPolicyArgs,
+                 args: Optional[SslPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
@@ -215,8 +216,6 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["min_tls_version"] = min_tls_version
             __props__.__dict__["name"] = name
             __props__.__dict__["profile"] = profile
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["tls_settings"] = tls_settings

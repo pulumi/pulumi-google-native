@@ -17,7 +17,6 @@ __all__ = ['VersionArgs', 'Version']
 class VersionArgs:
     def __init__(__self__, *,
                  model_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  python_version: pulumi.Input[str],
                  runtime_version: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs']] = None,
@@ -34,6 +33,7 @@ class VersionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  package_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prediction_class: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_logging_config: Optional[pulumi.Input['GoogleCloudMlV1__RequestLoggingConfigArgs']] = None,
                  routes: Optional[pulumi.Input['GoogleCloudMlV1__RouteMapArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
@@ -60,7 +60,6 @@ class VersionArgs:
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
         """
         pulumi.set(__self__, "model_id", model_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "python_version", python_version)
         pulumi.set(__self__, "runtime_version", runtime_version)
         if accelerator_config is not None:
@@ -91,6 +90,8 @@ class VersionArgs:
             pulumi.set(__self__, "package_uris", package_uris)
         if prediction_class is not None:
             pulumi.set(__self__, "prediction_class", prediction_class)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_logging_config is not None:
             pulumi.set(__self__, "request_logging_config", request_logging_config)
         if routes is not None:
@@ -106,15 +107,6 @@ class VersionArgs:
     @model_id.setter
     def model_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "model_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pythonVersion")
@@ -309,6 +301,15 @@ class VersionArgs:
         pulumi.set(self, "prediction_class", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestLoggingConfig")
     def request_logging_config(self) -> Optional[pulumi.Input['GoogleCloudMlV1__RequestLoggingConfigArgs']]:
         """
@@ -471,8 +472,6 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["package_uris"] = package_uris
             __props__.__dict__["prediction_class"] = prediction_class
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if python_version is None and not opts.urn:
                 raise TypeError("Missing required property 'python_version'")

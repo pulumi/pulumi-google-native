@@ -16,17 +16,18 @@ __all__ = ['TraceSinkArgs', 'TraceSink']
 class TraceSinkArgs:
     def __init__(__self__, *,
                  output_config: pulumi.Input['OutputConfigArgs'],
-                 project: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TraceSink resource.
         :param pulumi.Input['OutputConfigArgs'] output_config: The export destination.
         :param pulumi.Input[str] name: The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         """
         pulumi.set(__self__, "output_config", output_config)
-        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="outputConfig")
@@ -42,15 +43,6 @@ class TraceSinkArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
@@ -60,6 +52,15 @@ class TraceSinkArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class TraceSink(pulumi.CustomResource):
@@ -122,8 +123,6 @@ class TraceSink(pulumi.CustomResource):
             if output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'output_config'")
             __props__.__dict__["output_config"] = output_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["writer_identity"] = None
         super(TraceSink, __self__).__init__(

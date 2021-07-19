@@ -15,13 +15,13 @@ __all__ = ['DomainArgs', 'Domain']
 class DomainArgs:
     def __init__(__self__, *,
                  locations: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 project: pulumi.Input[str],
                  reserved_ip_range: pulumi.Input[str],
                  audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 managed_identities_admin_name: Optional[pulumi.Input[str]] = None):
+                 managed_identities_admin_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -32,7 +32,6 @@ class DomainArgs:
         :param pulumi.Input[str] managed_identities_admin_name: Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
         """
         pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if audit_logs_enabled is not None:
             pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
@@ -44,6 +43,8 @@ class DomainArgs:
             pulumi.set(__self__, "labels", labels)
         if managed_identities_admin_name is not None:
             pulumi.set(__self__, "managed_identities_admin_name", managed_identities_admin_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -56,15 +57,6 @@ class DomainArgs:
     @locations.setter
     def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "locations", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="reservedIpRange")
@@ -134,6 +126,15 @@ class DomainArgs:
     @managed_identities_admin_name.setter
     def managed_identities_admin_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "managed_identities_admin_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -216,8 +217,6 @@ class Domain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations'")
             __props__.__dict__["locations"] = locations
             __props__.__dict__["managed_identities_admin_name"] = managed_identities_admin_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if reserved_ip_range is None and not opts.urn:
                 raise TypeError("Missing required property 'reserved_ip_range'")

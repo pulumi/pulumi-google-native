@@ -17,9 +17,9 @@ class DatabaseArgs:
     def __init__(__self__, *,
                  create_statement: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
-                 extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] create_statement: A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
@@ -28,11 +28,12 @@ class DatabaseArgs:
         """
         pulumi.set(__self__, "create_statement", create_statement)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if extra_statements is not None:
             pulumi.set(__self__, "extra_statements", extra_statements)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="createStatement")
@@ -54,15 +55,6 @@ class DatabaseArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -87,6 +79,15 @@ class DatabaseArgs:
     @extra_statements.setter
     def extra_statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "extra_statements", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Database(pulumi.CustomResource):
@@ -160,8 +161,6 @@ class Database(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["earliest_version_time"] = None

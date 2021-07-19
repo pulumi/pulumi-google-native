@@ -15,10 +15,10 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 @pulumi.input_type
 class SubscriptionArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  subscription_id: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['PushConfigArgs']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
@@ -28,25 +28,17 @@ class SubscriptionArgs:
         :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "subscription_id", subscription_id)
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if push_config is not None:
             pulumi.set(__self__, "push_config", push_config)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="subscriptionId")
@@ -80,6 +72,15 @@ class SubscriptionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pushConfig")
@@ -172,8 +173,6 @@ class Subscription(pulumi.CustomResource):
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["push_config"] = push_config
             if subscription_id is None and not opts.urn:

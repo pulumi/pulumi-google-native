@@ -15,7 +15,6 @@ __all__ = ['InterconnectArgs', 'Interconnect']
 @pulumi.input_type
 class InterconnectArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -25,6 +24,7 @@ class InterconnectArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None):
         """
@@ -40,7 +40,6 @@ class InterconnectArgs:
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
-        pulumi.set(__self__, "project", project)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
         if customer_name is not None:
@@ -59,19 +58,12 @@ class InterconnectArgs:
             pulumi.set(__self__, "name", name)
         if noc_contact_email is not None:
             pulumi.set(__self__, "noc_contact_email", noc_contact_email)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if requested_link_count is not None:
             pulumi.set(__self__, "requested_link_count", requested_link_count)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="adminEnabled")
@@ -182,6 +174,15 @@ class InterconnectArgs:
         pulumi.set(self, "noc_contact_email", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -241,7 +242,7 @@ class Interconnect(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InterconnectArgs,
+                 args: Optional[InterconnectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Interconnect in the specified project using the data included in the request.
@@ -294,8 +295,6 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["requested_link_count"] = requested_link_count

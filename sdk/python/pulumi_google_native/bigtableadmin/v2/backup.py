@@ -18,9 +18,9 @@ class BackupArgs:
                  cluster_id: pulumi.Input[str],
                  expire_time: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  source_table: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] expire_time: The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
@@ -31,10 +31,11 @@ class BackupArgs:
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_table", source_table)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="backupId")
@@ -76,15 +77,6 @@ class BackupArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="sourceTable")
     def source_table(self) -> pulumi.Input[str]:
         """
@@ -107,6 +99,15 @@ class BackupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Backup(pulumi.CustomResource):
@@ -189,8 +190,6 @@ class Backup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if source_table is None and not opts.urn:
                 raise TypeError("Missing required property 'source_table'")

@@ -18,12 +18,12 @@ class FeedbackMessageArgs:
                  annotated_dataset_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  feedback_thread_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  body: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator_feedback_metadata: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  requester_feedback_metadata: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']] = None):
         """
         The set of arguments for constructing a FeedbackMessage resource.
@@ -35,7 +35,6 @@ class FeedbackMessageArgs:
         pulumi.set(__self__, "annotated_dataset_id", annotated_dataset_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "feedback_thread_id", feedback_thread_id)
-        pulumi.set(__self__, "project", project)
         if body is not None:
             pulumi.set(__self__, "body", body)
         if create_time is not None:
@@ -46,6 +45,8 @@ class FeedbackMessageArgs:
             pulumi.set(__self__, "name", name)
         if operator_feedback_metadata is not None:
             pulumi.set(__self__, "operator_feedback_metadata", operator_feedback_metadata)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if requester_feedback_metadata is not None:
             pulumi.set(__self__, "requester_feedback_metadata", requester_feedback_metadata)
 
@@ -75,15 +76,6 @@ class FeedbackMessageArgs:
     @feedback_thread_id.setter
     def feedback_thread_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "feedback_thread_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -141,6 +133,15 @@ class FeedbackMessageArgs:
     @operator_feedback_metadata.setter
     def operator_feedback_metadata(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]):
         pulumi.set(self, "operator_feedback_metadata", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requesterFeedbackMetadata")
@@ -238,8 +239,6 @@ class FeedbackMessage(pulumi.CustomResource):
             __props__.__dict__["image"] = image
             __props__.__dict__["name"] = name
             __props__.__dict__["operator_feedback_metadata"] = operator_feedback_metadata
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["requester_feedback_metadata"] = requester_feedback_metadata
         super(FeedbackMessage, __self__).__init__(

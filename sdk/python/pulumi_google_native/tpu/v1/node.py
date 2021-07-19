@@ -18,7 +18,6 @@ class NodeArgs:
     def __init__(__self__, *,
                  accelerator_type: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  tensorflow_version: pulumi.Input[str],
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class NodeArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['SchedulingConfigArgs']] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None):
         """
@@ -42,7 +42,6 @@ class NodeArgs:
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tensorflow_version", tensorflow_version)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
@@ -56,6 +55,8 @@ class NodeArgs:
             pulumi.set(__self__, "network", network)
         if node_id is not None:
             pulumi.set(__self__, "node_id", node_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if scheduling_config is not None:
             pulumi.set(__self__, "scheduling_config", scheduling_config)
         if use_service_networking is not None:
@@ -81,15 +82,6 @@ class NodeArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tensorflowVersion")
@@ -171,6 +163,15 @@ class NodeArgs:
     @node_id.setter
     def node_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="schedulingConfig")
@@ -292,8 +293,6 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["network"] = network
             __props__.__dict__["node_id"] = node_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["scheduling_config"] = scheduling_config
             if tensorflow_version is None and not opts.urn:

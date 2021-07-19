@@ -16,13 +16,13 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  placement: pulumi.Input['JobPlacementArgs'],
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_job: Optional[pulumi.Input['PigJobArgs']] = None,
                  presto_job: Optional[pulumi.Input['PrestoJobArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pyspark_job: Optional[pulumi.Input['PySparkJobArgs']] = None,
                  reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -47,7 +47,6 @@ class JobArgs:
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
         """
         pulumi.set(__self__, "placement", placement)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
@@ -59,6 +58,8 @@ class JobArgs:
             pulumi.set(__self__, "pig_job", pig_job)
         if presto_job is not None:
             pulumi.set(__self__, "presto_job", presto_job)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if pyspark_job is not None:
             pulumi.set(__self__, "pyspark_job", pyspark_job)
         if reference is not None:
@@ -85,15 +86,6 @@ class JobArgs:
     @placement.setter
     def placement(self, value: pulumi.Input['JobPlacementArgs']):
         pulumi.set(self, "placement", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -163,6 +155,15 @@ class JobArgs:
     @presto_job.setter
     def presto_job(self, value: Optional[pulumi.Input['PrestoJobArgs']]):
         pulumi.set(self, "presto_job", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pysparkJob")
@@ -350,8 +351,6 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
             __props__.__dict__["presto_job"] = presto_job
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["pyspark_job"] = pyspark_job
             __props__.__dict__["reference"] = reference

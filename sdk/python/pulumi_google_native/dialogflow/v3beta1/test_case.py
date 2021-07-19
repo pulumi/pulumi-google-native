@@ -19,10 +19,10 @@ class TestCaseArgs:
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  last_test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]] = None,
                  test_config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestConfigArgs']] = None):
@@ -39,13 +39,14 @@ class TestCaseArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if last_test_result is not None:
             pulumi.set(__self__, "last_test_result", last_test_result)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
             pulumi.set(__self__, "notes", notes)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if test_case_conversation_turns is not None:
@@ -84,15 +85,6 @@ class TestCaseArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="lastTestResult")
     def last_test_result(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']]:
         """
@@ -127,6 +119,15 @@ class TestCaseArgs:
     @notes.setter
     def notes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -252,8 +253,6 @@ class TestCase(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns

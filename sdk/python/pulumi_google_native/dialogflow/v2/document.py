@@ -20,11 +20,11 @@ class DocumentArgs:
                  knowledge_types: pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]],
                  location: pulumi.Input[str],
                  mime_type: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  content_uri: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  raw_content: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Document resource.
@@ -42,7 +42,6 @@ class DocumentArgs:
         pulumi.set(__self__, "knowledge_types", knowledge_types)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "mime_type", mime_type)
-        pulumi.set(__self__, "project", project)
         if content_uri is not None:
             pulumi.set(__self__, "content_uri", content_uri)
         if enable_auto_reload is not None:
@@ -51,6 +50,8 @@ class DocumentArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if raw_content is not None:
             pulumi.set(__self__, "raw_content", raw_content)
 
@@ -109,15 +110,6 @@ class DocumentArgs:
         pulumi.set(self, "mime_type", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="contentUri")
     def content_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -164,6 +156,15 @@ class DocumentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="rawContent")
@@ -275,8 +276,6 @@ class Document(pulumi.CustomResource):
                 raise TypeError("Missing required property 'mime_type'")
             __props__.__dict__["mime_type"] = mime_type
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_content"] = raw_content
             __props__.__dict__["latest_reload_status"] = None

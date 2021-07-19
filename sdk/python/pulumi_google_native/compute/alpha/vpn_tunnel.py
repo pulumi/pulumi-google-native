@@ -13,7 +13,6 @@ __all__ = ['VpnTunnelArgs', 'VpnTunnel']
 @pulumi.input_type
 class VpnTunnelArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  ike_version: Optional[pulumi.Input[int]] = None,
@@ -24,6 +23,7 @@ class VpnTunnelArgs:
                  peer_external_gateway_interface: Optional[pulumi.Input[int]] = None,
                  peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
                  peer_ip: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
@@ -51,7 +51,6 @@ class VpnTunnelArgs:
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
         :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -71,6 +70,8 @@ class VpnTunnelArgs:
             pulumi.set(__self__, "peer_gcp_gateway", peer_gcp_gateway)
         if peer_ip is not None:
             pulumi.set(__self__, "peer_ip", peer_ip)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if remote_traffic_selector is not None:
             pulumi.set(__self__, "remote_traffic_selector", remote_traffic_selector)
         if request_id is not None:
@@ -87,15 +88,6 @@ class VpnTunnelArgs:
             pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         if vpn_gateway_interface is not None:
             pulumi.set(__self__, "vpn_gateway_interface", vpn_gateway_interface)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -213,6 +205,15 @@ class VpnTunnelArgs:
     @peer_ip.setter
     def peer_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peer_ip", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="remoteTrafficSelector")
@@ -419,8 +420,6 @@ class VpnTunnel(pulumi.CustomResource):
             __props__.__dict__["peer_external_gateway_interface"] = peer_external_gateway_interface
             __props__.__dict__["peer_gcp_gateway"] = peer_gcp_gateway
             __props__.__dict__["peer_ip"] = peer_ip
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

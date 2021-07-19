@@ -17,9 +17,9 @@ class AutoscalingPolicyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  worker_config: pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'],
                  basic_algorithm: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None):
         """
         The set of arguments for constructing a AutoscalingPolicy resource.
@@ -29,10 +29,11 @@ class AutoscalingPolicyArgs:
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "worker_config", worker_config)
         if basic_algorithm is not None:
             pulumi.set(__self__, "basic_algorithm", basic_algorithm)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if secondary_worker_config is not None:
             pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
 
@@ -58,15 +59,6 @@ class AutoscalingPolicyArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']:
         """
@@ -86,6 +78,15 @@ class AutoscalingPolicyArgs:
     @basic_algorithm.setter
     def basic_algorithm(self, value: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']]):
         pulumi.set(self, "basic_algorithm", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="secondaryWorkerConfig")
@@ -172,8 +173,6 @@ class AutoscalingPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["secondary_worker_config"] = secondary_worker_config
             if worker_config is None and not opts.urn:

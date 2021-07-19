@@ -16,7 +16,6 @@ __all__ = ['OccurrenceArgs', 'Occurrence']
 @pulumi.input_type
 class OccurrenceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  attestation: Optional[pulumi.Input['AttestationArgs']] = None,
                  build_details: Optional[pulumi.Input['BuildDetailsArgs']] = None,
                  compliance: Optional[pulumi.Input['ComplianceOccurrenceArgs']] = None,
@@ -25,6 +24,7 @@ class OccurrenceArgs:
                  discovered: Optional[pulumi.Input['DiscoveredArgs']] = None,
                  installation: Optional[pulumi.Input['InstallationArgs']] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input['ResourceArgs']] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,6 @@ class OccurrenceArgs:
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
         """
-        pulumi.set(__self__, "project", project)
         if attestation is not None:
             pulumi.set(__self__, "attestation", attestation)
         if build_details is not None:
@@ -63,6 +62,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "installation", installation)
         if note_name is not None:
             pulumi.set(__self__, "note_name", note_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if remediation is not None:
             pulumi.set(__self__, "remediation", remediation)
         if resource is not None:
@@ -73,15 +74,6 @@ class OccurrenceArgs:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_details is not None:
             pulumi.set(__self__, "vulnerability_details", vulnerability_details)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -178,6 +170,15 @@ class OccurrenceArgs:
     @note_name.setter
     def note_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "note_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -284,7 +285,7 @@ class Occurrence(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OccurrenceArgs,
+                 args: Optional[OccurrenceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
@@ -339,8 +340,6 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["discovered"] = discovered
             __props__.__dict__["installation"] = installation
             __props__.__dict__["note_name"] = note_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
             __props__.__dict__["resource"] = resource

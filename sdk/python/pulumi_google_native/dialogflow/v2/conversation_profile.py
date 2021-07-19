@@ -18,7 +18,6 @@ class ConversationProfileArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  automated_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] = None,
                  human_agent_assistant_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] = None,
                  human_agent_handoff_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] = None,
@@ -27,6 +26,7 @@ class ConversationProfileArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None,
                  notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
@@ -43,7 +43,6 @@ class ConversationProfileArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
         if human_agent_assistant_config is not None:
@@ -60,6 +59,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "new_message_event_notification_config", new_message_event_notification_config)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
 
@@ -83,15 +84,6 @@ class ConversationProfileArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="automatedAgentConfig")
@@ -188,6 +180,15 @@ class ConversationProfileArgs:
     @notification_config.setter
     def notification_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="sttConfig")
@@ -298,8 +299,6 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["new_message_event_notification_config"] = new_message_event_notification_config
             __props__.__dict__["notification_config"] = notification_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["stt_config"] = stt_config
             __props__.__dict__["create_time"] = None

@@ -16,7 +16,6 @@ __all__ = ['NotificationChannelArgs', 'NotificationChannel']
 @pulumi.input_type
 class NotificationChannelArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  creation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -24,6 +23,7 @@ class NotificationChannelArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mutation_records: Optional[pulumi.Input[Sequence[pulumi.Input['MutationRecordArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  verification_status: Optional[pulumi.Input['NotificationChannelVerificationStatus']] = None):
@@ -40,7 +40,6 @@ class NotificationChannelArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input['NotificationChannelVerificationStatus'] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         """
-        pulumi.set(__self__, "project", project)
         if creation_record is not None:
             pulumi.set(__self__, "creation_record", creation_record)
         if description is not None:
@@ -55,21 +54,14 @@ class NotificationChannelArgs:
             pulumi.set(__self__, "mutation_records", mutation_records)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if verification_status is not None:
             pulumi.set(__self__, "verification_status", verification_status)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="creationRecord")
@@ -157,6 +149,15 @@ class NotificationChannelArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
@@ -229,7 +230,7 @@ class NotificationChannel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NotificationChannelArgs,
+                 args: Optional[NotificationChannelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
@@ -279,8 +280,6 @@ class NotificationChannel(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mutation_records"] = mutation_records
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
             __props__.__dict__["user_labels"] = user_labels

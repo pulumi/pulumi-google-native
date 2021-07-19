@@ -16,7 +16,6 @@ __all__ = ['FirewallArgs', 'Firewall']
 @pulumi.input_type
 class FirewallArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  allowed: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]]] = None,
                  denied: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -27,6 +26,7 @@ class FirewallArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -51,7 +51,6 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating sets of instances located in the network that may make network connections as specified in allowed[]. targetServiceAccounts cannot be used at the same time as targetTags or sourceTags. If neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the specified network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_tags: A list of tags that controls which instances the firewall rule applies to. If targetTags are specified, then the firewall rule applies only to instances in the VPC network that have one of those tags. If no targetTags are specified, the firewall rule applies to all instances on the specified network.
         """
-        pulumi.set(__self__, "project", project)
         if allowed is not None:
             pulumi.set(__self__, "allowed", allowed)
         if denied is not None:
@@ -72,6 +71,8 @@ class FirewallArgs:
             pulumi.set(__self__, "network", network)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if source_ranges is not None:
@@ -84,15 +85,6 @@ class FirewallArgs:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
         if target_tags is not None:
             pulumi.set(__self__, "target_tags", target_tags)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -215,6 +207,15 @@ class FirewallArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -332,7 +333,7 @@ class Firewall(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FirewallArgs,
+                 args: Optional[FirewallArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a firewall rule in the specified project using the data included in the request.
@@ -391,8 +392,6 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["priority"] = priority
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["source_ranges"] = source_ranges

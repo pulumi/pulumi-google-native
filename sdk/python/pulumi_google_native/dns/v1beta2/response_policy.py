@@ -15,13 +15,13 @@ __all__ = ['ResponsePolicyArgs', 'ResponsePolicy']
 @pulumi.input_type
 class ResponsePolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResponsePolicy resource.
@@ -31,7 +31,6 @@ class ResponsePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
         """
-        pulumi.set(__self__, "project", project)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if description is not None:
@@ -44,17 +43,10 @@ class ResponsePolicyArgs:
             pulumi.set(__self__, "kind", kind)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if response_policy_name is not None:
             pulumi.set(__self__, "response_policy_name", response_policy_name)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="clientOperationId")
@@ -123,6 +115,15 @@ class ResponsePolicyArgs:
         pulumi.set(self, "networks", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="responsePolicyName")
     def response_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -165,7 +166,7 @@ class ResponsePolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ResponsePolicyArgs,
+                 args: Optional[ResponsePolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Response Policy
@@ -212,8 +213,6 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["networks"] = networks
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["response_policy_name"] = response_policy_name
         super(ResponsePolicy, __self__).__init__(

@@ -16,7 +16,6 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
@@ -26,6 +25,7 @@ class TableArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input['MaterializedViewDefinitionArgs']] = None,
                  model: Optional[pulumi.Input['ModelDefinitionArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
@@ -51,7 +51,6 @@ class TableArgs:
         :param pulumi.Input['ViewDefinitionArgs'] view: [Optional] The view definition.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project", project)
         if clustering is not None:
             pulumi.set(__self__, "clustering", clustering)
         if description is not None:
@@ -70,6 +69,8 @@ class TableArgs:
             pulumi.set(__self__, "materialized_view", materialized_view)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if range_partitioning is not None:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
@@ -91,15 +92,6 @@ class TableArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -208,6 +200,15 @@ class TableArgs:
     @model.setter
     def model(self, value: Optional[pulumi.Input['ModelDefinitionArgs']]):
         pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="rangePartitioning")
@@ -393,8 +394,6 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["materialized_view"] = materialized_view
             __props__.__dict__["model"] = model
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter

@@ -18,7 +18,6 @@ class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
@@ -26,6 +25,7 @@ class FhirStoreArgs:
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  search_config: Optional[pulumi.Input['SearchConfigArgs']] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]]] = None,
                  validation_config: Optional[pulumi.Input['ValidationConfigArgs']] = None,
@@ -45,7 +45,6 @@ class FhirStoreArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
@@ -60,6 +59,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if search_config is not None:
             pulumi.set(__self__, "search_config", search_config)
         if stream_configs is not None:
@@ -86,15 +87,6 @@ class FhirStoreArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -176,6 +168,15 @@ class FhirStoreArgs:
     @notification_config.setter
     def notification_config(self, value: Optional[pulumi.Input['NotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="searchConfig")
@@ -327,8 +328,6 @@ class FhirStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["notification_config"] = notification_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["search_config"] = search_config
             __props__.__dict__["stream_configs"] = stream_configs

@@ -18,11 +18,11 @@ class ServiceBackupIamPolicyArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -35,7 +35,6 @@ class ServiceBackupIamPolicyArgs:
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
@@ -43,6 +42,8 @@ class ServiceBackupIamPolicyArgs:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if update_mask is not None:
             pulumi.set(__self__, "update_mask", update_mask)
         if version is not None:
@@ -65,15 +66,6 @@ class ServiceBackupIamPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -119,6 +111,15 @@ class ServiceBackupIamPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="updateMask")
@@ -225,8 +226,6 @@ class ServiceBackupIamPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")

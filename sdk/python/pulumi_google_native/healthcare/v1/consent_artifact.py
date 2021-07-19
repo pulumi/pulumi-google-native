@@ -18,13 +18,13 @@ class ConsentArtifactArgs:
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input['ImageArgs']]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input['SignatureArgs']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_signature: Optional[pulumi.Input['SignatureArgs']] = None,
                  witness_signature: Optional[pulumi.Input['SignatureArgs']] = None):
         """
@@ -41,7 +41,6 @@ class ConsentArtifactArgs:
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "user_id", user_id)
         if consent_content_screenshots is not None:
             pulumi.set(__self__, "consent_content_screenshots", consent_content_screenshots)
@@ -53,6 +52,8 @@ class ConsentArtifactArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if user_signature is not None:
             pulumi.set(__self__, "user_signature", user_signature)
         if witness_signature is not None:
@@ -84,15 +85,6 @@ class ConsentArtifactArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="userId")
@@ -165,6 +157,15 @@ class ConsentArtifactArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="userSignature")
@@ -285,8 +286,6 @@ class ConsentArtifact(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")

@@ -16,7 +16,6 @@ __all__ = ['BackendBucketArgs', 'BackendBucket']
 @pulumi.input_type
 class BackendBucketArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -24,6 +23,7 @@ class BackendBucketArgs:
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackendBucket resource.
@@ -35,7 +35,6 @@ class BackendBucketArgs:
         :param pulumi.Input[str] kind: Type of the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
-        pulumi.set(__self__, "project", project)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if cdn_policy is not None:
@@ -50,17 +49,10 @@ class BackendBucketArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -147,6 +139,15 @@ class BackendBucketArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -188,7 +189,7 @@ class BackendBucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackendBucketArgs,
+                 args: Optional[BackendBucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a BackendBucket resource in the specified project using the data included in the request.
@@ -236,8 +237,6 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None

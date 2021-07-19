@@ -16,7 +16,6 @@ __all__ = ['TransferConfigArgs', 'TransferConfig']
 class TransferConfigArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  authorization_code: Optional[pulumi.Input[str]] = None,
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
@@ -27,6 +26,7 @@ class TransferConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input['ScheduleOptionsArgs']] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,6 @@ class TransferConfigArgs:
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
         if data_refresh_window_days is not None:
@@ -67,6 +66,8 @@ class TransferConfigArgs:
             pulumi.set(__self__, "notification_pubsub_topic", notification_pubsub_topic)
         if params is not None:
             pulumi.set(__self__, "params", params)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if schedule_options is not None:
@@ -84,15 +85,6 @@ class TransferConfigArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="authorizationCode")
@@ -210,6 +202,15 @@ class TransferConfigArgs:
     @params.setter
     def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -358,8 +359,6 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
             __props__.__dict__["params"] = params
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options

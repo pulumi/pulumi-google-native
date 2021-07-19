@@ -17,7 +17,6 @@ class CompanyArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  external_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  career_site_uri: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
                  headquarters_address: Optional[pulumi.Input[str]] = None,
@@ -25,6 +24,7 @@ class CompanyArgs:
                  image_uri: Optional[pulumi.Input[str]] = None,
                  keyword_searchable_job_custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input['CompanySize']] = None,
                  website_uri: Optional[pulumi.Input[str]] = None):
         """
@@ -43,7 +43,6 @@ class CompanyArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "external_id", external_id)
-        pulumi.set(__self__, "project", project)
         if career_site_uri is not None:
             pulumi.set(__self__, "career_site_uri", career_site_uri)
         if eeo_text is not None:
@@ -58,6 +57,8 @@ class CompanyArgs:
             pulumi.set(__self__, "keyword_searchable_job_custom_attributes", keyword_searchable_job_custom_attributes)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if website_uri is not None:
@@ -86,15 +87,6 @@ class CompanyArgs:
     @external_id.setter
     def external_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "external_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="careerSiteUri")
@@ -179,6 +171,15 @@ class CompanyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -301,8 +302,6 @@ class Company(pulumi.CustomResource):
             __props__.__dict__["image_uri"] = image_uri
             __props__.__dict__["keyword_searchable_job_custom_attributes"] = keyword_searchable_job_custom_attributes
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["size"] = size
             __props__.__dict__["website_uri"] = website_uri

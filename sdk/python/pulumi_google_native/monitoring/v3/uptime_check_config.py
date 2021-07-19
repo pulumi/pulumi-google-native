@@ -16,7 +16,6 @@ __all__ = ['UptimeCheckConfigArgs', 'UptimeCheckConfig']
 @pulumi.input_type
 class UptimeCheckConfigArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ContentMatcherArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input['HttpCheckArgs']] = None,
@@ -25,6 +24,7 @@ class UptimeCheckConfigArgs:
                  monitored_resource: Optional[pulumi.Input['MonitoredResourceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input['ResourceGroupArgs']] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input['TcpCheckArgs']] = None,
@@ -44,7 +44,6 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
-        pulumi.set(__self__, "project", project)
         if content_matchers is not None:
             pulumi.set(__self__, "content_matchers", content_matchers)
         if display_name is not None:
@@ -61,6 +60,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "name", name)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if resource_group is not None:
             pulumi.set(__self__, "resource_group", resource_group)
         if selected_regions is not None:
@@ -69,15 +70,6 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "tcp_check", tcp_check)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="contentMatchers")
@@ -176,6 +168,15 @@ class UptimeCheckConfigArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[pulumi.Input['ResourceGroupArgs']]:
         """
@@ -265,7 +266,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UptimeCheckConfigArgs,
+                 args: Optional[UptimeCheckConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Uptime check configuration.
@@ -318,8 +319,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__.__dict__["monitored_resource"] = monitored_resource
             __props__.__dict__["name"] = name
             __props__.__dict__["period"] = period
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_group"] = resource_group
             __props__.__dict__["selected_regions"] = selected_regions

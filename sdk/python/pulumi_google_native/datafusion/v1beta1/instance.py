@@ -17,7 +17,6 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  type: pulumi.Input['InstanceType'],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
@@ -33,6 +32,7 @@ class InstanceArgs:
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -55,7 +55,6 @@ class InstanceArgs:
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -85,6 +84,8 @@ class InstanceArgs:
             pulumi.set(__self__, "options", options)
         if private_instance is not None:
             pulumi.set(__self__, "private_instance", private_instance)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if zone is not None:
@@ -98,15 +99,6 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -287,6 +279,15 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         Current version of Data Fusion.
@@ -431,8 +432,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options
             __props__.__dict__["private_instance"] = private_instance
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

@@ -14,12 +14,12 @@ __all__ = ['RoleArgs', 'Role']
 @pulumi.input_type
 class RoleArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  deleted: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  included_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input['RoleStage']] = None,
                  title: Optional[pulumi.Input[str]] = None):
@@ -34,7 +34,6 @@ class RoleArgs:
         :param pulumi.Input['RoleStage'] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
-        pulumi.set(__self__, "project", project)
         if deleted is not None:
             pulumi.set(__self__, "deleted", deleted)
         if description is not None:
@@ -45,21 +44,14 @@ class RoleArgs:
             pulumi.set(__self__, "included_permissions", included_permissions)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
         if stage is not None:
             pulumi.set(__self__, "stage", stage)
         if title is not None:
             pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -120,6 +112,15 @@ class RoleArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="roleId")
@@ -191,7 +192,7 @@ class Role(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RoleArgs,
+                 args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new custom Role.
@@ -237,8 +238,6 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["included_permissions"] = included_permissions
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["role_id"] = role_id
             __props__.__dict__["stage"] = stage

@@ -15,9 +15,9 @@ class TagArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  package_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  repository_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tag_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -27,10 +27,11 @@ class TagArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "package_id", package_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "repository_id", repository_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if tag_id is not None:
             pulumi.set(__self__, "tag_id", tag_id)
         if version is not None:
@@ -55,15 +56,6 @@ class TagArgs:
         pulumi.set(self, "package_id", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "repository_id")
@@ -83,6 +75,15 @@ class TagArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tagId")
@@ -177,8 +178,6 @@ class Tag(pulumi.CustomResource):
             if package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'package_id'")
             __props__.__dict__["package_id"] = package_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")

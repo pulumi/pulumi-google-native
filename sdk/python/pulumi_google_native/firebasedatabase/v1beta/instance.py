@@ -15,29 +15,30 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
+        :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
         if database_url is not None:
             pulumi.set(__self__, "database_url", database_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -53,18 +54,6 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -98,6 +87,18 @@ class InstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -208,8 +209,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["type"] = type

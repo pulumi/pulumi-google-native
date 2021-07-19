@@ -16,7 +16,6 @@ __all__ = ['RegionHealthCheckArgs', 'RegionHealthCheck']
 @pulumi.input_type
 class RegionHealthCheckArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -28,6 +27,7 @@ class RegionHealthCheckArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['HealthCheckLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input['SSLHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['TCPHealthCheckArgs']] = None,
@@ -46,7 +46,6 @@ class RegionHealthCheckArgs:
         :param pulumi.Input['RegionHealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if check_interval_sec is not None:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -68,6 +67,8 @@ class RegionHealthCheckArgs:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if ssl_health_check is not None:
@@ -80,15 +81,6 @@ class RegionHealthCheckArgs:
             pulumi.set(__self__, "type", type)
         if unhealthy_threshold is not None:
             pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -206,6 +198,15 @@ class RegionHealthCheckArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -374,8 +375,6 @@ class RegionHealthCheck(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

@@ -15,12 +15,12 @@ __all__ = ['MachineImageArgs', 'MachineImage']
 @pulumi.input_type
 class MachineImageArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  source_instance: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -34,7 +34,6 @@ class MachineImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_instance", source_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -44,21 +43,14 @@ class MachineImageArgs:
             pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if source_disk_encryption_keys is not None:
             pulumi.set(__self__, "source_disk_encryption_keys", source_disk_encryption_keys)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="sourceInstance")
@@ -119,6 +111,15 @@ class MachineImageArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -231,8 +232,6 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["machine_image_encryption_key"] = machine_image_encryption_key
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["source_disk_encryption_keys"] = source_disk_encryption_keys

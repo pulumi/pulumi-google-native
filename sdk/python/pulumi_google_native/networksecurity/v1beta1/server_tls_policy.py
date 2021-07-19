@@ -16,13 +16,13 @@ __all__ = ['ServerTlsPolicyArgs', 'ServerTlsPolicy']
 class ServerTlsPolicyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  server_tls_policy_id: pulumi.Input[str],
                  allow_open: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtls_policy: Optional[pulumi.Input['MTLSPolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  server_certificate: Optional[pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] = None):
         """
         The set of arguments for constructing a ServerTlsPolicy resource.
@@ -34,7 +34,6 @@ class ServerTlsPolicyArgs:
         :param pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs'] server_certificate: Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "server_tls_policy_id", server_tls_policy_id)
         if allow_open is not None:
             pulumi.set(__self__, "allow_open", allow_open)
@@ -46,6 +45,8 @@ class ServerTlsPolicyArgs:
             pulumi.set(__self__, "mtls_policy", mtls_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if server_certificate is not None:
             pulumi.set(__self__, "server_certificate", server_certificate)
 
@@ -57,15 +58,6 @@ class ServerTlsPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serverTlsPolicyId")
@@ -135,6 +127,15 @@ class ServerTlsPolicyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serverCertificate")
@@ -229,8 +230,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["mtls_policy"] = mtls_policy
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["server_certificate"] = server_certificate
             if server_tls_policy_id is None and not opts.urn:

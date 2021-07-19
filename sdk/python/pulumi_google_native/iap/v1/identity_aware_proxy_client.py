@@ -14,16 +14,17 @@ __all__ = ['IdentityAwareProxyClientArgs', 'IdentityAwareProxyClient']
 class IdentityAwareProxyClientArgs:
     def __init__(__self__, *,
                  brand_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IdentityAwareProxyClient resource.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         pulumi.set(__self__, "brand_id", brand_id)
-        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="brandId")
@@ -33,15 +34,6 @@ class IdentityAwareProxyClientArgs:
     @brand_id.setter
     def brand_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "brand_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -54,6 +46,15 @@ class IdentityAwareProxyClientArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class IdentityAwareProxyClient(pulumi.CustomResource):
@@ -117,8 +118,6 @@ class IdentityAwareProxyClient(pulumi.CustomResource):
                 raise TypeError("Missing required property 'brand_id'")
             __props__.__dict__["brand_id"] = brand_id
             __props__.__dict__["display_name"] = display_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["secret"] = None

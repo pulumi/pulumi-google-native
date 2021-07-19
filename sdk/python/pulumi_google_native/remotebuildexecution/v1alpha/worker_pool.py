@@ -16,12 +16,12 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  autoscale: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']] = None,
                  worker_count: Optional[pulumi.Input[str]] = None):
         """
@@ -35,7 +35,6 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if channel is not None:
@@ -46,6 +45,8 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "parent", parent)
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
         if worker_count is not None:
@@ -59,15 +60,6 @@ class WorkerPoolArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -128,6 +120,15 @@ class WorkerPoolArgs:
     @pool_id.setter
     def pool_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pool_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerConfig")
@@ -235,8 +236,6 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
             __props__.__dict__["pool_id"] = pool_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["worker_count"] = worker_count

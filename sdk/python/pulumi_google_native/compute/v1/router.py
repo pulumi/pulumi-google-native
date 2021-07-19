@@ -16,7 +16,6 @@ __all__ = ['RouterArgs', 'Router']
 @pulumi.input_type
 class RouterArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerArgs']]]] = None,
@@ -26,6 +25,7 @@ class RouterArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  nats: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Router resource.
@@ -38,7 +38,6 @@ class RouterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatArgs']]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if bgp is not None:
             pulumi.set(__self__, "bgp", bgp)
@@ -56,17 +55,10 @@ class RouterArgs:
             pulumi.set(__self__, "nats", nats)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -174,6 +166,15 @@ class RouterArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -269,8 +270,6 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nats"] = nats
             __props__.__dict__["network"] = network
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

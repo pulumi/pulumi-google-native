@@ -18,11 +18,11 @@ class TriggerArgs:
                  destination: pulumi.Input['DestinationArgs'],
                  event_filters: pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  transport: Optional[pulumi.Input['TransportArgs']] = None):
         """
@@ -37,13 +37,14 @@ class TriggerArgs:
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "event_filters", event_filters)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "validate_only", validate_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if transport is not None:
@@ -81,15 +82,6 @@ class TriggerArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="triggerId")
@@ -132,6 +124,15 @@ class TriggerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -243,8 +244,6 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["transport"] = transport

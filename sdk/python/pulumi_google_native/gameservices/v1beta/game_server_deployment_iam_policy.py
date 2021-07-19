@@ -18,11 +18,11 @@ class GameServerDeploymentIamPolicyArgs:
     def __init__(__self__, *,
                  game_server_deployment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_owned: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -37,7 +37,6 @@ class GameServerDeploymentIamPolicyArgs:
         """
         pulumi.set(__self__, "game_server_deployment_id", game_server_deployment_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -46,6 +45,8 @@ class GameServerDeploymentIamPolicyArgs:
             pulumi.set(__self__, "etag", etag)
         if iam_owned is not None:
             pulumi.set(__self__, "iam_owned", iam_owned)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if update_mask is not None:
@@ -70,15 +71,6 @@ class GameServerDeploymentIamPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -124,6 +116,15 @@ class GameServerDeploymentIamPolicyArgs:
     @iam_owned.setter
     def iam_owned(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "iam_owned", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -246,8 +247,6 @@ class GameServerDeploymentIamPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["rules"] = rules
             __props__.__dict__["update_mask"] = update_mask

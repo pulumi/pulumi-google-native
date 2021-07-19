@@ -16,7 +16,6 @@ __all__ = ['SubnetworkArgs', 'Subnetwork']
 @pulumi.input_type
 class SubnetworkArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  aggregation_interval: Optional[pulumi.Input['SubnetworkAggregationInterval']] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
@@ -32,6 +31,7 @@ class SubnetworkArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reserved_internal_range: Optional[pulumi.Input[str]] = None,
@@ -63,7 +63,6 @@ class SubnetworkArgs:
         :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
@@ -93,6 +92,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
         if request_id is not None:
@@ -107,15 +108,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "stack_type", stack_type)
         if vlans is not None:
             pulumi.set(__self__, "vlans", vlans)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -296,6 +288,15 @@ class SubnetworkArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -508,8 +509,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["private_ip_google_access"] = private_ip_google_access
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             if region is None and not opts.urn:

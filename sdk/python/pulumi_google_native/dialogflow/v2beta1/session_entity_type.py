@@ -21,9 +21,9 @@ class SessionEntityTypeArgs:
                  environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  session_id: pulumi.Input[str],
-                 user_id: pulumi.Input[str]):
+                 user_id: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SessionEntityType resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]] entities: The collection of entities associated with this session entity type.
@@ -35,9 +35,10 @@ class SessionEntityTypeArgs:
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "session_id", session_id)
         pulumi.set(__self__, "user_id", user_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -94,15 +95,6 @@ class SessionEntityTypeArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="sessionId")
     def session_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "session_id")
@@ -119,6 +111,15 @@ class SessionEntityTypeArgs:
     @user_id.setter
     def user_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class SessionEntityType(pulumi.CustomResource):
@@ -205,8 +206,6 @@ class SessionEntityType(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if session_id is None and not opts.urn:
                 raise TypeError("Missing required property 'session_id'")

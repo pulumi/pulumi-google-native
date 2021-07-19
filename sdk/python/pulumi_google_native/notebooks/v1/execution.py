@@ -18,10 +18,10 @@ class ExecutionArgs:
     def __init__(__self__, *,
                  execution_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input['ExecutionTemplateArgs']] = None,
-                 output_notebook_file: Optional[pulumi.Input[str]] = None):
+                 output_notebook_file: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Execution resource.
         :param pulumi.Input[str] description: A brief description of this execution.
@@ -30,13 +30,14 @@ class ExecutionArgs:
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if execution_template is not None:
             pulumi.set(__self__, "execution_template", execution_template)
         if output_notebook_file is not None:
             pulumi.set(__self__, "output_notebook_file", output_notebook_file)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="executionId")
@@ -55,15 +56,6 @@ class ExecutionArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -100,6 +92,15 @@ class ExecutionArgs:
     @output_notebook_file.setter
     def output_notebook_file(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "output_notebook_file", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Execution(pulumi.CustomResource):
@@ -176,8 +177,6 @@ class Execution(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["output_notebook_file"] = output_notebook_file
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["display_name"] = None

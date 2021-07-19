@@ -16,7 +16,6 @@ __all__ = ['RegionInstanceGroupManagerArgs', 'RegionInstanceGroupManager']
 @pulumi.input_type
 class RegionInstanceGroupManagerArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class RegionInstanceGroupManagerArgs:
                  instance_template: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  stateful_policy: Optional[pulumi.Input['StatefulPolicyArgs']] = None,
@@ -50,7 +50,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
@@ -68,6 +67,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
             pulumi.set(__self__, "named_ports", named_ports)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if service_account is not None:
@@ -82,15 +83,6 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if versions is not None:
             pulumi.set(__self__, "versions", versions)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -196,6 +188,15 @@ class RegionInstanceGroupManagerArgs:
     @named_ports.setter
     def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -383,8 +384,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

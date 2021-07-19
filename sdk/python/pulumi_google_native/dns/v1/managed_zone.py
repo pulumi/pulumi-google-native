@@ -16,7 +16,6 @@ __all__ = ['ManagedZoneArgs', 'ManagedZone']
 @pulumi.input_type
 class ManagedZoneArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -31,6 +30,7 @@ class ManagedZoneArgs:
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
                  private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup_config: Optional[pulumi.Input['ManagedZoneReverseLookupConfigArgs']] = None,
                  service_directory_config: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']] = None,
                  visibility: Optional[pulumi.Input['ManagedZoneVisibility']] = None):
@@ -52,7 +52,6 @@ class ManagedZoneArgs:
         :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
         :param pulumi.Input['ManagedZoneVisibility'] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
-        pulumi.set(__self__, "project", project)
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if creation_time is not None:
@@ -81,21 +80,14 @@ class ManagedZoneArgs:
             pulumi.set(__self__, "peering_config", peering_config)
         if private_visibility_config is not None:
             pulumi.set(__self__, "private_visibility_config", private_visibility_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if reverse_lookup_config is not None:
             pulumi.set(__self__, "reverse_lookup_config", reverse_lookup_config)
         if service_directory_config is not None:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="clientOperationId")
@@ -260,6 +252,15 @@ class ManagedZoneArgs:
         pulumi.set(self, "private_visibility_config", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="reverseLookupConfig")
     def reverse_lookup_config(self) -> Optional[pulumi.Input['ManagedZoneReverseLookupConfigArgs']]:
         """
@@ -345,7 +346,7 @@ class ManagedZone(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ManagedZoneArgs,
+                 args: Optional[ManagedZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new ManagedZone.
@@ -409,8 +410,6 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["name_servers"] = name_servers
             __props__.__dict__["peering_config"] = peering_config
             __props__.__dict__["private_visibility_config"] = private_visibility_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_lookup_config"] = reverse_lookup_config
             __props__.__dict__["service_directory_config"] = service_directory_config

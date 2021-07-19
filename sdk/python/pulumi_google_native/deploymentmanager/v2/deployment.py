@@ -15,13 +15,13 @@ __all__ = ['DeploymentArgs', 'Deployment']
 @pulumi.input_type
 class DeploymentArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  create_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input['TargetConfigurationArgs']] = None):
         """
         The set of arguments for constructing a Deployment resource.
@@ -30,7 +30,6 @@ class DeploymentArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetConfigurationArgs'] target: [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
         """
-        pulumi.set(__self__, "project", project)
         if create_policy is not None:
             pulumi.set(__self__, "create_policy", create_policy)
         if description is not None:
@@ -43,17 +42,10 @@ class DeploymentArgs:
             pulumi.set(__self__, "name", name)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="createPolicy")
@@ -120,6 +112,15 @@ class DeploymentArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def target(self) -> Optional[pulumi.Input['TargetConfigurationArgs']]:
         """
         [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
@@ -159,7 +160,7 @@ class Deployment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DeploymentArgs,
+                 args: Optional[DeploymentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a deployment and all of the resources described by the deployment manifest.
@@ -205,8 +206,6 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["preview"] = preview
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["target"] = target
             __props__.__dict__["fingerprint"] = None

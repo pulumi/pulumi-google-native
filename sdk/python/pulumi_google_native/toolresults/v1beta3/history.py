@@ -14,10 +14,10 @@ __all__ = ['HistoryArgs', 'History']
 @pulumi.input_type
 class HistoryArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  test_platform: Optional[pulumi.Input['HistoryTestPlatform']] = None):
         """
@@ -27,26 +27,18 @@ class HistoryArgs:
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
         :param pulumi.Input['HistoryTestPlatform'] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
-        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if history_id is not None:
             pulumi.set(__self__, "history_id", history_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if test_platform is not None:
             pulumi.set(__self__, "test_platform", test_platform)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -83,6 +75,15 @@ class HistoryArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -132,7 +133,7 @@ class History(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HistoryArgs,
+                 args: Optional[HistoryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
@@ -173,8 +174,6 @@ class History(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["history_id"] = history_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["test_platform"] = test_platform

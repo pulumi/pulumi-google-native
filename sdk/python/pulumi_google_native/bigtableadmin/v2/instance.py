@@ -19,9 +19,9 @@ class InstanceArgs:
                  instance_id: pulumi.Input[str],
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  parent: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  type: pulumi.Input['InstanceType'],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
@@ -37,10 +37,11 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "parent", parent)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -104,15 +105,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input['InstanceType']:
         """
         The type of the instance. Defaults to `PRODUCTION`.
@@ -134,6 +126,15 @@ class InstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -223,8 +224,6 @@ class Instance(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

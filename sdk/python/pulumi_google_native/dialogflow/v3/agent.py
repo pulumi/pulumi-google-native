@@ -18,13 +18,13 @@ class AgentArgs:
                  default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  time_zone: pulumi.Input[str],
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
@@ -47,7 +47,6 @@ class AgentArgs:
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "time_zone", time_zone)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -59,6 +58,8 @@ class AgentArgs:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
         if speech_to_text_settings is not None:
@@ -100,15 +101,6 @@ class AgentArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="timeZone")
@@ -181,6 +173,15 @@ class AgentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="securitySettings")
@@ -333,8 +334,6 @@ class Agent(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings

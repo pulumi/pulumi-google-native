@@ -17,12 +17,12 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  table_id: pulumi.Input[str],
                  column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input['SplitArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] table_id: The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
@@ -32,7 +32,6 @@ class TableArgs:
         :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
@@ -42,6 +41,8 @@ class TableArgs:
             pulumi.set(__self__, "initial_splits", initial_splits)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -51,15 +52,6 @@ class TableArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
@@ -120,6 +112,15 @@ class TableArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Table(pulumi.CustomResource):
@@ -196,8 +197,6 @@ class Table(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")

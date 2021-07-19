@@ -16,7 +16,6 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 @pulumi.input_type
 class SecurityPolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]] = None,
@@ -24,6 +23,7 @@ class SecurityPolicyArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
@@ -38,7 +38,6 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['SecurityPolicyType'] type: The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
         """
-        pulumi.set(__self__, "project", project)
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
@@ -53,6 +52,8 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if rules is not None:
@@ -61,15 +62,6 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "type", type)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -150,6 +142,15 @@ class SecurityPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -227,7 +228,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecurityPolicyArgs,
+                 args: Optional[SecurityPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new policy in the specified project using the data included in the request.
@@ -278,8 +279,6 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rules"] = rules

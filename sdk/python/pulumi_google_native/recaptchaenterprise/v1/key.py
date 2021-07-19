@@ -16,13 +16,13 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  android_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ios_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  testing_options: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']] = None,
                  web_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']] = None):
         """
@@ -36,7 +36,6 @@ class KeyArgs:
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs'] testing_options: Options for user acceptance testing.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
-        pulumi.set(__self__, "project", project)
         if android_settings is not None:
             pulumi.set(__self__, "android_settings", android_settings)
         if create_time is not None:
@@ -49,19 +48,12 @@ class KeyArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if testing_options is not None:
             pulumi.set(__self__, "testing_options", testing_options)
         if web_settings is not None:
             pulumi.set(__self__, "web_settings", web_settings)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="androidSettings")
@@ -136,6 +128,15 @@ class KeyArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="testingOptions")
     def testing_options(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']]:
         """
@@ -193,7 +194,7 @@ class Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyArgs,
+                 args: Optional[KeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new reCAPTCHA Enterprise key.
@@ -240,8 +241,6 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["testing_options"] = testing_options
             __props__.__dict__["web_settings"] = web_settings

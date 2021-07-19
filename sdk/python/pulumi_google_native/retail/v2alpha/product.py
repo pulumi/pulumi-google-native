@@ -20,7 +20,6 @@ class ProductArgs:
                  catalog_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  product_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  title: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability: Optional[pulumi.Input['ProductAvailability']] = None,
@@ -33,6 +32,7 @@ class ProductArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input['GoogleCloudRetailV2alphaPriceInfoArgs']] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input['ProductType']] = None,
                  uri: Optional[pulumi.Input[str]] = None):
@@ -58,7 +58,6 @@ class ProductArgs:
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "title", title)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
@@ -82,6 +81,8 @@ class ProductArgs:
             pulumi.set(__self__, "price_info", price_info)
         if primary_product_id is not None:
             pulumi.set(__self__, "primary_product_id", primary_product_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
@@ -124,15 +125,6 @@ class ProductArgs:
     @product_id.setter
     def product_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "product_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -277,6 +269,15 @@ class ProductArgs:
     @primary_product_id.setter
     def primary_product_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_product_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -441,8 +442,6 @@ class Product(pulumi.CustomResource):
             if product_id is None and not opts.urn:
                 raise TypeError("Missing required property 'product_id'")
             __props__.__dict__["product_id"] = product_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             if title is None and not opts.urn:

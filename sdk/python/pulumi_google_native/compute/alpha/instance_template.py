@@ -16,9 +16,9 @@ __all__ = ['InstanceTemplateArgs', 'InstanceTemplate']
 @pulumi.input_type
 class InstanceTemplateArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['InstancePropertiesArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
@@ -31,11 +31,12 @@ class InstanceTemplateArgs:
         :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         :param pulumi.Input['SourceInstanceParamsArgs'] source_instance_params: The source instance params to use to create this instance template.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if request_id is not None:
@@ -44,15 +45,6 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "source_instance", source_instance)
         if source_instance_params is not None:
             pulumi.set(__self__, "source_instance_params", source_instance_params)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -77,6 +69,15 @@ class InstanceTemplateArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -152,7 +153,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceTemplateArgs,
+                 args: Optional[InstanceTemplateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
@@ -193,8 +194,6 @@ class InstanceTemplate(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["properties"] = properties
             __props__.__dict__["request_id"] = request_id

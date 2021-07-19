@@ -14,7 +14,6 @@ __all__ = ['RegionHealthCheckServiceArgs', 'RegionHealthCheckService']
 @pulumi.input_type
 class RegionHealthCheckServiceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -22,6 +21,7 @@ class RegionHealthCheckServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_endpoint_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  notification_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionHealthCheckService resource.
@@ -32,7 +32,6 @@ class RegionHealthCheckServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_endpoint_groups: List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_endpoints: List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -46,17 +45,10 @@ class RegionHealthCheckServiceArgs:
             pulumi.set(__self__, "network_endpoint_groups", network_endpoint_groups)
         if notification_endpoints is not None:
             pulumi.set(__self__, "notification_endpoints", notification_endpoints)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -138,6 +130,15 @@ class RegionHealthCheckServiceArgs:
     @notification_endpoints.setter
     def notification_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "notification_endpoints", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -227,8 +228,6 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_endpoint_groups"] = network_endpoint_groups
             __props__.__dict__["notification_endpoints"] = notification_endpoints
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

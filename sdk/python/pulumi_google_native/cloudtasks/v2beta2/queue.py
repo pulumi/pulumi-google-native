@@ -16,9 +16,9 @@ __all__ = ['QueueArgs', 'Queue']
 class QueueArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pull_target: Optional[pulumi.Input['PullTargetArgs']] = None,
                  rate_limits: Optional[pulumi.Input['RateLimitsArgs']] = None,
                  retry_config: Optional[pulumi.Input['RetryConfigArgs']] = None,
@@ -35,11 +35,12 @@ class QueueArgs:
         :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or completed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if app_engine_http_target is not None:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if pull_target is not None:
             pulumi.set(__self__, "pull_target", pull_target)
         if rate_limits is not None:
@@ -59,15 +60,6 @@ class QueueArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -92,6 +84,15 @@ class QueueArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pullTarget")
@@ -232,8 +233,6 @@ class Queue(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["pull_target"] = pull_target
             __props__.__dict__["rate_limits"] = rate_limits

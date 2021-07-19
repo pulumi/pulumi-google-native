@@ -17,11 +17,11 @@ __all__ = ['TrialArgs', 'Trial']
 class TrialArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  study_id: pulumi.Input[str],
                  final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['TrialState']] = None):
         """
         The set of arguments for constructing a Trial resource.
@@ -31,7 +31,6 @@ class TrialArgs:
         :param pulumi.Input['TrialState'] state: The detailed state of a trial.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "study_id", study_id)
         if final_measurement is not None:
             pulumi.set(__self__, "final_measurement", final_measurement)
@@ -39,6 +38,8 @@ class TrialArgs:
             pulumi.set(__self__, "measurements", measurements)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -50,15 +51,6 @@ class TrialArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="studyId")
@@ -104,6 +96,15 @@ class TrialArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -192,8 +193,6 @@ class Trial(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["measurements"] = measurements
             __props__.__dict__["parameters"] = parameters
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             if study_id is None and not opts.urn:

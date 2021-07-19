@@ -20,13 +20,13 @@ class EntityTypeArgs:
                  display_name: pulumi.Input[str],
                  kind: pulumi.Input['EntityTypeKind'],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]] = None,
                  excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  redact: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EntityType resource.
@@ -43,7 +43,6 @@ class EntityTypeArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if auto_expansion_mode is not None:
             pulumi.set(__self__, "auto_expansion_mode", auto_expansion_mode)
         if enable_fuzzy_extraction is not None:
@@ -56,6 +55,8 @@ class EntityTypeArgs:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if redact is not None:
             pulumi.set(__self__, "redact", redact)
 
@@ -100,15 +101,6 @@ class EntityTypeArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="autoExpansionMode")
@@ -178,6 +170,15 @@ class EntityTypeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -290,8 +291,6 @@ class EntityType(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["redact"] = redact
         super(EntityType, __self__).__init__(

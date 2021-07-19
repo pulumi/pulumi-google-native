@@ -16,9 +16,9 @@ class ParticipantArgs:
     def __init__(__self__, *,
                  conversation_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['ParticipantRole']] = None):
         """
         The set of arguments for constructing a Participant resource.
@@ -28,11 +28,12 @@ class ParticipantArgs:
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if obfuscated_external_user_id is not None:
             pulumi.set(__self__, "obfuscated_external_user_id", obfuscated_external_user_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if role is not None:
             pulumi.set(__self__, "role", role)
 
@@ -53,15 +54,6 @@ class ParticipantArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -86,6 +78,15 @@ class ParticipantArgs:
     @obfuscated_external_user_id.setter
     def obfuscated_external_user_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "obfuscated_external_user_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -171,8 +172,6 @@ class Participant(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["obfuscated_external_user_id"] = obfuscated_external_user_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
         super(Participant, __self__).__init__(

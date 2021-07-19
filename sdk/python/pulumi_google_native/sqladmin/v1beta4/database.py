@@ -16,25 +16,24 @@ __all__ = ['DatabaseArgs', 'Database']
 class DatabaseArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  sqlserver_database_details: Optional[pulumi.Input['SqlServerDatabaseDetailsArgs']] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
-        :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
         :param pulumi.Input[str] charset: The Cloud SQL charset value.
         :param pulumi.Input[str] collation: The Cloud SQL collation value.
         :param pulumi.Input[str] kind: This is always *sql#database*.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
         :param pulumi.Input[str] self_link: The URI of this resource.
         """
         pulumi.set(__self__, "instance", instance)
-        pulumi.set(__self__, "project", project)
         if charset is not None:
             pulumi.set(__self__, "charset", charset)
         if collation is not None:
@@ -43,6 +42,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if sqlserver_database_details is not None:
@@ -59,18 +60,6 @@ class DatabaseArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -119,6 +108,18 @@ class DatabaseArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -220,8 +221,6 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["sqlserver_database_details"] = sqlserver_database_details

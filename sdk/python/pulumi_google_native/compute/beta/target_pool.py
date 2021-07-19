@@ -14,7 +14,6 @@ __all__ = ['TargetPoolArgs', 'TargetPool']
 @pulumi.input_type
 class TargetPoolArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  backup_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -22,6 +21,7 @@ class TargetPoolArgs:
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input['TargetPoolSessionAffinity']] = None):
         """
@@ -34,7 +34,6 @@ class TargetPoolArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetPoolSessionAffinity'] session_affinity: Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if backup_pool is not None:
             pulumi.set(__self__, "backup_pool", backup_pool)
@@ -48,19 +47,12 @@ class TargetPoolArgs:
             pulumi.set(__self__, "instances", instances)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -142,6 +134,15 @@ class TargetPoolArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -246,8 +247,6 @@ class TargetPool(pulumi.CustomResource):
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["instances"] = instances
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

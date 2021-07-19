@@ -20,11 +20,11 @@ class AttributeDefinitionArgs:
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AttributeDefinition resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
@@ -40,7 +40,6 @@ class AttributeDefinitionArgs:
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if consent_default_values is not None:
             pulumi.set(__self__, "consent_default_values", consent_default_values)
         if data_mapping_default_value is not None:
@@ -49,6 +48,8 @@ class AttributeDefinitionArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="allowedValues")
@@ -111,15 +112,6 @@ class AttributeDefinitionArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="consentDefaultValues")
     def consent_default_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -166,6 +158,15 @@ class AttributeDefinitionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class AttributeDefinition(pulumi.CustomResource):
@@ -266,8 +267,6 @@ class AttributeDefinition(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(AttributeDefinition, __self__).__init__(
             'google-native:healthcare/v1:AttributeDefinition',

@@ -16,7 +16,6 @@ __all__ = ['ForwardingRuleArgs', 'ForwardingRule']
 @pulumi.input_type
 class ForwardingRuleArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +33,7 @@ class ForwardingRuleArgs:
                  network_tier: Optional[pulumi.Input['ForwardingRuleNetworkTier']] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  psc_connection_status: Optional[pulumi.Input['ForwardingRulePscConnectionStatus']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
@@ -64,7 +64,6 @@ class ForwardingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field is only used for internal load balancing. For internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule. If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
@@ -98,6 +97,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if psc_connection_status is not None:
             pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if request_id is not None:
@@ -112,15 +113,6 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -322,6 +314,15 @@ class ForwardingRuleArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ports", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pscConnectionStatus")
@@ -533,8 +534,6 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["network_tier"] = network_tier
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["ports"] = ports
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_connection_status"] = psc_connection_status
             if region is None and not opts.urn:

@@ -15,10 +15,10 @@ __all__ = ['ContactArgs', 'Contact']
 class ContactArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['ContactNotificationCategorySubscriptionsItem']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  validate_time: Optional[pulumi.Input[str]] = None,
                  validation_state: Optional[pulumi.Input['ContactValidationState']] = None):
         """
@@ -31,13 +31,14 @@ class ContactArgs:
         :param pulumi.Input['ContactValidationState'] validation_state: The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
         """
         pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "project", project)
         if language_tag is not None:
             pulumi.set(__self__, "language_tag", language_tag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_category_subscriptions is not None:
             pulumi.set(__self__, "notification_category_subscriptions", notification_category_subscriptions)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if validate_time is not None:
             pulumi.set(__self__, "validate_time", validate_time)
         if validation_state is not None:
@@ -54,15 +55,6 @@ class ContactArgs:
     @email.setter
     def email(self, value: pulumi.Input[str]):
         pulumi.set(self, "email", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="languageTag")
@@ -99,6 +91,15 @@ class ContactArgs:
     @notification_category_subscriptions.setter
     def notification_category_subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContactNotificationCategorySubscriptionsItem']]]]):
         pulumi.set(self, "notification_category_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="validateTime")
@@ -201,8 +202,6 @@ class Contact(pulumi.CustomResource):
             __props__.__dict__["language_tag"] = language_tag
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_category_subscriptions"] = notification_category_subscriptions
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["validate_time"] = validate_time
             __props__.__dict__["validation_state"] = validation_state

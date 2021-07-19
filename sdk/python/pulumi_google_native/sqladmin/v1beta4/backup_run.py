@@ -17,7 +17,6 @@ __all__ = ['BackupRunArgs', 'BackupRun']
 class BackupRunArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_configuration: Optional[pulumi.Input['DiskEncryptionConfigurationArgs']] = None,
@@ -28,6 +27,7 @@ class BackupRunArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['BackupRunStatus']] = None,
@@ -53,7 +53,6 @@ class BackupRunArgs:
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         """
         pulumi.set(__self__, "instance", instance)
-        pulumi.set(__self__, "project", project)
         if backup_kind is not None:
             pulumi.set(__self__, "backup_kind", backup_kind)
         if description is not None:
@@ -74,6 +73,8 @@ class BackupRunArgs:
             pulumi.set(__self__, "kind", kind)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if start_time is not None:
@@ -96,15 +97,6 @@ class BackupRunArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="backupKind")
@@ -225,6 +217,15 @@ class BackupRunArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -400,8 +401,6 @@ class BackupRun(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["kind"] = kind
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["start_time"] = start_time

@@ -16,7 +16,6 @@ __all__ = ['RegionUrlMapArgs', 'RegionUrlMap']
 @pulumi.input_type
 class RegionUrlMapArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  default_route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class RegionUrlMapArgs:
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['HostRuleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['PathMatcherArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestArgs']]]] = None):
         """
@@ -40,7 +40,6 @@ class RegionUrlMapArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapTestArgs']]] tests: The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
@@ -58,19 +57,12 @@ class RegionUrlMapArgs:
             pulumi.set(__self__, "name", name)
         if path_matchers is not None:
             pulumi.set(__self__, "path_matchers", path_matchers)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if tests is not None:
             pulumi.set(__self__, "tests", tests)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -176,6 +168,15 @@ class RegionUrlMapArgs:
     @path_matchers.setter
     def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PathMatcherArgs']]]]):
         pulumi.set(self, "path_matchers", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -288,8 +289,6 @@ class RegionUrlMap(pulumi.CustomResource):
             __props__.__dict__["host_rules"] = host_rules
             __props__.__dict__["name"] = name
             __props__.__dict__["path_matchers"] = path_matchers
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

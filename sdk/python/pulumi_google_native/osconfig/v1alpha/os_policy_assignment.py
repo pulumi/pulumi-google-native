@@ -20,10 +20,10 @@ class OsPolicyAssignmentArgs:
                  location: pulumi.Input[str],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['OSPolicyArgs']]],
                  os_policy_assignment_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  rollout: pulumi.Input['OSPolicyAssignmentRolloutArgs'],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OsPolicyAssignment resource.
         :param pulumi.Input['OSPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs.
@@ -36,12 +36,13 @@ class OsPolicyAssignmentArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "os_policies", os_policies)
         pulumi.set(__self__, "os_policy_assignment_id", os_policy_assignment_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "rollout", rollout)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="instanceFilter")
@@ -87,15 +88,6 @@ class OsPolicyAssignmentArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def rollout(self) -> pulumi.Input['OSPolicyAssignmentRolloutArgs']:
         """
         Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
@@ -129,6 +121,15 @@ class OsPolicyAssignmentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class OsPolicyAssignment(pulumi.CustomResource):
@@ -214,8 +215,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             if os_policy_assignment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'os_policy_assignment_id'")
             __props__.__dict__["os_policy_assignment_id"] = os_policy_assignment_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if rollout is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout'")

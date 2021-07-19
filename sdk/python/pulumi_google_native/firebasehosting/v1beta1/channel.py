@@ -15,11 +15,11 @@ __all__ = ['ChannelArgs', 'Channel']
 class ChannelArgs:
     def __init__(__self__, *,
                  channel_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  site_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
@@ -31,7 +31,6 @@ class ChannelArgs:
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
         """
         pulumi.set(__self__, "channel_id", channel_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "site_id", site_id)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
@@ -39,6 +38,8 @@ class ChannelArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if retained_release_count is not None:
             pulumi.set(__self__, "retained_release_count", retained_release_count)
         if ttl is not None:
@@ -52,15 +53,6 @@ class ChannelArgs:
     @channel_id.setter
     def channel_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "channel_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="siteId")
@@ -106,6 +98,15 @@ class ChannelArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="retainedReleaseCount")
@@ -207,8 +208,6 @@ class Channel(pulumi.CustomResource):
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["retained_release_count"] = retained_release_count
             if site_id is None and not opts.urn:

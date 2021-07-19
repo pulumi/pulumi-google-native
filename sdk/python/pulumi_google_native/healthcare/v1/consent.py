@@ -20,13 +20,13 @@ class ConsentArgs:
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  state: pulumi.Input['ConsentState'],
                  user_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1ConsentPolicyArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Consent resource.
@@ -43,7 +43,6 @@ class ConsentArgs:
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "user_id", user_id)
         if expire_time is not None:
@@ -54,6 +53,8 @@ class ConsentArgs:
             pulumi.set(__self__, "name", name)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -95,15 +96,6 @@ class ConsentArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -176,6 +168,15 @@ class ConsentArgs:
     @policies.setter
     def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1ConsentPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -286,8 +287,6 @@ class Consent(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["policies"] = policies
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if state is None and not opts.urn:
                 raise TypeError("Missing required property 'state'")

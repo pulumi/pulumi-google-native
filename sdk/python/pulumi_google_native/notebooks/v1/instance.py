@@ -19,7 +19,6 @@ class InstanceArgs:
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  machine_type: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
@@ -39,6 +38,7 @@ class InstanceArgs:
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -79,7 +79,6 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "machine_type", machine_type)
-        pulumi.set(__self__, "project", project)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if boot_disk_size_gb is not None:
@@ -118,6 +117,8 @@ class InstanceArgs:
             pulumi.set(__self__, "no_remove_data_disk", no_remove_data_disk)
         if post_startup_script is not None:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -162,15 +163,6 @@ class InstanceArgs:
     @machine_type.setter
     def machine_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "machine_type", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -399,6 +391,15 @@ class InstanceArgs:
     @post_startup_script.setter
     def post_startup_script(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "post_startup_script", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -650,8 +651,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["no_public_ip"] = no_public_ip
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
             __props__.__dict__["post_startup_script"] = post_startup_script
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["service_account_scopes"] = service_account_scopes

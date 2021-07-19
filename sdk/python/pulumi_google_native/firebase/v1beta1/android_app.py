@@ -13,20 +13,19 @@ __all__ = ['AndroidAppArgs', 'AndroidApp']
 @pulumi.input_type
 class AndroidAppArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 package_name: Optional[pulumi.Input[str]] = None):
+                 package_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
-        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `AndroidApp`.
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
+        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         """
-        pulumi.set(__self__, "project", project)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if display_name is not None:
@@ -35,18 +34,8 @@ class AndroidAppArgs:
             pulumi.set(__self__, "name", name)
         if package_name is not None:
             pulumi.set(__self__, "package_name", package_name)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="appId")
@@ -96,6 +85,18 @@ class AndroidAppArgs:
     def package_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_name", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class AndroidApp(pulumi.CustomResource):
     @overload
@@ -123,7 +124,7 @@ class AndroidApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AndroidAppArgs,
+                 args: Optional[AndroidAppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
@@ -164,8 +165,6 @@ class AndroidApp(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["package_name"] = package_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(AndroidApp, __self__).__init__(
             'google-native:firebase/v1beta1:AndroidApp',

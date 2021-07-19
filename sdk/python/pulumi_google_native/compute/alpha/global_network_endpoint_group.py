@@ -16,7 +16,6 @@ __all__ = ['GlobalNetworkEndpointGroupArgs', 'GlobalNetworkEndpointGroup']
 @pulumi.input_type
 class GlobalNetworkEndpointGroupArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']] = None,
                  cloud_function: Optional[pulumi.Input['NetworkEndpointGroupCloudFunctionArgs']] = None,
@@ -26,6 +25,7 @@ class GlobalNetworkEndpointGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['GlobalNetworkEndpointGroupNetworkEndpointType']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']] = None,
@@ -47,7 +47,6 @@ class GlobalNetworkEndpointGroupArgs:
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input['GlobalNetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         """
-        pulumi.set(__self__, "project", project)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if app_engine is not None:
@@ -66,6 +65,8 @@ class GlobalNetworkEndpointGroupArgs:
             pulumi.set(__self__, "network", network)
         if network_endpoint_type is not None:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if psc_target_service is not None:
             pulumi.set(__self__, "psc_target_service", psc_target_service)
         if request_id is not None:
@@ -76,15 +77,6 @@ class GlobalNetworkEndpointGroupArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -195,6 +187,15 @@ class GlobalNetworkEndpointGroupArgs:
         pulumi.set(self, "network_endpoint_type", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -296,7 +297,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalNetworkEndpointGroupArgs,
+                 args: Optional[GlobalNetworkEndpointGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a network endpoint group in the specified project using the parameters that are included in the request.
@@ -352,8 +353,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_target_service"] = psc_target_service
             __props__.__dict__["request_id"] = request_id

@@ -16,13 +16,13 @@ __all__ = ['RegionCommitmentArgs', 'RegionCommitment']
 @pulumi.input_type
 class RegionCommitmentArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input['LicenseResourceCommitmentArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None,
@@ -38,7 +38,6 @@ class RegionCommitmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
         :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -50,6 +49,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "name", name)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if reservations is not None:
@@ -58,15 +59,6 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "resources", resources)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -136,6 +128,15 @@ class RegionCommitmentArgs:
     @plan.setter
     def plan(self, value: Optional[pulumi.Input['RegionCommitmentPlan']]):
         pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -266,8 +267,6 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
             __props__.__dict__["plan"] = plan
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

@@ -17,17 +17,18 @@ __all__ = ['StudyArgs', 'Study']
 class StudyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  study_config: pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'],
-                 study_id: pulumi.Input[str]):
+                 study_id: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Study resource.
         :param pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'] study_config: Configuration of the study.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "study_config", study_config)
         pulumi.set(__self__, "study_id", study_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -37,15 +38,6 @@ class StudyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="studyConfig")
@@ -67,6 +59,15 @@ class StudyArgs:
     @study_id.setter
     def study_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "study_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Study(pulumi.CustomResource):
@@ -131,8 +132,6 @@ class Study(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if study_config is None and not opts.urn:
                 raise TypeError("Missing required property 'study_config'")

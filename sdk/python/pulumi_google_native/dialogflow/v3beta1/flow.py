@@ -19,12 +19,12 @@ class FlowArgs:
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
@@ -40,7 +40,6 @@ class FlowArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_handlers is not None:
@@ -51,6 +50,8 @@ class FlowArgs:
             pulumi.set(__self__, "name", name)
         if nlu_settings is not None:
             pulumi.set(__self__, "nlu_settings", nlu_settings)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if transition_route_groups is not None:
             pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
@@ -85,15 +86,6 @@ class FlowArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -151,6 +143,15 @@ class FlowArgs:
     @nlu_settings.setter
     def nlu_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1NluSettingsArgs']]):
         pulumi.set(self, "nlu_settings", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="transitionRouteGroups")
@@ -268,8 +269,6 @@ class Flow(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["nlu_settings"] = nlu_settings
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["transition_route_groups"] = transition_route_groups
             __props__.__dict__["transition_routes"] = transition_routes

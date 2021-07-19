@@ -17,7 +17,6 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
                  autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
@@ -51,6 +50,7 @@ class ClusterArgs:
                  parent: Optional[pulumi.Input[str]] = None,
                  pod_security_policy_config: Optional[pulumi.Input['PodSecurityPolicyConfigArgs']] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ResourceUsageExportConfigArgs']] = None,
@@ -106,7 +106,6 @@ class ClusterArgs:
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
@@ -173,6 +172,8 @@ class ClusterArgs:
             pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
         if private_cluster_config is not None:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if resource_labels is not None:
@@ -200,15 +201,6 @@ class ClusterArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -607,6 +599,15 @@ class ClusterArgs:
         pulumi.set(self, "private_cluster_config", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ReleaseChannelArgs']]:
         """
@@ -929,8 +930,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
             __props__.__dict__["private_cluster_config"] = private_cluster_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels

@@ -17,7 +17,6 @@ __all__ = ['OccurrenceArgs', 'Occurrence']
 class OccurrenceArgs:
     def __init__(__self__, *,
                  note_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  resource: pulumi.Input['ResourceArgs'],
                  attestation: Optional[pulumi.Input['DetailsArgs']] = None,
                  build: Optional[pulumi.Input['GrafeasV1beta1BuildDetailsArgs']] = None,
@@ -26,6 +25,7 @@ class OccurrenceArgs:
                  discovered: Optional[pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs']] = None,
                  installation: Optional[pulumi.Input['GrafeasV1beta1PackageDetailsArgs']] = None,
                  intoto: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  vulnerability: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs']] = None):
         """
@@ -43,7 +43,6 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs'] vulnerability: Describes a security vulnerability.
         """
         pulumi.set(__self__, "note_name", note_name)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource", resource)
         if attestation is not None:
             pulumi.set(__self__, "attestation", attestation)
@@ -59,6 +58,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "installation", installation)
         if intoto is not None:
             pulumi.set(__self__, "intoto", intoto)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if remediation is not None:
             pulumi.set(__self__, "remediation", remediation)
         if vulnerability is not None:
@@ -75,15 +76,6 @@ class OccurrenceArgs:
     @note_name.setter
     def note_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "note_name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -180,6 +172,15 @@ class OccurrenceArgs:
     @intoto.setter
     def intoto(self, value: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']]):
         pulumi.set(self, "intoto", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -301,8 +302,6 @@ class Occurrence(pulumi.CustomResource):
             if note_name is None and not opts.urn:
                 raise TypeError("Missing required property 'note_name'")
             __props__.__dict__["note_name"] = note_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
             if resource is None and not opts.urn:
