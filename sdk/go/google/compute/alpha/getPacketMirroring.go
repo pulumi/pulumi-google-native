@@ -18,9 +18,9 @@ func LookupPacketMirroring(ctx *pulumi.Context, args *LookupPacketMirroringArgs,
 }
 
 type LookupPacketMirroringArgs struct {
-	PacketMirroring string `pulumi:"packetMirroring"`
-	Project         string `pulumi:"project"`
-	Region          string `pulumi:"region"`
+	PacketMirroring string  `pulumi:"packetMirroring"`
+	Project         *string `pulumi:"project"`
+	Region          string  `pulumi:"region"`
 }
 
 type LookupPacketMirroringResult struct {

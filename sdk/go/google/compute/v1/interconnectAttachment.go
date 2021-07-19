@@ -76,9 +76,6 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -140,7 +137,7 @@ type interconnectAttachmentArgs struct {
 	PartnerAsn *string `pulumi:"partnerAsn"`
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata *InterconnectAttachmentPartnerMetadata `pulumi:"partnerMetadata"`
-	Project         string                                 `pulumi:"project"`
+	Project         *string                                `pulumi:"project"`
 	Region          string                                 `pulumi:"region"`
 	RequestId       *string                                `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
@@ -180,7 +177,7 @@ type InterconnectAttachmentArgs struct {
 	PartnerAsn pulumi.StringPtrInput
 	// Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
 	PartnerMetadata InterconnectAttachmentPartnerMetadataPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 	Region          pulumi.StringInput
 	RequestId       pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.

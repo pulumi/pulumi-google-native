@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type SslPolicy struct {
 func NewSslPolicy(ctx *pulumi.Context,
 	name string, args *SslPolicyArgs, opts ...pulumi.ResourceOption) (*SslPolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SslPolicyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource SslPolicy
 	err := ctx.RegisterResource("google-native:compute/beta:SslPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +87,7 @@ type sslPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile   *SslPolicyProfile `pulumi:"profile"`
-	Project   string            `pulumi:"project"`
+	Project   *string           `pulumi:"project"`
 	RequestId *string           `pulumi:"requestId"`
 }
 
@@ -107,7 +103,7 @@ type SslPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile   SslPolicyProfilePtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 }
 

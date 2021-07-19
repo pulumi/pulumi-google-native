@@ -18,9 +18,9 @@ func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...p
 }
 
 type LookupRepositoryArgs struct {
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
-	RepositoryId string `pulumi:"repositoryId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
+	RepositoryId string  `pulumi:"repositoryId"`
 }
 
 type LookupRepositoryResult struct {

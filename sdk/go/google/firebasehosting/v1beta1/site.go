@@ -35,9 +35,6 @@ func NewSite(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -77,7 +74,7 @@ type siteArgs struct {
 	AppId *string `pulumi:"appId"`
 	// Optional. User-specified labels for the Hosting site.
 	Labels  map[string]string `pulumi:"labels"`
-	Project string            `pulumi:"project"`
+	Project *string           `pulumi:"project"`
 	SiteId  string            `pulumi:"siteId"`
 }
 
@@ -87,7 +84,7 @@ type SiteArgs struct {
 	AppId pulumi.StringPtrInput
 	// Optional. User-specified labels for the Hosting site.
 	Labels  pulumi.StringMapInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	SiteId  pulumi.StringInput
 }
 

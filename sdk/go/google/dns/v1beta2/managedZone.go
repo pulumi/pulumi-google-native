@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,12 +49,9 @@ type ManagedZone struct {
 func NewManagedZone(ctx *pulumi.Context,
 	name string, args *ManagedZoneArgs, opts ...pulumi.ResourceOption) (*ManagedZone, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ManagedZoneArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ManagedZone
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ManagedZone", name, args, &resource, opts...)
 	if err != nil {
@@ -114,7 +110,7 @@ type managedZoneArgs struct {
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
-	Project                 string                              `pulumi:"project"`
+	Project                 *string                             `pulumi:"project"`
 	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig *ManagedZoneReverseLookupConfig `pulumi:"reverseLookupConfig"`
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
@@ -151,7 +147,7 @@ type ManagedZoneArgs struct {
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
-	Project                 pulumi.StringInput
+	Project                 pulumi.StringPtrInput
 	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig ManagedZoneReverseLookupConfigPtrInput
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.

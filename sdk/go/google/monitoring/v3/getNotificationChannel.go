@@ -18,8 +18,8 @@ func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChan
 }
 
 type LookupNotificationChannelArgs struct {
-	NotificationChannelId string `pulumi:"notificationChannelId"`
-	Project               string `pulumi:"project"`
+	NotificationChannelId string  `pulumi:"notificationChannelId"`
+	Project               *string `pulumi:"project"`
 }
 
 type LookupNotificationChannelResult struct {

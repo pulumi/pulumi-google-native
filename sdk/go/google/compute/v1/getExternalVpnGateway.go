@@ -18,8 +18,8 @@ func LookupExternalVpnGateway(ctx *pulumi.Context, args *LookupExternalVpnGatewa
 }
 
 type LookupExternalVpnGatewayArgs struct {
-	ExternalVpnGateway string `pulumi:"externalVpnGateway"`
-	Project            string `pulumi:"project"`
+	ExternalVpnGateway string  `pulumi:"externalVpnGateway"`
+	Project            *string `pulumi:"project"`
 }
 
 type LookupExternalVpnGatewayResult struct {

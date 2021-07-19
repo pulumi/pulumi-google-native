@@ -73,9 +73,6 @@ func NewJob(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:dataflow/v1b3:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -133,7 +130,7 @@ type jobArgs struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription *PipelineDescription `pulumi:"pipelineDescription"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId *string `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
@@ -186,7 +183,7 @@ type JobArgs struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionPtrInput
 	// The ID of the Cloud Platform project that the job belongs to.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId pulumi.StringPtrInput
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.

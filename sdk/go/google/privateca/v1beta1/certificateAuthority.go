@@ -76,9 +76,6 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
@@ -133,7 +130,7 @@ type certificateAuthorityArgs struct {
 	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime  string  `pulumi:"lifetime"`
 	Location  string  `pulumi:"location"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig *SubordinateConfig `pulumi:"subordinateConfig"`
@@ -161,7 +158,7 @@ type CertificateAuthorityArgs struct {
 	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime  pulumi.StringInput
 	Location  pulumi.StringInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigPtrInput

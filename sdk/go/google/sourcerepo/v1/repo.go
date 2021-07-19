@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type Repo struct {
 func NewRepo(ctx *pulumi.Context,
 	name string, args *RepoArgs, opts ...pulumi.ResourceOption) (*Repo, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RepoArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Repo
 	err := ctx.RegisterResource("google-native:sourcerepo/v1:Repo", name, args, &resource, opts...)
 	if err != nil {
@@ -73,7 +69,7 @@ type repoArgs struct {
 	MirrorConfig *MirrorConfig `pulumi:"mirrorConfig"`
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
@@ -88,7 +84,7 @@ type RepoArgs struct {
 	MirrorConfig MirrorConfigPtrInput
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs pulumi.StringMapInput
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

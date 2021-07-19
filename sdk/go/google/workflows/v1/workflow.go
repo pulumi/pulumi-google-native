@@ -47,9 +47,6 @@ func NewWorkflow(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
@@ -92,7 +89,7 @@ type workflowArgs struct {
 	Location string            `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
@@ -109,7 +106,7 @@ type WorkflowArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.

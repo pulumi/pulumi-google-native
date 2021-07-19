@@ -61,9 +61,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -120,7 +117,7 @@ type triggerArgs struct {
 	Location      string   `pulumi:"location"`
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	ProjectId string  `pulumi:"projectId"`
 	// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 	PubsubConfig *PubsubConfig `pulumi:"pubsubConfig"`
@@ -159,7 +156,7 @@ type TriggerArgs struct {
 	Location      pulumi.StringInput
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 	PubsubConfig PubsubConfigPtrInput

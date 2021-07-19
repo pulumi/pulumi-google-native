@@ -66,9 +66,6 @@ func NewInstanceGroupManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -118,7 +115,7 @@ type instanceGroupManagerArgs struct {
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	Project    string      `pulumi:"project"`
+	Project    *string     `pulumi:"project"`
 	RequestId  *string     `pulumi:"requestId"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicy `pulumi:"statefulPolicy"`
@@ -149,7 +146,7 @@ type InstanceGroupManagerArgs struct {
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyPtrInput

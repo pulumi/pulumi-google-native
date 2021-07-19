@@ -18,8 +18,8 @@ func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, o
 }
 
 type LookupSecurityPolicyArgs struct {
-	Project        string `pulumi:"project"`
-	SecurityPolicy string `pulumi:"securityPolicy"`
+	Project        *string `pulumi:"project"`
+	SecurityPolicy string  `pulumi:"securityPolicy"`
 }
 
 type LookupSecurityPolicyResult struct {

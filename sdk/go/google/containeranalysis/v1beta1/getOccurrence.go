@@ -18,8 +18,8 @@ func LookupOccurrence(ctx *pulumi.Context, args *LookupOccurrenceArgs, opts ...p
 }
 
 type LookupOccurrenceArgs struct {
-	OccurrenceId string `pulumi:"occurrenceId"`
-	Project      string `pulumi:"project"`
+	OccurrenceId string  `pulumi:"occurrenceId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupOccurrenceResult struct {

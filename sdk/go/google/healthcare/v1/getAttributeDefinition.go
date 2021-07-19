@@ -18,11 +18,11 @@ func LookupAttributeDefinition(ctx *pulumi.Context, args *LookupAttributeDefinit
 }
 
 type LookupAttributeDefinitionArgs struct {
-	AttributeDefinitionId string `pulumi:"attributeDefinitionId"`
-	ConsentStoreId        string `pulumi:"consentStoreId"`
-	DatasetId             string `pulumi:"datasetId"`
-	Location              string `pulumi:"location"`
-	Project               string `pulumi:"project"`
+	AttributeDefinitionId string  `pulumi:"attributeDefinitionId"`
+	ConsentStoreId        string  `pulumi:"consentStoreId"`
+	DatasetId             string  `pulumi:"datasetId"`
+	Location              string  `pulumi:"location"`
+	Project               *string `pulumi:"project"`
 }
 
 type LookupAttributeDefinitionResult struct {

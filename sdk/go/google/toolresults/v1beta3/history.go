@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,12 +28,9 @@ type History struct {
 func NewHistory(ctx *pulumi.Context,
 	name string, args *HistoryArgs, opts ...pulumi.ResourceOption) (*History, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &HistoryArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource History
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:History", name, args, &resource, opts...)
 	if err != nil {
@@ -73,7 +69,7 @@ type historyArgs struct {
 	HistoryId *string `pulumi:"historyId"`
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform *HistoryTestPlatform `pulumi:"testPlatform"`
@@ -87,7 +83,7 @@ type HistoryArgs struct {
 	HistoryId pulumi.StringPtrInput
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform HistoryTestPlatformPtrInput

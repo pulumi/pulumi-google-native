@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,12 +46,9 @@ type Network struct {
 func NewNetwork(ctx *pulumi.Context,
 	name string, args *NetworkArgs, opts ...pulumi.ResourceOption) (*Network, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NetworkArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Network
 	err := ctx.RegisterResource("google-native:compute/alpha:Network", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +89,7 @@ type networkArgs struct {
 	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig *NetworkRoutingConfig `pulumi:"routingConfig"`
@@ -109,7 +105,7 @@ type NetworkArgs struct {
 	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigPtrInput

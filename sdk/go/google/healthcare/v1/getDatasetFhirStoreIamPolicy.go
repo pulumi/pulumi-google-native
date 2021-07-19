@@ -22,7 +22,7 @@ type LookupDatasetFhirStoreIamPolicyArgs struct {
 	FhirStoreId                   string  `pulumi:"fhirStoreId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupDatasetFhirStoreIamPolicyResult struct {

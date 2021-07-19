@@ -40,9 +40,6 @@ func NewService(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
@@ -84,7 +81,7 @@ type serviceArgs struct {
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name        *string `pulumi:"name"`
 	NamespaceId string  `pulumi:"namespaceId"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	ServiceId   string  `pulumi:"serviceId"`
 }
 
@@ -96,7 +93,7 @@ type ServiceArgs struct {
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name        pulumi.StringPtrInput
 	NamespaceId pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	ServiceId   pulumi.StringInput
 }
 

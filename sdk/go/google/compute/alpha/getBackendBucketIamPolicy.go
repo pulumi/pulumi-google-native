@@ -19,7 +19,7 @@ func LookupBackendBucketIamPolicy(ctx *pulumi.Context, args *LookupBackendBucket
 
 type LookupBackendBucketIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
 

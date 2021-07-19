@@ -64,9 +64,6 @@ func NewRegionNetworkEndpointGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -120,7 +117,7 @@ type regionNetworkEndpointGroupArgs struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
-	Project             string                                         `pulumi:"project"`
+	Project             *string                                        `pulumi:"project"`
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService *string `pulumi:"pscTargetService"`
 	Region           string  `pulumi:"region"`
@@ -153,7 +150,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType RegionNetworkEndpointGroupNetworkEndpointTypePtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
 	Region           pulumi.StringInput

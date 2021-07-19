@@ -18,10 +18,10 @@ func LookupIndex(ctx *pulumi.Context, args *LookupIndexArgs, opts ...pulumi.Invo
 }
 
 type LookupIndexArgs struct {
-	CollectionGroupId string `pulumi:"collectionGroupId"`
-	DatabaseId        string `pulumi:"databaseId"`
-	IndexId           string `pulumi:"indexId"`
-	Project           string `pulumi:"project"`
+	CollectionGroupId string  `pulumi:"collectionGroupId"`
+	DatabaseId        string  `pulumi:"databaseId"`
+	IndexId           string  `pulumi:"indexId"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupIndexResult struct {

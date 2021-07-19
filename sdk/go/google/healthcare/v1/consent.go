@@ -56,9 +56,6 @@ func NewConsent(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
@@ -110,7 +107,7 @@ type consentArgs struct {
 	Name *string `pulumi:"name"`
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies []GoogleCloudHealthcareV1ConsentPolicy `pulumi:"policies"`
-	Project  string                                 `pulumi:"project"`
+	Project  *string                                `pulumi:"project"`
 	// Indicates the current state of this Consent.
 	State ConsentStateEnum `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
@@ -134,7 +131,7 @@ type ConsentArgs struct {
 	Name pulumi.StringPtrInput
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1ConsentPolicyArrayInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// Indicates the current state of this Consent.
 	State ConsentStateEnumInput
 	// Input only. The time to live for this Consent from when it is created.

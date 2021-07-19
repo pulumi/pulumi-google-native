@@ -18,9 +18,9 @@ func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupApiArgs struct {
-	ApiId    string `pulumi:"apiId"`
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	ApiId    string  `pulumi:"apiId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupApiResult struct {

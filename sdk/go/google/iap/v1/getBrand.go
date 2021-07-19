@@ -18,8 +18,8 @@ func LookupBrand(ctx *pulumi.Context, args *LookupBrandArgs, opts ...pulumi.Invo
 }
 
 type LookupBrandArgs struct {
-	BrandId string `pulumi:"brandId"`
-	Project string `pulumi:"project"`
+	BrandId string  `pulumi:"brandId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupBrandResult struct {

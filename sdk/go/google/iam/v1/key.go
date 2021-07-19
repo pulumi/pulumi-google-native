@@ -43,9 +43,6 @@ func NewKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
@@ -85,7 +82,7 @@ type keyArgs struct {
 	KeyAlgorithm *KeyKeyAlgorithm `pulumi:"keyAlgorithm"`
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
 	PrivateKeyType   *KeyPrivateKeyType `pulumi:"privateKeyType"`
-	Project          string             `pulumi:"project"`
+	Project          *string            `pulumi:"project"`
 	ServiceAccountId string             `pulumi:"serviceAccountId"`
 }
 
@@ -95,7 +92,7 @@ type KeyArgs struct {
 	KeyAlgorithm KeyKeyAlgorithmPtrInput
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
 	PrivateKeyType   KeyPrivateKeyTypePtrInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	ServiceAccountId pulumi.StringInput
 }
 

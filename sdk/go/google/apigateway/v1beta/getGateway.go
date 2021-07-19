@@ -18,9 +18,9 @@ func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.
 }
 
 type LookupGatewayArgs struct {
-	GatewayId string `pulumi:"gatewayId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
+	GatewayId string  `pulumi:"gatewayId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupGatewayResult struct {

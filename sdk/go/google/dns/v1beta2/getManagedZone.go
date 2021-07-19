@@ -20,7 +20,7 @@ func LookupManagedZone(ctx *pulumi.Context, args *LookupManagedZoneArgs, opts ..
 type LookupManagedZoneArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	ManagedZone       string  `pulumi:"managedZone"`
-	Project           string  `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupManagedZoneResult struct {

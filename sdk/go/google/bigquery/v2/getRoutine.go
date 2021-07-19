@@ -19,7 +19,7 @@ func LookupRoutine(ctx *pulumi.Context, args *LookupRoutineArgs, opts ...pulumi.
 
 type LookupRoutineArgs struct {
 	DatasetId string  `pulumi:"datasetId"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	ReadMask  *string `pulumi:"readMask"`
 	RoutineId string  `pulumi:"routineId"`
 }

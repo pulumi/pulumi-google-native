@@ -18,11 +18,11 @@ func LookupPerfSampleSeries(ctx *pulumi.Context, args *LookupPerfSampleSeriesArg
 }
 
 type LookupPerfSampleSeriesArgs struct {
-	ExecutionId    string `pulumi:"executionId"`
-	HistoryId      string `pulumi:"historyId"`
-	Project        string `pulumi:"project"`
-	SampleSeriesId string `pulumi:"sampleSeriesId"`
-	StepId         string `pulumi:"stepId"`
+	ExecutionId    string  `pulumi:"executionId"`
+	HistoryId      string  `pulumi:"historyId"`
+	Project        *string `pulumi:"project"`
+	SampleSeriesId string  `pulumi:"sampleSeriesId"`
+	StepId         string  `pulumi:"stepId"`
 }
 
 type LookupPerfSampleSeriesResult struct {

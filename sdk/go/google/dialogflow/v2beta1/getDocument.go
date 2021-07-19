@@ -18,10 +18,10 @@ func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulum
 }
 
 type LookupDocumentArgs struct {
-	DocumentId      string `pulumi:"documentId"`
-	KnowledgeBaseId string `pulumi:"knowledgeBaseId"`
-	Location        string `pulumi:"location"`
-	Project         string `pulumi:"project"`
+	DocumentId      string  `pulumi:"documentId"`
+	KnowledgeBaseId string  `pulumi:"knowledgeBaseId"`
+	Location        string  `pulumi:"location"`
+	Project         *string `pulumi:"project"`
 }
 
 type LookupDocumentResult struct {

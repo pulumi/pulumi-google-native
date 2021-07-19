@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,12 +33,9 @@ type Policy struct {
 func NewPolicy(ctx *pulumi.Context,
 	name string, args *PolicyArgs, opts ...pulumi.ResourceOption) (*Policy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &PolicyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Policy
 	err := ctx.RegisterResource("google-native:dns/v1:Policy", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +84,7 @@ type policyArgs struct {
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []PolicyNetwork `pulumi:"networks"`
-	Project  string          `pulumi:"project"`
+	Project  *string         `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -109,7 +105,7 @@ type PolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkArrayInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

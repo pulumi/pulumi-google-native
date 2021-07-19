@@ -18,8 +18,8 @@ func LookupIosApp(ctx *pulumi.Context, args *LookupIosAppArgs, opts ...pulumi.In
 }
 
 type LookupIosAppArgs struct {
-	IosAppId string `pulumi:"iosAppId"`
-	Project  string `pulumi:"project"`
+	IosAppId string  `pulumi:"iosAppId"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupIosAppResult struct {

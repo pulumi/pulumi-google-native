@@ -18,9 +18,9 @@ func LookupAutoscalingPolicy(ctx *pulumi.Context, args *LookupAutoscalingPolicyA
 }
 
 type LookupAutoscalingPolicyArgs struct {
-	AutoscalingPolicyId string `pulumi:"autoscalingPolicyId"`
-	Location            string `pulumi:"location"`
-	Project             string `pulumi:"project"`
+	AutoscalingPolicyId string  `pulumi:"autoscalingPolicyId"`
+	Location            string  `pulumi:"location"`
+	Project             *string `pulumi:"project"`
 }
 
 type LookupAutoscalingPolicyResult struct {

@@ -22,7 +22,7 @@ type LookupEntityTypeArgs struct {
 	EntityTypeId string  `pulumi:"entityTypeId"`
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupEntityTypeResult struct {

@@ -18,8 +18,8 @@ func LookupEvaluationJob(ctx *pulumi.Context, args *LookupEvaluationJobArgs, opt
 }
 
 type LookupEvaluationJobArgs struct {
-	EvaluationJobId string `pulumi:"evaluationJobId"`
-	Project         string `pulumi:"project"`
+	EvaluationJobId string  `pulumi:"evaluationJobId"`
+	Project         *string `pulumi:"project"`
 }
 
 type LookupEvaluationJobResult struct {

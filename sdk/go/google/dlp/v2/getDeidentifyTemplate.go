@@ -18,9 +18,9 @@ func LookupDeidentifyTemplate(ctx *pulumi.Context, args *LookupDeidentifyTemplat
 }
 
 type LookupDeidentifyTemplateArgs struct {
-	DeidentifyTemplateId string `pulumi:"deidentifyTemplateId"`
-	Location             string `pulumi:"location"`
-	Project              string `pulumi:"project"`
+	DeidentifyTemplateId string  `pulumi:"deidentifyTemplateId"`
+	Location             string  `pulumi:"location"`
+	Project              *string `pulumi:"project"`
 }
 
 type LookupDeidentifyTemplateResult struct {

@@ -58,9 +58,6 @@ func NewRegistration(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.YearlyPrice == nil {
 		return nil, errors.New("invalid value for required argument 'YearlyPrice'")
 	}
@@ -111,7 +108,7 @@ type registrationArgs struct {
 	Location string            `pulumi:"location"`
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings *ManagementSettings `pulumi:"managementSettings"`
-	Project            string              `pulumi:"project"`
+	Project            *string             `pulumi:"project"`
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
@@ -135,7 +132,7 @@ type RegistrationArgs struct {
 	Location pulumi.StringInput
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings ManagementSettingsPtrInput
-	Project            pulumi.StringInput
+	Project            pulumi.StringPtrInput
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly pulumi.BoolPtrInput
 	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.

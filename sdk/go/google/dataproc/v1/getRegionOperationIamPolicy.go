@@ -18,9 +18,9 @@ func LookupRegionOperationIamPolicy(ctx *pulumi.Context, args *LookupRegionOpera
 }
 
 type LookupRegionOperationIamPolicyArgs struct {
-	OperationId string `pulumi:"operationId"`
-	Project     string `pulumi:"project"`
-	RegionId    string `pulumi:"regionId"`
+	OperationId string  `pulumi:"operationId"`
+	Project     *string `pulumi:"project"`
+	RegionId    string  `pulumi:"regionId"`
 }
 
 type LookupRegionOperationIamPolicyResult struct {

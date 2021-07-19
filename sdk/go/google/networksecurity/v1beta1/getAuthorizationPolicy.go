@@ -18,9 +18,9 @@ func LookupAuthorizationPolicy(ctx *pulumi.Context, args *LookupAuthorizationPol
 }
 
 type LookupAuthorizationPolicyArgs struct {
-	AuthorizationPolicyId string `pulumi:"authorizationPolicyId"`
-	Location              string `pulumi:"location"`
-	Project               string `pulumi:"project"`
+	AuthorizationPolicyId string  `pulumi:"authorizationPolicyId"`
+	Location              string  `pulumi:"location"`
+	Project               *string `pulumi:"project"`
 }
 
 type LookupAuthorizationPolicyResult struct {

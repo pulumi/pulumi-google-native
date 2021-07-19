@@ -42,9 +42,6 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerDeployment", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +84,7 @@ type gameServerDeploymentArgs struct {
 	Location string            `pulumi:"location"`
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a GameServerDeployment resource.
@@ -102,7 +99,7 @@ type GameServerDeploymentArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentArgs) ElementType() reflect.Type {

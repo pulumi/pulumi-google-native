@@ -62,9 +62,6 @@ func NewAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -117,8 +114,8 @@ type addressArgs struct {
 	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *AddressNetworkTier `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
-	PrefixLength *int   `pulumi:"prefixLength"`
-	Project      string `pulumi:"project"`
+	PrefixLength *int    `pulumi:"prefixLength"`
+	Project      *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose   *AddressPurpose `pulumi:"purpose"`
 	Region    string          `pulumi:"region"`
@@ -147,7 +144,7 @@ type AddressArgs struct {
 	NetworkTier AddressNetworkTierPtrInput
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose   AddressPurposePtrInput
 	Region    pulumi.StringInput

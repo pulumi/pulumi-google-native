@@ -21,7 +21,7 @@ type LookupChangeArgs struct {
 	ChangeId          string  `pulumi:"changeId"`
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	ManagedZone       string  `pulumi:"managedZone"`
-	Project           string  `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupChangeResult struct {

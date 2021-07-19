@@ -18,10 +18,10 @@ func LookupPolicyTag(ctx *pulumi.Context, args *LookupPolicyTagArgs, opts ...pul
 }
 
 type LookupPolicyTagArgs struct {
-	Location    string `pulumi:"location"`
-	PolicyTagId string `pulumi:"policyTagId"`
-	Project     string `pulumi:"project"`
-	TaxonomyId  string `pulumi:"taxonomyId"`
+	Location    string  `pulumi:"location"`
+	PolicyTagId string  `pulumi:"policyTagId"`
+	Project     *string `pulumi:"project"`
+	TaxonomyId  string  `pulumi:"taxonomyId"`
 }
 
 type LookupPolicyTagResult struct {

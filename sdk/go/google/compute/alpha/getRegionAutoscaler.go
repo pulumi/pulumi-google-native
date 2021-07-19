@@ -18,9 +18,9 @@ func LookupRegionAutoscaler(ctx *pulumi.Context, args *LookupRegionAutoscalerArg
 }
 
 type LookupRegionAutoscalerArgs struct {
-	Autoscaler string `pulumi:"autoscaler"`
-	Project    string `pulumi:"project"`
-	Region     string `pulumi:"region"`
+	Autoscaler string  `pulumi:"autoscaler"`
+	Project    *string `pulumi:"project"`
+	Region     string  `pulumi:"region"`
 }
 
 type LookupRegionAutoscalerResult struct {

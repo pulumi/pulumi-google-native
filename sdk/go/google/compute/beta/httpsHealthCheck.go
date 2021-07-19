@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +44,9 @@ type HttpsHealthCheck struct {
 func NewHttpsHealthCheck(ctx *pulumi.Context,
 	name string, args *HttpsHealthCheckArgs, opts ...pulumi.ResourceOption) (*HttpsHealthCheck, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &HttpsHealthCheckArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource HttpsHealthCheck
 	err := ctx.RegisterResource("google-native:compute/beta:HttpsHealthCheck", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +93,7 @@ type httpsHealthCheckArgs struct {
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request. The default value is 443.
 	Port      *int    `pulumi:"port"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath *string `pulumi:"requestPath"`
@@ -123,7 +119,7 @@ type HttpsHealthCheckArgs struct {
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request. The default value is 443.
 	Port      pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath pulumi.StringPtrInput

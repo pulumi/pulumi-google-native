@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,12 +55,9 @@ type Occurrence struct {
 func NewOccurrence(ctx *pulumi.Context,
 	name string, args *OccurrenceArgs, opts ...pulumi.ResourceOption) (*Occurrence, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &OccurrenceArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Occurrence
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:Occurrence", name, args, &resource, opts...)
 	if err != nil {
@@ -110,7 +106,7 @@ type occurrenceArgs struct {
 	Installation *Installation `pulumi:"installation"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName *string `pulumi:"noteName"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation *string `pulumi:"remediation"`
 	//  The resource for which the `Occurrence` applies.
@@ -141,7 +137,7 @@ type OccurrenceArgs struct {
 	Installation InstallationPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName pulumi.StringPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation pulumi.StringPtrInput
 	//  The resource for which the `Occurrence` applies.

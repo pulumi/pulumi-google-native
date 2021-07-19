@@ -18,9 +18,9 @@ func LookupRegistryIamPolicy(ctx *pulumi.Context, args *LookupRegistryIamPolicyA
 }
 
 type LookupRegistryIamPolicyArgs struct {
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	RegistryId string `pulumi:"registryId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	RegistryId string  `pulumi:"registryId"`
 }
 
 type LookupRegistryIamPolicyResult struct {

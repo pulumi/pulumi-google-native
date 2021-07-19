@@ -36,9 +36,6 @@ func NewDebugToken(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource DebugToken
 	err := ctx.RegisterResource("google-native:firebaseappcheck/v1beta:DebugToken", name, args, &resource, opts...)
 	if err != nil {
@@ -76,7 +73,7 @@ type debugTokenArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
 	Token *string `pulumi:"token"`
 }
@@ -88,7 +85,7 @@ type DebugTokenArgs struct {
 	DisplayName pulumi.StringInput
 	// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
 	Token pulumi.StringPtrInput
 }

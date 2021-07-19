@@ -80,9 +80,6 @@ func NewBuild(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -132,7 +129,7 @@ type buildArgs struct {
 	LogsBucket *string `pulumi:"logsBucket"`
 	// Special options for this build.
 	Options   *BuildOptions `pulumi:"options"`
-	Project   string        `pulumi:"project"`
+	Project   *string       `pulumi:"project"`
 	ProjectId string        `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
@@ -165,7 +162,7 @@ type BuildArgs struct {
 	LogsBucket pulumi.StringPtrInput
 	// Special options for this build.
 	Options   BuildOptionsPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput

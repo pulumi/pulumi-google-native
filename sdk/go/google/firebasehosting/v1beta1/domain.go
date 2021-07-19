@@ -40,9 +40,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Site == nil {
 		return nil, errors.New("invalid value for required argument 'Site'")
 	}
@@ -85,7 +82,7 @@ type domainArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirect `pulumi:"domainRedirect"`
-	Project        string          `pulumi:"project"`
+	Project        *string         `pulumi:"project"`
 	// The site name of the association.
 	Site   string `pulumi:"site"`
 	SiteId string `pulumi:"siteId"`
@@ -97,7 +94,7 @@ type DomainArgs struct {
 	DomainName pulumi.StringInput
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectPtrInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 	// The site name of the association.
 	Site   pulumi.StringInput
 	SiteId pulumi.StringInput

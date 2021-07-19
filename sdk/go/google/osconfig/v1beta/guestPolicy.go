@@ -48,9 +48,6 @@ func NewGuestPolicy(ctx *pulumi.Context,
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GuestPolicy
 	err := ctx.RegisterResource("google-native:osconfig/v1beta:GuestPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -96,7 +93,7 @@ type guestPolicyArgs struct {
 	PackageRepositories []PackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
 	Packages []Package `pulumi:"packages"`
-	Project  string    `pulumi:"project"`
+	Project  *string   `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
 	Recipes []SoftwareRecipe `pulumi:"recipes"`
 }
@@ -116,7 +113,7 @@ type GuestPolicyArgs struct {
 	PackageRepositories PackageRepositoryArrayInput
 	// The software packages to be managed by this policy.
 	Packages PackageArrayInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// A list of Recipes to install on the VM instance.
 	Recipes SoftwareRecipeArrayInput
 }

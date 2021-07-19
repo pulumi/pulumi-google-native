@@ -18,9 +18,9 @@ func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulum
 }
 
 type LookupVariableArgs struct {
-	ConfigId   string `pulumi:"configId"`
-	Project    string `pulumi:"project"`
-	VariableId string `pulumi:"variableId"`
+	ConfigId   string  `pulumi:"configId"`
+	Project    *string `pulumi:"project"`
+	VariableId string  `pulumi:"variableId"`
 }
 
 type LookupVariableResult struct {

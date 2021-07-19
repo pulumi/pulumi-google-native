@@ -19,7 +19,7 @@ func LookupRegionBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupRegion
 
 type LookupRegionBackendServiceIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Region                        string  `pulumi:"region"`
 	Resource                      string  `pulumi:"resource"`
 }

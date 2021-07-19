@@ -18,8 +18,8 @@ func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.In
 }
 
 type LookupSecretArgs struct {
-	Project  string `pulumi:"project"`
-	SecretId string `pulumi:"secretId"`
+	Project  *string `pulumi:"project"`
+	SecretId string  `pulumi:"secretId"`
 }
 
 type LookupSecretResult struct {

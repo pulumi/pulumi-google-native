@@ -50,9 +50,6 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datamigration/v1beta1:ConnectionProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +94,7 @@ type connectionProfileArgs struct {
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The database provider.
 	Provider  *ConnectionProfileProvider `pulumi:"provider"`
 	RequestId *string                    `pulumi:"requestId"`
@@ -119,7 +116,7 @@ type ConnectionProfileArgs struct {
 	Mysql MySqlConnectionProfilePtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The database provider.
 	Provider  ConnectionProfileProviderPtrInput
 	RequestId pulumi.StringPtrInput

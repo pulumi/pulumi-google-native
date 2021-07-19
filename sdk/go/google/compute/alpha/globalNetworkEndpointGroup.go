@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,12 +60,9 @@ type GlobalNetworkEndpointGroup struct {
 func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 	name string, args *GlobalNetworkEndpointGroupArgs, opts ...pulumi.ResourceOption) (*GlobalNetworkEndpointGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GlobalNetworkEndpointGroupArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GlobalNetworkEndpointGroup
 	err := ctx.RegisterResource("google-native:compute/alpha:GlobalNetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +113,7 @@ type globalNetworkEndpointGroupArgs struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *GlobalNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
-	Project             string                                         `pulumi:"project"`
+	Project             *string                                        `pulumi:"project"`
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService *string `pulumi:"pscTargetService"`
 	RequestId        *string `pulumi:"requestId"`
@@ -149,7 +145,7 @@ type GlobalNetworkEndpointGroupArgs struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType GlobalNetworkEndpointGroupNetworkEndpointTypePtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
 	RequestId        pulumi.StringPtrInput

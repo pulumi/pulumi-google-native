@@ -45,9 +45,6 @@ func NewChannel(ctx *pulumi.Context,
 	if args.ChannelId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -90,7 +87,7 @@ type channelArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount *int   `pulumi:"retainedReleaseCount"`
 	SiteId               string `pulumi:"siteId"`
@@ -107,7 +104,7 @@ type ChannelArgs struct {
 	Labels pulumi.StringMapInput
 	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount pulumi.IntPtrInput
 	SiteId               pulumi.StringInput

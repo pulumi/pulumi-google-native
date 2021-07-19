@@ -18,10 +18,10 @@ func LookupProvider(ctx *pulumi.Context, args *LookupProviderArgs, opts ...pulum
 }
 
 type LookupProviderArgs struct {
-	Location               string `pulumi:"location"`
-	Project                string `pulumi:"project"`
-	ProviderId             string `pulumi:"providerId"`
-	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
+	Location               string  `pulumi:"location"`
+	Project                *string `pulumi:"project"`
+	ProviderId             string  `pulumi:"providerId"`
+	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
 }
 
 type LookupProviderResult struct {

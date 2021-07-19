@@ -123,9 +123,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:container/v1:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -219,7 +216,7 @@ type clusterArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	Project              string                `pulumi:"project"`
+	Project              *string               `pulumi:"project"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -299,7 +296,7 @@ type ClusterArgs struct {
 	Parent pulumi.StringPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
-	Project              pulumi.StringInput
+	Project              pulumi.StringPtrInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.

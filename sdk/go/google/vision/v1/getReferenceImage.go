@@ -18,10 +18,10 @@ func LookupReferenceImage(ctx *pulumi.Context, args *LookupReferenceImageArgs, o
 }
 
 type LookupReferenceImageArgs struct {
-	Location         string `pulumi:"location"`
-	ProductId        string `pulumi:"productId"`
-	Project          string `pulumi:"project"`
-	ReferenceImageId string `pulumi:"referenceImageId"`
+	Location         string  `pulumi:"location"`
+	ProductId        string  `pulumi:"productId"`
+	Project          *string `pulumi:"project"`
+	ReferenceImageId string  `pulumi:"referenceImageId"`
 }
 
 type LookupReferenceImageResult struct {

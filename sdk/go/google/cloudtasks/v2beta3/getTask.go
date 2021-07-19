@@ -19,7 +19,7 @@ func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.Invoke
 
 type LookupTaskArgs struct {
 	Location     string  `pulumi:"location"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	QueueId      string  `pulumi:"queueId"`
 	ResponseView *string `pulumi:"responseView"`
 	TaskId       string  `pulumi:"taskId"`

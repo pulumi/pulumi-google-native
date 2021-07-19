@@ -18,10 +18,10 @@ func LookupParticipant(ctx *pulumi.Context, args *LookupParticipantArgs, opts ..
 }
 
 type LookupParticipantArgs struct {
-	ConversationId string `pulumi:"conversationId"`
-	Location       string `pulumi:"location"`
-	ParticipantId  string `pulumi:"participantId"`
-	Project        string `pulumi:"project"`
+	ConversationId string  `pulumi:"conversationId"`
+	Location       string  `pulumi:"location"`
+	ParticipantId  string  `pulumi:"participantId"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupParticipantResult struct {

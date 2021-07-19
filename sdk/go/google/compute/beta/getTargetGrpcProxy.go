@@ -18,8 +18,8 @@ func LookupTargetGrpcProxy(ctx *pulumi.Context, args *LookupTargetGrpcProxyArgs,
 }
 
 type LookupTargetGrpcProxyArgs struct {
-	Project         string `pulumi:"project"`
-	TargetGrpcProxy string `pulumi:"targetGrpcProxy"`
+	Project         *string `pulumi:"project"`
+	TargetGrpcProxy string  `pulumi:"targetGrpcProxy"`
 }
 
 type LookupTargetGrpcProxyResult struct {

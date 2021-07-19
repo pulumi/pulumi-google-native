@@ -18,9 +18,9 @@ func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.Invo
 }
 
 type LookupQueueArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	QueueId  string `pulumi:"queueId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	QueueId  string  `pulumi:"queueId"`
 }
 
 type LookupQueueResult struct {

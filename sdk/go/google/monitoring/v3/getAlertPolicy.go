@@ -18,8 +18,8 @@ func LookupAlertPolicy(ctx *pulumi.Context, args *LookupAlertPolicyArgs, opts ..
 }
 
 type LookupAlertPolicyArgs struct {
-	AlertPolicyId string `pulumi:"alertPolicyId"`
-	Project       string `pulumi:"project"`
+	AlertPolicyId string  `pulumi:"alertPolicyId"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupAlertPolicyResult struct {

@@ -41,9 +41,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
@@ -89,9 +86,9 @@ type endpointArgs struct {
 	Name        *string `pulumi:"name"`
 	NamespaceId string  `pulumi:"namespaceId"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
-	Port      *int   `pulumi:"port"`
-	Project   string `pulumi:"project"`
-	ServiceId string `pulumi:"serviceId"`
+	Port      *int    `pulumi:"port"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
@@ -107,7 +104,7 @@ type EndpointArgs struct {
 	NamespaceId pulumi.StringInput
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port      pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	ServiceId pulumi.StringInput
 }
 

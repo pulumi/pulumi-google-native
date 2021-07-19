@@ -18,8 +18,8 @@ func LookupHistory(ctx *pulumi.Context, args *LookupHistoryArgs, opts ...pulumi.
 }
 
 type LookupHistoryArgs struct {
-	HistoryId string `pulumi:"historyId"`
-	Project   string `pulumi:"project"`
+	HistoryId string  `pulumi:"historyId"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupHistoryResult struct {

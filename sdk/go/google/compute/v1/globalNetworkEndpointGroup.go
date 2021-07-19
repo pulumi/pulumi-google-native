@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,12 +52,9 @@ type GlobalNetworkEndpointGroup struct {
 func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 	name string, args *GlobalNetworkEndpointGroupArgs, opts ...pulumi.ResourceOption) (*GlobalNetworkEndpointGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GlobalNetworkEndpointGroupArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GlobalNetworkEndpointGroup
 	err := ctx.RegisterResource("google-native:compute/v1:GlobalNetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -109,7 +105,7 @@ type globalNetworkEndpointGroupArgs struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *GlobalNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
-	Project             string                                         `pulumi:"project"`
+	Project             *string                                        `pulumi:"project"`
 	RequestId           *string                                        `pulumi:"requestId"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -135,7 +131,7 @@ type GlobalNetworkEndpointGroupArgs struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType GlobalNetworkEndpointGroupNetworkEndpointTypePtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	RequestId           pulumi.StringPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput

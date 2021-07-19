@@ -43,9 +43,6 @@ func NewPerfSampleSeries(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.StepId == nil {
 		return nil, errors.New("invalid value for required argument 'StepId'")
 	}
@@ -85,7 +82,7 @@ type perfSampleSeriesArgs struct {
 	BasicPerfSampleSeries *BasicPerfSampleSeries `pulumi:"basicPerfSampleSeries"`
 	ExecutionId           string                 `pulumi:"executionId"`
 	HistoryId             string                 `pulumi:"historyId"`
-	Project               string                 `pulumi:"project"`
+	Project               *string                `pulumi:"project"`
 	StepId                string                 `pulumi:"stepId"`
 }
 
@@ -95,7 +92,7 @@ type PerfSampleSeriesArgs struct {
 	BasicPerfSampleSeries BasicPerfSampleSeriesPtrInput
 	ExecutionId           pulumi.StringInput
 	HistoryId             pulumi.StringInput
-	Project               pulumi.StringInput
+	Project               pulumi.StringPtrInput
 	StepId                pulumi.StringInput
 }
 

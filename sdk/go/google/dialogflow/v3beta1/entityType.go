@@ -52,9 +52,6 @@ func NewEntityType(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource EntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:EntityType", name, args, &resource, opts...)
 	if err != nil {
@@ -104,7 +101,7 @@ type entityTypeArgs struct {
 	Location     string         `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
 	Redact *bool `pulumi:"redact"`
 }
@@ -128,7 +125,7 @@ type EntityTypeArgs struct {
 	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
 	Redact pulumi.BoolPtrInput
 }

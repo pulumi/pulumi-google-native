@@ -18,9 +18,9 @@ func LookupRegionNetworkEndpointGroup(ctx *pulumi.Context, args *LookupRegionNet
 }
 
 type LookupRegionNetworkEndpointGroupArgs struct {
-	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
-	Project              string `pulumi:"project"`
-	Region               string `pulumi:"region"`
+	NetworkEndpointGroup string  `pulumi:"networkEndpointGroup"`
+	Project              *string `pulumi:"project"`
+	Region               string  `pulumi:"region"`
 }
 
 type LookupRegionNetworkEndpointGroupResult struct {

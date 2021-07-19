@@ -18,12 +18,12 @@ func GetFhir(ctx *pulumi.Context, args *GetFhirArgs, opts ...pulumi.InvokeOption
 }
 
 type GetFhirArgs struct {
-	DatasetId   string `pulumi:"datasetId"`
-	FhirId      string `pulumi:"fhirId"`
-	FhirId1     string `pulumi:"fhirId1"`
-	FhirStoreId string `pulumi:"fhirStoreId"`
-	Location    string `pulumi:"location"`
-	Project     string `pulumi:"project"`
+	DatasetId   string  `pulumi:"datasetId"`
+	FhirId      string  `pulumi:"fhirId"`
+	FhirId1     string  `pulumi:"fhirId1"`
+	FhirStoreId string  `pulumi:"fhirStoreId"`
+	Location    string  `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 type GetFhirResult struct {

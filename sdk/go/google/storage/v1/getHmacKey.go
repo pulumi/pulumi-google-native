@@ -19,7 +19,7 @@ func LookupHmacKey(ctx *pulumi.Context, args *LookupHmacKeyArgs, opts ...pulumi.
 
 type LookupHmacKeyArgs struct {
 	AccessId    string  `pulumi:"accessId"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	UserProject *string `pulumi:"userProject"`
 }
 

@@ -18,8 +18,8 @@ func LookupNetworkFirewallPolicy(ctx *pulumi.Context, args *LookupNetworkFirewal
 }
 
 type LookupNetworkFirewallPolicyArgs struct {
-	FirewallPolicy string `pulumi:"firewallPolicy"`
-	Project        string `pulumi:"project"`
+	FirewallPolicy string  `pulumi:"firewallPolicy"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupNetworkFirewallPolicyResult struct {

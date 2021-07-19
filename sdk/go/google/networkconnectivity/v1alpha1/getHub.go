@@ -18,8 +18,8 @@ func LookupHub(ctx *pulumi.Context, args *LookupHubArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupHubArgs struct {
-	HubId   string `pulumi:"hubId"`
-	Project string `pulumi:"project"`
+	HubId   string  `pulumi:"hubId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupHubResult struct {

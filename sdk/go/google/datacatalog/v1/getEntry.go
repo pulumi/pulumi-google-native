@@ -18,10 +18,10 @@ func LookupEntry(ctx *pulumi.Context, args *LookupEntryArgs, opts ...pulumi.Invo
 }
 
 type LookupEntryArgs struct {
-	EntryGroupId string `pulumi:"entryGroupId"`
-	EntryId      string `pulumi:"entryId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	EntryGroupId string  `pulumi:"entryGroupId"`
+	EntryId      string  `pulumi:"entryId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupEntryResult struct {

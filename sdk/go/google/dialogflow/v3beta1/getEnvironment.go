@@ -18,10 +18,10 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 }
 
 type LookupEnvironmentArgs struct {
-	AgentId       string `pulumi:"agentId"`
-	EnvironmentId string `pulumi:"environmentId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
+	AgentId       string  `pulumi:"agentId"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupEnvironmentResult struct {

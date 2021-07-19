@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,12 +28,9 @@ type Release struct {
 func NewRelease(ctx *pulumi.Context,
 	name string, args *ReleaseArgs, opts ...pulumi.ResourceOption) (*Release, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ReleaseArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Release
 	err := ctx.RegisterResource("google-native:firebaserules/v1:Release", name, args, &resource, opts...)
 	if err != nil {
@@ -69,7 +65,7 @@ func (ReleaseState) ElementType() reflect.Type {
 type releaseArgs struct {
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
 	RulesetName *string `pulumi:"rulesetName"`
 }
@@ -78,7 +74,7 @@ type releaseArgs struct {
 type ReleaseArgs struct {
 	// Format: `projects/{project_id}/releases/{release_id}`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
 	RulesetName pulumi.StringPtrInput
 }

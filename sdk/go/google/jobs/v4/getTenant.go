@@ -18,8 +18,8 @@ func LookupTenant(ctx *pulumi.Context, args *LookupTenantArgs, opts ...pulumi.In
 }
 
 type LookupTenantArgs struct {
-	Project  string `pulumi:"project"`
-	TenantId string `pulumi:"tenantId"`
+	Project  *string `pulumi:"project"`
+	TenantId string  `pulumi:"tenantId"`
 }
 
 type LookupTenantResult struct {

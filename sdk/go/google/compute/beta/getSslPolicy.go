@@ -18,8 +18,8 @@ func LookupSslPolicy(ctx *pulumi.Context, args *LookupSslPolicyArgs, opts ...pul
 }
 
 type LookupSslPolicyArgs struct {
-	Project   string `pulumi:"project"`
-	SslPolicy string `pulumi:"sslPolicy"`
+	Project   *string `pulumi:"project"`
+	SslPolicy string  `pulumi:"sslPolicy"`
 }
 
 type LookupSslPolicyResult struct {

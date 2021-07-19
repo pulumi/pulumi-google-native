@@ -18,8 +18,8 @@ func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.
 }
 
 type LookupContactArgs struct {
-	ContactId string `pulumi:"contactId"`
-	Project   string `pulumi:"project"`
+	ContactId string  `pulumi:"contactId"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupContactResult struct {

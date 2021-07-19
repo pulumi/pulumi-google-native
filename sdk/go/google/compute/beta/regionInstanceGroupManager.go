@@ -70,9 +70,6 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -124,7 +121,7 @@ type regionInstanceGroupManagerArgs struct {
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	Project    string      `pulumi:"project"`
+	Project    *string     `pulumi:"project"`
 	Region     string      `pulumi:"region"`
 	RequestId  *string     `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -159,7 +156,7 @@ type RegionInstanceGroupManagerArgs struct {
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	Region     pulumi.StringInput
 	RequestId  pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.

@@ -18,7 +18,7 @@ func LookupProjectIamPolicy(ctx *pulumi.Context, args *LookupProjectIamPolicyArg
 }
 
 type LookupProjectIamPolicyArgs struct {
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupProjectIamPolicyResult struct {

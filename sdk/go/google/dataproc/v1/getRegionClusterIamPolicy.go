@@ -18,9 +18,9 @@ func LookupRegionClusterIamPolicy(ctx *pulumi.Context, args *LookupRegionCluster
 }
 
 type LookupRegionClusterIamPolicyArgs struct {
-	ClusterId string `pulumi:"clusterId"`
-	Project   string `pulumi:"project"`
-	RegionId  string `pulumi:"regionId"`
+	ClusterId string  `pulumi:"clusterId"`
+	Project   *string `pulumi:"project"`
+	RegionId  string  `pulumi:"regionId"`
 }
 
 type LookupRegionClusterIamPolicyResult struct {

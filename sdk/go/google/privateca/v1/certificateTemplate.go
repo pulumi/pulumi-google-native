@@ -47,9 +47,6 @@ func NewCertificateTemplate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource CertificateTemplate
 	err := ctx.RegisterResource("google-native:privateca/v1:CertificateTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -94,7 +91,7 @@ type certificateTemplateArgs struct {
 	PassthroughExtensions *CertificateExtensionConstraints `pulumi:"passthroughExtensions"`
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
 	PredefinedValues *X509Parameters `pulumi:"predefinedValues"`
-	Project          string          `pulumi:"project"`
+	Project          *string         `pulumi:"project"`
 	RequestId        *string         `pulumi:"requestId"`
 }
 
@@ -112,7 +109,7 @@ type CertificateTemplateArgs struct {
 	PassthroughExtensions CertificateExtensionConstraintsPtrInput
 	// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
 	PredefinedValues X509ParametersPtrInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	RequestId        pulumi.StringPtrInput
 }
 

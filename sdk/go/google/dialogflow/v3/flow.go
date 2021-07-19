@@ -47,9 +47,6 @@ func NewFlow(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Flow
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Flow", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +92,7 @@ type flowArgs struct {
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
 	NluSettings *GoogleCloudDialogflowCxV3NluSettings `pulumi:"nluSettings"`
-	Project     string                                `pulumi:"project"`
+	Project     *string                               `pulumi:"project"`
 	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
@@ -117,7 +114,7 @@ type FlowArgs struct {
 	Name pulumi.StringPtrInput
 	// NLU related settings of the flow.
 	NluSettings GoogleCloudDialogflowCxV3NluSettingsPtrInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayInput
 	// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.

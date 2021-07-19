@@ -41,9 +41,6 @@ func NewConsentStore(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ConsentStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:ConsentStore", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +84,7 @@ type consentStoreArgs struct {
 	Location string            `pulumi:"location"`
 	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ConsentStore resource.
@@ -103,7 +100,7 @@ type ConsentStoreArgs struct {
 	Location pulumi.StringInput
 	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (ConsentStoreArgs) ElementType() reflect.Type {

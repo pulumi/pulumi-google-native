@@ -50,9 +50,6 @@ func NewPeering(ctx *pulumi.Context,
 	if args.PeeringId == nil {
 		return nil, errors.New("invalid value for required argument 'PeeringId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Peering
 	err := ctx.RegisterResource("google-native:managedidentities/v1alpha1:Peering", name, args, &resource, opts...)
 	if err != nil {
@@ -92,7 +89,7 @@ type peeringArgs struct {
 	// Optional. Resource labels to represent user provided metadata.
 	Labels    map[string]string `pulumi:"labels"`
 	PeeringId string            `pulumi:"peeringId"`
-	Project   string            `pulumi:"project"`
+	Project   *string           `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Peering resource.
@@ -104,7 +101,7 @@ type PeeringArgs struct {
 	// Optional. Resource labels to represent user provided metadata.
 	Labels    pulumi.StringMapInput
 	PeeringId pulumi.StringInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 }
 
 func (PeeringArgs) ElementType() reflect.Type {

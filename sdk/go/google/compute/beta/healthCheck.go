@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,12 +50,9 @@ type HealthCheck struct {
 func NewHealthCheck(ctx *pulumi.Context,
 	name string, args *HealthCheckArgs, opts ...pulumi.ResourceOption) (*HealthCheck, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &HealthCheckArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource HealthCheck
 	err := ctx.RegisterResource("google-native:compute/beta:HealthCheck", name, args, &resource, opts...)
 	if err != nil {
@@ -105,7 +101,7 @@ type healthCheckArgs struct {
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name           *string         `pulumi:"name"`
-	Project        string          `pulumi:"project"`
+	Project        *string         `pulumi:"project"`
 	RequestId      *string         `pulumi:"requestId"`
 	SslHealthCheck *SSLHealthCheck `pulumi:"sslHealthCheck"`
 	TcpHealthCheck *TCPHealthCheck `pulumi:"tcpHealthCheck"`
@@ -135,7 +131,7 @@ type HealthCheckArgs struct {
 	LogConfig HealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name           pulumi.StringPtrInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 	RequestId      pulumi.StringPtrInput
 	SslHealthCheck SSLHealthCheckPtrInput
 	TcpHealthCheck TCPHealthCheckPtrInput

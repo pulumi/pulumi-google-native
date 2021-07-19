@@ -18,9 +18,9 @@ func LookupPublicDelegatedPrefix(ctx *pulumi.Context, args *LookupPublicDelegate
 }
 
 type LookupPublicDelegatedPrefixArgs struct {
-	Project               string `pulumi:"project"`
-	PublicDelegatedPrefix string `pulumi:"publicDelegatedPrefix"`
-	Region                string `pulumi:"region"`
+	Project               *string `pulumi:"project"`
+	PublicDelegatedPrefix string  `pulumi:"publicDelegatedPrefix"`
+	Region                string  `pulumi:"region"`
 }
 
 type LookupPublicDelegatedPrefixResult struct {

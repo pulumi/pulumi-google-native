@@ -48,9 +48,6 @@ func NewPacketMirroring(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -102,7 +99,7 @@ type packetMirroringArgs struct {
 	Network *PacketMirroringNetworkInfo `pulumi:"network"`
 	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority  *int    `pulumi:"priority"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 }
@@ -125,7 +122,7 @@ type PacketMirroringArgs struct {
 	Network PacketMirroringNetworkInfoPtrInput
 	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority  pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 }

@@ -66,9 +66,6 @@ func NewJob(ctx *pulumi.Context,
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -116,7 +113,7 @@ type jobArgs struct {
 	Placement JobPlacement `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob *PrestoJob `pulumi:"prestoJob"`
-	Project   string     `pulumi:"project"`
+	Project   *string    `pulumi:"project"`
 	// Optional. Job is a PySpark job.
 	PysparkJob *PySparkJob `pulumi:"pysparkJob"`
 	// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
@@ -148,7 +145,7 @@ type JobArgs struct {
 	Placement JobPlacementInput
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	// Optional. Job is a PySpark job.
 	PysparkJob PySparkJobPtrInput
 	// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.

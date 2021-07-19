@@ -57,9 +57,6 @@ func NewJob(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -102,8 +99,8 @@ type jobArgs struct {
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri *string `pulumi:"outputUri"`
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-	Priority *int   `pulumi:"priority"`
-	Project  string `pulumi:"project"`
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId *string `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
@@ -123,7 +120,7 @@ type JobArgs struct {
 	OutputUri pulumi.StringPtrInput
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
 	Priority pulumi.IntPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId pulumi.StringPtrInput
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.

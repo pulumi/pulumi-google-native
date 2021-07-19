@@ -18,9 +18,9 @@ func LookupTaxonomy(ctx *pulumi.Context, args *LookupTaxonomyArgs, opts ...pulum
 }
 
 type LookupTaxonomyArgs struct {
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	TaxonomyId string `pulumi:"taxonomyId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	TaxonomyId string  `pulumi:"taxonomyId"`
 }
 
 type LookupTaxonomyResult struct {

@@ -47,9 +47,6 @@ func NewInstruction(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instruction
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:Instruction", name, args, &resource, opts...)
 	if err != nil {
@@ -90,7 +87,7 @@ type instructionArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstruction `pulumi:"pdfInstruction"`
-	Project        string                                        `pulumi:"project"`
+	Project        *string                                       `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Instruction resource.
@@ -103,7 +100,7 @@ type InstructionArgs struct {
 	DisplayName pulumi.StringInput
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 }
 
 func (InstructionArgs) ElementType() reflect.Type {

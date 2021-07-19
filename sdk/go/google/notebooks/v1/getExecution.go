@@ -18,9 +18,9 @@ func LookupExecution(ctx *pulumi.Context, args *LookupExecutionArgs, opts ...pul
 }
 
 type LookupExecutionArgs struct {
-	ExecutionId string `pulumi:"executionId"`
-	Location    string `pulumi:"location"`
-	Project     string `pulumi:"project"`
+	ExecutionId string  `pulumi:"executionId"`
+	Location    string  `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupExecutionResult struct {

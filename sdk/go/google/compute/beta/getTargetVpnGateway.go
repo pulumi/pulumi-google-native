@@ -18,9 +18,9 @@ func LookupTargetVpnGateway(ctx *pulumi.Context, args *LookupTargetVpnGatewayArg
 }
 
 type LookupTargetVpnGatewayArgs struct {
-	Project          string `pulumi:"project"`
-	Region           string `pulumi:"region"`
-	TargetVpnGateway string `pulumi:"targetVpnGateway"`
+	Project          *string `pulumi:"project"`
+	Region           string  `pulumi:"region"`
+	TargetVpnGateway string  `pulumi:"targetVpnGateway"`
 }
 
 type LookupTargetVpnGatewayResult struct {

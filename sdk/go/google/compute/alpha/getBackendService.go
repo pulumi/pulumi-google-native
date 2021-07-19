@@ -18,8 +18,8 @@ func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, o
 }
 
 type LookupBackendServiceArgs struct {
-	BackendService string `pulumi:"backendService"`
-	Project        string `pulumi:"project"`
+	BackendService string  `pulumi:"backendService"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupBackendServiceResult struct {

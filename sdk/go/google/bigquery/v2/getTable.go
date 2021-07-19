@@ -19,7 +19,7 @@ func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.Invo
 
 type LookupTableArgs struct {
 	DatasetId      string  `pulumi:"datasetId"`
-	Project        string  `pulumi:"project"`
+	Project        *string `pulumi:"project"`
 	SelectedFields *string `pulumi:"selectedFields"`
 	TableId        string  `pulumi:"tableId"`
 }

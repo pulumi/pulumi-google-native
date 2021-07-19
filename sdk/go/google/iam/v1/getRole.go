@@ -18,8 +18,8 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 }
 
 type LookupRoleArgs struct {
-	Project string `pulumi:"project"`
-	RoleId  string `pulumi:"roleId"`
+	Project *string `pulumi:"project"`
+	RoleId  string  `pulumi:"roleId"`
 }
 
 type LookupRoleResult struct {

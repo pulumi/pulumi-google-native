@@ -18,8 +18,8 @@ func LookupHttpsHealthCheck(ctx *pulumi.Context, args *LookupHttpsHealthCheckArg
 }
 
 type LookupHttpsHealthCheckArgs struct {
-	HttpsHealthCheck string `pulumi:"httpsHealthCheck"`
-	Project          string `pulumi:"project"`
+	HttpsHealthCheck string  `pulumi:"httpsHealthCheck"`
+	Project          *string `pulumi:"project"`
 }
 
 type LookupHttpsHealthCheckResult struct {

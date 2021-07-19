@@ -18,9 +18,9 @@ func LookupNodeTemplate(ctx *pulumi.Context, args *LookupNodeTemplateArgs, opts 
 }
 
 type LookupNodeTemplateArgs struct {
-	NodeTemplate string `pulumi:"nodeTemplate"`
-	Project      string `pulumi:"project"`
-	Region       string `pulumi:"region"`
+	NodeTemplate string  `pulumi:"nodeTemplate"`
+	Project      *string `pulumi:"project"`
+	Region       string  `pulumi:"region"`
 }
 
 type LookupNodeTemplateResult struct {

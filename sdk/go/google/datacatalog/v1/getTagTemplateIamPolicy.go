@@ -18,9 +18,9 @@ func LookupTagTemplateIamPolicy(ctx *pulumi.Context, args *LookupTagTemplateIamP
 }
 
 type LookupTagTemplateIamPolicyArgs struct {
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
-	TagTemplateId string `pulumi:"tagTemplateId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
+	TagTemplateId string  `pulumi:"tagTemplateId"`
 }
 
 type LookupTagTemplateIamPolicyResult struct {

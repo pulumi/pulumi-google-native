@@ -18,9 +18,9 @@ func LookupConnectionProfile(ctx *pulumi.Context, args *LookupConnectionProfileA
 }
 
 type LookupConnectionProfileArgs struct {
-	ConnectionProfileId string `pulumi:"connectionProfileId"`
-	Location            string `pulumi:"location"`
-	Project             string `pulumi:"project"`
+	ConnectionProfileId string  `pulumi:"connectionProfileId"`
+	Location            string  `pulumi:"location"`
+	Project             *string `pulumi:"project"`
 }
 
 type LookupConnectionProfileResult struct {

@@ -38,9 +38,6 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkerConfig == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerConfig'")
 	}
@@ -78,9 +75,9 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 type autoscalingPolicyArgs struct {
 	BasicAlgorithm *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id       string `pulumi:"id"`
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	Id       string  `pulumi:"id"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfig `pulumi:"secondaryWorkerConfig"`
 	// Describes how the autoscaler will operate for primary workers.
@@ -93,7 +90,7 @@ type AutoscalingPolicyArgs struct {
 	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	Id       pulumi.StringInput
 	Location pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigPtrInput
 	// Describes how the autoscaler will operate for primary workers.

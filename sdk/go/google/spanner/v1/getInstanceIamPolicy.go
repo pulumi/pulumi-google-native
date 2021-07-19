@@ -18,8 +18,8 @@ func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyA
 }
 
 type LookupInstanceIamPolicyArgs struct {
-	InstanceId string `pulumi:"instanceId"`
-	Project    string `pulumi:"project"`
+	InstanceId string  `pulumi:"instanceId"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupInstanceIamPolicyResult struct {

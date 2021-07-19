@@ -21,7 +21,7 @@ type LookupDeviceArgs struct {
 	DeviceId   string  `pulumi:"deviceId"`
 	FieldMask  *string `pulumi:"fieldMask"`
 	Location   string  `pulumi:"location"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	RegistryId string  `pulumi:"registryId"`
 }
 

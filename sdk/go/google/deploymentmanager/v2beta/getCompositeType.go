@@ -18,8 +18,8 @@ func LookupCompositeType(ctx *pulumi.Context, args *LookupCompositeTypeArgs, opt
 }
 
 type LookupCompositeTypeArgs struct {
-	CompositeType string `pulumi:"compositeType"`
-	Project       string `pulumi:"project"`
+	CompositeType string  `pulumi:"compositeType"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupCompositeTypeResult struct {

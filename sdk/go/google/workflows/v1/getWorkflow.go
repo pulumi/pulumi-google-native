@@ -18,9 +18,9 @@ func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulum
 }
 
 type LookupWorkflowArgs struct {
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	WorkflowId string `pulumi:"workflowId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	WorkflowId string  `pulumi:"workflowId"`
 }
 
 type LookupWorkflowResult struct {

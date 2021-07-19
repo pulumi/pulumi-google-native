@@ -41,9 +41,6 @@ func NewAnnotationSpecSet(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource AnnotationSpecSet
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:AnnotationSpecSet", name, args, &resource, opts...)
 	if err != nil {
@@ -81,8 +78,8 @@ type annotationSpecSetArgs struct {
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
 	Description *string `pulumi:"description"`
 	// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
-	DisplayName string `pulumi:"displayName"`
-	Project     string `pulumi:"project"`
+	DisplayName string  `pulumi:"displayName"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AnnotationSpecSet resource.
@@ -93,7 +90,7 @@ type AnnotationSpecSetArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 }
 
 func (AnnotationSpecSetArgs) ElementType() reflect.Type {

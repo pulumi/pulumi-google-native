@@ -18,8 +18,8 @@ func LookupAttestor(ctx *pulumi.Context, args *LookupAttestorArgs, opts ...pulum
 }
 
 type LookupAttestorArgs struct {
-	AttestorId string `pulumi:"attestorId"`
-	Project    string `pulumi:"project"`
+	AttestorId string  `pulumi:"attestorId"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupAttestorResult struct {

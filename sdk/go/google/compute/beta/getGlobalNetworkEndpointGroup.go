@@ -18,8 +18,8 @@ func LookupGlobalNetworkEndpointGroup(ctx *pulumi.Context, args *LookupGlobalNet
 }
 
 type LookupGlobalNetworkEndpointGroupArgs struct {
-	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
-	Project              string `pulumi:"project"`
+	NetworkEndpointGroup string  `pulumi:"networkEndpointGroup"`
+	Project              *string `pulumi:"project"`
 }
 
 type LookupGlobalNetworkEndpointGroupResult struct {

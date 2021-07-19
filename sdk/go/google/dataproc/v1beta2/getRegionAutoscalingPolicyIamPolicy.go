@@ -20,7 +20,7 @@ func LookupRegionAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupReg
 type LookupRegionAutoscalingPolicyIamPolicyArgs struct {
 	AutoscalingPolicyId           string  `pulumi:"autoscalingPolicyId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	RegionId                      string  `pulumi:"regionId"`
 }
 

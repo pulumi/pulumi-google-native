@@ -49,9 +49,6 @@ func NewIntent(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Intent
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Intent", name, args, &resource, opts...)
 	if err != nil {
@@ -100,8 +97,8 @@ type intentArgs struct {
 	// The collection of parameters associated with the intent.
 	Parameters []GoogleCloudDialogflowCxV3IntentParameter `pulumi:"parameters"`
 	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority *int   `pulumi:"priority"`
-	Project  string `pulumi:"project"`
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// The collection of training phrases the agent is trained on to identify the intent.
 	TrainingPhrases []GoogleCloudDialogflowCxV3IntentTrainingPhrase `pulumi:"trainingPhrases"`
 }
@@ -125,7 +122,7 @@ type IntentArgs struct {
 	Parameters GoogleCloudDialogflowCxV3IntentParameterArrayInput
 	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The collection of training phrases the agent is trained on to identify the intent.
 	TrainingPhrases GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayInput
 }

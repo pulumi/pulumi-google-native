@@ -21,7 +21,7 @@ type LookupInternalRangeIamPolicyArgs struct {
 	InternalRangeId               string  `pulumi:"internalRangeId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupInternalRangeIamPolicyResult struct {

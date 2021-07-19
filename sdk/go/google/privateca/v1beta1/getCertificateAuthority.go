@@ -18,9 +18,9 @@ func LookupCertificateAuthority(ctx *pulumi.Context, args *LookupCertificateAuth
 }
 
 type LookupCertificateAuthorityArgs struct {
-	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
-	Location               string `pulumi:"location"`
-	Project                string `pulumi:"project"`
+	CertificateAuthorityId string  `pulumi:"certificateAuthorityId"`
+	Location               string  `pulumi:"location"`
+	Project                *string `pulumi:"project"`
 }
 
 type LookupCertificateAuthorityResult struct {

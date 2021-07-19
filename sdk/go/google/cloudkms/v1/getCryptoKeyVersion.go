@@ -18,11 +18,11 @@ func LookupCryptoKeyVersion(ctx *pulumi.Context, args *LookupCryptoKeyVersionArg
 }
 
 type LookupCryptoKeyVersionArgs struct {
-	CryptoKeyId        string `pulumi:"cryptoKeyId"`
-	CryptoKeyVersionId string `pulumi:"cryptoKeyVersionId"`
-	KeyRingId          string `pulumi:"keyRingId"`
-	Location           string `pulumi:"location"`
-	Project            string `pulumi:"project"`
+	CryptoKeyId        string  `pulumi:"cryptoKeyId"`
+	CryptoKeyVersionId string  `pulumi:"cryptoKeyVersionId"`
+	KeyRingId          string  `pulumi:"keyRingId"`
+	Location           string  `pulumi:"location"`
+	Project            *string `pulumi:"project"`
 }
 
 type LookupCryptoKeyVersionResult struct {

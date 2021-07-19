@@ -18,9 +18,9 @@ func LookupOsPolicyAssignment(ctx *pulumi.Context, args *LookupOsPolicyAssignmen
 }
 
 type LookupOsPolicyAssignmentArgs struct {
-	Location             string `pulumi:"location"`
-	OsPolicyAssignmentId string `pulumi:"osPolicyAssignmentId"`
-	Project              string `pulumi:"project"`
+	Location             string  `pulumi:"location"`
+	OsPolicyAssignmentId string  `pulumi:"osPolicyAssignmentId"`
+	Project              *string `pulumi:"project"`
 }
 
 type LookupOsPolicyAssignmentResult struct {

@@ -18,8 +18,8 @@ func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupKeyArgs struct {
-	KeyId   string `pulumi:"keyId"`
-	Project string `pulumi:"project"`
+	KeyId   string  `pulumi:"keyId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupKeyResult struct {

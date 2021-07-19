@@ -21,7 +21,7 @@ type LookupDomainBackupIamPolicyArgs struct {
 	BackupId                      string  `pulumi:"backupId"`
 	DomainId                      string  `pulumi:"domainId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupDomainBackupIamPolicyResult struct {

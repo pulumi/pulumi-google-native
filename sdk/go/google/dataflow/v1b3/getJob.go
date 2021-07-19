@@ -20,7 +20,7 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 type LookupJobArgs struct {
 	JobId    string  `pulumi:"jobId"`
 	Location string  `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	View     *string `pulumi:"view"`
 }
 

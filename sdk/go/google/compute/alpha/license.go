@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,12 +37,9 @@ type License struct {
 func NewLicense(ctx *pulumi.Context,
 	name string, args *LicenseArgs, opts ...pulumi.ResourceOption) (*License, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LicenseArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource License
 	err := ctx.RegisterResource("google-native:compute/alpha:License", name, args, &resource, opts...)
 	if err != nil {
@@ -80,7 +76,7 @@ type licenseArgs struct {
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 	Name                 *string                      `pulumi:"name"`
-	Project              string                       `pulumi:"project"`
+	Project              *string                      `pulumi:"project"`
 	RequestId            *string                      `pulumi:"requestId"`
 	ResourceRequirements *LicenseResourceRequirements `pulumi:"resourceRequirements"`
 	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
@@ -93,7 +89,7 @@ type LicenseArgs struct {
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 	Name                 pulumi.StringPtrInput
-	Project              pulumi.StringInput
+	Project              pulumi.StringPtrInput
 	RequestId            pulumi.StringPtrInput
 	ResourceRequirements LicenseResourceRequirementsPtrInput
 	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.

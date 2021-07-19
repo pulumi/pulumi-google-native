@@ -47,9 +47,6 @@ func NewFutureReservation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -92,7 +89,7 @@ type futureReservationArgs struct {
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix *string `pulumi:"namePrefix"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	RequestId  *string `pulumi:"requestId"`
 	// List of Projects/Folders to share with.
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
@@ -112,7 +109,7 @@ type FutureReservationArgs struct {
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringPtrInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	// List of Projects/Folders to share with.
 	ShareSettings ShareSettingsPtrInput

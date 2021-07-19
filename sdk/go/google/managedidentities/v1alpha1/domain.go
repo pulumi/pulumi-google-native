@@ -54,9 +54,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args.Locations == nil {
 		return nil, errors.New("invalid value for required argument 'Locations'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ReservedIpRange == nil {
 		return nil, errors.New("invalid value for required argument 'ReservedIpRange'")
 	}
@@ -103,7 +100,7 @@ type domainArgs struct {
 	Locations []string `pulumi:"locations"`
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName *string `pulumi:"managedIdentitiesAdminName"`
-	Project                    string  `pulumi:"project"`
+	Project                    *string `pulumi:"project"`
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
@@ -121,7 +118,7 @@ type DomainArgs struct {
 	Locations pulumi.StringArrayInput
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName pulumi.StringPtrInput
-	Project                    pulumi.StringInput
+	Project                    pulumi.StringPtrInput
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringInput
 }

@@ -79,9 +79,6 @@ func NewForwardingRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -149,7 +146,7 @@ type forwardingRuleArgs struct {
 	PortRange *string `pulumi:"portRange"`
 	// The ports field is only supported when the forwarding rule references a backend_service directly. Supported load balancing products are Internal TCP/UDP Load Balancing and Network Load Balancing. Only packets addressed to the specified list of ports are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
 	Ports     []string `pulumi:"ports"`
-	Project   string   `pulumi:"project"`
+	Project   *string  `pulumi:"project"`
 	Region    string   `pulumi:"region"`
 	RequestId *string  `pulumi:"requestId"`
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing.
@@ -195,7 +192,7 @@ type ForwardingRuleArgs struct {
 	PortRange pulumi.StringPtrInput
 	// The ports field is only supported when the forwarding rule references a backend_service directly. Supported load balancing products are Internal TCP/UDP Load Balancing and Network Load Balancing. Only packets addressed to the specified list of ports are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
 	Ports     pulumi.StringArrayInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing.

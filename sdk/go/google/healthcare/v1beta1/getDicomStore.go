@@ -18,10 +18,10 @@ func LookupDicomStore(ctx *pulumi.Context, args *LookupDicomStoreArgs, opts ...p
 }
 
 type LookupDicomStoreArgs struct {
-	DatasetId    string `pulumi:"datasetId"`
-	DicomStoreId string `pulumi:"dicomStoreId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	DatasetId    string  `pulumi:"datasetId"`
+	DicomStoreId string  `pulumi:"dicomStoreId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupDicomStoreResult struct {

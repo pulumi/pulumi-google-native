@@ -57,9 +57,6 @@ func NewDomain(ctx *pulumi.Context,
 	if args.Locations == nil {
 		return nil, errors.New("invalid value for required argument 'Locations'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ReservedIpRange == nil {
 		return nil, errors.New("invalid value for required argument 'ReservedIpRange'")
 	}
@@ -106,7 +103,7 @@ type domainArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
-	Project   string   `pulumi:"project"`
+	Project   *string  `pulumi:"project"`
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
@@ -124,7 +121,7 @@ type DomainArgs struct {
 	Labels pulumi.StringMapInput
 	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringInput
 }

@@ -18,9 +18,9 @@ func LookupSpoke(ctx *pulumi.Context, args *LookupSpokeArgs, opts ...pulumi.Invo
 }
 
 type LookupSpokeArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	SpokeId  string `pulumi:"spokeId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	SpokeId  string  `pulumi:"spokeId"`
 }
 
 type LookupSpokeResult struct {

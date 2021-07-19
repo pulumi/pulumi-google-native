@@ -18,9 +18,9 @@ func LookupMigrationJob(ctx *pulumi.Context, args *LookupMigrationJobArgs, opts 
 }
 
 type LookupMigrationJobArgs struct {
-	Location       string `pulumi:"location"`
-	MigrationJobId string `pulumi:"migrationJobId"`
-	Project        string `pulumi:"project"`
+	Location       string  `pulumi:"location"`
+	MigrationJobId string  `pulumi:"migrationJobId"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupMigrationJobResult struct {

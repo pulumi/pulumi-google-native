@@ -18,11 +18,11 @@ func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulum
 }
 
 type LookupEndpointArgs struct {
-	EndpointId  string `pulumi:"endpointId"`
-	Location    string `pulumi:"location"`
-	NamespaceId string `pulumi:"namespaceId"`
-	Project     string `pulumi:"project"`
-	ServiceId   string `pulumi:"serviceId"`
+	EndpointId  string  `pulumi:"endpointId"`
+	Location    string  `pulumi:"location"`
+	NamespaceId string  `pulumi:"namespaceId"`
+	Project     *string `pulumi:"project"`
+	ServiceId   string  `pulumi:"serviceId"`
 }
 
 type LookupEndpointResult struct {

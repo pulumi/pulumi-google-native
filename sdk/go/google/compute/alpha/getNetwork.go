@@ -18,8 +18,8 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 }
 
 type LookupNetworkArgs struct {
-	Network string `pulumi:"network"`
-	Project string `pulumi:"project"`
+	Network string  `pulumi:"network"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupNetworkResult struct {

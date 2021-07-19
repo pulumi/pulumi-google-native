@@ -52,9 +52,6 @@ func NewJob(ctx *pulumi.Context,
 	if args.JobId == nil {
 		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:ml/v1:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +94,7 @@ type jobArgs struct {
 	PredictionInput *GoogleCloudMlV1__PredictionInput `pulumi:"predictionInput"`
 	// The current prediction job result.
 	PredictionOutput *GoogleCloudMlV1__PredictionOutput `pulumi:"predictionOutput"`
-	Project          string                             `pulumi:"project"`
+	Project          *string                            `pulumi:"project"`
 	// Input parameters to create a training job.
 	TrainingInput *GoogleCloudMlV1__TrainingInput `pulumi:"trainingInput"`
 	// The current training job result.
@@ -116,7 +113,7 @@ type JobArgs struct {
 	PredictionInput GoogleCloudMlV1__PredictionInputPtrInput
 	// The current prediction job result.
 	PredictionOutput GoogleCloudMlV1__PredictionOutputPtrInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	// Input parameters to create a training job.
 	TrainingInput GoogleCloudMlV1__TrainingInputPtrInput
 	// The current training job result.

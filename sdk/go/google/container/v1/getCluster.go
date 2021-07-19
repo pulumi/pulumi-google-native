@@ -18,9 +18,9 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	ClusterId string `pulumi:"clusterId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
+	ClusterId string  `pulumi:"clusterId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupClusterResult struct {

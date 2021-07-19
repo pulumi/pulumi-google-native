@@ -43,9 +43,6 @@ func NewServerTlsPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServerTlsPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'ServerTlsPolicyId'")
 	}
@@ -92,7 +89,7 @@ type serverTlsPolicyArgs struct {
 	MtlsPolicy *MTLSPolicy `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate *GoogleCloudNetworksecurityV1beta1CertificateProvider `pulumi:"serverCertificate"`
 	ServerTlsPolicyId string                                                `pulumi:"serverTlsPolicyId"`
@@ -111,7 +108,7 @@ type ServerTlsPolicyArgs struct {
 	MtlsPolicy MTLSPolicyPtrInput
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate GoogleCloudNetworksecurityV1beta1CertificateProviderPtrInput
 	ServerTlsPolicyId pulumi.StringInput

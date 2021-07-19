@@ -18,9 +18,9 @@ func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.Invoke
 }
 
 type LookupDiskArgs struct {
-	Disk    string `pulumi:"disk"`
-	Project string `pulumi:"project"`
-	Zone    string `pulumi:"zone"`
+	Disk    string  `pulumi:"disk"`
+	Project *string `pulumi:"project"`
+	Zone    string  `pulumi:"zone"`
 }
 
 type LookupDiskResult struct {

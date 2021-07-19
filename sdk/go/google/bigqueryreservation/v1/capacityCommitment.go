@@ -44,9 +44,6 @@ func NewCapacityCommitment(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource CapacityCommitment
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1:CapacityCommitment", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type capacityCommitmentArgs struct {
 	Location                        string  `pulumi:"location"`
 	// Capacity commitment commitment plan.
 	Plan    *CapacityCommitmentPlan `pulumi:"plan"`
-	Project string                  `pulumi:"project"`
+	Project *string                 `pulumi:"project"`
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan *CapacityCommitmentRenewalPlan `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
@@ -98,7 +95,7 @@ type CapacityCommitmentArgs struct {
 	Location                        pulumi.StringInput
 	// Capacity commitment commitment plan.
 	Plan    CapacityCommitmentPlanPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan CapacityCommitmentRenewalPlanPtrInput
 	// Number of slots in this commitment.

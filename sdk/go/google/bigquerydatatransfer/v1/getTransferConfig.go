@@ -18,9 +18,9 @@ func LookupTransferConfig(ctx *pulumi.Context, args *LookupTransferConfigArgs, o
 }
 
 type LookupTransferConfigArgs struct {
-	Location         string `pulumi:"location"`
-	Project          string `pulumi:"project"`
-	TransferConfigId string `pulumi:"transferConfigId"`
+	Location         string  `pulumi:"location"`
+	Project          *string `pulumi:"project"`
+	TransferConfigId string  `pulumi:"transferConfigId"`
 }
 
 type LookupTransferConfigResult struct {

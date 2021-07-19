@@ -18,8 +18,8 @@ func LookupTypeProvider(ctx *pulumi.Context, args *LookupTypeProviderArgs, opts 
 }
 
 type LookupTypeProviderArgs struct {
-	Project      string `pulumi:"project"`
-	TypeProvider string `pulumi:"typeProvider"`
+	Project      *string `pulumi:"project"`
+	TypeProvider string  `pulumi:"typeProvider"`
 }
 
 type LookupTypeProviderResult struct {

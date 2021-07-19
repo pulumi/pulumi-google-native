@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,12 +49,9 @@ type NetworkFirewallPolicy struct {
 func NewNetworkFirewallPolicy(ctx *pulumi.Context,
 	name string, args *NetworkFirewallPolicyArgs, opts ...pulumi.ResourceOption) (*NetworkFirewallPolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NetworkFirewallPolicyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource NetworkFirewallPolicy
 	err := ctx.RegisterResource("google-native:compute/alpha:NetworkFirewallPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -94,7 +90,7 @@ type networkFirewallPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName *string `pulumi:"displayName"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	RequestId   *string `pulumi:"requestId"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules []FirewallPolicyRule `pulumi:"rules"`
@@ -110,7 +106,7 @@ type NetworkFirewallPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	DisplayName pulumi.StringPtrInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	RequestId   pulumi.StringPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
 	Rules FirewallPolicyRuleArrayInput

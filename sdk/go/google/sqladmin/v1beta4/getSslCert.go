@@ -18,9 +18,9 @@ func LookupSslCert(ctx *pulumi.Context, args *LookupSslCertArgs, opts ...pulumi.
 }
 
 type LookupSslCertArgs struct {
-	Instance        string `pulumi:"instance"`
-	Project         string `pulumi:"project"`
-	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
+	Instance        string  `pulumi:"instance"`
+	Project         *string `pulumi:"project"`
+	Sha1Fingerprint string  `pulumi:"sha1Fingerprint"`
 }
 
 type LookupSslCertResult struct {

@@ -47,9 +47,6 @@ func NewConfig(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Config
 	err := ctx.RegisterResource("google-native:gameservices/v1:Config", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +90,7 @@ type configArgs struct {
 	Location string            `pulumi:"location"`
 	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The autoscaling settings.
 	ScalingConfigs []ScalingConfig `pulumi:"scalingConfigs"`
 }
@@ -111,7 +108,7 @@ type ConfigArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The autoscaling settings.
 	ScalingConfigs ScalingConfigArrayInput
 }

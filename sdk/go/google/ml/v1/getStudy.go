@@ -18,9 +18,9 @@ func LookupStudy(ctx *pulumi.Context, args *LookupStudyArgs, opts ...pulumi.Invo
 }
 
 type LookupStudyArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	StudyId  string `pulumi:"studyId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	StudyId  string  `pulumi:"studyId"`
 }
 
 type LookupStudyResult struct {

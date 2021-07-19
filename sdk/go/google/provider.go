@@ -31,6 +31,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.PartnerName == nil {
 		args.PartnerName = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PARTNER_NAME").(string))
 	}
+	if args.Project == nil {
+		args.Project = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string))
+	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:google-native", name, args, &resource, opts...)
 	if err != nil {
@@ -46,6 +49,8 @@ type providerArgs struct {
 	DisablePartnerName *bool `pulumi:"disablePartnerName"`
 	// A Google Partner Name to facilitate partner resource usage attribution.
 	PartnerName *string `pulumi:"partnerName"`
+	// A Google Cloud project name.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -56,6 +61,8 @@ type ProviderArgs struct {
 	DisablePartnerName pulumi.BoolPtrInput
 	// A Google Partner Name to facilitate partner resource usage attribution.
 	PartnerName pulumi.StringPtrInput
+	// A Google Cloud project name.
+	Project pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

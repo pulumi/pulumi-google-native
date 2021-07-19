@@ -36,9 +36,6 @@ func NewRegistryGroupIamPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.RegistryId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
@@ -80,7 +77,7 @@ type registryGroupIamPolicyArgs struct {
 	Etag       *string `pulumi:"etag"`
 	GroupId    string  `pulumi:"groupId"`
 	Location   string  `pulumi:"location"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	RegistryId string  `pulumi:"registryId"`
 	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Version *int `pulumi:"version"`
@@ -94,7 +91,7 @@ type RegistryGroupIamPolicyArgs struct {
 	Etag       pulumi.StringPtrInput
 	GroupId    pulumi.StringInput
 	Location   pulumi.StringInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RegistryId pulumi.StringInput
 	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Version pulumi.IntPtrInput

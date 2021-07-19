@@ -18,8 +18,8 @@ func LookupUrlMap(ctx *pulumi.Context, args *LookupUrlMapArgs, opts ...pulumi.In
 }
 
 type LookupUrlMapArgs struct {
-	Project string `pulumi:"project"`
-	UrlMap  string `pulumi:"urlMap"`
+	Project *string `pulumi:"project"`
+	UrlMap  string  `pulumi:"urlMap"`
 }
 
 type LookupUrlMapResult struct {

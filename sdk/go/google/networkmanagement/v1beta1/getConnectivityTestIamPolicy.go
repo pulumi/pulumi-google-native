@@ -20,7 +20,7 @@ func LookupConnectivityTestIamPolicy(ctx *pulumi.Context, args *LookupConnectivi
 type LookupConnectivityTestIamPolicyArgs struct {
 	ConnectivityTestId            string  `pulumi:"connectivityTestId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupConnectivityTestIamPolicyResult struct {

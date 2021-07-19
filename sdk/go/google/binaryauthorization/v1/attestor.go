@@ -35,9 +35,6 @@ func NewAttestor(ctx *pulumi.Context,
 	if args.AttestorId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Attestor
 	err := ctx.RegisterResource("google-native:binaryauthorization/v1:Attestor", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type attestorArgs struct {
 	Description *string `pulumi:"description"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote *UserOwnedGrafeasNote `pulumi:"userOwnedGrafeasNote"`
 }
@@ -87,7 +84,7 @@ type AttestorArgs struct {
 	Description pulumi.StringPtrInput
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote UserOwnedGrafeasNotePtrInput
 }

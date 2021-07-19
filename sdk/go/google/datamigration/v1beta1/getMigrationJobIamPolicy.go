@@ -21,7 +21,7 @@ type LookupMigrationJobIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	MigrationJobId                string  `pulumi:"migrationJobId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupMigrationJobIamPolicyResult struct {

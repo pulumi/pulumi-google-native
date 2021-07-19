@@ -58,9 +58,6 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource NodePool
 	err := ctx.RegisterResource("google-native:container/v1:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -113,7 +110,7 @@ type nodePoolArgs struct {
 	Name *string `pulumi:"name"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  *string `pulumi:"parent"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -142,7 +139,7 @@ type NodePoolArgs struct {
 	Name pulumi.StringPtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.

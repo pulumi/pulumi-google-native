@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Hub struct {
 func NewHub(ctx *pulumi.Context,
 	name string, args *HubArgs, opts ...pulumi.ResourceOption) (*Hub, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &HubArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Hub
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Hub", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +78,7 @@ type hubArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Time when the Hub was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -99,7 +95,7 @@ type HubArgs struct {
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Hub resource.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Time when the Hub was updated.
 	UpdateTime pulumi.StringPtrInput

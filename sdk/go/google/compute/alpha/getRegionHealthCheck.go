@@ -18,9 +18,9 @@ func LookupRegionHealthCheck(ctx *pulumi.Context, args *LookupRegionHealthCheckA
 }
 
 type LookupRegionHealthCheckArgs struct {
-	HealthCheck string `pulumi:"healthCheck"`
-	Project     string `pulumi:"project"`
-	Region      string `pulumi:"region"`
+	HealthCheck string  `pulumi:"healthCheck"`
+	Project     *string `pulumi:"project"`
+	Region      string  `pulumi:"region"`
 }
 
 type LookupRegionHealthCheckResult struct {

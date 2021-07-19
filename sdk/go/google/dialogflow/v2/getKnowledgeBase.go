@@ -18,9 +18,9 @@ func LookupKnowledgeBase(ctx *pulumi.Context, args *LookupKnowledgeBaseArgs, opt
 }
 
 type LookupKnowledgeBaseArgs struct {
-	KnowledgeBaseId string `pulumi:"knowledgeBaseId"`
-	Location        string `pulumi:"location"`
-	Project         string `pulumi:"project"`
+	KnowledgeBaseId string  `pulumi:"knowledgeBaseId"`
+	Location        string  `pulumi:"location"`
+	Project         *string `pulumi:"project"`
 }
 
 type LookupKnowledgeBaseResult struct {

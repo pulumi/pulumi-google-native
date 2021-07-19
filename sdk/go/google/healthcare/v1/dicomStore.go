@@ -36,9 +36,6 @@ func NewDicomStore(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource DicomStore
 	err := ctx.RegisterResource("google-native:healthcare/v1:DicomStore", name, args, &resource, opts...)
 	if err != nil {
@@ -80,7 +77,7 @@ type dicomStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
-	Project            string              `pulumi:"project"`
+	Project            *string             `pulumi:"project"`
 }
 
 // The set of arguments for constructing a DicomStore resource.
@@ -94,7 +91,7 @@ type DicomStoreArgs struct {
 	Name pulumi.StringPtrInput
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigPtrInput
-	Project            pulumi.StringInput
+	Project            pulumi.StringPtrInput
 }
 
 func (DicomStoreArgs) ElementType() reflect.Type {

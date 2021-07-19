@@ -18,8 +18,8 @@ func LookupScanConfig(ctx *pulumi.Context, args *LookupScanConfigArgs, opts ...p
 }
 
 type LookupScanConfigArgs struct {
-	Project      string `pulumi:"project"`
-	ScanConfigId string `pulumi:"scanConfigId"`
+	Project      *string `pulumi:"project"`
+	ScanConfigId string  `pulumi:"scanConfigId"`
 }
 
 type LookupScanConfigResult struct {

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,12 +54,9 @@ type Note struct {
 func NewNote(ctx *pulumi.Context,
 	name string, args *NoteArgs, opts ...pulumi.ResourceOption) (*Note, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NoteArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Note
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:Note", name, args, &resource, opts...)
 	if err != nil {
@@ -114,7 +110,7 @@ type noteArgs struct {
 	NoteId *string `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package *Package `pulumi:"package"`
-	Project string   `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A one sentence description of this `Note`.
@@ -148,7 +144,7 @@ type NoteArgs struct {
 	NoteId pulumi.StringPtrInput
 	// A note describing a package hosted by various package managers.
 	Package PackagePtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// URLs associated with this note
 	RelatedUrl RelatedUrlArrayInput
 	// A one sentence description of this `Note`.

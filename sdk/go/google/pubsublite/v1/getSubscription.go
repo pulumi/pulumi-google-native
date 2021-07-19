@@ -18,9 +18,9 @@ func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts 
 }
 
 type LookupSubscriptionArgs struct {
-	Location       string `pulumi:"location"`
-	Project        string `pulumi:"project"`
-	SubscriptionId string `pulumi:"subscriptionId"`
+	Location       string  `pulumi:"location"`
+	Project        *string `pulumi:"project"`
+	SubscriptionId string  `pulumi:"subscriptionId"`
 }
 
 type LookupSubscriptionResult struct {

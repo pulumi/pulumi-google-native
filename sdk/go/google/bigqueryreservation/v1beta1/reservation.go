@@ -37,9 +37,6 @@ func NewReservation(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Reservation
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1beta1:Reservation", name, args, &resource, opts...)
 	if err != nil {
@@ -77,7 +74,7 @@ type reservationArgs struct {
 	Location        string `pulumi:"location"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name          *string `pulumi:"name"`
-	Project       string  `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	ReservationId *string `pulumi:"reservationId"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity *string `pulumi:"slotCapacity"`
@@ -90,7 +87,7 @@ type ReservationArgs struct {
 	Location        pulumi.StringInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name          pulumi.StringPtrInput
-	Project       pulumi.StringInput
+	Project       pulumi.StringPtrInput
 	ReservationId pulumi.StringPtrInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity pulumi.StringPtrInput

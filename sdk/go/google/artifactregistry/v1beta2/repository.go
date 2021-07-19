@@ -41,9 +41,6 @@ func NewRepository(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Repository
 	err := ctx.RegisterResource("google-native:artifactregistry/v1beta2:Repository", name, args, &resource, opts...)
 	if err != nil {
@@ -89,7 +86,7 @@ type repositoryArgs struct {
 	Location string            `pulumi:"location"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         *string `pulumi:"name"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -110,7 +107,7 @@ type RepositoryArgs struct {
 	Location pulumi.StringInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput

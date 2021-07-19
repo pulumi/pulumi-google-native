@@ -18,9 +18,9 @@ func LookupConversation(ctx *pulumi.Context, args *LookupConversationArgs, opts 
 }
 
 type LookupConversationArgs struct {
-	ConversationId string `pulumi:"conversationId"`
-	Location       string `pulumi:"location"`
-	Project        string `pulumi:"project"`
+	ConversationId string  `pulumi:"conversationId"`
+	Location       string  `pulumi:"location"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupConversationResult struct {

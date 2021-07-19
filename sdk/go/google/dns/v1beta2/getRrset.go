@@ -21,7 +21,7 @@ type LookupRrsetArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	ManagedZone       string  `pulumi:"managedZone"`
 	Name              string  `pulumi:"name"`
-	Project           string  `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 	Type              string  `pulumi:"type"`
 }
 

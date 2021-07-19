@@ -18,8 +18,8 @@ func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArg
 }
 
 type LookupInstanceTemplateArgs struct {
-	InstanceTemplate string `pulumi:"instanceTemplate"`
-	Project          string `pulumi:"project"`
+	InstanceTemplate string  `pulumi:"instanceTemplate"`
+	Project          *string `pulumi:"project"`
 }
 
 type LookupInstanceTemplateResult struct {

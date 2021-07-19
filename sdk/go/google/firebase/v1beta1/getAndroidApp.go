@@ -18,8 +18,8 @@ func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...p
 }
 
 type LookupAndroidAppArgs struct {
-	AndroidAppId string `pulumi:"androidAppId"`
-	Project      string `pulumi:"project"`
+	AndroidAppId string  `pulumi:"androidAppId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupAndroidAppResult struct {

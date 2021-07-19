@@ -18,8 +18,8 @@ func LookupGlobalPublicDelegatedPrefix(ctx *pulumi.Context, args *LookupGlobalPu
 }
 
 type LookupGlobalPublicDelegatedPrefixArgs struct {
-	Project               string `pulumi:"project"`
-	PublicDelegatedPrefix string `pulumi:"publicDelegatedPrefix"`
+	Project               *string `pulumi:"project"`
+	PublicDelegatedPrefix string  `pulumi:"publicDelegatedPrefix"`
 }
 
 type LookupGlobalPublicDelegatedPrefixResult struct {

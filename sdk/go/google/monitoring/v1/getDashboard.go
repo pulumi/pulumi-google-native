@@ -18,8 +18,8 @@ func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pul
 }
 
 type LookupDashboardArgs struct {
-	DashboardId string `pulumi:"dashboardId"`
-	Project     string `pulumi:"project"`
+	DashboardId string  `pulumi:"dashboardId"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupDashboardResult struct {

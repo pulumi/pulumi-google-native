@@ -18,9 +18,9 @@ func LookupReplay(ctx *pulumi.Context, args *LookupReplayArgs, opts ...pulumi.In
 }
 
 type LookupReplayArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	ReplayId string `pulumi:"replayId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	ReplayId string  `pulumi:"replayId"`
 }
 
 type LookupReplayResult struct {

@@ -19,7 +19,7 @@ func LookupInterconnectAttachmentIamPolicy(ctx *pulumi.Context, args *LookupInte
 
 type LookupInterconnectAttachmentIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Region                        string  `pulumi:"region"`
 	Resource                      string  `pulumi:"resource"`
 }

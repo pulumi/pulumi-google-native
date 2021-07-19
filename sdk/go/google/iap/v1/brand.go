@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,12 +29,9 @@ type Brand struct {
 func NewBrand(ctx *pulumi.Context,
 	name string, args *BrandArgs, opts ...pulumi.ResourceOption) (*Brand, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BrandArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Brand
 	err := ctx.RegisterResource("google-native:iap/v1:Brand", name, args, &resource, opts...)
 	if err != nil {
@@ -70,7 +66,7 @@ func (BrandState) ElementType() reflect.Type {
 type brandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle *string `pulumi:"applicationTitle"`
-	Project          string  `pulumi:"project"`
+	Project          *string `pulumi:"project"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail *string `pulumi:"supportEmail"`
 }
@@ -79,7 +75,7 @@ type brandArgs struct {
 type BrandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringPtrInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail pulumi.StringPtrInput
 }

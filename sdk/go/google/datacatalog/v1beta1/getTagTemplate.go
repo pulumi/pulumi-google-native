@@ -18,9 +18,9 @@ func LookupTagTemplate(ctx *pulumi.Context, args *LookupTagTemplateArgs, opts ..
 }
 
 type LookupTagTemplateArgs struct {
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
-	TagTemplateId string `pulumi:"tagTemplateId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
+	TagTemplateId string  `pulumi:"tagTemplateId"`
 }
 
 type LookupTagTemplateResult struct {

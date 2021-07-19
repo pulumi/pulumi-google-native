@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,12 +38,9 @@ type TargetGrpcProxy struct {
 func NewTargetGrpcProxy(ctx *pulumi.Context,
 	name string, args *TargetGrpcProxyArgs, opts ...pulumi.ResourceOption) (*TargetGrpcProxy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TargetGrpcProxyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource TargetGrpcProxy
 	err := ctx.RegisterResource("google-native:compute/beta:TargetGrpcProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +77,7 @@ type targetGrpcProxyArgs struct {
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 	UrlMap *string `pulumi:"urlMap"`
@@ -95,7 +91,7 @@ type TargetGrpcProxyArgs struct {
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 	UrlMap pulumi.StringPtrInput

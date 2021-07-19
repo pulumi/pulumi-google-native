@@ -20,7 +20,7 @@ func LookupHubIamPolicy(ctx *pulumi.Context, args *LookupHubIamPolicyArgs, opts 
 type LookupHubIamPolicyArgs struct {
 	HubId                         string  `pulumi:"hubId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupHubIamPolicyResult struct {

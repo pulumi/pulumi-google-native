@@ -60,9 +60,6 @@ func NewEvaluationJob(ctx *pulumi.Context,
 	if args.ModelVersion == nil {
 		return nil, errors.New("invalid value for required argument 'ModelVersion'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
@@ -107,8 +104,8 @@ type evaluationJobArgs struct {
 	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth bool `pulumi:"labelMissingGroundTruth"`
 	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
-	ModelVersion string `pulumi:"modelVersion"`
-	Project      string `pulumi:"project"`
+	ModelVersion string  `pulumi:"modelVersion"`
+	Project      *string `pulumi:"project"`
 	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule string `pulumi:"schedule"`
 }
@@ -125,7 +122,7 @@ type EvaluationJobArgs struct {
 	LabelMissingGroundTruth pulumi.BoolInput
 	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion pulumi.StringInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule pulumi.StringInput
 }

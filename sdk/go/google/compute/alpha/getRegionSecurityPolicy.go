@@ -18,9 +18,9 @@ func LookupRegionSecurityPolicy(ctx *pulumi.Context, args *LookupRegionSecurityP
 }
 
 type LookupRegionSecurityPolicyArgs struct {
-	Project        string `pulumi:"project"`
-	Region         string `pulumi:"region"`
-	SecurityPolicy string `pulumi:"securityPolicy"`
+	Project        *string `pulumi:"project"`
+	Region         string  `pulumi:"region"`
+	SecurityPolicy string  `pulumi:"securityPolicy"`
 }
 
 type LookupRegionSecurityPolicyResult struct {

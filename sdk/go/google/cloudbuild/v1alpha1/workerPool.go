@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,12 +40,9 @@ type WorkerPool struct {
 func NewWorkerPool(ctx *pulumi.Context,
 	name string, args *WorkerPoolArgs, opts ...pulumi.ResourceOption) (*WorkerPool, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &WorkerPoolArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1alpha1:WorkerPool", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +78,7 @@ type workerPoolArgs struct {
 	// User-defined name of the `WorkerPool`.
 	Name *string `pulumi:"name"`
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions []WorkerPoolRegionsItem `pulumi:"regions"`
 	// Configuration to be used for a creating workers in the `WorkerPool`.
@@ -96,7 +92,7 @@ type WorkerPoolArgs struct {
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringPtrInput
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions WorkerPoolRegionsItemArrayInput
 	// Configuration to be used for a creating workers in the `WorkerPool`.

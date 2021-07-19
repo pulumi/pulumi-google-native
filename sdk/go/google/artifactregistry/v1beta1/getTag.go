@@ -18,11 +18,11 @@ func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupTagArgs struct {
-	Location     string `pulumi:"location"`
-	PackageId    string `pulumi:"packageId"`
-	Project      string `pulumi:"project"`
-	RepositoryId string `pulumi:"repositoryId"`
-	TagId        string `pulumi:"tagId"`
+	Location     string  `pulumi:"location"`
+	PackageId    string  `pulumi:"packageId"`
+	Project      *string `pulumi:"project"`
+	RepositoryId string  `pulumi:"repositoryId"`
+	TagId        string  `pulumi:"tagId"`
 }
 
 type LookupTagResult struct {

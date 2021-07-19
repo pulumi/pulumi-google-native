@@ -18,11 +18,11 @@ func LookupConsent(ctx *pulumi.Context, args *LookupConsentArgs, opts ...pulumi.
 }
 
 type LookupConsentArgs struct {
-	ConsentId      string `pulumi:"consentId"`
-	ConsentStoreId string `pulumi:"consentStoreId"`
-	DatasetId      string `pulumi:"datasetId"`
-	Location       string `pulumi:"location"`
-	Project        string `pulumi:"project"`
+	ConsentId      string  `pulumi:"consentId"`
+	ConsentStoreId string  `pulumi:"consentStoreId"`
+	DatasetId      string  `pulumi:"datasetId"`
+	Location       string  `pulumi:"location"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupConsentResult struct {

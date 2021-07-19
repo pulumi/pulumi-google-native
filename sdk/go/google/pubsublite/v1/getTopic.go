@@ -18,9 +18,9 @@ func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.Invo
 }
 
 type LookupTopicArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	TopicId  string `pulumi:"topicId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	TopicId  string  `pulumi:"topicId"`
 }
 
 type LookupTopicResult struct {

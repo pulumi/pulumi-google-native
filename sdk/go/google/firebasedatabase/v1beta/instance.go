@@ -37,9 +37,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:firebasedatabase/v1beta:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -79,7 +76,7 @@ type instanceArgs struct {
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name *string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
 	State *InstanceStateEnum `pulumi:"state"`
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
@@ -96,7 +93,7 @@ type InstanceArgs struct {
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringPtrInput
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The database's lifecycle state. Read-only.
 	State InstanceStateEnumPtrInput
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.

@@ -36,9 +36,6 @@ func NewTagTemplate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.TagTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TagTemplateId'")
 	}
@@ -81,7 +78,7 @@ type tagTemplateArgs struct {
 	Location string            `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name          *string `pulumi:"name"`
-	Project       string  `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	TagTemplateId string  `pulumi:"tagTemplateId"`
 }
 
@@ -94,7 +91,7 @@ type TagTemplateArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name          pulumi.StringPtrInput
-	Project       pulumi.StringInput
+	Project       pulumi.StringPtrInput
 	TagTemplateId pulumi.StringInput
 }
 

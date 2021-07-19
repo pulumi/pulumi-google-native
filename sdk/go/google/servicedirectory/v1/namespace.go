@@ -34,9 +34,6 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Namespace
 	err := ctx.RegisterResource("google-native:servicedirectory/v1:Namespace", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type namespaceArgs struct {
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name        *string `pulumi:"name"`
 	NamespaceId string  `pulumi:"namespaceId"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Namespace resource.
@@ -86,7 +83,7 @@ type NamespaceArgs struct {
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name        pulumi.StringPtrInput
 	NamespaceId pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {

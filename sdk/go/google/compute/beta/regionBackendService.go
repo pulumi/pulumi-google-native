@@ -90,9 +90,6 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -171,7 +168,7 @@ type regionBackendServiceArgs struct {
 	OutlierDetection *OutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
 	PortName *string `pulumi:"portName"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol  *RegionBackendServiceProtocol `pulumi:"protocol"`
 	Region    string                        `pulumi:"region"`
@@ -230,7 +227,7 @@ type RegionBackendServiceArgs struct {
 	OutlierDetection OutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
 	PortName pulumi.StringPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol  RegionBackendServiceProtocolPtrInput
 	Region    pulumi.StringInput

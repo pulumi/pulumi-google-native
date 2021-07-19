@@ -43,9 +43,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.VersionConfigs == nil {
 		return nil, errors.New("invalid value for required argument 'VersionConfigs'")
 	}
@@ -89,7 +86,7 @@ type environmentArgs struct {
 	Location    string `pulumi:"location"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig `pulumi:"versionConfigs"`
 }
@@ -104,7 +101,7 @@ type EnvironmentArgs struct {
 	Location    pulumi.StringInput
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput
 }

@@ -56,9 +56,6 @@ func NewNetworkEndpointGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -112,7 +109,7 @@ type networkEndpointGroupArgs struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType *NetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
-	Project             string                                   `pulumi:"project"`
+	Project             *string                                  `pulumi:"project"`
 	RequestId           *string                                  `pulumi:"requestId"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -139,7 +136,7 @@ type NetworkEndpointGroupArgs struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
 	NetworkEndpointType NetworkEndpointGroupNetworkEndpointTypePtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	RequestId           pulumi.StringPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput

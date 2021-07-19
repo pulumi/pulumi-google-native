@@ -18,8 +18,8 @@ func LookupAnnotationSpecSet(ctx *pulumi.Context, args *LookupAnnotationSpecSetA
 }
 
 type LookupAnnotationSpecSetArgs struct {
-	AnnotationSpecSetId string `pulumi:"annotationSpecSetId"`
-	Project             string `pulumi:"project"`
+	AnnotationSpecSetId string  `pulumi:"annotationSpecSetId"`
+	Project             *string `pulumi:"project"`
 }
 
 type LookupAnnotationSpecSetResult struct {

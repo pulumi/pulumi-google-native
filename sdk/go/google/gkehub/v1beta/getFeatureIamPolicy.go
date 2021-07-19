@@ -21,7 +21,7 @@ type LookupFeatureIamPolicyArgs struct {
 	FeatureId                     string  `pulumi:"featureId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupFeatureIamPolicyResult struct {

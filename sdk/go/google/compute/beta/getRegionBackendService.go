@@ -18,9 +18,9 @@ func LookupRegionBackendService(ctx *pulumi.Context, args *LookupRegionBackendSe
 }
 
 type LookupRegionBackendServiceArgs struct {
-	BackendService string `pulumi:"backendService"`
-	Project        string `pulumi:"project"`
-	Region         string `pulumi:"region"`
+	BackendService string  `pulumi:"backendService"`
+	Project        *string `pulumi:"project"`
+	Region         string  `pulumi:"region"`
 }
 
 type LookupRegionBackendServiceResult struct {

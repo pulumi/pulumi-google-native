@@ -22,7 +22,7 @@ type LookupApiConfigIamPolicyArgs struct {
 	ConfigId                      string  `pulumi:"configId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupApiConfigIamPolicyResult struct {

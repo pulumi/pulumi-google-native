@@ -19,7 +19,7 @@ func LookupZoneInstantSnapshotIamPolicy(ctx *pulumi.Context, args *LookupZoneIns
 
 type LookupZoneInstantSnapshotIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 	Zone                          string  `pulumi:"zone"`
 }

@@ -18,10 +18,10 @@ func LookupFhirStore(ctx *pulumi.Context, args *LookupFhirStoreArgs, opts ...pul
 }
 
 type LookupFhirStoreArgs struct {
-	DatasetId   string `pulumi:"datasetId"`
-	FhirStoreId string `pulumi:"fhirStoreId"`
-	Location    string `pulumi:"location"`
-	Project     string `pulumi:"project"`
+	DatasetId   string  `pulumi:"datasetId"`
+	FhirStoreId string  `pulumi:"fhirStoreId"`
+	Location    string  `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupFhirStoreResult struct {

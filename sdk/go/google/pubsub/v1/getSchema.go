@@ -18,7 +18,7 @@ func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.In
 }
 
 type LookupSchemaArgs struct {
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	SchemaId string  `pulumi:"schemaId"`
 	View     *string `pulumi:"view"`
 }

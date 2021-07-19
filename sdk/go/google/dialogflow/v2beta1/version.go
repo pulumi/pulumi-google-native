@@ -38,9 +38,6 @@ func NewVersion(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Version
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Version", name, args, &resource, opts...)
 	if err != nil {
@@ -76,7 +73,7 @@ type versionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description *string `pulumi:"description"`
 	Location    string  `pulumi:"location"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Version resource.
@@ -84,7 +81,7 @@ type VersionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description pulumi.StringPtrInput
 	Location    pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 }
 
 func (VersionArgs) ElementType() reflect.Type {

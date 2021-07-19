@@ -18,9 +18,9 @@ func LookupReservation(ctx *pulumi.Context, args *LookupReservationArgs, opts ..
 }
 
 type LookupReservationArgs struct {
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
-	ReservationId string `pulumi:"reservationId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
+	ReservationId string  `pulumi:"reservationId"`
 }
 
 type LookupReservationResult struct {

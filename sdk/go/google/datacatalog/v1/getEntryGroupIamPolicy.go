@@ -18,9 +18,9 @@ func LookupEntryGroupIamPolicy(ctx *pulumi.Context, args *LookupEntryGroupIamPol
 }
 
 type LookupEntryGroupIamPolicyArgs struct {
-	EntryGroupId string `pulumi:"entryGroupId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	EntryGroupId string  `pulumi:"entryGroupId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupEntryGroupIamPolicyResult struct {

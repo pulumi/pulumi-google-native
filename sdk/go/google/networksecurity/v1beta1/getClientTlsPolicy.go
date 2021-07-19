@@ -18,9 +18,9 @@ func LookupClientTlsPolicy(ctx *pulumi.Context, args *LookupClientTlsPolicyArgs,
 }
 
 type LookupClientTlsPolicyArgs struct {
-	ClientTlsPolicyId string `pulumi:"clientTlsPolicyId"`
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
+	ClientTlsPolicyId string  `pulumi:"clientTlsPolicyId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupClientTlsPolicyResult struct {

@@ -18,9 +18,9 @@ func LookupSecuritySetting(ctx *pulumi.Context, args *LookupSecuritySettingArgs,
 }
 
 type LookupSecuritySettingArgs struct {
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
-	SecuritySettingId string `pulumi:"securitySettingId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
+	SecuritySettingId string  `pulumi:"securitySettingId"`
 }
 
 type LookupSecuritySettingResult struct {

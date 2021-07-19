@@ -18,9 +18,9 @@ func LookupZoneInPlaceSnapshot(ctx *pulumi.Context, args *LookupZoneInPlaceSnaps
 }
 
 type LookupZoneInPlaceSnapshotArgs struct {
-	InPlaceSnapshot string `pulumi:"inPlaceSnapshot"`
-	Project         string `pulumi:"project"`
-	Zone            string `pulumi:"zone"`
+	InPlaceSnapshot string  `pulumi:"inPlaceSnapshot"`
+	Project         *string `pulumi:"project"`
+	Zone            string  `pulumi:"zone"`
 }
 
 type LookupZoneInPlaceSnapshotResult struct {

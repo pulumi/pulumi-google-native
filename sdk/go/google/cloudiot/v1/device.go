@@ -59,9 +59,6 @@ func NewDevice(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.RegistryId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
@@ -114,7 +111,7 @@ type deviceArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
 	Name       *string `pulumi:"name"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	RegistryId string  `pulumi:"registryId"`
 }
 
@@ -137,7 +134,7 @@ type DeviceArgs struct {
 	Metadata pulumi.StringMapInput
 	// The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
 	Name       pulumi.StringPtrInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RegistryId pulumi.StringInput
 }
 

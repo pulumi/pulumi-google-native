@@ -40,9 +40,6 @@ func NewTargetInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -86,7 +83,7 @@ type targetInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy *TargetInstanceNatPolicy `pulumi:"natPolicy"`
-	Project   string                   `pulumi:"project"`
+	Project   *string                  `pulumi:"project"`
 	RequestId *string                  `pulumi:"requestId"`
 	Zone      string                   `pulumi:"zone"`
 }
@@ -101,7 +98,7 @@ type TargetInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy TargetInstanceNatPolicyPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	Zone      pulumi.StringInput
 }

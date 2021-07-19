@@ -44,9 +44,6 @@ func NewSecuritySetting(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource SecuritySetting
 	err := ctx.RegisterResource("google-native:dialogflow/v3:SecuritySetting", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type securitySettingArgs struct {
 	Location        string  `pulumi:"location"`
 	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []SecuritySettingPurgeDataTypesItem `pulumi:"purgeDataTypes"`
 	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
@@ -106,7 +103,7 @@ type SecuritySettingArgs struct {
 	Location        pulumi.StringInput
 	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes SecuritySettingPurgeDataTypesItemArrayInput
 	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.

@@ -18,9 +18,9 @@ func LookupCompany(ctx *pulumi.Context, args *LookupCompanyArgs, opts ...pulumi.
 }
 
 type LookupCompanyArgs struct {
-	CompanyId string `pulumi:"companyId"`
-	Project   string `pulumi:"project"`
-	TenantId  string `pulumi:"tenantId"`
+	CompanyId string  `pulumi:"companyId"`
+	Project   *string `pulumi:"project"`
+	TenantId  string  `pulumi:"tenantId"`
 }
 
 type LookupCompanyResult struct {

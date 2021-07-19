@@ -42,9 +42,6 @@ func NewTemplate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Template
 	err := ctx.RegisterResource("google-native:dataflow/v1b3:Template", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +84,7 @@ type templateArgs struct {
 	Location string `pulumi:"location"`
 	// The runtime parameters to pass to the job.
 	Parameters map[string]string `pulumi:"parameters"`
-	Project    string            `pulumi:"project"`
+	Project    *string           `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Template resource.
@@ -102,7 +99,7 @@ type TemplateArgs struct {
 	Location pulumi.StringInput
 	// The runtime parameters to pass to the job.
 	Parameters pulumi.StringMapInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 }
 
 func (TemplateArgs) ElementType() reflect.Type {

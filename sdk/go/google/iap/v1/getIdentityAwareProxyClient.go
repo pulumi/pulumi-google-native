@@ -18,9 +18,9 @@ func LookupIdentityAwareProxyClient(ctx *pulumi.Context, args *LookupIdentityAwa
 }
 
 type LookupIdentityAwareProxyClientArgs struct {
-	BrandId                    string `pulumi:"brandId"`
-	IdentityAwareProxyClientId string `pulumi:"identityAwareProxyClientId"`
-	Project                    string `pulumi:"project"`
+	BrandId                    string  `pulumi:"brandId"`
+	IdentityAwareProxyClientId string  `pulumi:"identityAwareProxyClientId"`
+	Project                    *string `pulumi:"project"`
 }
 
 type LookupIdentityAwareProxyClientResult struct {

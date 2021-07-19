@@ -20,7 +20,7 @@ func LookupTemplate(ctx *pulumi.Context, args *LookupTemplateArgs, opts ...pulum
 type LookupTemplateArgs struct {
 	GcsPath  string  `pulumi:"gcsPath"`
 	Location string  `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	View     *string `pulumi:"view"`
 }
 

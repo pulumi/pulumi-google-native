@@ -18,12 +18,12 @@ func LookupSessionEntityType(ctx *pulumi.Context, args *LookupSessionEntityTypeA
 }
 
 type LookupSessionEntityTypeArgs struct {
-	AgentId       string `pulumi:"agentId"`
-	EntityTypeId  string `pulumi:"entityTypeId"`
-	EnvironmentId string `pulumi:"environmentId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
-	SessionId     string `pulumi:"sessionId"`
+	AgentId       string  `pulumi:"agentId"`
+	EntityTypeId  string  `pulumi:"entityTypeId"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
+	SessionId     string  `pulumi:"sessionId"`
 }
 
 type LookupSessionEntityTypeResult struct {

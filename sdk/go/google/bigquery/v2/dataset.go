@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,12 +50,9 @@ type Dataset struct {
 func NewDataset(ctx *pulumi.Context,
 	name string, args *DatasetArgs, opts ...pulumi.ResourceOption) (*Dataset, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DatasetArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:bigquery/v2:Dataset", name, args, &resource, opts...)
 	if err != nil {
@@ -106,7 +102,7 @@ type datasetArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location *string `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Dataset resource.
@@ -128,7 +124,7 @@ type DatasetArgs struct {
 	Labels pulumi.StringMapInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {

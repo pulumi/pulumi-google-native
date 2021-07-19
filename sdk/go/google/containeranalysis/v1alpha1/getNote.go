@@ -18,8 +18,8 @@ func LookupNote(ctx *pulumi.Context, args *LookupNoteArgs, opts ...pulumi.Invoke
 }
 
 type LookupNoteArgs struct {
-	NoteId  string `pulumi:"noteId"`
-	Project string `pulumi:"project"`
+	NoteId  string  `pulumi:"noteId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupNoteResult struct {

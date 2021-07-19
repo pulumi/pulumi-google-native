@@ -18,9 +18,9 @@ func LookupMembership(ctx *pulumi.Context, args *LookupMembershipArgs, opts ...p
 }
 
 type LookupMembershipArgs struct {
-	Location     string `pulumi:"location"`
-	MembershipId string `pulumi:"membershipId"`
-	Project      string `pulumi:"project"`
+	Location     string  `pulumi:"location"`
+	MembershipId string  `pulumi:"membershipId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupMembershipResult struct {

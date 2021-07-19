@@ -18,10 +18,10 @@ func LookupTrial(ctx *pulumi.Context, args *LookupTrialArgs, opts ...pulumi.Invo
 }
 
 type LookupTrialArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	StudyId  string `pulumi:"studyId"`
-	TrialId  string `pulumi:"trialId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	StudyId  string  `pulumi:"studyId"`
+	TrialId  string  `pulumi:"trialId"`
 }
 
 type LookupTrialResult struct {

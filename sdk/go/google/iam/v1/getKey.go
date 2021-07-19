@@ -19,7 +19,7 @@ func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOp
 
 type LookupKeyArgs struct {
 	KeyId            string  `pulumi:"keyId"`
-	Project          string  `pulumi:"project"`
+	Project          *string `pulumi:"project"`
 	PublicKeyType    *string `pulumi:"publicKeyType"`
 	ServiceAccountId string  `pulumi:"serviceAccountId"`
 }

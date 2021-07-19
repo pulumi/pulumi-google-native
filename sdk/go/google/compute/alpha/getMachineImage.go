@@ -18,8 +18,8 @@ func LookupMachineImage(ctx *pulumi.Context, args *LookupMachineImageArgs, opts 
 }
 
 type LookupMachineImageArgs struct {
-	MachineImage string `pulumi:"machineImage"`
-	Project      string `pulumi:"project"`
+	MachineImage string  `pulumi:"machineImage"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupMachineImageResult struct {

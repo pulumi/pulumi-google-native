@@ -18,8 +18,8 @@ func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...p
 }
 
 type LookupDeploymentArgs struct {
-	Deployment string `pulumi:"deployment"`
-	Project    string `pulumi:"project"`
+	Deployment string  `pulumi:"deployment"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupDeploymentResult struct {

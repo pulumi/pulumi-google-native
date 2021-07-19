@@ -18,8 +18,8 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 }
 
 type LookupInstanceArgs struct {
-	InstanceId string `pulumi:"instanceId"`
-	Project    string `pulumi:"project"`
+	InstanceId string  `pulumi:"instanceId"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupInstanceResult struct {

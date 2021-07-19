@@ -21,7 +21,7 @@ type LookupConfigArgs struct {
 	ApiId    string  `pulumi:"apiId"`
 	ConfigId string  `pulumi:"configId"`
 	Location string  `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	View     *string `pulumi:"view"`
 }
 

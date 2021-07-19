@@ -46,9 +46,6 @@ func NewEntityType(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource EntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v2:EntityType", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +92,7 @@ type entityTypeArgs struct {
 	Location     string         `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a EntityType resource.
@@ -114,7 +111,7 @@ type EntityTypeArgs struct {
 	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (EntityTypeArgs) ElementType() reflect.Type {

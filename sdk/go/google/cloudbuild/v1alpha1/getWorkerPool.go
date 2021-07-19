@@ -18,8 +18,8 @@ func LookupWorkerPool(ctx *pulumi.Context, args *LookupWorkerPoolArgs, opts ...p
 }
 
 type LookupWorkerPoolArgs struct {
-	Project      string `pulumi:"project"`
-	WorkerPoolId string `pulumi:"workerPoolId"`
+	Project      *string `pulumi:"project"`
+	WorkerPoolId string  `pulumi:"workerPoolId"`
 }
 
 type LookupWorkerPoolResult struct {

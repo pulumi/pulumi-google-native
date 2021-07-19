@@ -18,9 +18,9 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 }
 
 type LookupDatabaseArgs struct {
-	Database string `pulumi:"database"`
-	Instance string `pulumi:"instance"`
-	Project  string `pulumi:"project"`
+	Database string  `pulumi:"database"`
+	Instance string  `pulumi:"instance"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupDatabaseResult struct {

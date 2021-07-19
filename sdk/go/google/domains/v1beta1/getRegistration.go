@@ -18,9 +18,9 @@ func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts 
 }
 
 type LookupRegistrationArgs struct {
-	Location       string `pulumi:"location"`
-	Project        string `pulumi:"project"`
-	RegistrationId string `pulumi:"registrationId"`
+	Location       string  `pulumi:"location"`
+	Project        *string `pulumi:"project"`
+	RegistrationId string  `pulumi:"registrationId"`
 }
 
 type LookupRegistrationResult struct {

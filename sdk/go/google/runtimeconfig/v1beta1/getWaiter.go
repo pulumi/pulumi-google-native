@@ -18,9 +18,9 @@ func LookupWaiter(ctx *pulumi.Context, args *LookupWaiterArgs, opts ...pulumi.In
 }
 
 type LookupWaiterArgs struct {
-	ConfigId string `pulumi:"configId"`
-	Project  string `pulumi:"project"`
-	WaiterId string `pulumi:"waiterId"`
+	ConfigId string  `pulumi:"configId"`
+	Project  *string `pulumi:"project"`
+	WaiterId string  `pulumi:"waiterId"`
 }
 
 type LookupWaiterResult struct {

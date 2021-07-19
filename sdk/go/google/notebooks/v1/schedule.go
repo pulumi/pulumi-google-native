@@ -47,9 +47,6 @@ func NewSchedule(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ScheduleId == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleId'")
 	}
@@ -92,7 +89,7 @@ type scheduleArgs struct {
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
 	Location          string             `pulumi:"location"`
-	Project           string             `pulumi:"project"`
+	Project           *string            `pulumi:"project"`
 	ScheduleId        string             `pulumi:"scheduleId"`
 	State             *ScheduleStateEnum `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
@@ -108,7 +105,7 @@ type ScheduleArgs struct {
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplatePtrInput
 	Location          pulumi.StringInput
-	Project           pulumi.StringInput
+	Project           pulumi.StringPtrInput
 	ScheduleId        pulumi.StringInput
 	State             ScheduleStateEnumPtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).

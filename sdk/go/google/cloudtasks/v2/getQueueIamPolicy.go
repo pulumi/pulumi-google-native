@@ -18,9 +18,9 @@ func LookupQueueIamPolicy(ctx *pulumi.Context, args *LookupQueueIamPolicyArgs, o
 }
 
 type LookupQueueIamPolicyArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	QueueId  string `pulumi:"queueId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	QueueId  string  `pulumi:"queueId"`
 }
 
 type LookupQueueIamPolicyResult struct {

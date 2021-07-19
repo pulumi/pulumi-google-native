@@ -18,10 +18,10 @@ func LookupNamespaceServiceIamPolicy(ctx *pulumi.Context, args *LookupNamespaceS
 }
 
 type LookupNamespaceServiceIamPolicyArgs struct {
-	Location    string `pulumi:"location"`
-	NamespaceId string `pulumi:"namespaceId"`
-	Project     string `pulumi:"project"`
-	ServiceId   string `pulumi:"serviceId"`
+	Location    string  `pulumi:"location"`
+	NamespaceId string  `pulumi:"namespaceId"`
+	Project     *string `pulumi:"project"`
+	ServiceId   string  `pulumi:"serviceId"`
 }
 
 type LookupNamespaceServiceIamPolicyResult struct {

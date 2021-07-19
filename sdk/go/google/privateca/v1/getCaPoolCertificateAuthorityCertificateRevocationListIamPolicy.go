@@ -23,7 +23,7 @@ type LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs stru
 	CertificateRevocationListId   string  `pulumi:"certificateRevocationListId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult struct {

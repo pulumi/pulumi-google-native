@@ -21,7 +21,7 @@ type LookupAutoscalingPolicyIamPolicyArgs struct {
 	AutoscalingPolicyId           string  `pulumi:"autoscalingPolicyId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupAutoscalingPolicyIamPolicyResult struct {

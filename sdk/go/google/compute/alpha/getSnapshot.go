@@ -18,8 +18,8 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 }
 
 type LookupSnapshotArgs struct {
-	Project  string `pulumi:"project"`
-	Snapshot string `pulumi:"snapshot"`
+	Project  *string `pulumi:"project"`
+	Snapshot string  `pulumi:"snapshot"`
 }
 
 type LookupSnapshotResult struct {

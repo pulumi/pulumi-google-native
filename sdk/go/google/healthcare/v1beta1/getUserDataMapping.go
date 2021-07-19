@@ -18,11 +18,11 @@ func LookupUserDataMapping(ctx *pulumi.Context, args *LookupUserDataMappingArgs,
 }
 
 type LookupUserDataMappingArgs struct {
-	ConsentStoreId    string `pulumi:"consentStoreId"`
-	DatasetId         string `pulumi:"datasetId"`
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
-	UserDataMappingId string `pulumi:"userDataMappingId"`
+	ConsentStoreId    string  `pulumi:"consentStoreId"`
+	DatasetId         string  `pulumi:"datasetId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
+	UserDataMappingId string  `pulumi:"userDataMappingId"`
 }
 
 type LookupUserDataMappingResult struct {

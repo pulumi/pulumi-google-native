@@ -18,9 +18,9 @@ func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.
 }
 
 type LookupAddressArgs struct {
-	Address string `pulumi:"address"`
-	Project string `pulumi:"project"`
-	Region  string `pulumi:"region"`
+	Address string  `pulumi:"address"`
+	Project *string `pulumi:"project"`
+	Region  string  `pulumi:"region"`
 }
 
 type LookupAddressResult struct {

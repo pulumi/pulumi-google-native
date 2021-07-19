@@ -52,9 +52,6 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.InitialNodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'InitialNodeCount'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -104,7 +101,7 @@ type nodeGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// URL of the node template to create the node group from.
 	NodeTemplate *string          `pulumi:"nodeTemplate"`
-	Project      string           `pulumi:"project"`
+	Project      *string          `pulumi:"project"`
 	RequestId    *string          `pulumi:"requestId"`
 	Status       *NodeGroupStatus `pulumi:"status"`
 	Zone         string           `pulumi:"zone"`
@@ -126,7 +123,7 @@ type NodeGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	RequestId    pulumi.StringPtrInput
 	Status       NodeGroupStatusPtrInput
 	Zone         pulumi.StringInput

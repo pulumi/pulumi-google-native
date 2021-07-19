@@ -18,9 +18,9 @@ func LookupSchedule(ctx *pulumi.Context, args *LookupScheduleArgs, opts ...pulum
 }
 
 type LookupScheduleArgs struct {
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	ScheduleId string `pulumi:"scheduleId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	ScheduleId string  `pulumi:"scheduleId"`
 }
 
 type LookupScheduleResult struct {

@@ -18,9 +18,9 @@ func LookupRealm(ctx *pulumi.Context, args *LookupRealmArgs, opts ...pulumi.Invo
 }
 
 type LookupRealmArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
-	RealmId  string `pulumi:"realmId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	RealmId  string  `pulumi:"realmId"`
 }
 
 type LookupRealmResult struct {

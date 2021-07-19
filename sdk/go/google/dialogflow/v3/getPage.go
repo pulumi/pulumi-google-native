@@ -23,7 +23,7 @@ type LookupPageArgs struct {
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
 	PageId       string  `pulumi:"pageId"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupPageResult struct {

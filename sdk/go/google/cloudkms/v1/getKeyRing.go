@@ -18,9 +18,9 @@ func LookupKeyRing(ctx *pulumi.Context, args *LookupKeyRingArgs, opts ...pulumi.
 }
 
 type LookupKeyRingArgs struct {
-	KeyRingId string `pulumi:"keyRingId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
+	KeyRingId string  `pulumi:"keyRingId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupKeyRingResult struct {

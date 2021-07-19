@@ -52,9 +52,6 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datamigration/v1:ConnectionProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -101,7 +98,7 @@ type connectionProfileArgs struct {
 	Name *string `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql *PostgreSqlConnectionProfile `pulumi:"postgresql"`
-	Project    string                       `pulumi:"project"`
+	Project    *string                      `pulumi:"project"`
 	// The database provider.
 	Provider  *ConnectionProfileProvider `pulumi:"provider"`
 	RequestId *string                    `pulumi:"requestId"`
@@ -125,7 +122,7 @@ type ConnectionProfileArgs struct {
 	Name pulumi.StringPtrInput
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfilePtrInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	// The database provider.
 	Provider  ConnectionProfileProviderPtrInput
 	RequestId pulumi.StringPtrInput

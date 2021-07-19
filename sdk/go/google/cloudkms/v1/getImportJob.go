@@ -18,10 +18,10 @@ func LookupImportJob(ctx *pulumi.Context, args *LookupImportJobArgs, opts ...pul
 }
 
 type LookupImportJobArgs struct {
-	ImportJobId string `pulumi:"importJobId"`
-	KeyRingId   string `pulumi:"keyRingId"`
-	Location    string `pulumi:"location"`
-	Project     string `pulumi:"project"`
+	ImportJobId string  `pulumi:"importJobId"`
+	KeyRingId   string  `pulumi:"keyRingId"`
+	Location    string  `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupImportJobResult struct {

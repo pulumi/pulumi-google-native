@@ -18,8 +18,8 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 }
 
 type LookupGroupArgs struct {
-	GroupId string `pulumi:"groupId"`
-	Project string `pulumi:"project"`
+	GroupId string  `pulumi:"groupId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupGroupResult struct {

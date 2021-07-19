@@ -36,9 +36,6 @@ func NewReferenceImage(ctx *pulumi.Context,
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Uri == nil {
 		return nil, errors.New("invalid value for required argument 'Uri'")
 	}
@@ -80,7 +77,7 @@ type referenceImageArgs struct {
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name             *string `pulumi:"name"`
 	ProductId        string  `pulumi:"productId"`
-	Project          string  `pulumi:"project"`
+	Project          *string `pulumi:"project"`
 	ReferenceImageId *string `pulumi:"referenceImageId"`
 	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri string `pulumi:"uri"`
@@ -94,7 +91,7 @@ type ReferenceImageArgs struct {
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name             pulumi.StringPtrInput
 	ProductId        pulumi.StringInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	ReferenceImageId pulumi.StringPtrInput
 	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringInput

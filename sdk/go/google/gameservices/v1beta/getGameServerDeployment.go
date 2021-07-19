@@ -18,9 +18,9 @@ func LookupGameServerDeployment(ctx *pulumi.Context, args *LookupGameServerDeplo
 }
 
 type LookupGameServerDeploymentArgs struct {
-	GameServerDeploymentId string `pulumi:"gameServerDeploymentId"`
-	Location               string `pulumi:"location"`
-	Project                string `pulumi:"project"`
+	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
+	Location               string  `pulumi:"location"`
+	Project                *string `pulumi:"project"`
 }
 
 type LookupGameServerDeploymentResult struct {

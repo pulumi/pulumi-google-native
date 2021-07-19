@@ -37,9 +37,6 @@ func NewStoredInfoType(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource StoredInfoType
 	err := ctx.RegisterResource("google-native:dlp/v2:StoredInfoType", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type storedInfoTypeArgs struct {
 	// Configuration of the storedInfoType to create.
 	Config   GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
 	Location string                                 `pulumi:"location"`
-	Project  string                                 `pulumi:"project"`
+	Project  *string                                `pulumi:"project"`
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId *string `pulumi:"storedInfoTypeId"`
 }
@@ -85,7 +82,7 @@ type StoredInfoTypeArgs struct {
 	// Configuration of the storedInfoType to create.
 	Config   GooglePrivacyDlpV2StoredInfoTypeConfigInput
 	Location pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId pulumi.StringPtrInput
 }

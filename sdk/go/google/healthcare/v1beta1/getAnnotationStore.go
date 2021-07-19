@@ -18,10 +18,10 @@ func LookupAnnotationStore(ctx *pulumi.Context, args *LookupAnnotationStoreArgs,
 }
 
 type LookupAnnotationStoreArgs struct {
-	AnnotationStoreId string `pulumi:"annotationStoreId"`
-	DatasetId         string `pulumi:"datasetId"`
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
+	AnnotationStoreId string  `pulumi:"annotationStoreId"`
+	DatasetId         string  `pulumi:"datasetId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupAnnotationStoreResult struct {

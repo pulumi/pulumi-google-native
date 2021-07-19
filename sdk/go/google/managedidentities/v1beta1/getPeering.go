@@ -18,8 +18,8 @@ func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.
 }
 
 type LookupPeeringArgs struct {
-	PeeringId string `pulumi:"peeringId"`
-	Project   string `pulumi:"project"`
+	PeeringId string  `pulumi:"peeringId"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupPeeringResult struct {

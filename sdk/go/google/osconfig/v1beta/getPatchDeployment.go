@@ -18,8 +18,8 @@ func LookupPatchDeployment(ctx *pulumi.Context, args *LookupPatchDeploymentArgs,
 }
 
 type LookupPatchDeploymentArgs struct {
-	PatchDeploymentId string `pulumi:"patchDeploymentId"`
-	Project           string `pulumi:"project"`
+	PatchDeploymentId string  `pulumi:"patchDeploymentId"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupPatchDeploymentResult struct {

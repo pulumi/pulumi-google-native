@@ -41,9 +41,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -84,7 +81,7 @@ func (WorkerPoolState) ElementType() reflect.Type {
 type workerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	Project       string         `pulumi:"project"`
+	Project       *string        `pulumi:"project"`
 	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region string `pulumi:"region"`
 	// Worker configuration for the `WorkerPool`.
@@ -96,7 +93,7 @@ type workerPoolArgs struct {
 type WorkerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	Project       pulumi.StringInput
+	Project       pulumi.StringPtrInput
 	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringInput
 	// Worker configuration for the `WorkerPool`.

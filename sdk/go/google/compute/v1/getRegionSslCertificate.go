@@ -18,9 +18,9 @@ func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertif
 }
 
 type LookupRegionSslCertificateArgs struct {
-	Project        string `pulumi:"project"`
-	Region         string `pulumi:"region"`
-	SslCertificate string `pulumi:"sslCertificate"`
+	Project        *string `pulumi:"project"`
+	Region         string  `pulumi:"region"`
+	SslCertificate string  `pulumi:"sslCertificate"`
 }
 
 type LookupRegionSslCertificateResult struct {

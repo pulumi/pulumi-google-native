@@ -46,9 +46,6 @@ func NewSslCert(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource SslCert
 	err := ctx.RegisterResource("google-native:sqladmin/v1beta4:SslCert", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type sslCertArgs struct {
 	// User supplied name. Must be a distinct name from the other certificates for this instance.
 	CommonName *string `pulumi:"commonName"`
 	Instance   string  `pulumi:"instance"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a SslCert resource.
@@ -92,7 +89,7 @@ type SslCertArgs struct {
 	// User supplied name. Must be a distinct name from the other certificates for this instance.
 	CommonName pulumi.StringPtrInput
 	Instance   pulumi.StringInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 }
 
 func (SslCertArgs) ElementType() reflect.Type {

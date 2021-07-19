@@ -18,9 +18,9 @@ func LookupWorkloadIdentityPool(ctx *pulumi.Context, args *LookupWorkloadIdentit
 }
 
 type LookupWorkloadIdentityPoolArgs struct {
-	Location               string `pulumi:"location"`
-	Project                string `pulumi:"project"`
-	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
+	Location               string  `pulumi:"location"`
+	Project                *string `pulumi:"project"`
+	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
 }
 
 type LookupWorkloadIdentityPoolResult struct {

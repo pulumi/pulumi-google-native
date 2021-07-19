@@ -18,8 +18,8 @@ func LookupNoteIamPolicy(ctx *pulumi.Context, args *LookupNoteIamPolicyArgs, opt
 }
 
 type LookupNoteIamPolicyArgs struct {
-	NoteId  string `pulumi:"noteId"`
-	Project string `pulumi:"project"`
+	NoteId  string  `pulumi:"noteId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupNoteIamPolicyResult struct {

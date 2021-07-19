@@ -60,9 +60,6 @@ func NewRegionCommitment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -110,7 +107,7 @@ type regionCommitmentArgs struct {
 	Name *string `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	Plan      *RegionCommitmentPlan `pulumi:"plan"`
-	Project   string                `pulumi:"project"`
+	Project   *string               `pulumi:"project"`
 	Region    string                `pulumi:"region"`
 	RequestId *string               `pulumi:"requestId"`
 	// List of reservations in this commitment.
@@ -135,7 +132,7 @@ type RegionCommitmentArgs struct {
 	Name pulumi.StringPtrInput
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	Plan      RegionCommitmentPlanPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// List of reservations in this commitment.

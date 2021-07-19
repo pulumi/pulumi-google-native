@@ -18,11 +18,11 @@ func LookupConsentArtifact(ctx *pulumi.Context, args *LookupConsentArtifactArgs,
 }
 
 type LookupConsentArtifactArgs struct {
-	ConsentArtifactId string `pulumi:"consentArtifactId"`
-	ConsentStoreId    string `pulumi:"consentStoreId"`
-	DatasetId         string `pulumi:"datasetId"`
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
+	ConsentArtifactId string  `pulumi:"consentArtifactId"`
+	ConsentStoreId    string  `pulumi:"consentStoreId"`
+	DatasetId         string  `pulumi:"datasetId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupConsentArtifactResult struct {

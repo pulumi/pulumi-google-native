@@ -18,8 +18,8 @@ func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opt
 }
 
 type LookupGlobalAddressArgs struct {
-	Address string `pulumi:"address"`
-	Project string `pulumi:"project"`
+	Address string  `pulumi:"address"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupGlobalAddressResult struct {

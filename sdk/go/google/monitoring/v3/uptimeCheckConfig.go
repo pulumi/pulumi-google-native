@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +44,9 @@ type UptimeCheckConfig struct {
 func NewUptimeCheckConfig(ctx *pulumi.Context,
 	name string, args *UptimeCheckConfigArgs, opts ...pulumi.ResourceOption) (*UptimeCheckConfig, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &UptimeCheckConfigArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource UptimeCheckConfig
 	err := ctx.RegisterResource("google-native:monitoring/v3:UptimeCheckConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -99,7 +95,7 @@ type uptimeCheckConfigArgs struct {
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period  *string `pulumi:"period"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The group resource associated with the configuration.
 	ResourceGroup *ResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
@@ -128,7 +124,7 @@ type UptimeCheckConfigArgs struct {
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
 	Period  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The group resource associated with the configuration.
 	ResourceGroup ResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
