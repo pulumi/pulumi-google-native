@@ -108,7 +108,7 @@ func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) 
 		glog.V(9).Infof("  -- Scopes: %s", c.Scopes)
 
 		return &google.Credentials{
-			TokenSource: staticTokenSource{oauth2.StaticTokenSource(token)},
+			TokenSource: oauth2.StaticTokenSource(token),
 		}, nil
 	}
 
@@ -164,10 +164,4 @@ func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) 
 	return &google.Credentials{
 		TokenSource: defaultTS,
 	}, err
-}
-
-// TODO: Why do we need this?
-// staticTokenSource is used to be able to identify static token sources without reflection.
-type staticTokenSource struct {
-	oauth2.TokenSource
 }
