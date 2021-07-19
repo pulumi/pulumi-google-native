@@ -23,14 +23,7 @@ import (
 	"google.golang.org/api/googleapi"
 )
 
-type GoogleClient struct {
-	config        Config
-	http          *http.Client
-	credRetriever credentialRetriever
-	credValidator credentialValidator
-	userAgent     string
-}
-
+// Config is a bag of authentication related options used to instantiate a GoogleClient
 type Config struct {
 	Credentials                        string
 	AccessToken                        string
@@ -43,6 +36,17 @@ type Config struct {
 	AppendUserAgent                    string
 }
 
+// GoogleClient is an appropriately initialized HTTP client used by the Google Native provider.
+// The client checks if its credentials are valid and automatically refreshes if they have expired.
+type GoogleClient struct {
+	config        Config
+	http          *http.Client
+	credRetriever credentialRetriever
+	credValidator credentialValidator
+	userAgent     string
+}
+
+// New returns a new GoogleClient with credentials based on the provided Config.
 func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	partnerString := ""
 	if config.PartnerName != "" {
@@ -65,6 +69,7 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	return googleClient, nil
 }
 
+// RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
@@ -137,6 +142,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 // multipartBoundary is a random string used to separate parts of multi-part request bodies.
 const multipartBoundary = "boundary-fa78ad331d"
 
+// UploadWithTimeout performs a multi-part upload using the specified HTTP method, rawurl etc. using the specified timeout.
 func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[string]interface{}, binary []byte, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
@@ -222,6 +228,10 @@ var defaultClientScopes = []string{
 	"https://www.googleapis.com/auth/userinfo.email",
 }
 
+// refreshClientCredentials first checks if the current active credentials in use are
+// valid. If so it simply reuses the existing HTTP client.
+// Otherwise it refreshes the credentials using the Config used to create the GoogleClient.
+// It then caches the credentials and the client for subsequent calls.
 func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 	if c.credValidator != nil {
 		valid, err := c.credValidator.isValid()

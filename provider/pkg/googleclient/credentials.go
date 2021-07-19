@@ -18,6 +18,9 @@ func (t tokenSourceFunc) Token() (*oauth2.Token, error) {
 	return t()
 }
 
+// validatedTokenSource wraps a source TokenSource such that if
+// the source returns a token that is invalid (e.g. expired),
+// an error is returned.
 func validatedTokenSource(src oauth2.TokenSource) oauth2.TokenSource {
 	return tokenSourceFunc(func() (*oauth2.Token, error) {
 		t, err := src.Token()
@@ -33,6 +36,10 @@ func validatedTokenSource(src oauth2.TokenSource) oauth2.TokenSource {
 	})
 }
 
+// newReusedValidatedTokenSource returns a validatedTokenSource which uses an
+// oauth2.ReuseTokenSource as its source.
+// This is used because while ReuseTokenSource will refresh a token if it detects it
+// is invalid, the new token is not itself validated.
 func newReuseValidatedTokenSource(t *oauth2.Token, src oauth2.TokenSource) *reuseValidatedTokenSource {
 	return &reuseValidatedTokenSource{
 		src: validatedTokenSource(oauth2.ReuseTokenSource(t, src)),
@@ -48,6 +55,7 @@ func (r *reuseValidatedTokenSource) Token() (*oauth2.Token, error) {
 }
 
 type credentialValidator interface {
+	// isValid detects if the current active credential/token is valid.
 	isValid() (bool, error)
 }
 
@@ -58,6 +66,8 @@ func (c credentialValidatorFunc) isValid() (bool, error) {
 }
 
 type credentialRetriever interface {
+	// getCredentials uses the provided Config to create appropriate credentials
+	// to pass to Google cloud clients.
 	getCredentials(ctx context.Context, c Config) (*google.Credentials, error)
 }
 
