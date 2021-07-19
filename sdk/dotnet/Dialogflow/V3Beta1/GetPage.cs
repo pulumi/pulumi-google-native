@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("pageId", required: true)]
         public string PageId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPageArgs()
         {

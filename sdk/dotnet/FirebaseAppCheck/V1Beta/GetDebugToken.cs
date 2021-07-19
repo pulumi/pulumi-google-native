@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         [Input("debugTokenId", required: true)]
         public string DebugTokenId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDebugTokenArgs()
         {

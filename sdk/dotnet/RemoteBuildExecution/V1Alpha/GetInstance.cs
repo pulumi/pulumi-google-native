@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetInstanceArgs()
         {

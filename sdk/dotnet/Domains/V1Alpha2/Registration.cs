@@ -196,8 +196,8 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         [Input("managementSettings")]
         public Input<Inputs.ManagementSettingsArgs>? ManagementSettings { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation

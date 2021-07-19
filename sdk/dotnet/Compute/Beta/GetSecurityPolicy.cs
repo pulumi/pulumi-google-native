@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class GetSecurityPolicyArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("securityPolicy", required: true)]
         public string SecurityPolicy { get; set; } = null!;

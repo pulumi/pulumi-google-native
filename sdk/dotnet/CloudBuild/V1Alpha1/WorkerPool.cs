@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WorkerPool(string name, WorkerPoolArgs args, CustomResourceOptions? options = null)
+        public WorkerPool(string name, WorkerPoolArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudbuild/v1alpha1:WorkerPool", name, args ?? new WorkerPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         /// <summary>
         /// The project ID of the GCP project for which the `WorkerPool` is created.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("regions")]
         private InputList<Pulumi.GoogleNative.CloudBuild.V1Alpha1.WorkerPoolRegionsItem>? _regions;

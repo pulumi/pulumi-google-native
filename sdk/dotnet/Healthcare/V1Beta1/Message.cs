@@ -171,8 +171,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _patientIds = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.

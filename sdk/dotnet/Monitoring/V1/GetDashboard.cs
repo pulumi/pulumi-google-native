@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("dashboardId", required: true)]
         public string DashboardId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDashboardArgs()
         {

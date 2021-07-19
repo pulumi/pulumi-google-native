@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("migrationJobId", required: true)]
         public string MigrationJobId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetMigrationJobArgs()
         {

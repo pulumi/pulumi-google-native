@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("configId", required: true)]
         public string ConfigId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("variableId", required: true)]
         public string VariableId { get; set; } = null!;

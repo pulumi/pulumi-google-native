@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         [Input("outputConfig", required: true)]
         public Input<Inputs.OutputConfigArgs> OutputConfig { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public TraceSinkArgs()
         {

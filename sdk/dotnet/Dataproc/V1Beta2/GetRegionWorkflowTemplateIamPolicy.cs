@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("regionId", required: true)]
         public string RegionId { get; set; } = null!;

@@ -328,8 +328,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.

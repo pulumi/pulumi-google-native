@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Job(string name, JobArgs args, CustomResourceOptions? options = null)
+        public Job(string name, JobArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:bigquery/v2:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -121,8 +121,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("jobReference")]
         public Input<Inputs.JobReferenceArgs>? JobReference { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }

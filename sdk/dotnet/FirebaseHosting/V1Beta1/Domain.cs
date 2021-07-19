@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("domainRedirect")]
         public Input<Inputs.DomainRedirectArgs>? DomainRedirect { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The site name of the association.

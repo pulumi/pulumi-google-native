@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
     public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("snapshotId", required: true)]
         public string SnapshotId { get; set; } = null!;

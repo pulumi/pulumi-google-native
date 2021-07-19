@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("publicKeyType")]
         public string? PublicKeyType { get; set; }

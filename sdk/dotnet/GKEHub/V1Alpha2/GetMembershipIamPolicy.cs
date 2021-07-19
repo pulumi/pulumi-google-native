@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetMembershipIamPolicyArgs()
         {

@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("purgeDataTypes")]
         private InputList<Pulumi.GoogleNative.Dialogflow.V3Beta1.SecuritySettingPurgeDataTypesItem>? _purgeDataTypes;

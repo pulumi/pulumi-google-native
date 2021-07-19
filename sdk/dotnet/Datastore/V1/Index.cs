@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.Datastore.V1
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("properties", required: true)]
         private InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs>? _properties;

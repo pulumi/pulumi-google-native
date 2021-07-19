@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.

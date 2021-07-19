@@ -216,8 +216,8 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

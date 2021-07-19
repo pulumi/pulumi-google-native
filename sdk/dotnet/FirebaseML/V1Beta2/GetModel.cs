@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         [Input("modelId", required: true)]
         public string ModelId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetModelArgs()
         {

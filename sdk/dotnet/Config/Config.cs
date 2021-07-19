@@ -23,5 +23,10 @@ namespace Pulumi.GoogleNative
         /// </summary>
         public static string? PartnerName { get; set; } = __config.Get("partnerName");
 
+        /// <summary>
+        /// A Google Cloud project name.
+        /// </summary>
+        public static string? Project { get; set; } = __config.Get("project");
+
     }
 }

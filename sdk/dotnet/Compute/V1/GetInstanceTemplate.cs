@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("instanceTemplate", required: true)]
         public string InstanceTemplate { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetInstanceTemplateArgs()
         {

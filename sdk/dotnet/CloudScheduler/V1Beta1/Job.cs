@@ -189,8 +189,8 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Pub/Sub target.

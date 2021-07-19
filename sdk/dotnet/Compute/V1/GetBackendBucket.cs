@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("backendBucket", required: true)]
         public string BackendBucket { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetBackendBucketArgs()
         {

@@ -220,8 +220,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("package")]
         public Input<Inputs.PackageArgs>? Package { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("relatedNoteNames")]
         private InputList<string>? _relatedNoteNames;

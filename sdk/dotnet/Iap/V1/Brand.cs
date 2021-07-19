@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Brand(string name, BrandArgs args, CustomResourceOptions? options = null)
+        public Brand(string name, BrandArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:iap/v1:Brand", name, args ?? new BrandArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -91,8 +91,8 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("applicationTitle")]
         public Input<string>? ApplicationTitle { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Support email displayed on the OAuth consent screen.

@@ -139,8 +139,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("managedZone", required: true)]
         public Input<string> ManagedZone { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The time that this operation was started by the server (output only). This is in RFC3339 text format.

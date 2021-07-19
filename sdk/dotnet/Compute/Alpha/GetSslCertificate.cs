@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class GetSslCertificateArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("sslCertificate", required: true)]
         public string SslCertificate { get; set; } = null!;

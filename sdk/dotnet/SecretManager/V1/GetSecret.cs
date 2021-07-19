@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
     public sealed class GetSecretArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("secretId", required: true)]
         public string SecretId { get; set; } = null!;

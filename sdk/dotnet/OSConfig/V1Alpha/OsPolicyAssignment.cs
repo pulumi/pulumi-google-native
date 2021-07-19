@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         [Input("osPolicyAssignmentId", required: true)]
         public Input<string> OsPolicyAssignmentId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.

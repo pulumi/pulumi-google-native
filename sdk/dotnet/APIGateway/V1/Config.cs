@@ -196,8 +196,8 @@ namespace Pulumi.GoogleNative.APIGateway.V1
             set => _openapiDocuments = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ConfigArgs()
         {

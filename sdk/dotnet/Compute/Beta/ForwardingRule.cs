@@ -342,8 +342,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             set => _ports = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("pscConnectionStatus")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRulePscConnectionStatus>? PscConnectionStatus { get; set; }

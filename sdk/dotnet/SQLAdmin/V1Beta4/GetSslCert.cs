@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("sha1Fingerprint", required: true)]
         public string Sha1Fingerprint { get; set; } = null!;

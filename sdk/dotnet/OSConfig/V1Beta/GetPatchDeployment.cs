@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         [Input("patchDeploymentId", required: true)]
         public string PatchDeploymentId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPatchDeploymentArgs()
         {

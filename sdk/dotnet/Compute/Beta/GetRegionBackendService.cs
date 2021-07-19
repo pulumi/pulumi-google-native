@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("backendService", required: true)]
         public string BackendService { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("region", required: true)]
         public string Region { get; set; } = null!;

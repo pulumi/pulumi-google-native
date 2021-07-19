@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("serviceAccountId", required: true)]
         public string ServiceAccountId { get; set; } = null!;

@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ManagedZone(string name, ManagedZoneArgs args, CustomResourceOptions? options = null)
+        public ManagedZone(string name, ManagedZoneArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:dns/v1beta2:ManagedZone", name, args ?? new ManagedZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -237,8 +237,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigArgs>? PrivateVisibilityConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.

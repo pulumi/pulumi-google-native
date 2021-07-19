@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
         [Input("connectivityTestId", required: true)]
         public string ConnectivityTestId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetConnectivityTestArgs()
         {

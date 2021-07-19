@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ProjectIamPolicy(string name, ProjectIamPolicyArgs args, CustomResourceOptions? options = null)
+        public ProjectIamPolicy(string name, ProjectIamPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v3:ProjectIamPolicy", name, args ?? new ProjectIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

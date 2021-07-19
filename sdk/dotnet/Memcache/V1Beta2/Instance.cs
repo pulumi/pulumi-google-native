@@ -234,8 +234,8 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         [Input("parameters")]
         public Input<Inputs.MemcacheParametersArgs>? Parameters { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;

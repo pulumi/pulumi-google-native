@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Vision.V1
             set => _productLabels = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ProductArgs()
         {

@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetJobIamPolicyArgs()
         {

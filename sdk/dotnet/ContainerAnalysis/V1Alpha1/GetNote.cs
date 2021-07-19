@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("noteId", required: true)]
         public string NoteId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNoteArgs()
         {

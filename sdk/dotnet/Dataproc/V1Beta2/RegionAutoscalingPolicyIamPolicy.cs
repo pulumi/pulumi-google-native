@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("regionId", required: true)]
         public Input<string> RegionId { get; set; } = null!;

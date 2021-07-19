@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Input("nodeId", required: true)]
         public string NodeId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNodeArgs()
         {

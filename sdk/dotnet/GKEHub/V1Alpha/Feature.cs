@@ -151,8 +151,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
             set => _membershipSpecs = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

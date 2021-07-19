@@ -165,8 +165,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         [Input("patchDeploymentId", required: true)]
         public Input<string> PatchDeploymentId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Schedule recurring executions.

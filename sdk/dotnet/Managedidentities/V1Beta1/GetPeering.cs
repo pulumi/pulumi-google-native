@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         [Input("peeringId", required: true)]
         public string PeeringId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPeeringArgs()
         {

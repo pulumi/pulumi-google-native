@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Jobs.V3
         [Input("jobId", required: true)]
         public string JobId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetJobArgs()
         {

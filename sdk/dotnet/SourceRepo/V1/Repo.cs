@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Repo(string name, RepoArgs args, CustomResourceOptions? options = null)
+        public Repo(string name, RepoArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:sourcerepo/v1:Repo", name, args ?? new RepoArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("pubsubConfigs")]
         private InputMap<string>? _pubsubConfigs;

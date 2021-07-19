@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// <summary>
         /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The database's lifecycle state. Read-only.

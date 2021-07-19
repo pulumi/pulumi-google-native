@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("identityAwareProxyClientId", required: true)]
         public string IdentityAwareProxyClientId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetIdentityAwareProxyClientArgs()
         {

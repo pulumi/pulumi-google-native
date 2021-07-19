@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("triggerId", required: true)]
         public string TriggerId { get; set; } = null!;

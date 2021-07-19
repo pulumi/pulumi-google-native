@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         [Input("osPolicyAssignmentId", required: true)]
         public string OsPolicyAssignmentId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetOsPolicyAssignmentArgs()
         {

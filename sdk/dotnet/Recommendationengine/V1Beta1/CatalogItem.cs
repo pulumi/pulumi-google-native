@@ -151,8 +151,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("productMetadata")]
         public Input<Inputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs>? ProductMetadata { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

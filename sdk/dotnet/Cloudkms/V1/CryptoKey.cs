@@ -136,8 +136,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("nextRotationTime")]
         public Input<string>? NextRotationTime { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Immutable. The immutable purpose of this CryptoKey.

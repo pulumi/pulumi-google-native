@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetConnectionArgs()
         {

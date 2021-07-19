@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("regionId", required: true)]
         public string RegionId { get; set; } = null!;

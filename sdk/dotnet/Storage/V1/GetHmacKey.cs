@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("accessId", required: true)]
         public string AccessId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("userProject")]
         public string? UserProject { get; set; }

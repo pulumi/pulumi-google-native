@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
 
     public sealed class GetSubscriptionArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("subscriptionId", required: true)]
         public string SubscriptionId { get; set; } = null!;

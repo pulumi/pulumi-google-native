@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;

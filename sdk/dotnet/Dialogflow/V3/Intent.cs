@@ -171,8 +171,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("trainingPhrases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs>? _trainingPhrases;

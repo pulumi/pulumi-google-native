@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class GetPublicAdvertisedPrefixArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("publicAdvertisedPrefix", required: true)]
         public string PublicAdvertisedPrefix { get; set; } = null!;

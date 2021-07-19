@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Note(string name, NoteArgs args, CustomResourceOptions? options = null)
+        public Note(string name, NoteArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:containeranalysis/v1alpha1:Note", name, args ?? new NoteArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -225,8 +225,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("package")]
         public Input<Inputs.PackageArgs>? Package { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("relatedUrl")]
         private InputList<Inputs.RelatedUrlArgs>? _relatedUrl;

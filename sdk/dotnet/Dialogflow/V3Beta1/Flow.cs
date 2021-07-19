@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("nluSettings")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1NluSettingsArgs>? NluSettings { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("transitionRouteGroups")]
         private InputList<string>? _transitionRouteGroups;

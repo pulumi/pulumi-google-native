@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
     public sealed class GetWebAppArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("webAppId", required: true)]
         public string WebAppId { get; set; } = null!;

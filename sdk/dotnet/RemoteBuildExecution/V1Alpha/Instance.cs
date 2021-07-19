@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
+        public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:remotebuildexecution/v1alpha:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public InstanceArgs()
         {

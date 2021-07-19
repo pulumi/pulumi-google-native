@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetFeatureArgs()
         {

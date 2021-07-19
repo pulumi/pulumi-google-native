@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The content is divided into equally spaced rows and the widgets are arranged horizontally.

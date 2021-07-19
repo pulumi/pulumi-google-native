@@ -124,8 +124,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public SslCertArgs()
         {

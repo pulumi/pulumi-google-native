@@ -258,8 +258,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             set => _namedPorts = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

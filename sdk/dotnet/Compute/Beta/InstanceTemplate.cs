@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public InstanceTemplate(string name, InstanceTemplateArgs args, CustomResourceOptions? options = null)
+        public InstanceTemplate(string name, InstanceTemplateArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/beta:InstanceTemplate", name, args ?? new InstanceTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The instance properties for this instance template.

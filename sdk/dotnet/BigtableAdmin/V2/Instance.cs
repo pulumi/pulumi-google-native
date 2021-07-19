@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The type of the instance. Defaults to `PRODUCTION`.

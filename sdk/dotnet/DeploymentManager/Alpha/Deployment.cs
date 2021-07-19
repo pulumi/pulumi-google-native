@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Deployment(string name, DeploymentArgs args, CustomResourceOptions? options = null)
+        public Deployment(string name, DeploymentArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:deploymentmanager/alpha:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("preview")]
         public Input<string>? Preview { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.

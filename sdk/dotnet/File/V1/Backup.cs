@@ -157,8 +157,8 @@ namespace Pulumi.GoogleNative.File.V1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.

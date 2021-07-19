@@ -166,8 +166,8 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// <summary>
         /// The cloud project that owns the test matrix.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

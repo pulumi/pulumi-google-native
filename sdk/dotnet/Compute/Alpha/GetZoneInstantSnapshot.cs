@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("instantSnapshot", required: true)]
         public string InstantSnapshot { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;

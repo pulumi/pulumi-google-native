@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;

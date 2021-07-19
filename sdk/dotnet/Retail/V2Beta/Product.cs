@@ -240,8 +240,8 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [Input("productId", required: true)]
         public Input<string> ProductId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

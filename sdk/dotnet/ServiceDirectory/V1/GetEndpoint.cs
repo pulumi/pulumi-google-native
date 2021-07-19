@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("namespaceId", required: true)]
         public string NamespaceId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("serviceId", required: true)]
         public string ServiceId { get; set; } = null!;

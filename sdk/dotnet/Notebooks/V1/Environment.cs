@@ -133,8 +133,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Use a Compute Engine VM image to start the notebook instance.

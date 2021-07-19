@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;

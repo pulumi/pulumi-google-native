@@ -157,8 +157,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// IP Protocol of the test. When not provided, "TCP" is assumed.

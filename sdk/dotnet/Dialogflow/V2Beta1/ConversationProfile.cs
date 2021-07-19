@@ -189,8 +189,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("notificationConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2beta1NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Settings for speech transcription.

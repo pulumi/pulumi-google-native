@@ -124,8 +124,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         [Input("plan")]
         public Input<Pulumi.GoogleNative.BigQueryReservation.V1Beta1.CapacityCommitmentPlan>? Plan { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.

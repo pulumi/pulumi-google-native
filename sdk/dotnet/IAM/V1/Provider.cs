@@ -166,8 +166,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("oidc")]
         public Input<Inputs.OidcArgs>? Oidc { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;

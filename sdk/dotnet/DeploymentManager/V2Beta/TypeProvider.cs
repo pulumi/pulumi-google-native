@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TypeProvider(string name, TypeProviderArgs args, CustomResourceOptions? options = null)
+        public TypeProvider(string name, TypeProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:deploymentmanager/v2beta:TypeProvider", name, args ?? new TypeProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("options")]
         public Input<Inputs.OptionsArgs>? Options { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public TypeProviderArgs()
         {

@@ -213,8 +213,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.

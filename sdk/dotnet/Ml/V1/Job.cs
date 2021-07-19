@@ -169,8 +169,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("predictionOutput")]
         public Input<Inputs.GoogleCloudMlV1__PredictionOutputArgs>? PredictionOutput { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Input parameters to create a training job.

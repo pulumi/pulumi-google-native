@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GlobalNetworkEndpointGroup(string name, GlobalNetworkEndpointGroupArgs args, CustomResourceOptions? options = null)
+        public GlobalNetworkEndpointGroup(string name, GlobalNetworkEndpointGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:GlobalNetworkEndpointGroup", name, args ?? new GlobalNetworkEndpointGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -240,8 +240,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"

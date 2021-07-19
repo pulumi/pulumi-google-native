@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         [Input("namespaceId", required: true)]
         public string NamespaceId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNamespaceIamPolicyArgs()
         {

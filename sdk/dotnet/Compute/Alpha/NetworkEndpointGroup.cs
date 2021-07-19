@@ -240,8 +240,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"

@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
     public sealed class GetReservationArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("reservation", required: true)]
         public string Reservation { get; set; } = null!;

@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GlobalPublicDelegatedPrefix(string name, GlobalPublicDelegatedPrefixArgs args, CustomResourceOptions? options = null)
+        public GlobalPublicDelegatedPrefix(string name, GlobalPublicDelegatedPrefixArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/v1:GlobalPublicDelegatedPrefix", name, args ?? new GlobalPublicDelegatedPrefixArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("parentPrefix")]
         public Input<string>? ParentPrefix { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("publicDelegatedSubPrefixs")]
         private InputList<Inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>? _publicDelegatedSubPrefixs;

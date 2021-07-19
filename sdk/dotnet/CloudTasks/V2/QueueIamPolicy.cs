@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("queueId", required: true)]
         public Input<string> QueueId { get; set; } = null!;

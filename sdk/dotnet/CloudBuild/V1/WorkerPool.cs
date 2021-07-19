@@ -148,8 +148,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("privatePoolV1Config")]
         public Input<Inputs.PrivatePoolV1ConfigArgs>? PrivatePoolV1Config { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

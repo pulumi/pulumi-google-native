@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("firewallPolicy", required: true)]
         public string FirewallPolicy { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNetworkFirewallPolicyArgs()
         {

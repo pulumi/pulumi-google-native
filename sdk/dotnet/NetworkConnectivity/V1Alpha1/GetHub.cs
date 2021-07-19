@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("hubId", required: true)]
         public string HubId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetHubArgs()
         {

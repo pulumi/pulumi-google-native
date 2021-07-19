@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
             set => _labels = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;

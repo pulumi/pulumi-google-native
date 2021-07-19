@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Role(string name, RoleArgs args, CustomResourceOptions? options = null)
+        public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:iam/v1:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.

@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NetworkFirewallPolicy(string name, NetworkFirewallPolicyArgs args, CustomResourceOptions? options = null)
+        public NetworkFirewallPolicy(string name, NetworkFirewallPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:NetworkFirewallPolicy", name, args ?? new NetworkFirewallPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -169,8 +169,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

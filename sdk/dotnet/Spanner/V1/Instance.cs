@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("processingUnits")]
         public Input<int>? ProcessingUnits { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public InstanceArgs()
         {

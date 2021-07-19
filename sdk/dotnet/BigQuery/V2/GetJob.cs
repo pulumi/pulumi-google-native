@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("location")]
         public string? Location { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetJobArgs()
         {

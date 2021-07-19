@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
     public sealed class HmacKeyArgs : Pulumi.ResourceArgs
     {
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;

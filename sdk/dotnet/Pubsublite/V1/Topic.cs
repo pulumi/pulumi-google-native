@@ -93,8 +93,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("partitionConfig")]
         public Input<Inputs.PartitionConfigArgs>? PartitionConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The settings for this topic's message retention.

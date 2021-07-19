@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("domainId", required: true)]
         public string DomainId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("siteId", required: true)]
         public string SiteId { get; set; } = null!;

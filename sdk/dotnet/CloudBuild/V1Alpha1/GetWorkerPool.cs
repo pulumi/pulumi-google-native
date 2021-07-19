@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
 
     public sealed class GetWorkerPoolArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("workerPoolId", required: true)]
         public string WorkerPoolId { get; set; } = null!;

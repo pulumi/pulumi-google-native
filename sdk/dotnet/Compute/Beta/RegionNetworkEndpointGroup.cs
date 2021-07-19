@@ -216,8 +216,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

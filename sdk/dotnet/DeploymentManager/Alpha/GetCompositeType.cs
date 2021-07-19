@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("compositeType", required: true)]
         public string CompositeType { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetCompositeTypeArgs()
         {

@@ -60,11 +60,18 @@ namespace Pulumi.GoogleNative
         [Input("partnerName")]
         public Input<string>? PartnerName { get; set; }
 
+        /// <summary>
+        /// A Google Cloud project name.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
         public ProviderArgs()
         {
             AppendUserAgent = Utilities.GetEnv("GOOGLE_APPEND_USER_AGENT");
             DisablePartnerName = Utilities.GetEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME");
             PartnerName = Utilities.GetEnv("GOOGLE_PARTNER_NAME");
+            Project = Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
         }
     }
 }

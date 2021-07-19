@@ -190,8 +190,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Schema of the entry. An entry might not have any schema attached to it.

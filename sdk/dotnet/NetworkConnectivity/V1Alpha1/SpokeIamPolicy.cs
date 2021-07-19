@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("spokeId", required: true)]
         public Input<string> SpokeId { get; set; } = null!;

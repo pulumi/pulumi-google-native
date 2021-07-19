@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("androidAppId", required: true)]
         public string AndroidAppId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetAndroidAppArgs()
         {

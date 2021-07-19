@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("queueId", required: true)]
         public string QueueId { get; set; } = null!;

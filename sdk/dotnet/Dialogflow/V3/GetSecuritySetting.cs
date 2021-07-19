@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("securitySettingId", required: true)]
         public string SecuritySettingId { get; set; } = null!;

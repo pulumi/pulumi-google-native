@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("streamConfigs")]
         private InputList<Inputs.GoogleCloudHealthcareV1beta1DicomStreamConfigArgs>? _streamConfigs;

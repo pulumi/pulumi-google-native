@@ -390,8 +390,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("physicalBlockSizeBytes")]
         public Input<string>? PhysicalBlockSizeBytes { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.

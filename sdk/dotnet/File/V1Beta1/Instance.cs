@@ -181,8 +181,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             set => _networks = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The service tier of the instance.

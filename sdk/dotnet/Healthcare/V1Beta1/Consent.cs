@@ -171,8 +171,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _policies = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Indicates the current state of this Consent.

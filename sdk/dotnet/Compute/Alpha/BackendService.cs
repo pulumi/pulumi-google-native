@@ -227,7 +227,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public BackendService(string name, BackendServiceArgs args, CustomResourceOptions? options = null)
+        public BackendService(string name, BackendServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -417,8 +417,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("portName")]
         public Input<string>? PortName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.

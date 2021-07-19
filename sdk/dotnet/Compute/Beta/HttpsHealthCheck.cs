@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public HttpsHealthCheck(string name, HttpsHealthCheckArgs args, CustomResourceOptions? options = null)
+        public HttpsHealthCheck(string name, HttpsHealthCheckArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/beta:HttpsHealthCheck", name, args ?? new HttpsHealthCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

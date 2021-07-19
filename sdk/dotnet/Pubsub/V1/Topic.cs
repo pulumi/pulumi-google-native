@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.

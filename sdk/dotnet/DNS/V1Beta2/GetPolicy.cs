@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("policy", required: true)]
         public string Policy { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPolicyArgs()
         {

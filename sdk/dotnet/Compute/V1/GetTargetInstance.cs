@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
     public sealed class GetTargetInstanceArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("targetInstance", required: true)]
         public string TargetInstance { get; set; } = null!;

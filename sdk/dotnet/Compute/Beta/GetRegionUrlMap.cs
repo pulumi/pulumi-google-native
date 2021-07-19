@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class GetRegionUrlMapArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("region", required: true)]
         public string Region { get; set; } = null!;

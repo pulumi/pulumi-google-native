@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _parameters = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("sessionId", required: true)]
         public Input<string> SessionId { get; set; } = null!;

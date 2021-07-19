@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SslCertificate(string name, SslCertificateArgs args, CustomResourceOptions? options = null)
+        public SslCertificate(string name, SslCertificateArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:SslCertificate", name, args ?? new SslCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
