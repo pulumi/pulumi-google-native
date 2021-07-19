@@ -11,6 +11,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/version"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
@@ -36,7 +37,7 @@ type googleCloudProvider struct {
 	version     string
 	config      map[string]string
 	schemaBytes []byte
-	client      *googleHttpClient
+	client      *googleclient.GoogleClient
 	resourceMap *resources.CloudAPIMetadata
 	converter   *resources.SdkShapeConverter
 }
@@ -106,7 +107,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 
 	appendUserAgent := p.getConfig("appendUserAgent", "GOOGLE_APPEND_USER_AGENT")
 
-	config := httpClientConfig{
+	config := googleclient.Config{
 		Credentials:                        p.getConfig("credentials", "GOOGLE_CREDENTIALS"),
 		AccessToken:                        p.getConfig("accessToken", "GOOGLE_OAUTH_ACCESS_TOKEN"),
 		ImpersonateServiceAccount:          p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"),
@@ -118,7 +119,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		AppendUserAgent:                    appendUserAgent,
 	}
 
-	client, err := newGoogleHttpClient(ctx, config)
+	client, err := googleclient.New(ctx, config)
 	if err != nil {
 		return nil, err
 	}
@@ -149,7 +150,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		return nil, err
 	}
 
-	resp, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
+	resp, err := p.client.RequestWithTimeout("GET", uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
@@ -349,12 +350,12 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		op, err = p.client.sendUploadWithTimeout(res.CreateVerb, uri, body, content, 0)
+		op, err = p.client.UploadWithTimeout(res.CreateVerb, uri, body, content, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
 	} else {
-		op, err = p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
+		op, err = p.client.RequestWithTimeout(res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
@@ -381,7 +382,6 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		Properties: checkpoint,
 	}, nil
 }
-
 
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
@@ -418,7 +418,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 				return resp, nil
 			}
 			if targetLink, has := resp["targetLink"].(string); has {
-				return p.client.sendRequestWithTimeout("GET", targetLink, nil, 0)
+				return p.client.RequestWithTimeout("GET", targetLink, nil, 0)
 			}
 			return resp, nil
 		}
@@ -438,7 +438,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 
 		time.Sleep(retryPolicy.Duration())
 
-		op, err := p.client.sendRequestWithTimeout("GET", pollUri, nil, 0)
+		op, err := p.client.RequestWithTimeout("GET", pollUri, nil, 0)
 		if err != nil {
 			return nil, errors.Wrapf(err, "polling operation status")
 		}
@@ -469,7 +469,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	// Read the current state of the resource from the API.
-	newState, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
+	newState, err := p.client.RequestWithTimeout("GET", uri, nil, 0)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -553,7 +553,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
 
-	op, err := p.client.sendRequestWithTimeout(res.UpdateVerb, uri, body, 0)
+	op, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
@@ -599,7 +599,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 
-		resp, err := p.client.sendRequestWithTimeout(res.UpdateVerb, uri, map[string]interface{}{}, 0)
+		resp, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, map[string]interface{}{}, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
 		}
@@ -620,7 +620,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := p.client.sendRequestWithTimeout("DELETE", uri, nil, 0)
+	resp, err := p.client.RequestWithTimeout("DELETE", uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
