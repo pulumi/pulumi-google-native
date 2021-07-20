@@ -1,10 +1,6 @@
 // Copyright 2016-2021, Pulumi Corporation.  All rights reserved.
 
-import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
-
-const config = new pulumi.Config("google-native");
-const zone = config.require("zone");
 
 const computeNetwork = new google.compute.v1.Network("network", {
     autoCreateSubnetworks: true,
@@ -24,7 +20,6 @@ echo "Hello, World!" > index.html
 nohup python -m SimpleHTTPServer 80 &`;
 
 const computeInstance = new google.compute.v1.Instance("instance", {
-    zone: zone,
     machineType: "f1-micro",
     metadata: {
         items: [{
