@@ -9,7 +9,7 @@ CHANGELOG
 - Allow for shorthand property values instead of duplicating project, zone, etc.
   [#56](https://github.com/pulumi/pulumi-google-native/issues/56)
 
-- Populate `project` properties automatically from a config value
+- Populate `project`, `location`, `zone` properties automatically from config values
   [#94](https://github.com/pulumi/pulumi-google-native/issues/94)
 
 ---
