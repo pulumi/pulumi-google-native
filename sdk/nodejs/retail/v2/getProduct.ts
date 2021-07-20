@@ -30,7 +30,7 @@ export interface GetProductArgs {
     catalogId: string;
     location: string;
     productId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetProductResult {

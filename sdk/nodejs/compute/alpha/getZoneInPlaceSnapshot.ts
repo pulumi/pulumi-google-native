@@ -25,7 +25,7 @@ export function getZoneInPlaceSnapshot(args: GetZoneInPlaceSnapshotArgs, opts?: 
 
 export interface GetZoneInPlaceSnapshotArgs {
     inPlaceSnapshot: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

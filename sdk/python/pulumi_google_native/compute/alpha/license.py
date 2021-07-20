@@ -15,9 +15,9 @@ __all__ = ['LicenseArgs', 'License']
 @pulumi.input_type
 class LicenseArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input['LicenseResourceRequirementsArgs']] = None,
                  transferable: Optional[pulumi.Input[bool]] = None):
@@ -27,26 +27,18 @@ class LicenseArgs:
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
         :param pulumi.Input[bool] transferable: If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if resource_requirements is not None:
             pulumi.set(__self__, "resource_requirements", resource_requirements)
         if transferable is not None:
             pulumi.set(__self__, "transferable", transferable)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -71,6 +63,15 @@ class LicenseArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -128,7 +129,7 @@ class License(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LicenseArgs,
+                 args: Optional[LicenseArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -168,8 +169,6 @@ class License(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["resource_requirements"] = resource_requirements

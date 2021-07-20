@@ -4,17 +4,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 
 const config = new pulumi.Config("google-native");
-const project = config.require("project");
 const zone = config.require("zone");
 
 const computeNetwork = new google.compute.v1.Network("network", {
     autoCreateSubnetworks: true,
-    project: project,
 });
 
 const computeFirewall = new google.compute.v1.Firewall("firewall", {
     network: computeNetwork.selfLink,
-    project: project,
     allowed: [{
         ipProtocol: "tcp",
         ports: ["22", "80"],
@@ -27,7 +24,6 @@ echo "Hello, World!" > index.html
 nohup python -m SimpleHTTPServer 80 &`;
 
 const computeInstance = new google.compute.v1.Instance("instance", {
-    project: project,
     zone: zone,
     machineType: "f1-micro",
     metadata: {

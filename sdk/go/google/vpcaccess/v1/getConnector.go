@@ -18,9 +18,9 @@ func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pul
 }
 
 type LookupConnectorArgs struct {
-	ConnectorId string `pulumi:"connectorId"`
-	Location    string `pulumi:"location"`
-	Project     string `pulumi:"project"`
+	ConnectorId string  `pulumi:"connectorId"`
+	Location    string  `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupConnectorResult struct {

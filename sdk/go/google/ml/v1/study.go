@@ -38,9 +38,6 @@ func NewStudy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.StudyConfig == nil {
 		return nil, errors.New("invalid value for required argument 'StudyConfig'")
 	}
@@ -79,8 +76,8 @@ func (StudyState) ElementType() reflect.Type {
 }
 
 type studyArgs struct {
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
 	StudyId     string                       `pulumi:"studyId"`
@@ -89,7 +86,7 @@ type studyArgs struct {
 // The set of arguments for constructing a Study resource.
 type StudyArgs struct {
 	Location pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigInput
 	StudyId     pulumi.StringInput

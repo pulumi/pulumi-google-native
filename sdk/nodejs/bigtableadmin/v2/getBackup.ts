@@ -28,7 +28,7 @@ export interface GetBackupArgs {
     backupId: string;
     clusterId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetBackupResult {

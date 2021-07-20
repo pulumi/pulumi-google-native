@@ -16,7 +16,6 @@ __all__ = ['SubnetworkArgs', 'Subnetwork']
 @pulumi.input_type
 class SubnetworkArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -28,6 +27,7 @@ class SubnetworkArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['SubnetworkPurpose']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['SubnetworkRole']] = None,
@@ -51,7 +51,6 @@ class SubnetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
         :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if allow_subnet_cidr_routes_overlap is not None:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
@@ -73,6 +72,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "private_ip_google_access", private_ip_google_access)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
         if request_id is not None:
@@ -83,15 +84,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "secondary_ip_ranges", secondary_ip_ranges)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -224,6 +216,15 @@ class SubnetworkArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['SubnetworkPrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -390,8 +391,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["private_ip_google_access"] = private_ip_google_access
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             if region is None and not opts.urn:

@@ -18,11 +18,11 @@ func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...p
 }
 
 type LookupExperimentArgs struct {
-	AgentId       string `pulumi:"agentId"`
-	EnvironmentId string `pulumi:"environmentId"`
-	ExperimentId  string `pulumi:"experimentId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
+	AgentId       string  `pulumi:"agentId"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	ExperimentId  string  `pulumi:"experimentId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupExperimentResult struct {

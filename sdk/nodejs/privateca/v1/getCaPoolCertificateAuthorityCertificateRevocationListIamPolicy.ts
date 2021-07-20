@@ -32,7 +32,7 @@ export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicy
     certificateRevocationListId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult {

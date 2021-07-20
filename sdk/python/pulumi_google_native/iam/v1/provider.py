@@ -16,7 +16,6 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  workload_identity_pool_id: pulumi.Input[str],
                  workload_identity_pool_provider_id: pulumi.Input[str],
                  attribute_condition: Optional[pulumi.Input[str]] = None,
@@ -25,7 +24,8 @@ class ProviderArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input['OidcArgs']] = None):
+                 oidc: Optional[pulumi.Input['OidcArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] attribute_condition: [A Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The expression must output a boolean representing whether to allow the federation. The following keywords may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the attribute condition expression is 4096 characters. If unspecified, all valid authentication credential are accepted. The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
@@ -37,7 +37,6 @@ class ProviderArgs:
         :param pulumi.Input['OidcArgs'] oidc: An OpenId Connect 1.0 identity provider.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if attribute_condition is not None:
@@ -54,6 +53,8 @@ class ProviderArgs:
             pulumi.set(__self__, "display_name", display_name)
         if oidc is not None:
             pulumi.set(__self__, "oidc", oidc)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -63,15 +64,6 @@ class ProviderArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -175,6 +167,15 @@ class ProviderArgs:
     def oidc(self, value: Optional[pulumi.Input['OidcArgs']]):
         pulumi.set(self, "oidc", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class Provider(pulumi.CustomResource):
     @overload
@@ -265,8 +266,6 @@ class Provider(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["oidc"] = oidc
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")

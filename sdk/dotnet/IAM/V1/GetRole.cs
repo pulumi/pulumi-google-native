@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.IAM.V1
 
     public sealed class GetRoleArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("roleId", required: true)]
         public string RoleId { get; set; } = null!;

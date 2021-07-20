@@ -34,9 +34,6 @@ func NewIdentityAwareProxyClient(ctx *pulumi.Context,
 	if args.BrandId == nil {
 		return nil, errors.New("invalid value for required argument 'BrandId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource IdentityAwareProxyClient
 	err := ctx.RegisterResource("google-native:iap/v1:IdentityAwareProxyClient", name, args, &resource, opts...)
 	if err != nil {
@@ -72,7 +69,7 @@ type identityAwareProxyClientArgs struct {
 	BrandId string `pulumi:"brandId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName *string `pulumi:"displayName"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a IdentityAwareProxyClient resource.
@@ -80,7 +77,7 @@ type IdentityAwareProxyClientArgs struct {
 	BrandId pulumi.StringInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringPtrInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 }
 
 func (IdentityAwareProxyClientArgs) ElementType() reflect.Type {

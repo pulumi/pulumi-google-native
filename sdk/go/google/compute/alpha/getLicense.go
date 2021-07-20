@@ -18,8 +18,8 @@ func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.
 }
 
 type LookupLicenseArgs struct {
-	License string `pulumi:"license"`
-	Project string `pulumi:"project"`
+	License string  `pulumi:"license"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupLicenseResult struct {

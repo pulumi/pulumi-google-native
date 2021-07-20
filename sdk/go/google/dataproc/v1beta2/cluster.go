@@ -47,9 +47,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -92,7 +89,7 @@ type clusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud Platform project ID that the cluster belongs to.
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 }
@@ -106,7 +103,7 @@ type ClusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
 	// The Google Cloud Platform project ID that the cluster belongs to.
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 }

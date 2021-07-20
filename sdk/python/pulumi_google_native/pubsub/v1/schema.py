@@ -14,9 +14,9 @@ __all__ = ['SchemaArgs', 'Schema']
 @pulumi.input_type
 class SchemaArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['SchemaType']] = None):
         """
@@ -25,24 +25,16 @@ class SchemaArgs:
         :param pulumi.Input[str] name: Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
-        pulumi.set(__self__, "project", project)
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if schema_id is not None:
             pulumi.set(__self__, "schema_id", schema_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -67,6 +59,15 @@ class SchemaArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="schemaId")
@@ -114,7 +115,7 @@ class Schema(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SchemaArgs,
+                 args: Optional[SchemaArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a schema.
@@ -153,8 +154,6 @@ class Schema(pulumi.CustomResource):
 
             __props__.__dict__["definition"] = definition
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["type"] = type

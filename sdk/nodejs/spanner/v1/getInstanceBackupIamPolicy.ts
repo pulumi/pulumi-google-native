@@ -26,7 +26,7 @@ export function getInstanceBackupIamPolicy(args: GetInstanceBackupIamPolicyArgs,
 export interface GetInstanceBackupIamPolicyArgs {
     backupId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstanceBackupIamPolicyResult {

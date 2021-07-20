@@ -139,8 +139,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("scheduleId", required: true)]
         public Input<string> ScheduleId { get; set; } = null!;

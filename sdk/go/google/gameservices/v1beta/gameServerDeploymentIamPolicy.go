@@ -41,9 +41,6 @@ func NewGameServerDeploymentIamPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GameServerDeploymentIamPolicy
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type gameServerDeploymentIamPolicyArgs struct {
 	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
 	IamOwned               *bool   `pulumi:"iamOwned"`
 	Location               string  `pulumi:"location"`
-	Project                string  `pulumi:"project"`
+	Project                *string `pulumi:"project"`
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules []Rule `pulumi:"rules"`
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
@@ -105,7 +102,7 @@ type GameServerDeploymentIamPolicyArgs struct {
 	GameServerDeploymentId pulumi.StringInput
 	IamOwned               pulumi.BoolPtrInput
 	Location               pulumi.StringInput
-	Project                pulumi.StringInput
+	Project                pulumi.StringPtrInput
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules RuleArrayInput
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

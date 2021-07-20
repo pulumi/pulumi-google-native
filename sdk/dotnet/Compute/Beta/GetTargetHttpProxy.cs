@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class GetTargetHttpProxyArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("targetHttpProxy", required: true)]
         public string TargetHttpProxy { get; set; } = null!;

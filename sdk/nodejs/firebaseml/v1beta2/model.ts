@@ -90,9 +90,6 @@ export class Model extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -135,7 +132,7 @@ export interface ModelArgs {
      * The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * State common to all model types. Includes publishing and validation information.
      */

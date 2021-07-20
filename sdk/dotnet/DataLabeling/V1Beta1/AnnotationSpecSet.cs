@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public AnnotationSpecSetArgs()
         {

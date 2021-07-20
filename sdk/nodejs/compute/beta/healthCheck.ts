@@ -97,13 +97,10 @@ export class HealthCheck extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: HealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: HealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
@@ -183,7 +180,7 @@ export interface HealthCheckArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     sslHealthCheck?: pulumi.Input<inputs.compute.beta.SSLHealthCheckArgs>;
     tcpHealthCheck?: pulumi.Input<inputs.compute.beta.TCPHealthCheckArgs>;

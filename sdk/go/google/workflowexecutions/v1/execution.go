@@ -44,9 +44,6 @@ func NewExecution(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
@@ -85,7 +82,7 @@ type executionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument   *string `pulumi:"argument"`
 	Location   string  `pulumi:"location"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	WorkflowId string  `pulumi:"workflowId"`
 }
 
@@ -94,7 +91,7 @@ type ExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument   pulumi.StringPtrInput
 	Location   pulumi.StringInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	WorkflowId pulumi.StringInput
 }
 

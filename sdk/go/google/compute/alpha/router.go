@@ -50,9 +50,6 @@ func NewRouter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -104,7 +101,7 @@ type routerArgs struct {
 	Nats []RouterNat `pulumi:"nats"`
 	// URI of the network to which this router belongs.
 	Network   *string `pulumi:"network"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 }
@@ -127,7 +124,7 @@ type RouterArgs struct {
 	Nats RouterNatArrayInput
 	// URI of the network to which this router belongs.
 	Network   pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 }

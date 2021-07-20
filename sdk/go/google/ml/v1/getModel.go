@@ -18,8 +18,8 @@ func LookupModel(ctx *pulumi.Context, args *LookupModelArgs, opts ...pulumi.Invo
 }
 
 type LookupModelArgs struct {
-	ModelId string `pulumi:"modelId"`
-	Project string `pulumi:"project"`
+	ModelId string  `pulumi:"modelId"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupModelResult struct {

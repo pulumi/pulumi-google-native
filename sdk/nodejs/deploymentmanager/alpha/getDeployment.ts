@@ -24,7 +24,7 @@ export function getDeployment(args: GetDeploymentArgs, opts?: pulumi.InvokeOptio
 
 export interface GetDeploymentArgs {
     deployment: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDeploymentResult {

@@ -65,9 +65,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.responsePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
@@ -111,7 +108,7 @@ export interface ResponsePolicyRuleArgs {
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      */
     localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalDataArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     responsePolicy: pulumi.Input<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.

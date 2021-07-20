@@ -18,9 +18,9 @@ func LookupDomainMapping(ctx *pulumi.Context, args *LookupDomainMappingArgs, opt
 }
 
 type LookupDomainMappingArgs struct {
-	DomainmappingId string `pulumi:"domainmappingId"`
-	Location        string `pulumi:"location"`
-	Project         string `pulumi:"project"`
+	DomainmappingId string  `pulumi:"domainmappingId"`
+	Location        string  `pulumi:"location"`
+	Project         *string `pulumi:"project"`
 }
 
 type LookupDomainMappingResult struct {

@@ -77,9 +77,6 @@ export class Realm extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
@@ -133,7 +130,7 @@ export interface RealmArgs {
      * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     realmId: pulumi.Input<string>;
     /**
      * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.

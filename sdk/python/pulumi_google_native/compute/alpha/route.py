@@ -15,7 +15,6 @@ __all__ = ['RouteArgs', 'Route']
 @pulumi.input_type
 class RouteArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
@@ -29,6 +28,7 @@ class RouteArgs:
                  next_hop_network: Optional[pulumi.Input[str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -48,7 +48,6 @@ class RouteArgs:
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
         """
-        pulumi.set(__self__, "project", project)
         if allow_conflicting_subnetworks is not None:
             pulumi.set(__self__, "allow_conflicting_subnetworks", allow_conflicting_subnetworks)
         if description is not None:
@@ -75,19 +74,12 @@ class RouteArgs:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="allowConflictingSubnetworks")
@@ -246,6 +238,15 @@ class RouteArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -313,7 +314,7 @@ class Route(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RouteArgs,
+                 args: Optional[RouteArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Route resource in the specified project using the data included in the request.
@@ -374,8 +375,6 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["next_hop_network"] = next_hop_network
             __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
             __props__.__dict__["priority"] = priority
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["tags"] = tags

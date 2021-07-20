@@ -115,9 +115,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -202,7 +199,7 @@ export interface ServiceAttachmentArgs {
      * The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
      */
     producerForwardingRule?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,12 +68,9 @@ type Snapshot struct {
 func NewSnapshot(ctx *pulumi.Context,
 	name string, args *SnapshotArgs, opts ...pulumi.ResourceOption) (*Snapshot, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SnapshotArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Snapshot
 	err := ctx.RegisterResource("google-native:compute/beta:Snapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -119,7 +115,7 @@ type snapshotArgs struct {
 	LocationHint *string `pulumi:"locationHint"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 	SnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"snapshotEncryptionKey"`
@@ -145,7 +141,7 @@ type SnapshotArgs struct {
 	LocationHint pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 	SnapshotEncryptionKey CustomerEncryptionKeyPtrInput

@@ -35,9 +35,6 @@ func NewKeyRing(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource KeyRing
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRing", name, args, &resource, opts...)
 	if err != nil {
@@ -70,16 +67,16 @@ func (KeyRingState) ElementType() reflect.Type {
 }
 
 type keyRingArgs struct {
-	KeyRingId string `pulumi:"keyRingId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
+	KeyRingId string  `pulumi:"keyRingId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
 	KeyRingId pulumi.StringInput
 	Location  pulumi.StringInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 }
 
 func (KeyRingArgs) ElementType() reflect.Type {

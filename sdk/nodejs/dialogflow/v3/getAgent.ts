@@ -26,7 +26,7 @@ export function getAgent(args: GetAgentArgs, opts?: pulumi.InvokeOptions): Promi
 export interface GetAgentArgs {
     agentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAgentResult {

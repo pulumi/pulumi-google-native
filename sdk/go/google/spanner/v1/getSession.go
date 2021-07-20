@@ -18,10 +18,10 @@ func LookupSession(ctx *pulumi.Context, args *LookupSessionArgs, opts ...pulumi.
 }
 
 type LookupSessionArgs struct {
-	DatabaseId string `pulumi:"databaseId"`
-	InstanceId string `pulumi:"instanceId"`
-	Project    string `pulumi:"project"`
-	SessionId  string `pulumi:"sessionId"`
+	DatabaseId string  `pulumi:"databaseId"`
+	InstanceId string  `pulumi:"instanceId"`
+	Project    *string `pulumi:"project"`
+	SessionId  string  `pulumi:"sessionId"`
 }
 
 type LookupSessionResult struct {

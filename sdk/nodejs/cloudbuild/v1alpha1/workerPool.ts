@@ -83,13 +83,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["regions"] = args ? args.regions : undefined;
@@ -130,7 +127,7 @@ export interface WorkerPoolArgs {
     /**
      * The project ID of the GCP project for which the `WorkerPool` is created.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
      */

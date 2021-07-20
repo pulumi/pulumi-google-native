@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.

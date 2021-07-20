@@ -18,23 +18,24 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
                  config: pulumi.Input['ClusterConfigArgs'],
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input['ClusterConfigArgs'] config: The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-        :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
 
@@ -64,18 +65,6 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The Google Cloud Platform project ID that the cluster belongs to.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         return pulumi.get(self, "region")
 
@@ -94,6 +83,18 @@ class ClusterArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Google Cloud Platform project ID that the cluster belongs to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -178,8 +179,6 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

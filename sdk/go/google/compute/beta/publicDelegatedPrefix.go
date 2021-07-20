@@ -48,9 +48,6 @@ func NewPublicDelegatedPrefix(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -96,7 +93,7 @@ type publicDelegatedPrefixArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix *string `pulumi:"parentPrefix"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefix `pulumi:"publicDelegatedSubPrefixs"`
 	Region                    string                                          `pulumi:"region"`
@@ -115,7 +112,7 @@ type PublicDelegatedPrefixArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput
 	Region                    pulumi.StringInput

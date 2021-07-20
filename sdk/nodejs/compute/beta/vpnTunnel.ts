@@ -138,9 +138,6 @@ export class VpnTunnel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -241,7 +238,7 @@ export interface VpnTunnelArgs {
      * IP address of the peer VPN gateway. Only IPv4 is supported.
      */
     peerIp?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     /**
      * Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.

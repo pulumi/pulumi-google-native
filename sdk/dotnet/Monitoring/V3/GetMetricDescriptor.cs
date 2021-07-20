@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("metricDescriptorId", required: true)]
         public string MetricDescriptorId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetMetricDescriptorArgs()
         {

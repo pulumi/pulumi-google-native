@@ -25,7 +25,7 @@ export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.Inv
 
 export interface GetTableIamPolicyArgs {
     datasetId: string;
-    project: string;
+    project?: string;
     tableId: string;
 }
 

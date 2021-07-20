@@ -53,9 +53,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:file/v1beta1:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -100,7 +97,7 @@ type instanceArgs struct {
 	Location string            `pulumi:"location"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfig `pulumi:"networks"`
-	Project  string          `pulumi:"project"`
+	Project  *string         `pulumi:"project"`
 	// The service tier of the instance.
 	Tier *InstanceTier `pulumi:"tier"`
 }
@@ -119,7 +116,7 @@ type InstanceArgs struct {
 	Location pulumi.StringInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigArrayInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier InstanceTierPtrInput
 }

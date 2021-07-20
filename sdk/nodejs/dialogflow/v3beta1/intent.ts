@@ -88,9 +88,6 @@ export class Intent extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -155,7 +152,7 @@ export interface IntentArgs {
      * The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     priority?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      */

@@ -96,9 +96,6 @@ export class Message extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["data"] = args ? args.data : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
@@ -159,7 +156,7 @@ export interface MessageArgs {
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
     patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.PatientIdArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */

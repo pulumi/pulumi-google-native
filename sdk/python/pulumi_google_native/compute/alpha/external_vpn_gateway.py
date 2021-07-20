@@ -16,11 +16,11 @@ __all__ = ['ExternalVpnGatewayArgs', 'ExternalVpnGateway']
 @pulumi.input_type
 class ExternalVpnGatewayArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input['ExternalVpnGatewayRedundancyType']] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -31,7 +31,6 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['ExternalVpnGatewayRedundancyType'] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if interfaces is not None:
@@ -40,19 +39,12 @@ class ExternalVpnGatewayArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -101,6 +93,15 @@ class ExternalVpnGatewayArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="redundancyType")
@@ -152,7 +153,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ExternalVpnGatewayArgs,
+                 args: Optional[ExternalVpnGatewayArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a ExternalVpnGateway in the specified project using the data included in the request.
@@ -195,8 +196,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
             __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
             __props__.__dict__["request_id"] = request_id

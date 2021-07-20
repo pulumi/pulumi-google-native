@@ -24,7 +24,7 @@ export function getRegionSecurityPolicy(args: GetRegionSecurityPolicyArgs, opts?
 }
 
 export interface GetRegionSecurityPolicyArgs {
-    project: string;
+    project?: string;
     region: string;
     securityPolicy: string;
 }

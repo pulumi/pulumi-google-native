@@ -41,9 +41,6 @@ func NewRegistry(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Registry
 	err := ctx.RegisterResource("google-native:cloudiot/v1:Registry", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +88,7 @@ type registryArgs struct {
 	MqttConfig *MqttConfig `pulumi:"mqttConfig"`
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig *StateNotificationConfig `pulumi:"stateNotificationConfig"`
 }
@@ -113,7 +110,7 @@ type RegistryArgs struct {
 	MqttConfig MqttConfigPtrInput
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig StateNotificationConfigPtrInput
 }

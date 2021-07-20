@@ -25,7 +25,7 @@ export function getAutoscaler(args: GetAutoscalerArgs, opts?: pulumi.InvokeOptio
 
 export interface GetAutoscalerArgs {
     autoscaler: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

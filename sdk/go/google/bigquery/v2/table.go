@@ -84,9 +84,6 @@ func NewTable(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Table
 	err := ctx.RegisterResource("google-native:bigquery/v2:Table", name, args, &resource, opts...)
 	if err != nil {
@@ -138,7 +135,7 @@ type tableArgs struct {
 	MaterializedView *MaterializedViewDefinition `pulumi:"materializedView"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model   *ModelDefinition `pulumi:"model"`
-	Project string           `pulumi:"project"`
+	Project *string          `pulumi:"project"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -174,7 +171,7 @@ type TableArgs struct {
 	MaterializedView MaterializedViewDefinitionPtrInput
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model   ModelDefinitionPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningPtrInput
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.

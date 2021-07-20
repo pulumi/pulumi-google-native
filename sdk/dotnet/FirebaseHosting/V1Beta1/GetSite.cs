@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
     public sealed class GetSiteArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("siteId", required: true)]
         public string SiteId { get; set; } = null!;

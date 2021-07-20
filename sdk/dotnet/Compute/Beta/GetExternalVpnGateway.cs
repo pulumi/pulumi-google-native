@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("externalVpnGateway", required: true)]
         public string ExternalVpnGateway { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetExternalVpnGatewayArgs()
         {

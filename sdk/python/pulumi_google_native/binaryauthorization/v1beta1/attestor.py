@@ -17,9 +17,9 @@ __all__ = ['AttestorArgs', 'Attestor']
 class AttestorArgs:
     def __init__(__self__, *,
                  attestor_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_owned_drydock_note: Optional[pulumi.Input['UserOwnedDrydockNoteArgs']] = None):
         """
         The set of arguments for constructing a Attestor resource.
@@ -28,11 +28,12 @@ class AttestorArgs:
         :param pulumi.Input['UserOwnedDrydockNoteArgs'] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
         pulumi.set(__self__, "attestor_id", attestor_id)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if user_owned_drydock_note is not None:
             pulumi.set(__self__, "user_owned_drydock_note", user_owned_drydock_note)
 
@@ -44,15 +45,6 @@ class AttestorArgs:
     @attestor_id.setter
     def attestor_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "attestor_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -77,6 +69,15 @@ class AttestorArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="userOwnedDrydockNote")
@@ -157,8 +158,6 @@ class Attestor(pulumi.CustomResource):
             __props__.__dict__["attestor_id"] = attestor_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["user_owned_drydock_note"] = user_owned_drydock_note
             __props__.__dict__["update_time"] = None

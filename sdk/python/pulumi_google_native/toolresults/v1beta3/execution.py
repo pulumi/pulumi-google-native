@@ -17,12 +17,12 @@ __all__ = ['ExecutionArgs', 'Execution']
 class ExecutionArgs:
     def __init__(__self__, *,
                  history_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  completion_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  creation_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['MatrixDimensionDefinitionArgs']]]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input['SpecificationArgs']] = None,
                  state: Optional[pulumi.Input['ExecutionState']] = None,
@@ -39,7 +39,6 @@ class ExecutionArgs:
         :param pulumi.Input[str] test_execution_matrix_id: TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
         """
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project", project)
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
         if creation_time is not None:
@@ -50,6 +49,8 @@ class ExecutionArgs:
             pulumi.set(__self__, "execution_id", execution_id)
         if outcome is not None:
             pulumi.set(__self__, "outcome", outcome)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if specification is not None:
@@ -67,15 +68,6 @@ class ExecutionArgs:
     @history_id.setter
     def history_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "history_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -136,6 +128,15 @@ class ExecutionArgs:
     @outcome.setter
     def outcome(self, value: Optional[pulumi.Input['OutcomeArgs']]):
         pulumi.set(self, "outcome", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -271,8 +272,6 @@ class Execution(pulumi.CustomResource):
                 raise TypeError("Missing required property 'history_id'")
             __props__.__dict__["history_id"] = history_id
             __props__.__dict__["outcome"] = outcome
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["specification"] = specification

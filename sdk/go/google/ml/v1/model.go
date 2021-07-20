@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,12 +36,9 @@ type Model struct {
 func NewModel(ctx *pulumi.Context,
 	name string, args *ModelArgs, opts ...pulumi.ResourceOption) (*Model, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ModelArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Model
 	err := ctx.RegisterResource("google-native:ml/v1:Model", name, args, &resource, opts...)
 	if err != nil {
@@ -86,8 +82,8 @@ type modelArgs struct {
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
 	// Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
-	OnlinePredictionLogging *bool  `pulumi:"onlinePredictionLogging"`
-	Project                 string `pulumi:"project"`
+	OnlinePredictionLogging *bool   `pulumi:"onlinePredictionLogging"`
+	Project                 *string `pulumi:"project"`
 	// Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
 	Regions []string `pulumi:"regions"`
 }
@@ -106,7 +102,7 @@ type ModelArgs struct {
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
 	// Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionLogging pulumi.BoolPtrInput
-	Project                 pulumi.StringInput
+	Project                 pulumi.StringPtrInput
 	// Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
 	Regions pulumi.StringArrayInput
 }

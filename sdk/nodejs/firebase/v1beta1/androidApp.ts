@@ -62,13 +62,10 @@ export class AndroidApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AndroidAppArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: AndroidAppArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -111,5 +108,5 @@ export interface AndroidAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

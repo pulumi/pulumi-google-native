@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("policyTagId", required: true)]
         public Input<string> PolicyTagId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("taxonomyId", required: true)]
         public Input<string> TaxonomyId { get; set; } = null!;

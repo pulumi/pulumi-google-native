@@ -57,9 +57,6 @@ func NewAgent(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
@@ -110,7 +107,7 @@ type agentArgs struct {
 	Location                 string `pulumi:"location"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings *string `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -140,7 +137,7 @@ type AgentArgs struct {
 	Location                 pulumi.StringInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringPtrInput
 	// Speech recognition related settings.

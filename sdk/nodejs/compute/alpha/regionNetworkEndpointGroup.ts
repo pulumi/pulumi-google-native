@@ -127,9 +127,6 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -224,7 +221,7 @@ export interface RegionNetworkEndpointGroupArgs {
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
      */
     networkEndpointType?: pulumi.Input<enums.compute.alpha.RegionNetworkEndpointGroupNetworkEndpointType>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */

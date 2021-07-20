@@ -17,7 +17,6 @@ __all__ = ['ScanConfigArgs', 'ScanConfig']
 class ScanConfigArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  starting_urls: pulumi.Input[Sequence[pulumi.Input[str]]],
                  authentication: Optional[pulumi.Input['AuthenticationArgs']] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -26,6 +25,7 @@ class ScanConfigArgs:
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input['ScanConfigRiskLevel']] = None,
                  schedule: Optional[pulumi.Input['ScheduleArgs']] = None,
                  static_ip_scan: Optional[pulumi.Input[bool]] = None,
@@ -47,7 +47,6 @@ class ScanConfigArgs:
         :param pulumi.Input['ScanConfigUserAgent'] user_agent: The user agent used during scanning.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "starting_urls", starting_urls)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -63,6 +62,8 @@ class ScanConfigArgs:
             pulumi.set(__self__, "max_qps", max_qps)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if risk_level is not None:
             pulumi.set(__self__, "risk_level", risk_level)
         if schedule is not None:
@@ -83,15 +84,6 @@ class ScanConfigArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="startingUrls")
@@ -188,6 +180,15 @@ class ScanConfigArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -337,8 +338,6 @@ class ScanConfig(pulumi.CustomResource):
             __props__.__dict__["managed_scan"] = managed_scan
             __props__.__dict__["max_qps"] = max_qps
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_level"] = risk_level
             __props__.__dict__["schedule"] = schedule

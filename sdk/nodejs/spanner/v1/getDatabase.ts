@@ -26,7 +26,7 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
 export interface GetDatabaseArgs {
     databaseId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatabaseResult {

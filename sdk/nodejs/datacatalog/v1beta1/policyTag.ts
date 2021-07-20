@@ -73,9 +73,6 @@ export class PolicyTag extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.taxonomyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taxonomyId'");
             }
@@ -118,6 +115,6 @@ export interface PolicyTagArgs {
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */
     parentPolicyTag?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     taxonomyId: pulumi.Input<string>;
 }

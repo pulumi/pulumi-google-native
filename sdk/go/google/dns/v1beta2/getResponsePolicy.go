@@ -19,7 +19,7 @@ func LookupResponsePolicy(ctx *pulumi.Context, args *LookupResponsePolicyArgs, o
 
 type LookupResponsePolicyArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
-	Project           string  `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 	ResponsePolicy    string  `pulumi:"responsePolicy"`
 }
 

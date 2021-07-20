@@ -24,7 +24,7 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
 
 export interface GetGlobalAddressArgs {
     address: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGlobalAddressResult {

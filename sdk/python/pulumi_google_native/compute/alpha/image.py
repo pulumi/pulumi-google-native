@@ -16,7 +16,6 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  archive_size_bytes: Optional[pulumi.Input[str]] = None,
                  deprecated: Optional[pulumi.Input['DeprecationStatusArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -29,6 +28,7 @@ class ImageArgs:
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rollout_override: Optional[pulumi.Input['RolloutPolicyArgs']] = None,
@@ -66,7 +66,6 @@ class ImageArgs:
         :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
         """
-        pulumi.set(__self__, "project", project)
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
         if deprecated is not None:
@@ -91,6 +90,8 @@ class ImageArgs:
             pulumi.set(__self__, "licenses", licenses)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if raw_disk is not None:
             pulumi.set(__self__, "raw_disk", raw_disk)
         if request_id is not None:
@@ -115,15 +116,6 @@ class ImageArgs:
             pulumi.set(__self__, "source_type", source_type)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -265,6 +257,15 @@ class ImageArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="rawDisk")
@@ -471,7 +472,7 @@ class Image(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ImageArgs,
+                 args: Optional[ImageArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an image in the specified project using the data included in the request.
@@ -540,8 +541,6 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["license_codes"] = license_codes
             __props__.__dict__["licenses"] = licenses
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_disk"] = raw_disk
             __props__.__dict__["request_id"] = request_id

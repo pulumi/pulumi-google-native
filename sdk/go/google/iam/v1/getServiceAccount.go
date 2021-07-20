@@ -18,8 +18,8 @@ func LookupServiceAccount(ctx *pulumi.Context, args *LookupServiceAccountArgs, o
 }
 
 type LookupServiceAccountArgs struct {
-	Project          string `pulumi:"project"`
-	ServiceAccountId string `pulumi:"serviceAccountId"`
+	Project          *string `pulumi:"project"`
+	ServiceAccountId string  `pulumi:"serviceAccountId"`
 }
 
 type LookupServiceAccountResult struct {

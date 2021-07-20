@@ -62,9 +62,6 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Certificate
 	err := ctx.RegisterResource("google-native:privateca/v1:Certificate", name, args, &resource, opts...)
 	if err != nil {
@@ -111,7 +108,7 @@ type certificateArgs struct {
 	Location string `pulumi:"location"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    *string `pulumi:"pemCsr"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
 	SubjectMode  *CertificateSubjectMode `pulumi:"subjectMode"`
@@ -134,7 +131,7 @@ type CertificateArgs struct {
 	Location pulumi.StringInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
 	SubjectMode  CertificateSubjectModePtrInput

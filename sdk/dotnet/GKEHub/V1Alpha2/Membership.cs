@@ -181,8 +181,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public MembershipArgs()
         {

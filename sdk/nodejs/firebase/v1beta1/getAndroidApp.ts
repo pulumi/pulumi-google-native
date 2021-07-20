@@ -24,7 +24,7 @@ export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptio
 
 export interface GetAndroidAppArgs {
     androidAppId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAndroidAppResult {

@@ -25,7 +25,7 @@ export function getInterconnectIamPolicy(args: GetInterconnectIamPolicyArgs, opt
 
 export interface GetInterconnectIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

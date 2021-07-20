@@ -18,9 +18,9 @@ func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.In
 }
 
 type LookupDomainArgs struct {
-	DomainId string `pulumi:"domainId"`
-	Project  string `pulumi:"project"`
-	SiteId   string `pulumi:"siteId"`
+	DomainId string  `pulumi:"domainId"`
+	Project  *string `pulumi:"project"`
+	SiteId   string  `pulumi:"siteId"`
 }
 
 type LookupDomainResult struct {

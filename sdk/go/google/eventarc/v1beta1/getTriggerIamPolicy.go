@@ -20,7 +20,7 @@ func LookupTriggerIamPolicy(ctx *pulumi.Context, args *LookupTriggerIamPolicyArg
 type LookupTriggerIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	TriggerId                     string  `pulumi:"triggerId"`
 }
 

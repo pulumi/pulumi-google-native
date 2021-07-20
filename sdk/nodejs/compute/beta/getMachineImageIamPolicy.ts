@@ -25,7 +25,7 @@ export function getMachineImageIamPolicy(args: GetMachineImageIamPolicyArgs, opt
 
 export interface GetMachineImageIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

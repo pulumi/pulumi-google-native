@@ -31,7 +31,7 @@ export interface GetTransitionRouteGroupArgs {
     flowId: string;
     languageCode?: string;
     location: string;
-    project: string;
+    project?: string;
     transitionRouteGroupId: string;
 }
 

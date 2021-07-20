@@ -22,7 +22,7 @@ type LookupInstanceNamespaceIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	NamespaceId                   string  `pulumi:"namespaceId"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupInstanceNamespaceIamPolicyResult struct {

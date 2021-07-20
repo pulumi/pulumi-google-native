@@ -18,13 +18,13 @@ class Hl7V2StoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7V2NotificationConfigArgs']]]] = None,
                  parser_config: Optional[pulumi.Input['ParserConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reject_duplicate_message: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Hl7V2Store resource.
@@ -37,7 +37,6 @@ class Hl7V2StoreArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if hl7_v2_store_id is not None:
             pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
         if labels is not None:
@@ -50,6 +49,8 @@ class Hl7V2StoreArgs:
             pulumi.set(__self__, "notification_configs", notification_configs)
         if parser_config is not None:
             pulumi.set(__self__, "parser_config", parser_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if reject_duplicate_message is not None:
             pulumi.set(__self__, "reject_duplicate_message", reject_duplicate_message)
 
@@ -70,15 +71,6 @@ class Hl7V2StoreArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="hl7V2StoreId")
@@ -148,6 +140,15 @@ class Hl7V2StoreArgs:
     @parser_config.setter
     def parser_config(self, value: Optional[pulumi.Input['ParserConfigArgs']]):
         pulumi.set(self, "parser_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="rejectDuplicateMessage")
@@ -248,8 +249,6 @@ class Hl7V2Store(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["parser_config"] = parser_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["reject_duplicate_message"] = reject_duplicate_message
         super(Hl7V2Store, __self__).__init__(

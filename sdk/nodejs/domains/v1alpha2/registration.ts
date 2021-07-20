@@ -105,9 +105,6 @@ export class Registration extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.yearlyPrice === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'yearlyPrice'");
             }
@@ -183,7 +180,7 @@ export interface RegistrationArgs {
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */
     managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettingsArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
      */

@@ -26,7 +26,7 @@ export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetBackupArgs {
     backupId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetBackupResult {

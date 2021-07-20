@@ -133,8 +133,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("pdfInstruction")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>? PdfInstruction { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public InstructionArgs()
         {

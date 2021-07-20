@@ -17,7 +17,6 @@ __all__ = ['NodeGroupArgs', 'NodeGroup']
 class NodeGroupArgs:
     def __init__(__self__, *,
                  initial_node_count: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class NodeGroupArgs:
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_template: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  status: Optional[pulumi.Input['NodeGroupStatus']] = None):
@@ -40,7 +40,6 @@ class NodeGroupArgs:
         :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for the node group
         """
         pulumi.set(__self__, "initial_node_count", initial_node_count)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if autoscaling_policy is not None:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -56,6 +55,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "name", name)
         if node_template is not None:
             pulumi.set(__self__, "node_template", node_template)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if share_settings is not None:
@@ -71,15 +72,6 @@ class NodeGroupArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: pulumi.Input[str]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -170,6 +162,15 @@ class NodeGroupArgs:
     @node_template.setter
     def node_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_template", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -293,8 +294,6 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             __props__.__dict__["node_template"] = node_template
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["share_settings"] = share_settings

@@ -17,10 +17,10 @@ class GlossaryArgs:
     def __init__(__self__, *,
                  input_config: pulumi.Input['GlossaryInputConfigArgs'],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  language_codes_set: Optional[pulumi.Input['LanguageCodesSetArgs']] = None,
                  language_pair: Optional[pulumi.Input['LanguageCodePairArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Glossary resource.
         :param pulumi.Input['GlossaryInputConfigArgs'] input_config: Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
@@ -30,13 +30,14 @@ class GlossaryArgs:
         """
         pulumi.set(__self__, "input_config", input_config)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if language_codes_set is not None:
             pulumi.set(__self__, "language_codes_set", language_codes_set)
         if language_pair is not None:
             pulumi.set(__self__, "language_pair", language_pair)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="inputConfig")
@@ -58,15 +59,6 @@ class GlossaryArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="languageCodesSet")
@@ -103,6 +95,15 @@ class GlossaryArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Glossary(pulumi.CustomResource):
@@ -178,8 +179,6 @@ class Glossary(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["end_time"] = None
             __props__.__dict__["entry_count"] = None

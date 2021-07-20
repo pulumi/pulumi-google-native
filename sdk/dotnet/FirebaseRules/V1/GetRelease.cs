@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
     public sealed class GetReleaseArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("releaseId", required: true)]
         public string ReleaseId { get; set; } = null!;

@@ -25,7 +25,7 @@ export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?
 
 export interface GetWorkloadIdentityPoolArgs {
     location: string;
-    project: string;
+    project?: string;
     workloadIdentityPoolId: string;
 }
 

@@ -25,7 +25,7 @@ export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise
 
 export interface GetDiskArgs {
     disk: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

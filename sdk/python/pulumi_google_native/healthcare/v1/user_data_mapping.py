@@ -19,9 +19,9 @@ class UserDataMappingArgs:
                  data_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None):
         """
         The set of arguments for constructing a UserDataMapping resource.
@@ -34,10 +34,11 @@ class UserDataMappingArgs:
         pulumi.set(__self__, "data_id", data_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "user_id", user_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if resource_attributes is not None:
             pulumi.set(__self__, "resource_attributes", resource_attributes)
 
@@ -81,15 +82,6 @@ class UserDataMappingArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
@@ -112,6 +104,15 @@ class UserDataMappingArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="resourceAttributes")
@@ -207,8 +208,6 @@ class UserDataMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_attributes"] = resource_attributes
             if user_id is None and not opts.urn:

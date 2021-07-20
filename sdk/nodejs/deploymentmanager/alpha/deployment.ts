@@ -95,13 +95,10 @@ export class Deployment extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DeploymentArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DeploymentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["credential"] = args ? args.credential : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -164,7 +161,7 @@ export interface DeploymentArgs {
      */
     name?: pulumi.Input<string>;
     preview?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
      */

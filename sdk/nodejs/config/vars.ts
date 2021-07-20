@@ -18,3 +18,7 @@ export let disablePartnerName: boolean | undefined = __config.getObject<boolean>
  * A Google Partner Name to facilitate partner resource usage attribution.
  */
 export let partnerName: string | undefined = __config.get("partnerName");
+/**
+ * A Google Cloud project name.
+ */
+export let project: string | undefined = __config.get("project");

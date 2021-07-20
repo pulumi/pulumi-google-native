@@ -49,9 +49,6 @@ func NewTestCase(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource TestCase
 	err := ctx.RegisterResource("google-native:dialogflow/v3:TestCase", name, args, &resource, opts...)
 	if err != nil {
@@ -94,7 +91,7 @@ type testCaseArgs struct {
 	Name *string `pulumi:"name"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
 	Notes   *string `pulumi:"notes"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
 	Tags []string `pulumi:"tags"`
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
@@ -115,7 +112,7 @@ type TestCaseArgs struct {
 	Name pulumi.StringPtrInput
 	// Additional freeform notes about the test case. Limit of 400 characters.
 	Notes   pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
 	Tags pulumi.StringArrayInput
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.

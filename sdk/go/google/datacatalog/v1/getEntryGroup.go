@@ -20,7 +20,7 @@ func LookupEntryGroup(ctx *pulumi.Context, args *LookupEntryGroupArgs, opts ...p
 type LookupEntryGroupArgs struct {
 	EntryGroupId string  `pulumi:"entryGroupId"`
 	Location     string  `pulumi:"location"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	ReadMask     *string `pulumi:"readMask"`
 }
 

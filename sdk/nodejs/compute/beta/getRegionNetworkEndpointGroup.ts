@@ -25,7 +25,7 @@ export function getRegionNetworkEndpointGroup(args: GetRegionNetworkEndpointGrou
 
 export interface GetRegionNetworkEndpointGroupArgs {
     networkEndpointGroup: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

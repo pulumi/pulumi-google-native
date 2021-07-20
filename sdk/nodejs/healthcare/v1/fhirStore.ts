@@ -90,9 +90,6 @@ export class FhirStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
@@ -155,7 +152,7 @@ export interface FhirStoreArgs {
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */

@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["appendUserAgent"] = (args ? args.appendUserAgent : undefined) ?? utilities.getEnv("GOOGLE_APPEND_USER_AGENT");
             inputs["disablePartnerName"] = pulumi.output((args ? args.disablePartnerName : undefined) ?? <any>utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME")).apply(JSON.stringify);
             inputs["partnerName"] = (args ? args.partnerName : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NAME");
+            inputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -61,4 +62,8 @@ export interface ProviderArgs {
      * A Google Partner Name to facilitate partner resource usage attribution.
      */
     partnerName?: pulumi.Input<string>;
+    /**
+     * A Google Cloud project name.
+     */
+    project?: pulumi.Input<string>;
 }

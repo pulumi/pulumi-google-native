@@ -26,7 +26,7 @@ export function getConfigIamPolicy(args: GetConfigIamPolicyArgs, opts?: pulumi.I
 export interface GetConfigIamPolicyArgs {
     configId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConfigIamPolicyResult {

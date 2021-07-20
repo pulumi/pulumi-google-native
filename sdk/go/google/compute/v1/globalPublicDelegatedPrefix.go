@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +44,9 @@ type GlobalPublicDelegatedPrefix struct {
 func NewGlobalPublicDelegatedPrefix(ctx *pulumi.Context,
 	name string, args *GlobalPublicDelegatedPrefixArgs, opts ...pulumi.ResourceOption) (*GlobalPublicDelegatedPrefix, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GlobalPublicDelegatedPrefixArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource GlobalPublicDelegatedPrefix
 	err := ctx.RegisterResource("google-native:compute/v1:GlobalPublicDelegatedPrefix", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +89,7 @@ type globalPublicDelegatedPrefixArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix *string `pulumi:"parentPrefix"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefix `pulumi:"publicDelegatedSubPrefixs"`
 	RequestId                 *string                                         `pulumi:"requestId"`
@@ -111,7 +107,7 @@ type GlobalPublicDelegatedPrefixArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput
 	RequestId                 pulumi.StringPtrInput

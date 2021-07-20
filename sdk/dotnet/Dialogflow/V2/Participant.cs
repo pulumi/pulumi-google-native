@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

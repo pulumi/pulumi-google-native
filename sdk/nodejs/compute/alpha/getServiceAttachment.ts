@@ -24,7 +24,7 @@ export function getServiceAttachment(args: GetServiceAttachmentArgs, opts?: pulu
 }
 
 export interface GetServiceAttachmentArgs {
-    project: string;
+    project?: string;
     region: string;
     serviceAttachment: string;
 }

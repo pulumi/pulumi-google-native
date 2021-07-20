@@ -71,9 +71,6 @@ export class ConsentStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultConsentTtl"] = args ? args.defaultConsentTtl : undefined;
@@ -118,5 +115,5 @@ export interface ConsentStoreArgs {
      * Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

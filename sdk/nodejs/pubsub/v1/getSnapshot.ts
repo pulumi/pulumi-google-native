@@ -23,7 +23,7 @@ export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions):
 }
 
 export interface GetSnapshotArgs {
-    project: string;
+    project?: string;
     snapshotId: string;
 }
 

@@ -25,7 +25,7 @@ export function getSubscriptionIamPolicy(args: GetSubscriptionIamPolicyArgs, opt
 
 export interface GetSubscriptionIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     subscriptionId: string;
 }
 

@@ -78,9 +78,6 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -123,7 +120,7 @@ export interface EnvironmentArgs {
      * The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The current state of the environment.
      */

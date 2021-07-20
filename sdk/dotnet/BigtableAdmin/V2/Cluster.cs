@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.

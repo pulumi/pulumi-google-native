@@ -16,7 +16,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +33,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -66,7 +66,6 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -100,6 +99,8 @@ class InstanceArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if reservation_affinity is not None:
@@ -118,15 +119,6 @@ class InstanceArgs:
             pulumi.set(__self__, "source_instance_template", source_instance_template)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -325,6 +317,15 @@ class InstanceArgs:
     @private_ipv6_google_access.setter
     def private_ipv6_google_access(self, value: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]):
         pulumi.set(self, "private_ipv6_google_access", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -561,8 +562,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservation_affinity"] = reservation_affinity

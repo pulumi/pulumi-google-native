@@ -18,9 +18,9 @@ func LookupDlpJob(ctx *pulumi.Context, args *LookupDlpJobArgs, opts ...pulumi.In
 }
 
 type LookupDlpJobArgs struct {
-	DlpJobId string `pulumi:"dlpJobId"`
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	DlpJobId string  `pulumi:"dlpJobId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupDlpJobResult struct {

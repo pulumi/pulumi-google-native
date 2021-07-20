@@ -29,7 +29,7 @@ export interface GetDeviceArgs {
     deviceId: string;
     fieldMask?: string;
     location: string;
-    project: string;
+    project?: string;
     registryId: string;
 }
 

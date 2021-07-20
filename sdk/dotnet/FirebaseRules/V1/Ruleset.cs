@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Ruleset(string name, RulesetArgs args, CustomResourceOptions? options = null)
+        public Ruleset(string name, RulesetArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:firebaserules/v1:Ruleset", name, args ?? new RulesetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -85,8 +85,8 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
     public sealed class RulesetArgs : Pulumi.ResourceArgs
     {
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// `Source` for the `Ruleset`.

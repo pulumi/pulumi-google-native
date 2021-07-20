@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.DNS.V1
         [Input("managedZone", required: true)]
         public string ManagedZone { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetManagedZoneArgs()
         {

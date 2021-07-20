@@ -34,9 +34,6 @@ func NewJobTemplate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource JobTemplate
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:JobTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type jobTemplateArgs struct {
 	Location      string     `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a JobTemplate resource.
@@ -86,7 +83,7 @@ type JobTemplateArgs struct {
 	Location      pulumi.StringInput
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (JobTemplateArgs) ElementType() reflect.Type {

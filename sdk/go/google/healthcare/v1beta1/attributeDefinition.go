@@ -54,9 +54,6 @@ func NewAttributeDefinition(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource AttributeDefinition
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:AttributeDefinition", name, args, &resource, opts...)
 	if err != nil {
@@ -105,7 +102,7 @@ type attributeDefinitionArgs struct {
 	Location    string  `pulumi:"location"`
 	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AttributeDefinition resource.
@@ -126,7 +123,7 @@ type AttributeDefinitionArgs struct {
 	Location    pulumi.StringInput
 	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (AttributeDefinitionArgs) ElementType() reflect.Type {

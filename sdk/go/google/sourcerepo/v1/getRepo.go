@@ -18,8 +18,8 @@ func LookupRepo(ctx *pulumi.Context, args *LookupRepoArgs, opts ...pulumi.Invoke
 }
 
 type LookupRepoArgs struct {
-	Project string `pulumi:"project"`
-	RepoId  string `pulumi:"repoId"`
+	Project *string `pulumi:"project"`
+	RepoId  string  `pulumi:"repoId"`
 }
 
 type LookupRepoResult struct {

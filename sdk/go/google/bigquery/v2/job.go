@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,12 +37,9 @@ type Job struct {
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &JobArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:bigquery/v2:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -80,7 +76,7 @@ type jobArgs struct {
 	Configuration *JobConfiguration `pulumi:"configuration"`
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference *JobReference         `pulumi:"jobReference"`
-	Project      string                `pulumi:"project"`
+	Project      *string               `pulumi:"project"`
 	Source       pulumi.AssetOrArchive `pulumi:"source"`
 }
 
@@ -90,7 +86,7 @@ type JobArgs struct {
 	Configuration JobConfigurationPtrInput
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	Source       pulumi.AssetOrArchiveInput
 }
 

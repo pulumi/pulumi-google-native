@@ -30,7 +30,7 @@ export interface GetDatasetAnnotationStoreIamPolicyArgs {
     datasetId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatasetAnnotationStoreIamPolicyResult {

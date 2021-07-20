@@ -39,9 +39,6 @@ func NewChange(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Change
 	err := ctx.RegisterResource("google-native:dns/v1:Change", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type changeArgs struct {
 	IsServing   *bool   `pulumi:"isServing"`
 	Kind        *string `pulumi:"kind"`
 	ManagedZone string  `pulumi:"managedZone"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime *string `pulumi:"startTime"`
 	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
@@ -105,7 +102,7 @@ type ChangeArgs struct {
 	IsServing   pulumi.BoolPtrInput
 	Kind        pulumi.StringPtrInput
 	ManagedZone pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput
 	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.

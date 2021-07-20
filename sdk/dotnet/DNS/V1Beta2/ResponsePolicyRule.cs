@@ -112,8 +112,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("localData")]
         public Input<Inputs.ResponsePolicyRuleLocalDataArgs>? LocalData { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;

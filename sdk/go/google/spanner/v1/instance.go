@@ -47,9 +47,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:spanner/v1:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -95,8 +92,8 @@ type instanceArgs struct {
 	// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
-	ProcessingUnits *int   `pulumi:"processingUnits"`
-	Project         string `pulumi:"project"`
+	ProcessingUnits *int    `pulumi:"processingUnits"`
+	Project         *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -115,7 +112,7 @@ type InstanceArgs struct {
 	NodeCount pulumi.IntPtrInput
 	// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
 	ProcessingUnits pulumi.IntPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

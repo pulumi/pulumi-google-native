@@ -27,7 +27,7 @@ export function getPolicyTag(args: GetPolicyTagArgs, opts?: pulumi.InvokeOptions
 export interface GetPolicyTagArgs {
     location: string;
     policyTagId: string;
-    project: string;
+    project?: string;
     taxonomyId: string;
 }
 

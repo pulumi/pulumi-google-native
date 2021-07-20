@@ -119,9 +119,6 @@ export class Note extends pulumi.CustomResource {
             if ((!args || args.noteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'noteId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
             inputs["build"] = args ? args.build : undefined;
@@ -208,7 +205,7 @@ export interface NoteArgs {
      * A note describing a package hosted by various package managers.
      */
     package?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Other notes related to this note.
      */

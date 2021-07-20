@@ -23,7 +23,7 @@ export function getGlobalPublicDelegatedPrefix(args: GetGlobalPublicDelegatedPre
 }
 
 export interface GetGlobalPublicDelegatedPrefixArgs {
-    project: string;
+    project?: string;
     publicDelegatedPrefix: string;
 }
 

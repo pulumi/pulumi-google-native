@@ -67,9 +67,6 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.workerConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerConfig'");
             }
@@ -103,7 +100,7 @@ export interface AutoscalingPolicyArgs {
      */
     id: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Describes how the autoscaler will operate for secondary workers.
      */

@@ -25,7 +25,7 @@ export function getRegionNetworkFirewallPolicy(args: GetRegionNetworkFirewallPol
 
 export interface GetRegionNetworkFirewallPolicyArgs {
     firewallPolicy: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

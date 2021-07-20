@@ -18,8 +18,8 @@ func LookupTargetSslProxy(ctx *pulumi.Context, args *LookupTargetSslProxyArgs, o
 }
 
 type LookupTargetSslProxyArgs struct {
-	Project        string `pulumi:"project"`
-	TargetSslProxy string `pulumi:"targetSslProxy"`
+	Project        *string `pulumi:"project"`
+	TargetSslProxy string  `pulumi:"targetSslProxy"`
 }
 
 type LookupTargetSslProxyResult struct {

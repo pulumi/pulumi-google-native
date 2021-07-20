@@ -44,9 +44,6 @@ func NewVpnGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -90,7 +87,7 @@ type vpnGatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
 	Network   *string `pulumi:"network"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
 	// The list of VPN interfaces associated with this VPN gateway.
@@ -107,7 +104,7 @@ type VpnGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
 	Network   pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The list of VPN interfaces associated with this VPN gateway.

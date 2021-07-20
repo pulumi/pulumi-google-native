@@ -59,9 +59,6 @@ func NewDocument(ctx *pulumi.Context,
 	if args.MimeType == nil {
 		return nil, errors.New("invalid value for required argument 'MimeType'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Document
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Document", name, args, &resource, opts...)
 	if err != nil {
@@ -113,7 +110,7 @@ type documentArgs struct {
 	MimeType string `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent *string `pulumi:"rawContent"`
 }
@@ -139,7 +136,7 @@ type DocumentArgs struct {
 	MimeType pulumi.StringInput
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent pulumi.StringPtrInput
 }

@@ -13,30 +13,22 @@ __all__ = ['SiteArgs', 'Site']
 @pulumi.input_type
 class SiteArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  site_id: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Site resource.
         :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "site_id", site_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="siteId")
@@ -70,6 +62,15 @@ class SiteArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Site(pulumi.CustomResource):
@@ -134,8 +135,6 @@ class Site(pulumi.CustomResource):
 
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["labels"] = labels
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")

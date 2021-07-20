@@ -74,9 +74,6 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -113,5 +110,5 @@ export interface AnnotationSpecSetArgs {
      * The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
     displayName: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

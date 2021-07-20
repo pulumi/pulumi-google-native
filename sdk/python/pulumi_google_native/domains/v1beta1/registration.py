@@ -19,13 +19,13 @@ class RegistrationArgs:
                  contact_settings: pulumi.Input['ContactSettingsArgs'],
                  domain_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  yearly_price: pulumi.Input['MoneyArgs'],
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  management_settings: Optional[pulumi.Input['ManagementSettingsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Registration resource.
@@ -42,7 +42,6 @@ class RegistrationArgs:
         pulumi.set(__self__, "contact_settings", contact_settings)
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "yearly_price", yearly_price)
         if contact_notices is not None:
             pulumi.set(__self__, "contact_notices", contact_notices)
@@ -54,6 +53,8 @@ class RegistrationArgs:
             pulumi.set(__self__, "labels", labels)
         if management_settings is not None:
             pulumi.set(__self__, "management_settings", management_settings)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -89,15 +90,6 @@ class RegistrationArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="yearlyPrice")
@@ -170,6 +162,15 @@ class RegistrationArgs:
     @management_settings.setter
     def management_settings(self, value: Optional[pulumi.Input['ManagementSettingsArgs']]):
         pulumi.set(self, "management_settings", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="validateOnly")
@@ -279,8 +280,6 @@ class Registration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["management_settings"] = management_settings
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["validate_only"] = validate_only
             if yearly_price is None and not opts.urn:

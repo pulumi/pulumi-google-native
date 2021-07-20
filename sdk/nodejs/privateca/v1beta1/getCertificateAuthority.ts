@@ -26,7 +26,7 @@ export function getCertificateAuthority(args: GetCertificateAuthorityArgs, opts?
 export interface GetCertificateAuthorityArgs {
     certificateAuthorityId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCertificateAuthorityResult {

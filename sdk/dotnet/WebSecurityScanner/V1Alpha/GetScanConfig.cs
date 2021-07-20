@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha
 
     public sealed class GetScanConfigArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("scanConfigId", required: true)]
         public string ScanConfigId { get; set; } = null!;

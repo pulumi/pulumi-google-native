@@ -27,7 +27,7 @@ export function getRegistrationIamPolicy(args: GetRegistrationIamPolicyArgs, opt
 export interface GetRegistrationIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     registrationId: string;
 }
 

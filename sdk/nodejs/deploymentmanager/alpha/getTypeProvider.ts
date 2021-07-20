@@ -23,7 +23,7 @@ export function getTypeProvider(args: GetTypeProviderArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetTypeProviderArgs {
-    project: string;
+    project?: string;
     typeProvider: string;
 }
 

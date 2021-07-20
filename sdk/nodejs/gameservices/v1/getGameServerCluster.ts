@@ -27,7 +27,7 @@ export function getGameServerCluster(args: GetGameServerClusterArgs, opts?: pulu
 export interface GetGameServerClusterArgs {
     gameServerClusterId: string;
     location: string;
-    project: string;
+    project?: string;
     realmId: string;
 }
 

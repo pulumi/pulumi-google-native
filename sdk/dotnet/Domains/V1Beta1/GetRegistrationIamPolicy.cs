@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("registrationId", required: true)]
         public string RegistrationId { get; set; } = null!;

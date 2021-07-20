@@ -18,9 +18,9 @@ func LookupInstanceBackupIamPolicy(ctx *pulumi.Context, args *LookupInstanceBack
 }
 
 type LookupInstanceBackupIamPolicyArgs struct {
-	BackupId   string `pulumi:"backupId"`
-	InstanceId string `pulumi:"instanceId"`
-	Project    string `pulumi:"project"`
+	BackupId   string  `pulumi:"backupId"`
+	InstanceId string  `pulumi:"instanceId"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupInstanceBackupIamPolicyResult struct {

@@ -43,9 +43,6 @@ func NewFeedbackMessage(ctx *pulumi.Context,
 	if args.FeedbackThreadId == nil {
 		return nil, errors.New("invalid value for required argument 'FeedbackThreadId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource FeedbackMessage
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:FeedbackMessage", name, args, &resource, opts...)
 	if err != nil {
@@ -90,7 +87,7 @@ type feedbackMessageArgs struct {
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
 	Name                      *string                                                  `pulumi:"name"`
 	OperatorFeedbackMetadata  *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata  `pulumi:"operatorFeedbackMetadata"`
-	Project                   string                                                   `pulumi:"project"`
+	Project                   *string                                                  `pulumi:"project"`
 	RequesterFeedbackMetadata *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata `pulumi:"requesterFeedbackMetadata"`
 }
 
@@ -108,7 +105,7 @@ type FeedbackMessageArgs struct {
 	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
 	Name                      pulumi.StringPtrInput
 	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput
-	Project                   pulumi.StringInput
+	Project                   pulumi.StringPtrInput
 	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput
 }
 

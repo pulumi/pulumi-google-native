@@ -19,7 +19,7 @@ func LookupMachineImageIamPolicy(ctx *pulumi.Context, args *LookupMachineImageIa
 
 type LookupMachineImageIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
 

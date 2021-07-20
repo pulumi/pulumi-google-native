@@ -28,7 +28,7 @@ export interface GetInternalRangeIamPolicyArgs {
     internalRangeId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInternalRangeIamPolicyResult {

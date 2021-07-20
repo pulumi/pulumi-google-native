@@ -94,9 +94,6 @@ export class Spoke extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["hub"] = args ? args.hub : undefined;
@@ -169,7 +166,7 @@ export interface SpokeArgs {
      * Immutable. The name of a Spoke resource.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     spokeId?: pulumi.Input<string>;
     /**

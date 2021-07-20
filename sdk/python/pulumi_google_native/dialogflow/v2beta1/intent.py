@@ -18,7 +18,6 @@ class IntentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
@@ -35,6 +34,7 @@ class IntentArgs:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]] = None,
                  parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None):
@@ -61,7 +61,6 @@ class IntentArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if default_response_platforms is not None:
@@ -94,6 +93,8 @@ class IntentArgs:
             pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if reset_contexts is not None:
             pulumi.set(__self__, "reset_contexts", reset_contexts)
         if training_phrases is not None:
@@ -121,15 +122,6 @@ class IntentArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -318,6 +310,15 @@ class IntentArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="resetContexts")
     def reset_contexts(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -488,8 +489,6 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["parent_followup_intent_name"] = parent_followup_intent_name
             __props__.__dict__["priority"] = priority
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["reset_contexts"] = reset_contexts
             __props__.__dict__["training_phrases"] = training_phrases

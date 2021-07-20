@@ -21,7 +21,7 @@ type LookupInstanceIamPolicyArgs struct {
 	InstanceId                    string  `pulumi:"instanceId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupInstanceIamPolicyResult struct {

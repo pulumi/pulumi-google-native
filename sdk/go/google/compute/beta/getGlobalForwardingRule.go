@@ -18,8 +18,8 @@ func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardin
 }
 
 type LookupGlobalForwardingRuleArgs struct {
-	ForwardingRule string `pulumi:"forwardingRule"`
-	Project        string `pulumi:"project"`
+	ForwardingRule string  `pulumi:"forwardingRule"`
+	Project        *string `pulumi:"project"`
 }
 
 type LookupGlobalForwardingRuleResult struct {

@@ -16,7 +16,6 @@ __all__ = ['TypeProviderArgs', 'TypeProvider']
 @pulumi.input_type
 class TypeProviderArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['CollectionOverrideArgs']]]] = None,
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
                  custom_certificate_authority_roots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -24,7 +23,8 @@ class TypeProviderArgs:
                  descriptor_url: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['TypeProviderLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input['OptionsArgs']] = None):
+                 options: Optional[pulumi.Input['OptionsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TypeProvider resource.
         :param pulumi.Input[Sequence[pulumi.Input['CollectionOverrideArgs']]] collection_overrides: Allows resource handling overrides for specific collections
@@ -36,7 +36,6 @@ class TypeProviderArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['OptionsArgs'] options: Options to apply when handling any resources in this service.
         """
-        pulumi.set(__self__, "project", project)
         if collection_overrides is not None:
             pulumi.set(__self__, "collection_overrides", collection_overrides)
         if credential is not None:
@@ -53,15 +52,8 @@ class TypeProviderArgs:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="collectionOverrides")
@@ -159,6 +151,15 @@ class TypeProviderArgs:
     def options(self, value: Optional[pulumi.Input['OptionsArgs']]):
         pulumi.set(self, "options", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class TypeProvider(pulumi.CustomResource):
     @overload
@@ -193,7 +194,7 @@ class TypeProvider(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TypeProviderArgs,
+                 args: Optional[TypeProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a type provider.
@@ -242,8 +243,6 @@ class TypeProvider(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["insert_time"] = None
             __props__.__dict__["operation"] = None

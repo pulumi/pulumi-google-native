@@ -24,7 +24,7 @@ export function getHttpsHealthCheck(args: GetHttpsHealthCheckArgs, opts?: pulumi
 
 export interface GetHttpsHealthCheckArgs {
     httpsHealthCheck: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHttpsHealthCheckResult {

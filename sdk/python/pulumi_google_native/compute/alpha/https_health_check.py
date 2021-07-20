@@ -13,7 +13,6 @@ __all__ = ['HttpsHealthCheckArgs', 'HttpsHealthCheck']
 @pulumi.input_type
 class HttpsHealthCheckArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
@@ -21,6 +20,7 @@ class HttpsHealthCheckArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  request_path: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -38,7 +38,6 @@ class HttpsHealthCheckArgs:
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         """
-        pulumi.set(__self__, "project", project)
         if check_interval_sec is not None:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
         if description is not None:
@@ -53,6 +52,8 @@ class HttpsHealthCheckArgs:
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if request_path is not None:
@@ -61,15 +62,6 @@ class HttpsHealthCheckArgs:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
         if unhealthy_threshold is not None:
             pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="checkIntervalSec")
@@ -156,6 +148,15 @@ class HttpsHealthCheckArgs:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -239,7 +240,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HttpsHealthCheckArgs,
+                 args: Optional[HttpsHealthCheckArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
@@ -290,8 +291,6 @@ class HttpsHealthCheck(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["port"] = port
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["request_path"] = request_path

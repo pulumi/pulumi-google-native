@@ -24,7 +24,7 @@ export function getMetricDescriptor(args: GetMetricDescriptorArgs, opts?: pulumi
 
 export interface GetMetricDescriptorArgs {
     metricDescriptorId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetMetricDescriptorResult {

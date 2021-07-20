@@ -22,7 +22,7 @@ type LookupIntentArgs struct {
 	IntentId     string  `pulumi:"intentId"`
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupIntentResult struct {

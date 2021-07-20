@@ -26,7 +26,7 @@ export function getPeeringIamPolicy(args: GetPeeringIamPolicyArgs, opts?: pulumi
 export interface GetPeeringIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
     peeringId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPeeringIamPolicyResult {

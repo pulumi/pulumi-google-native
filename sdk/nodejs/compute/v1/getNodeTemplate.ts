@@ -25,7 +25,7 @@ export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeO
 
 export interface GetNodeTemplateArgs {
     nodeTemplate: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

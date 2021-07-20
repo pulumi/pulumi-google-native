@@ -15,10 +15,10 @@ class TagTemplateArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
@@ -27,12 +27,13 @@ class TagTemplateArgs:
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -54,15 +55,6 @@ class TagTemplateArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tagTemplateId")
@@ -96,6 +88,15 @@ class TagTemplateArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class TagTemplate(pulumi.CustomResource):
@@ -169,8 +170,6 @@ class TagTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if tag_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template_id'")

@@ -40,9 +40,6 @@ func NewContext(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.SessionId == nil {
 		return nil, errors.New("invalid value for required argument 'SessionId'")
 	}
@@ -89,7 +86,7 @@ type contextArgs struct {
 	Name string `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters map[string]string `pulumi:"parameters"`
-	Project    string            `pulumi:"project"`
+	Project    *string           `pulumi:"project"`
 	SessionId  string            `pulumi:"sessionId"`
 	UserId     string            `pulumi:"userId"`
 }
@@ -104,7 +101,7 @@ type ContextArgs struct {
 	Name pulumi.StringInput
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters pulumi.StringMapInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	SessionId  pulumi.StringInput
 	UserId     pulumi.StringInput
 }

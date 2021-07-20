@@ -24,7 +24,7 @@ export function getPublicDelegatedPrefix(args: GetPublicDelegatedPrefixArgs, opt
 }
 
 export interface GetPublicDelegatedPrefixArgs {
-    project: string;
+    project?: string;
     publicDelegatedPrefix: string;
     region: string;
 }

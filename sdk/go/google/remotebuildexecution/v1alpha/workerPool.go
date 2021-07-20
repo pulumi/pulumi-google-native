@@ -39,9 +39,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:remotebuildexecution/v1alpha:WorkerPool", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type workerPoolArgs struct {
 	Parent *string `pulumi:"parent"`
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId  *string `pulumi:"poolId"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig `pulumi:"workerConfig"`
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
@@ -105,7 +102,7 @@ type WorkerPoolArgs struct {
 	Parent pulumi.StringPtrInput
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
 	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput
 	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.

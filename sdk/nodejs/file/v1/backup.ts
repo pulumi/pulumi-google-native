@@ -101,9 +101,6 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["backupId"] = args ? args.backupId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -154,7 +151,7 @@ export interface BackupArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */

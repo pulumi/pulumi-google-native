@@ -29,7 +29,7 @@ export interface GetEndpointArgs {
     endpointId: string;
     location: string;
     namespaceId: string;
-    project: string;
+    project?: string;
     serviceId: string;
 }
 

@@ -19,7 +19,6 @@ class InstanceArgs:
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  memory_size_gb: pulumi.Input[int],
-                 project: pulumi.Input[str],
                  tier: pulumi.Input['InstanceTier'],
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +28,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
@@ -54,7 +54,6 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "memory_size_gb", memory_size_gb)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "tier", tier)
         if alternative_location_id is not None:
             pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -72,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version is not None:
@@ -113,15 +114,6 @@ class InstanceArgs:
     @memory_size_gb.setter
     def memory_size_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_size_gb", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -230,6 +222,15 @@ class InstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -394,8 +395,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["redis_version"] = redis_version

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,12 +48,9 @@ type UrlMap struct {
 func NewUrlMap(ctx *pulumi.Context,
 	name string, args *UrlMapArgs, opts ...pulumi.ResourceOption) (*UrlMap, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &UrlMapArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource UrlMap
 	err := ctx.RegisterResource("google-native:compute/beta:UrlMap", name, args, &resource, opts...)
 	if err != nil {
@@ -103,7 +99,7 @@ type urlMapArgs struct {
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
-	Project      string        `pulumi:"project"`
+	Project      *string       `pulumi:"project"`
 	RequestId    *string       `pulumi:"requestId"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	Tests []UrlMapTest `pulumi:"tests"`
@@ -127,7 +123,7 @@ type UrlMapArgs struct {
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherArrayInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	RequestId    pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	Tests UrlMapTestArrayInput

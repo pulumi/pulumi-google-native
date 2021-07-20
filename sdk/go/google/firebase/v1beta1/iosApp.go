@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,12 +32,9 @@ type IosApp struct {
 func NewIosApp(ctx *pulumi.Context,
 	name string, args *IosAppArgs, opts ...pulumi.ResourceOption) (*IosApp, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &IosAppArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource IosApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:IosApp", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +78,7 @@ type iosAppArgs struct {
 	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
 	Name *string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a IosApp resource.
@@ -98,7 +94,7 @@ type IosAppArgs struct {
 	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
 	Name pulumi.StringPtrInput
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (IosAppArgs) ElementType() reflect.Type {

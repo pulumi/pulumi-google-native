@@ -25,7 +25,7 @@ export function getResponsePolicy(args: GetResponsePolicyArgs, opts?: pulumi.Inv
 
 export interface GetResponsePolicyArgs {
     clientOperationId?: string;
-    project: string;
+    project?: string;
     responsePolicy: string;
 }
 

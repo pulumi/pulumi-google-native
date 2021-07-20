@@ -113,9 +113,6 @@ export class NodePool extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
@@ -205,7 +202,7 @@ export interface NodePoolArgs {
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
     parent?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

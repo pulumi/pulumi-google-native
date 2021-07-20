@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class GetTargetSslProxyArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("targetSslProxy", required: true)]
         public string TargetSslProxy { get; set; } = null!;

@@ -19,7 +19,6 @@ class MigrationJobArgs:
                  destination: pulumi.Input[str],
                  location: pulumi.Input[str],
                  migration_job_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  source: pulumi.Input[str],
                  type: pulumi.Input['MigrationJobType'],
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
@@ -27,6 +26,7 @@ class MigrationJobArgs:
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
                  source_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
@@ -52,7 +52,6 @@ class MigrationJobArgs:
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "migration_job_id", migration_job_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
         if destination_database is not None:
@@ -65,6 +64,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if reverse_ssh_connectivity is not None:
@@ -107,15 +108,6 @@ class MigrationJobArgs:
     @migration_job_id.setter
     def migration_job_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "migration_job_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -200,6 +192,15 @@ class MigrationJobArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -380,8 +381,6 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'migration_job_id'")
             __props__.__dict__["migration_job_id"] = migration_job_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity

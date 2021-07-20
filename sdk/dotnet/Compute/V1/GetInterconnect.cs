@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("interconnect", required: true)]
         public string Interconnect { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetInterconnectArgs()
         {

@@ -101,9 +101,6 @@ export class ConversationProfile extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
@@ -180,7 +177,7 @@ export interface ConversationProfileArgs {
      * Configuration for publishing conversation lifecycle events.
      */
     notificationConfig?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1NotificationConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Settings for speech transcription.
      */

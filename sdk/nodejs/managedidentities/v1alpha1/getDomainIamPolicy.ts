@@ -26,7 +26,7 @@ export function getDomainIamPolicy(args: GetDomainIamPolicyArgs, opts?: pulumi.I
 export interface GetDomainIamPolicyArgs {
     domainId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDomainIamPolicyResult {

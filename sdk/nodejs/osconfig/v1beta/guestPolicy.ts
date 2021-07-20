@@ -89,9 +89,6 @@ export class GuestPolicy extends pulumi.CustomResource {
             if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["assignment"] = args ? args.assignment : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -150,7 +147,7 @@ export interface GuestPolicyArgs {
      * The software packages to be managed by this policy.
      */
     packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */

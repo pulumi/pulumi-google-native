@@ -18,8 +18,8 @@ func LookupInstruction(ctx *pulumi.Context, args *LookupInstructionArgs, opts ..
 }
 
 type LookupInstructionArgs struct {
-	InstructionId string `pulumi:"instructionId"`
-	Project       string `pulumi:"project"`
+	InstructionId string  `pulumi:"instructionId"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupInstructionResult struct {

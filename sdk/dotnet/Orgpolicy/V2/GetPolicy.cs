@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Input("policyId", required: true)]
         public string PolicyId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPolicyArgs()
         {

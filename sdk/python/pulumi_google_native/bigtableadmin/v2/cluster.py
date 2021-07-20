@@ -18,12 +18,12 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  serve_nodes: pulumi.Input[int],
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
@@ -34,7 +34,6 @@ class ClusterArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "serve_nodes", serve_nodes)
         if default_storage_type is not None:
             pulumi.set(__self__, "default_storage_type", default_storage_type)
@@ -44,6 +43,8 @@ class ClusterArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -62,15 +63,6 @@ class ClusterArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serveNodes")
@@ -131,6 +123,15 @@ class ClusterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Cluster(pulumi.CustomResource):
@@ -212,8 +213,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if serve_nodes is None and not opts.urn:
                 raise TypeError("Missing required property 'serve_nodes'")

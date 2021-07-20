@@ -33,8 +33,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("messageId", required: true)]
         public string MessageId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("view")]
         public string? View { get; set; }

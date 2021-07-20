@@ -27,7 +27,7 @@ export function getRegionAutoscalingPolicyIamPolicy(args: GetRegionAutoscalingPo
 export interface GetRegionAutoscalingPolicyIamPolicyArgs {
     autoscalingPolicyId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     regionId: string;
 }
 

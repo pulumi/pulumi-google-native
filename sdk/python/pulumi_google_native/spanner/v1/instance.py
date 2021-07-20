@@ -16,11 +16,11 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 processing_units: Optional[pulumi.Input[int]] = None):
+                 processing_units: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
@@ -34,7 +34,6 @@ class InstanceArgs:
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -43,6 +42,8 @@ class InstanceArgs:
             pulumi.set(__self__, "node_count", node_count)
         if processing_units is not None:
             pulumi.set(__self__, "processing_units", processing_units)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -79,15 +80,6 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -136,6 +128,15 @@ class InstanceArgs:
     @processing_units.setter
     def processing_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "processing_units", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -222,8 +223,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["processing_units"] = processing_units
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(

@@ -25,7 +25,7 @@ export function getStudy(args: GetStudyArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetStudyArgs {
     location: string;
-    project: string;
+    project?: string;
     studyId: string;
 }
 

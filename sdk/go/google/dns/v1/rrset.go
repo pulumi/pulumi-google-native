@@ -38,9 +38,6 @@ func NewRrset(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Rrset
 	err := ctx.RegisterResource("google-native:dns/v1:Rrset", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +75,7 @@ type rrsetArgs struct {
 	ManagedZone       string  `pulumi:"managedZone"`
 	// For example, www.example.com.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -96,7 +93,7 @@ type RrsetArgs struct {
 	ManagedZone       pulumi.StringInput
 	// For example, www.example.com.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput
 	// As defined in RFC 4034 (section 3.2).

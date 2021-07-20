@@ -17,11 +17,11 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input['PrivatePoolV1ConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
@@ -30,7 +30,6 @@ class WorkerPoolArgs:
         :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Private Pool using a v1 configuration.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -38,6 +37,8 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "display_name", display_name)
         if private_pool_v1_config is not None:
             pulumi.set(__self__, "private_pool_v1_config", private_pool_v1_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -49,15 +50,6 @@ class WorkerPoolArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -103,6 +95,15 @@ class WorkerPoolArgs:
     @private_pool_v1_config.setter
     def private_pool_v1_config(self, value: Optional[pulumi.Input['PrivatePoolV1ConfigArgs']]):
         pulumi.set(self, "private_pool_v1_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="validateOnly")
@@ -187,8 +188,6 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["private_pool_v1_config"] = private_pool_v1_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["validate_only"] = validate_only
             if worker_pool_id is None and not opts.urn:

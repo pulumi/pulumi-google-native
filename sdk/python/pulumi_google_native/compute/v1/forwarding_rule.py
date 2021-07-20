@@ -16,7 +16,6 @@ __all__ = ['ForwardingRuleArgs', 'ForwardingRule']
 @pulumi.input_type
 class ForwardingRuleArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +33,7 @@ class ForwardingRuleArgs:
                  network_tier: Optional[pulumi.Input['ForwardingRuleNetworkTier']] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
@@ -61,7 +61,6 @@ class ForwardingRuleArgs:
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
         :param pulumi.Input[str] subnetwork: This field is only used for internal load balancing. For internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule. If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
@@ -95,6 +94,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if service_directory_registrations is not None:
@@ -105,15 +106,6 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -317,6 +309,15 @@ class ForwardingRuleArgs:
         pulumi.set(self, "ports", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -500,8 +501,6 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["network_tier"] = network_tier
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["ports"] = ports
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

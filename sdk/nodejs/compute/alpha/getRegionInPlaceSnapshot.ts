@@ -25,7 +25,7 @@ export function getRegionInPlaceSnapshot(args: GetRegionInPlaceSnapshotArgs, opt
 
 export interface GetRegionInPlaceSnapshotArgs {
     inPlaceSnapshot: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

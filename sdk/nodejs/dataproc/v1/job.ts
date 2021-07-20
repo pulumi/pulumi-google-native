@@ -127,9 +127,6 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -211,7 +208,7 @@ export interface JobArgs {
      * Optional. Job is a Presto job.
      */
     prestoJob?: pulumi.Input<inputs.dataproc.v1.PrestoJobArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Job is a PySpark job.
      */

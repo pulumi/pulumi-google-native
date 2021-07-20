@@ -18,8 +18,8 @@ func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.
 }
 
 type LookupDatasetArgs struct {
-	DatasetId string `pulumi:"datasetId"`
-	Project   string `pulumi:"project"`
+	DatasetId string  `pulumi:"datasetId"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupDatasetResult struct {

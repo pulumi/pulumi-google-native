@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// <summary>
         /// The project in which to create the pipeline. The caller must have WRITE access.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb

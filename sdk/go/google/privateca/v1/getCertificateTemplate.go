@@ -18,9 +18,9 @@ func LookupCertificateTemplate(ctx *pulumi.Context, args *LookupCertificateTempl
 }
 
 type LookupCertificateTemplateArgs struct {
-	CertificateTemplateId string `pulumi:"certificateTemplateId"`
-	Location              string `pulumi:"location"`
-	Project               string `pulumi:"project"`
+	CertificateTemplateId string  `pulumi:"certificateTemplateId"`
+	Location              string  `pulumi:"location"`
+	Project               *string `pulumi:"project"`
 }
 
 type LookupCertificateTemplateResult struct {

@@ -103,9 +103,6 @@ export class RegionSslCertificate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -172,7 +169,7 @@ export interface RegionSslCertificateArgs {
      * A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
      */
     privateKey?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

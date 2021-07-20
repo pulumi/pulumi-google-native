@@ -16,9 +16,9 @@ __all__ = ['WaiterArgs', 'Waiter']
 class WaiterArgs:
     def __init__(__self__, *,
                  config_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  failure: Optional[pulumi.Input['EndConditionArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input['EndConditionArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
@@ -30,11 +30,12 @@ class WaiterArgs:
         :param pulumi.Input[str] timeout: [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
         """
         pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "project", project)
         if failure is not None:
             pulumi.set(__self__, "failure", failure)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if success is not None:
@@ -50,15 +51,6 @@ class WaiterArgs:
     @config_id.setter
     def config_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "config_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -83,6 +75,15 @@ class WaiterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -189,8 +190,6 @@ class Waiter(pulumi.CustomResource):
             __props__.__dict__["config_id"] = config_id
             __props__.__dict__["failure"] = failure
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["success"] = success

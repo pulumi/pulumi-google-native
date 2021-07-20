@@ -24,7 +24,7 @@ export function getCompositeType(args: GetCompositeTypeArgs, opts?: pulumi.Invok
 
 export interface GetCompositeTypeArgs {
     compositeType: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCompositeTypeResult {

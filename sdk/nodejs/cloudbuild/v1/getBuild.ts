@@ -29,7 +29,7 @@ export interface GetBuildArgs {
     buildId: string;
     id: string;
     location: string;
-    project: string;
+    project?: string;
     projectId: string;
 }
 

@@ -25,7 +25,7 @@ export function getRegionNotificationEndpoint(args: GetRegionNotificationEndpoin
 
 export interface GetRegionNotificationEndpointArgs {
     notificationEndpoint: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

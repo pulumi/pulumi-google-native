@@ -18,9 +18,9 @@ func LookupGlossary(ctx *pulumi.Context, args *LookupGlossaryArgs, opts ...pulum
 }
 
 type LookupGlossaryArgs struct {
-	GlossaryId string `pulumi:"glossaryId"`
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
+	GlossaryId string  `pulumi:"glossaryId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupGlossaryResult struct {

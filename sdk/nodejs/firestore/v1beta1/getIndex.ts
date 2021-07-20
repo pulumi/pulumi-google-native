@@ -26,7 +26,7 @@ export function getIndex(args: GetIndexArgs, opts?: pulumi.InvokeOptions): Promi
 export interface GetIndexArgs {
     databaseId: string;
     indexId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetIndexResult {

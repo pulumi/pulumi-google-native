@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type AndroidApp struct {
 func NewAndroidApp(ctx *pulumi.Context,
 	name string, args *AndroidAppArgs, opts ...pulumi.ResourceOption) (*AndroidApp, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AndroidAppArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource AndroidApp
 	err := ctx.RegisterResource("google-native:firebase/v1beta1:AndroidApp", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +74,7 @@ type androidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName *string `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AndroidApp resource.
@@ -92,7 +88,7 @@ type AndroidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringPtrInput
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (AndroidAppArgs) ElementType() reflect.Type {

@@ -25,7 +25,7 @@ export function getServerTlsPolicy(args: GetServerTlsPolicyArgs, opts?: pulumi.I
 
 export interface GetServerTlsPolicyArgs {
     location: string;
-    project: string;
+    project?: string;
     serverTlsPolicyId: string;
 }
 

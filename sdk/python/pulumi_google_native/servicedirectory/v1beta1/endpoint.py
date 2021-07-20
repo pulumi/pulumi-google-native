@@ -16,13 +16,13 @@ class EndpointArgs:
                  endpoint_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  namespace_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None):
+                 port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] address: Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
@@ -34,7 +34,6 @@ class EndpointArgs:
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -46,6 +45,8 @@ class EndpointArgs:
             pulumi.set(__self__, "network", network)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -73,15 +74,6 @@ class EndpointArgs:
     @namespace_id.setter
     def namespace_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -151,6 +143,15 @@ class EndpointArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Endpoint(pulumi.CustomResource):
@@ -240,8 +241,6 @@ class Endpoint(pulumi.CustomResource):
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["network"] = network
             __props__.__dict__["port"] = port
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")

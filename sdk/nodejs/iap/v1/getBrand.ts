@@ -24,7 +24,7 @@ export function getBrand(args: GetBrandArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetBrandArgs {
     brandId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetBrandResult {

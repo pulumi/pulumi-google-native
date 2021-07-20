@@ -25,7 +25,7 @@ export function getFutureReservation(args: GetFutureReservationArgs, opts?: pulu
 
 export interface GetFutureReservationArgs {
     futureReservation: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

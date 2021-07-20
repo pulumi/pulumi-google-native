@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("taxonomyId", required: true)]
         public Input<string> TaxonomyId { get; set; } = null!;

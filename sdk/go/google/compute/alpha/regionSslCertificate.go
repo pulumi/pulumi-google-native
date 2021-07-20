@@ -52,9 +52,6 @@ func NewRegionSslCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -100,7 +97,7 @@ type regionSslCertificateArgs struct {
 	Name *string `pulumi:"name"`
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey *string `pulumi:"privateKey"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	Region     string  `pulumi:"region"`
 	RequestId  *string `pulumi:"requestId"`
 	// Configuration and status of a self-managed SSL certificate.
@@ -121,7 +118,7 @@ type RegionSslCertificateArgs struct {
 	Name pulumi.StringPtrInput
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey pulumi.StringPtrInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	Region     pulumi.StringInput
 	RequestId  pulumi.StringPtrInput
 	// Configuration and status of a self-managed SSL certificate.

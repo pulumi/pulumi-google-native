@@ -115,13 +115,10 @@ export class Firewall extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: FirewallArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["allowed"] = args ? args.allowed : undefined;
             inputs["denied"] = args ? args.denied : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -213,7 +210,7 @@ export interface FirewallArgs {
      * Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
      */
     priority?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.

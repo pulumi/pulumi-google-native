@@ -156,9 +156,6 @@ export class ForwardingRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -297,7 +294,7 @@ export interface ForwardingRuleArgs {
      * The ports field is only supported when the forwarding rule references a backend_service directly. Supported load balancing products are Internal TCP/UDP Load Balancing and Network Load Balancing. Only packets addressed to the specified list of ports are forwarded to backends. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. You can specify a list of up to five ports, which can be non-contiguous. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

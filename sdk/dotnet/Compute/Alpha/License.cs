@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public License(string name, LicenseArgs args, CustomResourceOptions? options = null)
+        public License(string name, LicenseArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:License", name, args ?? new LicenseArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

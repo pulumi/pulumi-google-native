@@ -24,7 +24,7 @@ export function getAnnotationSpecSet(args: GetAnnotationSpecSetArgs, opts?: pulu
 
 export interface GetAnnotationSpecSetArgs {
     annotationSpecSetId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAnnotationSpecSetResult {

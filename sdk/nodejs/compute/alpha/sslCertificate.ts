@@ -99,13 +99,10 @@ export class SslCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SslCertificateArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SslCertificateArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["certificate"] = args ? args.certificate : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["managed"] = args ? args.managed : undefined;
@@ -169,7 +166,7 @@ export interface SslCertificateArgs {
      * A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
      */
     privateKey?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Configuration and status of a self-managed SSL certificate.

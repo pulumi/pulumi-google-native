@@ -18,9 +18,9 @@ func LookupFeature(ctx *pulumi.Context, args *LookupFeatureArgs, opts ...pulumi.
 }
 
 type LookupFeatureArgs struct {
-	FeatureId string `pulumi:"featureId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
+	FeatureId string  `pulumi:"featureId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupFeatureResult struct {

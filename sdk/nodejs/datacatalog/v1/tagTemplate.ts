@@ -68,9 +68,6 @@ export class TagTemplate extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
@@ -115,6 +112,6 @@ export interface TagTemplateArgs {
      * The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     tagTemplateId: pulumi.Input<string>;
 }

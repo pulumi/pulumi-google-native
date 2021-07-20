@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("policyBasedRouteId", required: true)]
         public string PolicyBasedRouteId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPolicyBasedRouteIamPolicyArgs()
         {

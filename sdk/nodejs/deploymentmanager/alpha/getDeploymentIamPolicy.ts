@@ -25,7 +25,7 @@ export function getDeploymentIamPolicy(args: GetDeploymentIamPolicyArgs, opts?: 
 
 export interface GetDeploymentIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

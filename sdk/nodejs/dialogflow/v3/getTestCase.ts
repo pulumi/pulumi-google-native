@@ -27,7 +27,7 @@ export function getTestCase(args: GetTestCaseArgs, opts?: pulumi.InvokeOptions):
 export interface GetTestCaseArgs {
     agentId: string;
     location: string;
-    project: string;
+    project?: string;
     testCaseId: string;
 }
 

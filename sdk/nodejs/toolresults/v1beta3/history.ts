@@ -59,13 +59,10 @@ export class History extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: HistoryArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: HistoryArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -101,7 +98,7 @@ export interface HistoryArgs {
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.

@@ -33,9 +33,6 @@ func NewSnapshot(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.SnapshotId == nil {
 		return nil, errors.New("invalid value for required argument 'SnapshotId'")
 	}
@@ -76,7 +73,7 @@ func (SnapshotState) ElementType() reflect.Type {
 type snapshotArgs struct {
 	// See Creating and managing labels.
 	Labels     map[string]string `pulumi:"labels"`
-	Project    string            `pulumi:"project"`
+	Project    *string           `pulumi:"project"`
 	SnapshotId string            `pulumi:"snapshotId"`
 	// The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
 	Subscription string `pulumi:"subscription"`
@@ -86,7 +83,7 @@ type snapshotArgs struct {
 type SnapshotArgs struct {
 	// See Creating and managing labels.
 	Labels     pulumi.StringMapInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	SnapshotId pulumi.StringInput
 	// The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
 	Subscription pulumi.StringInput

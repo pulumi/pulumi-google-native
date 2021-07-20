@@ -18,10 +18,10 @@ func LookupRowAccessPolicyIamPolicy(ctx *pulumi.Context, args *LookupRowAccessPo
 }
 
 type LookupRowAccessPolicyIamPolicyArgs struct {
-	DatasetId         string `pulumi:"datasetId"`
-	Project           string `pulumi:"project"`
-	RowAccessPolicyId string `pulumi:"rowAccessPolicyId"`
-	TableId           string `pulumi:"tableId"`
+	DatasetId         string  `pulumi:"datasetId"`
+	Project           *string `pulumi:"project"`
+	RowAccessPolicyId string  `pulumi:"rowAccessPolicyId"`
+	TableId           string  `pulumi:"tableId"`
 }
 
 type LookupRowAccessPolicyIamPolicyResult struct {

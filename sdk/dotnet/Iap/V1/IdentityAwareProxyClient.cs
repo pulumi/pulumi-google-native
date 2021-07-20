@@ -88,8 +88,8 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public IdentityAwareProxyClientArgs()
         {

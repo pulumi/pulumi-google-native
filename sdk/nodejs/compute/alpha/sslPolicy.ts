@@ -95,13 +95,10 @@ export class SslPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SslPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SslPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
@@ -163,7 +160,7 @@ export interface SslPolicyArgs {
      * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
      */
     profile?: pulumi.Input<enums.compute.alpha.SslPolicyProfile>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.

@@ -26,7 +26,7 @@ export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetProviderArgs {
     location: string;
-    project: string;
+    project?: string;
     providerId: string;
     workloadIdentityPoolId: string;
 }

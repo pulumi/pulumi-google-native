@@ -14,13 +14,13 @@ __all__ = ['RegionTargetHttpsProxyArgs', 'RegionTargetHttpsProxy']
 @pulumi.input_type
 class RegionTargetHttpsProxyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input['RegionTargetHttpsProxyQuicOverride']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -42,7 +42,6 @@ class RegionTargetHttpsProxyArgs:
         :param pulumi.Input[str] ssl_policy: URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
         :param pulumi.Input[str] url_map: A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if authorization_policy is not None:
             pulumi.set(__self__, "authorization_policy", authorization_policy)
@@ -54,6 +53,8 @@ class RegionTargetHttpsProxyArgs:
             pulumi.set(__self__, "http_filters", http_filters)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if quic_override is not None:
@@ -68,15 +69,6 @@ class RegionTargetHttpsProxyArgs:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
         if url_map is not None:
             pulumi.set(__self__, "url_map", url_map)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -146,6 +138,15 @@ class RegionTargetHttpsProxyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="proxyBind")
@@ -321,8 +322,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["http_filters"] = http_filters
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["quic_override"] = quic_override

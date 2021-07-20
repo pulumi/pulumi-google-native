@@ -17,9 +17,9 @@ class ConversationArgs:
     def __init__(__self__, *,
                  conversation_profile: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  conversation_id: Optional[pulumi.Input[str]] = None,
-                 conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None):
+                 conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Conversation resource.
         :param pulumi.Input[str] conversation_profile: The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
@@ -27,11 +27,12 @@ class ConversationArgs:
         """
         pulumi.set(__self__, "conversation_profile", conversation_profile)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if conversation_id is not None:
             pulumi.set(__self__, "conversation_id", conversation_id)
         if conversation_stage is not None:
             pulumi.set(__self__, "conversation_stage", conversation_stage)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="conversationProfile")
@@ -55,15 +56,6 @@ class ConversationArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
     @pulumi.getter(name="conversationId")
     def conversation_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "conversation_id")
@@ -83,6 +75,15 @@ class ConversationArgs:
     @conversation_stage.setter
     def conversation_stage(self, value: Optional[pulumi.Input['ConversationConversationStage']]):
         pulumi.set(self, "conversation_stage", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Conversation(pulumi.CustomResource):
@@ -155,8 +156,6 @@ class Conversation(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["end_time"] = None
             __props__.__dict__["lifecycle_state"] = None

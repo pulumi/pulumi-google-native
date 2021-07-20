@@ -66,9 +66,6 @@ export class RegistrationIamPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.registrationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registrationId'");
             }
@@ -110,7 +107,7 @@ export interface RegistrationIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     registrationId: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

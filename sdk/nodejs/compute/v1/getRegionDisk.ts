@@ -25,7 +25,7 @@ export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptio
 
 export interface GetRegionDiskArgs {
     disk: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

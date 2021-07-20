@@ -13,22 +13,21 @@ __all__ = ['IosAppArgs', 'IosApp']
 @pulumi.input_type
 class IosAppArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_store_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IosApp resource.
-        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
         :param pulumi.Input[str] bundle_id: Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `IosApp`.
         :param pulumi.Input[str] name: The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
         """
-        pulumi.set(__self__, "project", project)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if app_store_id is not None:
@@ -39,18 +38,8 @@ class IosAppArgs:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="appId")
@@ -112,6 +101,18 @@ class IosAppArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class IosApp(pulumi.CustomResource):
     @overload
@@ -141,7 +142,7 @@ class IosApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IosAppArgs,
+                 args: Optional[IosAppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
@@ -184,8 +185,6 @@ class IosApp(pulumi.CustomResource):
             __props__.__dict__["bundle_id"] = bundle_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(IosApp, __self__).__init__(
             'google-native:firebase/v1beta1:IosApp',

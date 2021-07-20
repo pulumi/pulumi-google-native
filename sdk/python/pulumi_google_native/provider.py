@@ -15,12 +15,14 @@ class ProviderArgs:
     def __init__(__self__, *,
                  append_user_agent: Optional[pulumi.Input[str]] = None,
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
-                 partner_name: Optional[pulumi.Input[str]] = None):
+                 partner_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] append_user_agent: Additional user-agent string to append to the default one (<prod_name>/<ver>).
         :param pulumi.Input[bool] disable_partner_name: This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         :param pulumi.Input[str] partner_name: A Google Partner Name to facilitate partner resource usage attribution.
+        :param pulumi.Input[str] project: A Google Cloud project name.
         """
         if append_user_agent is None:
             append_user_agent = _utilities.get_env('GOOGLE_APPEND_USER_AGENT')
@@ -34,6 +36,10 @@ class ProviderArgs:
             partner_name = _utilities.get_env('GOOGLE_PARTNER_NAME')
         if partner_name is not None:
             pulumi.set(__self__, "partner_name", partner_name)
+        if project is None:
+            project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="appendUserAgent")
@@ -71,6 +77,18 @@ class ProviderArgs:
     def partner_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "partner_name", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Google Cloud project name.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -80,6 +98,7 @@ class Provider(pulumi.ProviderResource):
                  append_user_agent: Optional[pulumi.Input[str]] = None,
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
                  partner_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the Google Cloud package.
@@ -89,6 +108,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] append_user_agent: Additional user-agent string to append to the default one (<prod_name>/<ver>).
         :param pulumi.Input[bool] disable_partner_name: This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         :param pulumi.Input[str] partner_name: A Google Partner Name to facilitate partner resource usage attribution.
+        :param pulumi.Input[str] project: A Google Cloud project name.
         """
         ...
     @overload
@@ -117,6 +137,7 @@ class Provider(pulumi.ProviderResource):
                  append_user_agent: Optional[pulumi.Input[str]] = None,
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
                  partner_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -138,6 +159,9 @@ class Provider(pulumi.ProviderResource):
             if partner_name is None:
                 partner_name = _utilities.get_env('GOOGLE_PARTNER_NAME')
             __props__.__dict__["partner_name"] = partner_name
+            if project is None:
+                project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+            __props__.__dict__["project"] = project
         super(Provider, __self__).__init__(
             'google-native',
             resource_name,

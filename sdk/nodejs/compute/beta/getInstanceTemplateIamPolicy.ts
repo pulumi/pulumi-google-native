@@ -25,7 +25,7 @@ export function getInstanceTemplateIamPolicy(args: GetInstanceTemplateIamPolicyA
 
 export interface GetInstanceTemplateIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

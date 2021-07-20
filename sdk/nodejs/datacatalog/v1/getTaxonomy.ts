@@ -25,7 +25,7 @@ export function getTaxonomy(args: GetTaxonomyArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetTaxonomyArgs {
     location: string;
-    project: string;
+    project?: string;
     taxonomyId: string;
 }
 

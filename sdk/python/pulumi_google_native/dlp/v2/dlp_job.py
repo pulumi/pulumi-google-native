@@ -17,9 +17,9 @@ __all__ = ['DlpJobArgs', 'DlpJob']
 class DlpJobArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] = None):
         """
         The set of arguments for constructing a DlpJob resource.
@@ -28,11 +28,12 @@ class DlpJobArgs:
         :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if risk_job is not None:
             pulumi.set(__self__, "risk_job", risk_job)
 
@@ -44,15 +45,6 @@ class DlpJobArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="inspectJob")
@@ -77,6 +69,15 @@ class DlpJobArgs:
     @job_id.setter
     def job_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="riskJob")
@@ -159,8 +160,6 @@ class DlpJob(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job
             __props__.__dict__["create_time"] = None

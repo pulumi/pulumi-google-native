@@ -16,11 +16,11 @@ __all__ = ['CompositeTypeArgs', 'CompositeType']
 @pulumi.input_type
 class CompositeTypeArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input['TemplateContentsArgs']] = None):
         """
@@ -30,7 +30,6 @@ class CompositeTypeArgs:
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
         :param pulumi.Input['TemplateContentsArgs'] template_contents: Files for the template type.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if id is not None:
@@ -39,19 +38,12 @@ class CompositeTypeArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if template_contents is not None:
             pulumi.set(__self__, "template_contents", template_contents)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -97,6 +89,15 @@ class CompositeTypeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -147,7 +148,7 @@ class CompositeType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CompositeTypeArgs,
+                 args: Optional[CompositeTypeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a composite type.
@@ -190,8 +191,6 @@ class CompositeType(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["status"] = status
             __props__.__dict__["template_contents"] = template_contents

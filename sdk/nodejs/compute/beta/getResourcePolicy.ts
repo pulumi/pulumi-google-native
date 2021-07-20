@@ -24,7 +24,7 @@ export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.Inv
 }
 
 export interface GetResourcePolicyArgs {
-    project: string;
+    project?: string;
     region: string;
     resourcePolicy: string;
 }

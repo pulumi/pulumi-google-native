@@ -26,7 +26,7 @@ export function getConnectivityTestIamPolicy(args: GetConnectivityTestIamPolicyA
 export interface GetConnectivityTestIamPolicyArgs {
     connectivityTestId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConnectivityTestIamPolicyResult {

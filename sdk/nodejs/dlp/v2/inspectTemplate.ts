@@ -75,9 +75,6 @@ export class InspectTemplate extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectConfig"] = args ? args.inspectConfig : undefined;
@@ -119,7 +116,7 @@ export interface InspectTemplateArgs {
      */
     inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */

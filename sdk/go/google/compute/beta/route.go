@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,12 +56,9 @@ type Route struct {
 func NewRoute(ctx *pulumi.Context,
 	name string, args *RouteArgs, opts ...pulumi.ResourceOption) (*Route, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RouteArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Route
 	err := ctx.RegisterResource("google-native:compute/beta:Route", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +113,7 @@ type routeArgs struct {
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
 	Priority  *int    `pulumi:"priority"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
@@ -147,7 +143,7 @@ type RouteArgs struct {
 	NextHopVpnTunnel pulumi.StringPtrInput
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
 	Priority  pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput

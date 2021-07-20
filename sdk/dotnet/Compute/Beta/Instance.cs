@@ -444,8 +444,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Beta.InstancePrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

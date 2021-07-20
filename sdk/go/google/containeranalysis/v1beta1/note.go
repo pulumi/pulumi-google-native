@@ -62,9 +62,6 @@ func NewNote(ctx *pulumi.Context,
 	if args.NoteId == nil {
 		return nil, errors.New("invalid value for required argument 'NoteId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Note
 	err := ctx.RegisterResource("google-native:containeranalysis/v1beta1:Note", name, args, &resource, opts...)
 	if err != nil {
@@ -116,7 +113,7 @@ type noteArgs struct {
 	NoteId          string  `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package *Package `pulumi:"package"`
-	Project string   `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// Other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
@@ -148,7 +145,7 @@ type NoteArgs struct {
 	NoteId          pulumi.StringInput
 	// A note describing a package hosted by various package managers.
 	Package PackagePtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note.

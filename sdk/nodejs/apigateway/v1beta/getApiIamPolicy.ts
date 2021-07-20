@@ -28,7 +28,7 @@ export interface GetApiIamPolicyArgs {
     apiId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetApiIamPolicyResult {

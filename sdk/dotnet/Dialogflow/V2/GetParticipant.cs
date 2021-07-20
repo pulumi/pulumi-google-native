@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("participantId", required: true)]
         public string ParticipantId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetParticipantArgs()
         {

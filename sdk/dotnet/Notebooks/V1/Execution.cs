@@ -133,8 +133,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("outputNotebookFile")]
         public Input<string>? OutputNotebookFile { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ExecutionArgs()
         {

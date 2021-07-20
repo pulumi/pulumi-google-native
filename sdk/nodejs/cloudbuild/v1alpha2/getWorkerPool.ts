@@ -23,7 +23,7 @@ export function getWorkerPool(args: GetWorkerPoolArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetWorkerPoolArgs {
-    project: string;
+    project?: string;
     workerPoolId: string;
 }
 

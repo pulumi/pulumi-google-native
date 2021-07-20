@@ -25,7 +25,7 @@ export function getImageIamPolicy(args: GetImageIamPolicyArgs, opts?: pulumi.Inv
 
 export interface GetImageIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

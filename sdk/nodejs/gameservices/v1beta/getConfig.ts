@@ -28,7 +28,7 @@ export interface GetConfigArgs {
     configId: string;
     gameServerDeploymentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConfigResult {

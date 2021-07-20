@@ -25,7 +25,7 @@ export function getTagTemplateIamPolicy(args: GetTagTemplateIamPolicyArgs, opts?
 
 export interface GetTagTemplateIamPolicyArgs {
     location: string;
-    project: string;
+    project?: string;
     tagTemplateId: string;
 }
 

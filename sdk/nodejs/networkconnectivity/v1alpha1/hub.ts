@@ -70,13 +70,10 @@ export class Hub extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: HubArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: HubArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["hubId"] = args ? args.hubId : undefined;
@@ -124,7 +121,7 @@ export interface HubArgs {
      * Immutable. The name of a Hub resource.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Time when the Hub was updated.

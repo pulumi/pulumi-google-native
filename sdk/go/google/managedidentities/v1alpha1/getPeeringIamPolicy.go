@@ -20,7 +20,7 @@ func LookupPeeringIamPolicy(ctx *pulumi.Context, args *LookupPeeringIamPolicyArg
 type LookupPeeringIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
 	PeeringId                     string  `pulumi:"peeringId"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupPeeringIamPolicyResult struct {

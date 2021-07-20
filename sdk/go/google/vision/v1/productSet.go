@@ -35,9 +35,6 @@ func NewProductSet(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ProductSet
 	err := ctx.RegisterResource("google-native:vision/v1:ProductSet", name, args, &resource, opts...)
 	if err != nil {
@@ -76,7 +73,7 @@ type productSetArgs struct {
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name         *string `pulumi:"name"`
 	ProductSetId *string `pulumi:"productSetId"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProductSet resource.
@@ -87,7 +84,7 @@ type ProductSetArgs struct {
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name         pulumi.StringPtrInput
 	ProductSetId pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 }
 
 func (ProductSetArgs) ElementType() reflect.Type {

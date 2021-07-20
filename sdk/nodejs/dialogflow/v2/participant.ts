@@ -65,9 +65,6 @@ export class Participant extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["conversationId"] = args ? args.conversationId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -96,7 +93,7 @@ export interface ParticipantArgs {
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
      */

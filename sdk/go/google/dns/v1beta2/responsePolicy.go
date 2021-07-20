@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type ResponsePolicy struct {
 func NewResponsePolicy(ctx *pulumi.Context,
 	name string, args *ResponsePolicyArgs, opts ...pulumi.ResourceOption) (*ResponsePolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ResponsePolicyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ResponsePolicy
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ResponsePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -79,7 +75,7 @@ type responsePolicyArgs struct {
 	Kind *string `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetwork `pulumi:"networks"`
-	Project  string                  `pulumi:"project"`
+	Project  *string                 `pulumi:"project"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
@@ -96,7 +92,7 @@ type ResponsePolicyArgs struct {
 	Kind pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkArrayInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringPtrInput
 }

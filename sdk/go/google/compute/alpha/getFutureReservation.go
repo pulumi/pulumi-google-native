@@ -18,9 +18,9 @@ func LookupFutureReservation(ctx *pulumi.Context, args *LookupFutureReservationA
 }
 
 type LookupFutureReservationArgs struct {
-	FutureReservation string `pulumi:"futureReservation"`
-	Project           string `pulumi:"project"`
-	Zone              string `pulumi:"zone"`
+	FutureReservation string  `pulumi:"futureReservation"`
+	Project           *string `pulumi:"project"`
+	Zone              string  `pulumi:"zone"`
 }
 
 type LookupFutureReservationResult struct {

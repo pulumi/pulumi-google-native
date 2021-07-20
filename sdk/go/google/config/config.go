@@ -22,3 +22,8 @@ func GetDisablePartnerName(ctx *pulumi.Context) bool {
 func GetPartnerName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "google-native:partnerName")
 }
+
+// A Google Cloud project name.
+func GetProject(ctx *pulumi.Context) string {
+	return config.Get(ctx, "google-native:project")
+}

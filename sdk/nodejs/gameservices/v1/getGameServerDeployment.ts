@@ -26,7 +26,7 @@ export function getGameServerDeployment(args: GetGameServerDeploymentArgs, opts?
 export interface GetGameServerDeploymentArgs {
     gameServerDeploymentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGameServerDeploymentResult {

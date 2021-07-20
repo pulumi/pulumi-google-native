@@ -28,7 +28,7 @@ export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<G
 export interface GetTagArgs {
     location: string;
     packageId: string;
-    project: string;
+    project?: string;
     repositoryId: string;
     tagId: string;
 }

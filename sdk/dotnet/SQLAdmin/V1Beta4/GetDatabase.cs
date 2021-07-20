@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDatabaseArgs()
         {

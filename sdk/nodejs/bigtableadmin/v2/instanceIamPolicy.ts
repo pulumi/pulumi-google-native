@@ -66,9 +66,6 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -106,7 +103,7 @@ export interface InstanceIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
      */

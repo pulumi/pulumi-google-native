@@ -101,13 +101,10 @@ export class Dataset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["access"] = args ? args.access : undefined;
             inputs["datasetReference"] = args ? args.datasetReference : undefined;
             inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
@@ -185,5 +182,5 @@ export interface DatasetArgs {
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     location?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

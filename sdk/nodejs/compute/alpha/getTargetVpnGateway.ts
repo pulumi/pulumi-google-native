@@ -24,7 +24,7 @@ export function getTargetVpnGateway(args: GetTargetVpnGatewayArgs, opts?: pulumi
 }
 
 export interface GetTargetVpnGatewayArgs {
-    project: string;
+    project?: string;
     region: string;
     targetVpnGateway: string;
 }

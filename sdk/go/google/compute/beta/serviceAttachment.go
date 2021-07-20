@@ -58,9 +58,6 @@ func NewServiceAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -112,7 +109,7 @@ type serviceAttachmentArgs struct {
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
-	Project                string  `pulumi:"project"`
+	Project                *string `pulumi:"project"`
 	Region                 string  `pulumi:"region"`
 	RequestId              *string `pulumi:"requestId"`
 	// The URL of a service serving the endpoint identified by this service attachment.
@@ -137,7 +134,7 @@ type ServiceAttachmentArgs struct {
 	NatSubnets pulumi.StringArrayInput
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
-	Project                pulumi.StringInput
+	Project                pulumi.StringPtrInput
 	Region                 pulumi.StringInput
 	RequestId              pulumi.StringPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.

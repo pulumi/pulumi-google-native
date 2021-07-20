@@ -28,7 +28,7 @@ export function getExecution(args: GetExecutionArgs, opts?: pulumi.InvokeOptions
 export interface GetExecutionArgs {
     executionId: string;
     location: string;
-    project: string;
+    project?: string;
     view?: string;
     workflowId: string;
 }

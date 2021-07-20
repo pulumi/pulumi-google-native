@@ -27,7 +27,7 @@ export function getSession(args: GetSessionArgs, opts?: pulumi.InvokeOptions): P
 export interface GetSessionArgs {
     databaseId: string;
     instanceId: string;
-    project: string;
+    project?: string;
     sessionId: string;
 }
 

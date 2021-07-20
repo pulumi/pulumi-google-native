@@ -15,23 +15,24 @@ __all__ = ['RulesetArgs', 'Ruleset']
 @pulumi.input_type
 class RulesetArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['SourceArgs']] = None):
         """
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input['SourceArgs'] source: `Source` for the `Ruleset`.
         """
-        pulumi.set(__self__, "project", project)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
+    def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: pulumi.Input[str]):
+    def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
     @property
@@ -67,7 +68,7 @@ class Ruleset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RulesetArgs,
+                 args: Optional[RulesetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
@@ -102,8 +103,6 @@ class Ruleset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["source"] = source
             __props__.__dict__["create_time"] = None

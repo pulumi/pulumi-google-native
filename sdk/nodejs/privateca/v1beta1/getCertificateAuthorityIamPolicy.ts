@@ -28,7 +28,7 @@ export interface GetCertificateAuthorityIamPolicyArgs {
     certificateAuthorityId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCertificateAuthorityIamPolicyResult {

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +44,9 @@ type BackendBucket struct {
 func NewBackendBucket(ctx *pulumi.Context,
 	name string, args *BackendBucketArgs, opts ...pulumi.ResourceOption) (*BackendBucket, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BackendBucketArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource BackendBucket
 	err := ctx.RegisterResource("google-native:compute/alpha:BackendBucket", name, args, &resource, opts...)
 	if err != nil {
@@ -99,7 +95,7 @@ type backendBucketArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 }
 
@@ -121,7 +117,7 @@ type BackendBucketArgs struct {
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 }
 

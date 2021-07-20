@@ -40,9 +40,6 @@ func NewAppProfile(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource AppProfile
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:AppProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type appProfileArgs struct {
 	MultiClusterRoutingUseAny *MultiClusterRoutingUseAny `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Use a single-cluster routing policy.
 	SingleClusterRouting *SingleClusterRouting `pulumi:"singleClusterRouting"`
 }
@@ -104,7 +101,7 @@ type AppProfileArgs struct {
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyPtrInput
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Use a single-cluster routing policy.
 	SingleClusterRouting SingleClusterRoutingPtrInput
 }

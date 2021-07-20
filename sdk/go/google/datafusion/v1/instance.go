@@ -80,9 +80,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -145,8 +142,8 @@ type instanceArgs struct {
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
-	PrivateInstance *bool  `pulumi:"privateInstance"`
-	Project         string `pulumi:"project"`
+	PrivateInstance *bool   `pulumi:"privateInstance"`
+	Project         *string `pulumi:"project"`
 	// Instance type.
 	Type InstanceType `pulumi:"type"`
 	// Current version of the Data Fusion. Only specifiable in Update.
@@ -185,7 +182,7 @@ type InstanceArgs struct {
 	Options pulumi.StringMapInput
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 	// Instance type.
 	Type InstanceTypeInput
 	// Current version of the Data Fusion. Only specifiable in Update.

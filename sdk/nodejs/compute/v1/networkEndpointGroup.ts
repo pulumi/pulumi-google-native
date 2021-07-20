@@ -111,9 +111,6 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -200,7 +197,7 @@ export interface NetworkEndpointGroupArgs {
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
      */
     networkEndpointType?: pulumi.Input<enums.compute.v1.NetworkEndpointGroupNetworkEndpointType>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.

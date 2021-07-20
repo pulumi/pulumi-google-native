@@ -24,7 +24,7 @@ export function getDashboard(args: GetDashboardArgs, opts?: pulumi.InvokeOptions
 
 export interface GetDashboardArgs {
     dashboardId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDashboardResult {

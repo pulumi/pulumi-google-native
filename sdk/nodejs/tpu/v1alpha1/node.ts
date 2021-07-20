@@ -122,9 +122,6 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.tensorflowVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
@@ -204,7 +201,7 @@ export interface NodeArgs {
      */
     network?: pulumi.Input<string>;
     nodeId?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The scheduling options for this node.
      */

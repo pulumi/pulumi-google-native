@@ -66,9 +66,6 @@ func NewVpnTunnel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -120,7 +117,7 @@ type vpnTunnelArgs struct {
 	PeerGcpGateway *string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp  *string `pulumi:"peerIp"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	Region  string  `pulumi:"region"`
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector []string `pulumi:"remoteTrafficSelector"`
@@ -157,7 +154,7 @@ type VpnTunnelArgs struct {
 	PeerGcpGateway pulumi.StringPtrInput
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	Region  pulumi.StringInput
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector pulumi.StringArrayInput

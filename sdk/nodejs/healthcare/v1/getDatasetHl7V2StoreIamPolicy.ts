@@ -30,7 +30,7 @@ export interface GetDatasetHl7V2StoreIamPolicyArgs {
     hl7V2StoreId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatasetHl7V2StoreIamPolicyResult {

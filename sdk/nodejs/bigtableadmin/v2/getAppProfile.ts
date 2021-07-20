@@ -26,7 +26,7 @@ export function getAppProfile(args: GetAppProfileArgs, opts?: pulumi.InvokeOptio
 export interface GetAppProfileArgs {
     appProfileId: string;
     instanceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAppProfileResult {

@@ -19,7 +19,7 @@ func LookupNetworkFirewallPolicyIamPolicy(ctx *pulumi.Context, args *LookupNetwo
 
 type LookupNetworkFirewallPolicyIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
 

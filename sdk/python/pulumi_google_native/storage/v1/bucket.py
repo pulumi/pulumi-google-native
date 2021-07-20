@@ -15,7 +15,6 @@ __all__ = ['BucketArgs', 'Bucket']
 @pulumi.input_type
 class BucketArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]] = None,
@@ -36,6 +35,7 @@ class BucketArgs:
                  owner: Optional[pulumi.Input['BucketOwnerArgs']] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
@@ -80,7 +80,6 @@ class BucketArgs:
         :param pulumi.Input['BucketWebsiteArgs'] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
         """
-        pulumi.set(__self__, "project", project)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if billing is not None:
@@ -121,6 +120,8 @@ class BucketArgs:
             pulumi.set(__self__, "predefined_acl", predefined_acl)
         if predefined_default_object_acl is not None:
             pulumi.set(__self__, "predefined_default_object_acl", predefined_default_object_acl)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
         if projection is not None:
@@ -147,15 +148,6 @@ class BucketArgs:
             pulumi.set(__self__, "website", website)
         if zone_affinity is not None:
             pulumi.set(__self__, "zone_affinity", zone_affinity)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -392,6 +384,15 @@ class BucketArgs:
         pulumi.set(self, "predefined_default_object_acl", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -617,7 +618,7 @@ class Bucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BucketArgs,
+                 args: Optional[BucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new bucket.
@@ -703,8 +704,6 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["predefined_acl"] = predefined_acl
             __props__.__dict__["predefined_default_object_acl"] = predefined_default_object_acl
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_number"] = project_number
             __props__.__dict__["projection"] = projection

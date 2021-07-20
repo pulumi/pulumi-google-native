@@ -16,12 +16,12 @@ __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
 @pulumi.input_type
 class ResourcePolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
                  instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
                  vm_maintenance_policy: Optional[pulumi.Input['ResourcePolicyVmMaintenancePolicyArgs']] = None):
@@ -33,7 +33,6 @@ class ResourcePolicyArgs:
         :param pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs'] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
         :param pulumi.Input['ResourcePolicyVmMaintenancePolicyArgs'] vm_maintenance_policy: Resource policy applicable to VMs for infrastructure maintenance.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -43,21 +42,14 @@ class ResourcePolicyArgs:
             pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if snapshot_schedule_policy is not None:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         if vm_maintenance_policy is not None:
             pulumi.set(__self__, "vm_maintenance_policy", vm_maintenance_policy)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -112,6 +104,15 @@ class ResourcePolicyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -222,8 +223,6 @@ class ResourcePolicy(pulumi.CustomResource):
             __props__.__dict__["group_placement_policy"] = group_placement_policy
             __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

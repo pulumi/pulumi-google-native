@@ -47,9 +47,6 @@ func NewModel(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Model
 	err := ctx.RegisterResource("google-native:firebaseml/v1beta2:Model", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type modelArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// State common to all model types. Includes publishing and validation information.
 	State *ModelStateType `pulumi:"state"`
 	// User defined tags which can be used to group/filter models during listing
@@ -101,7 +98,7 @@ type ModelArgs struct {
 	DisplayName pulumi.StringInput
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// State common to all model types. Includes publishing and validation information.
 	State ModelStateTypePtrInput
 	// User defined tags which can be used to group/filter models during listing

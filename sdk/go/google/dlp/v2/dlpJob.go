@@ -48,9 +48,6 @@ func NewDlpJob(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource DlpJob
 	err := ctx.RegisterResource("google-native:dlp/v2:DlpJob", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type dlpJobArgs struct {
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	JobId    *string `pulumi:"jobId"`
 	Location string  `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob *GooglePrivacyDlpV2RiskAnalysisJobConfig `pulumi:"riskJob"`
 }
@@ -100,7 +97,7 @@ type DlpJobArgs struct {
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	JobId    pulumi.StringPtrInput
 	Location pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput
 }

@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("sessionId", required: true)]
         public string SessionId { get; set; } = null!;

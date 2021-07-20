@@ -33,8 +33,8 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [Input("productId", required: true)]
         public string ProductId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetProductArgs()
         {

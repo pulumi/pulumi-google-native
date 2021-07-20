@@ -41,9 +41,6 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Connection
 	err := ctx.RegisterResource("google-native:bigqueryconnection/v1beta1:Connection", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type connectionArgs struct {
 	Location     string  `pulumi:"location"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -101,7 +98,7 @@ type ConnectionArgs struct {
 	Location     pulumi.StringInput
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

@@ -27,7 +27,7 @@ export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): P
 export interface GetWebhookArgs {
     agentId: string;
     location: string;
-    project: string;
+    project?: string;
     webhookId: string;
 }
 

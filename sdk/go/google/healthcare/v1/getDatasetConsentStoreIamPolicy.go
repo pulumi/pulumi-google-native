@@ -22,7 +22,7 @@ type LookupDatasetConsentStoreIamPolicyArgs struct {
 	DatasetId                     string  `pulumi:"datasetId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupDatasetConsentStoreIamPolicyResult struct {

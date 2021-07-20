@@ -21,8 +21,8 @@ class EvaluationJobArgs:
                  evaluation_job_config: pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs'],
                  label_missing_ground_truth: pulumi.Input[bool],
                  model_version: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 schedule: pulumi.Input[str]):
+                 schedule: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EvaluationJob resource.
         :param pulumi.Input[str] annotation_spec_set: Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
@@ -37,8 +37,9 @@ class EvaluationJobArgs:
         pulumi.set(__self__, "evaluation_job_config", evaluation_job_config)
         pulumi.set(__self__, "label_missing_ground_truth", label_missing_ground_truth)
         pulumi.set(__self__, "model_version", model_version)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "schedule", schedule)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="annotationSpecSet")
@@ -102,15 +103,6 @@ class EvaluationJobArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
         Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
@@ -120,6 +112,15 @@ class EvaluationJobArgs:
     @schedule.setter
     def schedule(self, value: pulumi.Input[str]):
         pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class EvaluationJob(pulumi.CustomResource):
@@ -207,8 +208,6 @@ class EvaluationJob(pulumi.CustomResource):
             if model_version is None and not opts.urn:
                 raise TypeError("Missing required property 'model_version'")
             __props__.__dict__["model_version"] = model_version
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")

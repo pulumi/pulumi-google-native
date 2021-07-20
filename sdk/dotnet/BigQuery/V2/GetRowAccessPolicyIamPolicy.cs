@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("rowAccessPolicyId", required: true)]
         public string RowAccessPolicyId { get; set; } = null!;

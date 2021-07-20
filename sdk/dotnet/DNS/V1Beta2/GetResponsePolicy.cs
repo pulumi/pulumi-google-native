@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("clientOperationId")]
         public string? ClientOperationId { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("responsePolicy", required: true)]
         public string ResponsePolicy { get; set; } = null!;

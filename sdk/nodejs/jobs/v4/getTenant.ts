@@ -23,7 +23,7 @@ export function getTenant(args: GetTenantArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetTenantArgs {
-    project: string;
+    project?: string;
     tenantId: string;
 }
 

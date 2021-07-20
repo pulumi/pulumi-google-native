@@ -63,9 +63,6 @@ func NewService(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
@@ -117,8 +114,8 @@ type serviceArgs struct {
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port    *int   `pulumi:"port"`
-	Project string `pulumi:"project"`
+	Port    *int    `pulumi:"port"`
+	Project *string `pulumi:"project"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *ServiceReleaseChannel `pulumi:"releaseChannel"`
 	RequestId      *string                `pulumi:"requestId"`
@@ -146,7 +143,7 @@ type ServiceArgs struct {
 	Network pulumi.StringPtrInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port    pulumi.IntPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel ServiceReleaseChannelPtrInput
 	RequestId      pulumi.StringPtrInput

@@ -17,11 +17,11 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input['GoogleCloudMlV1__PredictionInputArgs']] = None,
                  prediction_output: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  training_input: Optional[pulumi.Input['GoogleCloudMlV1__TrainingInputArgs']] = None,
                  training_output: Optional[pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs']] = None):
         """
@@ -35,7 +35,6 @@ class JobArgs:
         :param pulumi.Input['GoogleCloudMlV1__TrainingOutputArgs'] training_output: The current training job result.
         """
         pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "project", project)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -44,6 +43,8 @@ class JobArgs:
             pulumi.set(__self__, "prediction_input", prediction_input)
         if prediction_output is not None:
             pulumi.set(__self__, "prediction_output", prediction_output)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if training_input is not None:
             pulumi.set(__self__, "training_input", training_input)
         if training_output is not None:
@@ -60,15 +61,6 @@ class JobArgs:
     @job_id.setter
     def job_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "job_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -117,6 +109,15 @@ class JobArgs:
     @prediction_output.setter
     def prediction_output(self, value: Optional[pulumi.Input['GoogleCloudMlV1__PredictionOutputArgs']]):
         pulumi.set(self, "prediction_output", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="trainingInput")
@@ -223,8 +224,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["prediction_input"] = prediction_input
             __props__.__dict__["prediction_output"] = prediction_output
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["training_input"] = training_input
             __props__.__dict__["training_output"] = training_output

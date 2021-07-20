@@ -100,9 +100,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:notebooks/v1:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -177,7 +174,7 @@ type instanceArgs struct {
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	Project           string  `pulumi:"project"`
+	Project           *string `pulumi:"project"`
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
@@ -238,7 +235,7 @@ type InstanceArgs struct {
 	NoRemoveDataDisk pulumi.BoolPtrInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
-	Project           pulumi.StringInput
+	Project           pulumi.StringPtrInput
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute

@@ -101,9 +101,6 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificateId"] = args ? args.certificateId : undefined;
             inputs["config"] = args ? args.config : undefined;
@@ -163,6 +160,6 @@ export interface CertificateArgs {
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     pemCsr?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }

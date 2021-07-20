@@ -18,19 +18,20 @@ class PerfSampleSeriesArgs:
     def __init__(__self__, *,
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  step_id: pulumi.Input[str],
-                 basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None):
+                 basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PerfSampleSeries resource.
         :param pulumi.Input['BasicPerfSampleSeriesArgs'] basic_perf_sample_series: Basic series represented by a line chart
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "step_id", step_id)
         if basic_perf_sample_series is not None:
             pulumi.set(__self__, "basic_perf_sample_series", basic_perf_sample_series)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="executionId")
@@ -49,15 +50,6 @@ class PerfSampleSeriesArgs:
     @history_id.setter
     def history_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "history_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="stepId")
@@ -79,6 +71,15 @@ class PerfSampleSeriesArgs:
     @basic_perf_sample_series.setter
     def basic_perf_sample_series(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']]):
         pulumi.set(self, "basic_perf_sample_series", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class PerfSampleSeries(pulumi.CustomResource):
@@ -149,8 +150,6 @@ class PerfSampleSeries(pulumi.CustomResource):
             if history_id is None and not opts.urn:
                 raise TypeError("Missing required property 'history_id'")
             __props__.__dict__["history_id"] = history_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if step_id is None and not opts.urn:
                 raise TypeError("Missing required property 'step_id'")

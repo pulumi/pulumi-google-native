@@ -16,7 +16,6 @@ __all__ = ['GlobalForwardingRuleArgs', 'GlobalForwardingRule']
 @pulumi.input_type
 class GlobalForwardingRuleArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  all_ports: Optional[pulumi.Input[bool]] = None,
                  allow_global_access: Optional[pulumi.Input[bool]] = None,
                  backend_service: Optional[pulumi.Input[str]] = None,
@@ -33,6 +32,7 @@ class GlobalForwardingRuleArgs:
                  network_tier: Optional[pulumi.Input['GlobalForwardingRuleNetworkTier']] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  psc_connection_status: Optional[pulumi.Input['GlobalForwardingRulePscConnectionStatus']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
@@ -63,7 +63,6 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field is only used for internal load balancing. For internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule. If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
         """
-        pulumi.set(__self__, "project", project)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
         if allow_global_access is not None:
@@ -96,6 +95,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if psc_connection_status is not None:
             pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if request_id is not None:
@@ -110,15 +111,6 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="allPorts")
@@ -313,6 +305,15 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "ports", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="pscConnectionStatus")
     def psc_connection_status(self) -> Optional[pulumi.Input['GlobalForwardingRulePscConnectionStatus']]:
         return pulumi.get(self, "psc_connection_status")
@@ -448,7 +449,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GlobalForwardingRuleArgs,
+                 args: Optional[GlobalForwardingRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
@@ -520,8 +521,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["network_tier"] = network_tier
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["ports"] = ports
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_connection_status"] = psc_connection_status
             __props__.__dict__["request_id"] = request_id

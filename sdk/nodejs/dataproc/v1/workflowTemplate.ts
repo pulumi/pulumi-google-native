@@ -93,9 +93,6 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["dagTimeout"] = args ? args.dagTimeout : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["jobs"] = args ? args.jobs : undefined;
@@ -152,7 +149,7 @@ export interface WorkflowTemplateArgs {
      * WorkflowTemplate scheduling information.
      */
     placement: pulumi.Input<inputs.dataproc.v1.WorkflowTemplatePlacementArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
      */

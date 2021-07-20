@@ -24,7 +24,7 @@ export function getNotificationChannel(args: GetNotificationChannelArgs, opts?: 
 
 export interface GetNotificationChannelArgs {
     notificationChannelId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNotificationChannelResult {

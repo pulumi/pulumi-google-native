@@ -18,10 +18,10 @@ func LookupMetadataImport(ctx *pulumi.Context, args *LookupMetadataImportArgs, o
 }
 
 type LookupMetadataImportArgs struct {
-	Location         string `pulumi:"location"`
-	MetadataImportId string `pulumi:"metadataImportId"`
-	Project          string `pulumi:"project"`
-	ServiceId        string `pulumi:"serviceId"`
+	Location         string  `pulumi:"location"`
+	MetadataImportId string  `pulumi:"metadataImportId"`
+	Project          *string `pulumi:"project"`
+	ServiceId        string  `pulumi:"serviceId"`
 }
 
 type LookupMetadataImportResult struct {

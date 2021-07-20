@@ -25,7 +25,7 @@ export function getRegionHealthCheckService(args: GetRegionHealthCheckServiceArg
 
 export interface GetRegionHealthCheckServiceArgs {
     healthCheckService: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("parentPrefix")]
         public Input<string>? ParentPrefix { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("publicDelegatedSubPrefixs")]
         private InputList<Inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>? _publicDelegatedSubPrefixs;

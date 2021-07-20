@@ -108,9 +108,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -182,7 +179,7 @@ type instanceArgs struct {
 	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
-	Project                 string                           `pulumi:"project"`
+	Project                 *string                          `pulumi:"project"`
 	RequestId               *string                          `pulumi:"requestId"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
@@ -246,7 +243,7 @@ type InstanceArgs struct {
 	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess InstancePrivateIpv6GoogleAccessPtrInput
-	Project                 pulumi.StringInput
+	Project                 pulumi.StringPtrInput
 	RequestId               pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityPtrInput

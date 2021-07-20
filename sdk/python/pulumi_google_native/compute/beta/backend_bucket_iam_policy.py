@@ -16,12 +16,12 @@ __all__ = ['BackendBucketIamPolicyArgs', 'BackendBucketIamPolicy']
 @pulumi.input_type
 class BackendBucketIamPolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  resource: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_owned: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -33,7 +33,6 @@ class BackendBucketIamPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RuleArgs']]] rules: This is deprecated and has no effect. Do not use.
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource", resource)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
@@ -43,19 +42,12 @@ class BackendBucketIamPolicyArgs:
             pulumi.set(__self__, "etag", etag)
         if iam_owned is not None:
             pulumi.set(__self__, "iam_owned", iam_owned)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -113,6 +105,15 @@ class BackendBucketIamPolicyArgs:
     @iam_owned.setter
     def iam_owned(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "iam_owned", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -213,8 +214,6 @@ class BackendBucketIamPolicy(pulumi.CustomResource):
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
             __props__.__dict__["iam_owned"] = iam_owned
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")

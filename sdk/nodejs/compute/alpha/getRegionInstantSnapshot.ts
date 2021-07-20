@@ -25,7 +25,7 @@ export function getRegionInstantSnapshot(args: GetRegionInstantSnapshotArgs, opt
 
 export interface GetRegionInstantSnapshotArgs {
     instantSnapshot: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

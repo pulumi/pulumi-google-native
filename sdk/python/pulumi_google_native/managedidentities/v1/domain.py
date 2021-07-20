@@ -17,11 +17,11 @@ class DomainArgs:
                  domain_name: pulumi.Input[str],
                  locations: pulumi.Input[Sequence[pulumi.Input[str]]],
                  name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  reserved_ip_range: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -34,7 +34,6 @@ class DomainArgs:
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "locations", locations)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if admin is not None:
             pulumi.set(__self__, "admin", admin)
@@ -42,6 +41,8 @@ class DomainArgs:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="domainName")
@@ -75,15 +76,6 @@ class DomainArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="reservedIpRange")
@@ -132,6 +124,15 @@ class DomainArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -218,8 +219,6 @@ class Domain(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if reserved_ip_range is None and not opts.urn:
                 raise TypeError("Missing required property 'reserved_ip_range'")

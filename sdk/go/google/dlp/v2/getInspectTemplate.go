@@ -18,9 +18,9 @@ func LookupInspectTemplate(ctx *pulumi.Context, args *LookupInspectTemplateArgs,
 }
 
 type LookupInspectTemplateArgs struct {
-	InspectTemplateId string `pulumi:"inspectTemplateId"`
-	Location          string `pulumi:"location"`
-	Project           string `pulumi:"project"`
+	InspectTemplateId string  `pulumi:"inspectTemplateId"`
+	Location          string  `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 }
 
 type LookupInspectTemplateResult struct {

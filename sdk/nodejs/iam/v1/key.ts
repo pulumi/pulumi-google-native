@@ -84,9 +84,6 @@ export class Key extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
@@ -131,6 +128,6 @@ export interface KeyArgs {
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */
     privateKeyType?: pulumi.Input<enums.iam.v1.KeyPrivateKeyType>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     serviceAccountId: pulumi.Input<string>;
 }

@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The spec for this DomainMapping.

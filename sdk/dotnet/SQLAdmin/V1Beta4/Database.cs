@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// <summary>
         /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The URI of this resource.

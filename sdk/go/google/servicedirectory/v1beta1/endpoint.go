@@ -47,9 +47,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
@@ -97,9 +94,9 @@ type endpointArgs struct {
 	// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
 	Network *string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
-	Port      *int   `pulumi:"port"`
-	Project   string `pulumi:"project"`
-	ServiceId string `pulumi:"serviceId"`
+	Port      *int    `pulumi:"port"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
@@ -117,7 +114,7 @@ type EndpointArgs struct {
 	Network pulumi.StringPtrInput
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port      pulumi.IntPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	ServiceId pulumi.StringInput
 }
 

@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetConnectionProfileIamPolicyArgs()
         {

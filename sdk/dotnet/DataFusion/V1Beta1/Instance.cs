@@ -325,8 +325,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [Input("privateInstance")]
         public Input<bool>? PrivateInstance { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Instance type.

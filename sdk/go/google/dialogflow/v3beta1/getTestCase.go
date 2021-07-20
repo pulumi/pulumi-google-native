@@ -18,10 +18,10 @@ func LookupTestCase(ctx *pulumi.Context, args *LookupTestCaseArgs, opts ...pulum
 }
 
 type LookupTestCaseArgs struct {
-	AgentId    string `pulumi:"agentId"`
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	TestCaseId string `pulumi:"testCaseId"`
+	AgentId    string  `pulumi:"agentId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	TestCaseId string  `pulumi:"testCaseId"`
 }
 
 type LookupTestCaseResult struct {

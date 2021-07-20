@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;

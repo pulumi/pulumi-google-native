@@ -40,9 +40,6 @@ func NewHl7V2Store(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Hl7V2Store
 	err := ctx.RegisterResource("google-native:healthcare/v1:Hl7V2Store", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type hl7V2StoreArgs struct {
 	NotificationConfigs []Hl7V2NotificationConfig `pulumi:"notificationConfigs"`
 	// The configuration for the parser. It determines how the server parses the messages.
 	ParserConfig *ParserConfig `pulumi:"parserConfig"`
-	Project      string        `pulumi:"project"`
+	Project      *string       `pulumi:"project"`
 	// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
 	RejectDuplicateMessage *bool `pulumi:"rejectDuplicateMessage"`
 }
@@ -104,7 +101,7 @@ type Hl7V2StoreArgs struct {
 	NotificationConfigs Hl7V2NotificationConfigArrayInput
 	// The configuration for the parser. It determines how the server parses the messages.
 	ParserConfig ParserConfigPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
 	RejectDuplicateMessage pulumi.BoolPtrInput
 }

@@ -18,11 +18,11 @@ class MetadataImportArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  metadata_import_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  database_dump: Optional[pulumi.Input['DatabaseDumpArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetadataImport resource.
@@ -32,7 +32,6 @@ class MetadataImportArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "metadata_import_id", metadata_import_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
         if database_dump is not None:
             pulumi.set(__self__, "database_dump", database_dump)
@@ -40,6 +39,8 @@ class MetadataImportArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
 
@@ -60,15 +61,6 @@ class MetadataImportArgs:
     @metadata_import_id.setter
     def metadata_import_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "metadata_import_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -114,6 +106,15 @@ class MetadataImportArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -201,8 +202,6 @@ class MetadataImport(pulumi.CustomResource):
                 raise TypeError("Missing required property 'metadata_import_id'")
             __props__.__dict__["metadata_import_id"] = metadata_import_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             if service_id is None and not opts.urn:

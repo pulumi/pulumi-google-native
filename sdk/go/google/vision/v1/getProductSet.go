@@ -18,9 +18,9 @@ func LookupProductSet(ctx *pulumi.Context, args *LookupProductSetArgs, opts ...p
 }
 
 type LookupProductSetArgs struct {
-	Location     string `pulumi:"location"`
-	ProductSetId string `pulumi:"productSetId"`
-	Project      string `pulumi:"project"`
+	Location     string  `pulumi:"location"`
+	ProductSetId string  `pulumi:"productSetId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupProductSetResult struct {

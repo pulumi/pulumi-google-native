@@ -34,9 +34,6 @@ func NewTag(ctx *pulumi.Context,
 	if args.PackageId == nil {
 		return nil, errors.New("invalid value for required argument 'PackageId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.RepositoryId == nil {
 		return nil, errors.New("invalid value for required argument 'RepositoryId'")
 	}
@@ -76,7 +73,7 @@ type tagArgs struct {
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
 	Name         *string `pulumi:"name"`
 	PackageId    string  `pulumi:"packageId"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	RepositoryId string  `pulumi:"repositoryId"`
 	TagId        *string `pulumi:"tagId"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
@@ -89,7 +86,7 @@ type TagArgs struct {
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
 	Name         pulumi.StringPtrInput
 	PackageId    pulumi.StringInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	RepositoryId pulumi.StringInput
 	TagId        pulumi.StringPtrInput
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"

@@ -25,7 +25,7 @@ export function getTransferConfig(args: GetTransferConfigArgs, opts?: pulumi.Inv
 
 export interface GetTransferConfigArgs {
     location: string;
-    project: string;
+    project?: string;
     transferConfigId: string;
 }
 

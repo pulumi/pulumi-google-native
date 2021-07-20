@@ -31,7 +31,7 @@ export interface GetSessionEntityTypeArgs {
     entityTypeId: string;
     environmentId: string;
     location: string;
-    project: string;
+    project?: string;
     sessionId: string;
 }
 

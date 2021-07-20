@@ -35,9 +35,6 @@ func NewIndex(ctx *pulumi.Context,
 	if args.DatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Index
 	err := ctx.RegisterResource("google-native:firestore/v1beta1:Index", name, args, &resource, opts...)
 	if err != nil {
@@ -77,7 +74,7 @@ type indexArgs struct {
 	Fields []GoogleFirestoreAdminV1beta1IndexField `pulumi:"fields"`
 	// The resource name of the index. Output only.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The state of the index. Output only.
 	State *IndexStateEnum `pulumi:"state"`
 }
@@ -91,7 +88,7 @@ type IndexArgs struct {
 	Fields GoogleFirestoreAdminV1beta1IndexFieldArrayInput
 	// The resource name of the index. Output only.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The state of the index. Output only.
 	State IndexStateEnumPtrInput
 }

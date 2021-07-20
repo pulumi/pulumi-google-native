@@ -51,9 +51,6 @@ func NewCatalogItem(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -103,7 +100,7 @@ type catalogItemArgs struct {
 	Location    string  `pulumi:"location"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata *GoogleCloudRecommendationengineV1beta1ProductCatalogItem `pulumi:"productMetadata"`
-	Project         string                                                    `pulumi:"project"`
+	Project         *string                                                   `pulumi:"project"`
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
 	Tags []string `pulumi:"tags"`
 	// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
@@ -126,7 +123,7 @@ type CatalogItemArgs struct {
 	Location    pulumi.StringInput
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
 	Tags pulumi.StringArrayInput
 	// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.

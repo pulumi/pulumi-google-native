@@ -28,7 +28,7 @@ export interface GetImportJobArgs {
     importJobId: string;
     keyRingId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetImportJobResult {

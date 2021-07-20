@@ -25,7 +25,7 @@ export function getSecuritySetting(args: GetSecuritySettingArgs, opts?: pulumi.I
 
 export interface GetSecuritySettingArgs {
     location: string;
-    project: string;
+    project?: string;
     securitySettingId: string;
 }
 

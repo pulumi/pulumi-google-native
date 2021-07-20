@@ -104,9 +104,6 @@ export class Agent extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
@@ -178,7 +175,7 @@ export interface AgentArgs {
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
      */

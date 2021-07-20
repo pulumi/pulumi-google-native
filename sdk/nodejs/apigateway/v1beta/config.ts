@@ -105,9 +105,6 @@ export class Config extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
             inputs["apiId"] = args ? args.apiId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -180,5 +177,5 @@ export interface ConfigArgs {
      * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
      */
     openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

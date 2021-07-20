@@ -18,8 +18,8 @@ func LookupSite(ctx *pulumi.Context, args *LookupSiteArgs, opts ...pulumi.Invoke
 }
 
 type LookupSiteArgs struct {
-	Project string `pulumi:"project"`
-	SiteId  string `pulumi:"siteId"`
+	Project *string `pulumi:"project"`
+	SiteId  string  `pulumi:"siteId"`
 }
 
 type LookupSiteResult struct {

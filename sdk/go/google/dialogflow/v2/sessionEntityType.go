@@ -46,9 +46,6 @@ func NewSessionEntityType(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.SessionId == nil {
 		return nil, errors.New("invalid value for required argument 'SessionId'")
 	}
@@ -94,10 +91,10 @@ type sessionEntityTypeArgs struct {
 	EnvironmentId      string                              `pulumi:"environmentId"`
 	Location           string                              `pulumi:"location"`
 	// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
-	Name      string `pulumi:"name"`
-	Project   string `pulumi:"project"`
-	SessionId string `pulumi:"sessionId"`
-	UserId    string `pulumi:"userId"`
+	Name      string  `pulumi:"name"`
+	Project   *string `pulumi:"project"`
+	SessionId string  `pulumi:"sessionId"`
+	UserId    string  `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a SessionEntityType resource.
@@ -110,7 +107,7 @@ type SessionEntityTypeArgs struct {
 	Location           pulumi.StringInput
 	// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name      pulumi.StringInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	SessionId pulumi.StringInput
 	UserId    pulumi.StringInput
 }

@@ -26,7 +26,7 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
 export interface GetFunctionArgs {
     functionId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFunctionResult {

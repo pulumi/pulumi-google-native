@@ -15,17 +15,18 @@ class SessionArgs:
     def __init__(__self__, *,
                  database_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Session resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         """
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -47,15 +48,6 @@ class SessionArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
@@ -65,6 +57,15 @@ class SessionArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Session(pulumi.CustomResource):
@@ -133,8 +134,6 @@ class Session(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["approximate_last_use_time"] = None
             __props__.__dict__["create_time"] = None

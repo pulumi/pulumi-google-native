@@ -19,7 +19,6 @@ class JobArgs:
                  application_info: pulumi.Input['ApplicationInfoArgs'],
                  company_name: pulumi.Input[str],
                  description: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  requisition_id: pulumi.Input[str],
                  title: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,6 +38,7 @@ class JobArgs:
                  posting_publish_time: Optional[pulumi.Input[str]] = None,
                  posting_region: Optional[pulumi.Input['JobPostingRegion']] = None,
                  processing_options: Optional[pulumi.Input['ProcessingOptionsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
                  responsibilities: Optional[pulumi.Input[str]] = None):
@@ -73,7 +73,6 @@ class JobArgs:
         pulumi.set(__self__, "application_info", application_info)
         pulumi.set(__self__, "company_name", company_name)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "requisition_id", requisition_id)
         pulumi.set(__self__, "title", title)
         if addresses is not None:
@@ -110,6 +109,8 @@ class JobArgs:
             pulumi.set(__self__, "posting_region", posting_region)
         if processing_options is not None:
             pulumi.set(__self__, "processing_options", processing_options)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if promotion_value is not None:
             pulumi.set(__self__, "promotion_value", promotion_value)
         if qualifications is not None:
@@ -152,15 +153,6 @@ class JobArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requisitionId")
@@ -391,6 +383,15 @@ class JobArgs:
         pulumi.set(self, "processing_options", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="promotionValue")
     def promotion_value(self) -> Optional[pulumi.Input[int]]:
         """
@@ -578,8 +579,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["posting_publish_time"] = posting_publish_time
             __props__.__dict__["posting_region"] = posting_region
             __props__.__dict__["processing_options"] = processing_options
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["promotion_value"] = promotion_value
             __props__.__dict__["qualifications"] = qualifications

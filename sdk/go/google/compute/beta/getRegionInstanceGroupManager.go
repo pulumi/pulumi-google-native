@@ -18,9 +18,9 @@ func LookupRegionInstanceGroupManager(ctx *pulumi.Context, args *LookupRegionIns
 }
 
 type LookupRegionInstanceGroupManagerArgs struct {
-	InstanceGroupManager string `pulumi:"instanceGroupManager"`
-	Project              string `pulumi:"project"`
-	Region               string `pulumi:"region"`
+	InstanceGroupManager string  `pulumi:"instanceGroupManager"`
+	Project              *string `pulumi:"project"`
+	Region               string  `pulumi:"region"`
 }
 
 type LookupRegionInstanceGroupManagerResult struct {

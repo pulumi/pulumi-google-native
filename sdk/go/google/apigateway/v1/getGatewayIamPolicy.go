@@ -21,7 +21,7 @@ type LookupGatewayIamPolicyArgs struct {
 	GatewayId                     string  `pulumi:"gatewayId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupGatewayIamPolicyResult struct {

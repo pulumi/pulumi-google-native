@@ -25,7 +25,7 @@ export function getRepoIamPolicy(args: GetRepoIamPolicyArgs, opts?: pulumi.Invok
 
 export interface GetRepoIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     repoId: string;
 }
 

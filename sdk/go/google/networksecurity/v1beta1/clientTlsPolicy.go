@@ -46,9 +46,6 @@ func NewClientTlsPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ClientTlsPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1beta1:ClientTlsPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +88,7 @@ type clientTlsPolicyArgs struct {
 	Location string            `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	ServerValidationCa []ValidationCA `pulumi:"serverValidationCa"`
 	// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
@@ -110,7 +107,7 @@ type ClientTlsPolicyArgs struct {
 	Location pulumi.StringInput
 	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
 	ServerValidationCa ValidationCAArrayInput
 	// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".

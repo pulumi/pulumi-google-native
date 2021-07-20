@@ -83,9 +83,6 @@ export class HmacKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
@@ -121,7 +118,7 @@ export class HmacKey extends pulumi.CustomResource {
  * The set of arguments for constructing a HmacKey resource.
  */
 export interface HmacKeyArgs {
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     serviceAccountEmail: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

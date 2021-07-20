@@ -22,7 +22,7 @@ type LookupDatasetHl7V2StoreIamPolicyArgs struct {
 	Hl7V2StoreId                  string  `pulumi:"hl7V2StoreId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupDatasetHl7V2StoreIamPolicyResult struct {

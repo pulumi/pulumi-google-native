@@ -19,7 +19,7 @@ func LookupRepoIamPolicy(ctx *pulumi.Context, args *LookupRepoIamPolicyArgs, opt
 
 type LookupRepoIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	RepoId                        string  `pulumi:"repoId"`
 }
 

@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("healthCheck", required: true)]
         public string HealthCheck { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetHealthCheckArgs()
         {

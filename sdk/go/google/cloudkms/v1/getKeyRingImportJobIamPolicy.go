@@ -22,7 +22,7 @@ type LookupKeyRingImportJobIamPolicyArgs struct {
 	KeyRingId                     string  `pulumi:"keyRingId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupKeyRingImportJobIamPolicyResult struct {

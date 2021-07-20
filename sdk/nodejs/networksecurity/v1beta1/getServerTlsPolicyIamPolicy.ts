@@ -27,7 +27,7 @@ export function getServerTlsPolicyIamPolicy(args: GetServerTlsPolicyIamPolicyArg
 export interface GetServerTlsPolicyIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     serverTlsPolicyId: string;
 }
 

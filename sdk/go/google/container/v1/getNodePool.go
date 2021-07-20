@@ -18,10 +18,10 @@ func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulum
 }
 
 type LookupNodePoolArgs struct {
-	ClusterId  string `pulumi:"clusterId"`
-	Location   string `pulumi:"location"`
-	NodePoolId string `pulumi:"nodePoolId"`
-	Project    string `pulumi:"project"`
+	ClusterId  string  `pulumi:"clusterId"`
+	Location   string  `pulumi:"location"`
+	NodePoolId string  `pulumi:"nodePoolId"`
+	Project    *string `pulumi:"project"`
 }
 
 type LookupNodePoolResult struct {

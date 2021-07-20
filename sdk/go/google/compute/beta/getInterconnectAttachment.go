@@ -18,9 +18,9 @@ func LookupInterconnectAttachment(ctx *pulumi.Context, args *LookupInterconnectA
 }
 
 type LookupInterconnectAttachmentArgs struct {
-	InterconnectAttachment string `pulumi:"interconnectAttachment"`
-	Project                string `pulumi:"project"`
-	Region                 string `pulumi:"region"`
+	InterconnectAttachment string  `pulumi:"interconnectAttachment"`
+	Project                *string `pulumi:"project"`
+	Region                 string  `pulumi:"region"`
 }
 
 type LookupInterconnectAttachmentResult struct {

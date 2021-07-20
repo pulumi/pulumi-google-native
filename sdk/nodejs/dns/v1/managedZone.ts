@@ -100,13 +100,10 @@ export class ManagedZone extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -203,7 +200,7 @@ export interface ManagedZoneArgs {
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
     privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
      */

@@ -88,9 +88,6 @@ export class TestCase extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["lastTestResult"] = args ? args.lastTestResult : undefined;
@@ -141,7 +138,7 @@ export interface TestCaseArgs {
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
     notes?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
      */

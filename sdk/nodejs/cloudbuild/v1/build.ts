@@ -155,9 +155,6 @@ export class Build extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
@@ -252,7 +249,7 @@ export interface BuildArgs {
      * Special options for this build.
      */
     options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

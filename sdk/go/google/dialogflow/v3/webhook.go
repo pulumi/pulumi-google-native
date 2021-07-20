@@ -45,9 +45,6 @@ func NewWebhook(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Webhook
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Webhook", name, args, &resource, opts...)
 	if err != nil {
@@ -90,7 +87,7 @@ type webhookArgs struct {
 	Location          string                                             `pulumi:"location"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 	ServiceDirectory *GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig `pulumi:"serviceDirectory"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
@@ -109,7 +106,7 @@ type WebhookArgs struct {
 	Location          pulumi.StringInput
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 	ServiceDirectory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.

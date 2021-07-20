@@ -36,9 +36,6 @@ func NewTopic(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.TopicId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
@@ -82,7 +79,7 @@ type topicArgs struct {
 	MessageStoragePolicy *MessageStoragePolicy `pulumi:"messageStoragePolicy"`
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Settings for validating messages published against a schema.
@@ -100,7 +97,7 @@ type TopicArgs struct {
 	MessageStoragePolicy MessageStoragePolicyPtrInput
 	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// Settings for validating messages published against a schema.

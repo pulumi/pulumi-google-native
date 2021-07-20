@@ -49,9 +49,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -98,8 +95,8 @@ type instanceArgs struct {
 	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 	Name *string `pulumi:"name"`
 	// The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-	Parent  string `pulumi:"parent"`
-	Project string `pulumi:"project"`
+	Parent  string  `pulumi:"parent"`
+	Project *string `pulumi:"project"`
 	// The type of the instance. Defaults to `PRODUCTION`.
 	Type InstanceType `pulumi:"type"`
 }
@@ -118,7 +115,7 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
 	Parent  pulumi.StringInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The type of the instance. Defaults to `PRODUCTION`.
 	Type InstanceTypeInput
 }

@@ -20,7 +20,7 @@ func LookupExecution(ctx *pulumi.Context, args *LookupExecutionArgs, opts ...pul
 type LookupExecutionArgs struct {
 	ExecutionId string  `pulumi:"executionId"`
 	Location    string  `pulumi:"location"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	View        *string `pulumi:"view"`
 	WorkflowId  string  `pulumi:"workflowId"`
 }

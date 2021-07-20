@@ -17,10 +17,10 @@ __all__ = ['IndexArgs', 'Index']
 class IndexArgs:
     def __init__(__self__, *,
                  database_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  collection_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['IndexState']] = None):
         """
         The set of arguments for constructing a Index resource.
@@ -30,13 +30,14 @@ class IndexArgs:
         :param pulumi.Input['IndexState'] state: The state of the index. Output only.
         """
         pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "project", project)
         if collection_id is not None:
             pulumi.set(__self__, "collection_id", collection_id)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -48,15 +49,6 @@ class IndexArgs:
     @database_id.setter
     def database_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "database_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="collectionId")
@@ -93,6 +85,15 @@ class IndexArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -177,8 +178,6 @@ class Index(pulumi.CustomResource):
             __props__.__dict__["database_id"] = database_id
             __props__.__dict__["fields"] = fields
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
         super(Index, __self__).__init__(

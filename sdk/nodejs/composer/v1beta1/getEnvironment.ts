@@ -26,7 +26,7 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
 export interface GetEnvironmentArgs {
     environmentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEnvironmentResult {

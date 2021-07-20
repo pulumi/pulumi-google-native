@@ -13,10 +13,10 @@ __all__ = ['RegionTargetHttpProxyArgs', 'RegionTargetHttpProxy']
 @pulumi.input_type
 class RegionTargetHttpProxyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None):
@@ -27,27 +27,19 @@ class RegionTargetHttpProxyArgs:
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         :param pulumi.Input[str] url_map: URL to the UrlMap resource that defines the mapping from URL to the BackendService.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if url_map is not None:
             pulumi.set(__self__, "url_map", url_map)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -81,6 +73,15 @@ class RegionTargetHttpProxyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="proxyBind")
@@ -184,8 +185,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             if region is None and not opts.urn:

@@ -169,9 +169,6 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.requisitionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requisitionId'");
             }
@@ -334,7 +331,7 @@ export interface JobArgs {
      * Options for job processing.
      */
     processingOptions?: pulumi.Input<inputs.jobs.v4.ProcessingOptionsArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
      */

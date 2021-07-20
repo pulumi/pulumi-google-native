@@ -31,7 +31,7 @@ export interface GetMessageArgs {
     hl7V2StoreId: string;
     location: string;
     messageId: string;
-    project: string;
+    project?: string;
     view?: string;
 }
 

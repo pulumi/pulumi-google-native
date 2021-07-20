@@ -19,7 +19,7 @@ func LookupSecretIamPolicy(ctx *pulumi.Context, args *LookupSecretIamPolicyArgs,
 
 type LookupSecretIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	SecretId                      string  `pulumi:"secretId"`
 }
 

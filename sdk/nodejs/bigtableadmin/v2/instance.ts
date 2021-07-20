@@ -82,9 +82,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -139,7 +136,7 @@ export interface InstanceArgs {
      * The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
      */
     parent: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The type of the instance. Defaults to `PRODUCTION`.
      */

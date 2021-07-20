@@ -23,7 +23,7 @@ export function getTargetSslProxy(args: GetTargetSslProxyArgs, opts?: pulumi.Inv
 }
 
 export interface GetTargetSslProxyArgs {
-    project: string;
+    project?: string;
     targetSslProxy: string;
 }
 

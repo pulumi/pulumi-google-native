@@ -26,7 +26,7 @@ export function getRegionInPlaceSnapshotIamPolicy(args: GetRegionInPlaceSnapshot
 
 export interface GetRegionInPlaceSnapshotIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

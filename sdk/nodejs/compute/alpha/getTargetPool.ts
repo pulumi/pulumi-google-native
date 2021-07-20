@@ -24,7 +24,7 @@ export function getTargetPool(args: GetTargetPoolArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetTargetPoolArgs {
-    project: string;
+    project?: string;
     region: string;
     targetPool: string;
 }

@@ -16,7 +16,6 @@ __all__ = ['NodeTemplateArgs', 'NodeTemplate']
 @pulumi.input_type
 class NodeTemplateArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
@@ -26,6 +25,7 @@ class NodeTemplateArgs:
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input['ServerBindingArgs']] = None):
         """
@@ -38,7 +38,6 @@ class NodeTemplateArgs:
         :param pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs'] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
         :param pulumi.Input['ServerBindingArgs'] server_binding: Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -56,19 +55,12 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "node_type", node_type)
         if node_type_flexibility is not None:
             pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if server_binding is not None:
             pulumi.set(__self__, "server_binding", server_binding)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -168,6 +160,15 @@ class NodeTemplateArgs:
     @node_type_flexibility.setter
     def node_type_flexibility(self, value: Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "node_type_flexibility", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -278,8 +279,6 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["node_type_flexibility"] = node_type_flexibility
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

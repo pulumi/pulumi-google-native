@@ -36,9 +36,6 @@ func NewParticipant(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Participant
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Participant", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type participantArgs struct {
 	Location       string `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role *ParticipantRole `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -88,7 +85,7 @@ type ParticipantArgs struct {
 	Location       pulumi.StringInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role ParticipantRolePtrInput
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.

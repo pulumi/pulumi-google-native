@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The subnet in which to house the VPC Access Connector.

@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         [Input("attestorId", required: true)]
         public string AttestorId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetAttestorArgs()
         {

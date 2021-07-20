@@ -118,9 +118,6 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
@@ -204,7 +201,7 @@ export interface ServiceArgs {
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     port?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */

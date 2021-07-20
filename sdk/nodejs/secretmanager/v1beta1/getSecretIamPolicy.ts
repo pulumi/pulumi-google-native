@@ -25,7 +25,7 @@ export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.I
 
 export interface GetSecretIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     secretId: string;
 }
 

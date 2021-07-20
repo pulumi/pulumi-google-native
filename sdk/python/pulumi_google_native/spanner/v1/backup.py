@@ -17,11 +17,11 @@ class BackupArgs:
                  backup_id: pulumi.Input[str],
                  encryption_config_encryption_type: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  database: Optional[pulumi.Input[str]] = None,
                  encryption_config_kms_key_name: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
@@ -33,7 +33,6 @@ class BackupArgs:
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "encryption_config_encryption_type", encryption_config_encryption_type)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "project", project)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if encryption_config_kms_key_name is not None:
@@ -42,6 +41,8 @@ class BackupArgs:
             pulumi.set(__self__, "expire_time", expire_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if version_time is not None:
             pulumi.set(__self__, "version_time", version_time)
 
@@ -71,15 +72,6 @@ class BackupArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -125,6 +117,15 @@ class BackupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="versionTime")
@@ -222,8 +223,6 @@ class Backup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["version_time"] = version_time
             __props__.__dict__["create_time"] = None

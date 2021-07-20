@@ -24,7 +24,7 @@ export function getNoteIamPolicy(args: GetNoteIamPolicyArgs, opts?: pulumi.Invok
 
 export interface GetNoteIamPolicyArgs {
     noteId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNoteIamPolicyResult {

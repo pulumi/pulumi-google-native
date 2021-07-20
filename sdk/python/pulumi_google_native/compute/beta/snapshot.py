@@ -15,13 +15,13 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,6 @@ class SnapshotArgs:
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
-        pulumi.set(__self__, "project", project)
         if chain_name is not None:
             pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
@@ -53,6 +52,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "location_hint", location_hint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if snapshot_encryption_key is not None:
@@ -63,15 +64,6 @@ class SnapshotArgs:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="chainName")
@@ -144,6 +136,15 @@ class SnapshotArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -241,7 +242,7 @@ class Snapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotArgs,
+                 args: Optional[SnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a snapshot in the specified project using the data included in the request.
@@ -291,8 +292,6 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_hint"] = location_hint
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key

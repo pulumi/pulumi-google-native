@@ -18,12 +18,12 @@ class GuestPolicyArgs:
     def __init__(__self__, *,
                  assignment: pulumi.Input['AssignmentArgs'],
                  guest_policy_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['PackageRepositoryArgs']]]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input['PackageArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArgs']]]] = None):
         """
         The set of arguments for constructing a GuestPolicy resource.
@@ -37,7 +37,6 @@ class GuestPolicyArgs:
         """
         pulumi.set(__self__, "assignment", assignment)
         pulumi.set(__self__, "guest_policy_id", guest_policy_id)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -48,6 +47,8 @@ class GuestPolicyArgs:
             pulumi.set(__self__, "package_repositories", package_repositories)
         if packages is not None:
             pulumi.set(__self__, "packages", packages)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if recipes is not None:
             pulumi.set(__self__, "recipes", recipes)
 
@@ -71,15 +72,6 @@ class GuestPolicyArgs:
     @guest_policy_id.setter
     def guest_policy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "guest_policy_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -140,6 +132,15 @@ class GuestPolicyArgs:
     @packages.setter
     def packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PackageArgs']]]]):
         pulumi.set(self, "packages", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -238,8 +239,6 @@ class GuestPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["package_repositories"] = package_repositories
             __props__.__dict__["packages"] = packages
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["recipes"] = recipes
             __props__.__dict__["create_time"] = None

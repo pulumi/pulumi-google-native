@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("image", required: true)]
         public string Image { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetImageArgs()
         {

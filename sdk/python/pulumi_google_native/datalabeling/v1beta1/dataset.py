@@ -15,9 +15,9 @@ __all__ = ['DatasetArgs', 'Dataset']
 class DatasetArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 last_migrate_time: Optional[pulumi.Input[str]] = None):
+                 last_migrate_time: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[str] display_name: The display name of the dataset. Maximum of 64 characters.
@@ -25,11 +25,12 @@ class DatasetArgs:
         :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if last_migrate_time is not None:
             pulumi.set(__self__, "last_migrate_time", last_migrate_time)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -42,15 +43,6 @@ class DatasetArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -75,6 +67,15 @@ class DatasetArgs:
     @last_migrate_time.setter
     def last_migrate_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_migrate_time", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Dataset(pulumi.CustomResource):
@@ -143,8 +144,6 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["last_migrate_time"] = last_migrate_time
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["blocking_resources"] = None
             __props__.__dict__["create_time"] = None

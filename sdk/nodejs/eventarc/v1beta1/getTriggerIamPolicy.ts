@@ -27,7 +27,7 @@ export function getTriggerIamPolicy(args: GetTriggerIamPolicyArgs, opts?: pulumi
 export interface GetTriggerIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     triggerId: string;
 }
 

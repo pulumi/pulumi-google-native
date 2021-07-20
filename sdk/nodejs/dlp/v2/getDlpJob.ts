@@ -26,7 +26,7 @@ export function getDlpJob(args: GetDlpJobArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetDlpJobArgs {
     dlpJobId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDlpJobResult {

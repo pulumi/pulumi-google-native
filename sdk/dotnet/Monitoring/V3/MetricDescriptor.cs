@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public MetricDescriptor(string name, MetricDescriptorArgs args, CustomResourceOptions? options = null)
+        public MetricDescriptor(string name, MetricDescriptorArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:monitoring/v3:MetricDescriptor", name, args ?? new MetricDescriptorArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -186,8 +186,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" 

@@ -58,9 +58,6 @@ func NewOccurrence(ctx *pulumi.Context,
 	if args.NoteName == nil {
 		return nil, errors.New("invalid value for required argument 'NoteName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
@@ -111,8 +108,8 @@ type occurrenceArgs struct {
 	// Describes a specific in-toto link.
 	Intoto *GrafeasV1beta1IntotoDetails `pulumi:"intoto"`
 	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-	NoteName string `pulumi:"noteName"`
-	Project  string `pulumi:"project"`
+	NoteName string  `pulumi:"noteName"`
+	Project  *string `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
@@ -139,7 +136,7 @@ type OccurrenceArgs struct {
 	Intoto GrafeasV1beta1IntotoDetailsPtrInput
 	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
 	// Immutable. The resource for which the occurrence applies.

@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         [Input("packageId", required: true)]
         public string PackageId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("repositoryId", required: true)]
         public string RepositoryId { get; set; } = null!;

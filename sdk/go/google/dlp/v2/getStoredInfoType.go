@@ -18,9 +18,9 @@ func LookupStoredInfoType(ctx *pulumi.Context, args *LookupStoredInfoTypeArgs, o
 }
 
 type LookupStoredInfoTypeArgs struct {
-	Location         string `pulumi:"location"`
-	Project          string `pulumi:"project"`
-	StoredInfoTypeId string `pulumi:"storedInfoTypeId"`
+	Location         string  `pulumi:"location"`
+	Project          *string `pulumi:"project"`
+	StoredInfoTypeId string  `pulumi:"storedInfoTypeId"`
 }
 
 type LookupStoredInfoTypeResult struct {

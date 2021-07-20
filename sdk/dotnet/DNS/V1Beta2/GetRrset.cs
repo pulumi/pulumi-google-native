@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("type", required: true)]
         public string Type { get; set; } = null!;

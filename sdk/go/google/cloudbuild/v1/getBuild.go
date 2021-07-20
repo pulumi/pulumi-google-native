@@ -18,11 +18,11 @@ func LookupBuild(ctx *pulumi.Context, args *LookupBuildArgs, opts ...pulumi.Invo
 }
 
 type LookupBuildArgs struct {
-	BuildId   string `pulumi:"buildId"`
-	Id        string `pulumi:"id"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	ProjectId string `pulumi:"projectId"`
+	BuildId   string  `pulumi:"buildId"`
+	Id        string  `pulumi:"id"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	ProjectId string  `pulumi:"projectId"`
 }
 
 type LookupBuildResult struct {

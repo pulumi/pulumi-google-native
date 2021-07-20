@@ -18,8 +18,8 @@ func LookupSslCertificate(ctx *pulumi.Context, args *LookupSslCertificateArgs, o
 }
 
 type LookupSslCertificateArgs struct {
-	Project        string `pulumi:"project"`
-	SslCertificate string `pulumi:"sslCertificate"`
+	Project        *string `pulumi:"project"`
+	SslCertificate string  `pulumi:"sslCertificate"`
 }
 
 type LookupSslCertificateResult struct {

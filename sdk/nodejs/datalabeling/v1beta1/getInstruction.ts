@@ -24,7 +24,7 @@ export function getInstruction(args: GetInstructionArgs, opts?: pulumi.InvokeOpt
 
 export interface GetInstructionArgs {
     instructionId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetInstructionResult {

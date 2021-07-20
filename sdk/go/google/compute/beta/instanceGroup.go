@@ -48,9 +48,6 @@ func NewInstanceGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -92,7 +89,7 @@ type instanceGroupArgs struct {
 	Name *string `pulumi:"name"`
 	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	Project    string      `pulumi:"project"`
+	Project    *string     `pulumi:"project"`
 	RequestId  *string     `pulumi:"requestId"`
 	Zone       string      `pulumi:"zone"`
 }
@@ -105,7 +102,7 @@ type InstanceGroupArgs struct {
 	Name pulumi.StringPtrInput
 	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
 	NamedPorts NamedPortArrayInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	Zone       pulumi.StringInput
 }

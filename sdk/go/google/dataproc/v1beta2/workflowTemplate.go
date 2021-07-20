@@ -55,9 +55,6 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource WorkflowTemplate
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:WorkflowTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -103,7 +100,7 @@ type workflowTemplateArgs struct {
 	Parameters []TemplateParameter `pulumi:"parameters"`
 	// WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacement `pulumi:"placement"`
-	Project   string                    `pulumi:"project"`
+	Project   *string                   `pulumi:"project"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
 	Version *int `pulumi:"version"`
 }
@@ -123,7 +120,7 @@ type WorkflowTemplateArgs struct {
 	Parameters TemplateParameterArrayInput
 	// WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacementInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
 	Version pulumi.IntPtrInput
 }

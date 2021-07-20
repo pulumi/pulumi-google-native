@@ -25,7 +25,7 @@ export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeO
 
 export interface GetRegistrationArgs {
     location: string;
-    project: string;
+    project?: string;
     registrationId: string;
 }
 

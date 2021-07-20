@@ -26,7 +26,7 @@ export function getKnowledgeBase(args: GetKnowledgeBaseArgs, opts?: pulumi.Invok
 export interface GetKnowledgeBaseArgs {
     knowledgeBaseId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetKnowledgeBaseResult {

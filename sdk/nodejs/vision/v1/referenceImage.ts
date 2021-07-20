@@ -65,9 +65,6 @@ export class ReferenceImage extends pulumi.CustomResource {
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.uri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uri'");
             }
@@ -104,7 +101,7 @@ export interface ReferenceImageArgs {
      */
     name?: pulumi.Input<string>;
     productId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     referenceImageId?: pulumi.Input<string>;
     /**
      * The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.

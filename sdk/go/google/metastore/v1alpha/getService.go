@@ -18,9 +18,9 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 }
 
 type LookupServiceArgs struct {
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	ServiceId string `pulumi:"serviceId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 type LookupServiceResult struct {

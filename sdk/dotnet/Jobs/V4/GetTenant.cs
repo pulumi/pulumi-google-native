@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Jobs.V4
 
     public sealed class GetTenantArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("tenantId", required: true)]
         public string TenantId { get; set; } = null!;

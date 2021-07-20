@@ -190,8 +190,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("managedIdentitiesAdminName")]
         public Input<string>? ManagedIdentitiesAdminName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

@@ -46,9 +46,6 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
@@ -101,10 +98,10 @@ type providerArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    string  `pulumi:"location"`
 	// An OpenId Connect 1.0 identity provider.
-	Oidc                           *Oidc  `pulumi:"oidc"`
-	Project                        string `pulumi:"project"`
-	WorkloadIdentityPoolId         string `pulumi:"workloadIdentityPoolId"`
-	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
+	Oidc                           *Oidc   `pulumi:"oidc"`
+	Project                        *string `pulumi:"project"`
+	WorkloadIdentityPoolId         string  `pulumi:"workloadIdentityPoolId"`
+	WorkloadIdentityPoolProviderId string  `pulumi:"workloadIdentityPoolProviderId"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -124,7 +121,7 @@ type ProviderArgs struct {
 	Location    pulumi.StringInput
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           OidcPtrInput
-	Project                        pulumi.StringInput
+	Project                        pulumi.StringPtrInput
 	WorkloadIdentityPoolId         pulumi.StringInput
 	WorkloadIdentityPoolProviderId pulumi.StringInput
 }

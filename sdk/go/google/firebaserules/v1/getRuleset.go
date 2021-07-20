@@ -18,8 +18,8 @@ func LookupRuleset(ctx *pulumi.Context, args *LookupRulesetArgs, opts ...pulumi.
 }
 
 type LookupRulesetArgs struct {
-	Project   string `pulumi:"project"`
-	RulesetId string `pulumi:"rulesetId"`
+	Project   *string `pulumi:"project"`
+	RulesetId string  `pulumi:"rulesetId"`
 }
 
 type LookupRulesetResult struct {

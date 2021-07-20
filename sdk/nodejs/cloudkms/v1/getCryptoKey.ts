@@ -28,7 +28,7 @@ export interface GetCryptoKeyArgs {
     cryptoKeyId: string;
     keyRingId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetCryptoKeyResult {

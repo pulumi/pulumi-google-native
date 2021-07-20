@@ -42,9 +42,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
 	}
@@ -83,7 +80,7 @@ type workerPoolArgs struct {
 	Location string `pulumi:"location"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	Project       string         `pulumi:"project"`
+	Project       *string        `pulumi:"project"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
 	WorkerPoolId string        `pulumi:"workerPoolId"`
@@ -94,7 +91,7 @@ type WorkerPoolArgs struct {
 	Location pulumi.StringInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	Project       pulumi.StringInput
+	Project       pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigPtrInput
 	WorkerPoolId pulumi.StringInput

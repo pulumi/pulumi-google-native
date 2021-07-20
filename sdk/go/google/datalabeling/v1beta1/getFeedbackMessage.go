@@ -18,11 +18,11 @@ func LookupFeedbackMessage(ctx *pulumi.Context, args *LookupFeedbackMessageArgs,
 }
 
 type LookupFeedbackMessageArgs struct {
-	AnnotatedDatasetId string `pulumi:"annotatedDatasetId"`
-	DatasetId          string `pulumi:"datasetId"`
-	FeedbackMessageId  string `pulumi:"feedbackMessageId"`
-	FeedbackThreadId   string `pulumi:"feedbackThreadId"`
-	Project            string `pulumi:"project"`
+	AnnotatedDatasetId string  `pulumi:"annotatedDatasetId"`
+	DatasetId          string  `pulumi:"datasetId"`
+	FeedbackMessageId  string  `pulumi:"feedbackMessageId"`
+	FeedbackThreadId   string  `pulumi:"feedbackThreadId"`
+	Project            *string `pulumi:"project"`
 }
 
 type LookupFeedbackMessageResult struct {

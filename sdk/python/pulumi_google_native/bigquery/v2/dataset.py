@@ -15,7 +15,6 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  access: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]] = None,
                  dataset_reference: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
                  default_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
@@ -24,7 +23,8 @@ class DatasetArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 location: Optional[pulumi.Input[str]] = None):
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
@@ -36,7 +36,6 @@ class DatasetArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         """
-        pulumi.set(__self__, "project", project)
         if access is not None:
             pulumi.set(__self__, "access", access)
         if dataset_reference is not None:
@@ -55,15 +54,8 @@ class DatasetArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -170,6 +162,15 @@ class DatasetArgs:
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class Dataset(pulumi.CustomResource):
     @overload
@@ -206,7 +207,7 @@ class Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatasetArgs,
+                 args: Optional[DatasetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new empty dataset.
@@ -258,8 +259,6 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None

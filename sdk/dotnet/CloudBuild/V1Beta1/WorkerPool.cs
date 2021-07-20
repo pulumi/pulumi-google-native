@@ -112,8 +112,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Worker configuration for the `WorkerPool`.

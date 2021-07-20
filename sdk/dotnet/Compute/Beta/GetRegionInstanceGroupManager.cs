@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("instanceGroupManager", required: true)]
         public string InstanceGroupManager { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("region", required: true)]
         public string Region { get; set; } = null!;

@@ -83,9 +83,6 @@ export class Execution extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
@@ -126,6 +123,6 @@ export interface ExecutionArgs {
      */
     argument?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     workflowId: pulumi.Input<string>;
 }

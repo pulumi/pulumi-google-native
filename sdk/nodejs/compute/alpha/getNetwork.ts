@@ -24,7 +24,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetNetworkArgs {
     network: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNetworkResult {

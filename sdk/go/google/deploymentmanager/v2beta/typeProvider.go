@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type TypeProvider struct {
 func NewTypeProvider(ctx *pulumi.Context,
 	name string, args *TypeProviderArgs, opts ...pulumi.ResourceOption) (*TypeProvider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TypeProviderArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource TypeProvider
 	err := ctx.RegisterResource("google-native:deploymentmanager/v2beta:TypeProvider", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +93,7 @@ type typeProviderArgs struct {
 	Name *string `pulumi:"name"`
 	// Options to apply when handling any resources in this service.
 	Options *Options `pulumi:"options"`
-	Project string   `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a TypeProvider resource.
@@ -118,7 +114,7 @@ type TypeProviderArgs struct {
 	Name pulumi.StringPtrInput
 	// Options to apply when handling any resources in this service.
 	Options OptionsPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (TypeProviderArgs) ElementType() reflect.Type {

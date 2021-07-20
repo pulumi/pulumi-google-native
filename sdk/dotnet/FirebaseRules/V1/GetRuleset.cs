@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
     public sealed class GetRulesetArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("rulesetId", required: true)]
         public string RulesetId { get; set; } = null!;

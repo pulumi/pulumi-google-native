@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,12 +36,9 @@ type Key struct {
 func NewKey(ctx *pulumi.Context,
 	name string, args *KeyArgs, opts ...pulumi.ResourceOption) (*Key, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &KeyArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Key
 	err := ctx.RegisterResource("google-native:recaptchaenterprise/v1:Key", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +83,7 @@ type keyArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// Options for user acceptance testing.
 	TestingOptions *GoogleCloudRecaptchaenterpriseV1TestingOptions `pulumi:"testingOptions"`
 	// Settings for keys that can be used by websites.
@@ -108,7 +104,7 @@ type KeyArgs struct {
 	Labels pulumi.StringMapInput
 	// The resource name for the Key in the format "projects/{project}/keys/{key}".
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput
 	// Settings for keys that can be used by websites.

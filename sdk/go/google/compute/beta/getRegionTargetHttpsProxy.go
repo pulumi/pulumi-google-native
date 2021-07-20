@@ -18,9 +18,9 @@ func LookupRegionTargetHttpsProxy(ctx *pulumi.Context, args *LookupRegionTargetH
 }
 
 type LookupRegionTargetHttpsProxyArgs struct {
-	Project          string `pulumi:"project"`
-	Region           string `pulumi:"region"`
-	TargetHttpsProxy string `pulumi:"targetHttpsProxy"`
+	Project          *string `pulumi:"project"`
+	Region           string  `pulumi:"region"`
+	TargetHttpsProxy string  `pulumi:"targetHttpsProxy"`
 }
 
 type LookupRegionTargetHttpsProxyResult struct {

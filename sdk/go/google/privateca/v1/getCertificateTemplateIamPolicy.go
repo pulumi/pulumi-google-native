@@ -21,7 +21,7 @@ type LookupCertificateTemplateIamPolicyArgs struct {
 	CertificateTemplateId         string  `pulumi:"certificateTemplateId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupCertificateTemplateIamPolicyResult struct {

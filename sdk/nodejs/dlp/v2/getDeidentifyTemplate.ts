@@ -26,7 +26,7 @@ export function getDeidentifyTemplate(args: GetDeidentifyTemplateArgs, opts?: pu
 export interface GetDeidentifyTemplateArgs {
     deidentifyTemplateId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDeidentifyTemplateResult {

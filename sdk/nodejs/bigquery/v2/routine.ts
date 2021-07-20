@@ -106,9 +106,6 @@ export class Routine extends pulumi.CustomResource {
             if ((!args || args.definitionBody === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'definitionBody'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.routineReference === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routineReference'");
             }
@@ -181,7 +178,7 @@ export interface RoutineArgs {
      * Optional. Defaults to "SQL".
      */
     language?: pulumi.Input<enums.bigquery.v2.RoutineLanguage>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
      */

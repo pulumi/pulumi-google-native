@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("groupId", required: true)]
         public string GroupId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetGroupArgs()
         {

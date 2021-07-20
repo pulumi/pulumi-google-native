@@ -46,9 +46,6 @@ func NewRegionHealthCheckService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -96,7 +93,7 @@ type regionHealthCheckServiceArgs struct {
 	NetworkEndpointGroups []string `pulumi:"networkEndpointGroups"`
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints []string `pulumi:"notificationEndpoints"`
-	Project               string   `pulumi:"project"`
+	Project               *string  `pulumi:"project"`
 	Region                string   `pulumi:"region"`
 	RequestId             *string  `pulumi:"requestId"`
 }
@@ -115,7 +112,7 @@ type RegionHealthCheckServiceArgs struct {
 	NetworkEndpointGroups pulumi.StringArrayInput
 	// List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
 	NotificationEndpoints pulumi.StringArrayInput
-	Project               pulumi.StringInput
+	Project               pulumi.StringPtrInput
 	Region                pulumi.StringInput
 	RequestId             pulumi.StringPtrInput
 }

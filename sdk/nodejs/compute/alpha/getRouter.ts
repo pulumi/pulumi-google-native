@@ -24,7 +24,7 @@ export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Pro
 }
 
 export interface GetRouterArgs {
-    project: string;
+    project?: string;
     region: string;
     router: string;
 }

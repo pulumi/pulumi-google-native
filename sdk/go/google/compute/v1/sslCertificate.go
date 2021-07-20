@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,12 +46,9 @@ type SslCertificate struct {
 func NewSslCertificate(ctx *pulumi.Context,
 	name string, args *SslCertificateArgs, opts ...pulumi.ResourceOption) (*SslCertificate, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SslCertificateArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource SslCertificate
 	err := ctx.RegisterResource("google-native:compute/v1:SslCertificate", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +91,7 @@ type sslCertificateArgs struct {
 	Name *string `pulumi:"name"`
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey *string `pulumi:"privateKey"`
-	Project    string  `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	RequestId  *string `pulumi:"requestId"`
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged *SslCertificateSelfManagedSslCertificate `pulumi:"selfManaged"`
@@ -115,7 +111,7 @@ type SslCertificateArgs struct {
 	Name pulumi.StringPtrInput
 	// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
 	PrivateKey pulumi.StringPtrInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	// Configuration and status of a self-managed SSL certificate.
 	SelfManaged SslCertificateSelfManagedSslCertificatePtrInput

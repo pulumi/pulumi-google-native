@@ -40,9 +40,6 @@ func NewContact(ctx *pulumi.Context,
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Contact
 	err := ctx.RegisterResource("google-native:essentialcontacts/v1:Contact", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +80,7 @@ type contactArgs struct {
 	Name *string `pulumi:"name"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []ContactNotificationCategorySubscriptionsItem `pulumi:"notificationCategorySubscriptions"`
-	Project                           string                                         `pulumi:"project"`
+	Project                           *string                                        `pulumi:"project"`
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime *string `pulumi:"validateTime"`
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
@@ -100,7 +97,7 @@ type ContactArgs struct {
 	Name pulumi.StringPtrInput
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions ContactNotificationCategorySubscriptionsItemArrayInput
-	Project                           pulumi.StringInput
+	Project                           pulumi.StringPtrInput
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime pulumi.StringPtrInput
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.

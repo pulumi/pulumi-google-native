@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("operationId", required: true)]
         public string OperationId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("regionId", required: true)]
         public string RegionId { get; set; } = null!;

@@ -52,9 +52,6 @@ func NewConnector(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Connector
 	err := ctx.RegisterResource("google-native:vpcaccess/v1:Connector", name, args, &resource, opts...)
 	if err != nil {
@@ -105,7 +102,7 @@ type connectorArgs struct {
 	Name *string `pulumi:"name"`
 	// Name of a VPC network.
 	Network *string `pulumi:"network"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The subnet in which to house the VPC Access Connector.
 	Subnet *Subnet `pulumi:"subnet"`
 }
@@ -130,7 +127,7 @@ type ConnectorArgs struct {
 	Name pulumi.StringPtrInput
 	// Name of a VPC network.
 	Network pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The subnet in which to house the VPC Access Connector.
 	Subnet SubnetPtrInput
 }

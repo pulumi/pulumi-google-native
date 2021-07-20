@@ -33,9 +33,6 @@ func NewTopic(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.TopicId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
@@ -76,7 +73,7 @@ type topicArgs struct {
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
 	PartitionConfig *PartitionConfig `pulumi:"partitionConfig"`
-	Project         string           `pulumi:"project"`
+	Project         *string          `pulumi:"project"`
 	// The settings for this topic's message retention.
 	RetentionConfig *RetentionConfig `pulumi:"retentionConfig"`
 	TopicId         string           `pulumi:"topicId"`
@@ -89,7 +86,7 @@ type TopicArgs struct {
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
 	PartitionConfig PartitionConfigPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigPtrInput
 	TopicId         pulumi.StringInput

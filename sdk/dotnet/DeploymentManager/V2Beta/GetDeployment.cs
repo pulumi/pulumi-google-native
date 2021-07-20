@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("deployment", required: true)]
         public string Deployment { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDeploymentArgs()
         {

@@ -83,9 +83,6 @@ export class CapacityCommitment extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
             inputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -126,7 +123,7 @@ export interface CapacityCommitmentArgs {
      * Capacity commitment commitment plan.
      */
     plan?: pulumi.Input<enums.bigqueryreservation.v1.CapacityCommitmentPlan>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
      */

@@ -18,11 +18,11 @@ class DicomStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]] = None):
         """
         The set of arguments for constructing a DicomStore resource.
@@ -33,7 +33,6 @@ class DicomStoreArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if dicom_store_id is not None:
             pulumi.set(__self__, "dicom_store_id", dicom_store_id)
         if labels is not None:
@@ -42,6 +41,8 @@ class DicomStoreArgs:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if stream_configs is not None:
             pulumi.set(__self__, "stream_configs", stream_configs)
 
@@ -62,15 +63,6 @@ class DicomStoreArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="dicomStoreId")
@@ -116,6 +108,15 @@ class DicomStoreArgs:
     @notification_config.setter
     def notification_config(self, value: Optional[pulumi.Input['NotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="streamConfigs")
@@ -208,8 +209,6 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["stream_configs"] = stream_configs
         super(DicomStore, __self__).__init__(

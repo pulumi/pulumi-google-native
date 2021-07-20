@@ -26,7 +26,7 @@ export function getDomainMapping(args: GetDomainMappingArgs, opts?: pulumi.Invok
 export interface GetDomainMappingArgs {
     domainmappingId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDomainMappingResult {

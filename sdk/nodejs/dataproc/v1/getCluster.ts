@@ -25,7 +25,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetClusterArgs {
     clusterName: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

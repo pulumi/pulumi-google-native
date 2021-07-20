@@ -16,7 +16,6 @@ __all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
 @pulumi.input_type
 class NetworkEndpointGroupArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']] = None,
@@ -27,6 +26,7 @@ class NetworkEndpointGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['NetworkEndpointGroupNetworkEndpointType']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
@@ -42,7 +42,6 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input['NetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -62,19 +61,12 @@ class NetworkEndpointGroupArgs:
             pulumi.set(__self__, "network", network)
         if network_endpoint_type is not None:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -194,6 +186,15 @@ class NetworkEndpointGroupArgs:
         pulumi.set(self, "network_endpoint_type", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -308,8 +309,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subnetwork"] = subnetwork

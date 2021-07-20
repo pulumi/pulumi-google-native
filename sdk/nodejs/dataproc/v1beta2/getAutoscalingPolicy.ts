@@ -26,7 +26,7 @@ export function getAutoscalingPolicy(args: GetAutoscalingPolicyArgs, opts?: pulu
 export interface GetAutoscalingPolicyArgs {
     autoscalingPolicyId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAutoscalingPolicyResult {

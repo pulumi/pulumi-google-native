@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller must have `resourcemanager.projects.get` permission for this project.
         /// </summary>
-        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("google-native:cloudresourcemanager/v3:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
 
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetProjectArgs()
         {

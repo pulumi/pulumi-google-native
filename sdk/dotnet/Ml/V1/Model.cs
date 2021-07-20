@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Model(string name, ModelArgs args, CustomResourceOptions? options = null)
+        public Model(string name, ModelArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:ml/v1:Model", name, args ?? new ModelArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("onlinePredictionLogging")]
         public Input<bool>? OnlinePredictionLogging { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("regions")]
         private InputList<string>? _regions;

@@ -16,10 +16,10 @@ __all__ = ['NetworkFirewallPolicyArgs', 'NetworkFirewallPolicy']
 @pulumi.input_type
 class NetworkFirewallPolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyAssociationArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleArgs']]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None):
@@ -31,28 +31,20 @@ class NetworkFirewallPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
-        pulumi.set(__self__, "project", project)
         if associations is not None:
             pulumi.set(__self__, "associations", associations)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -89,6 +81,15 @@ class NetworkFirewallPolicyArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -153,7 +154,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkFirewallPolicyArgs,
+                 args: Optional[NetworkFirewallPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new policy in the specified project using the data included in the request.
@@ -196,8 +197,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["associations"] = associations
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rules"] = rules

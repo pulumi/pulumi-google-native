@@ -107,9 +107,6 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             if ((!args || args.osPolicyAssignmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'osPolicyAssignmentId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.rollout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rollout'");
             }
@@ -171,7 +168,7 @@ export interface OsPolicyAssignmentArgs {
      */
     osPolicies: pulumi.Input<pulumi.Input<inputs.osconfig.v1alpha.OSPolicyArgs>[]>;
     osPolicyAssignmentId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
      */

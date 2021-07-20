@@ -87,9 +87,6 @@ export class VpnGateway extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -144,7 +141,7 @@ export interface VpnGatewayArgs {
      * URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
      */
     network?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

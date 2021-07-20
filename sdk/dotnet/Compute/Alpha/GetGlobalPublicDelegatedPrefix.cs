@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class GetGlobalPublicDelegatedPrefixArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("publicDelegatedPrefix", required: true)]
         public string PublicDelegatedPrefix { get; set; } = null!;

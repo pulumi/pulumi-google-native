@@ -25,7 +25,7 @@ export function getNodeGroup(args: GetNodeGroupArgs, opts?: pulumi.InvokeOptions
 
 export interface GetNodeGroupArgs {
     nodeGroup: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

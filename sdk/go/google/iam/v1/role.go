@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Role struct {
 func NewRole(ctx *pulumi.Context,
 	name string, args *RoleArgs, opts ...pulumi.ResourceOption) (*Role, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RoleArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Role
 	err := ctx.RegisterResource("google-native:iam/v1:Role", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +79,7 @@ type roleArgs struct {
 	IncludedPermissions []string `pulumi:"includedPermissions"`
 	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
 	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
@@ -104,7 +100,7 @@ type RoleArgs struct {
 	IncludedPermissions pulumi.StringArrayInput
 	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
 	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.

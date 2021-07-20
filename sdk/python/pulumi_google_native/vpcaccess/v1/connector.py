@@ -17,7 +17,6 @@ class ConnectorArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -26,6 +25,7 @@ class ConnectorArgs:
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input['SubnetArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
@@ -41,7 +41,6 @@ class ConnectorArgs:
         """
         pulumi.set(__self__, "connector_id", connector_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
@@ -58,6 +57,8 @@ class ConnectorArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
 
@@ -78,15 +79,6 @@ class ConnectorArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -183,6 +175,15 @@ class ConnectorArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -292,8 +293,6 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["min_throughput"] = min_throughput
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["connected_projects"] = None

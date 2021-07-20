@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
     public sealed class GetSchemaArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("schemaId", required: true)]
         public string SchemaId { get; set; } = null!;

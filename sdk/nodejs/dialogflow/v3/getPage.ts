@@ -32,7 +32,7 @@ export interface GetPageArgs {
     languageCode?: string;
     location: string;
     pageId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPageResult {

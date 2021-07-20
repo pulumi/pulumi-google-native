@@ -18,10 +18,10 @@ func LookupRegistryGroupIamPolicy(ctx *pulumi.Context, args *LookupRegistryGroup
 }
 
 type LookupRegistryGroupIamPolicyArgs struct {
-	GroupId    string `pulumi:"groupId"`
-	Location   string `pulumi:"location"`
-	Project    string `pulumi:"project"`
-	RegistryId string `pulumi:"registryId"`
+	GroupId    string  `pulumi:"groupId"`
+	Location   string  `pulumi:"location"`
+	Project    *string `pulumi:"project"`
+	RegistryId string  `pulumi:"registryId"`
 }
 
 type LookupRegistryGroupIamPolicyResult struct {

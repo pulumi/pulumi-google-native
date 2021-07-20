@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +31,9 @@ type Instance struct {
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:remotebuildexecution/v1alpha:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +74,7 @@ type instanceArgs struct {
 	Location *string `pulumi:"location"`
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent  *string `pulumi:"parent"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -91,7 +87,7 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

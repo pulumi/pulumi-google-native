@@ -8,7 +8,8 @@ import * as utilities from "../../utilities";
 /**
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
-export function getPolicyIamPolicy(args: GetPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyIamPolicyResult> {
+export function getPolicyIamPolicy(args?: GetPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyIamPolicyResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -24,7 +25,7 @@ export function getPolicyIamPolicy(args: GetPolicyIamPolicyArgs, opts?: pulumi.I
 
 export interface GetPolicyIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPolicyIamPolicyResult {

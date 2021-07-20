@@ -18,8 +18,8 @@ func LookupTargetHttpsProxy(ctx *pulumi.Context, args *LookupTargetHttpsProxyArg
 }
 
 type LookupTargetHttpsProxyArgs struct {
-	Project          string `pulumi:"project"`
-	TargetHttpsProxy string `pulumi:"targetHttpsProxy"`
+	Project          *string `pulumi:"project"`
+	TargetHttpsProxy string  `pulumi:"targetHttpsProxy"`
 }
 
 type LookupTargetHttpsProxyResult struct {

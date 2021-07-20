@@ -7,7 +7,6 @@ const project = "pulumi-development";
 const region = "us-central1";
 
 const cluster = new google.container.v1.Cluster("cluster", {
-    project,
     location: region,
     parent: `projects/${project}/locations/${region}`,
     initialClusterVersion: "1.18.17-gke.1900",
@@ -19,7 +18,6 @@ const cluster = new google.container.v1.Cluster("cluster", {
 });
 
 const pool = new google.container.v1.NodePool("extra-node-pool", {
-    project,
     location: region,
     clusterId: cluster.name,
     parent: pulumi.interpolate`projects/${project}/locations/${region}/clusters/${cluster.name}`,

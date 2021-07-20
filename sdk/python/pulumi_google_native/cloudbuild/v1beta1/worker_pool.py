@@ -16,9 +16,9 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
@@ -26,10 +26,11 @@ class WorkerPoolArgs:
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
 
@@ -41,15 +42,6 @@ class WorkerPoolArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -71,6 +63,15 @@ class WorkerPoolArgs:
     @network_config.setter
     def network_config(self, value: Optional[pulumi.Input['NetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerConfig")
@@ -151,8 +152,6 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network_config"] = network_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["worker_config"] = worker_config
             if worker_pool_id is None and not opts.urn:

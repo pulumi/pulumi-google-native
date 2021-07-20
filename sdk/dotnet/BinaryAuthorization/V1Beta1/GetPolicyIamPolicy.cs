@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
-        public static Task<GetPolicyIamPolicyResult> InvokeAsync(GetPolicyIamPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetPolicyIamPolicyResult> InvokeAsync(GetPolicyIamPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyIamPolicyResult>("google-native:binaryauthorization/v1beta1:getPolicyIamPolicy", args ?? new GetPolicyIamPolicyArgs(), options.WithVersion());
     }
 
@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetPolicyIamPolicyArgs()
         {

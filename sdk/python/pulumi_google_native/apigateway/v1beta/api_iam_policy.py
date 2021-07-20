@@ -18,10 +18,10 @@ class ApiIamPolicyArgs:
     def __init__(__self__, *,
                  api_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayAuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayBindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -34,13 +34,14 @@ class ApiIamPolicyArgs:
         """
         pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if update_mask is not None:
             pulumi.set(__self__, "update_mask", update_mask)
         if version is not None:
@@ -63,15 +64,6 @@ class ApiIamPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -108,6 +100,15 @@ class ApiIamPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="updateMask")
@@ -212,8 +213,6 @@ class ApiIamPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version

@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("alertPolicyId", required: true)]
         public string AlertPolicyId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetAlertPolicyArgs()
         {

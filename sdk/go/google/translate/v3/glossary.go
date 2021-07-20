@@ -44,9 +44,6 @@ func NewGlossary(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Glossary
 	err := ctx.RegisterResource("google-native:translate/v3:Glossary", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type glossaryArgs struct {
 	Location     string            `pulumi:"location"`
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Glossary resource.
@@ -102,7 +99,7 @@ type GlossaryArgs struct {
 	Location     pulumi.StringInput
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (GlossaryArgs) ElementType() reflect.Type {

@@ -18,11 +18,11 @@ func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.
 }
 
 type LookupProductArgs struct {
-	BranchId  string `pulumi:"branchId"`
-	CatalogId string `pulumi:"catalogId"`
-	Location  string `pulumi:"location"`
-	ProductId string `pulumi:"productId"`
-	Project   string `pulumi:"project"`
+	BranchId  string  `pulumi:"branchId"`
+	CatalogId string  `pulumi:"catalogId"`
+	Location  string  `pulumi:"location"`
+	ProductId string  `pulumi:"productId"`
+	Project   *string `pulumi:"project"`
 }
 
 type LookupProductResult struct {

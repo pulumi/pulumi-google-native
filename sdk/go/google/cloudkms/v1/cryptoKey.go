@@ -50,9 +50,6 @@ func NewCryptoKey(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource CryptoKey
 	err := ctx.RegisterResource("google-native:cloudkms/v1:CryptoKey", name, args, &resource, opts...)
 	if err != nil {
@@ -92,7 +89,7 @@ type cryptoKeyArgs struct {
 	Location string            `pulumi:"location"`
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime *string `pulumi:"nextRotationTime"`
-	Project          string  `pulumi:"project"`
+	Project          *string `pulumi:"project"`
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose *CryptoKeyPurpose `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
@@ -111,7 +108,7 @@ type CryptoKeyArgs struct {
 	Location pulumi.StringInput
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime pulumi.StringPtrInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose CryptoKeyPurposePtrInput
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.

@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
 
     public sealed class GetTraceSinkArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("traceSinkId", required: true)]
         public string TraceSinkId { get; set; } = null!;

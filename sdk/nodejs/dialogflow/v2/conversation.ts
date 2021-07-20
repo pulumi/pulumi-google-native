@@ -82,9 +82,6 @@ export class Conversation extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["conversationId"] = args ? args.conversationId : undefined;
             inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
             inputs["conversationStage"] = args ? args.conversationStage : undefined;
@@ -125,5 +122,5 @@ export interface ConversationArgs {
      */
     conversationStage?: pulumi.Input<enums.dialogflow.v2.ConversationConversationStage>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

@@ -71,9 +71,6 @@ export class RegionInstantSnapshotIamPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -124,7 +121,7 @@ export interface RegionInstantSnapshotIamPolicyArgs {
      * This is deprecated and has no effect. Do not use.
      */
     iamOwned?: pulumi.Input<boolean>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;
     /**

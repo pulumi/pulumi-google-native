@@ -18,9 +18,9 @@ func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.Invo
 }
 
 type LookupAgentArgs struct {
-	AgentId  string `pulumi:"agentId"`
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	AgentId  string  `pulumi:"agentId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupAgentResult struct {

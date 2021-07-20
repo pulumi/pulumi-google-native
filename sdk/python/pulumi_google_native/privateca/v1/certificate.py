@@ -19,13 +19,13 @@ class CertificateArgs:
                  ca_pool_id: pulumi.Input[str],
                  lifetime: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  issuing_certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subject_mode: Optional[pulumi.Input['CertificateSubjectMode']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
@@ -41,7 +41,6 @@ class CertificateArgs:
         pulumi.set(__self__, "ca_pool_id", ca_pool_id)
         pulumi.set(__self__, "lifetime", lifetime)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
         if certificate_template is not None:
@@ -54,6 +53,8 @@ class CertificateArgs:
             pulumi.set(__self__, "labels", labels)
         if pem_csr is not None:
             pulumi.set(__self__, "pem_csr", pem_csr)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if subject_mode is not None:
@@ -90,15 +91,6 @@ class CertificateArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -165,6 +157,15 @@ class CertificateArgs:
     @pem_csr.setter
     def pem_csr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_csr", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -294,8 +295,6 @@ class Certificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["pem_csr"] = pem_csr
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subject_mode"] = subject_mode

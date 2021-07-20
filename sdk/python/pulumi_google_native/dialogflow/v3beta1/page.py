@@ -19,12 +19,12 @@ class PageArgs:
                  display_name: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
@@ -41,7 +41,6 @@ class PageArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -52,6 +51,8 @@ class PageArgs:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if transition_route_groups is not None:
             pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
@@ -95,15 +96,6 @@ class PageArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="entryFulfillment")
@@ -161,6 +153,15 @@ class PageArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="transitionRouteGroups")
@@ -283,8 +284,6 @@ class Page(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["transition_route_groups"] = transition_route_groups
             __props__.__dict__["transition_routes"] = transition_routes

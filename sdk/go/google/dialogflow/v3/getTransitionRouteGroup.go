@@ -22,7 +22,7 @@ type LookupTransitionRouteGroupArgs struct {
 	FlowId                 string  `pulumi:"flowId"`
 	LanguageCode           *string `pulumi:"languageCode"`
 	Location               string  `pulumi:"location"`
-	Project                string  `pulumi:"project"`
+	Project                *string `pulumi:"project"`
 	TransitionRouteGroupId string  `pulumi:"transitionRouteGroupId"`
 }
 

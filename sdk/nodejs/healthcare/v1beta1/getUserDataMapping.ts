@@ -29,7 +29,7 @@ export interface GetUserDataMappingArgs {
     consentStoreId: string;
     datasetId: string;
     location: string;
-    project: string;
+    project?: string;
     userDataMappingId: string;
 }
 

@@ -18,8 +18,8 @@ func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts 
 }
 
 type LookupSubscriptionArgs struct {
-	Project        string `pulumi:"project"`
-	SubscriptionId string `pulumi:"subscriptionId"`
+	Project        *string `pulumi:"project"`
+	SubscriptionId string  `pulumi:"subscriptionId"`
 }
 
 type LookupSubscriptionResult struct {

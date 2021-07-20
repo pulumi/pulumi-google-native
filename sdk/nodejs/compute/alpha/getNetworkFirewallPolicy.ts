@@ -24,7 +24,7 @@ export function getNetworkFirewallPolicy(args: GetNetworkFirewallPolicyArgs, opt
 
 export interface GetNetworkFirewallPolicyArgs {
     firewallPolicy: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNetworkFirewallPolicyResult {

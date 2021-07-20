@@ -38,9 +38,6 @@ func NewDomainMapping(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource DomainMapping
 	err := ctx.RegisterResource("google-native:run/v1:DomainMapping", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type domainMappingArgs struct {
 	Location string  `pulumi:"location"`
 	// Metadata associated with this BuildTemplate.
 	Metadata *ObjectMeta `pulumi:"metadata"`
-	Project  string      `pulumi:"project"`
+	Project  *string     `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
@@ -98,7 +95,7 @@ type DomainMappingArgs struct {
 	Location pulumi.StringInput
 	// Metadata associated with this BuildTemplate.
 	Metadata ObjectMetaPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.

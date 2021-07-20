@@ -30,7 +30,7 @@ export interface GetDatasetFhirStoreIamPolicyArgs {
     fhirStoreId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatasetFhirStoreIamPolicyResult {

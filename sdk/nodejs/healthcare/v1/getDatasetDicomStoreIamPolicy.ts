@@ -30,7 +30,7 @@ export interface GetDatasetDicomStoreIamPolicyArgs {
     dicomStoreId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDatasetDicomStoreIamPolicyResult {

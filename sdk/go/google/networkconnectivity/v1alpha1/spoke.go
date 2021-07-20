@@ -49,9 +49,6 @@ func NewSpoke(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Spoke
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Spoke", name, args, &resource, opts...)
 	if err != nil {
@@ -101,7 +98,7 @@ type spokeArgs struct {
 	Location         string   `pulumi:"location"`
 	// Immutable. The name of a Spoke resource.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	SpokeId   *string `pulumi:"spokeId"`
 	// The time when the Spoke was updated.
@@ -127,7 +124,7 @@ type SpokeArgs struct {
 	Location         pulumi.StringInput
 	// Immutable. The name of a Spoke resource.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	SpokeId   pulumi.StringPtrInput
 	// The time when the Spoke was updated.

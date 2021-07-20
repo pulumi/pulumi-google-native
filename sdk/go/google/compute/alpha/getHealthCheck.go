@@ -18,8 +18,8 @@ func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ..
 }
 
 type LookupHealthCheckArgs struct {
-	HealthCheck string `pulumi:"healthCheck"`
-	Project     string `pulumi:"project"`
+	HealthCheck string  `pulumi:"healthCheck"`
+	Project     *string `pulumi:"project"`
 }
 
 type LookupHealthCheckResult struct {

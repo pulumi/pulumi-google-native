@@ -24,7 +24,7 @@ export function getOccurrence(args: GetOccurrenceArgs, opts?: pulumi.InvokeOptio
 
 export interface GetOccurrenceArgs {
     occurrenceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetOccurrenceResult {

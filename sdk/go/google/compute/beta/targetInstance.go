@@ -42,9 +42,6 @@ func NewTargetInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -90,7 +87,7 @@ type targetInstanceArgs struct {
 	NatPolicy *TargetInstanceNatPolicy `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network   *string `pulumi:"network"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	Zone      string  `pulumi:"zone"`
 }
@@ -107,7 +104,7 @@ type TargetInstanceArgs struct {
 	NatPolicy TargetInstanceNatPolicyPtrInput
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network   pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	Zone      pulumi.StringInput
 }

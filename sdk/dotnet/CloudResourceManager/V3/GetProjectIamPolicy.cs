@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <summary>
         /// Returns the IAM access control policy for the specified project. Permission is denied if the policy or the resource do not exist.
         /// </summary>
-        public static Task<GetProjectIamPolicyResult> InvokeAsync(GetProjectIamPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetProjectIamPolicyResult> InvokeAsync(GetProjectIamPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v3:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithVersion());
     }
 
 
     public sealed class GetProjectIamPolicyArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetProjectIamPolicyArgs()
         {

@@ -24,7 +24,7 @@ export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOpt
 
 export interface GetHealthCheckArgs {
     healthCheck: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHealthCheckResult {

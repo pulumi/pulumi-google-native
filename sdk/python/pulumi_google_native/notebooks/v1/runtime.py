@@ -17,9 +17,9 @@ __all__ = ['RuntimeArgs', 'Runtime']
 class RuntimeArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  runtime_id: pulumi.Input[str],
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
                  virtual_machine: Optional[pulumi.Input['VirtualMachineArgs']] = None):
         """
@@ -29,10 +29,11 @@ class RuntimeArgs:
         :param pulumi.Input['VirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "runtime_id", runtime_id)
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if virtual_machine is not None:
@@ -46,15 +47,6 @@ class RuntimeArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="runtimeId")
@@ -76,6 +68,15 @@ class RuntimeArgs:
     @access_config.setter
     def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
         pulumi.set(self, "access_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -171,8 +172,6 @@ class Runtime(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if runtime_id is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime_id'")

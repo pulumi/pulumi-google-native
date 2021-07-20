@@ -28,7 +28,7 @@ export interface GetDocumentArgs {
     documentId: string;
     knowledgeBaseId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDocumentResult {

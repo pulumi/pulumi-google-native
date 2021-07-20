@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("snapshot", required: true)]
         public string Snapshot { get; set; } = null!;

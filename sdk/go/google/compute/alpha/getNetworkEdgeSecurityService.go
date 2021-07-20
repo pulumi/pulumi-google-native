@@ -18,9 +18,9 @@ func LookupNetworkEdgeSecurityService(ctx *pulumi.Context, args *LookupNetworkEd
 }
 
 type LookupNetworkEdgeSecurityServiceArgs struct {
-	NetworkEdgeSecurityService string `pulumi:"networkEdgeSecurityService"`
-	Project                    string `pulumi:"project"`
-	Region                     string `pulumi:"region"`
+	NetworkEdgeSecurityService string  `pulumi:"networkEdgeSecurityService"`
+	Project                    *string `pulumi:"project"`
+	Region                     string  `pulumi:"region"`
 }
 
 type LookupNetworkEdgeSecurityServiceResult struct {

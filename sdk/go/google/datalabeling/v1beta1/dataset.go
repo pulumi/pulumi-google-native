@@ -44,9 +44,6 @@ func NewDataset(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:Dataset", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type datasetArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime *string `pulumi:"lastMigrateTime"`
-	Project         string  `pulumi:"project"`
+	Project         *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Dataset resource.
@@ -96,7 +93,7 @@ type DatasetArgs struct {
 	DisplayName pulumi.StringInput
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime pulumi.StringPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {

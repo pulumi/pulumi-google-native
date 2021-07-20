@@ -24,7 +24,7 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetDomainArgs {
     domainId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetDomainResult {

@@ -111,13 +111,10 @@ export class Note extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NoteArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: NoteArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
             inputs["buildType"] = args ? args.buildType : undefined;
@@ -208,7 +205,7 @@ export interface NoteArgs {
      * A note describing a package hosted by various package managers.
      */
     package?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * URLs associated with this note
      */

@@ -28,7 +28,7 @@ export interface GetKeyRingIamPolicyArgs {
     keyRingId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetKeyRingIamPolicyResult {

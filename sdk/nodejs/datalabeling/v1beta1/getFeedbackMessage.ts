@@ -30,7 +30,7 @@ export interface GetFeedbackMessageArgs {
     datasetId: string;
     feedbackMessageId: string;
     feedbackThreadId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFeedbackMessageResult {

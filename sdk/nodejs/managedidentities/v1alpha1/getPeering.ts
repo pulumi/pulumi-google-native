@@ -24,7 +24,7 @@ export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetPeeringArgs {
     peeringId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPeeringResult {

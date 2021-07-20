@@ -25,7 +25,7 @@ export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetAddressArgs {
     address: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

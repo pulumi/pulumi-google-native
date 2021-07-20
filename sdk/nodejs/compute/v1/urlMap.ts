@@ -99,13 +99,10 @@ export class UrlMap extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: UrlMapArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: UrlMapArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
             inputs["defaultService"] = args ? args.defaultService : undefined;
             inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
@@ -181,7 +178,7 @@ export interface UrlMapArgs {
      * The list of named PathMatchers to use against the URL.
      */
     pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.v1.PathMatcherArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.

@@ -26,7 +26,7 @@ export function getExecution(args: GetExecutionArgs, opts?: pulumi.InvokeOptions
 export interface GetExecutionArgs {
     executionId: string;
     historyId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetExecutionResult {

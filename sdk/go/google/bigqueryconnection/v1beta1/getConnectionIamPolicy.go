@@ -18,9 +18,9 @@ func LookupConnectionIamPolicy(ctx *pulumi.Context, args *LookupConnectionIamPol
 }
 
 type LookupConnectionIamPolicyArgs struct {
-	ConnectionId string `pulumi:"connectionId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	ConnectionId string  `pulumi:"connectionId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupConnectionIamPolicyResult struct {

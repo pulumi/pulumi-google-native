@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         [Input("indexId", required: true)]
         public string IndexId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetIndexArgs()
         {

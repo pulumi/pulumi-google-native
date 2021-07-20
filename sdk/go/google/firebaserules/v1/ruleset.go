@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,12 +29,9 @@ type Ruleset struct {
 func NewRuleset(ctx *pulumi.Context,
 	name string, args *RulesetArgs, opts ...pulumi.ResourceOption) (*Ruleset, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RulesetArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Ruleset
 	err := ctx.RegisterResource("google-native:firebaserules/v1:Ruleset", name, args, &resource, opts...)
 	if err != nil {
@@ -68,14 +64,14 @@ func (RulesetState) ElementType() reflect.Type {
 }
 
 type rulesetArgs struct {
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// `Source` for the `Ruleset`.
 	Source *Source `pulumi:"source"`
 }
 
 // The set of arguments for constructing a Ruleset resource.
 type RulesetArgs struct {
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// `Source` for the `Ruleset`.
 	Source SourcePtrInput
 }

@@ -25,7 +25,7 @@ export function getInstanceGroup(args: GetInstanceGroupArgs, opts?: pulumi.Invok
 
 export interface GetInstanceGroupArgs {
     instanceGroup: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

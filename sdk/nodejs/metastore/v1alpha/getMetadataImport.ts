@@ -27,7 +27,7 @@ export function getMetadataImport(args: GetMetadataImportArgs, opts?: pulumi.Inv
 export interface GetMetadataImportArgs {
     location: string;
     metadataImportId: string;
-    project: string;
+    project?: string;
     serviceId: string;
 }
 

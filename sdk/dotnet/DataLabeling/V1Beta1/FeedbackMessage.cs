@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("operatorFeedbackMetadata")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>? OperatorFeedbackMetadata { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requesterFeedbackMetadata")]
         public Input<Inputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>? RequesterFeedbackMetadata { get; set; }

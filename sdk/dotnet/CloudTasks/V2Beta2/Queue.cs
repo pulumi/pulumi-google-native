@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Pull target. A pull queue is a queue that has a PullTarget.

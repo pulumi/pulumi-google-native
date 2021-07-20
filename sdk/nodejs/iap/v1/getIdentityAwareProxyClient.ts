@@ -26,7 +26,7 @@ export function getIdentityAwareProxyClient(args: GetIdentityAwareProxyClientArg
 export interface GetIdentityAwareProxyClientArgs {
     brandId: string;
     identityAwareProxyClientId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetIdentityAwareProxyClientResult {

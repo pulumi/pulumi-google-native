@@ -18,8 +18,8 @@ func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.In
 }
 
 type LookupWebAppArgs struct {
-	Project  string `pulumi:"project"`
-	WebAppId string `pulumi:"webAppId"`
+	Project  *string `pulumi:"project"`
+	WebAppId string  `pulumi:"webAppId"`
 }
 
 type LookupWebAppResult struct {

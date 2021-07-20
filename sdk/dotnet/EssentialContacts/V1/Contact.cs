@@ -127,8 +127,8 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
             set => _notificationCategorySubscriptions = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.

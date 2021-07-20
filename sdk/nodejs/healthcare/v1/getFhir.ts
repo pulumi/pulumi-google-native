@@ -32,7 +32,7 @@ export interface GetFhirArgs {
     fhirId1: string;
     fhirStoreId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFhirResult {

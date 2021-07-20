@@ -145,6 +145,21 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		return nil, err
 	}
 
+	// Apply default config values.
+	for _, param := range inv.Params {
+		sdkName := param.Name
+		if param.SdkName != "" {
+			sdkName = param.SdkName
+		}
+		switch sdkName {
+		case "project":
+			key := resource.PropertyKey(sdkName)
+			if value, ok := p.getDefaultProject(args); ok {
+				args[key] = *value
+			}
+		}
+	}
+
 	uri, err := buildFunctionUrl(inv, args)
 	if err != nil {
 		return nil, err
@@ -204,6 +219,21 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
+	// Apply default config values.
+	for _, param := range res.CreateParams {
+		sdkName := param.Name
+		if param.SdkName != "" {
+			sdkName = param.SdkName
+		}
+		switch sdkName {
+		case "project":
+			key := resource.PropertyKey(sdkName)
+			if value, ok := p.getDefaultProject(olds); ok {
+				news[key] = *value
+			}
+		}
+	}
+
 	// Auto-naming.
 	nameKey := resource.PropertyKey("name")
 	if res.AutoNamePattern != "" && !news.HasValue(nameKey) {
@@ -228,6 +258,22 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	return &rpc.CheckResponse{Inputs: resInputs}, nil
+}
+
+// Get a default project name for the given inputs.
+func (p *googleCloudProvider) getDefaultProject(olds resource.PropertyMap) (*resource.PropertyValue, bool) {
+	// 1. Check if old inputs define a project.
+	if v, ok := olds["project"]; ok {
+		return &v, true
+	}
+
+	// 2. Check if the config has a fixed project.
+	if cv, ok := p.config["project"]; ok {
+		v := resource.NewStringProperty(cv)
+		return &v, true
+	}
+
+	return nil, false
 }
 
 func (p *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaRequest) (*rpc.GetSchemaResponse, error) {

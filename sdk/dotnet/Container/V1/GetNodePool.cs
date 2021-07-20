@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("nodePoolId", required: true)]
         public string NodePoolId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNodePoolArgs()
         {

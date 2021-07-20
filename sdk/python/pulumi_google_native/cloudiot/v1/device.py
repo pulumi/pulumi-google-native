@@ -17,7 +17,6 @@ __all__ = ['DeviceArgs', 'Device']
 class DeviceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  registry_id: pulumi.Input[str],
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input['DeviceConfigArgs']] = None,
@@ -26,7 +25,8 @@ class DeviceArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
@@ -39,7 +39,6 @@ class DeviceArgs:
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "registry_id", registry_id)
         if blocked is not None:
             pulumi.set(__self__, "blocked", blocked)
@@ -57,6 +56,8 @@ class DeviceArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -66,15 +67,6 @@ class DeviceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="registryId")
@@ -181,6 +173,15 @@ class DeviceArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
 
 class Device(pulumi.CustomResource):
     @overload
@@ -271,8 +272,6 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if registry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'registry_id'")

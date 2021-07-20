@@ -18,9 +18,9 @@ func LookupRegionCommitment(ctx *pulumi.Context, args *LookupRegionCommitmentArg
 }
 
 type LookupRegionCommitmentArgs struct {
-	Commitment string `pulumi:"commitment"`
-	Project    string `pulumi:"project"`
-	Region     string `pulumi:"region"`
+	Commitment string  `pulumi:"commitment"`
+	Project    *string `pulumi:"project"`
+	Region     string  `pulumi:"region"`
 }
 
 type LookupRegionCommitmentResult struct {

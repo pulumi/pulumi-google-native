@@ -27,7 +27,7 @@ export function getRegionJobIamPolicy(args: GetRegionJobIamPolicyArgs, opts?: pu
 export interface GetRegionJobIamPolicyArgs {
     jobId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     regionId: string;
 }
 

@@ -41,9 +41,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Environment
 	err := ctx.RegisterResource("google-native:composer/v1:Environment", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +80,7 @@ type environmentArgs struct {
 	Location string            `pulumi:"location"`
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The current state of the environment.
 	State *EnvironmentStateEnum `pulumi:"state"`
 }
@@ -97,7 +94,7 @@ type EnvironmentArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The current state of the environment.
 	State EnvironmentStateEnumPtrInput
 }

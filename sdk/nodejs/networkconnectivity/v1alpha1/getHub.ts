@@ -24,7 +24,7 @@ export function getHub(args: GetHubArgs, opts?: pulumi.InvokeOptions): Promise<G
 
 export interface GetHubArgs {
     hubId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHubResult {

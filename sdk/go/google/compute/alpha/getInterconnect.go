@@ -18,8 +18,8 @@ func LookupInterconnect(ctx *pulumi.Context, args *LookupInterconnectArgs, opts 
 }
 
 type LookupInterconnectArgs struct {
-	Interconnect string `pulumi:"interconnect"`
-	Project      string `pulumi:"project"`
+	Interconnect string  `pulumi:"interconnect"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupInterconnectResult struct {

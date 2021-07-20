@@ -18,8 +18,8 @@ func LookupMetricDescriptor(ctx *pulumi.Context, args *LookupMetricDescriptorArg
 }
 
 type LookupMetricDescriptorArgs struct {
-	MetricDescriptorId string `pulumi:"metricDescriptorId"`
-	Project            string `pulumi:"project"`
+	MetricDescriptorId string  `pulumi:"metricDescriptorId"`
+	Project            *string `pulumi:"project"`
 }
 
 type LookupMetricDescriptorResult struct {

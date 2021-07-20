@@ -18,8 +18,8 @@ func LookupTraceSink(ctx *pulumi.Context, args *LookupTraceSinkArgs, opts ...pul
 }
 
 type LookupTraceSinkArgs struct {
-	Project     string `pulumi:"project"`
-	TraceSinkId string `pulumi:"traceSinkId"`
+	Project     *string `pulumi:"project"`
+	TraceSinkId string  `pulumi:"traceSinkId"`
 }
 
 type LookupTraceSinkResult struct {

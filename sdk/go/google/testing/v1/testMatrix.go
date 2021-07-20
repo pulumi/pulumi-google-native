@@ -54,9 +54,6 @@ func NewTestMatrix(ctx *pulumi.Context,
 	if args.EnvironmentMatrix == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentMatrix'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ResultStorage == nil {
 		return nil, errors.New("invalid value for required argument 'ResultStorage'")
 	}
@@ -104,7 +101,7 @@ type testMatrixArgs struct {
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts *int `pulumi:"flakyTestAttempts"`
 	// The cloud project that owns the test matrix.
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// Where the results for the matrix are written.
 	ResultStorage ResultStorage `pulumi:"resultStorage"`
@@ -123,7 +120,7 @@ type TestMatrixArgs struct {
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts pulumi.IntPtrInput
 	// The cloud project that owns the test matrix.
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Where the results for the matrix are written.
 	ResultStorage ResultStorageInput

@@ -15,9 +15,9 @@ class NamespaceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  namespace_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
@@ -25,11 +25,12 @@ class NamespaceArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -48,15 +49,6 @@ class NamespaceArgs:
     @namespace_id.setter
     def namespace_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -81,6 +73,15 @@ class NamespaceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Namespace(pulumi.CustomResource):
@@ -151,8 +152,6 @@ class Namespace(pulumi.CustomResource):
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(Namespace, __self__).__init__(
             'google-native:servicedirectory/v1:Namespace',

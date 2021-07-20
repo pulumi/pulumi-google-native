@@ -70,9 +70,6 @@ func NewSubnetwork(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -128,7 +125,7 @@ type subnetworkArgs struct {
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
 	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess *SubnetworkPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
-	Project                 string                             `pulumi:"project"`
+	Project                 *string                            `pulumi:"project"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose *SubnetworkPurpose `pulumi:"purpose"`
 	// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
@@ -164,7 +161,7 @@ type SubnetworkArgs struct {
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
 	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess SubnetworkPrivateIpv6GoogleAccessPtrInput
-	Project                 pulumi.StringInput
+	Project                 pulumi.StringPtrInput
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose SubnetworkPurposePtrInput
 	// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.

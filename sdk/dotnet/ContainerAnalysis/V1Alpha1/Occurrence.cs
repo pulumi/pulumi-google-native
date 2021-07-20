@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Occurrence(string name, OccurrenceArgs args, CustomResourceOptions? options = null)
+        public Occurrence(string name, OccurrenceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:containeranalysis/v1alpha1:Occurrence", name, args ?? new OccurrenceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -211,8 +211,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("noteName")]
         public Input<string>? NoteName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// A description of actions that can be taken to remedy the `Note`

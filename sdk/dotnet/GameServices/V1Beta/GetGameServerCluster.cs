@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("realmId", required: true)]
         public string RealmId { get; set; } = null!;

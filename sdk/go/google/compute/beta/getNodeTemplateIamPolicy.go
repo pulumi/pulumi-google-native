@@ -19,7 +19,7 @@ func LookupNodeTemplateIamPolicy(ctx *pulumi.Context, args *LookupNodeTemplateIa
 
 type LookupNodeTemplateIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Region                        string  `pulumi:"region"`
 	Resource                      string  `pulumi:"resource"`
 }

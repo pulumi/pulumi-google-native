@@ -25,7 +25,7 @@ export function getRegionOperationIamPolicy(args: GetRegionOperationIamPolicyArg
 
 export interface GetRegionOperationIamPolicyArgs {
     operationId: string;
-    project: string;
+    project?: string;
     regionId: string;
 }
 

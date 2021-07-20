@@ -26,7 +26,7 @@ export function getHubIamPolicy(args: GetHubIamPolicyArgs, opts?: pulumi.InvokeO
 export interface GetHubIamPolicyArgs {
     hubId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetHubIamPolicyResult {

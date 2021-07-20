@@ -18,9 +18,9 @@ func LookupRegionUrlMap(ctx *pulumi.Context, args *LookupRegionUrlMapArgs, opts 
 }
 
 type LookupRegionUrlMapArgs struct {
-	Project string `pulumi:"project"`
-	Region  string `pulumi:"region"`
-	UrlMap  string `pulumi:"urlMap"`
+	Project *string `pulumi:"project"`
+	Region  string  `pulumi:"region"`
+	UrlMap  string  `pulumi:"urlMap"`
 }
 
 type LookupRegionUrlMapResult struct {

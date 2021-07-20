@@ -17,7 +17,6 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  hive_metastore_config: Optional[pulumi.Input['HiveMetastoreConfigArgs']] = None,
@@ -27,6 +26,7 @@ class ServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
@@ -44,7 +44,6 @@ class ServiceArgs:
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
@@ -62,6 +61,8 @@ class ServiceArgs:
             pulumi.set(__self__, "network", network)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
         if request_id is not None:
@@ -77,15 +78,6 @@ class ServiceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -191,6 +183,15 @@ class ServiceArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="releaseChannel")
@@ -323,8 +324,6 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["port"] = port
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["request_id"] = request_id

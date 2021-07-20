@@ -94,13 +94,10 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: HttpsHealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: HttpsHealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
@@ -170,7 +167,7 @@ export interface HttpsHealthCheckArgs {
      * The TCP port number for the HTTPS health check request. The default value is 443.
      */
     port?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * The request path of the HTTPS health check request. The default value is "/".

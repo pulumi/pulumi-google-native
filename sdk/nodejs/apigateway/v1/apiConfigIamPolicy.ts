@@ -72,9 +72,6 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["apiId"] = args ? args.apiId : undefined;
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
@@ -116,7 +113,7 @@ export interface ApiConfigIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
      */

@@ -42,9 +42,6 @@ func NewCluster(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ServeNodes == nil {
 		return nil, errors.New("invalid value for required argument 'ServeNodes'")
 	}
@@ -90,7 +87,7 @@ type clusterArgs struct {
 	Location *string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes int `pulumi:"serveNodes"`
 }
@@ -107,7 +104,7 @@ type ClusterArgs struct {
 	Location pulumi.StringPtrInput
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntInput
 }

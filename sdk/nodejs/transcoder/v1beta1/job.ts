@@ -110,9 +110,6 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["inputUri"] = args ? args.inputUri : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -179,7 +176,7 @@ export interface JobArgs {
      * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
      */
     priority?: pulumi.Input<number>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
      */

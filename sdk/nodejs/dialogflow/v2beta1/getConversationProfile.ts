@@ -26,7 +26,7 @@ export function getConversationProfile(args: GetConversationProfileArgs, opts?: 
 export interface GetConversationProfileArgs {
     conversationProfileId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConversationProfileResult {

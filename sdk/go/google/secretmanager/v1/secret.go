@@ -43,9 +43,6 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Replication == nil {
 		return nil, errors.New("invalid value for required argument 'Replication'")
 	}
@@ -90,7 +87,7 @@ type secretArgs struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels  map[string]string `pulumi:"labels"`
-	Project string            `pulumi:"project"`
+	Project *string           `pulumi:"project"`
 	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication Replication `pulumi:"replication"`
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
@@ -110,7 +107,7 @@ type SecretArgs struct {
 	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels  pulumi.StringMapInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationInput
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.

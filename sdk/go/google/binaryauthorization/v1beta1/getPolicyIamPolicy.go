@@ -19,7 +19,7 @@ func LookupPolicyIamPolicy(ctx *pulumi.Context, args *LookupPolicyIamPolicyArgs,
 
 type LookupPolicyIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 }
 
 type LookupPolicyIamPolicyResult struct {

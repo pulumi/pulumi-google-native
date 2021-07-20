@@ -25,7 +25,7 @@ export function getSnapshotIamPolicy(args: GetSnapshotIamPolicyArgs, opts?: pulu
 
 export interface GetSnapshotIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

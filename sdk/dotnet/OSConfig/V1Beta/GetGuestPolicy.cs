@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         [Input("guestPolicyId", required: true)]
         public string GuestPolicyId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetGuestPolicyArgs()
         {

@@ -53,9 +53,6 @@ func NewMessage(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Message
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:Message", name, args, &resource, opts...)
 	if err != nil {
@@ -101,7 +98,7 @@ type messageArgs struct {
 	Name *string `pulumi:"name"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds []PatientId `pulumi:"patientIds"`
-	Project    string      `pulumi:"project"`
+	Project    *string     `pulumi:"project"`
 	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
 	SchematizedData *SchematizedData `pulumi:"schematizedData"`
 	// The hospital that this message came from. MSH-4.
@@ -125,7 +122,7 @@ type MessageArgs struct {
 	Name pulumi.StringPtrInput
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds PatientIdArrayInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
 	SchematizedData SchematizedDataPtrInput
 	// The hospital that this message came from. MSH-4.

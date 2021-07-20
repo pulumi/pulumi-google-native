@@ -28,7 +28,7 @@ export interface GetParticipantArgs {
     conversationId: string;
     location: string;
     participantId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetParticipantResult {

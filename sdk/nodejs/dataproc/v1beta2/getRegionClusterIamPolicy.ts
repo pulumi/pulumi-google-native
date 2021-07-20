@@ -27,7 +27,7 @@ export function getRegionClusterIamPolicy(args: GetRegionClusterIamPolicyArgs, o
 export interface GetRegionClusterIamPolicyArgs {
     clusterId: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     regionId: string;
 }
 

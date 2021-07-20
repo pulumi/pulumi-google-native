@@ -60,9 +60,6 @@ export class Namespace extends pulumi.CustomResource {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -93,5 +90,5 @@ export interface NamespaceArgs {
      */
     name?: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

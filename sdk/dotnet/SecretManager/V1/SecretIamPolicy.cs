@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;

@@ -26,7 +26,7 @@ export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: 
 export interface GetConnectionIamPolicyArgs {
     connectionId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConnectionIamPolicyResult {

@@ -18,9 +18,9 @@ func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.In
 }
 
 type LookupRouterArgs struct {
-	Project string `pulumi:"project"`
-	Region  string `pulumi:"region"`
-	Router  string `pulumi:"router"`
+	Project *string `pulumi:"project"`
+	Region  string  `pulumi:"region"`
+	Router  string  `pulumi:"router"`
 }
 
 type LookupRouterResult struct {

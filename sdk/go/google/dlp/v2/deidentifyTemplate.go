@@ -40,9 +40,6 @@ func NewDeidentifyTemplate(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource DeidentifyTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:DeidentifyTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +79,7 @@ type deidentifyTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName *string `pulumi:"displayName"`
 	Location    string  `pulumi:"location"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -96,7 +93,7 @@ type DeidentifyTemplateArgs struct {
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

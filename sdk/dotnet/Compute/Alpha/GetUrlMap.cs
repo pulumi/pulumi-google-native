@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class GetUrlMapArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("urlMap", required: true)]
         public string UrlMap { get; set; } = null!;

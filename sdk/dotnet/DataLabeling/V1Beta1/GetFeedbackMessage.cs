@@ -33,8 +33,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         [Input("feedbackThreadId", required: true)]
         public string FeedbackThreadId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetFeedbackMessageArgs()
         {

@@ -16,10 +16,10 @@ __all__ = ['ReservationInitArgs', 'Reservation']
 @pulumi.input_type
 class ReservationInitArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None):
@@ -31,27 +31,19 @@ class ReservationInitArgs:
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -88,6 +80,15 @@ class ReservationInitArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -192,8 +193,6 @@ class Reservation(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["specific_reservation"] = specific_reservation

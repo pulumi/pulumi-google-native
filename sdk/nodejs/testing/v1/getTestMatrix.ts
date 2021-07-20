@@ -23,7 +23,7 @@ export function getTestMatrix(args: GetTestMatrixArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetTestMatrixArgs {
-    project: string;
+    project?: string;
     testMatrixId: string;
 }
 

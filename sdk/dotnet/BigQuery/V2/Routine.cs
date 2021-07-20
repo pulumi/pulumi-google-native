@@ -190,8 +190,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("language")]
         public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineLanguage>? Language { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".

@@ -74,9 +74,6 @@ export class FeedbackMessage extends pulumi.CustomResource {
             if ((!args || args.feedbackThreadId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedbackThreadId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["annotatedDatasetId"] = args ? args.annotatedDatasetId : undefined;
             inputs["body"] = args ? args.body : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -126,6 +123,6 @@ export interface FeedbackMessageArgs {
      */
     name?: pulumi.Input<string>;
     operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>;
 }

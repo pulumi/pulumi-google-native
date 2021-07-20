@@ -45,9 +45,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Environment
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Environment", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type environmentArgs struct {
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment *GoogleCloudDialogflowV2Fulfillment `pulumi:"fulfillment"`
 	Location    string                              `pulumi:"location"`
-	Project     string                              `pulumi:"project"`
+	Project     *string                             `pulumi:"project"`
 	// Optional. Text to speech settings for this environment.
 	TextToSpeechSettings *GoogleCloudDialogflowV2TextToSpeechSettings `pulumi:"textToSpeechSettings"`
 }
@@ -103,7 +100,7 @@ type EnvironmentArgs struct {
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentPtrInput
 	Location    pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	// Optional. Text to speech settings for this environment.
 	TextToSpeechSettings GoogleCloudDialogflowV2TextToSpeechSettingsPtrInput
 }

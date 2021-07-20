@@ -18,9 +18,9 @@ func LookupRuntime(ctx *pulumi.Context, args *LookupRuntimeArgs, opts ...pulumi.
 }
 
 type LookupRuntimeArgs struct {
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	RuntimeId string `pulumi:"runtimeId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	RuntimeId string  `pulumi:"runtimeId"`
 }
 
 type LookupRuntimeResult struct {

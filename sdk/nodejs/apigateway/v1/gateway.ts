@@ -88,9 +88,6 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayId"] = args ? args.gatewayId : undefined;
@@ -137,5 +134,5 @@ export interface GatewayArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

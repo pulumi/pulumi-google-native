@@ -59,13 +59,10 @@ export class Brand extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BrandArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: BrandArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["supportEmail"] = args ? args.supportEmail : undefined;
@@ -92,7 +89,7 @@ export interface BrandArgs {
      * Application name displayed on OAuth consent screen.
      */
     applicationTitle?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Support email displayed on the OAuth consent screen.
      */

@@ -18,12 +18,12 @@ class CertificateTemplateArgs:
     def __init__(__self__, *,
                  certificate_template_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  identity_constraints: Optional[pulumi.Input['CertificateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  passthrough_extensions: Optional[pulumi.Input['CertificateExtensionConstraintsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['X509ParametersArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateTemplate resource.
@@ -35,7 +35,6 @@ class CertificateTemplateArgs:
         """
         pulumi.set(__self__, "certificate_template_id", certificate_template_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if identity_constraints is not None:
@@ -46,6 +45,8 @@ class CertificateTemplateArgs:
             pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
             pulumi.set(__self__, "predefined_values", predefined_values)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
 
@@ -66,15 +67,6 @@ class CertificateTemplateArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -135,6 +127,15 @@ class CertificateTemplateArgs:
     @predefined_values.setter
     def predefined_values(self, value: Optional[pulumi.Input['X509ParametersArgs']]):
         pulumi.set(self, "predefined_values", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -230,8 +231,6 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
             __props__.__dict__["predefined_values"] = predefined_values
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["create_time"] = None

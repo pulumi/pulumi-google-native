@@ -18,9 +18,9 @@ func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...p
 }
 
 type LookupSubnetworkArgs struct {
-	Project    string `pulumi:"project"`
-	Region     string `pulumi:"region"`
-	Subnetwork string `pulumi:"subnetwork"`
+	Project    *string `pulumi:"project"`
+	Region     string  `pulumi:"region"`
+	Subnetwork string  `pulumi:"subnetwork"`
 }
 
 type LookupSubnetworkResult struct {

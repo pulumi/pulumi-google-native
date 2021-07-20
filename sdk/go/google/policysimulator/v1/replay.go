@@ -39,9 +39,6 @@ func NewReplay(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Replay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:Replay", name, args, &resource, opts...)
 	if err != nil {
@@ -77,7 +74,7 @@ type replayArgs struct {
 	// The configuration used for the `Replay`.
 	Config   GoogleCloudPolicysimulatorV1ReplayConfig `pulumi:"config"`
 	Location string                                   `pulumi:"location"`
-	Project  string                                   `pulumi:"project"`
+	Project  *string                                  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Replay resource.
@@ -85,7 +82,7 @@ type ReplayArgs struct {
 	// The configuration used for the `Replay`.
 	Config   GoogleCloudPolicysimulatorV1ReplayConfigInput
 	Location pulumi.StringInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 }
 
 func (ReplayArgs) ElementType() reflect.Type {

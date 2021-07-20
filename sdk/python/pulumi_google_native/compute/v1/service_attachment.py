@@ -16,7 +16,6 @@ __all__ = ['ServiceAttachmentArgs', 'ServiceAttachment']
 @pulumi.input_type
 class ServiceAttachmentArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerProjectLimitArgs']]]] = None,
@@ -26,6 +25,7 @@ class ServiceAttachmentArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None):
         """
@@ -40,7 +40,6 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[str] producer_forwarding_rule: The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
         :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if connection_preference is not None:
             pulumi.set(__self__, "connection_preference", connection_preference)
@@ -58,19 +57,12 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "nat_subnets", nat_subnets)
         if producer_forwarding_rule is not None:
             pulumi.set(__self__, "producer_forwarding_rule", producer_forwarding_rule)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if target_service is not None:
             pulumi.set(__self__, "target_service", target_service)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -176,6 +168,15 @@ class ServiceAttachmentArgs:
     @producer_forwarding_rule.setter
     def producer_forwarding_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "producer_forwarding_rule", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -288,8 +289,6 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nat_subnets"] = nat_subnets
             __props__.__dict__["producer_forwarding_rule"] = producer_forwarding_rule
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

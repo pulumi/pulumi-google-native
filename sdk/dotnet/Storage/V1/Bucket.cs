@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Bucket(string name, BucketArgs args, CustomResourceOptions? options = null)
+        public Bucket(string name, BucketArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:storage/v1:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -360,8 +360,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("predefinedDefaultObjectAcl")]
         public Input<string>? PredefinedDefaultObjectAcl { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The project number of the project the bucket belongs to.

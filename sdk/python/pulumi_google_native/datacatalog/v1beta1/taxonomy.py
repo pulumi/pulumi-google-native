@@ -17,9 +17,9 @@ class TaxonomyArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  activated_policy_types: Optional[pulumi.Input[Sequence[pulumi.Input['TaxonomyActivatedPolicyTypesItem']]]] = None,
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Taxonomy resource.
         :param pulumi.Input[str] display_name: User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
@@ -28,11 +28,12 @@ class TaxonomyArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if activated_policy_types is not None:
             pulumi.set(__self__, "activated_policy_types", activated_policy_types)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -54,15 +55,6 @@ class TaxonomyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="activatedPolicyTypes")
@@ -87,6 +79,15 @@ class TaxonomyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Taxonomy(pulumi.CustomResource):
@@ -160,8 +161,6 @@ class Taxonomy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["policy_tag_count"] = None

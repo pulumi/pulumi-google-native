@@ -62,9 +62,6 @@ export class Topic extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
@@ -99,7 +96,7 @@ export interface TopicArgs {
      * The settings for this topic's partitions.
      */
     partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The settings for this topic's message retention.
      */

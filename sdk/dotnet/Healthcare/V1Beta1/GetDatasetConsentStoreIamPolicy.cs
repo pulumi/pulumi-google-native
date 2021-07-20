@@ -33,8 +33,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDatasetConsentStoreIamPolicyArgs()
         {

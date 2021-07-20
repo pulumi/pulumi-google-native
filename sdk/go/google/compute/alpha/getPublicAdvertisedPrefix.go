@@ -18,8 +18,8 @@ func LookupPublicAdvertisedPrefix(ctx *pulumi.Context, args *LookupPublicAdverti
 }
 
 type LookupPublicAdvertisedPrefixArgs struct {
-	Project                string `pulumi:"project"`
-	PublicAdvertisedPrefix string `pulumi:"publicAdvertisedPrefix"`
+	Project                *string `pulumi:"project"`
+	PublicAdvertisedPrefix string  `pulumi:"publicAdvertisedPrefix"`
 }
 
 type LookupPublicAdvertisedPrefixResult struct {

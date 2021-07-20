@@ -89,9 +89,6 @@ export class CryptoKey extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -137,7 +134,7 @@ export interface CryptoKeyArgs {
      * At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     nextRotationTime?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Immutable. The immutable purpose of this CryptoKey.
      */

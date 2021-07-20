@@ -18,9 +18,9 @@ func LookupCapacityCommitment(ctx *pulumi.Context, args *LookupCapacityCommitmen
 }
 
 type LookupCapacityCommitmentArgs struct {
-	CapacityCommitmentId string `pulumi:"capacityCommitmentId"`
-	Location             string `pulumi:"location"`
-	Project              string `pulumi:"project"`
+	CapacityCommitmentId string  `pulumi:"capacityCommitmentId"`
+	Location             string  `pulumi:"location"`
+	Project              *string `pulumi:"project"`
 }
 
 type LookupCapacityCommitmentResult struct {

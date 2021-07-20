@@ -133,8 +133,8 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Input("managedService")]
         public Input<string>? ManagedService { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public ApiArgs()
         {

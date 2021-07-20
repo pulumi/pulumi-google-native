@@ -16,7 +16,6 @@ __all__ = ['AlertPolicyArgs', 'AlertPolicy']
 @pulumi.input_type
 class AlertPolicyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  alert_strategy: Optional[pulumi.Input['AlertStrategyArgs']] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
@@ -27,6 +26,7 @@ class AlertPolicyArgs:
                  mutation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input['StatusArgs']] = None):
         """
@@ -44,7 +44,6 @@ class AlertPolicyArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
         """
-        pulumi.set(__self__, "project", project)
         if alert_strategy is not None:
             pulumi.set(__self__, "alert_strategy", alert_strategy)
         if combiner is not None:
@@ -65,19 +64,12 @@ class AlertPolicyArgs:
             pulumi.set(__self__, "name", name)
         if notification_channels is not None:
             pulumi.set(__self__, "notification_channels", notification_channels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if validity is not None:
             pulumi.set(__self__, "validity", validity)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="alertStrategy")
@@ -200,6 +192,15 @@ class AlertPolicyArgs:
         pulumi.set(self, "notification_channels", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -265,7 +266,7 @@ class AlertPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AlertPolicyArgs,
+                 args: Optional[AlertPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new alerting policy.
@@ -320,8 +321,6 @@ class AlertPolicy(pulumi.CustomResource):
             __props__.__dict__["mutation_record"] = mutation_record
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_channels"] = notification_channels
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["validity"] = validity

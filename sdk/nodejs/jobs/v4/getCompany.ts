@@ -25,7 +25,7 @@ export function getCompany(args: GetCompanyArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetCompanyArgs {
     companyId: string;
-    project: string;
+    project?: string;
     tenantId: string;
 }
 

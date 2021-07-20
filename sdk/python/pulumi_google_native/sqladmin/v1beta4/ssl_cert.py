@@ -14,16 +14,17 @@ __all__ = ['SslCertInitArgs', 'SslCert']
 class SslCertInitArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 common_name: Optional[pulumi.Input[str]] = None):
+                 common_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SslCert resource.
         :param pulumi.Input[str] common_name: User supplied name. Must be a distinct name from the other certificates for this instance.
         """
         pulumi.set(__self__, "instance", instance)
-        pulumi.set(__self__, "project", project)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -33,15 +34,6 @@ class SslCertInitArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="commonName")
@@ -54,6 +46,15 @@ class SslCertInitArgs:
     @common_name.setter
     def common_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class SslCert(pulumi.CustomResource):
@@ -117,8 +118,6 @@ class SslCert(pulumi.CustomResource):
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["cert"] = None
             __props__.__dict__["cert_serial_number"] = None

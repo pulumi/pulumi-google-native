@@ -54,9 +54,6 @@ func NewNodeTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -106,7 +103,7 @@ type nodeTemplateArgs struct {
 	NodeType *string `pulumi:"nodeType"`
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
-	Project             string                           `pulumi:"project"`
+	Project             *string                          `pulumi:"project"`
 	Region              string                           `pulumi:"region"`
 	RequestId           *string                          `pulumi:"requestId"`
 	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
@@ -129,7 +126,7 @@ type NodeTemplateArgs struct {
 	NodeType pulumi.StringPtrInput
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	Region              pulumi.StringInput
 	RequestId           pulumi.StringPtrInput
 	// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.

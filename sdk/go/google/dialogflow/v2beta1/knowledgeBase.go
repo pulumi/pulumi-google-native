@@ -36,9 +36,6 @@ func NewKnowledgeBase(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource KnowledgeBase
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:KnowledgeBase", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +75,7 @@ type knowledgeBaseArgs struct {
 	Location     string  `pulumi:"location"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a KnowledgeBase resource.
@@ -90,7 +87,7 @@ type KnowledgeBaseArgs struct {
 	Location     pulumi.StringInput
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (KnowledgeBaseArgs) ElementType() reflect.Type {

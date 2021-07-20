@@ -25,7 +25,7 @@ export function getNetworkEndpointGroup(args: GetNetworkEndpointGroupArgs, opts?
 
 export interface GetNetworkEndpointGroupArgs {
     networkEndpointGroup: string;
-    project: string;
+    project?: string;
     zone: string;
 }
 

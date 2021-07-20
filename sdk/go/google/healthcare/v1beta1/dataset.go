@@ -31,9 +31,6 @@ func NewDataset(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:Dataset", name, args, &resource, opts...)
 	if err != nil {
@@ -70,7 +67,7 @@ type datasetArgs struct {
 	Location  string  `pulumi:"location"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -81,7 +78,7 @@ type DatasetArgs struct {
 	Location  pulumi.StringInput
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
 	TimeZone pulumi.StringPtrInput
 }

@@ -48,9 +48,6 @@ func NewTrial(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
 	}
@@ -93,7 +90,7 @@ type trialArgs struct {
 	Measurements []GoogleCloudMlV1__Measurement `pulumi:"measurements"`
 	// The parameters of the trial.
 	Parameters []GoogleCloudMlV1_Trial_Parameter `pulumi:"parameters"`
-	Project    string                            `pulumi:"project"`
+	Project    *string                           `pulumi:"project"`
 	// The detailed state of a trial.
 	State   *TrialStateEnum `pulumi:"state"`
 	StudyId string          `pulumi:"studyId"`
@@ -108,7 +105,7 @@ type TrialArgs struct {
 	Measurements GoogleCloudMlV1__MeasurementArrayInput
 	// The parameters of the trial.
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
-	Project    pulumi.StringInput
+	Project    pulumi.StringPtrInput
 	// The detailed state of a trial.
 	State   TrialStateEnumPtrInput
 	StudyId pulumi.StringInput

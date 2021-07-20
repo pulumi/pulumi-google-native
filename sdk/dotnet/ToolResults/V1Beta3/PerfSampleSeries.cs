@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("historyId", required: true)]
         public Input<string> HistoryId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("stepId", required: true)]
         public Input<string> StepId { get; set; } = null!;

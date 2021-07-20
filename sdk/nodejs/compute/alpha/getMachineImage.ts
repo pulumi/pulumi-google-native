@@ -24,7 +24,7 @@ export function getMachineImage(args: GetMachineImageArgs, opts?: pulumi.InvokeO
 
 export interface GetMachineImageArgs {
     machineImage: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetMachineImageResult {

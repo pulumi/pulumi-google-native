@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,12 +35,9 @@ type CompositeType struct {
 func NewCompositeType(ctx *pulumi.Context,
 	name string, args *CompositeTypeArgs, opts ...pulumi.ResourceOption) (*CompositeType, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &CompositeTypeArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource CompositeType
 	err := ctx.RegisterResource("google-native:deploymentmanager/alpha:CompositeType", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +77,7 @@ type compositeTypeArgs struct {
 	Labels []CompositeTypeLabelEntry `pulumi:"labels"`
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
 	Name    *string              `pulumi:"name"`
-	Project string               `pulumi:"project"`
+	Project *string              `pulumi:"project"`
 	Status  *CompositeTypeStatus `pulumi:"status"`
 	// Files for the template type.
 	TemplateContents *TemplateContents `pulumi:"templateContents"`
@@ -96,7 +92,7 @@ type CompositeTypeArgs struct {
 	Labels CompositeTypeLabelEntryArrayInput
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	Status  CompositeTypeStatusPtrInput
 	// Files for the template type.
 	TemplateContents TemplateContentsPtrInput

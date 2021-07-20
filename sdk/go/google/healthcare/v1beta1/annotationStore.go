@@ -34,9 +34,6 @@ func NewAnnotationStore(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource AnnotationStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:AnnotationStore", name, args, &resource, opts...)
 	if err != nil {
@@ -76,7 +73,7 @@ type annotationStoreArgs struct {
 	Location string            `pulumi:"location"`
 	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AnnotationStore resource.
@@ -88,7 +85,7 @@ type AnnotationStoreArgs struct {
 	Location pulumi.StringInput
 	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 }
 
 func (AnnotationStoreArgs) ElementType() reflect.Type {

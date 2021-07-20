@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("registrationId", required: true)]
         public Input<string> RegistrationId { get; set; } = null!;

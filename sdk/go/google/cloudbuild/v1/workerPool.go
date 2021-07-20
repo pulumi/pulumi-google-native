@@ -48,9 +48,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
 	}
@@ -93,7 +90,7 @@ type workerPoolArgs struct {
 	Location    string  `pulumi:"location"`
 	// Private Pool using a v1 configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
-	Project             string               `pulumi:"project"`
+	Project             *string              `pulumi:"project"`
 	ValidateOnly        *string              `pulumi:"validateOnly"`
 	WorkerPoolId        string               `pulumi:"workerPoolId"`
 }
@@ -107,7 +104,7 @@ type WorkerPoolArgs struct {
 	Location    pulumi.StringInput
 	// Private Pool using a v1 configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
-	Project             pulumi.StringInput
+	Project             pulumi.StringPtrInput
 	ValidateOnly        pulumi.StringPtrInput
 	WorkerPoolId        pulumi.StringInput
 }

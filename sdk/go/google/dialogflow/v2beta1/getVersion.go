@@ -18,9 +18,9 @@ func LookupVersion(ctx *pulumi.Context, args *LookupVersionArgs, opts ...pulumi.
 }
 
 type LookupVersionArgs struct {
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	VersionId string `pulumi:"versionId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	VersionId string  `pulumi:"versionId"`
 }
 
 type LookupVersionResult struct {

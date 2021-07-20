@@ -24,7 +24,7 @@ export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetContactArgs {
     contactId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetContactResult {

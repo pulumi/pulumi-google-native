@@ -71,9 +71,6 @@ func NewMigrationJob(ctx *pulumi.Context,
 	if args.MigrationJobId == nil {
 		return nil, errors.New("invalid value for required argument 'MigrationJobId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
@@ -126,7 +123,7 @@ type migrationJobArgs struct {
 	MigrationJobId string            `pulumi:"migrationJobId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name      *string `pulumi:"name"`
-	Project   string  `pulumi:"project"`
+	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
@@ -160,7 +157,7 @@ type MigrationJobArgs struct {
 	MigrationJobId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name      pulumi.StringPtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput

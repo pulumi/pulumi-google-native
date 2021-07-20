@@ -18,10 +18,10 @@ func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.In
 }
 
 type LookupBackupArgs struct {
-	BackupId  string `pulumi:"backupId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	ServiceId string `pulumi:"serviceId"`
+	BackupId  string  `pulumi:"backupId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
 }
 
 type LookupBackupResult struct {

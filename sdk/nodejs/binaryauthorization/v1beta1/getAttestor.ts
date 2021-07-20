@@ -24,7 +24,7 @@ export function getAttestor(args: GetAttestorArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetAttestorArgs {
     attestorId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAttestorResult {

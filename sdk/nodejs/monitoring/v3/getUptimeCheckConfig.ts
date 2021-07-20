@@ -23,7 +23,7 @@ export function getUptimeCheckConfig(args: GetUptimeCheckConfigArgs, opts?: pulu
 }
 
 export interface GetUptimeCheckConfigArgs {
-    project: string;
+    project?: string;
     uptimeCheckConfigId: string;
 }
 

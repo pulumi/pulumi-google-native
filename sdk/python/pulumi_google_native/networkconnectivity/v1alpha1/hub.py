@@ -13,12 +13,12 @@ __all__ = ['HubArgs', 'Hub']
 @pulumi.input_type
 class HubArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  hub_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -29,7 +29,6 @@ class HubArgs:
         :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
         :param pulumi.Input[str] update_time: Time when the Hub was updated.
         """
-        pulumi.set(__self__, "project", project)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -40,19 +39,12 @@ class HubArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -112,6 +104,15 @@ class HubArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -162,7 +163,7 @@ class Hub(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HubArgs,
+                 args: Optional[HubArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Hub in a given project and location.
@@ -207,8 +208,6 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["hub_id"] = hub_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["update_time"] = update_time

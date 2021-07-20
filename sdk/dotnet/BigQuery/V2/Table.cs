@@ -292,8 +292,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("model")]
         public Input<Inputs.ModelDefinitionArgs>? Model { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

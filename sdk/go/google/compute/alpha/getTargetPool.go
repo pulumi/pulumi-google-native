@@ -18,9 +18,9 @@ func LookupTargetPool(ctx *pulumi.Context, args *LookupTargetPoolArgs, opts ...p
 }
 
 type LookupTargetPoolArgs struct {
-	Project    string `pulumi:"project"`
-	Region     string `pulumi:"region"`
-	TargetPool string `pulumi:"targetPool"`
+	Project    *string `pulumi:"project"`
+	Region     string  `pulumi:"region"`
+	TargetPool string  `pulumi:"targetPool"`
 }
 
 type LookupTargetPoolResult struct {

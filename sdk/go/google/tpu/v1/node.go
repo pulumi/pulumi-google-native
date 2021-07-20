@@ -65,9 +65,6 @@ func NewNode(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.TensorflowVersion == nil {
 		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
 	}
@@ -117,7 +114,7 @@ type nodeArgs struct {
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
 	NodeId  *string `pulumi:"nodeId"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The scheduling options for this node.
 	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
 	// The version of Tensorflow running in the Node.
@@ -142,7 +139,7 @@ type NodeArgs struct {
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput
 	NodeId  pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigPtrInput
 	// The version of Tensorflow running in the Node.

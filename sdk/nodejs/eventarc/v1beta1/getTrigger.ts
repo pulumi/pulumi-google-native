@@ -25,7 +25,7 @@ export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetTriggerArgs {
     location: string;
-    project: string;
+    project?: string;
     triggerId: string;
 }
 

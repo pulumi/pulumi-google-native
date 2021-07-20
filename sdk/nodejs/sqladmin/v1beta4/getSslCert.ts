@@ -25,7 +25,7 @@ export function getSslCert(args: GetSslCertArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetSslCertArgs {
     instance: string;
-    project: string;
+    project?: string;
     sha1Fingerprint: string;
 }
 

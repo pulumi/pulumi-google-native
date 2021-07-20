@@ -402,8 +402,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("partnerMetadata")]
         public Input<Inputs.InterconnectAttachmentPartnerMetadataArgs>? PartnerMetadata { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

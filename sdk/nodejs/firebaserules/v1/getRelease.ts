@@ -23,7 +23,7 @@ export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): P
 }
 
 export interface GetReleaseArgs {
-    project: string;
+    project?: string;
     releaseId: string;
 }
 

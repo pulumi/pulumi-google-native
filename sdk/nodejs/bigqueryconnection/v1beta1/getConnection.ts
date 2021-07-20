@@ -26,7 +26,7 @@ export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptio
 export interface GetConnectionArgs {
     connectionId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConnectionResult {

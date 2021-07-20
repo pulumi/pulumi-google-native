@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("resource", required: true)]
         public string Resource { get; set; } = null!;

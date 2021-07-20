@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         [Input("domainId", required: true)]
         public string DomainId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetDomainArgs()
         {

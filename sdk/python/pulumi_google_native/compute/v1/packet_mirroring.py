@@ -16,7 +16,6 @@ __all__ = ['PacketMirroringArgs', 'PacketMirroring']
 @pulumi.input_type
 class PacketMirroringArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  collector_ilb: Optional[pulumi.Input['PacketMirroringForwardingRuleInfoArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class PacketMirroringArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['PacketMirroringNetworkInfoArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PacketMirroring resource.
@@ -38,7 +38,6 @@ class PacketMirroringArgs:
         :param pulumi.Input['PacketMirroringNetworkInfoArgs'] network: Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
         :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if collector_ilb is not None:
             pulumi.set(__self__, "collector_ilb", collector_ilb)
@@ -56,17 +55,10 @@ class PacketMirroringArgs:
             pulumi.set(__self__, "network", network)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -174,6 +166,15 @@ class PacketMirroringArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -269,8 +270,6 @@ class PacketMirroring(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["priority"] = priority
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

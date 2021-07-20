@@ -78,9 +78,6 @@ export class Repository extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["format"] = args ? args.format : undefined;
@@ -136,7 +133,7 @@ export interface RepositoryArgs {
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     repositoryId?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.

@@ -17,12 +17,12 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  ttl_after_completion_days: Optional[pulumi.Input[int]] = None):
         """
@@ -36,7 +36,6 @@ class JobArgs:
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if input_uri is not None:
@@ -47,6 +46,8 @@ class JobArgs:
             pulumi.set(__self__, "output_uri", output_uri)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
         if ttl_after_completion_days is not None:
@@ -60,15 +61,6 @@ class JobArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -129,6 +121,15 @@ class JobArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="templateId")
@@ -236,8 +237,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["output_uri"] = output_uri
             __props__.__dict__["priority"] = priority
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["ttl_after_completion_days"] = ttl_after_completion_days

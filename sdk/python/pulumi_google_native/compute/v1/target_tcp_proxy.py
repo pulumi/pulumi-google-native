@@ -14,9 +14,9 @@ __all__ = ['TargetTcpProxyArgs', 'TargetTcpProxy']
 @pulumi.input_type
 class TargetTcpProxyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input['TargetTcpProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -29,11 +29,12 @@ class TargetTcpProxyArgs:
         :param pulumi.Input['TargetTcpProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if proxy_bind is not None:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if proxy_header is not None:
@@ -42,15 +43,6 @@ class TargetTcpProxyArgs:
             pulumi.set(__self__, "request_id", request_id)
         if service is not None:
             pulumi.set(__self__, "service", service)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -75,6 +67,15 @@ class TargetTcpProxyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="proxyBind")
@@ -150,7 +151,7 @@ class TargetTcpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetTcpProxyArgs,
+                 args: Optional[TargetTcpProxyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a TargetTcpProxy resource in the specified project using the data included in the request.
@@ -191,8 +192,6 @@ class TargetTcpProxy(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["proxy_header"] = proxy_header

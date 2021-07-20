@@ -26,7 +26,7 @@ export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<G
 export interface GetApiArgs {
     apiId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetApiResult {

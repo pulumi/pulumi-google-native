@@ -30,7 +30,7 @@ export interface GetConsentArgs {
     consentStoreId: string;
     datasetId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConsentResult {

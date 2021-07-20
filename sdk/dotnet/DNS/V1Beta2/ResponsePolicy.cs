@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ResponsePolicy(string name, ResponsePolicyArgs args, CustomResourceOptions? options = null)
+        public ResponsePolicy(string name, ResponsePolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:dns/v1beta2:ResponsePolicy", name, args ?? new ResponsePolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -130,8 +130,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
             set => _networks = value;
         }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// User assigned name for this Response Policy.

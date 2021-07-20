@@ -26,7 +26,7 @@ export function getServiceAttachmentIamPolicy(args: GetServiceAttachmentIamPolic
 
 export interface GetServiceAttachmentIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     region: string;
     resource: string;
 }

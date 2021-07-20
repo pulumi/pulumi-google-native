@@ -19,12 +19,12 @@ class PatchDeploymentArgs:
                  instance_filter: pulumi.Input['PatchInstanceFilterArgs'],
                  one_time_schedule: pulumi.Input['OneTimeScheduleArgs'],
                  patch_deployment_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  recurring_schedule: pulumi.Input['RecurringScheduleArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  patch_config: Optional[pulumi.Input['PatchConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  rollout: Optional[pulumi.Input['PatchRolloutArgs']] = None):
         """
         The set of arguments for constructing a PatchDeployment resource.
@@ -40,7 +40,6 @@ class PatchDeploymentArgs:
         pulumi.set(__self__, "instance_filter", instance_filter)
         pulumi.set(__self__, "one_time_schedule", one_time_schedule)
         pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "recurring_schedule", recurring_schedule)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -50,6 +49,8 @@ class PatchDeploymentArgs:
             pulumi.set(__self__, "name", name)
         if patch_config is not None:
             pulumi.set(__self__, "patch_config", patch_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if rollout is not None:
             pulumi.set(__self__, "rollout", rollout)
 
@@ -85,15 +86,6 @@ class PatchDeploymentArgs:
     @patch_deployment_id.setter
     def patch_deployment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "patch_deployment_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="recurringSchedule")
@@ -154,6 +146,15 @@ class PatchDeploymentArgs:
     @patch_config.setter
     def patch_config(self, value: Optional[pulumi.Input['PatchConfigArgs']]):
         pulumi.set(self, "patch_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -257,8 +258,6 @@ class PatchDeployment(pulumi.CustomResource):
             if patch_deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'patch_deployment_id'")
             __props__.__dict__["patch_deployment_id"] = patch_deployment_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if recurring_schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'recurring_schedule'")

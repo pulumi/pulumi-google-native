@@ -18,8 +18,8 @@ func LookupConnectivityTest(ctx *pulumi.Context, args *LookupConnectivityTestArg
 }
 
 type LookupConnectivityTestArgs struct {
-	ConnectivityTestId string `pulumi:"connectivityTestId"`
-	Project            string `pulumi:"project"`
+	ConnectivityTestId string  `pulumi:"connectivityTestId"`
+	Project            *string `pulumi:"project"`
 }
 
 type LookupConnectivityTestResult struct {

@@ -16,7 +16,6 @@ __all__ = ['DiskArgs', 'Disk']
 @pulumi.input_type
 class DiskArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -28,6 +27,7 @@ class DiskArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,6 @@ class DiskArgs:
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -86,6 +85,8 @@ class DiskArgs:
             pulumi.set(__self__, "options", options)
         if physical_block_size_bytes is not None:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if replica_zones is not None:
@@ -110,15 +111,6 @@ class DiskArgs:
             pulumi.set(__self__, "source_storage_object", source_storage_object)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -248,6 +240,15 @@ class DiskArgs:
     @physical_block_size_bytes.setter
     def physical_block_size_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "physical_block_size_bytes", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="provisionedIops")
@@ -518,8 +519,6 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["replica_zones"] = replica_zones

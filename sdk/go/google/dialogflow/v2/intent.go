@@ -71,9 +71,6 @@ func NewIntent(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Intent
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Intent", name, args, &resource, opts...)
 	if err != nil {
@@ -140,8 +137,8 @@ type intentArgs struct {
 	// Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
 	// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority *int   `pulumi:"priority"`
-	Project  string `pulumi:"project"`
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts *bool `pulumi:"resetContexts"`
 	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
@@ -189,7 +186,7 @@ type IntentArgs struct {
 	ParentFollowupIntentName pulumi.StringPtrInput
 	// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolPtrInput
 	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.

@@ -70,9 +70,6 @@ export class Product extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -121,5 +118,5 @@ export interface ProductArgs {
      * Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
      */
     productLabels?: pulumi.Input<pulumi.Input<inputs.vision.v1.KeyValueArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

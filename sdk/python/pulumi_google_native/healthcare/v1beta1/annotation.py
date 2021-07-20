@@ -18,11 +18,11 @@ class AnnotationArgs:
                  annotation_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  annotation_source: Optional[pulumi.Input['AnnotationSourceArgs']] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  image_annotation: Optional[pulumi.Input['ImageAnnotationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_annotation: Optional[pulumi.Input['ResourceAnnotationArgs']] = None,
                  text_annotation: Optional[pulumi.Input['SensitiveTextAnnotationArgs']] = None):
         """
@@ -37,7 +37,6 @@ class AnnotationArgs:
         pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if annotation_source is not None:
             pulumi.set(__self__, "annotation_source", annotation_source)
         if custom_data is not None:
@@ -46,6 +45,8 @@ class AnnotationArgs:
             pulumi.set(__self__, "image_annotation", image_annotation)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if resource_annotation is not None:
             pulumi.set(__self__, "resource_annotation", resource_annotation)
         if text_annotation is not None:
@@ -77,15 +78,6 @@ class AnnotationArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="annotationSource")
@@ -134,6 +126,15 @@ class AnnotationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="resourceAnnotation")
@@ -247,8 +248,6 @@ class Annotation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_annotation"] = resource_annotation
             __props__.__dict__["text_annotation"] = text_annotation

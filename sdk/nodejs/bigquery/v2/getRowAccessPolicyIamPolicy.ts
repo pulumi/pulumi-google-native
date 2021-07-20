@@ -26,7 +26,7 @@ export function getRowAccessPolicyIamPolicy(args: GetRowAccessPolicyIamPolicyArg
 
 export interface GetRowAccessPolicyIamPolicyArgs {
     datasetId: string;
-    project: string;
+    project?: string;
     rowAccessPolicyId: string;
     tableId: string;
 }

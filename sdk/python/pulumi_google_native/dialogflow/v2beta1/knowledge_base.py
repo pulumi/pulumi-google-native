@@ -15,9 +15,9 @@ class KnowledgeBaseArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  language_code: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KnowledgeBase resource.
         :param pulumi.Input[str] display_name: The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
@@ -26,11 +26,12 @@ class KnowledgeBaseArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="displayName")
@@ -52,15 +53,6 @@ class KnowledgeBaseArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -85,6 +77,15 @@ class KnowledgeBaseArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class KnowledgeBase(pulumi.CustomResource):
@@ -156,8 +157,6 @@ class KnowledgeBase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
         super(KnowledgeBase, __self__).__init__(
             'google-native:dialogflow/v2beta1:KnowledgeBase',

@@ -20,7 +20,7 @@ func LookupGameServerCluster(ctx *pulumi.Context, args *LookupGameServerClusterA
 type LookupGameServerClusterArgs struct {
 	GameServerClusterId string  `pulumi:"gameServerClusterId"`
 	Location            string  `pulumi:"location"`
-	Project             string  `pulumi:"project"`
+	Project             *string `pulumi:"project"`
 	RealmId             string  `pulumi:"realmId"`
 	View                *string `pulumi:"view"`
 }

@@ -18,10 +18,10 @@ func LookupConfig(ctx *pulumi.Context, args *LookupConfigArgs, opts ...pulumi.In
 }
 
 type LookupConfigArgs struct {
-	ConfigId               string `pulumi:"configId"`
-	GameServerDeploymentId string `pulumi:"gameServerDeploymentId"`
-	Location               string `pulumi:"location"`
-	Project                string `pulumi:"project"`
+	ConfigId               string  `pulumi:"configId"`
+	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
+	Location               string  `pulumi:"location"`
+	Project                *string `pulumi:"project"`
 }
 
 type LookupConfigResult struct {

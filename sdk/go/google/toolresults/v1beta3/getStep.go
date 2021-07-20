@@ -18,10 +18,10 @@ func LookupStep(ctx *pulumi.Context, args *LookupStepArgs, opts ...pulumi.Invoke
 }
 
 type LookupStepArgs struct {
-	ExecutionId string `pulumi:"executionId"`
-	HistoryId   string `pulumi:"historyId"`
-	Project     string `pulumi:"project"`
-	StepId      string `pulumi:"stepId"`
+	ExecutionId string  `pulumi:"executionId"`
+	HistoryId   string  `pulumi:"historyId"`
+	Project     *string `pulumi:"project"`
+	StepId      string  `pulumi:"stepId"`
 }
 
 type LookupStepResult struct {

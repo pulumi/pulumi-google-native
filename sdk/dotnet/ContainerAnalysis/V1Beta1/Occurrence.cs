@@ -199,8 +199,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("noteName", required: true)]
         public Input<string> NoteName { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// A description of actions that can be taken to remedy the note.

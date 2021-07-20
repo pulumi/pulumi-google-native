@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,12 +62,9 @@ type Interconnect struct {
 func NewInterconnect(ctx *pulumi.Context,
 	name string, args *InterconnectArgs, opts ...pulumi.ResourceOption) (*Interconnect, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InterconnectArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Interconnect
 	err := ctx.RegisterResource("google-native:compute/v1:Interconnect", name, args, &resource, opts...)
 	if err != nil {
@@ -117,7 +113,7 @@ type interconnectArgs struct {
 	Name *string `pulumi:"name"`
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
 	NocContactEmail *string `pulumi:"nocContactEmail"`
-	Project         string  `pulumi:"project"`
+	Project         *string `pulumi:"project"`
 	RequestId       *string `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
@@ -141,7 +137,7 @@ type InterconnectArgs struct {
 	Name pulumi.StringPtrInput
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
 	NocContactEmail pulumi.StringPtrInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 	RequestId       pulumi.StringPtrInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput

@@ -24,7 +24,7 @@ export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetConfigArgs {
     configId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetConfigResult {

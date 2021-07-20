@@ -17,25 +17,24 @@ __all__ = ['TestMatrixArgs', 'TestMatrix']
 class TestMatrixArgs:
     def __init__(__self__, *,
                  environment_matrix: pulumi.Input['EnvironmentMatrixArgs'],
-                 project: pulumi.Input[str],
                  result_storage: pulumi.Input['ResultStorageArgs'],
                  test_specification: pulumi.Input['TestSpecificationArgs'],
                  client_info: Optional[pulumi.Input['ClientInfoArgs']] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TestMatrix resource.
         :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: The devices the tests are being executed on.
-        :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input['ResultStorageArgs'] result_storage: Where the results for the matrix are written.
         :param pulumi.Input['TestSpecificationArgs'] test_specification: How to run the test.
         :param pulumi.Input['ClientInfoArgs'] client_info: Information about the client which invoked the test.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+        :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         """
         pulumi.set(__self__, "environment_matrix", environment_matrix)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "result_storage", result_storage)
         pulumi.set(__self__, "test_specification", test_specification)
         if client_info is not None:
@@ -44,6 +43,8 @@ class TestMatrixArgs:
             pulumi.set(__self__, "fail_fast", fail_fast)
         if flaky_test_attempts is not None:
             pulumi.set(__self__, "flaky_test_attempts", flaky_test_attempts)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
 
@@ -58,18 +59,6 @@ class TestMatrixArgs:
     @environment_matrix.setter
     def environment_matrix(self, value: pulumi.Input['EnvironmentMatrixArgs']):
         pulumi.set(self, "environment_matrix", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        """
-        The cloud project that owns the test matrix.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="resultStorage")
@@ -130,6 +119,18 @@ class TestMatrixArgs:
     @flaky_test_attempts.setter
     def flaky_test_attempts(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "flaky_test_attempts", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloud project that owns the test matrix.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -220,8 +221,6 @@ class TestMatrix(pulumi.CustomResource):
             __props__.__dict__["environment_matrix"] = environment_matrix
             __props__.__dict__["fail_fast"] = fail_fast
             __props__.__dict__["flaky_test_attempts"] = flaky_test_attempts
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             if result_storage is None and not opts.urn:

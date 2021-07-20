@@ -18,10 +18,10 @@ func LookupHl7V2Store(ctx *pulumi.Context, args *LookupHl7V2StoreArgs, opts ...p
 }
 
 type LookupHl7V2StoreArgs struct {
-	DatasetId    string `pulumi:"datasetId"`
-	Hl7V2StoreId string `pulumi:"hl7V2StoreId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	DatasetId    string  `pulumi:"datasetId"`
+	Hl7V2StoreId string  `pulumi:"hl7V2StoreId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupHl7V2StoreResult struct {

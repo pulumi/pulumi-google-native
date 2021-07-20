@@ -16,7 +16,6 @@ __all__ = ['BackendServiceArgs', 'BackendService']
 @pulumi.input_type
 class BackendServiceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendArgs']]]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
@@ -38,6 +37,7 @@ class BackendServiceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input['OutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['BackendServiceProtocol']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
@@ -69,7 +69,6 @@ class BackendServiceArgs:
         :param pulumi.Input['BackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[int] timeout_sec: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
-        pulumi.set(__self__, "project", project)
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
         if backends is not None:
@@ -112,6 +111,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if request_id is not None:
@@ -122,15 +123,6 @@ class BackendServiceArgs:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -380,6 +372,15 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input['BackendServiceProtocol']]:
         """
         The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
@@ -502,7 +503,7 @@ class BackendService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackendServiceArgs,
+                 args: Optional[BackendServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview .
@@ -582,8 +583,6 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["request_id"] = request_id

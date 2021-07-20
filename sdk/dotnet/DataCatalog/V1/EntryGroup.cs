@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public EntryGroupArgs()
         {

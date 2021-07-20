@@ -18,9 +18,9 @@ func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.Invoke
 }
 
 type LookupNodeArgs struct {
-	Location string `pulumi:"location"`
-	NodeId   string `pulumi:"nodeId"`
-	Project  string `pulumi:"project"`
+	Location string  `pulumi:"location"`
+	NodeId   string  `pulumi:"nodeId"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupNodeResult struct {

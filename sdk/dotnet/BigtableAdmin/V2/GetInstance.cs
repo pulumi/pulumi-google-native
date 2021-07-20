@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetInstanceArgs()
         {

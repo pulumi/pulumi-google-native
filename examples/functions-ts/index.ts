@@ -4,12 +4,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 
 const config = new pulumi.Config("google-native");
-const project = config.require("project");
 const region = config.require("region");
 
-const bucket = new google.storage.v1.Bucket("bucket", {
-    project,
-});
+const bucket = new google.storage.v1.Bucket("bucket");
 
 const bucketObject = new google.storage.v1.BucketObject("bucketObject", {
     name: "zip",
@@ -20,7 +17,6 @@ const bucketObject = new google.storage.v1.BucketObject("bucketObject", {
 });
 
 const func = new google.cloudfunctions.v1.Function("function-py", {
-    project,
     location: region,
     sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
     httpsTrigger: {
@@ -34,7 +30,6 @@ const func = new google.cloudfunctions.v1.Function("function-py", {
 });
 
 const invoker = new google.cloudfunctions.v1.FunctionIamPolicy("function-py-iam", {
-    project,
     location: region,
     functionId: func.name.apply(name => name.split("/")[name.split("/").length-1]),
     bindings: [

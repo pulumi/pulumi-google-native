@@ -78,9 +78,6 @@ export class Registry extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
@@ -140,7 +137,7 @@ export interface RegistryArgs {
      * The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
      */

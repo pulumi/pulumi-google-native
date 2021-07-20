@@ -26,7 +26,7 @@ export function getOsPolicyAssignment(args: GetOsPolicyAssignmentArgs, opts?: pu
 export interface GetOsPolicyAssignmentArgs {
     location: string;
     osPolicyAssignmentId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetOsPolicyAssignmentResult {

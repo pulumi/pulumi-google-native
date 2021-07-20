@@ -28,7 +28,7 @@ export interface GetFeatureIamPolicyArgs {
     featureId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetFeatureIamPolicyResult {

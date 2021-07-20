@@ -16,7 +16,6 @@ __all__ = ['NoteArgs', 'Note']
 @pulumi.input_type
 class NoteArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  attestation_authority: Optional[pulumi.Input['AttestationAuthorityArgs']] = None,
                  base_image: Optional[pulumi.Input['BasisArgs']] = None,
                  build_type: Optional[pulumi.Input['BuildTypeArgs']] = None,
@@ -28,6 +27,7 @@ class NoteArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input['PackageArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input['UpgradeNoteArgs']] = None,
@@ -49,7 +49,6 @@ class NoteArgs:
         :param pulumi.Input['UpgradeNoteArgs'] upgrade: A note describing an upgrade.
         :param pulumi.Input['VulnerabilityTypeArgs'] vulnerability_type: A package vulnerability type of note.
         """
-        pulumi.set(__self__, "project", project)
         if attestation_authority is not None:
             pulumi.set(__self__, "attestation_authority", attestation_authority)
         if base_image is not None:
@@ -72,6 +71,8 @@ class NoteArgs:
             pulumi.set(__self__, "note_id", note_id)
         if package is not None:
             pulumi.set(__self__, "package", package)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if related_url is not None:
             pulumi.set(__self__, "related_url", related_url)
         if short_description is not None:
@@ -80,15 +81,6 @@ class NoteArgs:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_type is not None:
             pulumi.set(__self__, "vulnerability_type", vulnerability_type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="attestationAuthority")
@@ -220,6 +212,15 @@ class NoteArgs:
         pulumi.set(self, "package", value)
 
     @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
     @pulumi.getter(name="relatedUrl")
     def related_url(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]]:
         """
@@ -314,7 +315,7 @@ class Note(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NoteArgs,
+                 args: Optional[NoteArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new `Note`.
@@ -373,8 +374,6 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["note_id"] = note_id
             __props__.__dict__["package"] = package
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["related_url"] = related_url
             __props__.__dict__["short_description"] = short_description

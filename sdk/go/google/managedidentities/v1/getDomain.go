@@ -18,8 +18,8 @@ func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.In
 }
 
 type LookupDomainArgs struct {
-	DomainId string `pulumi:"domainId"`
-	Project  string `pulumi:"project"`
+	DomainId string  `pulumi:"domainId"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupDomainResult struct {

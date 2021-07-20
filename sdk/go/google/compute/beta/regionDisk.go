@@ -100,9 +100,6 @@ func NewRegionDisk(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -164,7 +161,7 @@ type regionDiskArgs struct {
 	Options *string `pulumi:"options"`
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes *string `pulumi:"physicalBlockSizeBytes"`
-	Project                string  `pulumi:"project"`
+	Project                *string `pulumi:"project"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	Region          string  `pulumi:"region"`
@@ -219,7 +216,7 @@ type RegionDiskArgs struct {
 	Options pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.StringPtrInput
-	Project                pulumi.StringInput
+	Project                pulumi.StringPtrInput
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput
 	Region          pulumi.StringInput

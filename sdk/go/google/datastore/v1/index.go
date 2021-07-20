@@ -43,9 +43,6 @@ func NewIndex(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Properties == nil {
 		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
@@ -84,8 +81,8 @@ type indexArgs struct {
 	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor IndexAncestor `pulumi:"ancestor"`
 	// The entity kind to which this index applies.
-	Kind    string `pulumi:"kind"`
-	Project string `pulumi:"project"`
+	Kind    string  `pulumi:"kind"`
+	Project *string `pulumi:"project"`
 	// An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedProperty `pulumi:"properties"`
 }
@@ -96,7 +93,7 @@ type IndexArgs struct {
 	Ancestor IndexAncestorInput
 	// The entity kind to which this index applies.
 	Kind    pulumi.StringInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyArrayInput
 }

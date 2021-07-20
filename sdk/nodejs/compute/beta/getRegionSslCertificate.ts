@@ -24,7 +24,7 @@ export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?
 }
 
 export interface GetRegionSslCertificateArgs {
-    project: string;
+    project?: string;
     region: string;
     sslCertificate: string;
 }

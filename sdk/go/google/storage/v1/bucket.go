@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,12 +74,9 @@ type Bucket struct {
 func NewBucket(ctx *pulumi.Context,
 	name string, args *BucketArgs, opts ...pulumi.ResourceOption) (*Bucket, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BucketArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Bucket
 	err := ctx.RegisterResource("google-native:storage/v1:Bucket", name, args, &resource, opts...)
 	if err != nil {
@@ -151,7 +147,7 @@ type bucketArgs struct {
 	Owner                      *BucketOwner `pulumi:"owner"`
 	PredefinedAcl              *string      `pulumi:"predefinedAcl"`
 	PredefinedDefaultObjectAcl *string      `pulumi:"predefinedDefaultObjectAcl"`
-	Project                    string       `pulumi:"project"`
+	Project                    *string      `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
 	ProjectNumber          *string `pulumi:"projectNumber"`
 	Projection             *string `pulumi:"projection"`
@@ -217,7 +213,7 @@ type BucketArgs struct {
 	Owner                      BucketOwnerPtrInput
 	PredefinedAcl              pulumi.StringPtrInput
 	PredefinedDefaultObjectAcl pulumi.StringPtrInput
-	Project                    pulumi.StringInput
+	Project                    pulumi.StringPtrInput
 	// The project number of the project the bucket belongs to.
 	ProjectNumber          pulumi.StringPtrInput
 	Projection             pulumi.StringPtrInput

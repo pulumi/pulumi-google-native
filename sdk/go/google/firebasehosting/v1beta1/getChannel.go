@@ -18,9 +18,9 @@ func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.
 }
 
 type LookupChannelArgs struct {
-	ChannelId string `pulumi:"channelId"`
-	Project   string `pulumi:"project"`
-	SiteId    string `pulumi:"siteId"`
+	ChannelId string  `pulumi:"channelId"`
+	Project   *string `pulumi:"project"`
+	SiteId    string  `pulumi:"siteId"`
 }
 
 type LookupChannelResult struct {

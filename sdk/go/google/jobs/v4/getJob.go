@@ -18,9 +18,9 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 }
 
 type LookupJobArgs struct {
-	JobId    string `pulumi:"jobId"`
-	Project  string `pulumi:"project"`
-	TenantId string `pulumi:"tenantId"`
+	JobId    string  `pulumi:"jobId"`
+	Project  *string `pulumi:"project"`
+	TenantId string  `pulumi:"tenantId"`
 }
 
 type LookupJobResult struct {

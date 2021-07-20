@@ -52,9 +52,6 @@ func NewRegionUrlMap(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -106,7 +103,7 @@ type regionUrlMapArgs struct {
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
-	Project      string        `pulumi:"project"`
+	Project      *string       `pulumi:"project"`
 	Region       string        `pulumi:"region"`
 	RequestId    *string       `pulumi:"requestId"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -131,7 +128,7 @@ type RegionUrlMapArgs struct {
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherArrayInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	Region       pulumi.StringInput
 	RequestId    pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.

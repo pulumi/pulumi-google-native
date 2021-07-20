@@ -46,9 +46,6 @@ func NewKey(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Key
 	err := ctx.RegisterResource("google-native:apikeys/v2:Key", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type keyArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	KeyId       *string `pulumi:"keyId"`
 	Location    string  `pulumi:"location"`
-	Project     string  `pulumi:"project"`
+	Project     *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *V2Restrictions `pulumi:"restrictions"`
 }
@@ -96,7 +93,7 @@ type KeyArgs struct {
 	DisplayName pulumi.StringPtrInput
 	KeyId       pulumi.StringPtrInput
 	Location    pulumi.StringInput
-	Project     pulumi.StringInput
+	Project     pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions V2RestrictionsPtrInput
 }

@@ -27,7 +27,7 @@ export function getTemplate(args: GetTemplateArgs, opts?: pulumi.InvokeOptions):
 export interface GetTemplateArgs {
     gcsPath: string;
     location: string;
-    project: string;
+    project?: string;
     view?: string;
 }
 

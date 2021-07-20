@@ -58,13 +58,10 @@ export class Release extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ReleaseArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ReleaseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rulesetName"] = args ? args.rulesetName : undefined;
@@ -91,7 +88,7 @@ export interface ReleaseArgs {
      * Format: `projects/{project_id}/releases/{release_id}`
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
      */

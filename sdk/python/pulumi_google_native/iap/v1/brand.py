@@ -13,28 +13,20 @@ __all__ = ['BrandArgs', 'Brand']
 @pulumi.input_type
 class BrandArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  application_title: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Brand resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen.
         """
-        pulumi.set(__self__, "project", project)
         if application_title is not None:
             pulumi.set(__self__, "application_title", application_title)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if support_email is not None:
             pulumi.set(__self__, "support_email", support_email)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="applicationTitle")
@@ -47,6 +39,15 @@ class BrandArgs:
     @application_title.setter
     def application_title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_title", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="supportEmail")
@@ -83,7 +84,7 @@ class Brand(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BrandArgs,
+                 args: Optional[BrandArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.
@@ -120,8 +121,6 @@ class Brand(pulumi.CustomResource):
             __props__ = BrandArgs.__new__(BrandArgs)
 
             __props__.__dict__["application_title"] = application_title
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["support_email"] = support_email
             __props__.__dict__["name"] = None

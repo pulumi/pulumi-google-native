@@ -62,9 +62,6 @@ export class Subscription extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.subscriptionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionId'");
             }
@@ -100,7 +97,7 @@ export interface SubscriptionArgs {
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     skipBacklog?: pulumi.Input<string>;
     subscriptionId: pulumi.Input<string>;
     /**

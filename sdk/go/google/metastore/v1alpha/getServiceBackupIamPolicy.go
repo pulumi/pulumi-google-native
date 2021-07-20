@@ -21,7 +21,7 @@ type LookupServiceBackupIamPolicyArgs struct {
 	BackupId                      string  `pulumi:"backupId"`
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	ServiceId                     string  `pulumi:"serviceId"`
 }
 

@@ -25,7 +25,7 @@ export function getRegionCommitment(args: GetRegionCommitmentArgs, opts?: pulumi
 
 export interface GetRegionCommitmentArgs {
     commitment: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

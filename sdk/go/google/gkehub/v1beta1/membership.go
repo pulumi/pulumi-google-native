@@ -57,9 +57,6 @@ func NewMembership(ctx *pulumi.Context,
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Membership
 	err := ctx.RegisterResource("google-native:gkehub/v1beta1:Membership", name, args, &resource, opts...)
 	if err != nil {
@@ -106,7 +103,7 @@ type membershipArgs struct {
 	Labels       map[string]string `pulumi:"labels"`
 	Location     string            `pulumi:"location"`
 	MembershipId string            `pulumi:"membershipId"`
-	Project      string            `pulumi:"project"`
+	Project      *string           `pulumi:"project"`
 	RequestId    *string           `pulumi:"requestId"`
 }
 
@@ -126,7 +123,7 @@ type MembershipArgs struct {
 	Labels       pulumi.StringMapInput
 	Location     pulumi.StringInput
 	MembershipId pulumi.StringInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	RequestId    pulumi.StringPtrInput
 }
 

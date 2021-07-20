@@ -26,7 +26,7 @@ export function getTrial(args: GetTrialArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetTrialArgs {
     location: string;
-    project: string;
+    project?: string;
     studyId: string;
     trialId: string;
 }

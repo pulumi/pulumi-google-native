@@ -16,8 +16,8 @@ class ParticipantArgs:
     def __init__(__self__, *,
                  conversation_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['ParticipantRole']] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None):
         """
@@ -28,9 +28,10 @@ class ParticipantArgs:
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if sip_recording_media_label is not None:
@@ -56,15 +57,6 @@ class ParticipantArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
@@ -74,6 +66,15 @@ class ParticipantArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -170,8 +171,6 @@ class Participant(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
             __props__.__dict__["sip_recording_media_label"] = sip_recording_media_label

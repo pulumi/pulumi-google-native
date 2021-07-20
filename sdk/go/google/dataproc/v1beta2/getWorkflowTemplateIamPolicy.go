@@ -20,7 +20,7 @@ func LookupWorkflowTemplateIamPolicy(ctx *pulumi.Context, args *LookupWorkflowTe
 type LookupWorkflowTemplateIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	WorkflowTemplateId            string  `pulumi:"workflowTemplateId"`
 }
 

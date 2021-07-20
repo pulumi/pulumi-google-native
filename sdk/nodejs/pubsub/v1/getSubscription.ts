@@ -23,7 +23,7 @@ export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetSubscriptionArgs {
-    project: string;
+    project?: string;
     subscriptionId: string;
 }
 

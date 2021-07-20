@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("machineImage", required: true)]
         public string MachineImage { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetMachineImageArgs()
         {

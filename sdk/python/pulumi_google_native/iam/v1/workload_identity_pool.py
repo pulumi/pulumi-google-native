@@ -14,11 +14,11 @@ __all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
 class WorkloadIdentityPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  workload_identity_pool_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPool resource.
         :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
@@ -26,7 +26,6 @@ class WorkloadIdentityPoolArgs:
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -34,6 +33,8 @@ class WorkloadIdentityPoolArgs:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -43,15 +44,6 @@ class WorkloadIdentityPoolArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -97,6 +89,15 @@ class WorkloadIdentityPoolArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class WorkloadIdentityPool(pulumi.CustomResource):
@@ -170,8 +171,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")

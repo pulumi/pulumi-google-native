@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("nodeTemplate")]
         public Input<string>? NodeTemplate { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

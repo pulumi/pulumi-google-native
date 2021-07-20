@@ -18,8 +18,8 @@ func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.Invo
 }
 
 type LookupRouteArgs struct {
-	Project string `pulumi:"project"`
-	Route   string `pulumi:"route"`
+	Project *string `pulumi:"project"`
+	Route   string  `pulumi:"route"`
 }
 
 type LookupRouteResult struct {

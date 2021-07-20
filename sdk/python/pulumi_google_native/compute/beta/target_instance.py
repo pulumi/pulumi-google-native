@@ -14,13 +14,13 @@ __all__ = ['TargetInstanceArgs', 'TargetInstance']
 @pulumi.input_type
 class TargetInstanceArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input['TargetInstanceNatPolicy']] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetInstance resource.
@@ -30,7 +30,6 @@ class TargetInstanceArgs:
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -42,17 +41,10 @@ class TargetInstanceArgs:
             pulumi.set(__self__, "nat_policy", nat_policy)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -122,6 +114,15 @@ class TargetInstanceArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -207,8 +208,6 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nat_policy"] = nat_policy
             __props__.__dict__["network"] = network
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             if zone is None and not opts.urn:

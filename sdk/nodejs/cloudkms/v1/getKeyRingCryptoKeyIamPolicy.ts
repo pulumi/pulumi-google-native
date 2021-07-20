@@ -30,7 +30,7 @@ export interface GetKeyRingCryptoKeyIamPolicyArgs {
     keyRingId: string;
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetKeyRingCryptoKeyIamPolicyResult {

@@ -24,7 +24,7 @@ export function getExternalVpnGateway(args: GetExternalVpnGatewayArgs, opts?: pu
 
 export interface GetExternalVpnGatewayArgs {
     externalVpnGateway: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetExternalVpnGatewayResult {

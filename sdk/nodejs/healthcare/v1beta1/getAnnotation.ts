@@ -30,7 +30,7 @@ export interface GetAnnotationArgs {
     annotationStoreId: string;
     datasetId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAnnotationResult {

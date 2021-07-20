@@ -17,13 +17,13 @@ __all__ = ['ChangeArgs', 'Change']
 class ChangeArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['ChangeStatus']] = None):
         """
@@ -36,7 +36,6 @@ class ChangeArgs:
         :param pulumi.Input['ChangeStatus'] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
-        pulumi.set(__self__, "project", project)
         if additions is not None:
             pulumi.set(__self__, "additions", additions)
         if client_operation_id is not None:
@@ -49,6 +48,8 @@ class ChangeArgs:
             pulumi.set(__self__, "is_serving", is_serving)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if status is not None:
@@ -62,15 +63,6 @@ class ChangeArgs:
     @managed_zone.setter
     def managed_zone(self, value: pulumi.Input[str]):
         pulumi.set(self, "managed_zone", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -137,6 +129,15 @@ class ChangeArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -248,8 +249,6 @@ class Change(pulumi.CustomResource):
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
             __props__.__dict__["managed_zone"] = managed_zone
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["status"] = status

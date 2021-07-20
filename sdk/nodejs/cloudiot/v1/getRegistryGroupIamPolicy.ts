@@ -27,7 +27,7 @@ export function getRegistryGroupIamPolicy(args: GetRegistryGroupIamPolicyArgs, o
 export interface GetRegistryGroupIamPolicyArgs {
     groupId: string;
     location: string;
-    project: string;
+    project?: string;
     registryId: string;
 }
 

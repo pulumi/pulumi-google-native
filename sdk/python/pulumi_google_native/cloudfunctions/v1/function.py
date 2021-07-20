@@ -17,7 +17,6 @@ __all__ = ['FunctionArgs', 'Function']
 class FunctionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
@@ -31,6 +30,7 @@ class FunctionArgs:
                  max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
@@ -66,7 +66,6 @@ class FunctionArgs:
         :param pulumi.Input['FunctionVpcConnectorEgressSettings'] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if available_memory_mb is not None:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
@@ -93,6 +92,8 @@ class FunctionArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if service_account_email is not None:
@@ -120,15 +121,6 @@ class FunctionArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="availableMemoryMb")
@@ -285,6 +277,15 @@ class FunctionArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -529,8 +530,6 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["service_account_email"] = service_account_email

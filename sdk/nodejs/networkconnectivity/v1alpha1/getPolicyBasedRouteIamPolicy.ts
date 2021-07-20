@@ -26,7 +26,7 @@ export function getPolicyBasedRouteIamPolicy(args: GetPolicyBasedRouteIamPolicyA
 export interface GetPolicyBasedRouteIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
     policyBasedRouteId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetPolicyBasedRouteIamPolicyResult {

@@ -37,9 +37,6 @@ func NewProduct(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Product
 	err := ctx.RegisterResource("google-native:vision/v1:Product", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type productArgs struct {
 	ProductId       *string `pulumi:"productId"`
 	// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 	ProductLabels []KeyValue `pulumi:"productLabels"`
-	Project       string     `pulumi:"project"`
+	Project       *string    `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Product resource.
@@ -101,7 +98,7 @@ type ProductArgs struct {
 	ProductId       pulumi.StringPtrInput
 	// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 	ProductLabels KeyValueArrayInput
-	Project       pulumi.StringInput
+	Project       pulumi.StringPtrInput
 }
 
 func (ProductArgs) ElementType() reflect.Type {

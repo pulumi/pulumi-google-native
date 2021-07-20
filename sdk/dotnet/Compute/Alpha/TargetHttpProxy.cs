@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TargetHttpProxy(string name, TargetHttpProxyArgs args, CustomResourceOptions? options = null)
+        public TargetHttpProxy(string name, TargetHttpProxyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:TargetHttpProxy", name, args ?? new TargetHttpProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.

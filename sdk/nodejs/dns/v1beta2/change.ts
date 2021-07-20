@@ -72,9 +72,6 @@ export class Change extends pulumi.CustomResource {
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["additions"] = args ? args.additions : undefined;
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["deletions"] = args ? args.deletions : undefined;
@@ -123,7 +120,7 @@ export interface ChangeArgs {
     isServing?: pulumi.Input<boolean>;
     kind?: pulumi.Input<string>;
     managedZone: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.
      */

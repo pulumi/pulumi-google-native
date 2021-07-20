@@ -13,25 +13,17 @@ __all__ = ['HmacKeyArgs', 'HmacKey']
 @pulumi.input_type
 class HmacKeyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  service_account_email: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HmacKey resource.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_account_email", service_account_email)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if user_project is not None:
             pulumi.set(__self__, "user_project", user_project)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -41,6 +33,15 @@ class HmacKeyArgs:
     @service_account_email.setter
     def service_account_email(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="userProject")
@@ -108,8 +109,6 @@ class HmacKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HmacKeyArgs.__new__(HmacKeyArgs)
 
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")

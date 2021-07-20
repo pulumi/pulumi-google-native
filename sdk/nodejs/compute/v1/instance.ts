@@ -186,9 +186,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -343,7 +340,7 @@ export interface InstanceArgs {
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
     privateIpv6GoogleAccess?: pulumi.Input<enums.compute.v1.InstancePrivateIpv6GoogleAccess>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.

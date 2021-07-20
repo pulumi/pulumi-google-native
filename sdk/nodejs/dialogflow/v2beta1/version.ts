@@ -70,9 +70,6 @@ export class Version extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -103,5 +100,5 @@ export interface VersionArgs {
      */
     description?: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

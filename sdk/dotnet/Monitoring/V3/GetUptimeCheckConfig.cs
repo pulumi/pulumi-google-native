@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
     public sealed class GetUptimeCheckConfigArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("uptimeCheckConfigId", required: true)]
         public string UptimeCheckConfigId { get; set; } = null!;

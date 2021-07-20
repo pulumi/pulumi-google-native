@@ -26,7 +26,7 @@ export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise
 export interface GetNodeArgs {
     location: string;
     nodeId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetNodeResult {

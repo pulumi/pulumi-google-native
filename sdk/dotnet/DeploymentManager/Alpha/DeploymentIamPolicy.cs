@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;

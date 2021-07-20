@@ -54,9 +54,6 @@ func NewConversationProfile(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource ConversationProfile
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:ConversationProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -108,7 +105,7 @@ type conversationProfileArgs struct {
 	NewMessageEventNotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"newMessageEventNotificationConfig"`
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"notificationConfig"`
-	Project            string                                          `pulumi:"project"`
+	Project            *string                                         `pulumi:"project"`
 	// Settings for speech transcription.
 	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfig `pulumi:"sttConfig"`
 }
@@ -134,7 +131,7 @@ type ConversationProfileArgs struct {
 	NewMessageEventNotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput
-	Project            pulumi.StringInput
+	Project            pulumi.StringPtrInput
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput
 }

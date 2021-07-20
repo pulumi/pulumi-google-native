@@ -45,9 +45,6 @@ func NewApi(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Api
 	err := ctx.RegisterResource("google-native:apigateway/v1beta:Api", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type apiArgs struct {
 	Location string            `pulumi:"location"`
 	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService *string `pulumi:"managedService"`
-	Project        string  `pulumi:"project"`
+	Project        *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Api resource.
@@ -101,7 +98,7 @@ type ApiArgs struct {
 	Location pulumi.StringInput
 	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringPtrInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 }
 
 func (ApiArgs) ElementType() reflect.Type {

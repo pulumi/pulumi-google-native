@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("historyId", required: true)]
         public string HistoryId { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetHistoryArgs()
         {

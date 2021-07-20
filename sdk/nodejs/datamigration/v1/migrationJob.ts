@@ -132,9 +132,6 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.migrationJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'migrationJobId'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
@@ -222,7 +219,7 @@ export interface MigrationJobArgs {
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
     name?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.

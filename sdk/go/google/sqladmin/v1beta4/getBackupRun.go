@@ -18,9 +18,9 @@ func LookupBackupRun(ctx *pulumi.Context, args *LookupBackupRunArgs, opts ...pul
 }
 
 type LookupBackupRunArgs struct {
-	Id       string `pulumi:"id"`
-	Instance string `pulumi:"instance"`
-	Project  string `pulumi:"project"`
+	Id       string  `pulumi:"id"`
+	Instance string  `pulumi:"instance"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupBackupRunResult struct {

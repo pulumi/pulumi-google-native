@@ -26,7 +26,7 @@ export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.Invok
 
 export interface GetDiskIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
     zone: string;
 }

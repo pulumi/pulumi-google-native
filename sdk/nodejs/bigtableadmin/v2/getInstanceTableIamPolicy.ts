@@ -25,7 +25,7 @@ export function getInstanceTableIamPolicy(args: GetInstanceTableIamPolicyArgs, o
 
 export interface GetInstanceTableIamPolicyArgs {
     instanceId: string;
-    project: string;
+    project?: string;
     tableId: string;
 }
 

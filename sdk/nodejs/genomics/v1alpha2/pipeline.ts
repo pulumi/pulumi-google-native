@@ -79,9 +79,6 @@ export class Pipeline extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
@@ -141,7 +138,7 @@ export interface PipelineArgs {
     /**
      * The project in which to create the pipeline. The caller must have WRITE access.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */

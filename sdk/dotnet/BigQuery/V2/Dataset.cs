@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
+        public Dataset(string name, DatasetArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:bigquery/v2:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -211,8 +211,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public DatasetArgs()
         {

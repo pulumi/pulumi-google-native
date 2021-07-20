@@ -18,9 +18,9 @@ func LookupCaPool(ctx *pulumi.Context, args *LookupCaPoolArgs, opts ...pulumi.In
 }
 
 type LookupCaPoolArgs struct {
-	CaPoolId string `pulumi:"caPoolId"`
-	Location string `pulumi:"location"`
-	Project  string `pulumi:"project"`
+	CaPoolId string  `pulumi:"caPoolId"`
+	Location string  `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 }
 
 type LookupCaPoolResult struct {

@@ -22,7 +22,7 @@ type LookupMessageArgs struct {
 	Hl7V2StoreId string  `pulumi:"hl7V2StoreId"`
 	Location     string  `pulumi:"location"`
 	MessageId    string  `pulumi:"messageId"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	View         *string `pulumi:"view"`
 }
 

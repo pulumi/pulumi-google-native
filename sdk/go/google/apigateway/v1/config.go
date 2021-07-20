@@ -56,9 +56,6 @@ func NewConfig(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Config
 	err := ctx.RegisterResource("google-native:apigateway/v1:Config", name, args, &resource, opts...)
 	if err != nil {
@@ -106,7 +103,7 @@ type configArgs struct {
 	ManagedServiceConfigs []ApigatewayApiConfigFile `pulumi:"managedServiceConfigs"`
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments []ApigatewayApiConfigOpenApiDocument `pulumi:"openapiDocuments"`
-	Project          string                               `pulumi:"project"`
+	Project          *string                              `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Config resource.
@@ -126,7 +123,7 @@ type ConfigArgs struct {
 	ManagedServiceConfigs ApigatewayApiConfigFileArrayInput
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentArrayInput
-	Project          pulumi.StringInput
+	Project          pulumi.StringPtrInput
 }
 
 func (ConfigArgs) ElementType() reflect.Type {

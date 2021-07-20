@@ -25,7 +25,7 @@ export function getInterconnectAttachment(args: GetInterconnectAttachmentArgs, o
 
 export interface GetInterconnectAttachmentArgs {
     interconnectAttachment: string;
-    project: string;
+    project?: string;
     region: string;
 }
 

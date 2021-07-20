@@ -14,10 +14,10 @@ __all__ = ['TargetSslProxyArgs', 'TargetSslProxy']
 @pulumi.input_type
 class TargetSslProxyArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  proxy_header: Optional[pulumi.Input['TargetSslProxyProxyHeader']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -33,13 +33,14 @@ class TargetSslProxyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] ssl_policy: URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
         """
-        pulumi.set(__self__, "project", project)
         if certificate_map is not None:
             pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if proxy_header is not None:
             pulumi.set(__self__, "proxy_header", proxy_header)
         if request_id is not None:
@@ -50,15 +51,6 @@ class TargetSslProxyArgs:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="certificateMap")
@@ -95,6 +87,15 @@ class TargetSslProxyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="proxyHeader")
@@ -186,7 +187,7 @@ class TargetSslProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetSslProxyArgs,
+                 args: Optional[TargetSslProxyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a TargetSslProxy resource in the specified project using the data included in the request.
@@ -230,8 +231,6 @@ class TargetSslProxy(pulumi.CustomResource):
             __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_header"] = proxy_header
             __props__.__dict__["request_id"] = request_id

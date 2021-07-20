@@ -16,10 +16,10 @@ __all__ = ['TopicArgs', 'Topic']
 class TopicArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  topic_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input['PartitionConfigArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  retention_config: Optional[pulumi.Input['RetentionConfigArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
@@ -28,12 +28,13 @@ class TopicArgs:
         :param pulumi.Input['RetentionConfigArgs'] retention_config: The settings for this topic's message retention.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "topic_id", topic_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if partition_config is not None:
             pulumi.set(__self__, "partition_config", partition_config)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if retention_config is not None:
             pulumi.set(__self__, "retention_config", retention_config)
 
@@ -45,15 +46,6 @@ class TopicArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="topicId")
@@ -87,6 +79,15 @@ class TopicArgs:
     @partition_config.setter
     def partition_config(self, value: Optional[pulumi.Input['PartitionConfigArgs']]):
         pulumi.set(self, "partition_config", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="retentionConfig")
@@ -169,8 +170,6 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["partition_config"] = partition_config
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["retention_config"] = retention_config
             if topic_id is None and not opts.urn:

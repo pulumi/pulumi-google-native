@@ -42,9 +42,6 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Database
 	err := ctx.RegisterResource("google-native:sqladmin/v1beta4:Database", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type databaseArgs struct {
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name *string `pulumi:"name"`
 	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-	Project string `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink                 *string                   `pulumi:"selfLink"`
 	SqlserverDatabaseDetails *SqlServerDatabaseDetails `pulumi:"sqlserverDatabaseDetails"`
@@ -107,7 +104,7 @@ type DatabaseArgs struct {
 	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
 	Name pulumi.StringPtrInput
 	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The URI of this resource.
 	SelfLink                 pulumi.StringPtrInput
 	SqlserverDatabaseDetails SqlServerDatabaseDetailsPtrInput

@@ -18,9 +18,9 @@ func LookupAppProfile(ctx *pulumi.Context, args *LookupAppProfileArgs, opts ...p
 }
 
 type LookupAppProfileArgs struct {
-	AppProfileId string `pulumi:"appProfileId"`
-	InstanceId   string `pulumi:"instanceId"`
-	Project      string `pulumi:"project"`
+	AppProfileId string  `pulumi:"appProfileId"`
+	InstanceId   string  `pulumi:"instanceId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupAppProfileResult struct {

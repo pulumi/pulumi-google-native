@@ -24,7 +24,7 @@ export function getOccurrenceIamPolicy(args: GetOccurrenceIamPolicyArgs, opts?: 
 
 export interface GetOccurrenceIamPolicyArgs {
     occurrenceId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetOccurrenceIamPolicyResult {

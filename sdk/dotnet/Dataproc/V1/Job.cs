@@ -217,8 +217,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("prestoJob")]
         public Input<Inputs.PrestoJobArgs>? PrestoJob { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Optional. Job is a PySpark job.

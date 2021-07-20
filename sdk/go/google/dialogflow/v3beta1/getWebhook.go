@@ -18,10 +18,10 @@ func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.
 }
 
 type LookupWebhookArgs struct {
-	AgentId   string `pulumi:"agentId"`
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	WebhookId string `pulumi:"webhookId"`
+	AgentId   string  `pulumi:"agentId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	WebhookId string  `pulumi:"webhookId"`
 }
 
 type LookupWebhookResult struct {

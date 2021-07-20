@@ -18,11 +18,11 @@ class ConfigArgs:
                  config_id: pulumi.Input[str],
                  game_server_deployment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Config resource.
@@ -35,7 +35,6 @@ class ConfigArgs:
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "game_server_deployment_id", game_server_deployment_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fleet_configs is not None:
@@ -44,6 +43,8 @@ class ConfigArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if scaling_configs is not None:
             pulumi.set(__self__, "scaling_configs", scaling_configs)
 
@@ -73,15 +74,6 @@ class ConfigArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -130,6 +122,15 @@ class ConfigArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="scalingConfigs")
@@ -228,8 +229,6 @@ class Config(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["scaling_configs"] = scaling_configs
             __props__.__dict__["create_time"] = None

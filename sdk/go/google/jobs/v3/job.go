@@ -91,9 +91,6 @@ func NewJob(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.RequisitionId == nil {
 		return nil, errors.New("invalid value for required argument 'RequisitionId'")
 	}
@@ -172,7 +169,7 @@ type jobArgs struct {
 	PostingRegion *JobPostingRegion `pulumi:"postingRegion"`
 	// Optional. Options for job processing.
 	ProcessingOptions *ProcessingOptions `pulumi:"processingOptions"`
-	Project           string             `pulumi:"project"`
+	Project           *string            `pulumi:"project"`
 	// Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
 	PromotionValue *int `pulumi:"promotionValue"`
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
@@ -227,7 +224,7 @@ type JobArgs struct {
 	PostingRegion JobPostingRegionPtrInput
 	// Optional. Options for job processing.
 	ProcessingOptions ProcessingOptionsPtrInput
-	Project           pulumi.StringInput
+	Project           pulumi.StringPtrInput
 	// Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
 	PromotionValue pulumi.IntPtrInput
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.

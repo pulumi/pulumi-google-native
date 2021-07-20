@@ -8,7 +8,8 @@ import * as utilities from "../../utilities";
 /**
  * Returns the IAM access control policy for the specified project. Permission is denied if the policy or the resource do not exist.
  */
-export function getProjectIamPolicy(args: GetProjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIamPolicyResult> {
+export function getProjectIamPolicy(args?: GetProjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIamPolicyResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -22,7 +23,7 @@ export function getProjectIamPolicy(args: GetProjectIamPolicyArgs, opts?: pulumi
 }
 
 export interface GetProjectIamPolicyArgs {
-    project: string;
+    project?: string;
 }
 
 export interface GetProjectIamPolicyResult {

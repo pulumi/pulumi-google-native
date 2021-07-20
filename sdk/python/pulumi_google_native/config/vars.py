@@ -12,6 +12,7 @@ __all__ = [
     'append_user_agent',
     'disable_partner_name',
     'partner_name',
+    'project',
 ]
 
 __config__ = pulumi.Config('google-native')
@@ -29,5 +30,10 @@ This will disable the Pulumi Partner Name which is used if a custom `partnerName
 partner_name = __config__.get('partnerName')
 """
 A Google Partner Name to facilitate partner resource usage attribution.
+"""
+
+project = __config__.get('project')
+"""
+A Google Cloud project name.
 """
 

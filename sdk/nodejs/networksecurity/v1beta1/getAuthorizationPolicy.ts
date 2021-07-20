@@ -26,7 +26,7 @@ export function getAuthorizationPolicy(args: GetAuthorizationPolicyArgs, opts?: 
 export interface GetAuthorizationPolicyArgs {
     authorizationPolicyId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetAuthorizationPolicyResult {

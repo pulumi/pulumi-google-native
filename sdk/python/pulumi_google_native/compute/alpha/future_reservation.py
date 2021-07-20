@@ -16,12 +16,12 @@ __all__ = ['FutureReservationArgs', 'FutureReservation']
 @pulumi.input_type
 class FutureReservationArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSKUPropertiesArgs']] = None,
@@ -35,7 +35,6 @@ class FutureReservationArgs:
         :param pulumi.Input['FutureReservationSpecificSKUPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -45,6 +44,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if share_settings is not None:
@@ -53,15 +54,6 @@ class FutureReservationArgs:
             pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
         if time_window is not None:
             pulumi.set(__self__, "time_window", time_window)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -116,6 +108,15 @@ class FutureReservationArgs:
     @name_prefix.setter
     def name_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -241,8 +242,6 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["share_settings"] = share_settings

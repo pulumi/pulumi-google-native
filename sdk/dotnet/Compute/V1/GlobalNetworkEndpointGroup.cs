@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GlobalNetworkEndpointGroup(string name, GlobalNetworkEndpointGroupArgs args, CustomResourceOptions? options = null)
+        public GlobalNetworkEndpointGroup(string name, GlobalNetworkEndpointGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/v1:GlobalNetworkEndpointGroup", name, args ?? new GlobalNetworkEndpointGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -216,8 +216,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.V1.GlobalNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

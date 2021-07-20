@@ -28,7 +28,7 @@ export function getPerfSampleSeries(args: GetPerfSampleSeriesArgs, opts?: pulumi
 export interface GetPerfSampleSeriesArgs {
     executionId: string;
     historyId: string;
-    project: string;
+    project?: string;
     sampleSeriesId: string;
     stepId: string;
 }

@@ -19,7 +19,7 @@ func LookupDiskIamPolicy(ctx *pulumi.Context, args *LookupDiskIamPolicyArgs, opt
 
 type LookupDiskIamPolicyArgs struct {
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Project                       string  `pulumi:"project"`
+	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 	Zone                          string  `pulumi:"zone"`
 }

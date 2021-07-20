@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public DicomStoreArgs()
         {

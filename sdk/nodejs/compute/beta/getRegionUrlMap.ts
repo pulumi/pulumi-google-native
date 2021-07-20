@@ -24,7 +24,7 @@ export function getRegionUrlMap(args: GetRegionUrlMapArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetRegionUrlMapArgs {
-    project: string;
+    project?: string;
     region: string;
     urlMap: string;
 }

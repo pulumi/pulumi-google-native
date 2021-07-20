@@ -15,7 +15,6 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 @pulumi.input_type
 class SubscriptionArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  subscription_id: pulumi.Input[str],
                  topic: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
@@ -27,6 +26,7 @@ class SubscriptionArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['PushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
                  retry_policy: Optional[pulumi.Input['RetryPolicyArgs']] = None):
@@ -46,7 +46,6 @@ class SubscriptionArgs:
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         :param pulumi.Input['RetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "subscription_id", subscription_id)
         pulumi.set(__self__, "topic", topic)
         if ack_deadline_seconds is not None:
@@ -67,21 +66,14 @@ class SubscriptionArgs:
             pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if push_config is not None:
             pulumi.set(__self__, "push_config", push_config)
         if retain_acked_messages is not None:
             pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="subscriptionId")
@@ -211,6 +203,15 @@ class SubscriptionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pushConfig")
@@ -349,8 +350,6 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["push_config"] = push_config
             __props__.__dict__["retain_acked_messages"] = retain_acked_messages

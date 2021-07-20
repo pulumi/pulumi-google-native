@@ -79,9 +79,6 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             inputs["charset"] = args ? args.charset : undefined;
             inputs["collation"] = args ? args.collation : undefined;
             inputs["instance"] = args ? args.instance : undefined;
@@ -134,7 +131,7 @@ export interface DatabaseArgs {
     /**
      * The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
      */
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The URI of this resource.
      */

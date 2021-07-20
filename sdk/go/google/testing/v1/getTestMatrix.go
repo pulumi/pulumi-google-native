@@ -18,8 +18,8 @@ func LookupTestMatrix(ctx *pulumi.Context, args *LookupTestMatrixArgs, opts ...p
 }
 
 type LookupTestMatrixArgs struct {
-	Project      string `pulumi:"project"`
-	TestMatrixId string `pulumi:"testMatrixId"`
+	Project      *string `pulumi:"project"`
+	TestMatrixId string  `pulumi:"testMatrixId"`
 }
 
 type LookupTestMatrixResult struct {

@@ -18,9 +18,9 @@ func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.
 }
 
 type LookupTriggerArgs struct {
-	Location  string `pulumi:"location"`
-	Project   string `pulumi:"project"`
-	TriggerId string `pulumi:"triggerId"`
+	Location  string  `pulumi:"location"`
+	Project   *string `pulumi:"project"`
+	TriggerId string  `pulumi:"triggerId"`
 }
 
 type LookupTriggerResult struct {

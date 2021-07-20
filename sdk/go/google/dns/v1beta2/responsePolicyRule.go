@@ -34,9 +34,6 @@ func NewResponsePolicyRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.ResponsePolicy == nil {
 		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
 	}
@@ -80,7 +77,7 @@ type responsePolicyRuleArgs struct {
 	Kind    *string `pulumi:"kind"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
 	LocalData      *ResponsePolicyRuleLocalData `pulumi:"localData"`
-	Project        string                       `pulumi:"project"`
+	Project        *string                      `pulumi:"project"`
 	ResponsePolicy string                       `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName *string `pulumi:"ruleName"`
@@ -96,7 +93,7 @@ type ResponsePolicyRuleArgs struct {
 	Kind    pulumi.StringPtrInput
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
 	LocalData      ResponsePolicyRuleLocalDataPtrInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 	ResponsePolicy pulumi.StringInput
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringPtrInput

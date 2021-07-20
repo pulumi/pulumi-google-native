@@ -169,8 +169,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

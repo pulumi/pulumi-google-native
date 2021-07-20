@@ -23,7 +23,7 @@ export function getRuleset(args: GetRulesetArgs, opts?: pulumi.InvokeOptions): P
 }
 
 export interface GetRulesetArgs {
-    project: string;
+    project?: string;
     rulesetId: string;
 }
 

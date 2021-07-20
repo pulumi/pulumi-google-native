@@ -26,7 +26,7 @@ export function getQueue(args: GetQueueArgs, opts?: pulumi.InvokeOptions): Promi
 
 export interface GetQueueArgs {
     location: string;
-    project: string;
+    project?: string;
     queueId: string;
     readMask?: string;
 }

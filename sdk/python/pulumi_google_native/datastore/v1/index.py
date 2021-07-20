@@ -18,8 +18,8 @@ class IndexArgs:
     def __init__(__self__, *,
                  ancestor: pulumi.Input['IndexAncestor'],
                  kind: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 properties: pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]):
+                 properties: pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]],
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input['IndexAncestor'] ancestor: The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
@@ -28,8 +28,9 @@ class IndexArgs:
         """
         pulumi.set(__self__, "ancestor", ancestor)
         pulumi.set(__self__, "kind", kind)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "properties", properties)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -57,15 +58,6 @@ class IndexArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def properties(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]:
         """
         An ordered sequence of property names and their index attributes.
@@ -75,6 +67,15 @@ class IndexArgs:
     @properties.setter
     def properties(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Index(pulumi.CustomResource):
@@ -144,8 +145,6 @@ class Index(pulumi.CustomResource):
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__.__dict__["kind"] = kind
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if properties is None and not opts.urn:
                 raise TypeError("Missing required property 'properties'")

@@ -58,9 +58,6 @@ func NewBackupRun(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource BackupRun
 	err := ctx.RegisterResource("google-native:sqladmin/v1beta4:BackupRun", name, args, &resource, opts...)
 	if err != nil {
@@ -115,7 +112,7 @@ type backupRunArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Location of the backups.
 	Location *string `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
@@ -152,7 +149,7 @@ type BackupRunArgs struct {
 	Kind pulumi.StringPtrInput
 	// Location of the backups.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.

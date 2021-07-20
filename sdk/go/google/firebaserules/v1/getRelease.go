@@ -18,8 +18,8 @@ func LookupRelease(ctx *pulumi.Context, args *LookupReleaseArgs, opts ...pulumi.
 }
 
 type LookupReleaseArgs struct {
-	Project   string `pulumi:"project"`
-	ReleaseId string `pulumi:"releaseId"`
+	Project   *string `pulumi:"project"`
+	ReleaseId string  `pulumi:"releaseId"`
 }
 
 type LookupReleaseResult struct {

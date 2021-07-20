@@ -24,7 +24,7 @@ export function getGuestPolicy(args: GetGuestPolicyArgs, opts?: pulumi.InvokeOpt
 
 export interface GetGuestPolicyArgs {
     guestPolicyId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetGuestPolicyResult {

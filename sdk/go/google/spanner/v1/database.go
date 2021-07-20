@@ -47,9 +47,6 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Database
 	err := ctx.RegisterResource("google-native:spanner/v1:Database", name, args, &resource, opts...)
 	if err != nil {
@@ -89,7 +86,7 @@ type databaseArgs struct {
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
 	ExtraStatements []string `pulumi:"extraStatements"`
 	InstanceId      string   `pulumi:"instanceId"`
-	Project         string   `pulumi:"project"`
+	Project         *string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Database resource.
@@ -101,7 +98,7 @@ type DatabaseArgs struct {
 	// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
 	ExtraStatements pulumi.StringArrayInput
 	InstanceId      pulumi.StringInput
-	Project         pulumi.StringInput
+	Project         pulumi.StringPtrInput
 }
 
 func (DatabaseArgs) ElementType() reflect.Type {

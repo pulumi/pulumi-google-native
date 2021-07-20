@@ -18,9 +18,9 @@ func LookupRegionNotificationEndpoint(ctx *pulumi.Context, args *LookupRegionNot
 }
 
 type LookupRegionNotificationEndpointArgs struct {
-	NotificationEndpoint string `pulumi:"notificationEndpoint"`
-	Project              string `pulumi:"project"`
-	Region               string `pulumi:"region"`
+	NotificationEndpoint string  `pulumi:"notificationEndpoint"`
+	Project              *string `pulumi:"project"`
+	Region               string  `pulumi:"region"`
 }
 
 type LookupRegionNotificationEndpointResult struct {

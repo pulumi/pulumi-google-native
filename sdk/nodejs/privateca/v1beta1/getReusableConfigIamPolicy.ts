@@ -27,7 +27,7 @@ export function getReusableConfigIamPolicy(args: GetReusableConfigIamPolicyArgs,
 export interface GetReusableConfigIamPolicyArgs {
     location: string;
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     reusableConfigId: string;
 }
 

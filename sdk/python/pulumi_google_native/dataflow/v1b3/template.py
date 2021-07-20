@@ -19,9 +19,9 @@ class TemplateArgs:
                  gcs_path: pulumi.Input[str],
                  job_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  environment: Optional[pulumi.Input['RuntimeEnvironmentArgs']] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Template resource.
         :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -33,11 +33,12 @@ class TemplateArgs:
         pulumi.set(__self__, "gcs_path", gcs_path)
         pulumi.set(__self__, "job_name", job_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="gcsPath")
@@ -77,15 +78,6 @@ class TemplateArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def environment(self) -> Optional[pulumi.Input['RuntimeEnvironmentArgs']]:
         """
         The runtime environment for the job.
@@ -107,6 +99,15 @@ class TemplateArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Template(pulumi.CustomResource):
@@ -187,8 +188,6 @@ class Template(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["parameters"] = parameters
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["metadata"] = None
             __props__.__dict__["runtime_metadata"] = None

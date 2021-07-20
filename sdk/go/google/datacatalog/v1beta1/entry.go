@@ -62,9 +62,6 @@ func NewEntry(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Entry
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:Entry", name, args, &resource, opts...)
 	if err != nil {
@@ -112,7 +109,7 @@ type entryArgs struct {
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource *string `pulumi:"linkedResource"`
 	Location       string  `pulumi:"location"`
-	Project        string  `pulumi:"project"`
+	Project        *string `pulumi:"project"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema *GoogleCloudDatacatalogV1beta1Schema `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -140,7 +137,7 @@ type EntryArgs struct {
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringPtrInput
 	Location       pulumi.StringInput
-	Project        pulumi.StringInput
+	Project        pulumi.StringPtrInput
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1beta1SchemaPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.

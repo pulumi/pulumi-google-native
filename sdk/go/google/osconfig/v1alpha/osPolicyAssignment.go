@@ -60,9 +60,6 @@ func NewOsPolicyAssignment(ctx *pulumi.Context,
 	if args.OsPolicyAssignmentId == nil {
 		return nil, errors.New("invalid value for required argument 'OsPolicyAssignmentId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Rollout == nil {
 		return nil, errors.New("invalid value for required argument 'Rollout'")
 	}
@@ -108,7 +105,7 @@ type osPolicyAssignmentArgs struct {
 	// List of OS policies to be applied to the VMs.
 	OsPolicies           []OSPolicy `pulumi:"osPolicies"`
 	OsPolicyAssignmentId string     `pulumi:"osPolicyAssignmentId"`
-	Project              string     `pulumi:"project"`
+	Project              *string    `pulumi:"project"`
 	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
 	Rollout OSPolicyAssignmentRollout `pulumi:"rollout"`
 }
@@ -125,7 +122,7 @@ type OsPolicyAssignmentArgs struct {
 	// List of OS policies to be applied to the VMs.
 	OsPolicies           OSPolicyArrayInput
 	OsPolicyAssignmentId pulumi.StringInput
-	Project              pulumi.StringInput
+	Project              pulumi.StringPtrInput
 	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
 	Rollout OSPolicyAssignmentRolloutInput
 }

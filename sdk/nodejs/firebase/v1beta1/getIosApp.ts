@@ -24,7 +24,7 @@ export function getIosApp(args: GetIosAppArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetIosAppArgs {
     iosAppId: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetIosAppResult {

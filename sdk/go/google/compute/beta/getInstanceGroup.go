@@ -18,9 +18,9 @@ func LookupInstanceGroup(ctx *pulumi.Context, args *LookupInstanceGroupArgs, opt
 }
 
 type LookupInstanceGroupArgs struct {
-	InstanceGroup string `pulumi:"instanceGroup"`
-	Project       string `pulumi:"project"`
-	Zone          string `pulumi:"zone"`
+	InstanceGroup string  `pulumi:"instanceGroup"`
+	Project       *string `pulumi:"project"`
+	Zone          string  `pulumi:"zone"`
 }
 
 type LookupInstanceGroupResult struct {

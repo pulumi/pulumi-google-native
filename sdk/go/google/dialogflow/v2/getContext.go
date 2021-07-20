@@ -18,12 +18,12 @@ func LookupContext(ctx *pulumi.Context, args *LookupContextArgs, opts ...pulumi.
 }
 
 type LookupContextArgs struct {
-	ContextId     string `pulumi:"contextId"`
-	EnvironmentId string `pulumi:"environmentId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
-	SessionId     string `pulumi:"sessionId"`
-	UserId        string `pulumi:"userId"`
+	ContextId     string  `pulumi:"contextId"`
+	EnvironmentId string  `pulumi:"environmentId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
+	SessionId     string  `pulumi:"sessionId"`
+	UserId        string  `pulumi:"userId"`
 }
 
 type LookupContextResult struct {

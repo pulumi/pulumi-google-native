@@ -18,8 +18,8 @@ func LookupUptimeCheckConfig(ctx *pulumi.Context, args *LookupUptimeCheckConfigA
 }
 
 type LookupUptimeCheckConfigArgs struct {
-	Project             string `pulumi:"project"`
-	UptimeCheckConfigId string `pulumi:"uptimeCheckConfigId"`
+	Project             *string `pulumi:"project"`
+	UptimeCheckConfigId string  `pulumi:"uptimeCheckConfigId"`
 }
 
 type LookupUptimeCheckConfigResult struct {

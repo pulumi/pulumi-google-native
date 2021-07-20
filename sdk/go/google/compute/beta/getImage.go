@@ -18,8 +18,8 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 }
 
 type LookupImageArgs struct {
-	Image   string `pulumi:"image"`
-	Project string `pulumi:"project"`
+	Image   string  `pulumi:"image"`
+	Project *string `pulumi:"project"`
 }
 
 type LookupImageResult struct {

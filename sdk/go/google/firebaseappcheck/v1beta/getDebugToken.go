@@ -18,9 +18,9 @@ func LookupDebugToken(ctx *pulumi.Context, args *LookupDebugTokenArgs, opts ...p
 }
 
 type LookupDebugTokenArgs struct {
-	AppId        string `pulumi:"appId"`
-	DebugTokenId string `pulumi:"debugTokenId"`
-	Project      string `pulumi:"project"`
+	AppId        string  `pulumi:"appId"`
+	DebugTokenId string  `pulumi:"debugTokenId"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupDebugTokenResult struct {

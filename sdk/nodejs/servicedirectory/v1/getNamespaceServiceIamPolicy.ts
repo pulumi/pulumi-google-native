@@ -27,7 +27,7 @@ export function getNamespaceServiceIamPolicy(args: GetNamespaceServiceIamPolicyA
 export interface GetNamespaceServiceIamPolicyArgs {
     location: string;
     namespaceId: string;
-    project: string;
+    project?: string;
     serviceId: string;
 }
 

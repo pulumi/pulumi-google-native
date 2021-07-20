@@ -18,12 +18,12 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -36,7 +36,6 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -47,6 +46,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
 
@@ -67,15 +68,6 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -136,6 +128,15 @@ class InstanceArgs:
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]]):
         pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -235,8 +236,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["networks"] = networks
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["tier"] = tier
             __props__.__dict__["create_time"] = None

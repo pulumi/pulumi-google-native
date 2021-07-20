@@ -28,7 +28,7 @@ export interface GetEnvironmentArgs {
     agentId: string;
     environmentId: string;
     location: string;
-    project: string;
+    project?: string;
 }
 
 export interface GetEnvironmentResult {

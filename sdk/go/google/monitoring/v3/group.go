@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +31,9 @@ type Group struct {
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GroupArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Group
 	err := ctx.RegisterResource("google-native:monitoring/v3:Group", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +74,7 @@ type groupArgs struct {
 	IsCluster *bool `pulumi:"isCluster"`
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName   *string `pulumi:"parentName"`
-	Project      string  `pulumi:"project"`
+	Project      *string `pulumi:"project"`
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
@@ -92,7 +88,7 @@ type GroupArgs struct {
 	IsCluster pulumi.BoolPtrInput
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName   pulumi.StringPtrInput
-	Project      pulumi.StringInput
+	Project      pulumi.StringPtrInput
 	ValidateOnly pulumi.StringPtrInput
 }
 

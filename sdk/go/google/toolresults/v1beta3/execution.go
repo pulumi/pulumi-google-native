@@ -44,9 +44,6 @@ func NewExecution(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Execution
 	err := ctx.RegisterResource("google-native:toolresults/v1beta3:Execution", name, args, &resource, opts...)
 	if err != nil {
@@ -90,7 +87,7 @@ type executionArgs struct {
 	HistoryId   string  `pulumi:"historyId"`
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   *Outcome `pulumi:"outcome"`
-	Project   string   `pulumi:"project"`
+	Project   *string  `pulumi:"project"`
 	RequestId *string  `pulumi:"requestId"`
 	// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
 	Specification *Specification `pulumi:"specification"`
@@ -113,7 +110,7 @@ type ExecutionArgs struct {
 	HistoryId   pulumi.StringInput
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   OutcomePtrInput
-	Project   pulumi.StringInput
+	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
 	Specification SpecificationPtrInput

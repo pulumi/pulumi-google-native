@@ -15,8 +15,8 @@ class DebugTokenArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DebugToken resource.
@@ -26,9 +26,10 @@ class DebugTokenArgs:
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -55,15 +56,6 @@ class DebugTokenArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
@@ -73,6 +65,15 @@ class DebugTokenArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -155,8 +156,6 @@ class DebugToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["token"] = token
         super(DebugToken, __self__).__init__(

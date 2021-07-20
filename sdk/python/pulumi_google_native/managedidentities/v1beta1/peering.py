@@ -16,8 +16,8 @@ class PeeringArgs:
                  authorized_network: pulumi.Input[str],
                  domain_resource: pulumi.Input[str],
                  peering_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Peering resource.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -27,9 +27,10 @@ class PeeringArgs:
         pulumi.set(__self__, "authorized_network", authorized_network)
         pulumi.set(__self__, "domain_resource", domain_resource)
         pulumi.set(__self__, "peering_id", peering_id)
-        pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -66,15 +67,6 @@ class PeeringArgs:
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Resource labels to represent user provided metadata.
@@ -84,6 +76,15 @@ class PeeringArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Peering(pulumi.CustomResource):
@@ -159,8 +160,6 @@ class Peering(pulumi.CustomResource):
             if peering_id is None and not opts.urn:
                 raise TypeError("Missing required property 'peering_id'")
             __props__.__dict__["peering_id"] = peering_id
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

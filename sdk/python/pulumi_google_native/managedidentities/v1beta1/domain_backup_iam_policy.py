@@ -17,9 +17,9 @@ class DomainBackupIamPolicyArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
                  domain_id: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a DomainBackupIamPolicy resource.
@@ -29,11 +29,12 @@ class DomainBackupIamPolicyArgs:
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "project", project)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -54,15 +55,6 @@ class DomainBackupIamPolicyArgs:
     @domain_id.setter
     def domain_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain_id", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -87,6 +79,15 @@ class DomainBackupIamPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -172,8 +173,6 @@ class DomainBackupIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain_id'")
             __props__.__dict__["domain_id"] = domain_id
             __props__.__dict__["etag"] = etag
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
         super(DomainBackupIamPolicy, __self__).__init__(

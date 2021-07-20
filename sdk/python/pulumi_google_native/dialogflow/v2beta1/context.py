@@ -16,11 +16,11 @@ class ContextArgs:
                  environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  session_id: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  lifespan_count: Optional[pulumi.Input[int]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Context resource.
         :param pulumi.Input[str] name: The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
@@ -30,13 +30,14 @@ class ContextArgs:
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "session_id", session_id)
         pulumi.set(__self__, "user_id", user_id)
         if lifespan_count is not None:
             pulumi.set(__self__, "lifespan_count", lifespan_count)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -67,15 +68,6 @@ class ContextArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="sessionId")
@@ -118,6 +110,15 @@ class ContextArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Context(pulumi.CustomResource):
@@ -200,8 +201,6 @@ class Context(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if session_id is None and not opts.urn:
                 raise TypeError("Missing required property 'session_id'")

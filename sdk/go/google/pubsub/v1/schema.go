@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,12 +26,9 @@ type Schema struct {
 func NewSchema(ctx *pulumi.Context,
 	name string, args *SchemaArgs, opts ...pulumi.ResourceOption) (*Schema, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SchemaArgs{}
 	}
 
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Schema
 	err := ctx.RegisterResource("google-native:pubsub/v1:Schema", name, args, &resource, opts...)
 	if err != nil {
@@ -69,7 +65,7 @@ type schemaArgs struct {
 	Definition *string `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name     *string `pulumi:"name"`
-	Project  string  `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type *SchemaType `pulumi:"type"`
@@ -81,7 +77,7 @@ type SchemaArgs struct {
 	Definition pulumi.StringPtrInput
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name     pulumi.StringPtrInput
-	Project  pulumi.StringInput
+	Project  pulumi.StringPtrInput
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
 	Type SchemaTypePtrInput

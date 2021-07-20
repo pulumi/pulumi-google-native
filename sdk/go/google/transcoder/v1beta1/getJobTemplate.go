@@ -18,9 +18,9 @@ func LookupJobTemplate(ctx *pulumi.Context, args *LookupJobTemplateArgs, opts ..
 }
 
 type LookupJobTemplateArgs struct {
-	JobTemplateId string `pulumi:"jobTemplateId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
+	JobTemplateId string  `pulumi:"jobTemplateId"`
+	Location      string  `pulumi:"location"`
+	Project       *string `pulumi:"project"`
 }
 
 type LookupJobTemplateResult struct {

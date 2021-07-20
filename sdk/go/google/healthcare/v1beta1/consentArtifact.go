@@ -49,9 +49,6 @@ func NewConsentArtifact(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
@@ -100,7 +97,7 @@ type consentArtifactArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// User's UUID provided by the client.
 	UserId string `pulumi:"userId"`
 	// Optional. User's signature.
@@ -124,7 +121,7 @@ type ConsentArtifactArgs struct {
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// User's UUID provided by the client.
 	UserId pulumi.StringInput
 	// Optional. User's signature.

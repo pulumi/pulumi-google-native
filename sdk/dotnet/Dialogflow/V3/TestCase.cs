@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

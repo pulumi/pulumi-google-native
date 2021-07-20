@@ -24,7 +24,7 @@ export function getVpnTunnel(args: GetVpnTunnelArgs, opts?: pulumi.InvokeOptions
 }
 
 export interface GetVpnTunnelArgs {
-    project: string;
+    project?: string;
     region: string;
     vpnTunnel: string;
 }

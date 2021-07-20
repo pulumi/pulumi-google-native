@@ -41,9 +41,6 @@ func NewDashboard(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	var resource Dashboard
 	err := ctx.RegisterResource("google-native:monitoring/v1:Dashboard", name, args, &resource, opts...)
 	if err != nil {
@@ -88,7 +85,7 @@ type dashboardArgs struct {
 	MosaicLayout *MosaicLayout `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
 	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout    *RowLayout `pulumi:"rowLayout"`
 	ValidateOnly *string    `pulumi:"validateOnly"`
@@ -108,7 +105,7 @@ type DashboardArgs struct {
 	MosaicLayout MosaicLayoutPtrInput
 	// Immutable. The resource name of the dashboard.
 	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout    RowLayoutPtrInput
 	ValidateOnly pulumi.StringPtrInput

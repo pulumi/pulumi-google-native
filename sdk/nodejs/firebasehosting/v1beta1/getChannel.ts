@@ -25,7 +25,7 @@ export function getChannel(args: GetChannelArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetChannelArgs {
     channelId: string;
-    project: string;
+    project?: string;
     siteId: string;
 }
 

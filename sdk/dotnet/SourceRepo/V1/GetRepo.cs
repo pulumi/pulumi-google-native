@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
 
     public sealed class GetRepoArgs : Pulumi.InvokeArgs
     {
-        [Input("project", required: true)]
-        public string Project { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         [Input("repoId", required: true)]
         public string RepoId { get; set; } = null!;

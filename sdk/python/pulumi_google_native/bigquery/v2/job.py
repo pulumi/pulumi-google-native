@@ -15,31 +15,23 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  configuration: Optional[pulumi.Input['JobConfigurationArgs']] = None,
                  job_reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobConfigurationArgs'] configuration: [Required] Describes the job configuration.
         :param pulumi.Input['JobReferenceArgs'] job_reference: [Optional] Reference describing the unique-per-user name of the job.
         """
-        pulumi.set(__self__, "project", project)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
         if job_reference is not None:
             pulumi.set(__self__, "job_reference", job_reference)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if source is not None:
             pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -64,6 +56,15 @@ class JobArgs:
     @job_reference.setter
     def job_reference(self, value: Optional[pulumi.Input['JobReferenceArgs']]):
         pulumi.set(self, "job_reference", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -98,7 +99,7 @@ class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobArgs,
+                 args: Optional[JobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starts a new asynchronous job. Requires the Can View project role.
@@ -137,8 +138,6 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["job_reference"] = job_reference
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["source"] = source
             __props__.__dict__["etag"] = None

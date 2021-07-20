@@ -99,9 +99,6 @@ export class Consent extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.state === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
@@ -168,7 +165,7 @@ export interface ConsentArgs {
      * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicyArgs>[]>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Indicates the current state of this Consent.
      */

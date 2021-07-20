@@ -18,9 +18,9 @@ func LookupServiceAttachment(ctx *pulumi.Context, args *LookupServiceAttachmentA
 }
 
 type LookupServiceAttachmentArgs struct {
-	Project           string `pulumi:"project"`
-	Region            string `pulumi:"region"`
-	ServiceAttachment string `pulumi:"serviceAttachment"`
+	Project           *string `pulumi:"project"`
+	Region            string  `pulumi:"region"`
+	ServiceAttachment string  `pulumi:"serviceAttachment"`
 }
 
 type LookupServiceAttachmentResult struct {

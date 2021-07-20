@@ -16,13 +16,13 @@ __all__ = ['RegionSslCertificateArgs', 'RegionSslCertificate']
 @pulumi.input_type
 class RegionSslCertificateArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  certificate: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input['SslCertificateManagedSslCertificateArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input['SslCertificateSelfManagedSslCertificateArgs']] = None,
                  type: Optional[pulumi.Input['RegionSslCertificateType']] = None):
@@ -36,7 +36,6 @@ class RegionSslCertificateArgs:
         :param pulumi.Input['SslCertificateSelfManagedSslCertificateArgs'] self_managed: Configuration and status of a self-managed SSL certificate.
         :param pulumi.Input['RegionSslCertificateType'] type: (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
         """
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -48,21 +47,14 @@ class RegionSslCertificateArgs:
             pulumi.set(__self__, "name", name)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if self_managed is not None:
             pulumi.set(__self__, "self_managed", self_managed)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -132,6 +124,15 @@ class RegionSslCertificateArgs:
     @private_key.setter
     def private_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -247,8 +248,6 @@ class RegionSslCertificate(pulumi.CustomResource):
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["private_key"] = private_key
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")

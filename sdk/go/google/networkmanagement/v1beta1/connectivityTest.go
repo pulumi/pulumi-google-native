@@ -55,9 +55,6 @@ func NewConnectivityTest(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.Project == nil {
-		return nil, errors.New("invalid value for required argument 'Project'")
-	}
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
@@ -103,8 +100,8 @@ type connectivityTestArgs struct {
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    string  `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
 	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
@@ -124,7 +121,7 @@ type ConnectivityTestArgs struct {
 	Labels pulumi.StringMapInput
 	// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`
 	Name    pulumi.StringInput
-	Project pulumi.StringInput
+	Project pulumi.StringPtrInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
 	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.

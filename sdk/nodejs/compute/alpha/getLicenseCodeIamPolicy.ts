@@ -25,7 +25,7 @@ export function getLicenseCodeIamPolicy(args: GetLicenseCodeIamPolicyArgs, opts?
 
 export interface GetLicenseCodeIamPolicyArgs {
     optionsRequestedPolicyVersion?: string;
-    project: string;
+    project?: string;
     resource: string;
 }
 

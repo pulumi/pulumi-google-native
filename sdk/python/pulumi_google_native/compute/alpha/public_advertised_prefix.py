@@ -15,11 +15,11 @@ __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
 @pulumi.input_type
 class PublicAdvertisedPrefixArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None):
         """
@@ -30,7 +30,6 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['PublicAdvertisedPrefixStatus'] status: The status of the public advertised prefix.
         """
-        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_verification_ip is not None:
@@ -39,19 +38,12 @@ class PublicAdvertisedPrefixArgs:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -100,6 +92,15 @@ class PublicAdvertisedPrefixArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="requestId")
@@ -151,7 +152,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PublicAdvertisedPrefixArgs,
+                 args: Optional[PublicAdvertisedPrefixArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
@@ -194,8 +195,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["dns_verification_ip"] = dns_verification_ip
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["status"] = status

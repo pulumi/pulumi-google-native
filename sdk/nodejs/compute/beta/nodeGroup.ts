@@ -97,9 +97,6 @@ export class NodeGroup extends pulumi.CustomResource {
             if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -173,7 +170,7 @@ export interface NodeGroupArgs {
      * URL of the node template to create the node group from.
      */
     nodeTemplate?: pulumi.Input<string>;
-    project: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     status?: pulumi.Input<enums.compute.beta.NodeGroupStatus>;
     zone: pulumi.Input<string>;

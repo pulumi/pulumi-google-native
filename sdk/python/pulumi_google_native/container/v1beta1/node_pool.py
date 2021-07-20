@@ -18,7 +18,6 @@ class NodePoolInitArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 project: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
@@ -29,6 +28,7 @@ class NodePoolInitArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -48,7 +48,6 @@ class NodePoolInitArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project", project)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if conditions is not None:
@@ -69,6 +68,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "network_config", network_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -91,15 +92,6 @@ class NodePoolInitArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -220,6 +212,15 @@ class NodePoolInitArgs:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -352,8 +353,6 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version

@@ -15,9 +15,9 @@ __all__ = ['RepoArgs', 'Repo']
 @pulumi.input_type
 class RepoArgs:
     def __init__(__self__, *,
-                 project: pulumi.Input[str],
                  mirror_config: Optional[pulumi.Input['MirrorConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
@@ -29,26 +29,18 @@ class RepoArgs:
         :param pulumi.Input[str] size: The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories. Read-only field.
         """
-        pulumi.set(__self__, "project", project)
         if mirror_config is not None:
             pulumi.set(__self__, "mirror_config", mirror_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if pubsub_configs is not None:
             pulumi.set(__self__, "pubsub_configs", pubsub_configs)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="mirrorConfig")
@@ -73,6 +65,15 @@ class RepoArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="pubsubConfigs")
@@ -138,7 +139,7 @@ class Repo(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RepoArgs,
+                 args: Optional[RepoArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
@@ -178,8 +179,6 @@ class Repo(pulumi.CustomResource):
 
             __props__.__dict__["mirror_config"] = mirror_config
             __props__.__dict__["name"] = name
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_configs"] = pubsub_configs
             __props__.__dict__["size"] = size

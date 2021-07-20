@@ -18,9 +18,9 @@ func LookupJobTrigger(ctx *pulumi.Context, args *LookupJobTriggerArgs, opts ...p
 }
 
 type LookupJobTriggerArgs struct {
-	JobTriggerId string `pulumi:"jobTriggerId"`
-	Location     string `pulumi:"location"`
-	Project      string `pulumi:"project"`
+	JobTriggerId string  `pulumi:"jobTriggerId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupJobTriggerResult struct {
