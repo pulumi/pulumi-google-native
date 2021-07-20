@@ -4,21 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("google-native");
+declare var exports: any;
+const __config = new pulumi.Config("google-native");
 
 /**
  * Additional user-agent string to append to the default one (<prod_name>/<ver>).
  */
-export let appendUserAgent: string | undefined = __config.get("appendUserAgent");
+export declare const appendUserAgent: string | undefined;
+Object.defineProperty(exports, "appendUserAgent", {
+    get() {
+        return __config.get("appendUserAgent");
+    },
+    enumerable: true,
+});
+
 /**
  * This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
  */
-export let disablePartnerName: boolean | undefined = __config.getObject<boolean>("disablePartnerName");
+export declare const disablePartnerName: boolean | undefined;
+Object.defineProperty(exports, "disablePartnerName", {
+    get() {
+        return __config.getObject<boolean>("disablePartnerName");
+    },
+    enumerable: true,
+});
+
 /**
  * A Google Partner Name to facilitate partner resource usage attribution.
  */
-export let partnerName: string | undefined = __config.get("partnerName");
+export declare const partnerName: string | undefined;
+Object.defineProperty(exports, "partnerName", {
+    get() {
+        return __config.get("partnerName");
+    },
+    enumerable: true,
+});
+
 /**
  * A Google Cloud project name.
  */
-export let project: string | undefined = __config.get("project");
+export declare const project: string | undefined;
+Object.defineProperty(exports, "project", {
+    get() {
+        return __config.get("project");
+    },
+    enumerable: true,
+});
+

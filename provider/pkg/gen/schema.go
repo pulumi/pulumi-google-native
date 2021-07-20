@@ -104,7 +104,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Types:     map[string]schema.ComplexTypeSpec{},
 		Resources: map[string]schema.ResourceSpec{},
 		Functions: map[string]schema.FunctionSpec{},
-		Language:  map[string]json.RawMessage{},
+		Language:  map[string]schema.RawMessage{},
 	}
 	metadata := resources.CloudAPIMetadata{
 		Types:     map[string]resources.CloudAPIType{},
@@ -931,7 +931,7 @@ func (g *packageGenerator) escapeCSharpNames(typeName string, resourceResponse m
 	for name, swagger := range resourceResponse {
 		// C# doesn't allow properties to have the same name as its containing type.
 		if strings.Title(name) == typeName {
-			swagger.Language = map[string]json.RawMessage{
+			swagger.Language = map[string]schema.RawMessage{
 				"csharp": rawMessage(map[string]interface{}{
 					"name": fmt.Sprintf("%sValue", typeName),
 				}),
@@ -993,7 +993,7 @@ func clearDescription(description string) string {
 	return description
 }
 
-func rawMessage(v interface{}) json.RawMessage {
+func rawMessage(v interface{}) schema.RawMessage {
 	bytes, err := json.Marshal(v)
 	contract.Assert(err == nil)
 	return bytes

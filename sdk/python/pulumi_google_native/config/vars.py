@@ -8,32 +8,37 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'append_user_agent',
-    'disable_partner_name',
-    'partner_name',
-    'project',
-]
+import types
 
 __config__ = pulumi.Config('google-native')
 
-append_user_agent = __config__.get('appendUserAgent')
-"""
-Additional user-agent string to append to the default one (<prod_name>/<ver>).
-"""
 
-disable_partner_name = __config__.get('disablePartnerName')
-"""
-This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def append_user_agent(self) -> Optional[str]:
+        """
+        Additional user-agent string to append to the default one (<prod_name>/<ver>).
+        """
+        return __config__.get('appendUserAgent')
 
-partner_name = __config__.get('partnerName')
-"""
-A Google Partner Name to facilitate partner resource usage attribution.
-"""
+    @property
+    def disable_partner_name(self) -> Optional[bool]:
+        """
+        This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
+        """
+        return __config__.get_bool('disablePartnerName')
 
-project = __config__.get('project')
-"""
-A Google Cloud project name.
-"""
+    @property
+    def partner_name(self) -> Optional[str]:
+        """
+        A Google Partner Name to facilitate partner resource usage attribution.
+        """
+        return __config__.get('partnerName')
+
+    @property
+    def project(self) -> Optional[str]:
+        """
+        A Google Cloud project name.
+        """
+        return __config__.get('project')
 
