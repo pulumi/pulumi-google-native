@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.

@@ -298,8 +298,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Network configuration options. These are required when a private Data Fusion instance is to be created.

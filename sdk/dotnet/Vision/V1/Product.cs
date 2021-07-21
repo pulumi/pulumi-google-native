@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Product(string name, ProductArgs args, CustomResourceOptions? options = null)
+        public Product(string name, ProductArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:vision/v1:Product", name, args ?? new ProductArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.

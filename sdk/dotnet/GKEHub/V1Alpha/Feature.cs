@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Feature(string name, FeatureArgs args, CustomResourceOptions? options = null)
+        public Feature(string name, FeatureArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:gkehub/v1alpha:Feature", name, args ?? new FeatureArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -136,8 +136,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("membershipSpecs")]
         private InputMap<string>? _membershipSpecs;

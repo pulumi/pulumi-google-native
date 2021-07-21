@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;

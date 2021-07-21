@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("locations")]
         private InputList<string>? _locations;

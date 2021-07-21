@@ -103,8 +103,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Network configuration for the `WorkerPool`.

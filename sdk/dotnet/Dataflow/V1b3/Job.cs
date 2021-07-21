@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Job(string name, JobArgs args, CustomResourceOptions? options = null)
+        public Job(string name, JobArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:dataflow/v1b3:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -261,8 +261,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`

@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.

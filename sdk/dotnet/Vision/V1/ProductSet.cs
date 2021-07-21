@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ProductSet(string name, ProductSetArgs args, CustomResourceOptions? options = null)
+        public ProductSet(string name, ProductSetArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:vision/v1:ProductSet", name, args ?? new ProductSetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.

@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("lastTestResult")]
         public Input<Inputs.GoogleCloudDialogflowCxV3TestCaseResultArgs>? LastTestResult { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.

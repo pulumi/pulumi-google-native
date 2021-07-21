@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.

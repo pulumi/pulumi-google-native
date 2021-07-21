@@ -24,9 +24,19 @@ namespace Pulumi.GoogleNative
         public static string? PartnerName { get; set; } = __config.Get("partnerName");
 
         /// <summary>
-        /// A Google Cloud project name.
+        /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
         /// </summary>
         public static string? Project { get; set; } = __config.Get("project");
+
+        /// <summary>
+        /// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        /// </summary>
+        public static string? Region { get; set; } = __config.Get("region");
+
+        /// <summary>
+        /// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        /// </summary>
+        public static string? Zone { get; set; } = __config.Get("zone");
 
     }
 }

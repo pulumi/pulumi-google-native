@@ -124,8 +124,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`

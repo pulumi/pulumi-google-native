@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [Input("iamOwned")]
         public Input<bool>? IamOwned { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

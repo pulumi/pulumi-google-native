@@ -311,7 +311,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
+        public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -585,8 +585,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("tags")]
         public Input<Inputs.TagsArgs>? Tags { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public InstanceArgs()
         {

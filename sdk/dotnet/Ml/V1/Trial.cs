@@ -127,8 +127,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("finalMeasurement")]
         public Input<Inputs.GoogleCloudMlV1__MeasurementArgs>? FinalMeasurement { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("measurements")]
         private InputList<Inputs.GoogleCloudMlV1__MeasurementArgs>? _measurements;

@@ -186,8 +186,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Beta.NodeGroupStatus>? Status { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NodeGroupArgs()
         {

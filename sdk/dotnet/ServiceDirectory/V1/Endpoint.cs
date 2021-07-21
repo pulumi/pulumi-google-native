@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.

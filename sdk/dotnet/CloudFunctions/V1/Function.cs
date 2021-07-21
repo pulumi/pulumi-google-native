@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Function(string name, FunctionArgs args, CustomResourceOptions? options = null)
+        public Function(string name, FunctionArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudfunctions/v1:Function", name, args ?? new FunctionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -294,8 +294,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.

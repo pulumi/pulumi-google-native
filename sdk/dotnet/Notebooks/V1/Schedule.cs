@@ -136,8 +136,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("executionTemplate")]
         public Input<Inputs.ExecutionTemplateArgs>? ExecutionTemplate { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

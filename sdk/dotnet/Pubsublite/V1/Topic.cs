@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
 
     public sealed class TopicArgs : Pulumi.ResourceArgs
     {
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}

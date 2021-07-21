@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Autoscaler(string name, AutoscalerArgs args, CustomResourceOptions? options = null)
+        public Autoscaler(string name, AutoscalerArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/v1:Autoscaler", name, args ?? new AutoscalerArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("target")]
         public Input<string>? Target { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public AutoscalerArgs()
         {

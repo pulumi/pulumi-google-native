@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _knowledgeTypes = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

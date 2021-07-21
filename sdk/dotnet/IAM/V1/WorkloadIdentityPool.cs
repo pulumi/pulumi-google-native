@@ -109,8 +109,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

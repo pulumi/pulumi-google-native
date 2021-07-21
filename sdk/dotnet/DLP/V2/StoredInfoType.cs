@@ -85,8 +85,8 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("config", required: true)]
         public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs> Config { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -91,8 +91,8 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         [Input("config", required: true)]
         public Input<Inputs.GoogleCloudPolicysimulatorV1ReplayConfigArgs> Config { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

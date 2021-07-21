@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.

@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
+        public Repository(string name, RepositoryArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:artifactregistry/v1beta1:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".

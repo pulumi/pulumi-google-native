@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.

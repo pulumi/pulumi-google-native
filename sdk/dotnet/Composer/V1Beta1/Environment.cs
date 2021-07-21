@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Environment(string name, EnvironmentArgs args, CustomResourceOptions? options = null)
+        public Environment(string name, EnvironmentArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:composer/v1beta1:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.

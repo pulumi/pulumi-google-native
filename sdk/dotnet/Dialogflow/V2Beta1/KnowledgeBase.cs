@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.

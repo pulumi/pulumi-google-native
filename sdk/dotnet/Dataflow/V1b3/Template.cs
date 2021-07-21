@@ -106,8 +106,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;

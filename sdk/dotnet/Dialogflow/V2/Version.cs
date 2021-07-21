@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Version(string name, VersionArgs args, CustomResourceOptions? options = null)
+        public Version(string name, VersionArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:dialogflow/v2:Version", name, args ?? new VersionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -97,8 +97,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

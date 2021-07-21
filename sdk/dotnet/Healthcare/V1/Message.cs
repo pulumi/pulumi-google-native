@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The message type for this message. MSH-9.1.

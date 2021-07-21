@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Run.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DomainMapping(string name, DomainMappingArgs args, CustomResourceOptions? options = null)
+        public DomainMapping(string name, DomainMappingArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:run/v1:DomainMapping", name, args ?? new DomainMappingArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -106,8 +106,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Metadata associated with this BuildTemplate.

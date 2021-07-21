@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// A MySQL database connection profile.

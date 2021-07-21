@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
+        public Reservation(string name, ReservationArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/v1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ReservationArgs()
         {
