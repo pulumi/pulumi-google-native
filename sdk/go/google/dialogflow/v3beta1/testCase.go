@@ -46,9 +46,6 @@ func NewTestCase(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource TestCase
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:TestCase", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type testCaseArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult *GoogleCloudDialogflowCxV3beta1TestCaseResult `pulumi:"lastTestResult"`
-	Location       string                                        `pulumi:"location"`
+	Location       *string                                       `pulumi:"location"`
 	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 	Name *string `pulumi:"name"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
@@ -107,7 +104,7 @@ type TestCaseArgs struct {
 	DisplayName pulumi.StringInput
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3beta1TestCaseResultPtrInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 	Name pulumi.StringPtrInput
 	// Additional freeform notes about the test case. Limit of 400 characters.

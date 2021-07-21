@@ -56,9 +56,6 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.InitialNodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'InitialNodeCount'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource NodeGroup
 	err := ctx.RegisterResource("google-native:compute/alpha:NodeGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -110,7 +107,7 @@ type nodeGroupArgs struct {
 	// Share-settings for the node group
 	ShareSettings *ShareSettings   `pulumi:"shareSettings"`
 	Status        *NodeGroupStatus `pulumi:"status"`
-	Zone          string           `pulumi:"zone"`
+	Zone          *string          `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
@@ -134,7 +131,7 @@ type NodeGroupArgs struct {
 	// Share-settings for the node group
 	ShareSettings ShareSettingsPtrInput
 	Status        NodeGroupStatusPtrInput
-	Zone          pulumi.StringInput
+	Zone          pulumi.StringPtrInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {

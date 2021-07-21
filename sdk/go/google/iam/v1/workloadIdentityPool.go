@@ -35,9 +35,6 @@ func NewWorkloadIdentityPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
@@ -79,7 +76,7 @@ type workloadIdentityPoolArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName            *string `pulumi:"displayName"`
-	Location               string  `pulumi:"location"`
+	Location               *string `pulumi:"location"`
 	Project                *string `pulumi:"project"`
 	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
 }
@@ -92,7 +89,7 @@ type WorkloadIdentityPoolArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName            pulumi.StringPtrInput
-	Location               pulumi.StringInput
+	Location               pulumi.StringPtrInput
 	Project                pulumi.StringPtrInput
 	WorkloadIdentityPoolId pulumi.StringInput
 }

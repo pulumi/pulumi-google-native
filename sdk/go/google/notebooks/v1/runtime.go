@@ -43,9 +43,6 @@ func NewRuntime(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.RuntimeId == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeId'")
 	}
@@ -83,7 +80,7 @@ func (RuntimeState) ElementType() reflect.Type {
 type runtimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
-	Location     string               `pulumi:"location"`
+	Location     *string              `pulumi:"location"`
 	Project      *string              `pulumi:"project"`
 	RuntimeId    string               `pulumi:"runtimeId"`
 	// The config settings for software inside the runtime.
@@ -96,7 +93,7 @@ type runtimeArgs struct {
 type RuntimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig RuntimeAccessConfigPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
 	RuntimeId    pulumi.StringInput
 	// The config settings for software inside the runtime.

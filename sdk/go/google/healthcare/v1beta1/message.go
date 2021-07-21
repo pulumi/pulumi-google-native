@@ -50,9 +50,6 @@ func NewMessage(ctx *pulumi.Context,
 	if args.Hl7V2StoreId == nil {
 		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Message
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:Message", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +88,7 @@ type messageArgs struct {
 	Hl7V2StoreId string  `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType *string `pulumi:"messageType"`
 	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
@@ -115,7 +112,7 @@ type MessageArgs struct {
 	Hl7V2StoreId pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringPtrInput
 	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.

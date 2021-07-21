@@ -61,9 +61,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.NodeConfig == nil {
 		return nil, errors.New("invalid value for required argument 'NodeConfig'")
 	}
@@ -111,7 +108,7 @@ type instanceArgs struct {
 	InstanceMessages []InstanceMessage `pulumi:"instanceMessages"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion *InstanceMemcacheVersion `pulumi:"memcacheVersion"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
@@ -138,7 +135,7 @@ type InstanceArgs struct {
 	InstanceMessages InstanceMessageArrayInput
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion InstanceMemcacheVersionPtrInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.

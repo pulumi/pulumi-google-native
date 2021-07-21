@@ -77,9 +77,6 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -136,7 +133,7 @@ type instanceArgs struct {
 	InstanceId                  *string `pulumi:"instanceId"`
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
@@ -175,7 +172,7 @@ type InstanceArgs struct {
 	InstanceId                  pulumi.StringPtrInput
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
 	NetworkConfig NetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.

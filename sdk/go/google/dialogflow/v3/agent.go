@@ -54,9 +54,6 @@ func NewAgent(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.TimeZone == nil {
 		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
@@ -103,8 +100,8 @@ type agentArgs struct {
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent.
-	EnableStackdriverLogging *bool  `pulumi:"enableStackdriverLogging"`
-	Location                 string `pulumi:"location"`
+	EnableStackdriverLogging *bool   `pulumi:"enableStackdriverLogging"`
+	Location                 *string `pulumi:"location"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -134,7 +131,7 @@ type AgentArgs struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Indicates if stackdriver logging is enabled for the agent.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	Location                 pulumi.StringInput
+	Location                 pulumi.StringPtrInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

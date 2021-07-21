@@ -49,9 +49,6 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 	if args.Jobs == nil {
 		return nil, errors.New("invalid value for required argument 'Jobs'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
@@ -95,7 +92,7 @@ type workflowTemplateArgs struct {
 	Jobs []OrderedJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []TemplateParameter `pulumi:"parameters"`
 	// WorkflowTemplate scheduling information.
@@ -115,7 +112,7 @@ type WorkflowTemplateArgs struct {
 	Jobs OrderedJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterArrayInput
 	// WorkflowTemplate scheduling information.

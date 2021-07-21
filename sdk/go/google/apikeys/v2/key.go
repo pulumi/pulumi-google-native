@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,12 +39,9 @@ type Key struct {
 func NewKey(ctx *pulumi.Context,
 	name string, args *KeyArgs, opts ...pulumi.ResourceOption) (*Key, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &KeyArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Key
 	err := ctx.RegisterResource("google-native:apikeys/v2:Key", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +77,7 @@ type keyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	KeyId       *string `pulumi:"keyId"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	Project     *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *V2Restrictions `pulumi:"restrictions"`
@@ -92,7 +88,7 @@ type KeyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
 	KeyId       pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions V2RestrictionsPtrInput

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,12 +52,9 @@ type ZoneInstantSnapshot struct {
 func NewZoneInstantSnapshot(ctx *pulumi.Context,
 	name string, args *ZoneInstantSnapshotArgs, opts ...pulumi.ResourceOption) (*ZoneInstantSnapshot, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZoneInstantSnapshotArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource ZoneInstantSnapshot
 	err := ctx.RegisterResource("google-native:compute/alpha:ZoneInstantSnapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -103,7 +99,7 @@ type zoneInstantSnapshotArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
 	SourceDisk *string `pulumi:"sourceDisk"`
-	Zone       string  `pulumi:"zone"`
+	Zone       *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ZoneInstantSnapshot resource.
@@ -120,7 +116,7 @@ type ZoneInstantSnapshotArgs struct {
 	RequestId pulumi.StringPtrInput
 	// URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
 	SourceDisk pulumi.StringPtrInput
-	Zone       pulumi.StringInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (ZoneInstantSnapshotArgs) ElementType() reflect.Type {

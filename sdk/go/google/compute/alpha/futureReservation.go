@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,12 +43,9 @@ type FutureReservation struct {
 func NewFutureReservation(ctx *pulumi.Context,
 	name string, args *FutureReservationArgs, opts ...pulumi.ResourceOption) (*FutureReservation, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &FutureReservationArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource FutureReservation
 	err := ctx.RegisterResource("google-native:compute/alpha:FutureReservation", name, args, &resource, opts...)
 	if err != nil {
@@ -97,7 +93,7 @@ type futureReservationArgs struct {
 	SpecificSkuProperties *FutureReservationSpecificSKUProperties `pulumi:"specificSkuProperties"`
 	// Time window for this Future Reservation.
 	TimeWindow *FutureReservationTimeWindow `pulumi:"timeWindow"`
-	Zone       string                       `pulumi:"zone"`
+	Zone       *string                      `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a FutureReservation resource.
@@ -117,7 +113,7 @@ type FutureReservationArgs struct {
 	SpecificSkuProperties FutureReservationSpecificSKUPropertiesPtrInput
 	// Time window for this Future Reservation.
 	TimeWindow FutureReservationTimeWindowPtrInput
-	Zone       pulumi.StringInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (FutureReservationArgs) ElementType() reflect.Type {

@@ -30,9 +30,6 @@ func NewReferenceImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
@@ -73,7 +70,7 @@ func (ReferenceImageState) ElementType() reflect.Type {
 type referenceImageArgs struct {
 	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
 	BoundingPolys []BoundingPoly `pulumi:"boundingPolys"`
-	Location      string         `pulumi:"location"`
+	Location      *string        `pulumi:"location"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name             *string `pulumi:"name"`
 	ProductId        string  `pulumi:"productId"`
@@ -87,7 +84,7 @@ type referenceImageArgs struct {
 type ReferenceImageArgs struct {
 	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
 	BoundingPolys BoundingPolyArrayInput
-	Location      pulumi.StringInput
+	Location      pulumi.StringPtrInput
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name             pulumi.StringPtrInput
 	ProductId        pulumi.StringInput

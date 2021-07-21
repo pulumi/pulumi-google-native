@@ -35,9 +35,6 @@ func NewTagTemplate(ctx *pulumi.Context,
 	if args.Fields == nil {
 		return nil, errors.New("invalid value for required argument 'Fields'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.TagTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TagTemplateId'")
 	}
@@ -78,8 +75,8 @@ type tagTemplateArgs struct {
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
 	Fields map[string]string `pulumi:"fields"`
 	// Indicates whether this is a public tag template. Every user has view access to a *public* tag template by default. This means that: * Every user can use this tag template to tag an entry. * If an entry is tagged using the tag template, the tag is always shown in the response to ``ListTags`` called on the entry. * To get the template using the GetTagTemplate method, you need view access either on the project or the organization the tag template resides in but no other permission is needed. * Operations on the tag template other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a public tag template are referred to as public tags. You can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results depending on scope, see: include_public_tag_templates
-	IsPubliclyReadable *bool  `pulumi:"isPubliclyReadable"`
-	Location           string `pulumi:"location"`
+	IsPubliclyReadable *bool   `pulumi:"isPubliclyReadable"`
+	Location           *string `pulumi:"location"`
 	// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 	Name          *string `pulumi:"name"`
 	Project       *string `pulumi:"project"`
@@ -94,7 +91,7 @@ type TagTemplateArgs struct {
 	Fields pulumi.StringMapInput
 	// Indicates whether this is a public tag template. Every user has view access to a *public* tag template by default. This means that: * Every user can use this tag template to tag an entry. * If an entry is tagged using the tag template, the tag is always shown in the response to ``ListTags`` called on the entry. * To get the template using the GetTagTemplate method, you need view access either on the project or the organization the tag template resides in but no other permission is needed. * Operations on the tag template other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a public tag template are referred to as public tags. You can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results depending on scope, see: include_public_tag_templates
 	IsPubliclyReadable pulumi.BoolPtrInput
-	Location           pulumi.StringInput
+	Location           pulumi.StringPtrInput
 	// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 	Name          pulumi.StringPtrInput
 	Project       pulumi.StringPtrInput

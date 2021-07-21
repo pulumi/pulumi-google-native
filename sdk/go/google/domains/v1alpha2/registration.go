@@ -55,9 +55,6 @@ func NewRegistration(ctx *pulumi.Context,
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.YearlyPrice == nil {
 		return nil, errors.New("invalid value for required argument 'YearlyPrice'")
 	}
@@ -105,7 +102,7 @@ type registrationArgs struct {
 	DomainNotices []RegistrationDomainNoticesItem `pulumi:"domainNotices"`
 	// Set of labels associated with the `Registration`.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings *ManagementSettings `pulumi:"managementSettings"`
 	Project            *string             `pulumi:"project"`
@@ -129,7 +126,7 @@ type RegistrationArgs struct {
 	DomainNotices RegistrationDomainNoticesItemArrayInput
 	// Set of labels associated with the `Registration`.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings ManagementSettingsPtrInput
 	Project            pulumi.StringPtrInput

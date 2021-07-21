@@ -39,9 +39,6 @@ func NewTransitionRouteGroup(ctx *pulumi.Context,
 	if args.FlowId == nil {
 		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource TransitionRouteGroup
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:TransitionRouteGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -79,7 +76,7 @@ type transitionRouteGroupArgs struct {
 	DisplayName  string  `pulumi:"displayName"`
 	FlowId       string  `pulumi:"flowId"`
 	LanguageCode *string `pulumi:"languageCode"`
-	Location     string  `pulumi:"location"`
+	Location     *string `pulumi:"location"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -94,7 +91,7 @@ type TransitionRouteGroupArgs struct {
 	DisplayName  pulumi.StringInput
 	FlowId       pulumi.StringInput
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

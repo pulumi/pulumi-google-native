@@ -40,9 +40,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.VersionConfigs == nil {
 		return nil, errors.New("invalid value for required argument 'VersionConfigs'")
 	}
@@ -82,8 +79,8 @@ type environmentArgs struct {
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-	DisplayName string `pulumi:"displayName"`
-	Location    string `pulumi:"location"`
+	DisplayName string  `pulumi:"displayName"`
+	Location    *string `pulumi:"location"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -98,7 +95,7 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

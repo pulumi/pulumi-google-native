@@ -71,9 +71,6 @@ func NewEntry(ctx *pulumi.Context,
 	if args.EntryId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Entry
 	err := ctx.RegisterResource("google-native:datacatalog/v1:Entry", name, args, &resource, opts...)
 	if err != nil {
@@ -128,7 +125,7 @@ type entryArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
 	LinkedResource *string `pulumi:"linkedResource"`
-	Location       string  `pulumi:"location"`
+	Location       *string `pulumi:"location"`
 	Project        *string `pulumi:"project"`
 	// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
 	RoutineSpec *GoogleCloudDatacatalogV1RoutineSpec `pulumi:"routineSpec"`
@@ -168,7 +165,7 @@ type EntryArgs struct {
 	Labels pulumi.StringMapInput
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
 	LinkedResource pulumi.StringPtrInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	Project        pulumi.StringPtrInput
 	// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecPtrInput

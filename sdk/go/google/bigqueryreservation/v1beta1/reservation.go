@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type Reservation struct {
 func NewReservation(ctx *pulumi.Context,
 	name string, args *ReservationArgs, opts ...pulumi.ResourceOption) (*Reservation, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ReservationArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Reservation
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1beta1:Reservation", name, args, &resource, opts...)
 	if err != nil {
@@ -70,8 +66,8 @@ func (ReservationState) ElementType() reflect.Type {
 
 type reservationArgs struct {
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
-	IgnoreIdleSlots *bool  `pulumi:"ignoreIdleSlots"`
-	Location        string `pulumi:"location"`
+	IgnoreIdleSlots *bool   `pulumi:"ignoreIdleSlots"`
+	Location        *string `pulumi:"location"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name          *string `pulumi:"name"`
 	Project       *string `pulumi:"project"`
@@ -84,7 +80,7 @@ type reservationArgs struct {
 type ReservationArgs struct {
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
-	Location        pulumi.StringInput
+	Location        pulumi.StringPtrInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name          pulumi.StringPtrInput
 	Project       pulumi.StringPtrInput

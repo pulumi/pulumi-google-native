@@ -75,9 +75,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MemorySizeGb == nil {
 		return nil, errors.New("invalid value for required argument 'MemorySizeGb'")
 	}
@@ -130,7 +127,7 @@ type instanceArgs struct {
 	// Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy *MaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Redis memory size in GiB.
@@ -166,7 +163,7 @@ type InstanceArgs struct {
 	// Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyPtrInput
 	// Redis memory size in GiB.

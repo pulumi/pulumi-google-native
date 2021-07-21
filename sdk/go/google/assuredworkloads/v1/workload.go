@@ -55,9 +55,6 @@ func NewWorkload(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -106,7 +103,7 @@ type workloadArgs struct {
 	KmsSettings *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -131,7 +128,7 @@ type WorkloadArgs struct {
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput
 	// Optional. Labels applied to the workload.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

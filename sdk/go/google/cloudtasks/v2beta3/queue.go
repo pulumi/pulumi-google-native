@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type Queue struct {
 func NewQueue(ctx *pulumi.Context,
 	name string, args *QueueArgs, opts ...pulumi.ResourceOption) (*Queue, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &QueueArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Queue
 	err := ctx.RegisterResource("google-native:cloudtasks/v2beta3:Queue", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +79,7 @@ func (QueueState) ElementType() reflect.Type {
 type queueArgs struct {
 	// AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.
 	AppEngineHttpQueue *AppEngineHttpQueue `pulumi:"appEngineHttpQueue"`
-	Location           string              `pulumi:"location"`
+	Location           *string             `pulumi:"location"`
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -105,7 +101,7 @@ type queueArgs struct {
 type QueueArgs struct {
 	// AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.
 	AppEngineHttpQueue AppEngineHttpQueuePtrInput
-	Location           pulumi.StringInput
+	Location           pulumi.StringPtrInput
 	// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

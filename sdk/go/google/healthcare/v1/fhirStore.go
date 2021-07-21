@@ -46,9 +46,6 @@ func NewFhirStore(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource FhirStore
 	err := ctx.RegisterResource("google-native:healthcare/v1:FhirStore", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +90,7 @@ type fhirStoreArgs struct {
 	FhirStoreId        *string `pulumi:"fhirStoreId"`
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	Project            *string             `pulumi:"project"`
@@ -117,7 +114,7 @@ type FhirStoreArgs struct {
 	FhirStoreId        pulumi.StringPtrInput
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigPtrInput
 	Project            pulumi.StringPtrInput

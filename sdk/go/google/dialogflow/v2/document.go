@@ -51,9 +51,6 @@ func NewDocument(ctx *pulumi.Context,
 	if args.KnowledgeTypes == nil {
 		return nil, errors.New("invalid value for required argument 'KnowledgeTypes'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MimeType == nil {
 		return nil, errors.New("invalid value for required argument 'MimeType'")
 	}
@@ -98,7 +95,7 @@ type documentArgs struct {
 	KnowledgeBaseId  string `pulumi:"knowledgeBaseId"`
 	// The knowledge type of document content.
 	KnowledgeTypes []DocumentKnowledgeTypesItem `pulumi:"knowledgeTypes"`
-	Location       string                       `pulumi:"location"`
+	Location       *string                      `pulumi:"location"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The MIME type of this document.
@@ -121,7 +118,7 @@ type DocumentArgs struct {
 	KnowledgeBaseId  pulumi.StringInput
 	// The knowledge type of document content.
 	KnowledgeTypes DocumentKnowledgeTypesItemArrayInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapInput
 	// The MIME type of this document.

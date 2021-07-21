@@ -32,9 +32,6 @@ func NewNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
@@ -72,7 +69,7 @@ func (NamespaceState) ElementType() reflect.Type {
 type namespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name        *string `pulumi:"name"`
 	NamespaceId string  `pulumi:"namespaceId"`
@@ -83,7 +80,7 @@ type namespaceArgs struct {
 type NamespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name        pulumi.StringPtrInput
 	NamespaceId pulumi.StringInput

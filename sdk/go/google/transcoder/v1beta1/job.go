@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,12 +50,9 @@ type Job struct {
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &JobArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +89,7 @@ type jobArgs struct {
 	Config *JobConfig `pulumi:"config"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri *string `pulumi:"inputUri"`
-	Location string  `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
@@ -113,7 +109,7 @@ type JobArgs struct {
 	Config JobConfigPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri pulumi.StringPtrInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.

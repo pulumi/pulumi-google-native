@@ -53,9 +53,6 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Lifetime == nil {
 		return nil, errors.New("invalid value for required argument 'Lifetime'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Certificate
 	err := ctx.RegisterResource("google-native:privateca/v1beta1:Certificate", name, args, &resource, opts...)
 	if err != nil {
@@ -95,8 +92,8 @@ type certificateArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime string `pulumi:"lifetime"`
-	Location string `pulumi:"location"`
+	Lifetime string  `pulumi:"lifetime"`
+	Location *string `pulumi:"location"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    *string `pulumi:"pemCsr"`
 	Project   *string `pulumi:"project"`
@@ -113,7 +110,7 @@ type CertificateArgs struct {
 	Labels pulumi.StringMapInput
 	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime pulumi.StringInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

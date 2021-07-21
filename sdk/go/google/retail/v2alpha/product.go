@@ -58,9 +58,6 @@ func NewProduct(ctx *pulumi.Context,
 	if args.CatalogId == nil {
 		return nil, errors.New("invalid value for required argument 'CatalogId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
@@ -117,7 +114,7 @@ type productArgs struct {
 	Id *string `pulumi:"id"`
 	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Images   []GoogleCloudRetailV2alphaImage `pulumi:"images"`
-	Location string                          `pulumi:"location"`
+	Location *string                         `pulumi:"location"`
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
 	Name *string `pulumi:"name"`
 	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -156,7 +153,7 @@ type ProductArgs struct {
 	Id pulumi.StringPtrInput
 	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Images   GoogleCloudRetailV2alphaImageArrayInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
 	Name pulumi.StringPtrInput
 	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).

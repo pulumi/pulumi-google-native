@@ -51,9 +51,6 @@ func NewOsPolicyAssignment(ctx *pulumi.Context,
 	if args.InstanceFilter == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceFilter'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.OsPolicies == nil {
 		return nil, errors.New("invalid value for required argument 'OsPolicies'")
 	}
@@ -99,7 +96,7 @@ type osPolicyAssignmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilter `pulumi:"instanceFilter"`
-	Location       string                           `pulumi:"location"`
+	Location       *string                          `pulumi:"location"`
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 	Name *string `pulumi:"name"`
 	// List of OS policies to be applied to the VMs.
@@ -116,7 +113,7 @@ type OsPolicyAssignmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilterInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 	Name pulumi.StringPtrInput
 	// List of OS policies to be applied to the VMs.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,12 +90,9 @@ type Disk struct {
 func NewDisk(ctx *pulumi.Context,
 	name string, args *DiskArgs, opts ...pulumi.ResourceOption) (*Disk, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DiskArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource Disk
 	err := ctx.RegisterResource("google-native:compute/v1:Disk", name, args, &resource, opts...)
 	if err != nil {
@@ -173,7 +169,7 @@ type diskArgs struct {
 	SourceStorageObject *string `pulumi:"sourceStorageObject"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type *string `pulumi:"type"`
-	Zone string  `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Disk resource.
@@ -222,7 +218,7 @@ type DiskArgs struct {
 	SourceStorageObject pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type pulumi.StringPtrInput
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (DiskArgs) ElementType() reflect.Type {

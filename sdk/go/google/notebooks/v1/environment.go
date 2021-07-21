@@ -42,9 +42,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Environment
 	err := ctx.RegisterResource("google-native:notebooks/v1:Environment", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type environmentArgs struct {
 	// Display name of this environment for the UI.
 	DisplayName   *string `pulumi:"displayName"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	Location      string  `pulumi:"location"`
+	Location      *string `pulumi:"location"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript *string `pulumi:"postStartupScript"`
 	Project           *string `pulumi:"project"`
@@ -101,7 +98,7 @@ type EnvironmentArgs struct {
 	// Display name of this environment for the UI.
 	DisplayName   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	Location      pulumi.StringInput
+	Location      pulumi.StringPtrInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript pulumi.StringPtrInput
 	Project           pulumi.StringPtrInput

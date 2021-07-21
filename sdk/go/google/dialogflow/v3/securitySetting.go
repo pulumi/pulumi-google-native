@@ -41,9 +41,6 @@ func NewSecuritySetting(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource SecuritySetting
 	err := ctx.RegisterResource("google-native:dialogflow/v3:SecuritySetting", name, args, &resource, opts...)
 	if err != nil {
@@ -80,7 +77,7 @@ type securitySettingArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
 	InspectTemplate *string `pulumi:"inspectTemplate"`
-	Location        string  `pulumi:"location"`
+	Location        *string `pulumi:"location"`
 	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -100,7 +97,7 @@ type SecuritySettingArgs struct {
 	DisplayName pulumi.StringInput
 	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
 	InspectTemplate pulumi.StringPtrInput
-	Location        pulumi.StringInput
+	Location        pulumi.StringPtrInput
 	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

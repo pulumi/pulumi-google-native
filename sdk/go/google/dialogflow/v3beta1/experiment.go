@@ -57,9 +57,6 @@ func NewExperiment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Experiment
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:Experiment", name, args, &resource, opts...)
 	if err != nil {
@@ -108,7 +105,7 @@ type experimentArgs struct {
 	ExperimentLength *string `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime *string `pulumi:"lastUpdateTime"`
-	Location       string  `pulumi:"location"`
+	Location       *string `pulumi:"location"`
 	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -140,7 +137,7 @@ type ExperimentArgs struct {
 	ExperimentLength pulumi.StringPtrInput
 	// Last update time of this experiment.
 	LastUpdateTime pulumi.StringPtrInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

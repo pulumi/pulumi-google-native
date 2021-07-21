@@ -42,9 +42,6 @@ func NewConversation(ctx *pulumi.Context,
 	if args.ConversationProfile == nil {
 		return nil, errors.New("invalid value for required argument 'ConversationProfile'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Conversation
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Conversation", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +79,7 @@ type conversationArgs struct {
 	ConversationProfile string `pulumi:"conversationProfile"`
 	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
 	ConversationStage *ConversationConversationStage `pulumi:"conversationStage"`
-	Location          string                         `pulumi:"location"`
+	Location          *string                        `pulumi:"location"`
 	Project           *string                        `pulumi:"project"`
 }
 
@@ -93,7 +90,7 @@ type ConversationArgs struct {
 	ConversationProfile pulumi.StringInput
 	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
 	ConversationStage ConversationConversationStagePtrInput
-	Location          pulumi.StringInput
+	Location          pulumi.StringPtrInput
 	Project           pulumi.StringPtrInput
 }
 

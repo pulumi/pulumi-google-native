@@ -57,9 +57,6 @@ func NewCryptoKeyVersion(ctx *pulumi.Context,
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource CryptoKeyVersion
 	err := ctx.RegisterResource("google-native:cloudkms/v1:CryptoKeyVersion", name, args, &resource, opts...)
 	if err != nil {
@@ -96,7 +93,7 @@ type cryptoKeyVersionArgs struct {
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	KeyRingId                      string                          `pulumi:"keyRingId"`
-	Location                       string                          `pulumi:"location"`
+	Location                       *string                         `pulumi:"location"`
 	Project                        *string                         `pulumi:"project"`
 	// The current state of the CryptoKeyVersion.
 	State *CryptoKeyVersionStateEnum `pulumi:"state"`
@@ -108,7 +105,7 @@ type CryptoKeyVersionArgs struct {
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
 	KeyRingId                      pulumi.StringInput
-	Location                       pulumi.StringInput
+	Location                       pulumi.StringPtrInput
 	Project                        pulumi.StringPtrInput
 	// The current state of the CryptoKeyVersion.
 	State CryptoKeyVersionStateEnumPtrInput

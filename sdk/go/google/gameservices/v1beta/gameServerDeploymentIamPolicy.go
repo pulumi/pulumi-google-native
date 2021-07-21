@@ -38,9 +38,6 @@ func NewGameServerDeploymentIamPolicy(ctx *pulumi.Context,
 	if args.GameServerDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource GameServerDeploymentIamPolicy
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type gameServerDeploymentIamPolicyArgs struct {
 	Etag                   *string `pulumi:"etag"`
 	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
 	IamOwned               *bool   `pulumi:"iamOwned"`
-	Location               string  `pulumi:"location"`
+	Location               *string `pulumi:"location"`
 	Project                *string `pulumi:"project"`
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules []Rule `pulumi:"rules"`
@@ -101,7 +98,7 @@ type GameServerDeploymentIamPolicyArgs struct {
 	Etag                   pulumi.StringPtrInput
 	GameServerDeploymentId pulumi.StringInput
 	IamOwned               pulumi.BoolPtrInput
-	Location               pulumi.StringInput
+	Location               pulumi.StringPtrInput
 	Project                pulumi.StringPtrInput
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules RuleArrayInput

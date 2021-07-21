@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,12 +48,9 @@ type Job struct {
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &JobArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:cloudscheduler/v1:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +91,7 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	HttpTarget *HttpTarget `pulumi:"httpTarget"`
-	Location   string      `pulumi:"location"`
+	Location   *string     `pulumi:"location"`
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -119,7 +115,7 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	HttpTarget HttpTargetPtrInput
-	Location   pulumi.StringInput
+	Location   pulumi.StringPtrInput
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

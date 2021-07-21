@@ -45,9 +45,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
 	}
@@ -87,7 +84,7 @@ type workerPoolArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// Private Pool using a v1 configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
 	Project             *string              `pulumi:"project"`
@@ -101,7 +98,7 @@ type WorkerPoolArgs struct {
 	Annotations pulumi.StringMapInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Private Pool using a v1 configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
 	Project             pulumi.StringPtrInput

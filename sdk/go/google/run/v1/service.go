@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +31,9 @@ type Service struct {
 func NewService(ctx *pulumi.Context,
 	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ServiceArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Service
 	err := ctx.RegisterResource("google-native:run/v1:Service", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +71,7 @@ type serviceArgs struct {
 	DryRun     *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "Service".
 	Kind     *string `pulumi:"kind"`
-	Location string  `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
 	Metadata *ObjectMeta `pulumi:"metadata"`
 	Project  *string     `pulumi:"project"`
@@ -92,7 +88,7 @@ type ServiceArgs struct {
 	DryRun     pulumi.StringPtrInput
 	// The kind of resource, in this case "Service".
 	Kind     pulumi.StringPtrInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
 	Metadata ObjectMetaPtrInput
 	Project  pulumi.StringPtrInput

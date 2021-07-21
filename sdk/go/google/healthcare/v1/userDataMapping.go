@@ -45,9 +45,6 @@ func NewUserDataMapping(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
@@ -85,9 +82,9 @@ func (UserDataMappingState) ElementType() reflect.Type {
 type userDataMappingArgs struct {
 	ConsentStoreId string `pulumi:"consentStoreId"`
 	// A unique identifier for the mapped resource.
-	DataId    string `pulumi:"dataId"`
-	DatasetId string `pulumi:"datasetId"`
-	Location  string `pulumi:"location"`
+	DataId    string  `pulumi:"dataId"`
+	DatasetId string  `pulumi:"datasetId"`
+	Location  *string `pulumi:"location"`
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -103,7 +100,7 @@ type UserDataMappingArgs struct {
 	// A unique identifier for the mapped resource.
 	DataId    pulumi.StringInput
 	DatasetId pulumi.StringInput
-	Location  pulumi.StringInput
+	Location  pulumi.StringPtrInput
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

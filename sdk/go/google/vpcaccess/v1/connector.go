@@ -49,9 +49,6 @@ func NewConnector(ctx *pulumi.Context,
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Connector
 	err := ctx.RegisterResource("google-native:vpcaccess/v1:Connector", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +84,7 @@ type connectorArgs struct {
 	ConnectorId string `pulumi:"connectorId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType *string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
@@ -112,7 +109,7 @@ type ConnectorArgs struct {
 	ConnectorId pulumi.StringInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType pulumi.StringPtrInput
 	// Maximum value of instances in autoscaling group underlying the connector.

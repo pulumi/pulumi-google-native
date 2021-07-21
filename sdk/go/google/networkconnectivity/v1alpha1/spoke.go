@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type Spoke struct {
 func NewSpoke(ctx *pulumi.Context,
 	name string, args *SpokeArgs, opts ...pulumi.ResourceOption) (*Spoke, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SpokeArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Spoke
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1alpha1:Spoke", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +91,7 @@ type spokeArgs struct {
 	LinkedRouterApplianceInstances []RouterApplianceInstance `pulumi:"linkedRouterApplianceInstances"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels []string `pulumi:"linkedVpnTunnels"`
-	Location         string   `pulumi:"location"`
+	Location         *string  `pulumi:"location"`
 	// Immutable. The name of a Spoke resource.
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
@@ -121,7 +117,7 @@ type SpokeArgs struct {
 	LinkedRouterApplianceInstances RouterApplianceInstanceArrayInput
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels pulumi.StringArrayInput
-	Location         pulumi.StringInput
+	Location         pulumi.StringPtrInput
 	// Immutable. The name of a Spoke resource.
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

@@ -39,9 +39,6 @@ func NewFolderReplay(ctx *pulumi.Context,
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource FolderReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:FolderReplay", name, args, &resource, opts...)
 	if err != nil {
@@ -77,7 +74,7 @@ type folderReplayArgs struct {
 	// The configuration used for the `Replay`.
 	Config   GoogleCloudPolicysimulatorV1ReplayConfig `pulumi:"config"`
 	FolderId string                                   `pulumi:"folderId"`
-	Location string                                   `pulumi:"location"`
+	Location *string                                  `pulumi:"location"`
 }
 
 // The set of arguments for constructing a FolderReplay resource.
@@ -85,7 +82,7 @@ type FolderReplayArgs struct {
 	// The configuration used for the `Replay`.
 	Config   GoogleCloudPolicysimulatorV1ReplayConfigInput
 	FolderId pulumi.StringInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 }
 
 func (FolderReplayArgs) ElementType() reflect.Type {

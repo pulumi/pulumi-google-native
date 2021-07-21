@@ -33,9 +33,6 @@ func NewParticipant(ctx *pulumi.Context,
 	if args.ConversationId == nil {
 		return nil, errors.New("invalid value for required argument 'ConversationId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Participant
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Participant", name, args, &resource, opts...)
 	if err != nil {
@@ -68,8 +65,8 @@ func (ParticipantState) ElementType() reflect.Type {
 }
 
 type participantArgs struct {
-	ConversationId string `pulumi:"conversationId"`
-	Location       string `pulumi:"location"`
+	ConversationId string  `pulumi:"conversationId"`
+	Location       *string `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -82,7 +79,7 @@ type participantArgs struct {
 // The set of arguments for constructing a Participant resource.
 type ParticipantArgs struct {
 	ConversationId pulumi.StringInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

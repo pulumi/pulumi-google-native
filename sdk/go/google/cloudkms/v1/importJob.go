@@ -54,9 +54,6 @@ func NewImportJob(ctx *pulumi.Context,
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ProtectionLevel == nil {
 		return nil, errors.New("invalid value for required argument 'ProtectionLevel'")
 	}
@@ -96,7 +93,7 @@ type importJobArgs struct {
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethod `pulumi:"importMethod"`
 	KeyRingId    string                `pulumi:"keyRingId"`
-	Location     string                `pulumi:"location"`
+	Location     *string               `pulumi:"location"`
 	Project      *string               `pulumi:"project"`
 	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel ImportJobProtectionLevel `pulumi:"protectionLevel"`
@@ -108,7 +105,7 @@ type ImportJobArgs struct {
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethodInput
 	KeyRingId    pulumi.StringInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
 	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel ImportJobProtectionLevelInput

@@ -40,9 +40,6 @@ func NewSessionEntityType(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -89,7 +86,7 @@ type sessionEntityTypeArgs struct {
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode SessionEntityTypeEntityOverrideMode `pulumi:"entityOverrideMode"`
 	EnvironmentId      string                              `pulumi:"environmentId"`
-	Location           string                              `pulumi:"location"`
+	Location           *string                             `pulumi:"location"`
 	// The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name      string  `pulumi:"name"`
 	Project   *string `pulumi:"project"`
@@ -104,7 +101,7 @@ type SessionEntityTypeArgs struct {
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode SessionEntityTypeEntityOverrideModeInput
 	EnvironmentId      pulumi.StringInput
-	Location           pulumi.StringInput
+	Location           pulumi.StringPtrInput
 	// The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name      pulumi.StringInput
 	Project   pulumi.StringPtrInput

@@ -42,9 +42,6 @@ func NewSessionEntityType(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.SessionId == nil {
 		return nil, errors.New("invalid value for required argument 'SessionId'")
 	}
@@ -86,7 +83,7 @@ type sessionEntityTypeArgs struct {
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode SessionEntityTypeEntityOverrideMode `pulumi:"entityOverrideMode"`
 	EnvironmentId      string                              `pulumi:"environmentId"`
-	Location           string                              `pulumi:"location"`
+	Location           *string                             `pulumi:"location"`
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
@@ -101,7 +98,7 @@ type SessionEntityTypeArgs struct {
 	// Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode SessionEntityTypeEntityOverrideModeInput
 	EnvironmentId      pulumi.StringInput
-	Location           pulumi.StringInput
+	Location           pulumi.StringPtrInput
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

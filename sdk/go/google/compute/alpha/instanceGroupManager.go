@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,12 +74,9 @@ type InstanceGroupManager struct {
 func NewInstanceGroupManager(ctx *pulumi.Context,
 	name string, args *InstanceGroupManagerArgs, opts ...pulumi.ResourceOption) (*InstanceGroupManager, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceGroupManagerArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource InstanceGroupManager
 	err := ctx.RegisterResource("google-native:compute/alpha:InstanceGroupManager", name, args, &resource, opts...)
 	if err != nil {
@@ -149,7 +145,7 @@ type instanceGroupManagerArgs struct {
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
-	Zone     string                        `pulumi:"zone"`
+	Zone     *string                       `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManager resource.
@@ -190,7 +186,7 @@ type InstanceGroupManagerArgs struct {
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
-	Zone     pulumi.StringInput
+	Zone     pulumi.StringPtrInput
 }
 
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {

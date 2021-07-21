@@ -46,9 +46,6 @@ func NewTask(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
@@ -90,7 +87,7 @@ type taskArgs struct {
 	DispatchDeadline *string `pulumi:"dispatchDeadline"`
 	// HTTP request that is sent to the worker. An HTTP task is a task that has HttpRequest set.
 	HttpRequest *HttpRequest `pulumi:"httpRequest"`
-	Location    string       `pulumi:"location"`
+	Location    *string      `pulumi:"location"`
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -109,7 +106,7 @@ type TaskArgs struct {
 	DispatchDeadline pulumi.StringPtrInput
 	// HTTP request that is sent to the worker. An HTTP task is a task that has HttpRequest set.
 	HttpRequest HttpRequestPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

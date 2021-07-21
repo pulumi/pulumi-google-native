@@ -36,9 +36,6 @@ func NewOrganizationReplay(ctx *pulumi.Context,
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -76,7 +73,7 @@ func (OrganizationReplayState) ElementType() reflect.Type {
 type organizationReplayArgs struct {
 	// The configuration used for the `Replay`.
 	Config         GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
-	Location       string                                        `pulumi:"location"`
+	Location       *string                                       `pulumi:"location"`
 	OrganizationId string                                        `pulumi:"organizationId"`
 }
 
@@ -84,7 +81,7 @@ type organizationReplayArgs struct {
 type OrganizationReplayArgs struct {
 	// The configuration used for the `Replay`.
 	Config         GoogleCloudPolicysimulatorV1beta1ReplayConfigInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }
 

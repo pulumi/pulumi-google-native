@@ -53,9 +53,6 @@ func NewConsent(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
@@ -100,7 +97,7 @@ type consentArgs struct {
 	DatasetId       string `pulumi:"datasetId"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime *string `pulumi:"expireTime"`
-	Location   string  `pulumi:"location"`
+	Location   *string `pulumi:"location"`
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
@@ -124,7 +121,7 @@ type ConsentArgs struct {
 	DatasetId       pulumi.StringInput
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime pulumi.StringPtrInput
-	Location   pulumi.StringInput
+	Location   pulumi.StringPtrInput
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.

@@ -38,9 +38,6 @@ func NewConsentStore(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource ConsentStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:ConsentStore", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type consentStoreArgs struct {
 	EnableConsentCreateOnUpdate *bool `pulumi:"enableConsentCreateOnUpdate"`
 	// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -97,7 +94,7 @@ type ConsentStoreArgs struct {
 	EnableConsentCreateOnUpdate pulumi.BoolPtrInput
 	// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,12 +28,9 @@ type ProductSet struct {
 func NewProductSet(ctx *pulumi.Context,
 	name string, args *ProductSetArgs, opts ...pulumi.ResourceOption) (*ProductSet, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProductSetArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource ProductSet
 	err := ctx.RegisterResource("google-native:vision/v1:ProductSet", name, args, &resource, opts...)
 	if err != nil {
@@ -69,7 +65,7 @@ func (ProductSetState) ElementType() reflect.Type {
 type productSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name         *string `pulumi:"name"`
 	ProductSetId *string `pulumi:"productSetId"`
@@ -80,7 +76,7 @@ type productSetArgs struct {
 type ProductSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name         pulumi.StringPtrInput
 	ProductSetId pulumi.StringPtrInput

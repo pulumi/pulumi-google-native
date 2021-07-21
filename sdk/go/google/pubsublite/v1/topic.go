@@ -30,9 +30,6 @@ func NewTopic(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.TopicId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
@@ -68,7 +65,7 @@ func (TopicState) ElementType() reflect.Type {
 }
 
 type topicArgs struct {
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
@@ -81,7 +78,7 @@ type topicArgs struct {
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.

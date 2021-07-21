@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,12 +116,9 @@ type Instance struct {
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:compute/alpha:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -219,8 +215,8 @@ type instanceArgs struct {
 	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-	Tags *Tags  `pulumi:"tags"`
-	Zone string `pulumi:"zone"`
+	Tags *Tags   `pulumi:"tags"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -290,7 +286,7 @@ type InstanceArgs struct {
 	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
 	Tags TagsPtrInput
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

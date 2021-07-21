@@ -49,9 +49,6 @@ func NewConnectionProfile(ctx *pulumi.Context,
 	if args.ConnectionProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionProfileId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-native:datamigration/v1:ConnectionProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +88,7 @@ type connectionProfileArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// A MySQL database connection profile.
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
@@ -115,7 +112,7 @@ type ConnectionProfileArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfilePtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.

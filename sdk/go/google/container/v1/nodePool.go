@@ -55,9 +55,6 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource NodePool
 	err := ctx.RegisterResource("google-native:container/v1:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -98,8 +95,8 @@ type nodePoolArgs struct {
 	// The node configuration of the pool.
 	Config *NodeConfig `pulumi:"config"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-	InitialNodeCount *int   `pulumi:"initialNodeCount"`
-	Location         string `pulumi:"location"`
+	InitialNodeCount *int    `pulumi:"initialNodeCount"`
+	Location         *string `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// NodeManagement configuration for this NodePool.
@@ -128,7 +125,7 @@ type NodePoolArgs struct {
 	Config NodeConfigPtrInput
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount pulumi.IntPtrInput
-	Location         pulumi.StringInput
+	Location         pulumi.StringPtrInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// NodeManagement configuration for this NodePool.

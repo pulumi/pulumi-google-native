@@ -39,9 +39,6 @@ func NewBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
@@ -80,7 +77,7 @@ type backupArgs struct {
 	BackupId string `pulumi:"backupId"`
 	// The description of the backup.
 	Description *string `pulumi:"description"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
@@ -93,7 +90,7 @@ type BackupArgs struct {
 	BackupId pulumi.StringInput
 	// The description of the backup.
 	Description pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

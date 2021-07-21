@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,12 +50,9 @@ type ZoneInPlaceSnapshot struct {
 func NewZoneInPlaceSnapshot(ctx *pulumi.Context,
 	name string, args *ZoneInPlaceSnapshotArgs, opts ...pulumi.ResourceOption) (*ZoneInPlaceSnapshot, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZoneInPlaceSnapshotArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource ZoneInPlaceSnapshot
 	err := ctx.RegisterResource("google-native:compute/alpha:ZoneInPlaceSnapshot", name, args, &resource, opts...)
 	if err != nil {
@@ -101,7 +97,7 @@ type zoneInPlaceSnapshotArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
 	SourceDisk *string `pulumi:"sourceDisk"`
-	Zone       string  `pulumi:"zone"`
+	Zone       *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ZoneInPlaceSnapshot resource.
@@ -118,7 +114,7 @@ type ZoneInPlaceSnapshotArgs struct {
 	RequestId pulumi.StringPtrInput
 	// URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
 	SourceDisk pulumi.StringPtrInput
-	Zone       pulumi.StringInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (ZoneInPlaceSnapshotArgs) ElementType() reflect.Type {

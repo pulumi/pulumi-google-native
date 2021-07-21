@@ -43,9 +43,6 @@ func NewClientTlsPolicy(ctx *pulumi.Context,
 	if args.ClientTlsPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'ClientTlsPolicyId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource ClientTlsPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1beta1:ClientTlsPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +82,7 @@ type clientTlsPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the resource.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -104,7 +101,7 @@ type ClientTlsPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Set of label tags associated with the resource.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

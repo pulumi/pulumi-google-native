@@ -35,9 +35,6 @@ func NewDicomStore(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource DicomStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DicomStore", name, args, &resource, opts...)
 	if err != nil {
@@ -74,7 +71,7 @@ type dicomStoreArgs struct {
 	DicomStoreId *string `pulumi:"dicomStoreId"`
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
 	Name *string `pulumi:"name"`
 	// Notification destination for new DICOM instances. Supplied by the client.
@@ -90,7 +87,7 @@ type DicomStoreArgs struct {
 	DicomStoreId pulumi.StringPtrInput
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
 	Name pulumi.StringPtrInput
 	// Notification destination for new DICOM instances. Supplied by the client.

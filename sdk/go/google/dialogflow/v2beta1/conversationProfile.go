@@ -51,9 +51,6 @@ func NewConversationProfile(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource ConversationProfile
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:ConversationProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -96,7 +93,7 @@ type conversationProfileArgs struct {
 	HumanAgentHandoffConfig *GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode *string `pulumi:"languageCode"`
-	Location     string  `pulumi:"location"`
+	Location     *string `pulumi:"location"`
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig *GoogleCloudDialogflowV2beta1LoggingConfig `pulumi:"loggingConfig"`
 	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
@@ -122,7 +119,7 @@ type ConversationProfileArgs struct {
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig GoogleCloudDialogflowV2beta1LoggingConfigPtrInput
 	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.

@@ -30,9 +30,6 @@ func NewSubscription(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.SubscriptionId == nil {
 		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
 	}
@@ -70,7 +67,7 @@ func (SubscriptionState) ElementType() reflect.Type {
 type subscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig *DeliveryConfig `pulumi:"deliveryConfig"`
-	Location       string          `pulumi:"location"`
+	Location       *string         `pulumi:"location"`
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name           *string `pulumi:"name"`
 	Project        *string `pulumi:"project"`
@@ -84,7 +81,7 @@ type subscriptionArgs struct {
 type SubscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig DeliveryConfigPtrInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name           pulumi.StringPtrInput
 	Project        pulumi.StringPtrInput

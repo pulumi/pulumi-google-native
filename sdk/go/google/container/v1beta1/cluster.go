@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,12 +126,9 @@ type Cluster struct {
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ClusterArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:container/v1beta1:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -197,7 +193,7 @@ type clusterArgs struct {
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac *LegacyAbac `pulumi:"legacyAbac"`
-	Location   string      `pulumi:"location"`
+	Location   *string     `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
@@ -287,7 +283,7 @@ type ClusterArgs struct {
 	IpAllocationPolicy IPAllocationPolicyPtrInput
 	// Configuration for the legacy ABAC authorization mode.
 	LegacyAbac LegacyAbacPtrInput
-	Location   pulumi.StringInput
+	Location   pulumi.StringPtrInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.

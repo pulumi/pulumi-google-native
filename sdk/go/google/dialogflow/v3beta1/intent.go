@@ -46,9 +46,6 @@ func NewIntent(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Intent
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:Intent", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +88,7 @@ type intentArgs struct {
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels       map[string]string `pulumi:"labels"`
 	LanguageCode *string           `pulumi:"languageCode"`
-	Location     string            `pulumi:"location"`
+	Location     *string           `pulumi:"location"`
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name *string `pulumi:"name"`
 	// The collection of parameters associated with the intent.
@@ -115,7 +112,7 @@ type IntentArgs struct {
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels       pulumi.StringMapInput
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name pulumi.StringPtrInput
 	// The collection of parameters associated with the intent.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,12 +44,9 @@ type InstanceGroup struct {
 func NewInstanceGroup(ctx *pulumi.Context,
 	name string, args *InstanceGroupArgs, opts ...pulumi.ResourceOption) (*InstanceGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceGroupArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource InstanceGroup
 	err := ctx.RegisterResource("google-native:compute/beta:InstanceGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +87,7 @@ type instanceGroupArgs struct {
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
 	Project    *string     `pulumi:"project"`
 	RequestId  *string     `pulumi:"requestId"`
-	Zone       string      `pulumi:"zone"`
+	Zone       *string     `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroup resource.
@@ -104,7 +100,7 @@ type InstanceGroupArgs struct {
 	NamedPorts NamedPortArrayInput
 	Project    pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
-	Zone       pulumi.StringInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (InstanceGroupArgs) ElementType() reflect.Type {

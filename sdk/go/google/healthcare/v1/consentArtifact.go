@@ -46,9 +46,6 @@ func NewConsentArtifact(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
@@ -92,7 +89,7 @@ type consentArtifactArgs struct {
 	DatasetId             string  `pulumi:"datasetId"`
 	// Optional. A signature from a guardian.
 	GuardianSignature *Signature `pulumi:"guardianSignature"`
-	Location          string     `pulumi:"location"`
+	Location          *string    `pulumi:"location"`
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
@@ -116,7 +113,7 @@ type ConsentArtifactArgs struct {
 	DatasetId             pulumi.StringInput
 	// Optional. A signature from a guardian.
 	GuardianSignature SignaturePtrInput
-	Location          pulumi.StringInput
+	Location          pulumi.StringPtrInput
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.

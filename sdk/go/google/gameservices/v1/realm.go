@@ -38,9 +38,6 @@ func NewRealm(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.RealmId == nil {
 		return nil, errors.New("invalid value for required argument 'RealmId'")
 	}
@@ -85,7 +82,7 @@ type realmArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -102,7 +99,7 @@ type RealmArgs struct {
 	Etag pulumi.StringPtrInput
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

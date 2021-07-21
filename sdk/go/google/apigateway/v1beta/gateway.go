@@ -47,9 +47,6 @@ func NewGateway(ctx *pulumi.Context,
 	if args.GatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'GatewayId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Gateway
 	err := ctx.RegisterResource("google-native:apigateway/v1beta:Gateway", name, args, &resource, opts...)
 	if err != nil {
@@ -89,7 +86,7 @@ type gatewayArgs struct {
 	GatewayId   string  `pulumi:"gatewayId"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 }
 
@@ -102,7 +99,7 @@ type GatewayArgs struct {
 	GatewayId   pulumi.StringInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 }
 
