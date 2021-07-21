@@ -16,9 +16,9 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 @pulumi.input_type
 class SubscriptionArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  subscription_id: pulumi.Input[str],
                  delivery_config: Optional[pulumi.Input['DeliveryConfigArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  skip_backlog: Optional[pulumi.Input[str]] = None,
@@ -29,10 +29,11 @@ class SubscriptionArgs:
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "subscription_id", subscription_id)
         if delivery_config is not None:
             pulumi.set(__self__, "delivery_config", delivery_config)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -41,15 +42,6 @@ class SubscriptionArgs:
             pulumi.set(__self__, "skip_backlog", skip_backlog)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="subscriptionId")
@@ -71,6 +63,15 @@ class SubscriptionArgs:
     @delivery_config.setter
     def delivery_config(self, value: Optional[pulumi.Input['DeliveryConfigArgs']]):
         pulumi.set(self, "delivery_config", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -181,8 +182,6 @@ class Subscription(pulumi.CustomResource):
             __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
             __props__.__dict__["delivery_config"] = delivery_config
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

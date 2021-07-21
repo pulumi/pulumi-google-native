@@ -16,9 +16,9 @@ __all__ = ['DlpJobArgs', 'DlpJob']
 @pulumi.input_type
 class DlpJobArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] = None):
         """
@@ -27,24 +27,16 @@ class DlpJobArgs:
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
-        pulumi.set(__self__, "location", location)
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if risk_job is not None:
             pulumi.set(__self__, "risk_job", risk_job)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="inspectJob")
@@ -69,6 +61,15 @@ class DlpJobArgs:
     @job_id.setter
     def job_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -117,7 +118,7 @@ class DlpJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DlpJobArgs,
+                 args: Optional[DlpJobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
@@ -157,8 +158,6 @@ class DlpJob(pulumi.CustomResource):
 
             __props__.__dict__["inspect_job"] = inspect_job
             __props__.__dict__["job_id"] = job_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job

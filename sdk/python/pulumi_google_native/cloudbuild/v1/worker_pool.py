@@ -16,10 +16,10 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 @pulumi.input_type
 class WorkerPoolArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input['PrivatePoolV1ConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
@@ -29,27 +29,19 @@ class WorkerPoolArgs:
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Private Pool using a v1 configuration.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if private_pool_v1_config is not None:
             pulumi.set(__self__, "private_pool_v1_config", private_pool_v1_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -83,6 +75,15 @@ class WorkerPoolArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="privatePoolV1Config")
@@ -184,8 +185,6 @@ class WorkerPool(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["private_pool_v1_config"] = private_pool_v1_config
             __props__.__dict__["project"] = project

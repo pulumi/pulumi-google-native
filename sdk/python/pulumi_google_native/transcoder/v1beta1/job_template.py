@@ -17,8 +17,8 @@ __all__ = ['JobTemplateArgs', 'JobTemplate']
 class JobTemplateArgs:
     def __init__(__self__, *,
                  job_template_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  config: Optional[pulumi.Input['JobConfigArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,9 +27,10 @@ class JobTemplateArgs:
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
         """
         pulumi.set(__self__, "job_template_id", job_template_id)
-        pulumi.set(__self__, "location", location)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -46,15 +47,6 @@ class JobTemplateArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def config(self) -> Optional[pulumi.Input['JobConfigArgs']]:
         """
         The configuration for this template.
@@ -64,6 +56,15 @@ class JobTemplateArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['JobConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -151,8 +152,6 @@ class JobTemplate(pulumi.CustomResource):
             if job_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_template_id'")
             __props__.__dict__["job_template_id"] = job_template_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

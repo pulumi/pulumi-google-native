@@ -14,13 +14,13 @@ __all__ = ['TargetInstanceArgs', 'TargetInstance']
 @pulumi.input_type
 class TargetInstanceArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nat_policy: Optional[pulumi.Input['TargetInstanceNatPolicy']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetInstance resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -28,7 +28,6 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetInstanceNatPolicy'] nat_policy: NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
         """
-        pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance is not None:
@@ -41,15 +40,8 @@ class TargetInstanceArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -117,6 +109,15 @@ class TargetInstanceArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class TargetInstance(pulumi.CustomResource):
     @overload
@@ -145,7 +146,7 @@ class TargetInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetInstanceArgs,
+                 args: Optional[TargetInstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a TargetInstance resource in the specified project and zone using the data included in the request.
@@ -190,8 +191,6 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["nat_policy"] = nat_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None

@@ -17,10 +17,10 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
@@ -40,13 +40,14 @@ class ConnectionProfileArgs:
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
-        pulumi.set(__self__, "location", location)
         if cloudsql is not None:
             pulumi.set(__self__, "cloudsql", cloudsql)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
         if name is not None:
@@ -70,15 +71,6 @@ class ConnectionProfileArgs:
     @connection_profile_id.setter
     def connection_profile_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "connection_profile_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -115,6 +107,15 @@ class ConnectionProfileArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -281,8 +282,6 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["connection_profile_id"] = connection_profile_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name

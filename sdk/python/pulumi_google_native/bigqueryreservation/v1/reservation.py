@@ -13,8 +13,8 @@ __all__ = ['ReservationArgs', 'Reservation']
 @pulumi.input_type
 class ReservationArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
@@ -25,9 +25,10 @@ class ReservationArgs:
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
         """
-        pulumi.set(__self__, "location", location)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -36,15 +37,6 @@ class ReservationArgs:
             pulumi.set(__self__, "reservation_id", reservation_id)
         if slot_capacity is not None:
             pulumi.set(__self__, "slot_capacity", slot_capacity)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -57,6 +49,15 @@ class ReservationArgs:
     @ignore_idle_slots.setter
     def ignore_idle_slots(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_idle_slots", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -126,7 +127,7 @@ class Reservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ReservationArgs,
+                 args: Optional[ReservationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new reservation resource.
@@ -165,8 +166,6 @@ class Reservation(pulumi.CustomResource):
             __props__ = ReservationArgs.__new__(ReservationArgs)
 
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

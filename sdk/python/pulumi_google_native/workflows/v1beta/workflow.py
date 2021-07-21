@@ -13,10 +13,10 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  workflow_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -29,12 +29,13 @@ class WorkflowArgs:
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workflow_id", workflow_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -43,15 +44,6 @@ class WorkflowArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_contents is not None:
             pulumi.set(__self__, "source_contents", source_contents)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="workflowId")
@@ -85,6 +77,15 @@ class WorkflowArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -203,8 +204,6 @@ class Workflow(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

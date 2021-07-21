@@ -16,10 +16,10 @@ __all__ = ['ServiceArgs', 'Service']
 @pulumi.input_type
 class ServiceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  hive_metastore_config: Optional[pulumi.Input['HiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
                  metadata_integration: Optional[pulumi.Input['MetadataIntegrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,12 +41,13 @@ class ServiceArgs:
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "service_id", service_id)
         if hive_metastore_config is not None:
             pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if metadata_integration is not None:
@@ -65,15 +66,6 @@ class ServiceArgs:
             pulumi.set(__self__, "request_id", request_id)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -107,6 +99,15 @@ class ServiceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="maintenanceWindow")
@@ -296,8 +297,6 @@ class Service(pulumi.CustomResource):
 
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["metadata_integration"] = metadata_integration

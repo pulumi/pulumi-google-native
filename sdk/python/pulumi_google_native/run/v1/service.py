@@ -15,10 +15,10 @@ __all__ = ['ServiceArgs', 'Service']
 @pulumi.input_type
 class ServiceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['ObjectMetaArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['ServiceSpecArgs']] = None,
@@ -31,13 +31,14 @@ class ServiceArgs:
         :param pulumi.Input['ServiceSpecArgs'] spec: Spec holds the desired state of the Service (from the client).
         :param pulumi.Input['ServiceStatusArgs'] status: Status communicates the observed state of the Service (from the controller).
         """
-        pulumi.set(__self__, "location", location)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if project is not None:
@@ -46,15 +47,6 @@ class ServiceArgs:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -88,6 +80,15 @@ class ServiceArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -165,7 +166,7 @@ class Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceArgs,
+                 args: Optional[ServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a service.
@@ -209,8 +210,6 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["api_version"] = api_version
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["kind"] = kind
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["project"] = project

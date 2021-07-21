@@ -16,13 +16,17 @@ class ProviderArgs:
                  append_user_agent: Optional[pulumi.Input[str]] = None,
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
                  partner_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] append_user_agent: Additional user-agent string to append to the default one (<prod_name>/<ver>).
         :param pulumi.Input[bool] disable_partner_name: This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         :param pulumi.Input[str] partner_name: A Google Partner Name to facilitate partner resource usage attribution.
-        :param pulumi.Input[str] project: A Google Cloud project name.
+        :param pulumi.Input[str] project: The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+        :param pulumi.Input[str] region: The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        :param pulumi.Input[str] zone: The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
         """
         if append_user_agent is None:
             append_user_agent = _utilities.get_env('GOOGLE_APPEND_USER_AGENT')
@@ -40,6 +44,14 @@ class ProviderArgs:
             project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is None:
+            region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if zone is None:
+            zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="appendUserAgent")
@@ -81,13 +93,37 @@ class ProviderArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        A Google Cloud project name.
+        The default project to manage resources in. If another project is specified on a resource, it will take precedence.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -99,6 +135,8 @@ class Provider(pulumi.ProviderResource):
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
                  partner_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the Google Cloud package.
@@ -108,7 +146,9 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] append_user_agent: Additional user-agent string to append to the default one (<prod_name>/<ver>).
         :param pulumi.Input[bool] disable_partner_name: This will disable the Pulumi Partner Name which is used if a custom `partnerName` isn't specified.
         :param pulumi.Input[str] partner_name: A Google Partner Name to facilitate partner resource usage attribution.
-        :param pulumi.Input[str] project: A Google Cloud project name.
+        :param pulumi.Input[str] project: The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+        :param pulumi.Input[str] region: The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        :param pulumi.Input[str] zone: The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
         """
         ...
     @overload
@@ -138,6 +178,8 @@ class Provider(pulumi.ProviderResource):
                  disable_partner_name: Optional[pulumi.Input[bool]] = None,
                  partner_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -162,6 +204,12 @@ class Provider(pulumi.ProviderResource):
             if project is None:
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__.__dict__["project"] = project
+            if region is None:
+                region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+            __props__.__dict__["region"] = region
+            if zone is None:
+                zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
+            __props__.__dict__["zone"] = zone
         super(Provider, __self__).__init__(
             'google-native',
             resource_name,

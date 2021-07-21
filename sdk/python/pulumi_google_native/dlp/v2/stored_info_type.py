@@ -16,7 +16,7 @@ __all__ = ['StoredInfoTypeArgs', 'StoredInfoType']
 class StoredInfoTypeArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'],
-                 location: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
@@ -25,7 +25,8 @@ class StoredInfoTypeArgs:
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "location", location)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if stored_info_type_id is not None:
@@ -45,11 +46,11 @@ class StoredInfoTypeArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
+    def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: pulumi.Input[str]):
+    def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
     @property
@@ -137,8 +138,6 @@ class StoredInfoType(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id

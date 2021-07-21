@@ -13,9 +13,9 @@ __all__ = ['TagArgs', 'Tag']
 @pulumi.input_type
 class TagArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  package_id: pulumi.Input[str],
                  repository_id: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tag_id: Optional[pulumi.Input[str]] = None,
@@ -25,9 +25,10 @@ class TagArgs:
         :param pulumi.Input[str] name: The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
         :param pulumi.Input[str] version: The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "package_id", package_id)
         pulumi.set(__self__, "repository_id", repository_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -36,15 +37,6 @@ class TagArgs:
             pulumi.set(__self__, "tag_id", tag_id)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="packageId")
@@ -63,6 +55,15 @@ class TagArgs:
     @repository_id.setter
     def repository_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "repository_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -171,8 +172,6 @@ class Tag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagArgs.__new__(TagArgs)
 
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if package_id is None and not opts.urn:

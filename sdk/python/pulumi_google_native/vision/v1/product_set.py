@@ -14,8 +14,8 @@ __all__ = ['ProductSetArgs', 'ProductSet']
 @pulumi.input_type
 class ProductSetArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_set_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -24,24 +24,16 @@ class ProductSetArgs:
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
         """
-        pulumi.set(__self__, "location", location)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if product_set_id is not None:
             pulumi.set(__self__, "product_set_id", product_set_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -54,6 +46,15 @@ class ProductSetArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -109,7 +110,7 @@ class ProductSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProductSetArgs,
+                 args: Optional[ProductSetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
@@ -147,8 +148,6 @@ class ProductSet(pulumi.CustomResource):
             __props__ = ProductSetArgs.__new__(ProductSetArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["product_set_id"] = product_set_id

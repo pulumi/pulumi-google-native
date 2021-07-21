@@ -17,11 +17,11 @@ __all__ = ['ConversationProfileArgs', 'ConversationProfile']
 class ConversationProfileArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  automated_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] = None,
                  human_agent_assistant_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] = None,
                  human_agent_handoff_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['GoogleCloudDialogflowV2LoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None,
@@ -42,7 +42,6 @@ class ConversationProfileArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs'] stt_config: Settings for speech transcription.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
         if human_agent_assistant_config is not None:
@@ -51,6 +50,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "human_agent_handoff_config", human_agent_handoff_config)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if logging_config is not None:
             pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
@@ -75,15 +76,6 @@ class ConversationProfileArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="automatedAgentConfig")
@@ -132,6 +124,15 @@ class ConversationProfileArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="loggingConfig")
@@ -292,8 +293,6 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["human_agent_assistant_config"] = human_agent_assistant_config
             __props__.__dict__["human_agent_handoff_config"] = human_agent_handoff_config
             __props__.__dict__["language_code"] = language_code
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name

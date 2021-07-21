@@ -16,7 +16,6 @@ __all__ = ['FutureReservationArgs', 'FutureReservation']
 @pulumi.input_type
 class FutureReservationArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,7 +24,8 @@ class FutureReservationArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSKUPropertiesArgs']] = None,
-                 time_window: Optional[pulumi.Input['FutureReservationTimeWindowArgs']] = None):
+                 time_window: Optional[pulumi.Input['FutureReservationTimeWindowArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
@@ -35,7 +35,6 @@ class FutureReservationArgs:
         :param pulumi.Input['FutureReservationSpecificSKUPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
         """
-        pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if kind is not None:
@@ -54,15 +53,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
         if time_window is not None:
             pulumi.set(__self__, "time_window", time_window)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -163,6 +155,15 @@ class FutureReservationArgs:
     def time_window(self, value: Optional[pulumi.Input['FutureReservationTimeWindowArgs']]):
         pulumi.set(self, "time_window", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class FutureReservation(pulumi.CustomResource):
     @overload
@@ -196,7 +197,7 @@ class FutureReservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FutureReservationArgs,
+                 args: Optional[FutureReservationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Future Reservation.
@@ -247,8 +248,6 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["specific_sku_properties"] = specific_sku_properties
             __props__.__dict__["time_window"] = time_window
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None

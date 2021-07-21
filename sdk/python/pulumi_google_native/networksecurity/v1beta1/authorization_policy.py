@@ -18,9 +18,9 @@ class AuthorizationPolicyArgs:
     def __init__(__self__, *,
                  action: pulumi.Input['AuthorizationPolicyAction'],
                  authorization_policy_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]] = None):
@@ -34,11 +34,12 @@ class AuthorizationPolicyArgs:
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "authorization_policy_id", authorization_policy_id)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -69,15 +70,6 @@ class AuthorizationPolicyArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. Free-text description of the resource.
@@ -99,6 +91,15 @@ class AuthorizationPolicyArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -211,8 +212,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
             __props__.__dict__["authorization_policy_id"] = authorization_policy_id
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

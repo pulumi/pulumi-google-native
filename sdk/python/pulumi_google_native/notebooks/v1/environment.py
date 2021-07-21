@@ -16,10 +16,10 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  container_image: Optional[pulumi.Input['ContainerImageArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input['VmImageArgs']] = None):
@@ -32,13 +32,14 @@ class EnvironmentArgs:
         :param pulumi.Input['VmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "location", location)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if post_startup_script is not None:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
         if project is not None:
@@ -54,15 +55,6 @@ class EnvironmentArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="containerImage")
@@ -99,6 +91,15 @@ class EnvironmentArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="postStartupScript")
@@ -211,8 +212,6 @@ class Environment(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project

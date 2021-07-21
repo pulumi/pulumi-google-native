@@ -15,9 +15,9 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restrictions: Optional[pulumi.Input['V2RestrictionsArgs']] = None):
         """
@@ -25,24 +25,16 @@ class KeyArgs:
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
         :param pulumi.Input['V2RestrictionsArgs'] restrictions: Key restrictions.
         """
-        pulumi.set(__self__, "location", location)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if restrictions is not None:
             pulumi.set(__self__, "restrictions", restrictions)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -64,6 +56,15 @@ class KeyArgs:
     @key_id.setter
     def key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -111,7 +112,7 @@ class Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyArgs,
+                 args: Optional[KeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
@@ -151,8 +152,6 @@ class Key(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["key_id"] = key_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["restrictions"] = restrictions

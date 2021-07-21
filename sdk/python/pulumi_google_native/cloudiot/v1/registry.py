@@ -16,11 +16,11 @@ __all__ = ['RegistryArgs', 'Registry']
 @pulumi.input_type
 class RegistryArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryCredentialArgs']]]] = None,
                  event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EventNotificationConfigArgs']]]] = None,
                  http_config: Optional[pulumi.Input['HttpConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
                  mqtt_config: Optional[pulumi.Input['MqttConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -37,7 +37,6 @@ class RegistryArgs:
         :param pulumi.Input[str] name: The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
         :param pulumi.Input['StateNotificationConfigArgs'] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
         """
-        pulumi.set(__self__, "location", location)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
         if event_notification_configs is not None:
@@ -46,6 +45,8 @@ class RegistryArgs:
             pulumi.set(__self__, "http_config", http_config)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
         if mqtt_config is not None:
@@ -56,15 +57,6 @@ class RegistryArgs:
             pulumi.set(__self__, "project", project)
         if state_notification_config is not None:
             pulumi.set(__self__, "state_notification_config", state_notification_config)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -113,6 +105,15 @@ class RegistryArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="logLevel")
@@ -206,7 +207,7 @@ class Registry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegistryArgs,
+                 args: Optional[RegistryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a device registry that contains devices.
@@ -252,8 +253,6 @@ class Registry(pulumi.CustomResource):
             __props__.__dict__["event_notification_configs"] = event_notification_configs
             __props__.__dict__["http_config"] = http_config
             __props__.__dict__["id"] = id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["mqtt_config"] = mqtt_config

@@ -18,7 +18,6 @@ class ProductArgs:
     def __init__(__self__, *,
                  branch_id: pulumi.Input[str],
                  catalog_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  title: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -29,6 +28,7 @@ class ProductArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaImageArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input['GoogleCloudRetailV2alphaPriceInfoArgs']] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
@@ -56,7 +56,6 @@ class ProductArgs:
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "catalog_id", catalog_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "product_id", product_id)
         pulumi.set(__self__, "title", title)
         if attributes is not None:
@@ -75,6 +74,8 @@ class ProductArgs:
             pulumi.set(__self__, "id", id)
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if price_info is not None:
@@ -107,15 +108,6 @@ class ProductArgs:
     @catalog_id.setter
     def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="productId")
@@ -233,6 +225,15 @@ class ProductArgs:
     @images.setter
     def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaImageArgs']]]]):
         pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -433,8 +434,6 @@ class Product(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
             __props__.__dict__["images"] = images
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["price_info"] = price_info

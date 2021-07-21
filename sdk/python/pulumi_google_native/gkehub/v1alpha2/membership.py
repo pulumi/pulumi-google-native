@@ -16,13 +16,13 @@ __all__ = ['MembershipArgs', 'Membership']
 @pulumi.input_type
 class MembershipArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
                  authority: Optional[pulumi.Input['AuthorityArgs']] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Membership resource.
@@ -32,7 +32,6 @@ class MembershipArgs:
         :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "membership_id", membership_id)
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
@@ -44,17 +43,10 @@ class MembershipArgs:
             pulumi.set(__self__, "infrastructure_type", infrastructure_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="membershipId")
@@ -124,6 +116,15 @@ class MembershipArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -211,8 +212,6 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["infrastructure_type"] = infrastructure_type
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if membership_id is None and not opts.urn:
                 raise TypeError("Missing required property 'membership_id'")

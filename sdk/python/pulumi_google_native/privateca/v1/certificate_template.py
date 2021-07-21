@@ -17,10 +17,10 @@ __all__ = ['CertificateTemplateArgs', 'CertificateTemplate']
 class CertificateTemplateArgs:
     def __init__(__self__, *,
                  certificate_template_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  identity_constraints: Optional[pulumi.Input['CertificateIdentityConstraintsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  passthrough_extensions: Optional[pulumi.Input['CertificateExtensionConstraintsArgs']] = None,
                  predefined_values: Optional[pulumi.Input['X509ParametersArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -34,13 +34,14 @@ class CertificateTemplateArgs:
         :param pulumi.Input['X509ParametersArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         """
         pulumi.set(__self__, "certificate_template_id", certificate_template_id)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if identity_constraints is not None:
             pulumi.set(__self__, "identity_constraints", identity_constraints)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if passthrough_extensions is not None:
             pulumi.set(__self__, "passthrough_extensions", passthrough_extensions)
         if predefined_values is not None:
@@ -58,15 +59,6 @@ class CertificateTemplateArgs:
     @certificate_template_id.setter
     def certificate_template_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "certificate_template_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -103,6 +95,15 @@ class CertificateTemplateArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="passthroughExtensions")
@@ -226,8 +227,6 @@ class CertificateTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["identity_constraints"] = identity_constraints
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["passthrough_extensions"] = passthrough_extensions
             __props__.__dict__["predefined_values"] = predefined_values

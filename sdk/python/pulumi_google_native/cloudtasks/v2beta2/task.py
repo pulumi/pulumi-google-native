@@ -16,9 +16,9 @@ __all__ = ['TaskArgs', 'Task']
 @pulumi.input_type
 class TaskArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  queue_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pull_message: Optional[pulumi.Input['PullMessageArgs']] = None,
@@ -32,10 +32,11 @@ class TaskArgs:
         :param pulumi.Input['TaskResponseView'] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "queue_id", queue_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -46,15 +47,6 @@ class TaskArgs:
             pulumi.set(__self__, "response_view", response_view)
         if schedule_time is not None:
             pulumi.set(__self__, "schedule_time", schedule_time)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="queueId")
@@ -76,6 +68,15 @@ class TaskArgs:
     @app_engine_http_request.setter
     def app_engine_http_request(self, value: Optional[pulumi.Input['AppEngineHttpRequestArgs']]):
         pulumi.set(self, "app_engine_http_request", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -205,8 +206,6 @@ class Task(pulumi.CustomResource):
             __props__ = TaskArgs.__new__(TaskArgs)
 
             __props__.__dict__["app_engine_http_request"] = app_engine_http_request
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

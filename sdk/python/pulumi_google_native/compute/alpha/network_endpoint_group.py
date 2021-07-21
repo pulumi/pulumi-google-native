@@ -16,7 +16,6 @@ __all__ = ['NetworkEndpointGroupArgs', 'NetworkEndpointGroup']
 @pulumi.input_type
 class NetworkEndpointGroupArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_engine: Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']] = None,
                  cloud_function: Optional[pulumi.Input['NetworkEndpointGroupCloudFunctionArgs']] = None,
@@ -31,7 +30,8 @@ class NetworkEndpointGroupArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['NetworkEndpointGroupType']] = None):
+                 type: Optional[pulumi.Input['NetworkEndpointGroupType']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NetworkEndpointGroup resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
@@ -48,7 +48,6 @@ class NetworkEndpointGroupArgs:
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input['NetworkEndpointGroupType'] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
         """
-        pulumi.set(__self__, "zone", zone)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if app_engine is not None:
@@ -79,15 +78,8 @@ class NetworkEndpointGroupArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -263,6 +255,15 @@ class NetworkEndpointGroupArgs:
     def type(self, value: Optional[pulumi.Input['NetworkEndpointGroupType']]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class NetworkEndpointGroup(pulumi.CustomResource):
     @overload
@@ -309,7 +310,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkEndpointGroupArgs,
+                 args: Optional[NetworkEndpointGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a network endpoint group in the specified project using the parameters that are included in the request.
@@ -372,8 +373,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["serverless_deployment"] = serverless_deployment
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["type"] = type
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None

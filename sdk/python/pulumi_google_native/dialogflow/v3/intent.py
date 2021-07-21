@@ -17,11 +17,11 @@ class IntentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3IntentParameterArgs']]]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -40,7 +40,6 @@ class IntentArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if is_fallback is not None:
@@ -49,6 +48,8 @@ class IntentArgs:
             pulumi.set(__self__, "labels", labels)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
@@ -80,15 +81,6 @@ class IntentArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -134,6 +126,15 @@ class IntentArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -283,8 +284,6 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["is_fallback"] = is_fallback
             __props__.__dict__["labels"] = labels
             __props__.__dict__["language_code"] = language_code
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters

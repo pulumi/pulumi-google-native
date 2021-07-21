@@ -14,8 +14,8 @@ __all__ = ['KnowledgeBaseArgs', 'KnowledgeBase']
 class KnowledgeBaseArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  language_code: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -25,9 +25,10 @@ class KnowledgeBaseArgs:
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -46,15 +47,6 @@ class KnowledgeBaseArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
@@ -65,6 +57,15 @@ class KnowledgeBaseArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -153,8 +154,6 @@ class KnowledgeBase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["language_code"] = language_code
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

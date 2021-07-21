@@ -16,7 +16,6 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  client_request_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_from_snapshot_id: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class JobArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input['JobMetadataArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_description: Optional[pulumi.Input['PipelineDescriptionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,6 @@ class JobArgs:
                  view: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
         :param pulumi.Input[str] client_request_id: The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
         :param pulumi.Input[str] create_time: The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
         :param pulumi.Input[str] created_from_snapshot_id: If this is specified, the job's initial state is populated from the given snapshot.
@@ -53,6 +52,7 @@ class JobArgs:
         :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
         :param pulumi.Input['JobMetadataArgs'] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
         :param pulumi.Input[str] name: The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
         :param pulumi.Input['PipelineDescriptionArgs'] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
         :param pulumi.Input[str] project: The ID of the Cloud Platform project that the job belongs to.
@@ -68,7 +68,6 @@ class JobArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
         """
-        pulumi.set(__self__, "location", location)
         if client_request_id is not None:
             pulumi.set(__self__, "client_request_id", client_request_id)
         if create_time is not None:
@@ -87,6 +86,8 @@ class JobArgs:
             pulumi.set(__self__, "job_metadata", job_metadata)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if pipeline_description is not None:
@@ -117,18 +118,6 @@ class JobArgs:
             pulumi.set(__self__, "type", type)
         if view is not None:
             pulumi.set(__self__, "view", view)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        """
-        The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="clientRequestId")
@@ -237,6 +226,18 @@ class JobArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -481,7 +482,7 @@ class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobArgs,
+                 args: Optional[JobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
@@ -547,8 +548,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["job_metadata"] = job_metadata
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["pipeline_description"] = pipeline_description

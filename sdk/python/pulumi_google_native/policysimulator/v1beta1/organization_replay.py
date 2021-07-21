@@ -17,15 +17,16 @@ __all__ = ['OrganizationReplayArgs', 'OrganizationReplay']
 class OrganizationReplayArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'],
-                 location: pulumi.Input[str],
-                 organization_id: pulumi.Input[str]):
+                 organization_id: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationReplay resource.
         :param pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'] config: The configuration used for the `Replay`.
         """
         pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter
@@ -40,15 +41,6 @@ class OrganizationReplayArgs:
         pulumi.set(self, "config", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -56,6 +48,15 @@ class OrganizationReplayArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
 
 class OrganizationReplay(pulumi.CustomResource):
@@ -118,8 +119,6 @@ class OrganizationReplay(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

@@ -18,8 +18,8 @@ class TestCaseArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  last_test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3TestCaseResultArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -38,9 +38,10 @@ class TestCaseArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if last_test_result is not None:
             pulumi.set(__self__, "last_test_result", last_test_result)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
@@ -76,15 +77,6 @@ class TestCaseArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="lastTestResult")
     def last_test_result(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3TestCaseResultArgs']]:
         """
@@ -95,6 +87,15 @@ class TestCaseArgs:
     @last_test_result.setter
     def last_test_result(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3TestCaseResultArgs']]):
         pulumi.set(self, "last_test_result", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -248,8 +249,6 @@ class TestCase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["last_test_result"] = last_test_result
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes

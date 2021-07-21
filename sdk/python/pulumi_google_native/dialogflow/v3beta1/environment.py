@@ -17,9 +17,9 @@ class EnvironmentArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  version_configs: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]],
                  description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -31,10 +31,11 @@ class EnvironmentArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "version_configs", version_configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -62,15 +63,6 @@ class EnvironmentArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="versionConfigs")
     def version_configs(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs']]]:
         """
@@ -93,6 +85,15 @@ class EnvironmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -189,8 +190,6 @@ class Environment(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

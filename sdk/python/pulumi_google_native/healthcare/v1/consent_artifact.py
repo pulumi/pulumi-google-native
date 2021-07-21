@@ -17,11 +17,11 @@ class ConsentArtifactArgs:
     def __init__(__self__, *,
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input['ImageArgs']]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input['SignatureArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,6 @@ class ConsentArtifactArgs:
         """
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "user_id", user_id)
         if consent_content_screenshots is not None:
             pulumi.set(__self__, "consent_content_screenshots", consent_content_screenshots)
@@ -48,6 +47,8 @@ class ConsentArtifactArgs:
             pulumi.set(__self__, "consent_content_version", consent_content_version)
         if guardian_signature is not None:
             pulumi.set(__self__, "guardian_signature", guardian_signature)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -76,15 +77,6 @@ class ConsentArtifactArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="userId")
@@ -133,6 +125,15 @@ class ConsentArtifactArgs:
     @guardian_signature.setter
     def guardian_signature(self, value: Optional[pulumi.Input['SignatureArgs']]):
         pulumi.set(self, "guardian_signature", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -281,8 +282,6 @@ class ConsentArtifact(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["guardian_signature"] = guardian_signature
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name

@@ -15,10 +15,10 @@ class ConsentStoreArgs:
     def __init__(__self__, *,
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
                  enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,13 +30,14 @@ class ConsentStoreArgs:
         """
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if default_consent_ttl is not None:
             pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
         if enable_consent_create_on_update is not None:
             pulumi.set(__self__, "enable_consent_create_on_update", enable_consent_create_on_update)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -59,15 +60,6 @@ class ConsentStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="defaultConsentTtl")
@@ -104,6 +96,15 @@ class ConsentStoreArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -204,8 +205,6 @@ class ConsentStore(pulumi.CustomResource):
             __props__.__dict__["default_consent_ttl"] = default_consent_ttl
             __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

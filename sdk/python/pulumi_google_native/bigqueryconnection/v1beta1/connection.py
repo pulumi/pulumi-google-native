@@ -16,11 +16,11 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  cloud_sql: Optional[pulumi.Input['CloudSqlPropertiesArgs']] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,7 +30,6 @@ class ConnectionArgs:
         :param pulumi.Input[str] friendly_name: User provided display name for the connection.
         :param pulumi.Input[str] name: The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         """
-        pulumi.set(__self__, "location", location)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
         if connection_id is not None:
@@ -39,19 +38,12 @@ class ConnectionArgs:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="cloudSql")
@@ -97,6 +89,15 @@ class ConnectionArgs:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -147,7 +148,7 @@ class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionArgs,
+                 args: Optional[ConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new connection.
@@ -190,8 +191,6 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

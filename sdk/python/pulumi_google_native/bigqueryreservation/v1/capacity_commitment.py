@@ -15,9 +15,9 @@ __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
 @pulumi.input_type
 class CapacityCommitmentArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input['CapacityCommitmentRenewalPlan']] = None,
@@ -28,11 +28,12 @@ class CapacityCommitmentArgs:
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
         """
-        pulumi.set(__self__, "location", location)
         if capacity_commitment_id is not None:
             pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
         if enforce_single_admin_project_per_org is not None:
             pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project is not None:
@@ -41,15 +42,6 @@ class CapacityCommitmentArgs:
             pulumi.set(__self__, "renewal_plan", renewal_plan)
         if slot_count is not None:
             pulumi.set(__self__, "slot_count", slot_count)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="capacityCommitmentId")
@@ -68,6 +60,15 @@ class CapacityCommitmentArgs:
     @enforce_single_admin_project_per_org.setter
     def enforce_single_admin_project_per_org(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "enforce_single_admin_project_per_org", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -142,7 +143,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CapacityCommitmentArgs,
+                 args: Optional[CapacityCommitmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new capacity commitment resource.
@@ -184,8 +185,6 @@ class CapacityCommitment(pulumi.CustomResource):
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["plan"] = plan
             __props__.__dict__["project"] = project

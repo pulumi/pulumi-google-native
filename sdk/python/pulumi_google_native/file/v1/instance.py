@@ -17,11 +17,11 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
@@ -35,7 +35,6 @@ class InstanceArgs:
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -44,6 +43,8 @@ class InstanceArgs:
             pulumi.set(__self__, "file_shares", file_shares)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
@@ -59,15 +60,6 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -116,6 +108,15 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -232,8 +233,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project

@@ -15,7 +15,6 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  workload_identity_pool_id: pulumi.Input[str],
                  workload_identity_pool_provider_id: pulumi.Input[str],
                  attribute_condition: Optional[pulumi.Input[str]] = None,
@@ -24,6 +23,7 @@ class ProviderArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['OidcArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -36,7 +36,6 @@ class ProviderArgs:
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input['OidcArgs'] oidc: An OpenId Connect 1.0 identity provider.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
         if attribute_condition is not None:
@@ -51,19 +50,12 @@ class ProviderArgs:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if oidc is not None:
             pulumi.set(__self__, "oidc", oidc)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -154,6 +146,15 @@ class ProviderArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -262,8 +263,6 @@ class Provider(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["oidc"] = oidc
             __props__.__dict__["project"] = project

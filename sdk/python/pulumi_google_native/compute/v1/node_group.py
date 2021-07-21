@@ -17,7 +17,6 @@ __all__ = ['NodeGroupArgs', 'NodeGroup']
 class NodeGroupArgs:
     def __init__(__self__, *,
                  initial_node_count: pulumi.Input[str],
-                 zone: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,8 @@ class NodeGroupArgs:
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodeGroupStatus']] = None):
+                 status: Optional[pulumi.Input['NodeGroupStatus']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: Specifies how autoscaling should behave.
@@ -38,7 +38,6 @@ class NodeGroupArgs:
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
         """
         pulumi.set(__self__, "initial_node_count", initial_node_count)
-        pulumi.set(__self__, "zone", zone)
         if autoscaling_policy is not None:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if description is not None:
@@ -59,6 +58,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "request_id", request_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -68,15 +69,6 @@ class NodeGroupArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: pulumi.Input[str]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -186,6 +178,15 @@ class NodeGroupArgs:
     def status(self, value: Optional[pulumi.Input['NodeGroupStatus']]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class NodeGroup(pulumi.CustomResource):
     @overload
@@ -278,8 +279,6 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["status"] = status
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None

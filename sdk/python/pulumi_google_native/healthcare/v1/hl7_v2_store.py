@@ -17,9 +17,9 @@ __all__ = ['Hl7V2StoreArgs', 'Hl7V2Store']
 class Hl7V2StoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7V2NotificationConfigArgs']]]] = None,
                  parser_config: Optional[pulumi.Input['ParserConfigArgs']] = None,
@@ -34,11 +34,12 @@ class Hl7V2StoreArgs:
         :param pulumi.Input[bool] reject_duplicate_message: Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if hl7_v2_store_id is not None:
             pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_configs is not None:
@@ -60,15 +61,6 @@ class Hl7V2StoreArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="hl7V2StoreId")
     def hl7_v2_store_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "hl7_v2_store_id")
@@ -88,6 +80,15 @@ class Hl7V2StoreArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -223,8 +224,6 @@ class Hl7V2Store(pulumi.CustomResource):
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["hl7_v2_store_id"] = hl7_v2_store_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_configs"] = notification_configs

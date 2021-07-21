@@ -14,9 +14,9 @@ __all__ = ['BackupArgs', 'Backup']
 class BackupArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None):
@@ -28,11 +28,12 @@ class BackupArgs:
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
         """
         pulumi.set(__self__, "backup_id", backup_id)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if source_file_share is not None:
@@ -48,15 +49,6 @@ class BackupArgs:
     @backup_id.setter
     def backup_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "backup_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -81,6 +73,15 @@ class BackupArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -189,8 +190,6 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["backup_id"] = backup_id
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["source_file_share"] = source_file_share

@@ -14,29 +14,21 @@ __all__ = ['ExecutionArgs', 'Execution']
 @pulumi.input_type
 class ExecutionArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  workflow_id: pulumi.Input[str],
                  argument: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Execution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workflow_id", workflow_id)
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="workflowId")
@@ -58,6 +50,15 @@ class ExecutionArgs:
     @argument.setter
     def argument(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "argument", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -129,8 +130,6 @@ class Execution(pulumi.CustomResource):
             __props__ = ExecutionArgs.__new__(ExecutionArgs)
 
             __props__.__dict__["argument"] = argument
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if workflow_id is None and not opts.urn:

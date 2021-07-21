@@ -16,7 +16,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
@@ -52,7 +51,8 @@ class InstanceArgs:
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
-                 tags: Optional[pulumi.Input['TagsArgs']] = None):
+                 tags: Optional[pulumi.Input['TagsArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
@@ -85,7 +85,6 @@ class InstanceArgs:
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
-        pulumi.set(__self__, "zone", zone)
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if can_ip_forward is not None:
@@ -158,15 +157,8 @@ class InstanceArgs:
             pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -579,6 +571,15 @@ class InstanceArgs:
     def tags(self, value: Optional[pulumi.Input['TagsArgs']]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -662,7 +663,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an instance resource in the specified project using the data included in the request.
@@ -767,8 +768,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["source_machine_image"] = source_machine_image
             __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
             __props__.__dict__["tags"] = tags
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
             __props__.__dict__["creation_timestamp"] = None

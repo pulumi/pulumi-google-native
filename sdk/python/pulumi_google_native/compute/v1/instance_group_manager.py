@@ -16,7 +16,6 @@ __all__ = ['InstanceGroupManagerArgs', 'InstanceGroupManager']
 @pulumi.input_type
 class InstanceGroupManagerArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -30,7 +29,8 @@ class InstanceGroupManagerArgs:
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManager resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
@@ -46,7 +46,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
-        pulumi.set(__self__, "zone", zone)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
@@ -75,15 +74,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "update_policy", update_policy)
         if versions is not None:
             pulumi.set(__self__, "versions", versions)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -247,6 +239,15 @@ class InstanceGroupManagerArgs:
     def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class InstanceGroupManager(pulumi.CustomResource):
     @overload
@@ -291,7 +292,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceGroupManagerArgs,
+                 args: Optional[InstanceGroupManagerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
@@ -352,8 +353,6 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["target_size"] = target_size
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["versions"] = versions
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["current_actions"] = None

@@ -16,8 +16,8 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  app_engine_http_queue: Optional[pulumi.Input['AppEngineHttpQueueArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input['RateLimitsArgs']] = None,
@@ -37,9 +37,10 @@ class QueueArgs:
         :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         :param pulumi.Input['QueueType'] type: Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
         """
-        pulumi.set(__self__, "location", location)
         if app_engine_http_queue is not None:
             pulumi.set(__self__, "app_engine_http_queue", app_engine_http_queue)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -58,15 +59,6 @@ class QueueArgs:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="appEngineHttpQueue")
     def app_engine_http_queue(self) -> Optional[pulumi.Input['AppEngineHttpQueueArgs']]:
         """
@@ -77,6 +69,15 @@ class QueueArgs:
     @app_engine_http_queue.setter
     def app_engine_http_queue(self, value: Optional[pulumi.Input['AppEngineHttpQueueArgs']]):
         pulumi.set(self, "app_engine_http_queue", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -206,7 +207,7 @@ class Queue(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: QueueArgs,
+                 args: Optional[QueueArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
@@ -249,8 +250,6 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_http_queue"] = app_engine_http_queue
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

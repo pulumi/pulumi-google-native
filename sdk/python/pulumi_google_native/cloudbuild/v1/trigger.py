@@ -16,7 +16,6 @@ __all__ = ['TriggerArgs', 'Trigger']
 @pulumi.input_type
 class TriggerArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  project_id: pulumi.Input[str],
                  autodetect: Optional[pulumi.Input[bool]] = None,
                  build: Optional[pulumi.Input['BuildArgs']] = None,
@@ -27,6 +26,7 @@ class TriggerArgs:
                  github: Optional[pulumi.Input['GitHubEventsConfigArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['PubsubConfigArgs']] = None,
@@ -54,7 +54,6 @@ class TriggerArgs:
         :param pulumi.Input['RepoSourceArgs'] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         :param pulumi.Input['WebhookConfigArgs'] webhook_config: WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project_id", project_id)
         if autodetect is not None:
             pulumi.set(__self__, "autodetect", autodetect)
@@ -74,6 +73,8 @@ class TriggerArgs:
             pulumi.set(__self__, "ignored_files", ignored_files)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -90,15 +91,6 @@ class TriggerArgs:
             pulumi.set(__self__, "trigger_template", trigger_template)
         if webhook_config is not None:
             pulumi.set(__self__, "webhook_config", webhook_config)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="projectId")
@@ -216,6 +208,15 @@ class TriggerArgs:
     @included_files.setter
     def included_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "included_files", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -422,8 +423,6 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["github"] = github
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["included_files"] = included_files
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

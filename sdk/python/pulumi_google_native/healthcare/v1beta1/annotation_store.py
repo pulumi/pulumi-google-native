@@ -14,9 +14,9 @@ __all__ = ['AnnotationStoreArgs', 'AnnotationStore']
 class AnnotationStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -25,11 +25,12 @@ class AnnotationStoreArgs:
         :param pulumi.Input[str] name: Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if annotation_store_id is not None:
             pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -43,15 +44,6 @@ class AnnotationStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="annotationStoreId")
@@ -73,6 +65,15 @@ class AnnotationStoreArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -163,8 +164,6 @@ class AnnotationStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

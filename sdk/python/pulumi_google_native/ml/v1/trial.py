@@ -16,9 +16,9 @@ __all__ = ['TrialArgs', 'Trial']
 @pulumi.input_type
 class TrialArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  study_id: pulumi.Input[str],
                  final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,10 +30,11 @@ class TrialArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]] parameters: The parameters of the trial.
         :param pulumi.Input['TrialState'] state: The detailed state of a trial.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "study_id", study_id)
         if final_measurement is not None:
             pulumi.set(__self__, "final_measurement", final_measurement)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if measurements is not None:
             pulumi.set(__self__, "measurements", measurements)
         if parameters is not None:
@@ -42,15 +43,6 @@ class TrialArgs:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="studyId")
@@ -72,6 +64,15 @@ class TrialArgs:
     @final_measurement.setter
     def final_measurement(self, value: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]):
         pulumi.set(self, "final_measurement", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -188,8 +189,6 @@ class Trial(pulumi.CustomResource):
             __props__ = TrialArgs.__new__(TrialArgs)
 
             __props__.__dict__["final_measurement"] = final_measurement
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["measurements"] = measurements
             __props__.__dict__["parameters"] = parameters

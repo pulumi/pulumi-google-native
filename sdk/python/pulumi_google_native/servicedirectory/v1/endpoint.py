@@ -14,11 +14,11 @@ __all__ = ['EndpointArgs', 'Endpoint']
 class EndpointArgs:
     def __init__(__self__, *,
                  endpoint_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  namespace_id: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -30,13 +30,14 @@ class EndpointArgs:
         :param pulumi.Input[int] port: Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "service_id", service_id)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if port is not None:
@@ -52,15 +53,6 @@ class EndpointArgs:
     @endpoint_id.setter
     def endpoint_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "endpoint_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="namespaceId")
@@ -103,6 +95,15 @@ class EndpointArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -213,8 +214,6 @@ class Endpoint(pulumi.CustomResource):
             if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__.__dict__["endpoint_id"] = endpoint_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if namespace_id is None and not opts.urn:

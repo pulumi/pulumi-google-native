@@ -18,12 +18,12 @@ class RegistrationArgs:
     def __init__(__self__, *,
                  contact_settings: pulumi.Input['ContactSettingsArgs'],
                  domain_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  yearly_price: pulumi.Input['MoneyArgs'],
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input['ManagementSettingsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
@@ -41,7 +41,6 @@ class RegistrationArgs:
         """
         pulumi.set(__self__, "contact_settings", contact_settings)
         pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "yearly_price", yearly_price)
         if contact_notices is not None:
             pulumi.set(__self__, "contact_notices", contact_notices)
@@ -51,6 +50,8 @@ class RegistrationArgs:
             pulumi.set(__self__, "domain_notices", domain_notices)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if management_settings is not None:
             pulumi.set(__self__, "management_settings", management_settings)
         if project is not None:
@@ -81,15 +82,6 @@ class RegistrationArgs:
     @domain_name.setter
     def domain_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="yearlyPrice")
@@ -150,6 +142,15 @@ class RegistrationArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="managementSettings")
@@ -276,8 +277,6 @@ class Registration(pulumi.CustomResource):
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_notices"] = domain_notices
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["management_settings"] = management_settings
             __props__.__dict__["project"] = project

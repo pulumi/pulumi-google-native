@@ -16,10 +16,10 @@ __all__ = ['DeidentifyTemplateArgs', 'DeidentifyTemplate']
 @pulumi.input_type
 class DeidentifyTemplateArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  deidentify_config: Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
         """
@@ -29,26 +29,18 @@ class DeidentifyTemplateArgs:
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "location", location)
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -85,6 +77,15 @@ class DeidentifyTemplateArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -135,7 +136,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DeidentifyTemplateArgs,
+                 args: Optional[DeidentifyTemplateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
@@ -177,8 +178,6 @@ class DeidentifyTemplate(pulumi.CustomResource):
             __props__.__dict__["deidentify_config"] = deidentify_config
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id

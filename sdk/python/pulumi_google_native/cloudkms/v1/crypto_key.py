@@ -18,8 +18,8 @@ class CryptoKeyArgs:
     def __init__(__self__, *,
                  crypto_key_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
@@ -36,9 +36,10 @@ class CryptoKeyArgs:
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
-        pulumi.set(__self__, "location", location)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if next_rotation_time is not None:
             pulumi.set(__self__, "next_rotation_time", next_rotation_time)
         if project is not None:
@@ -72,15 +73,6 @@ class CryptoKeyArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
@@ -90,6 +82,15 @@ class CryptoKeyArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="nextRotationTime")
@@ -240,8 +241,6 @@ class CryptoKey(pulumi.CustomResource):
                 raise TypeError("Missing required property 'key_ring_id'")
             __props__.__dict__["key_ring_id"] = key_ring_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["next_rotation_time"] = next_rotation_time
             __props__.__dict__["project"] = project

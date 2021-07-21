@@ -17,12 +17,12 @@ class ConfigArgs:
     def __init__(__self__, *,
                  api_config_id: pulumi.Input[str],
                  api_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input['ApigatewayGatewayConfigArgs']] = None,
                  gateway_service_account: Optional[pulumi.Input[str]] = None,
                  grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigFileArgs']]]] = None,
                  openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -38,7 +38,6 @@ class ConfigArgs:
         """
         pulumi.set(__self__, "api_config_id", api_config_id)
         pulumi.set(__self__, "api_id", api_id)
-        pulumi.set(__self__, "location", location)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gateway_config is not None:
@@ -49,6 +48,8 @@ class ConfigArgs:
             pulumi.set(__self__, "grpc_services", grpc_services)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if managed_service_configs is not None:
             pulumi.set(__self__, "managed_service_configs", managed_service_configs)
         if openapi_documents is not None:
@@ -73,15 +74,6 @@ class ConfigArgs:
     @api_id.setter
     def api_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -142,6 +134,15 @@ class ConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="managedServiceConfigs")
@@ -267,8 +268,6 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["gateway_service_account"] = gateway_service_account
             __props__.__dict__["grpc_services"] = grpc_services
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["managed_service_configs"] = managed_service_configs
             __props__.__dict__["openapi_documents"] = openapi_documents

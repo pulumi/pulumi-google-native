@@ -17,7 +17,6 @@ __all__ = ['MigrationJobArgs', 'MigrationJob']
 class MigrationJobArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  migration_job_id: pulumi.Input[str],
                  source: pulumi.Input[str],
                  type: pulumi.Input['MigrationJobType'],
@@ -25,6 +24,7 @@ class MigrationJobArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -50,7 +50,6 @@ class MigrationJobArgs:
         :param pulumi.Input['VpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "migration_job_id", migration_job_id)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
@@ -62,6 +61,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "dump_path", dump_path)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -90,15 +91,6 @@ class MigrationJobArgs:
     @destination.setter
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="migrationJobId")
@@ -180,6 +172,15 @@ class MigrationJobArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -374,8 +375,6 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dump_path"] = dump_path
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if migration_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'migration_job_id'")

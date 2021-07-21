@@ -17,11 +17,11 @@ __all__ = ['NodePoolInitArgs', 'NodePool']
 class NodePoolInitArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
@@ -47,7 +47,6 @@ class NodePoolInitArgs:
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "location", location)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if conditions is not None:
@@ -56,6 +55,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "config", config)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if management is not None:
@@ -83,15 +84,6 @@ class NodePoolInitArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -140,6 +132,15 @@ class NodePoolInitArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_node_count", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -344,8 +345,6 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
             __props__.__dict__["initial_node_count"] = initial_node_count
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
             __props__.__dict__["management"] = management
