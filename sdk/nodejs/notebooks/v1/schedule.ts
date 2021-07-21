@@ -85,9 +85,6 @@ export class Schedule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.scheduleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scheduleId'");
             }
@@ -139,7 +136,7 @@ export interface ScheduleArgs {
      * Notebook Execution Template corresponding to this schedule.
      */
     executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     scheduleId: pulumi.Input<string>;
     state?: pulumi.Input<enums.notebooks.v1.ScheduleState>;

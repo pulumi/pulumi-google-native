@@ -75,13 +75,10 @@ export class TargetInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TargetInstanceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: TargetInstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -131,5 +128,5 @@ export interface TargetInstanceArgs {
     natPolicy?: pulumi.Input<enums.compute.v1.TargetInstanceNatPolicy>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

@@ -95,13 +95,10 @@ export class Reservation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -168,5 +165,5 @@ export interface ReservationArgs {
     /**
      * Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
      */
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

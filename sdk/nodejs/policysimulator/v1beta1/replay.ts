@@ -67,9 +67,6 @@ export class Replay extends pulumi.CustomResource {
             if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -97,6 +94,6 @@ export interface ReplayArgs {
      * The configuration used for the `Replay`.
      */
     config: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

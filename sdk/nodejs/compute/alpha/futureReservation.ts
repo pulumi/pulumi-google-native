@@ -88,13 +88,10 @@ export class FutureReservation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FutureReservationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: FutureReservationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -161,5 +158,5 @@ export interface FutureReservationArgs {
      * Time window for this Future Reservation.
      */
     timeWindow?: pulumi.Input<inputs.compute.alpha.FutureReservationTimeWindowArgs>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

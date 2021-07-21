@@ -110,9 +110,6 @@ export class Entry extends pulumi.CustomResource {
             if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
             inputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -184,7 +181,7 @@ export interface EntryArgs {
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
      */
     linkedResource?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Schema of the entry. An entry might not have any schema attached to it.

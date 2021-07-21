@@ -87,9 +87,6 @@ export class FhirStore extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
@@ -147,7 +144,7 @@ export interface FhirStoreArgs {
      * User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */

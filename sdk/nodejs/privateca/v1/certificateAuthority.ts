@@ -131,9 +131,6 @@ export class CertificateAuthority extends pulumi.CustomResource {
             if ((!args || args.lifetime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lifetime'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -211,7 +208,7 @@ export interface CertificateAuthorityArgs {
      * The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     lifetime: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

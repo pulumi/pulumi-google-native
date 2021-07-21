@@ -109,9 +109,6 @@ export class Product extends pulumi.CustomResource {
             if ((!args || args.catalogId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.productId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
@@ -199,7 +196,7 @@ export interface ProductArgs {
      * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
      */
     images?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaImageArgs>[]>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
      */

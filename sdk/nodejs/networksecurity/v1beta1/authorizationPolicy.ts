@@ -81,9 +81,6 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             if ((!args || args.authorizationPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authorizationPolicyId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["action"] = args ? args.action : undefined;
             inputs["authorizationPolicyId"] = args ? args.authorizationPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -127,7 +124,7 @@ export interface AuthorizationPolicyArgs {
      * Optional. Set of label tags associated with the AuthorizationPolicy resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
      */

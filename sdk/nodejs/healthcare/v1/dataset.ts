@@ -50,13 +50,10 @@ export class Dataset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -78,7 +75,7 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetArgs {
     datasetId?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
      */

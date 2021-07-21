@@ -85,9 +85,6 @@ export class CatalogItem extends pulumi.CustomResource {
             if ((!args || args.id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'id'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
@@ -143,7 +140,7 @@ export interface CatalogItemArgs {
      * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
     itemGroupId?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Metadata specific to retail products.
      */

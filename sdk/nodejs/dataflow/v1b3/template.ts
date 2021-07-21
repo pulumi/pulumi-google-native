@@ -70,9 +70,6 @@ export class Template extends pulumi.CustomResource {
             if ((!args || args.jobName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["environment"] = args ? args.environment : undefined;
             inputs["gcsPath"] = args ? args.gcsPath : undefined;
             inputs["jobName"] = args ? args.jobName : undefined;
@@ -115,7 +112,7 @@ export interface TemplateArgs {
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The runtime parameters to pass to the job.
      */

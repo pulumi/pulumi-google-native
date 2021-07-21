@@ -90,9 +90,6 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             if ((!args || args.jobs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobs'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
@@ -146,7 +143,7 @@ export interface WorkflowTemplateArgs {
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */

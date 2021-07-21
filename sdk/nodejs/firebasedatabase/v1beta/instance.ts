@@ -63,13 +63,10 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["databaseUrl"] = args ? args.databaseUrl : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -101,7 +98,7 @@ export interface InstanceArgs {
      * Immutable. The globally unique hostname of the database.
      */
     databaseUrl?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
      */

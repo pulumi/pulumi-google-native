@@ -85,9 +85,6 @@ export class ConsentArtifact extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
@@ -138,7 +135,7 @@ export interface ConsentArtifactArgs {
      * Optional. A signature from a guardian.
      */
     guardianSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */

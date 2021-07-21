@@ -152,9 +152,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -267,7 +264,7 @@ export interface InstanceArgs {
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      */

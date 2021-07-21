@@ -78,9 +78,6 @@ export class Glossary extends pulumi.CustomResource {
             if ((!args || args.inputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'inputConfig'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["inputConfig"] = args ? args.inputConfig : undefined;
             inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
             inputs["languagePair"] = args ? args.languagePair : undefined;
@@ -122,7 +119,7 @@ export interface GlossaryArgs {
      * Used with unidirectional glossaries.
      */
     languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePairArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */

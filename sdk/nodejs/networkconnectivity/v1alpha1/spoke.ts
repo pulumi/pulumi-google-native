@@ -87,13 +87,10 @@ export class Spoke extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SpokeArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SpokeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["hub"] = args ? args.hub : undefined;
@@ -161,7 +158,7 @@ export interface SpokeArgs {
      * The URIs of linked VPN tunnel resources
      */
     linkedVpnTunnels?: pulumi.Input<pulumi.Input<string>[]>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Immutable. The name of a Spoke resource.
      */

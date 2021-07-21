@@ -106,13 +106,10 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ZoneInstantSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ZoneInstantSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -182,5 +179,5 @@ export interface ZoneInstantSnapshotArgs {
      * URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
      */
     sourceDisk?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

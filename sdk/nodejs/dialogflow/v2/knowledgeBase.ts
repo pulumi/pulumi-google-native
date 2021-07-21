@@ -61,9 +61,6 @@ export class KnowledgeBase extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -93,7 +90,7 @@ export interface KnowledgeBaseArgs {
      * Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
      */
     languageCode?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
      */

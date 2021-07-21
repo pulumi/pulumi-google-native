@@ -83,9 +83,6 @@ export class CertificateTemplate extends pulumi.CustomResource {
             if ((!args || args.certificateTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateTemplateId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["certificateTemplateId"] = args ? args.certificateTemplateId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["identityConstraints"] = args ? args.identityConstraints : undefined;
@@ -132,7 +129,7 @@ export interface CertificateTemplateArgs {
      * Optional. Labels with user-defined metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
      */

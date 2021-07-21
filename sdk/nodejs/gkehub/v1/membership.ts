@@ -96,9 +96,6 @@ export class Membership extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
@@ -159,7 +156,7 @@ export interface MembershipArgs {
      * Optional. GCP labels for this membership.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     membershipId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;

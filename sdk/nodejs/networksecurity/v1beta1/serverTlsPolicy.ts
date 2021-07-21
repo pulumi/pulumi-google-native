@@ -79,9 +79,6 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.serverTlsPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverTlsPolicyId'");
             }
@@ -129,7 +126,7 @@ export interface ServerTlsPolicyArgs {
      * Optional. Set of label tags associated with the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
      */

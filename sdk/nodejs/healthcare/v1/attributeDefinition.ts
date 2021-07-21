@@ -86,9 +86,6 @@ export class AttributeDefinition extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["allowedValues"] = args ? args.allowedValues : undefined;
             inputs["attributeDefinitionId"] = args ? args.attributeDefinitionId : undefined;
             inputs["category"] = args ? args.category : undefined;
@@ -142,7 +139,7 @@ export interface AttributeDefinitionArgs {
      * Optional. A description of the attribute.
      */
     description?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */

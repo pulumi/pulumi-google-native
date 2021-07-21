@@ -63,13 +63,10 @@ export class Version extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VersionArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: VersionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -99,6 +96,6 @@ export interface VersionArgs {
      * Optional. The developer-provided description of this version.
      */
     description?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

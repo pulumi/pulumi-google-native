@@ -84,9 +84,6 @@ export class Page extends pulumi.CustomResource {
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
@@ -138,7 +135,7 @@ export interface PageArgs {
      */
     form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
     languageCode?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */

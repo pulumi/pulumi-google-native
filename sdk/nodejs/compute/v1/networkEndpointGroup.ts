@@ -107,13 +107,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
@@ -203,5 +200,5 @@ export interface NetworkEndpointGroupArgs {
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      */
     subnetwork?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

@@ -68,9 +68,6 @@ export class Study extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.studyConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyConfig'");
             }
@@ -103,7 +100,7 @@ export class Study extends pulumi.CustomResource {
  * The set of arguments for constructing a Study resource.
  */
 export interface StudyArgs {
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Configuration of the study.

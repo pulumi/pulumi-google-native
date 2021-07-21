@@ -62,9 +62,6 @@ export class Participant extends pulumi.CustomResource {
             if ((!args || args.conversationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["conversationId"] = args ? args.conversationId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -88,7 +85,7 @@ export class Participant extends pulumi.CustomResource {
  */
 export interface ParticipantArgs {
     conversationId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */

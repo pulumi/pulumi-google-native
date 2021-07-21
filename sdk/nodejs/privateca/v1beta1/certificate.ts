@@ -98,9 +98,6 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.lifetime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lifetime'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificateId"] = args ? args.certificateId : undefined;
             inputs["config"] = args ? args.config : undefined;
@@ -155,7 +152,7 @@ export interface CertificateArgs {
      * Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
      */
     lifetime: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */

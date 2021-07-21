@@ -71,9 +71,6 @@ export class CaPool extends pulumi.CustomResource {
             if ((!args || args.caPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'caPoolId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
@@ -113,7 +110,7 @@ export interface CaPoolArgs {
      * Optional. Labels with user-defined metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.

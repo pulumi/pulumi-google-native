@@ -88,9 +88,6 @@ export class Trial extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
             }
@@ -134,7 +131,7 @@ export interface TrialArgs {
      * The final measurement containing the objective value.
      */
     finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */

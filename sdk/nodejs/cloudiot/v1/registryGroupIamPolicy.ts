@@ -62,9 +62,6 @@ export class RegistryGroupIamPolicy extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.registryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registryId'");
             }
@@ -100,7 +97,7 @@ export interface RegistryGroupIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     groupId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     registryId: pulumi.Input<string>;
     /**

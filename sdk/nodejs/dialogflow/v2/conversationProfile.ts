@@ -98,9 +98,6 @@ export class ConversationProfile extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
@@ -160,7 +157,7 @@ export interface ConversationProfileArgs {
      * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
      */
     languageCode?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Configuration for logging conversation lifecycle events.
      */

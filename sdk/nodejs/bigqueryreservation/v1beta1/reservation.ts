@@ -62,13 +62,10 @@ export class Reservation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -99,7 +96,7 @@ export interface ReservationArgs {
      * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
      */
     ignoreIdleSlots?: pulumi.Input<boolean>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */

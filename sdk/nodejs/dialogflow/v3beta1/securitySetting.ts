@@ -78,9 +78,6 @@ export class SecuritySetting extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -118,7 +115,7 @@ export interface SecuritySettingArgs {
      * [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
      */
     inspectTemplate?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */

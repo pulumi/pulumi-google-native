@@ -81,9 +81,6 @@ export class Config extends pulumi.CustomResource {
             if ((!args || args.gameServerDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gameServerDeploymentId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["configId"] = args ? args.configId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fleetConfigs"] = args ? args.fleetConfigs : undefined;
@@ -129,7 +126,7 @@ export interface ConfigArgs {
      * The labels associated with this game server config. Each label is a key-value pair.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      */

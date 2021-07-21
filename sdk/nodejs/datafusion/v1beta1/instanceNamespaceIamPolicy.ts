@@ -66,9 +66,6 @@ export class InstanceNamespaceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
@@ -111,7 +108,7 @@ export interface InstanceNamespaceIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

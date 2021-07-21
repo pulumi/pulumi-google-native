@@ -90,9 +90,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
             inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -143,7 +140,7 @@ export interface ConnectionProfileArgs {
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * A MySQL database connection profile.
      */

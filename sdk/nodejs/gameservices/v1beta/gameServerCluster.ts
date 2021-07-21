@@ -86,9 +86,6 @@ export class GameServerCluster extends pulumi.CustomResource {
             if ((!args || args.gameServerClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gameServerClusterId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
@@ -148,7 +145,7 @@ export interface GameServerClusterArgs {
      * The labels associated with this game server cluster. Each label is a key-value pair.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      */

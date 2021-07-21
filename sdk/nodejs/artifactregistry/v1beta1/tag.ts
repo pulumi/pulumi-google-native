@@ -54,9 +54,6 @@ export class Tag extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.packageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'packageId'");
             }
@@ -85,7 +82,7 @@ export class Tag extends pulumi.CustomResource {
  * The set of arguments for constructing a Tag resource.
  */
 export interface TagArgs {
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */

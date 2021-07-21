@@ -80,13 +80,10 @@ export class Key extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -126,7 +123,7 @@ export interface KeyArgs {
      */
     displayName?: pulumi.Input<string>;
     keyId?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Key restrictions.

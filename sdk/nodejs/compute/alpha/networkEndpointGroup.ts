@@ -123,13 +123,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
@@ -239,5 +236,5 @@ export interface NetworkEndpointGroupArgs {
      * Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
      */
     type?: pulumi.Input<enums.compute.alpha.NetworkEndpointGroupType>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

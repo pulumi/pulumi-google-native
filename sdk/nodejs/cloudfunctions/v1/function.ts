@@ -147,13 +147,10 @@ export class Function extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: FunctionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             inputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             inputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
@@ -261,7 +258,7 @@ export interface FunctionArgs {
      * Labels associated with this Cloud Function.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
      */

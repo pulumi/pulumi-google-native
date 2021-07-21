@@ -73,9 +73,6 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.versionConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionConfigs'");
             }
@@ -114,7 +111,7 @@ export interface EnvironmentArgs {
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
     displayName: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.
      */

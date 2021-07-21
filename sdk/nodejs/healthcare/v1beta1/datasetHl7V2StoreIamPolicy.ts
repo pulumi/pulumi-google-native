@@ -69,9 +69,6 @@ export class DatasetHl7V2StoreIamPolicy extends pulumi.CustomResource {
             if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -112,7 +109,7 @@ export interface DatasetHl7V2StoreIamPolicyArgs {
      */
     etag?: pulumi.Input<string>;
     hl7V2StoreId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

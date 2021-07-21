@@ -102,13 +102,10 @@ export class ZoneInPlaceSnapshot extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ZoneInPlaceSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ZoneInPlaceSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -176,5 +173,5 @@ export interface ZoneInPlaceSnapshotArgs {
      * URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
      */
     sourceDisk?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

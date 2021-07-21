@@ -41,12 +41,34 @@ Object.defineProperty(exports, "partnerName", {
 });
 
 /**
- * A Google Cloud project name.
+ * The default project to manage resources in. If another project is specified on a resource, it will take precedence.
  */
 export declare const project: string | undefined;
 Object.defineProperty(exports, "project", {
     get() {
         return __config.get("project");
+    },
+    enumerable: true,
+});
+
+/**
+ * The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+ */
+export declare const region: string | undefined;
+Object.defineProperty(exports, "region", {
+    get() {
+        return __config.get("region");
+    },
+    enumerable: true,
+});
+
+/**
+ * The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+ */
+export declare const zone: string | undefined;
+Object.defineProperty(exports, "zone", {
+    get() {
+        return __config.get("zone");
     },
     enumerable: true,
 });

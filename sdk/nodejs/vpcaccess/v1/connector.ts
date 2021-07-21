@@ -94,9 +94,6 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["connectorId"] = args ? args.connectorId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -140,7 +137,7 @@ export interface ConnectorArgs {
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     ipCidrRange?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */

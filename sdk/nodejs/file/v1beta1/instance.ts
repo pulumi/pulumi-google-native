@@ -95,9 +95,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
@@ -153,7 +150,7 @@ export interface InstanceArgs {
      * Resource labels to represent user provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
