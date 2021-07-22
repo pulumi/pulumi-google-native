@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("version")]
         public Input<int>? Version { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public DiskIamPolicyArgs()
         {

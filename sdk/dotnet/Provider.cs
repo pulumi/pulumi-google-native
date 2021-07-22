@@ -61,10 +61,22 @@ namespace Pulumi.GoogleNative
         public Input<string>? PartnerName { get; set; }
 
         /// <summary>
-        /// A Google Cloud project name.
+        /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ProviderArgs()
         {
@@ -72,6 +84,8 @@ namespace Pulumi.GoogleNative
             DisablePartnerName = Utilities.GetEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME");
             PartnerName = Utilities.GetEnv("GOOGLE_PARTNER_NAME");
             Project = Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            Region = Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            Zone = Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
     }
 }

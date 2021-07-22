@@ -119,9 +119,6 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.acceleratorType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorType'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.tensorflowVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
@@ -195,7 +192,7 @@ export interface NodeArgs {
      * Resource labels to represent user-provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */

@@ -163,8 +163,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;

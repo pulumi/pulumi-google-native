@@ -18,8 +18,8 @@ class UserDataMappingArgs:
                  consent_store_id: pulumi.Input[str],
                  data_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  user_id: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]] = None):
@@ -33,8 +33,9 @@ class UserDataMappingArgs:
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "data_id", data_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "user_id", user_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -73,15 +74,6 @@ class UserDataMappingArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
@@ -92,6 +84,15 @@ class UserDataMappingArgs:
     @user_id.setter
     def user_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -204,8 +205,6 @@ class UserDataMapping(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

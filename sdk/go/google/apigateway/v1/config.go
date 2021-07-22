@@ -53,9 +53,6 @@ func NewConfig(ctx *pulumi.Context,
 	if args.ApiId == nil {
 		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Config
 	err := ctx.RegisterResource("google-native:apigateway/v1:Config", name, args, &resource, opts...)
 	if err != nil {
@@ -98,7 +95,7 @@ type configArgs struct {
 	GrpcServices []ApigatewayApiConfigGrpcServiceDefinition `pulumi:"grpcServices"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs []ApigatewayApiConfigFile `pulumi:"managedServiceConfigs"`
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
@@ -118,7 +115,7 @@ type ConfigArgs struct {
 	GrpcServices ApigatewayApiConfigGrpcServiceDefinitionArrayInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs ApigatewayApiConfigFileArrayInput
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.

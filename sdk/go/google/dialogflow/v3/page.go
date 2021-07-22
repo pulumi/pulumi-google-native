@@ -47,9 +47,6 @@ func NewPage(ctx *pulumi.Context,
 	if args.FlowId == nil {
 		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Page
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Page", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +90,7 @@ type pageArgs struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form         *GoogleCloudDialogflowCxV3Form `pulumi:"form"`
 	LanguageCode *string                        `pulumi:"languageCode"`
-	Location     string                         `pulumi:"location"`
+	Location     *string                        `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -116,7 +113,7 @@ type PageArgs struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form         GoogleCloudDialogflowCxV3FormPtrInput
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

@@ -15,10 +15,10 @@ __all__ = ['ReferenceImageArgs', 'ReferenceImage']
 @pulumi.input_type
 class ReferenceImageArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  uri: pulumi.Input[str],
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reference_image_id: Optional[pulumi.Input[str]] = None):
@@ -28,26 +28,18 @@ class ReferenceImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]] bounding_polys: Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
         :param pulumi.Input[str] name: The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "product_id", product_id)
         pulumi.set(__self__, "uri", uri)
         if bounding_polys is not None:
             pulumi.set(__self__, "bounding_polys", bounding_polys)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reference_image_id is not None:
             pulumi.set(__self__, "reference_image_id", reference_image_id)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="productId")
@@ -81,6 +73,15 @@ class ReferenceImageArgs:
     @bounding_polys.setter
     def bounding_polys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]]):
         pulumi.set(self, "bounding_polys", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -179,8 +180,6 @@ class ReferenceImage(pulumi.CustomResource):
             __props__ = ReferenceImageArgs.__new__(ReferenceImageArgs)
 
             __props__.__dict__["bounding_polys"] = bounding_polys
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if product_id is None and not opts.urn:

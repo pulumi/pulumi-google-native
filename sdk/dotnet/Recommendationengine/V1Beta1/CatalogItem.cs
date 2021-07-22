@@ -142,8 +142,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("itemGroupId")]
         public Input<string>? ItemGroupId { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Optional. Metadata specific to retail products.

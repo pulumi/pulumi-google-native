@@ -16,9 +16,9 @@ __all__ = ['ConversationArgs', 'Conversation']
 class ConversationArgs:
     def __init__(__self__, *,
                  conversation_profile: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Conversation resource.
@@ -26,11 +26,12 @@ class ConversationArgs:
         :param pulumi.Input['ConversationConversationStage'] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
         pulumi.set(__self__, "conversation_profile", conversation_profile)
-        pulumi.set(__self__, "location", location)
         if conversation_id is not None:
             pulumi.set(__self__, "conversation_id", conversation_id)
         if conversation_stage is not None:
             pulumi.set(__self__, "conversation_stage", conversation_stage)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -45,15 +46,6 @@ class ConversationArgs:
     @conversation_profile.setter
     def conversation_profile(self, value: pulumi.Input[str]):
         pulumi.set(self, "conversation_profile", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="conversationId")
@@ -75,6 +67,15 @@ class ConversationArgs:
     @conversation_stage.setter
     def conversation_stage(self, value: Optional[pulumi.Input['ConversationConversationStage']]):
         pulumi.set(self, "conversation_stage", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -153,8 +154,6 @@ class Conversation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'conversation_profile'")
             __props__.__dict__["conversation_profile"] = conversation_profile
             __props__.__dict__["conversation_stage"] = conversation_stage
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["end_time"] = None

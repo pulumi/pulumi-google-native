@@ -235,13 +235,10 @@ export class Cluster extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["autopilot"] = args ? args.autopilot : undefined;
@@ -417,7 +414,7 @@ export interface ClusterArgs {
      * Configuration for the legacy ABAC authorization mode.
      */
     legacyAbac?: pulumi.Input<inputs.container.v1.LegacyAbacArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
      */

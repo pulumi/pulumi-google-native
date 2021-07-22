@@ -134,9 +134,6 @@ export class Entry extends pulumi.CustomResource {
             if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
             inputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
             inputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
@@ -236,7 +233,7 @@ export interface EntryArgs {
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
      */
     linkedResource?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.

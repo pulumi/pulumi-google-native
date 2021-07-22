@@ -33,9 +33,6 @@ func NewKnowledgeBase(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource KnowledgeBase
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:KnowledgeBase", name, args, &resource, opts...)
 	if err != nil {
@@ -72,7 +69,7 @@ type knowledgeBaseArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode *string `pulumi:"languageCode"`
-	Location     string  `pulumi:"location"`
+	Location     *string `pulumi:"location"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -84,7 +81,7 @@ type KnowledgeBaseArgs struct {
 	DisplayName pulumi.StringInput
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

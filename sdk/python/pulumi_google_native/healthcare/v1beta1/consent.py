@@ -19,10 +19,10 @@ class ConsentArgs:
                  consent_artifact: pulumi.Input[str],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  state: pulumi.Input['ConsentState'],
                  user_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]] = None,
@@ -42,11 +42,12 @@ class ConsentArgs:
         pulumi.set(__self__, "consent_artifact", consent_artifact)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "user_id", user_id)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -90,15 +91,6 @@ class ConsentArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def state(self) -> pulumi.Input['ConsentState']:
         """
         Indicates the current state of this Consent.
@@ -132,6 +124,15 @@ class ConsentArgs:
     @expire_time.setter
     def expire_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expire_time", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -281,8 +282,6 @@ class Consent(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["expire_time"] = expire_time
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name

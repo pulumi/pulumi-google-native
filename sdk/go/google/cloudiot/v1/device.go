@@ -56,9 +56,6 @@ func NewDevice(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.RegistryId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
@@ -104,7 +101,7 @@ type deviceArgs struct {
 	GatewayConfig *GatewayConfig `pulumi:"gatewayConfig"`
 	// The user-defined device identifier. The device ID must be unique within a device registry.
 	Id       *string `pulumi:"id"`
-	Location string  `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel *DeviceLogLevel `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -127,7 +124,7 @@ type DeviceArgs struct {
 	GatewayConfig GatewayConfigPtrInput
 	// The user-defined device identifier. The device ID must be unique within a device registry.
 	Id       pulumi.StringPtrInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
 	LogLevel DeviceLogLevelPtrInput
 	// The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.

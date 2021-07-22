@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("genericWebService")]
         public Input<Inputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs>? GenericWebService { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.

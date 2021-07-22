@@ -51,9 +51,6 @@ func NewMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
@@ -99,7 +96,7 @@ type membershipArgs struct {
 	InfrastructureType *MembershipInfrastructureType `pulumi:"infrastructureType"`
 	// Optional. GCP labels for this membership.
 	Labels       map[string]string `pulumi:"labels"`
-	Location     string            `pulumi:"location"`
+	Location     *string           `pulumi:"location"`
 	MembershipId string            `pulumi:"membershipId"`
 	Project      *string           `pulumi:"project"`
 }
@@ -116,7 +113,7 @@ type MembershipArgs struct {
 	InfrastructureType MembershipInfrastructureTypePtrInput
 	// Optional. GCP labels for this membership.
 	Labels       pulumi.StringMapInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	MembershipId pulumi.StringInput
 	Project      pulumi.StringPtrInput
 }

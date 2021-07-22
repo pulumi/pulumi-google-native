@@ -205,8 +205,8 @@ namespace Pulumi.GoogleNative.Privateca.V1
         [Input("lifetime", required: true)]
         public Input<string> Lifetime { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

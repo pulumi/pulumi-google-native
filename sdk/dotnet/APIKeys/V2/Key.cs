@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Key(string name, KeyArgs args, CustomResourceOptions? options = null)
+        public Key(string name, KeyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:apikeys/v2:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -124,8 +124,8 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

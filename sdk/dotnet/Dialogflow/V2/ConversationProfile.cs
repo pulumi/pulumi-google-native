@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Configuration for logging conversation lifecycle events.

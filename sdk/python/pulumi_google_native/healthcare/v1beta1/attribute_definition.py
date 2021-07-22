@@ -19,10 +19,10 @@ class AttributeDefinitionArgs:
                  category: pulumi.Input['AttributeDefinitionCategory'],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -39,13 +39,14 @@ class AttributeDefinitionArgs:
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if consent_default_values is not None:
             pulumi.set(__self__, "consent_default_values", consent_default_values)
         if data_mapping_default_value is not None:
             pulumi.set(__self__, "data_mapping_default_value", data_mapping_default_value)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -103,15 +104,6 @@ class AttributeDefinitionArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="consentDefaultValues")
     def consent_default_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -146,6 +138,15 @@ class AttributeDefinitionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -263,8 +264,6 @@ class AttributeDefinition(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["description"] = description
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

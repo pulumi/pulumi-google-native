@@ -71,13 +71,10 @@ export class Connection extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ConnectionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["cloudSql"] = args ? args.cloudSql : undefined;
             inputs["connectionId"] = args ? args.connectionId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -121,7 +118,7 @@ export interface ConnectionArgs {
      * User provided display name for the connection.
      */
     friendlyName?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
      */

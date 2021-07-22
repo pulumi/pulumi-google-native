@@ -50,9 +50,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.EventFilters == nil {
 		return nil, errors.New("invalid value for required argument 'EventFilters'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.TriggerId == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
@@ -97,7 +94,7 @@ type triggerArgs struct {
 	EventFilters []EventFilter `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -117,7 +114,7 @@ type TriggerArgs struct {
 	EventFilters EventFilterArrayInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

@@ -111,9 +111,6 @@ export class Device extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.registryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registryId'");
             }
@@ -186,7 +183,7 @@ export interface DeviceArgs {
      * The user-defined device identifier. The device ID must be unique within a device registry.
      */
     id?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
      */

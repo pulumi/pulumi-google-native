@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
             set => _annotations = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.

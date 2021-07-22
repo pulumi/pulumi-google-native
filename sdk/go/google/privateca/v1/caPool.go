@@ -38,9 +38,6 @@ func NewCaPool(ctx *pulumi.Context,
 	if args.CaPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'CaPoolId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
@@ -81,7 +78,7 @@ type caPoolArgs struct {
 	IssuancePolicy *IssuancePolicy `pulumi:"issuancePolicy"`
 	// Optional. Labels with user-defined metadata.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 	PublishingOptions *PublishingOptions `pulumi:"publishingOptions"`
@@ -97,7 +94,7 @@ type CaPoolArgs struct {
 	IssuancePolicy IssuancePolicyPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 	PublishingOptions PublishingOptionsPtrInput

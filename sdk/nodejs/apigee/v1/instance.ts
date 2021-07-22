@@ -91,9 +91,6 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -148,7 +145,7 @@ export interface InstanceArgs {
     /**
      * Compute Engine location where the instance resides.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */

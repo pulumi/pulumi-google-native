@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Compute Engine location where the instance resides.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.

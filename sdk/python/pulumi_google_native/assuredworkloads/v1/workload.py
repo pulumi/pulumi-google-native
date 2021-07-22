@@ -19,12 +19,12 @@ class WorkloadArgs:
                  billing_account: pulumi.Input[str],
                  compliance_regime: pulumi.Input['WorkloadComplianceRegime'],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] = None):
@@ -43,7 +43,6 @@ class WorkloadArgs:
         pulumi.set(__self__, "billing_account", billing_account)
         pulumi.set(__self__, "compliance_regime", compliance_regime)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -53,6 +52,8 @@ class WorkloadArgs:
             pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if provisioned_resources_parent is not None:
@@ -95,15 +96,6 @@ class WorkloadArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -158,6 +150,15 @@ class WorkloadArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -290,8 +291,6 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["kms_settings"] = kms_settings
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

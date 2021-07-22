@@ -38,9 +38,6 @@ func NewKeyRingImportJobIamPolicy(ctx *pulumi.Context,
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource KeyRingImportJobIamPolicy
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRingImportJobIamPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type keyRingImportJobIamPolicyArgs struct {
 	Etag        *string `pulumi:"etag"`
 	ImportJobId string  `pulumi:"importJobId"`
 	KeyRingId   string  `pulumi:"keyRingId"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	Project     *string `pulumi:"project"`
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
 	UpdateMask *string `pulumi:"updateMask"`
@@ -99,7 +96,7 @@ type KeyRingImportJobIamPolicyArgs struct {
 	Etag        pulumi.StringPtrInput
 	ImportJobId pulumi.StringInput
 	KeyRingId   pulumi.StringInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
 	UpdateMask pulumi.StringPtrInput

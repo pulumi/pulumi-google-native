@@ -40,9 +40,6 @@ func NewTaxonomy(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Taxonomy
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:Taxonomy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type taxonomyArgs struct {
 	Description *string `pulumi:"description"`
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName string  `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	Project     *string `pulumi:"project"`
 }
 
@@ -93,7 +90,7 @@ type TaxonomyArgs struct {
 	Description pulumi.StringPtrInput
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName pulumi.StringInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
 }
 

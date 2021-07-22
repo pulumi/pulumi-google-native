@@ -16,24 +16,23 @@ __all__ = ['ReservationInitArgs', 'Reservation']
 @pulumi.input_type
 class ReservationInitArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
-                 specific_reservation_required: Optional[pulumi.Input[bool]] = None):
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
-        :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
+        :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
-        pulumi.set(__self__, "zone", zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -48,18 +47,8 @@ class ReservationInitArgs:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        """
-        Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -139,6 +128,18 @@ class ReservationInitArgs:
     def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "specific_reservation_required", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Reservation(pulumi.CustomResource):
     @overload
@@ -170,7 +171,7 @@ class Reservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ReservationInitArgs,
+                 args: Optional[ReservationInitArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new reservation. For more information, read Reserving zonal resources.
@@ -217,8 +218,6 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["specific_reservation"] = specific_reservation
             __props__.__dict__["specific_reservation_required"] = specific_reservation_required
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["commitment"] = None
             __props__.__dict__["creation_timestamp"] = None

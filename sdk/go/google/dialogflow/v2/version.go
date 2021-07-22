@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +31,9 @@ type Version struct {
 func NewVersion(ctx *pulumi.Context,
 	name string, args *VersionArgs, opts ...pulumi.ResourceOption) (*Version, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &VersionArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Version
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Version", name, args, &resource, opts...)
 	if err != nil {
@@ -72,7 +68,7 @@ func (VersionState) ElementType() reflect.Type {
 type versionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description *string `pulumi:"description"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	Project     *string `pulumi:"project"`
 }
 
@@ -80,7 +76,7 @@ type versionArgs struct {
 type VersionArgs struct {
 	// Optional. The developer-provided description of this version.
 	Description pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
 }
 

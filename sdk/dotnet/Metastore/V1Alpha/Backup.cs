@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}

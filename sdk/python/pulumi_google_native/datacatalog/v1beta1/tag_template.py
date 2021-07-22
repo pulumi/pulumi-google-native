@@ -14,9 +14,9 @@ __all__ = ['TagTemplateArgs', 'TagTemplate']
 class TagTemplateArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-                 location: pulumi.Input[str],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -26,10 +26,11 @@ class TagTemplateArgs:
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
         pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -46,15 +47,6 @@ class TagTemplateArgs:
     @fields.setter
     def fields(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "fields", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="tagTemplateId")
@@ -76,6 +68,15 @@ class TagTemplateArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -166,8 +167,6 @@ class TagTemplate(pulumi.CustomResource):
             if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
             __props__.__dict__["fields"] = fields
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

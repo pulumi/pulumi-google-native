@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,12 +31,9 @@ type DomainMapping struct {
 func NewDomainMapping(ctx *pulumi.Context,
 	name string, args *DomainMappingArgs, opts ...pulumi.ResourceOption) (*DomainMapping, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DomainMappingArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource DomainMapping
 	err := ctx.RegisterResource("google-native:run/v1:DomainMapping", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +71,7 @@ type domainMappingArgs struct {
 	DryRun     *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
 	Kind     *string `pulumi:"kind"`
-	Location string  `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// Metadata associated with this BuildTemplate.
 	Metadata *ObjectMeta `pulumi:"metadata"`
 	Project  *string     `pulumi:"project"`
@@ -92,7 +88,7 @@ type DomainMappingArgs struct {
 	DryRun     pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
 	Kind     pulumi.StringPtrInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Metadata associated with this BuildTemplate.
 	Metadata ObjectMetaPtrInput
 	Project  pulumi.StringPtrInput

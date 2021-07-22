@@ -23,7 +23,17 @@ func GetPartnerName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "google-native:partnerName")
 }
 
-// A Google Cloud project name.
+// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
 func GetProject(ctx *pulumi.Context) string {
 	return config.Get(ctx, "google-native:project")
+}
+
+// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+func GetRegion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "google-native:region")
+}
+
+// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+func GetZone(ctx *pulumi.Context) string {
+	return config.Get(ctx, "google-native:zone")
 }

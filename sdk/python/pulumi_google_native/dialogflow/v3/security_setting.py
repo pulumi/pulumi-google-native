@@ -15,8 +15,8 @@ __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 class SecuritySettingArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  inspect_template: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
@@ -34,9 +34,10 @@ class SecuritySettingArgs:
         :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if inspect_template is not None:
             pulumi.set(__self__, "inspect_template", inspect_template)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -63,15 +64,6 @@ class SecuritySettingArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> Optional[pulumi.Input[str]]:
         """
@@ -82,6 +74,15 @@ class SecuritySettingArgs:
     @inspect_template.setter
     def inspect_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "inspect_template", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -230,8 +231,6 @@ class SecuritySetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_template"] = inspect_template
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

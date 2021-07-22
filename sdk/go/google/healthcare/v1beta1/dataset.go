@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +24,9 @@ type Dataset struct {
 func NewDataset(ctx *pulumi.Context,
 	name string, args *DatasetArgs, opts ...pulumi.ResourceOption) (*Dataset, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DatasetArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:Dataset", name, args, &resource, opts...)
 	if err != nil {
@@ -64,7 +60,7 @@ func (DatasetState) ElementType() reflect.Type {
 
 type datasetArgs struct {
 	DatasetId *string `pulumi:"datasetId"`
-	Location  string  `pulumi:"location"`
+	Location  *string `pulumi:"location"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -75,7 +71,7 @@ type datasetArgs struct {
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
 	DatasetId pulumi.StringPtrInput
-	Location  pulumi.StringInput
+	Location  pulumi.StringPtrInput
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

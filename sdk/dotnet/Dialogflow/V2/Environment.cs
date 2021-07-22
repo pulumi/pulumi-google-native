@@ -124,8 +124,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("fulfillment")]
         public Input<Inputs.GoogleCloudDialogflowV2FulfillmentArgs>? Fulfillment { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

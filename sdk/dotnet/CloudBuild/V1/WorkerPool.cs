@@ -139,8 +139,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Private Pool using a v1 configuration.

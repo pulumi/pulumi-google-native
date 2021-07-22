@@ -77,9 +77,6 @@ export class Webhook extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -121,7 +118,7 @@ export interface WebhookArgs {
      * Configuration for a generic web service.
      */
     genericWebService?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
      */

@@ -157,8 +157,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// An OpenId Connect 1.0 identity provider.

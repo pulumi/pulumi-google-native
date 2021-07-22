@@ -135,13 +135,10 @@ export class Job extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["clientRequestId"] = args ? args.clientRequestId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["createdFromSnapshotId"] = args ? args.createdFromSnapshotId : undefined;
@@ -242,7 +239,7 @@ export interface JobArgs {
     /**
      * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
      */

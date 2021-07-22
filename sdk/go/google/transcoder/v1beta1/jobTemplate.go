@@ -31,9 +31,6 @@ func NewJobTemplate(ctx *pulumi.Context,
 	if args.JobTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'JobTemplateId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource JobTemplate
 	err := ctx.RegisterResource("google-native:transcoder/v1beta1:JobTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -69,7 +66,7 @@ type jobTemplateArgs struct {
 	// The configuration for this template.
 	Config        *JobConfig `pulumi:"config"`
 	JobTemplateId string     `pulumi:"jobTemplateId"`
-	Location      string     `pulumi:"location"`
+	Location      *string    `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -80,7 +77,7 @@ type JobTemplateArgs struct {
 	// The configuration for this template.
 	Config        JobConfigPtrInput
 	JobTemplateId pulumi.StringInput
-	Location      pulumi.StringInput
+	Location      pulumi.StringPtrInput
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

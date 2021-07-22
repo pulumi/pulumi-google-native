@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The name of the environment. Format: `projects//locations//agents//environments/`.

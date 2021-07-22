@@ -99,13 +99,10 @@ export class Autoscaler extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AutoscalerArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: AutoscalerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -167,5 +164,5 @@ export interface AutoscalerArgs {
      * URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
      */
     target?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

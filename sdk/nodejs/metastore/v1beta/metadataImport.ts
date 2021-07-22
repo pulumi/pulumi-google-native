@@ -75,9 +75,6 @@ export class MetadataImport extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.metadataImportId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataImportId'");
             }
@@ -124,7 +121,7 @@ export interface MetadataImportArgs {
      * The description of the metadata import.
      */
     description?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     metadataImportId: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.

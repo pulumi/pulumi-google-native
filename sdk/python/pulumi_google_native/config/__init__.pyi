@@ -25,6 +25,16 @@ A Google Partner Name to facilitate partner resource usage attribution.
 
 project: Optional[str]
 """
-A Google Cloud project name.
+The default project to manage resources in. If another project is specified on a resource, it will take precedence.
+"""
+
+region: Optional[str]
+"""
+The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+"""
+
+zone: Optional[str]
+"""
+The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
 """
 

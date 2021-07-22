@@ -28,9 +28,6 @@ func NewTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.PackageId == nil {
 		return nil, errors.New("invalid value for required argument 'PackageId'")
 	}
@@ -69,7 +66,7 @@ func (TagState) ElementType() reflect.Type {
 }
 
 type tagArgs struct {
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
 	Name         *string `pulumi:"name"`
 	PackageId    string  `pulumi:"packageId"`
@@ -82,7 +79,7 @@ type tagArgs struct {
 
 // The set of arguments for constructing a Tag resource.
 type TagArgs struct {
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
 	Name         pulumi.StringPtrInput
 	PackageId    pulumi.StringInput

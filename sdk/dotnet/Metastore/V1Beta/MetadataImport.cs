@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("metadataImportId", required: true)]
         public Input<string> MetadataImportId { get; set; } = null!;

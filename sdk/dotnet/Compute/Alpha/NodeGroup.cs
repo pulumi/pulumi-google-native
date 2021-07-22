@@ -204,8 +204,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupStatus>? Status { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NodeGroupArgs()
         {

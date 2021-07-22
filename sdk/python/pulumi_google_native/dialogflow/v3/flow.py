@@ -18,10 +18,10 @@ class FlowArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3NluSettingsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -39,13 +39,14 @@ class FlowArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nlu_settings is not None:
@@ -80,15 +81,6 @@ class FlowArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -119,6 +111,15 @@ class FlowArgs:
     @language_code.setter
     def language_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -264,8 +265,6 @@ class Flow(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["event_handlers"] = event_handlers
             __props__.__dict__["language_code"] = language_code
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["nlu_settings"] = nlu_settings

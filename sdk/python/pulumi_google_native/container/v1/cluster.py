@@ -16,7 +16,6 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
                  autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
@@ -33,6 +32,7 @@ class ClusterArgs:
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
@@ -95,7 +95,6 @@ class ClusterArgs:
         :param pulumi.Input['VerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
-        pulumi.set(__self__, "location", location)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
@@ -128,6 +127,8 @@ class ClusterArgs:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if legacy_abac is not None:
             pulumi.set(__self__, "legacy_abac", legacy_abac)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if logging_service is not None:
@@ -172,15 +173,6 @@ class ClusterArgs:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -373,6 +365,15 @@ class ClusterArgs:
     @legacy_abac.setter
     def legacy_abac(self, value: Optional[pulumi.Input['LegacyAbacArgs']]):
         pulumi.set(self, "legacy_abac", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -728,7 +729,7 @@ class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterArgs,
+                 args: Optional[ClusterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using.
@@ -815,8 +816,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["legacy_abac"] = legacy_abac
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
             __props__.__dict__["logging_service"] = logging_service

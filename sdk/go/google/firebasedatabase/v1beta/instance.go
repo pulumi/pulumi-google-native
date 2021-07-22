@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type Instance struct {
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InstanceArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:firebasedatabase/v1beta:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -72,7 +68,7 @@ type instanceArgs struct {
 	DatabaseId *string `pulumi:"databaseId"`
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name *string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
@@ -89,7 +85,7 @@ type InstanceArgs struct {
 	DatabaseId pulumi.StringPtrInput
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name pulumi.StringPtrInput
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.

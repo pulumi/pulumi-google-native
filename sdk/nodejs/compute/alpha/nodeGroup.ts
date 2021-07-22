@@ -105,9 +105,6 @@ export class NodeGroup extends pulumi.CustomResource {
             if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -189,5 +186,5 @@ export interface NodeGroupArgs {
      */
     shareSettings?: pulumi.Input<inputs.compute.alpha.ShareSettingsArgs>;
     status?: pulumi.Input<enums.compute.alpha.NodeGroupStatus>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

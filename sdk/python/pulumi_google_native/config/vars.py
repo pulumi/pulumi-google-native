@@ -38,7 +38,21 @@ class _ExportableConfig(types.ModuleType):
     @property
     def project(self) -> Optional[str]:
         """
-        A Google Cloud project name.
+        The default project to manage resources in. If another project is specified on a resource, it will take precedence.
         """
         return __config__.get('project')
+
+    @property
+    def region(self) -> Optional[str]:
+        """
+        The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+        """
+        return __config__.get('region')
+
+    @property
+    def zone(self) -> Optional[str]:
+        """
+        The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+        """
+        return __config__.get('zone')
 

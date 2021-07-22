@@ -14,9 +14,9 @@ __all__ = ['ApiArgs', 'Api']
 class ApiArgs:
     def __init__(__self__, *,
                  api_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed_service: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -26,11 +26,12 @@ class ApiArgs:
         :param pulumi.Input[str] managed_service: Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
         """
         pulumi.set(__self__, "api_id", api_id)
-        pulumi.set(__self__, "location", location)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if managed_service is not None:
             pulumi.set(__self__, "managed_service", managed_service)
         if project is not None:
@@ -44,15 +45,6 @@ class ApiArgs:
     @api_id.setter
     def api_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -77,6 +69,15 @@ class ApiArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="managedService")
@@ -170,8 +171,6 @@ class Api(pulumi.CustomResource):
             __props__.__dict__["api_id"] = api_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["managed_service"] = managed_service
             __props__.__dict__["project"] = project

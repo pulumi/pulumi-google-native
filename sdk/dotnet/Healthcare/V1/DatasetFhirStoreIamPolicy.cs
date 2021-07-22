@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("fhirStoreId", required: true)]
         public Input<string> FhirStoreId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

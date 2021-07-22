@@ -131,9 +131,6 @@ export class Intent extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["action"] = args ? args.action : undefined;
             inputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -229,7 +226,7 @@ export interface IntentArgs {
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
      */
     liveAgentHandoff?: pulumi.Input<boolean>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */

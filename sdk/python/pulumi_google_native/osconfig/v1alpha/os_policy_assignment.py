@@ -17,11 +17,11 @@ __all__ = ['OsPolicyAssignmentArgs', 'OsPolicyAssignment']
 class OsPolicyAssignmentArgs:
     def __init__(__self__, *,
                  instance_filter: pulumi.Input['OSPolicyAssignmentInstanceFilterArgs'],
-                 location: pulumi.Input[str],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['OSPolicyArgs']]],
                  os_policy_assignment_id: pulumi.Input[str],
                  rollout: pulumi.Input['OSPolicyAssignmentRolloutArgs'],
                  description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -33,12 +33,13 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[str] name: Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
         """
         pulumi.set(__self__, "instance_filter", instance_filter)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "os_policies", os_policies)
         pulumi.set(__self__, "os_policy_assignment_id", os_policy_assignment_id)
         pulumi.set(__self__, "rollout", rollout)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -55,15 +56,6 @@ class OsPolicyAssignmentArgs:
     @instance_filter.setter
     def instance_filter(self, value: pulumi.Input['OSPolicyAssignmentInstanceFilterArgs']):
         pulumi.set(self, "instance_filter", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="osPolicies")
@@ -109,6 +101,15 @@ class OsPolicyAssignmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -205,8 +206,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if os_policies is None and not opts.urn:

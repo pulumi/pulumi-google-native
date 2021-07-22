@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
             set => _labels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("matchingCriteria", required: true)]
         private InputList<Inputs.MatchingCriteriaArgs>? _matchingCriteria;

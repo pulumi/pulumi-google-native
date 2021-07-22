@@ -151,13 +151,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -297,5 +294,5 @@ export interface InstanceGroupManagerArgs {
      * Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
     versions?: pulumi.Input<pulumi.Input<inputs.compute.alpha.InstanceGroupManagerVersionArgs>[]>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

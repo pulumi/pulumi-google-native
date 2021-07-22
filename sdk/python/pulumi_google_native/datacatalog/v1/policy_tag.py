@@ -14,9 +14,9 @@ __all__ = ['PolicyTagArgs', 'PolicyTag']
 class PolicyTagArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  taxonomy_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -26,10 +26,11 @@ class PolicyTagArgs:
         :param pulumi.Input[str] parent_policy_tag: Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "taxonomy_id", taxonomy_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if parent_policy_tag is not None:
             pulumi.set(__self__, "parent_policy_tag", parent_policy_tag)
         if project is not None:
@@ -46,15 +47,6 @@ class PolicyTagArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="taxonomyId")
@@ -76,6 +68,15 @@ class PolicyTagArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="parentPolicyTag")
@@ -168,8 +169,6 @@ class PolicyTag(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["parent_policy_tag"] = parent_policy_tag
             __props__.__dict__["project"] = project

@@ -59,9 +59,6 @@ export class Subscription extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.subscriptionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionId'");
             }
@@ -92,7 +89,7 @@ export interface SubscriptionArgs {
      * The settings for this subscription's message delivery.
      */
     deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfigArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
      */

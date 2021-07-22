@@ -44,9 +44,6 @@ func NewSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ScheduleId == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleId'")
 	}
@@ -88,7 +85,7 @@ type scheduleArgs struct {
 	Description *string `pulumi:"description"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
-	Location          string             `pulumi:"location"`
+	Location          *string            `pulumi:"location"`
 	Project           *string            `pulumi:"project"`
 	ScheduleId        string             `pulumi:"scheduleId"`
 	State             *ScheduleStateEnum `pulumi:"state"`
@@ -104,7 +101,7 @@ type ScheduleArgs struct {
 	Description pulumi.StringPtrInput
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplatePtrInput
-	Location          pulumi.StringInput
+	Location          pulumi.StringPtrInput
 	Project           pulumi.StringPtrInput
 	ScheduleId        pulumi.StringInput
 	State             ScheduleStateEnumPtrInput

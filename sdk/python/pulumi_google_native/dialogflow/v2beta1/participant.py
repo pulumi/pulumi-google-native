@@ -15,7 +15,7 @@ __all__ = ['ParticipantArgs', 'Participant']
 class ParticipantArgs:
     def __init__(__self__, *,
                  conversation_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,8 @@ class ParticipantArgs:
         :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
-        pulumi.set(__self__, "location", location)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if obfuscated_external_user_id is not None:
@@ -48,11 +49,11 @@ class ParticipantArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
+    def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: pulumi.Input[str]):
+    def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
     @property
@@ -167,8 +168,6 @@ class Participant(pulumi.CustomResource):
             if conversation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'conversation_id'")
             __props__.__dict__["conversation_id"] = conversation_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["obfuscated_external_user_id"] = obfuscated_external_user_id

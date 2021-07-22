@@ -39,9 +39,6 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 	if args.DeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerDeployment", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type gameServerDeploymentArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -96,7 +93,7 @@ type GameServerDeploymentArgs struct {
 	Etag pulumi.StringPtrInput
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

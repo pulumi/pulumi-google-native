@@ -43,9 +43,6 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.WorkloadIdentityPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
@@ -96,7 +93,7 @@ type providerArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           *Oidc   `pulumi:"oidc"`
 	Project                        *string `pulumi:"project"`
@@ -118,7 +115,7 @@ type ProviderArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           OidcPtrInput
 	Project                        pulumi.StringPtrInput

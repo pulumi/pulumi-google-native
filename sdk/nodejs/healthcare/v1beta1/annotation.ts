@@ -77,9 +77,6 @@ export class Annotation extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["annotationSource"] = args ? args.annotationSource : undefined;
             inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
             inputs["customData"] = args ? args.customData : undefined;
@@ -123,7 +120,7 @@ export interface AnnotationArgs {
      * Annotations for images. For example, bounding polygons.
      */
     imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */

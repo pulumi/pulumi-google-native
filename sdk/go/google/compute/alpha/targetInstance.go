@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,12 +40,9 @@ type TargetInstance struct {
 func NewTargetInstance(ctx *pulumi.Context,
 	name string, args *TargetInstanceArgs, opts ...pulumi.ResourceOption) (*TargetInstance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &TargetInstanceArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource TargetInstance
 	err := ctx.RegisterResource("google-native:compute/alpha:TargetInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +87,7 @@ type targetInstanceArgs struct {
 	Network   *string `pulumi:"network"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	Zone      string  `pulumi:"zone"`
+	Zone      *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TargetInstance resource.
@@ -108,7 +104,7 @@ type TargetInstanceArgs struct {
 	Network   pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
-	Zone      pulumi.StringInput
+	Zone      pulumi.StringPtrInput
 }
 
 func (TargetInstanceArgs) ElementType() reflect.Type {

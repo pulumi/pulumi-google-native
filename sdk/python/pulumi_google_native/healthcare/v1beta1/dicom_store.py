@@ -17,9 +17,9 @@ __all__ = ['DicomStoreArgs', 'DicomStore']
 class DicomStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -32,11 +32,12 @@ class DicomStoreArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]] stream_configs: A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if dicom_store_id is not None:
             pulumi.set(__self__, "dicom_store_id", dicom_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
@@ -54,15 +55,6 @@ class DicomStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="dicomStoreId")
@@ -84,6 +76,15 @@ class DicomStoreArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -204,8 +205,6 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["dicom_store_id"] = dicom_store_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config

@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Run.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
+        public Service(string name, ServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:run/v1:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -106,8 +106,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.

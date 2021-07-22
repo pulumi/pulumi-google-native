@@ -16,7 +16,6 @@ __all__ = ['FunctionArgs', 'Function']
 @pulumi.input_type
 class FunctionArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
@@ -27,6 +26,7 @@ class FunctionArgs:
                  https_trigger: Optional[pulumi.Input['HttpsTriggerArgs']] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,6 @@ class FunctionArgs:
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input['FunctionVpcConnectorEgressSettings'] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
         """
-        pulumi.set(__self__, "location", location)
         if available_memory_mb is not None:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
@@ -86,6 +85,8 @@ class FunctionArgs:
             pulumi.set(__self__, "ingress_settings", ingress_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if max_instances is not None:
             pulumi.set(__self__, "max_instances", max_instances)
         if name is not None:
@@ -112,15 +113,6 @@ class FunctionArgs:
             pulumi.set(__self__, "vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
             pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="availableMemoryMb")
@@ -241,6 +233,15 @@ class FunctionArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="maxInstances")
@@ -458,7 +459,7 @@ class Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FunctionArgs,
+                 args: Optional[FunctionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
@@ -524,8 +525,6 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["https_trigger"] = https_trigger
             __props__.__dict__["ingress_settings"] = ingress_settings
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["name"] = name

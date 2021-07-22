@@ -15,8 +15,8 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  topic_id: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partition_config: Optional[pulumi.Input['PartitionConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,8 +27,9 @@ class TopicArgs:
         :param pulumi.Input['PartitionConfigArgs'] partition_config: The settings for this topic's partitions.
         :param pulumi.Input['RetentionConfigArgs'] retention_config: The settings for this topic's message retention.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "topic_id", topic_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if partition_config is not None:
@@ -39,15 +40,6 @@ class TopicArgs:
             pulumi.set(__self__, "retention_config", retention_config)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="topicId")
     def topic_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "topic_id")
@@ -55,6 +47,15 @@ class TopicArgs:
     @topic_id.setter
     def topic_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -165,8 +166,6 @@ class Topic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TopicArgs.__new__(TopicArgs)
 
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["partition_config"] = partition_config

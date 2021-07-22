@@ -16,8 +16,8 @@ __all__ = ['ConnectorArgs', 'Connector']
 class ConnectorArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
@@ -40,9 +40,10 @@ class ConnectorArgs:
         :param pulumi.Input['SubnetArgs'] subnet: The subnet in which to house the VPC Access Connector.
         """
         pulumi.set(__self__, "connector_id", connector_id)
-        pulumi.set(__self__, "location", location)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if max_instances is not None:
@@ -72,15 +73,6 @@ class ConnectorArgs:
         pulumi.set(self, "connector_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -91,6 +83,15 @@ class ConnectorArgs:
     @ip_cidr_range.setter
     def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_cidr_range", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -283,8 +284,6 @@ class Connector(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["max_instances"] = max_instances

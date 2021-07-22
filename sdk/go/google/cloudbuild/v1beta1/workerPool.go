@@ -39,9 +39,6 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
 	}
@@ -77,7 +74,7 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	Project       *string        `pulumi:"project"`
@@ -88,7 +85,7 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
 	Project       pulumi.StringPtrInput

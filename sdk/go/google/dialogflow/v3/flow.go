@@ -44,9 +44,6 @@ func NewFlow(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Flow
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Flow", name, args, &resource, opts...)
 	if err != nil {
@@ -87,7 +84,7 @@ type flowArgs struct {
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
 	LanguageCode  *string                                 `pulumi:"languageCode"`
-	Location      string                                  `pulumi:"location"`
+	Location      *string                                 `pulumi:"location"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
@@ -109,7 +106,7 @@ type FlowArgs struct {
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
 	LanguageCode  pulumi.StringPtrInput
-	Location      pulumi.StringInput
+	Location      pulumi.StringPtrInput
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name pulumi.StringPtrInput
 	// NLU related settings of the flow.

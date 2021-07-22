@@ -102,9 +102,6 @@ export class Registration extends pulumi.CustomResource {
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.yearlyPrice === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'yearlyPrice'");
             }
@@ -175,7 +172,7 @@ export interface RegistrationArgs {
      * Set of labels associated with the `Registration`.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */

@@ -88,9 +88,6 @@ export class WorkerPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
@@ -139,7 +136,7 @@ export interface WorkerPoolArgs {
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
     displayName?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Private Pool using a v1 configuration.
      */

@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Translate.V3
         [Input("languagePair")]
         public Input<Inputs.LanguageCodePairArgs>? LanguagePair { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.

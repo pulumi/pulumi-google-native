@@ -45,9 +45,6 @@ func NewTrial(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
 	}
@@ -85,7 +82,7 @@ func (TrialState) ElementType() reflect.Type {
 type trialArgs struct {
 	// The final measurement containing the objective value.
 	FinalMeasurement *GoogleCloudMlV1__Measurement `pulumi:"finalMeasurement"`
-	Location         string                        `pulumi:"location"`
+	Location         *string                       `pulumi:"location"`
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements []GoogleCloudMlV1__Measurement `pulumi:"measurements"`
 	// The parameters of the trial.
@@ -100,7 +97,7 @@ type trialArgs struct {
 type TrialArgs struct {
 	// The final measurement containing the objective value.
 	FinalMeasurement GoogleCloudMlV1__MeasurementPtrInput
-	Location         pulumi.StringInput
+	Location         pulumi.StringPtrInput
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements GoogleCloudMlV1__MeasurementArrayInput
 	// The parameters of the trial.

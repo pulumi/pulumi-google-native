@@ -50,9 +50,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:file/v1beta1:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -94,7 +91,7 @@ type instanceArgs struct {
 	InstanceId string            `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfig `pulumi:"networks"`
 	Project  *string         `pulumi:"project"`
@@ -113,7 +110,7 @@ type InstanceArgs struct {
 	InstanceId pulumi.StringInput
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigArrayInput
 	Project  pulumi.StringPtrInput

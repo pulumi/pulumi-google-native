@@ -16,7 +16,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  type: pulumi.Input['InstanceType'],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
@@ -29,6 +28,7 @@ class InstanceArgs:
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
@@ -54,7 +54,6 @@ class InstanceArgs:
         :param pulumi.Input[str] version: Current version of the Data Fusion. Only specifiable in Update.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "type", type)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -78,6 +77,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if options is not None:
@@ -90,15 +91,6 @@ class InstanceArgs:
             pulumi.set(__self__, "version", version)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -240,6 +232,15 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="networkConfig")
@@ -426,8 +427,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options

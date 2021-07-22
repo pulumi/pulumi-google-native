@@ -84,13 +84,10 @@ export class DlpJob extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DlpJobArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DlpJobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -137,7 +134,7 @@ export interface DlpJobArgs {
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     jobId?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.

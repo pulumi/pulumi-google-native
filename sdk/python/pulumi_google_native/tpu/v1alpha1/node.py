@@ -17,12 +17,12 @@ __all__ = ['NodeArgs', 'Node']
 class NodeArgs:
     def __init__(__self__, *,
                  accelerator_type: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  tensorflow_version: pulumi.Input[str],
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -41,7 +41,6 @@ class NodeArgs:
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "tensorflow_version", tensorflow_version)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
@@ -51,6 +50,8 @@ class NodeArgs:
             pulumi.set(__self__, "health", health)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if node_id is not None:
@@ -73,15 +74,6 @@ class NodeArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "accelerator_type", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="tensorflowVersion")
@@ -142,6 +134,15 @@ class NodeArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -288,8 +289,6 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["health"] = health
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["network"] = network
             __props__.__dict__["node_id"] = node_id

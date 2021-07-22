@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.

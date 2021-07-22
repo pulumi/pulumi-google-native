@@ -58,9 +58,6 @@ export class JobTemplate extends pulumi.CustomResource {
             if ((!args || args.jobTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplateId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["config"] = args ? args.config : undefined;
             inputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -86,7 +83,7 @@ export interface JobTemplateArgs {
      */
     config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
     jobTemplateId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
      */

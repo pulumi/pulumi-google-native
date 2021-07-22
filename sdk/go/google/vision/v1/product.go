@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +30,9 @@ type Product struct {
 func NewProduct(ctx *pulumi.Context,
 	name string, args *ProductArgs, opts ...pulumi.ResourceOption) (*Product, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProductArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Product
 	err := ctx.RegisterResource("google-native:vision/v1:Product", name, args, &resource, opts...)
 	if err != nil {
@@ -73,7 +69,7 @@ type productArgs struct {
 	Description *string `pulumi:"description"`
 	// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 	Name *string `pulumi:"name"`
 	// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
@@ -90,7 +86,7 @@ type ProductArgs struct {
 	Description pulumi.StringPtrInput
 	// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 	Name pulumi.StringPtrInput
 	// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.

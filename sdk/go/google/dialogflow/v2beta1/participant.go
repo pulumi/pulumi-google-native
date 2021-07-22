@@ -33,9 +33,6 @@ func NewParticipant(ctx *pulumi.Context,
 	if args.ConversationId == nil {
 		return nil, errors.New("invalid value for required argument 'ConversationId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Participant
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:Participant", name, args, &resource, opts...)
 	if err != nil {
@@ -68,8 +65,8 @@ func (ParticipantState) ElementType() reflect.Type {
 }
 
 type participantArgs struct {
-	ConversationId string `pulumi:"conversationId"`
-	Location       string `pulumi:"location"`
+	ConversationId string  `pulumi:"conversationId"`
+	Location       *string `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name *string `pulumi:"name"`
 	// Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
@@ -82,7 +79,7 @@ type participantArgs struct {
 // The set of arguments for constructing a Participant resource.
 type ParticipantArgs struct {
 	ConversationId pulumi.StringInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name pulumi.StringPtrInput
 	// Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.

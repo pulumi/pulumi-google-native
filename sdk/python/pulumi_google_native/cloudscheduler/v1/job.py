@@ -16,11 +16,11 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  app_engine_http_target: Optional[pulumi.Input['AppEngineHttpTargetArgs']] = None,
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input['HttpTargetArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input['PubsubTargetArgs']] = None,
@@ -39,7 +39,6 @@ class JobArgs:
         :param pulumi.Input[str] schedule: Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         """
-        pulumi.set(__self__, "location", location)
         if app_engine_http_target is not None:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
@@ -48,6 +47,8 @@ class JobArgs:
             pulumi.set(__self__, "description", description)
         if http_target is not None:
             pulumi.set(__self__, "http_target", http_target)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -60,15 +61,6 @@ class JobArgs:
             pulumi.set(__self__, "schedule", schedule)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="appEngineHttpTarget")
@@ -117,6 +109,15 @@ class JobArgs:
     @http_target.setter
     def http_target(self, value: Optional[pulumi.Input['HttpTargetArgs']]):
         pulumi.set(self, "http_target", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -224,7 +225,7 @@ class Job(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobArgs,
+                 args: Optional[JobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a job.
@@ -271,8 +272,6 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["attempt_deadline"] = attempt_deadline
             __props__.__dict__["description"] = description
             __props__.__dict__["http_target"] = http_target
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

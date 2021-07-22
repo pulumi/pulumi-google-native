@@ -40,9 +40,6 @@ func NewServerTlsPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ServerTlsPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'ServerTlsPolicyId'")
 	}
@@ -84,7 +81,7 @@ type serverTlsPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the resource.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
 	MtlsPolicy *MTLSPolicy `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
@@ -103,7 +100,7 @@ type ServerTlsPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Set of label tags associated with the resource.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
 	MtlsPolicy MTLSPolicyPtrInput
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`

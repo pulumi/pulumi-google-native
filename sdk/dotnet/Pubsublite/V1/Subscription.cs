@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("deliveryConfig")]
         public Input<Inputs.DeliveryConfigArgs>? DeliveryConfig { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}

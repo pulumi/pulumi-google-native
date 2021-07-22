@@ -34,6 +34,12 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Project == nil {
 		args.Project = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string))
 	}
+	if args.Region == nil {
+		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string))
+	}
+	if args.Zone == nil {
+		args.Zone = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string))
+	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:google-native", name, args, &resource, opts...)
 	if err != nil {
@@ -49,8 +55,12 @@ type providerArgs struct {
 	DisablePartnerName *bool `pulumi:"disablePartnerName"`
 	// A Google Partner Name to facilitate partner resource usage attribution.
 	PartnerName *string `pulumi:"partnerName"`
-	// A Google Cloud project name.
+	// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
 	Project *string `pulumi:"project"`
+	// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+	Region *string `pulumi:"region"`
+	// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -61,8 +71,12 @@ type ProviderArgs struct {
 	DisablePartnerName pulumi.BoolPtrInput
 	// A Google Partner Name to facilitate partner resource usage attribution.
 	PartnerName pulumi.StringPtrInput
-	// A Google Cloud project name.
+	// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
 	Project pulumi.StringPtrInput
+	// The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
+	Region pulumi.StringPtrInput
+	// The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
+	Zone pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

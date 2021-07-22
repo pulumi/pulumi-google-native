@@ -16,11 +16,11 @@ __all__ = ['TriggerArgs', 'Trigger']
 class TriggerArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input['DestinationArgs'],
-                 location: pulumi.Input[str],
                  matching_criteria: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]],
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
@@ -33,12 +33,13 @@ class TriggerArgs:
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         """
         pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "matching_criteria", matching_criteria)
         pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "validate_only", validate_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -57,15 +58,6 @@ class TriggerArgs:
     @destination.setter
     def destination(self, value: pulumi.Input['DestinationArgs']):
         pulumi.set(self, "destination", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="matchingCriteria")
@@ -108,6 +100,15 @@ class TriggerArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -218,8 +219,6 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if matching_criteria is None and not opts.urn:
                 raise TypeError("Missing required property 'matching_criteria'")

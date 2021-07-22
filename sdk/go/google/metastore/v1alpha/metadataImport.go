@@ -38,9 +38,6 @@ func NewMetadataImport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MetadataImportId == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataImportId'")
 	}
@@ -83,7 +80,7 @@ type metadataImportArgs struct {
 	DatabaseDump *DatabaseDump `pulumi:"databaseDump"`
 	// The description of the metadata import.
 	Description      *string `pulumi:"description"`
-	Location         string  `pulumi:"location"`
+	Location         *string `pulumi:"location"`
 	MetadataImportId string  `pulumi:"metadataImportId"`
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
 	Name      *string `pulumi:"name"`
@@ -98,7 +95,7 @@ type MetadataImportArgs struct {
 	DatabaseDump DatabaseDumpPtrInput
 	// The description of the metadata import.
 	Description      pulumi.StringPtrInput
-	Location         pulumi.StringInput
+	Location         pulumi.StringPtrInput
 	MetadataImportId pulumi.StringInput
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
 	Name      pulumi.StringPtrInput

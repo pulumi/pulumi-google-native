@@ -16,13 +16,13 @@ __all__ = ['DeviceArgs', 'Device']
 @pulumi.input_type
 class DeviceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  registry_id: pulumi.Input[str],
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input['DeviceConfigArgs']] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
                  gateway_config: Optional[pulumi.Input['GatewayConfigArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,7 +38,6 @@ class DeviceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always ends in the device numeric ID.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "registry_id", registry_id)
         if blocked is not None:
             pulumi.set(__self__, "blocked", blocked)
@@ -50,6 +49,8 @@ class DeviceArgs:
             pulumi.set(__self__, "gateway_config", gateway_config)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
         if metadata is not None:
@@ -58,15 +59,6 @@ class DeviceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="registryId")
@@ -136,6 +128,15 @@ class DeviceArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="logLevel")
@@ -266,8 +267,6 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["id"] = id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata

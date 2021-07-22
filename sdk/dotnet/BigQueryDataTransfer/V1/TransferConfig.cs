@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TransferConfig(string name, TransferConfigArgs args, CustomResourceOptions? options = null)
+        public TransferConfig(string name, TransferConfigArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:bigquerydatatransfer/v1:TransferConfig", name, args ?? new TransferConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -189,8 +189,8 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Input("emailPreferences")]
         public Input<Inputs.EmailPreferencesArgs>? EmailPreferences { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.

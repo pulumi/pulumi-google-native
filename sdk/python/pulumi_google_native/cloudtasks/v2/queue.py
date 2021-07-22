@@ -15,8 +15,8 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  app_engine_routing_override: Optional[pulumi.Input['AppEngineRoutingArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input['RateLimitsArgs']] = None,
@@ -30,9 +30,10 @@ class QueueArgs:
         :param pulumi.Input['RetryConfigArgs'] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
         :param pulumi.Input['StackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
         """
-        pulumi.set(__self__, "location", location)
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -45,15 +46,6 @@ class QueueArgs:
             pulumi.set(__self__, "stackdriver_logging_config", stackdriver_logging_config)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="appEngineRoutingOverride")
     def app_engine_routing_override(self) -> Optional[pulumi.Input['AppEngineRoutingArgs']]:
         """
@@ -64,6 +56,15 @@ class QueueArgs:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['AppEngineRoutingArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -151,7 +152,7 @@ class Queue(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: QueueArgs,
+                 args: Optional[QueueArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
@@ -191,8 +192,6 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

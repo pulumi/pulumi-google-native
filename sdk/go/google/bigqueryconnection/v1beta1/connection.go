@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Connection struct {
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ConnectionArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Connection
 	err := ctx.RegisterResource("google-native:bigqueryconnection/v1beta1:Connection", name, args, &resource, opts...)
 	if err != nil {
@@ -80,7 +76,7 @@ type connectionArgs struct {
 	Description *string `pulumi:"description"`
 	// User provided display name for the connection.
 	FriendlyName *string `pulumi:"friendlyName"`
-	Location     string  `pulumi:"location"`
+	Location     *string `pulumi:"location"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -95,7 +91,7 @@ type ConnectionArgs struct {
 	Description pulumi.StringPtrInput
 	// User provided display name for the connection.
 	FriendlyName pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

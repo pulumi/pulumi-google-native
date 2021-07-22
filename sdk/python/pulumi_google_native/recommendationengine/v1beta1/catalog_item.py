@@ -19,11 +19,11 @@ class CatalogItemArgs:
                  catalog_id: pulumi.Input[str],
                  category_hierarchies: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]],
                  id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -41,7 +41,6 @@ class CatalogItemArgs:
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "category_hierarchies", category_hierarchies)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -49,6 +48,8 @@ class CatalogItemArgs:
             pulumi.set(__self__, "item_attributes", item_attributes)
         if item_group_id is not None:
             pulumi.set(__self__, "item_group_id", item_group_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if product_metadata is not None:
             pulumi.set(__self__, "product_metadata", product_metadata)
         if project is not None:
@@ -88,15 +89,6 @@ class CatalogItemArgs:
     @id.setter
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -145,6 +137,15 @@ class CatalogItemArgs:
     @item_group_id.setter
     def item_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "item_group_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="productMetadata")
@@ -272,8 +273,6 @@ class CatalogItem(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["item_attributes"] = item_attributes
             __props__.__dict__["item_group_id"] = item_group_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["product_metadata"] = product_metadata
             __props__.__dict__["project"] = project

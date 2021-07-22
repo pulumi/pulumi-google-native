@@ -126,9 +126,6 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.migrationJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'migrationJobId'");
             }
@@ -213,7 +210,7 @@ export interface MigrationJobArgs {
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     migrationJobId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.

@@ -45,9 +45,6 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MatchingCriteria == nil {
 		return nil, errors.New("invalid value for required argument 'MatchingCriteria'")
 	}
@@ -93,7 +90,7 @@ type triggerArgs struct {
 	Destination Destination `pulumi:"destination"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria []MatchingCriteria `pulumi:"matchingCriteria"`
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
@@ -111,7 +108,7 @@ type TriggerArgs struct {
 	Destination DestinationInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaArrayInput
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.

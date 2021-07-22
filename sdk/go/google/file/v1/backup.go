@@ -52,9 +52,6 @@ func NewBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Backup
 	err := ctx.RegisterResource("google-native:file/v1:Backup", name, args, &resource, opts...)
 	if err != nil {
@@ -92,7 +89,7 @@ type backupArgs struct {
 	Description *string `pulumi:"description"`
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
@@ -107,7 +104,7 @@ type BackupArgs struct {
 	Description pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput

@@ -14,23 +14,22 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] location: Compute Engine location where the instance resides.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
+        :param pulumi.Input[str] location: Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -38,22 +37,12 @@ class InstanceArgs:
             pulumi.set(__self__, "disk_encryption_key_name", disk_encryption_key_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if peering_cidr_range is not None:
             pulumi.set(__self__, "peering_cidr_range", peering_cidr_range)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        """
-        Compute Engine location where the instance resides.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -99,6 +88,18 @@ class InstanceArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compute Engine location where the instance resides.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -196,8 +197,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
             __props__.__dict__["display_name"] = display_name
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:

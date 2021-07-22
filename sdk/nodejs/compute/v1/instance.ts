@@ -182,13 +182,10 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
@@ -365,5 +362,5 @@ export interface InstanceArgs {
      * Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
      */
     tags?: pulumi.Input<inputs.compute.v1.TagsArgs>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

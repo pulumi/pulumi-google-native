@@ -88,9 +88,6 @@ export class EntityType extends pulumi.CustomResource {
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -150,7 +147,7 @@ export interface EntityTypeArgs {
      */
     kind: pulumi.Input<enums.dialogflow.v3beta1.EntityTypeKind>;
     languageCode?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
      */

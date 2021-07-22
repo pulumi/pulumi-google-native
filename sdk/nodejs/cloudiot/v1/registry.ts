@@ -71,13 +71,10 @@ export class Registry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegistryArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
@@ -124,7 +121,7 @@ export interface RegistryArgs {
      * The identifier of this device registry. For example, `myRegistry`.
      */
     id?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
      */

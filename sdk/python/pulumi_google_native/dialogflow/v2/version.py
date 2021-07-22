@@ -13,27 +13,19 @@ __all__ = ['VersionArgs', 'Version']
 @pulumi.input_type
 class VersionArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Version resource.
         :param pulumi.Input[str] description: Optional. The developer-provided description of this version.
         """
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -46,6 +38,15 @@ class VersionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -78,7 +79,7 @@ class Version(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VersionArgs,
+                 args: Optional[VersionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an agent version. The new version points to the agent instance in the "default" environment.
@@ -115,8 +116,6 @@ class Version(pulumi.CustomResource):
             __props__ = VersionArgs.__new__(VersionArgs)
 
             __props__.__dict__["description"] = description
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None

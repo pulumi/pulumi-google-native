@@ -233,7 +233,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Disk(string name, DiskArgs args, CustomResourceOptions? options = null)
+        public Disk(string name, DiskArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/v1:Disk", name, args ?? new DiskArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -438,8 +438,8 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public DiskArgs()
         {

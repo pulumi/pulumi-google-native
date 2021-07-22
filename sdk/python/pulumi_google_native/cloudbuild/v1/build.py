@@ -16,12 +16,12 @@ __all__ = ['BuildInitArgs', 'Build']
 @pulumi.input_type
 class BuildInitArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  project_id: pulumi.Input[str],
                  steps: pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]],
                  artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
                  available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['BuildOptionsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -48,7 +48,6 @@ class BuildInitArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
@@ -57,6 +56,8 @@ class BuildInitArgs:
             pulumi.set(__self__, "available_secrets", available_secrets)
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if logs_bucket is not None:
             pulumi.set(__self__, "logs_bucket", logs_bucket)
         if options is not None:
@@ -77,15 +78,6 @@ class BuildInitArgs:
             pulumi.set(__self__, "tags", tags)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="projectId")
@@ -143,6 +135,15 @@ class BuildInitArgs:
     @images.setter
     def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="logsBucket")
@@ -360,8 +361,6 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["artifacts"] = artifacts
             __props__.__dict__["available_secrets"] = available_secrets
             __props__.__dict__["images"] = images
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["logs_bucket"] = logs_bucket
             __props__.__dict__["options"] = options

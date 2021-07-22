@@ -14,11 +14,11 @@ __all__ = ['ContextArgs', 'Context']
 class ContextArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  name: pulumi.Input[str],
                  session_id: pulumi.Input[str],
                  user_id: pulumi.Input[str],
                  lifespan_count: Optional[pulumi.Input[int]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -28,12 +28,13 @@ class ContextArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "session_id", session_id)
         pulumi.set(__self__, "user_id", user_id)
         if lifespan_count is not None:
             pulumi.set(__self__, "lifespan_count", lifespan_count)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if project is not None:
@@ -47,15 +48,6 @@ class ContextArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -98,6 +90,15 @@ class ContextArgs:
     @lifespan_count.setter
     def lifespan_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifespan_count", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -194,8 +195,6 @@ class Context(pulumi.CustomResource):
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["lifespan_count"] = lifespan_count
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

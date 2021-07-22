@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Machine type of VM Instance underlying connector. Default is e2-micro

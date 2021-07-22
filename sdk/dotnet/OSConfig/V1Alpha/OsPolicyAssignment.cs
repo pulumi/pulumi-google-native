@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         [Input("instanceFilter", required: true)]
         public Input<Inputs.OSPolicyAssignmentInstanceFilterArgs> InstanceFilter { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.

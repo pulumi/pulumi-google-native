@@ -44,9 +44,6 @@ func NewAuthorizationPolicy(ctx *pulumi.Context,
 	if args.AuthorizationPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AuthorizationPolicyId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource AuthorizationPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1beta1:AuthorizationPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type authorizationPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -103,7 +100,7 @@ type AuthorizationPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

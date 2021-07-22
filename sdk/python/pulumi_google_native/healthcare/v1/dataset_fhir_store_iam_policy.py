@@ -18,10 +18,10 @@ class DatasetFhirStoreIamPolicyArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  fhir_store_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -35,13 +35,14 @@ class DatasetFhirStoreIamPolicyArgs:
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "fhir_store_id", fhir_store_id)
-        pulumi.set(__self__, "location", location)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if update_mask is not None:
@@ -66,15 +67,6 @@ class DatasetFhirStoreIamPolicyArgs:
     @fhir_store_id.setter
     def fhir_store_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "fhir_store_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -111,6 +103,15 @@ class DatasetFhirStoreIamPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -226,8 +227,6 @@ class DatasetFhirStoreIamPolicy(pulumi.CustomResource):
             if fhir_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_store_id'")
             __props__.__dict__["fhir_store_id"] = fhir_store_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask

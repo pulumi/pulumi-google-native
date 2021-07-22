@@ -71,9 +71,6 @@ export class SessionEntityType extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.sessionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sessionId'");
             }
@@ -111,7 +108,7 @@ export interface SessionEntityTypeArgs {
      */
     entityOverrideMode: pulumi.Input<enums.dialogflow.v3.SessionEntityTypeEntityOverrideMode>;
     environmentId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */

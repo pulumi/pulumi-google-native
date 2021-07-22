@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Spoke(string name, SpokeArgs args, CustomResourceOptions? options = null)
+        public Spoke(string name, SpokeArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:networkconnectivity/v1alpha1:Spoke", name, args ?? new SpokeArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
             set => _linkedVpnTunnels = value;
         }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Immutable. The name of a Spoke resource.

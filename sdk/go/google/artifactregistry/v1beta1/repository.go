@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Repository struct {
 func NewRepository(ctx *pulumi.Context,
 	name string, args *RepositoryArgs, opts ...pulumi.ResourceOption) (*Repository, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RepositoryArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Repository
 	err := ctx.RegisterResource("google-native:artifactregistry/v1beta1:Repository", name, args, &resource, opts...)
 	if err != nil {
@@ -83,7 +79,7 @@ type repositoryArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         *string `pulumi:"name"`
 	Project      *string `pulumi:"project"`
@@ -104,7 +100,7 @@ type RepositoryArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name         pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput

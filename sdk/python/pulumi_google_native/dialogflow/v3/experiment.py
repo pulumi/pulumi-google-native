@@ -19,13 +19,13 @@ class ExperimentArgs:
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  environment_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  definition: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ExperimentDefinitionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ExperimentResultArgs']] = None,
@@ -50,7 +50,6 @@ class ExperimentArgs:
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "location", location)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if definition is not None:
@@ -63,6 +62,8 @@ class ExperimentArgs:
             pulumi.set(__self__, "experiment_length", experiment_length)
         if last_update_time is not None:
             pulumi.set(__self__, "last_update_time", last_update_time)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -105,15 +106,6 @@ class ExperimentArgs:
     @environment_id.setter
     def environment_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "environment_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -186,6 +178,15 @@ class ExperimentArgs:
     @last_update_time.setter
     def last_update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_update_time", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -364,8 +365,6 @@ class Experiment(pulumi.CustomResource):
             __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["experiment_length"] = experiment_length
             __props__.__dict__["last_update_time"] = last_update_time
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

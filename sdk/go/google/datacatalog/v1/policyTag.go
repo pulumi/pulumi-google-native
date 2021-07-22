@@ -38,9 +38,6 @@ func NewPolicyTag(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.TaxonomyId == nil {
 		return nil, errors.New("invalid value for required argument 'TaxonomyId'")
 	}
@@ -79,8 +76,8 @@ type policyTagArgs struct {
 	// Description of this policy tag. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns and page breaks, and be at most 2000 bytes long when encoded in UTF-8.
 	Description *string `pulumi:"description"`
 	// User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName string `pulumi:"displayName"`
-	Location    string `pulumi:"location"`
+	DisplayName string  `pulumi:"displayName"`
+	Location    *string `pulumi:"location"`
 	// Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
 	ParentPolicyTag *string `pulumi:"parentPolicyTag"`
 	Project         *string `pulumi:"project"`
@@ -93,7 +90,7 @@ type PolicyTagArgs struct {
 	Description pulumi.StringPtrInput
 	// User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName pulumi.StringInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
 	ParentPolicyTag pulumi.StringPtrInput
 	Project         pulumi.StringPtrInput

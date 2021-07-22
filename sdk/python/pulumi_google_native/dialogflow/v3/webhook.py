@@ -17,9 +17,9 @@ class WebhookArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
                  generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_directory: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']] = None,
@@ -35,11 +35,12 @@ class WebhookArgs:
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if generic_web_service is not None:
             pulumi.set(__self__, "generic_web_service", generic_web_service)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -72,15 +73,6 @@ class WebhookArgs:
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the webhook is disabled.
@@ -102,6 +94,15 @@ class WebhookArgs:
     @generic_web_service.setter
     def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]):
         pulumi.set(self, "generic_web_service", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -229,8 +230,6 @@ class Webhook(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["generic_web_service"] = generic_web_service
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -4,9 +4,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
-const config = new pulumi.Config("google-native");
-const region = config.require("region");
-
 const randomString = new random.RandomString("service-name", {
     upper: false,
     number: false,
@@ -16,7 +13,6 @@ const randomString = new random.RandomString("service-name", {
 const serviceName = pulumi.interpolate`run-${randomString.result}`;
 
 const service = new google.run.v1.Service("service", {
-    location: region,
     apiVersion: "serving.knative.dev/v1",
     kind: "Service",
     metadata: {
@@ -32,7 +28,6 @@ const service = new google.run.v1.Service("service", {
 });
 
 const iamHello = new google.run.v1.ServiceIamPolicy("allow-all", {
-    location: region,
     serviceId: service.metadata.name,
     bindings: [{
         members: ["allUsers"],

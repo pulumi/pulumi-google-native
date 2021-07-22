@@ -7,9 +7,6 @@ class MyStack : Stack
 {
     public MyStack()
     {
-        var config = new Config("google-native");
-        var region = config.Require("region");
-
         var bucket = new Bucket("my-bucket");
 
         // Export the DNS name of the bucket

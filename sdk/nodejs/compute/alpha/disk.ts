@@ -211,13 +211,10 @@ export class Disk extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DiskArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
@@ -423,5 +420,5 @@ export interface DiskArgs {
      * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
      */
     userLicenses?: pulumi.Input<pulumi.Input<string>[]>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

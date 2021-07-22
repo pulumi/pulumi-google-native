@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,12 +46,9 @@ type Autoscaler struct {
 func NewAutoscaler(ctx *pulumi.Context,
 	name string, args *AutoscalerArgs, opts ...pulumi.ResourceOption) (*Autoscaler, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AutoscalerArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource Autoscaler
 	err := ctx.RegisterResource("google-native:compute/v1:Autoscaler", name, args, &resource, opts...)
 	if err != nil {
@@ -95,7 +91,7 @@ type autoscalerArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
 	Target *string `pulumi:"target"`
-	Zone   string  `pulumi:"zone"`
+	Zone   *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Autoscaler resource.
@@ -110,7 +106,7 @@ type AutoscalerArgs struct {
 	RequestId pulumi.StringPtrInput
 	// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
 	Target pulumi.StringPtrInput
-	Zone   pulumi.StringInput
+	Zone   pulumi.StringPtrInput
 }
 
 func (AutoscalerArgs) ElementType() reflect.Type {

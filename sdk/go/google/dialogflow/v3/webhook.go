@@ -42,9 +42,6 @@ func NewWebhook(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Webhook
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Webhook", name, args, &resource, opts...)
 	if err != nil {
@@ -84,7 +81,7 @@ type webhookArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebService `pulumi:"genericWebService"`
-	Location          string                                             `pulumi:"location"`
+	Location          *string                                            `pulumi:"location"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -103,7 +100,7 @@ type WebhookArgs struct {
 	DisplayName pulumi.StringInput
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput
-	Location          pulumi.StringInput
+	Location          pulumi.StringPtrInput
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

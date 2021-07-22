@@ -17,12 +17,12 @@ class AgentArgs:
     def __init__(__self__, *,
                  default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  time_zone: pulumi.Input[str],
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,6 @@ class AgentArgs:
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "time_zone", time_zone)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -56,6 +55,8 @@ class AgentArgs:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -92,15 +93,6 @@ class AgentArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="timeZone")
@@ -161,6 +153,15 @@ class AgentArgs:
     @enable_stackdriver_logging.setter
     def enable_stackdriver_logging(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_stackdriver_logging", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -330,8 +331,6 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

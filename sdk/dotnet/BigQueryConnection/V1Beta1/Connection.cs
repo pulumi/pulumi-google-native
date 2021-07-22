@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
+        public Connection(string name, ConnectionArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:bigqueryconnection/v1beta1:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`

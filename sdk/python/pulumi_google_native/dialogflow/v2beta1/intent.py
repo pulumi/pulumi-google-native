@@ -17,7 +17,6 @@ __all__ = ['IntentArgs', 'Intent']
 class IntentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
                  default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +26,7 @@ class IntentArgs:
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  live_agent_handoff: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -60,7 +60,6 @@ class IntentArgs:
         :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "location", location)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if default_response_platforms is not None:
@@ -79,6 +78,8 @@ class IntentArgs:
             pulumi.set(__self__, "language_code", language_code)
         if live_agent_handoff is not None:
             pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if ml_disabled is not None:
@@ -113,15 +114,6 @@ class IntentArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -224,6 +216,15 @@ class IntentArgs:
     @live_agent_handoff.setter
     def live_agent_handoff(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -479,8 +480,6 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["is_fallback"] = is_fallback
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["live_agent_handoff"] = live_agent_handoff
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["messages"] = messages
             __props__.__dict__["ml_disabled"] = ml_disabled

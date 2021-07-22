@@ -17,13 +17,13 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  node_config: pulumi.Input['NodeConfigArgs'],
                  node_count: pulumi.Input[int],
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
@@ -43,7 +43,6 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
         if authorized_network is not None:
@@ -54,6 +53,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_messages", instance_messages)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if memcache_version is not None:
             pulumi.set(__self__, "memcache_version", memcache_version)
         if name is not None:
@@ -73,15 +74,6 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -154,6 +146,15 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="memcacheVersion")
@@ -304,8 +305,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["instance_messages"] = instance_messages
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["memcache_version"] = memcache_version
             __props__.__dict__["name"] = name

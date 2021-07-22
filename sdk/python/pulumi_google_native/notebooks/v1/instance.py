@@ -17,7 +17,6 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  machine_type: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -31,6 +30,7 @@ class InstanceArgs:
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['InstanceNicType']] = None,
@@ -77,7 +77,6 @@ class InstanceArgs:
         :param pulumi.Input['VmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "machine_type", machine_type)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -103,6 +102,8 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if network is not None:
@@ -142,15 +143,6 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -307,6 +299,15 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -638,8 +639,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_owners"] = instance_owners
             __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")

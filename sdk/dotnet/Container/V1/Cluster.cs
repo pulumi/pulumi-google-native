@@ -311,7 +311,7 @@ namespace Pulumi.GoogleNative.Container.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
+        public Cluster(string name, ClusterArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:container/v1:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -450,8 +450,8 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("legacyAbac")]
         public Input<Inputs.LegacyAbacArgs>? LegacyAbac { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("locations")]
         private InputList<string>? _locations;

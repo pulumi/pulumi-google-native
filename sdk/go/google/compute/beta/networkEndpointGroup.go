@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,12 +52,9 @@ type NetworkEndpointGroup struct {
 func NewNetworkEndpointGroup(ctx *pulumi.Context,
 	name string, args *NetworkEndpointGroupArgs, opts ...pulumi.ResourceOption) (*NetworkEndpointGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NetworkEndpointGroupArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource NetworkEndpointGroup
 	err := ctx.RegisterResource("google-native:compute/beta:NetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -113,7 +109,7 @@ type networkEndpointGroupArgs struct {
 	RequestId           *string                                  `pulumi:"requestId"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
-	Zone       string  `pulumi:"zone"`
+	Zone       *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NetworkEndpointGroup resource.
@@ -140,7 +136,7 @@ type NetworkEndpointGroupArgs struct {
 	RequestId           pulumi.StringPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
-	Zone       pulumi.StringInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (NetworkEndpointGroupArgs) ElementType() reflect.Type {

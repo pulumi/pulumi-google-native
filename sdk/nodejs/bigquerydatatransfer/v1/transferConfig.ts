@@ -103,13 +103,10 @@ export class TransferConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TransferConfigArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: TransferConfigArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
@@ -183,7 +180,7 @@ export interface TransferConfigArgs {
      * Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
      */
     emailPreferences?: pulumi.Input<inputs.bigquerydatatransfer.v1.EmailPreferencesArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */

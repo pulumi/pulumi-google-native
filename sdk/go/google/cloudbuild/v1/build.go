@@ -77,9 +77,6 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -124,7 +121,7 @@ type buildArgs struct {
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images   []string `pulumi:"images"`
-	Location string   `pulumi:"location"`
+	Location *string  `pulumi:"location"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket *string `pulumi:"logsBucket"`
 	// Special options for this build.
@@ -157,7 +154,7 @@ type BuildArgs struct {
 	AvailableSecrets SecretsPtrInput
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images   pulumi.StringArrayInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket pulumi.StringPtrInput
 	// Special options for this build.

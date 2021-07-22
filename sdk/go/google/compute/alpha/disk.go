@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,12 +104,9 @@ type Disk struct {
 func NewDisk(ctx *pulumi.Context,
 	name string, args *DiskArgs, opts ...pulumi.ResourceOption) (*Disk, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DiskArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource Disk
 	err := ctx.RegisterResource("google-native:compute/alpha:Disk", name, args, &resource, opts...)
 	if err != nil {
@@ -197,7 +193,7 @@ type diskArgs struct {
 	Type *string `pulumi:"type"`
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
 	UserLicenses []string `pulumi:"userLicenses"`
-	Zone         string   `pulumi:"zone"`
+	Zone         *string  `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Disk resource.
@@ -256,7 +252,7 @@ type DiskArgs struct {
 	Type pulumi.StringPtrInput
 	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
 	UserLicenses pulumi.StringArrayInput
-	Zone         pulumi.StringInput
+	Zone         pulumi.StringPtrInput
 }
 
 func (DiskArgs) ElementType() reflect.Type {

@@ -72,8 +72,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 
     public sealed class TagArgs : Pulumi.ResourceArgs
     {
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.

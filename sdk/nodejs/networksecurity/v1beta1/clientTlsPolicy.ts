@@ -82,9 +82,6 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
             if ((!args || args.clientTlsPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientTlsPolicyId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["clientCertificate"] = args ? args.clientCertificate : undefined;
             inputs["clientTlsPolicyId"] = args ? args.clientTlsPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -130,7 +127,7 @@ export interface ClientTlsPolicyArgs {
      * Optional. Set of label tags associated with the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Name of the ClientTlsPolicy resource. It matches the pattern `projects/*&#47;locations/{location}/clientTlsPolicies/{client_tls_policy}`
      */

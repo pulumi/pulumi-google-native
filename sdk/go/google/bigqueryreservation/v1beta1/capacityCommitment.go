@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,12 +37,9 @@ type CapacityCommitment struct {
 func NewCapacityCommitment(ctx *pulumi.Context,
 	name string, args *CapacityCommitmentArgs, opts ...pulumi.ResourceOption) (*CapacityCommitment, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &CapacityCommitmentArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource CapacityCommitment
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1beta1:CapacityCommitment", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +74,7 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 type capacityCommitmentArgs struct {
 	CapacityCommitmentId            *string `pulumi:"capacityCommitmentId"`
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
-	Location                        string  `pulumi:"location"`
+	Location                        *string `pulumi:"location"`
 	// Capacity commitment commitment plan.
 	Plan    *CapacityCommitmentPlan `pulumi:"plan"`
 	Project *string                 `pulumi:"project"`
@@ -92,7 +88,7 @@ type capacityCommitmentArgs struct {
 type CapacityCommitmentArgs struct {
 	CapacityCommitmentId            pulumi.StringPtrInput
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
-	Location                        pulumi.StringInput
+	Location                        pulumi.StringPtrInput
 	// Capacity commitment commitment plan.
 	Plan    CapacityCommitmentPlanPtrInput
 	Project pulumi.StringPtrInput

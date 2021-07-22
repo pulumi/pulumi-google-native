@@ -13,8 +13,8 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
@@ -23,24 +23,16 @@ class DatasetArgs:
         :param pulumi.Input[str] name: Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         :param pulumi.Input[str] time_zone: The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
         """
-        pulumi.set(__self__, "location", location)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -50,6 +42,15 @@ class DatasetArgs:
     @dataset_id.setter
     def dataset_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -108,7 +109,7 @@ class Dataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatasetArgs,
+                 args: Optional[DatasetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata.
@@ -146,8 +147,6 @@ class Dataset(pulumi.CustomResource):
             __props__ = DatasetArgs.__new__(DatasetArgs)
 
             __props__.__dict__["dataset_id"] = dataset_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

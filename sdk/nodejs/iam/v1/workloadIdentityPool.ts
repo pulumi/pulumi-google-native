@@ -67,9 +67,6 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
@@ -111,7 +108,7 @@ export interface WorkloadIdentityPoolArgs {
      * A display name for the pool. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     workloadIdentityPoolId: pulumi.Input<string>;
 }

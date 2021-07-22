@@ -16,13 +16,13 @@ __all__ = ['AutoscalerArgs', 'Autoscaler']
 @pulumi.input_type
 class AutoscalerArgs:
     def __init__(__self__, *,
-                 zone: pulumi.Input[str],
                  autoscaling_policy: Optional[pulumi.Input['AutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Autoscaler resource.
         :param pulumi.Input['AutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
@@ -30,7 +30,6 @@ class AutoscalerArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
         """
-        pulumi.set(__self__, "zone", zone)
         if autoscaling_policy is not None:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if description is not None:
@@ -43,15 +42,8 @@ class AutoscalerArgs:
             pulumi.set(__self__, "request_id", request_id)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
@@ -119,6 +111,15 @@ class AutoscalerArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Autoscaler(pulumi.CustomResource):
     @overload
@@ -147,7 +148,7 @@ class Autoscaler(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AutoscalerArgs,
+                 args: Optional[AutoscalerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an autoscaler in the specified project using the data included in the request.
@@ -192,8 +193,6 @@ class Autoscaler(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["target"] = target
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None

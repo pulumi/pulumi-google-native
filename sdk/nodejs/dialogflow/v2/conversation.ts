@@ -79,9 +79,6 @@ export class Conversation extends pulumi.CustomResource {
             if ((!args || args.conversationProfile === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationProfile'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["conversationId"] = args ? args.conversationId : undefined;
             inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
             inputs["conversationStage"] = args ? args.conversationStage : undefined;
@@ -121,6 +118,6 @@ export interface ConversationArgs {
      * The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
      */
     conversationStage?: pulumi.Input<enums.dialogflow.v2.ConversationConversationStage>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

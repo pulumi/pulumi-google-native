@@ -65,9 +65,6 @@ func NewMigrationJob(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MigrationJobId == nil {
 		return nil, errors.New("invalid value for required argument 'MigrationJobId'")
 	}
@@ -119,7 +116,7 @@ type migrationJobArgs struct {
 	DumpPath *string `pulumi:"dumpPath"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels         map[string]string `pulumi:"labels"`
-	Location       string            `pulumi:"location"`
+	Location       *string           `pulumi:"location"`
 	MigrationJobId string            `pulumi:"migrationJobId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name      *string `pulumi:"name"`
@@ -153,7 +150,7 @@ type MigrationJobArgs struct {
 	DumpPath pulumi.StringPtrInput
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels         pulumi.StringMapInput
-	Location       pulumi.StringInput
+	Location       pulumi.StringPtrInput
 	MigrationJobId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name      pulumi.StringPtrInput

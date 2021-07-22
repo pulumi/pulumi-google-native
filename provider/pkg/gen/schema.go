@@ -36,7 +36,15 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			Variables: map[string]schema.PropertySpec{
 				"project": {
 					TypeSpec: schema.TypeSpec{Type: "string"},
-					Description: "A Google Cloud project name.",
+					Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
+				},
+				"region": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
+				},
+				"zone": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
 				},
 				// Google Partner Name for User-Agent.
 				"partnerName": {
@@ -69,7 +77,29 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 							"CLOUDSDK_CORE_PROJECT",
 						},
 					},
-					Description: "A Google Cloud project name.",
+					Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
+				},
+				"region": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_REGION",
+							"GCLOUD_REGION",
+							"CLOUDSDK_COMPUTE_REGION",
+						},
+					},
+					Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
+				},
+				"zone": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_ZONE",
+							"GCLOUD_ZONE",
+							"CLOUDSDK_COMPUTE_ZONE",
+						},
+					},
+					Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
 				},
 				// Google Partner Name for User-Agent.
 				"partnerName": {
@@ -469,8 +499,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	// Apply auto-project population.
+	// Apply auto-project and auto-location population.
 	requiredInputProperties.Delete("project")
+	requiredInputProperties.Delete("location")
+	requiredInputProperties.Delete("zone")
 
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{

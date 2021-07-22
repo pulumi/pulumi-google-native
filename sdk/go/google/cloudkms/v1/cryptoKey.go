@@ -47,9 +47,6 @@ func NewCryptoKey(ctx *pulumi.Context,
 	if args.KeyRingId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource CryptoKey
 	err := ctx.RegisterResource("google-native:cloudkms/v1:CryptoKey", name, args, &resource, opts...)
 	if err != nil {
@@ -86,7 +83,7 @@ type cryptoKeyArgs struct {
 	KeyRingId   string `pulumi:"keyRingId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime *string `pulumi:"nextRotationTime"`
 	Project          *string `pulumi:"project"`
@@ -105,7 +102,7 @@ type CryptoKeyArgs struct {
 	KeyRingId   pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime pulumi.StringPtrInput
 	Project          pulumi.StringPtrInput

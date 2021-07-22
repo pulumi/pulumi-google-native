@@ -18,12 +18,12 @@ class DocumentArgs:
                  display_name: pulumi.Input[str],
                  knowledge_base_id: pulumi.Input[str],
                  knowledge_types: pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]],
-                 location: pulumi.Input[str],
                  mime_type: pulumi.Input[str],
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,6 @@ class DocumentArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
         pulumi.set(__self__, "knowledge_types", knowledge_types)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "mime_type", mime_type)
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -53,6 +52,8 @@ class DocumentArgs:
             pulumi.set(__self__, "enable_auto_reload", enable_auto_reload)
         if import_gcs_custom_metadata is not None:
             pulumi.set(__self__, "import_gcs_custom_metadata", import_gcs_custom_metadata)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -94,15 +95,6 @@ class DocumentArgs:
     @knowledge_types.setter
     def knowledge_types(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]):
         pulumi.set(self, "knowledge_types", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="mimeType")
@@ -160,6 +152,15 @@ class DocumentArgs:
     @import_gcs_custom_metadata.setter
     def import_gcs_custom_metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "import_gcs_custom_metadata", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -303,8 +304,6 @@ class Document(pulumi.CustomResource):
             if knowledge_types is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_types'")
             __props__.__dict__["knowledge_types"] = knowledge_types
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             if mime_type is None and not opts.urn:

@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.

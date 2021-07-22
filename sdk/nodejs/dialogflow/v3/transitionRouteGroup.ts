@@ -68,9 +68,6 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["flowId"] = args ? args.flowId : undefined;
@@ -102,7 +99,7 @@ export interface TransitionRouteGroupArgs {
     displayName: pulumi.Input<string>;
     flowId: pulumi.Input<string>;
     languageCode?: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
      */

@@ -44,9 +44,6 @@ func NewWorkflow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
@@ -86,7 +83,7 @@ type workflowArgs struct {
 	Description *string `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -103,7 +100,7 @@ type WorkflowArgs struct {
 	Description pulumi.StringPtrInput
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

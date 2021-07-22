@@ -86,9 +86,6 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.matchingCriteria === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'matchingCriteria'");
             }
@@ -141,7 +138,7 @@ export interface TriggerArgs {
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */

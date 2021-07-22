@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Registry(string name, RegistryArgs args, CustomResourceOptions? options = null)
+        public Registry(string name, RegistryArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:cloudiot/v1:Registry", name, args ?? new RegistryArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.

@@ -97,9 +97,6 @@ export class ImportJob extends pulumi.CustomResource {
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.protectionLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
@@ -146,7 +143,7 @@ export interface ImportJobArgs {
      */
     importMethod: pulumi.Input<enums.cloudkms.v1.ImportJobImportMethod>;
     keyRingId: pulumi.Input<string>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.

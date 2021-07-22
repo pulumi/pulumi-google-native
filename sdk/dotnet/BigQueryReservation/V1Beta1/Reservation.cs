@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
+        public Reservation(string name, ReservationArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:bigqueryreservation/v1beta1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         [Input("ignoreIdleSlots")]
         public Input<bool>? IgnoreIdleSlots { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.

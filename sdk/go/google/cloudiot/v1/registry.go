@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +34,9 @@ type Registry struct {
 func NewRegistry(ctx *pulumi.Context,
 	name string, args *RegistryArgs, opts ...pulumi.ResourceOption) (*Registry, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RegistryArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Registry
 	err := ctx.RegisterResource("google-native:cloudiot/v1:Registry", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +77,7 @@ type registryArgs struct {
 	HttpConfig *HttpConfig `pulumi:"httpConfig"`
 	// The identifier of this device registry. For example, `myRegistry`.
 	Id       *string `pulumi:"id"`
-	Location string  `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel *RegistryLogLevel `pulumi:"logLevel"`
 	// The MQTT configuration for this device registry.
@@ -103,7 +99,7 @@ type RegistryArgs struct {
 	HttpConfig HttpConfigPtrInput
 	// The identifier of this device registry. For example, `myRegistry`.
 	Id       pulumi.StringPtrInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel RegistryLogLevelPtrInput
 	// The MQTT configuration for this device registry.

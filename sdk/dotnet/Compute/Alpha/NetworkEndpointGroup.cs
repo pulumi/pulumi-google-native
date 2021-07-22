@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NetworkEndpointGroup(string name, NetworkEndpointGroupArgs args, CustomResourceOptions? options = null)
+        public NetworkEndpointGroup(string name, NetworkEndpointGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:compute/alpha:NetworkEndpointGroup", name, args ?? new NetworkEndpointGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -270,8 +270,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkEndpointGroupType>? Type { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NetworkEndpointGroupArgs()
         {

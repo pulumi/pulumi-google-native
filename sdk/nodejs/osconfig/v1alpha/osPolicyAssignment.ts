@@ -98,9 +98,6 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             if ((!args || args.instanceFilter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceFilter'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.osPolicies === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'osPolicies'");
             }
@@ -158,7 +155,7 @@ export interface OsPolicyAssignmentArgs {
      * Filter to select VMs.
      */
     instanceFilter: pulumi.Input<inputs.osconfig.v1alpha.OSPolicyAssignmentInstanceFilterArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
      */

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
+        public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:firebasedatabase/v1beta:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("databaseUrl")]
         public Input<string>? DatabaseUrl { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.

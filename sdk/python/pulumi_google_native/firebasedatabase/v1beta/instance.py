@@ -14,9 +14,9 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
@@ -30,11 +30,12 @@ class InstanceArgs:
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
-        pulumi.set(__self__, "location", location)
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
         if database_url is not None:
             pulumi.set(__self__, "database_url", database_url)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -45,15 +46,6 @@ class InstanceArgs:
             pulumi.set(__self__, "type", type)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="databaseId")
@@ -75,6 +67,15 @@ class InstanceArgs:
     @database_url.setter
     def database_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_url", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -163,7 +164,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
@@ -205,8 +206,6 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["database_id"] = database_id
             __props__.__dict__["database_url"] = database_url
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

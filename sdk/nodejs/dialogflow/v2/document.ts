@@ -92,9 +92,6 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.knowledgeTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'knowledgeTypes'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.mimeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mimeType'");
             }
@@ -149,7 +146,7 @@ export interface DocumentArgs {
      * The knowledge type of document content.
      */
     knowledgeTypes: pulumi.Input<pulumi.Input<enums.dialogflow.v2.DocumentKnowledgeTypesItem>[]>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
      */

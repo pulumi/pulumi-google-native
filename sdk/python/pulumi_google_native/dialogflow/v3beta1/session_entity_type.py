@@ -20,8 +20,8 @@ class SessionEntityTypeArgs:
                  entities: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]],
                  entity_override_mode: pulumi.Input['SessionEntityTypeEntityOverrideMode'],
                  environment_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  session_id: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -34,8 +34,9 @@ class SessionEntityTypeArgs:
         pulumi.set(__self__, "entities", entities)
         pulumi.set(__self__, "entity_override_mode", entity_override_mode)
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "session_id", session_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -84,15 +85,6 @@ class SessionEntityTypeArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="sessionId")
     def session_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "session_id")
@@ -100,6 +92,15 @@ class SessionEntityTypeArgs:
     @session_id.setter
     def session_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "session_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -202,8 +203,6 @@ class SessionEntityType(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

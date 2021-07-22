@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta
         [Input("argument")]
         public Input<string>? Argument { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

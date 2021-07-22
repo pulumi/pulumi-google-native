@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("internalRangeId", required: true)]
         public Input<string> InternalRangeId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

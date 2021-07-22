@@ -39,9 +39,6 @@ func NewTemplate(ctx *pulumi.Context,
 	if args.JobName == nil {
 		return nil, errors.New("invalid value for required argument 'JobName'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Template
 	err := ctx.RegisterResource("google-native:dataflow/v1b3:Template", name, args, &resource, opts...)
 	if err != nil {
@@ -81,7 +78,7 @@ type templateArgs struct {
 	// The job name to use for the created job.
 	JobName string `pulumi:"jobName"`
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-	Location string `pulumi:"location"`
+	Location *string `pulumi:"location"`
 	// The runtime parameters to pass to the job.
 	Parameters map[string]string `pulumi:"parameters"`
 	Project    *string           `pulumi:"project"`
@@ -96,7 +93,7 @@ type TemplateArgs struct {
 	// The job name to use for the created job.
 	JobName pulumi.StringInput
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The runtime parameters to pass to the job.
 	Parameters pulumi.StringMapInput
 	Project    pulumi.StringPtrInput

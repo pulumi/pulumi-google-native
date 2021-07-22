@@ -154,7 +154,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		switch sdkName {
 		case "project":
 			key := resource.PropertyKey(sdkName)
-			if value, ok := p.getDefaultProject(args); ok {
+			if value, ok := p.getDefaultValue(key, sdkName, args); ok {
 				args[key] = *value
 			}
 		}
@@ -220,16 +220,26 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	// Apply default config values.
+	var failures []*rpc.CheckFailure
 	for _, param := range res.CreateParams {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
 		}
 		switch sdkName {
-		case "project":
+		case "project", "location", "zone":
 			key := resource.PropertyKey(sdkName)
-			if value, ok := p.getDefaultProject(olds); ok {
+			configName := sdkName
+			if sdkName == "location" {
+				configName = "region"
+			}
+			if value, ok := p.getDefaultValue(key, configName, olds); ok {
 				news[key] = *value
+			} else if _, has := news[key]; !has {
+				reason := fmt.Sprintf("missing required property '%s'. Either set it explicitly or configure it with 'pulumi config set google-native:%s <value>'.", sdkName, configName)
+				failures = append(failures, &rpc.CheckFailure{
+					Reason: reason,
+				})
 			}
 		}
 	}
@@ -257,18 +267,18 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 		return nil, err
 	}
 
-	return &rpc.CheckResponse{Inputs: resInputs}, nil
+	return &rpc.CheckResponse{Inputs: resInputs, Failures: failures}, nil
 }
 
 // Get a default project name for the given inputs.
-func (p *googleCloudProvider) getDefaultProject(olds resource.PropertyMap) (*resource.PropertyValue, bool) {
-	// 1. Check if old inputs define a project.
-	if v, ok := olds["project"]; ok {
+func (p *googleCloudProvider) getDefaultValue(key resource.PropertyKey, configName string, olds resource.PropertyMap) (*resource.PropertyValue, bool) {
+	// 1. Check if old inputs define the value.
+	if v, ok := olds[key]; ok {
 		return &v, true
 	}
 
-	// 2. Check if the config has a fixed project.
-	if cv, ok := p.config["project"]; ok {
+	// 2. Check if the config has a corresponding value.
+	if cv, ok := p.config[configName]; ok {
 		v := resource.NewStringProperty(cv)
 		return &v, true
 	}

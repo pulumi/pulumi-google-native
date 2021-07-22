@@ -15,9 +15,9 @@ __all__ = ['EntryGroupArgs', 'EntryGroup']
 class EntryGroupArgs:
     def __init__(__self__, *,
                  entry_group_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -27,11 +27,12 @@ class EntryGroupArgs:
         :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         pulumi.set(__self__, "entry_group_id", entry_group_id)
-        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -45,15 +46,6 @@ class EntryGroupArgs:
     @entry_group_id.setter
     def entry_group_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "entry_group_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -78,6 +70,15 @@ class EntryGroupArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -169,8 +170,6 @@ class EntryGroup(pulumi.CustomResource):
             if entry_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group_id'")
             __props__.__dict__["entry_group_id"] = entry_group_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

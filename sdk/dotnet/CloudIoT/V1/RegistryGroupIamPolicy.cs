@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

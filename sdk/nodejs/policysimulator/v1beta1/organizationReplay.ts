@@ -67,9 +67,6 @@ export class OrganizationReplay extends pulumi.CustomResource {
             if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -100,6 +97,6 @@ export interface OrganizationReplayArgs {
      * The configuration used for the `Replay`.
      */
     config: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

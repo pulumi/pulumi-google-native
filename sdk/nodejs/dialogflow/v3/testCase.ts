@@ -85,9 +85,6 @@ export class TestCase extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["lastTestResult"] = args ? args.lastTestResult : undefined;
@@ -129,7 +126,7 @@ export interface TestCaseArgs {
      * The latest test result.
      */
     lastTestResult?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TestCaseResultArgs>;
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
      */

@@ -118,8 +118,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("conversationStage")]
         public Input<Pulumi.GoogleNative.Dialogflow.V2.ConversationConversationStage>? ConversationStage { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("inspectTemplate")]
         public Input<string>? InspectTemplate { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource name of the settings. Format: `projects//locations//securitySettings/`.

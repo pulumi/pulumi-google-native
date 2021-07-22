@@ -17,13 +17,13 @@ __all__ = ['FhirStoreArgs', 'FhirStore']
 class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  search_config: Optional[pulumi.Input['SearchConfigArgs']] = None,
@@ -44,7 +44,6 @@ class FhirStoreArgs:
         :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "location", location)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
@@ -57,6 +56,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "fhir_store_id", fhir_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
@@ -78,15 +79,6 @@ class FhirStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="defaultSearchHandlingStrict")
@@ -156,6 +148,15 @@ class FhirStoreArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="notificationConfig")
@@ -324,8 +325,6 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["enable_update_create"] = enable_update_create
             __props__.__dict__["fhir_store_id"] = fhir_store_id
             __props__.__dict__["labels"] = labels
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project

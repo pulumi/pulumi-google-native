@@ -17,14 +17,14 @@ __all__ = ['ReservationIamPolicyArgs', 'ReservationIamPolicy']
 class ReservationIamPolicyArgs:
     def __init__(__self__, *,
                  resource: pulumi.Input[str],
-                 zone: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  iam_owned: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleArgs']]]] = None,
-                 version: Optional[pulumi.Input[int]] = None):
+                 version: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ReservationIamPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
@@ -35,7 +35,6 @@ class ReservationIamPolicyArgs:
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         pulumi.set(__self__, "resource", resource)
-        pulumi.set(__self__, "zone", zone)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -50,6 +49,8 @@ class ReservationIamPolicyArgs:
             pulumi.set(__self__, "rules", rules)
         if version is not None:
             pulumi.set(__self__, "version", version)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -59,15 +60,6 @@ class ReservationIamPolicyArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -149,6 +141,15 @@ class ReservationIamPolicyArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class ReservationIamPolicy(pulumi.CustomResource):
@@ -233,8 +234,6 @@ class ReservationIamPolicy(pulumi.CustomResource):
             __props__.__dict__["resource"] = resource
             __props__.__dict__["rules"] = rules
             __props__.__dict__["version"] = version
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
         super(ReservationIamPolicy, __self__).__init__(
             'google-native:compute/alpha:ReservationIamPolicy',

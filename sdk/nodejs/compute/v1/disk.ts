@@ -183,13 +183,10 @@ export class Disk extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: DiskArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
@@ -361,5 +358,5 @@ export interface DiskArgs {
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */
     type?: pulumi.Input<string>;
-    zone: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

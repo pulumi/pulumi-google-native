@@ -94,9 +94,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
@@ -157,7 +154,7 @@ type instanceArgs struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   map[string]string `pulumi:"labels"`
-	Location string            `pulumi:"location"`
+	Location *string           `pulumi:"location"`
 	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
@@ -218,7 +215,7 @@ type InstanceArgs struct {
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   pulumi.StringMapInput
-	Location pulumi.StringInput
+	Location pulumi.StringPtrInput
 	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringInput
 	// Custom metadata to apply to this instance.

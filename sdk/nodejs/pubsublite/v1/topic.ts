@@ -59,9 +59,6 @@ export class Topic extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
@@ -87,7 +84,7 @@ export class Topic extends pulumi.CustomResource {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */

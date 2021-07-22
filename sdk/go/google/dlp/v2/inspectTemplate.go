@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,12 +33,9 @@ type InspectTemplate struct {
 func NewInspectTemplate(ctx *pulumi.Context,
 	name string, args *InspectTemplateArgs, opts ...pulumi.ResourceOption) (*InspectTemplate, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &InspectTemplateArgs{}
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource InspectTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:InspectTemplate", name, args, &resource, opts...)
 	if err != nil {
@@ -78,7 +74,7 @@ type inspectTemplateArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
-	Location      string                           `pulumi:"location"`
+	Location      *string                          `pulumi:"location"`
 	Project       *string                          `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
@@ -92,7 +88,7 @@ type InspectTemplateArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig GooglePrivacyDlpV2InspectConfigPtrInput
-	Location      pulumi.StringInput
+	Location      pulumi.StringPtrInput
 	Project       pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput

@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
+        public Dataset(string name, DatasetArgs? args = null, CustomResourceOptions? options = null)
             : base("google-native:healthcare/v1:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -75,8 +75,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.

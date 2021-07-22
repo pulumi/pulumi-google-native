@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("isPubliclyReadable")]
         public Input<bool>? IsPubliclyReadable { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. 

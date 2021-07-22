@@ -1,11 +1,7 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
-import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
-
-const config = new pulumi.Config("google-native");
-const region = config.require("region");
 
 const randomString = new random.RandomString("name", {
     upper: false,

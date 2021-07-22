@@ -35,9 +35,6 @@ func NewEntryGroup(ctx *pulumi.Context,
 	if args.EntryGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource EntryGroup
 	err := ctx.RegisterResource("google-native:datacatalog/v1:EntryGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +72,7 @@ type entryGroupArgs struct {
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName  *string `pulumi:"displayName"`
 	EntryGroupId string  `pulumi:"entryGroupId"`
-	Location     string  `pulumi:"location"`
+	Location     *string `pulumi:"location"`
 	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -88,7 +85,7 @@ type EntryGroupArgs struct {
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName  pulumi.StringPtrInput
 	EntryGroupId pulumi.StringInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

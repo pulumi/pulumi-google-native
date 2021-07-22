@@ -48,9 +48,6 @@ func NewCatalogItem(ctx *pulumi.Context,
 	if args.Id == nil {
 		return nil, errors.New("invalid value for required argument 'Id'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -97,7 +94,7 @@ type catalogItemArgs struct {
 	ItemAttributes *GoogleCloudRecommendationengineV1beta1FeatureMap `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId *string `pulumi:"itemGroupId"`
-	Location    string  `pulumi:"location"`
+	Location    *string `pulumi:"location"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata *GoogleCloudRecommendationengineV1beta1ProductCatalogItem `pulumi:"productMetadata"`
 	Project         *string                                                   `pulumi:"project"`
@@ -120,7 +117,7 @@ type CatalogItemArgs struct {
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId pulumi.StringPtrInput
-	Location    pulumi.StringInput
+	Location    pulumi.StringPtrInput
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput
 	Project         pulumi.StringPtrInput

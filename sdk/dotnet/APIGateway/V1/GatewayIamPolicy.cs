@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

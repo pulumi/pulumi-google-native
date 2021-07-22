@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,12 +42,9 @@ type Reservation struct {
 func NewReservation(ctx *pulumi.Context,
 	name string, args *ReservationArgs, opts ...pulumi.ResourceOption) (*Reservation, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ReservationArgs{}
 	}
 
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
-	}
 	var resource Reservation
 	err := ctx.RegisterResource("google-native:compute/beta:Reservation", name, args, &resource, opts...)
 	if err != nil {
@@ -92,7 +88,7 @@ type reservationArgs struct {
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired *bool `pulumi:"specificReservationRequired"`
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Reservation resource.
@@ -108,7 +104,7 @@ type ReservationArgs struct {
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
 	SpecificReservationRequired pulumi.BoolPtrInput
 	// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (ReservationArgs) ElementType() reflect.Type {

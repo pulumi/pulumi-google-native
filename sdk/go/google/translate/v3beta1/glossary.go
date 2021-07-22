@@ -41,9 +41,6 @@ func NewGlossary(ctx *pulumi.Context,
 	if args.InputConfig == nil {
 		return nil, errors.New("invalid value for required argument 'InputConfig'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource Glossary
 	err := ctx.RegisterResource("google-native:translate/v3beta1:Glossary", name, args, &resource, opts...)
 	if err != nil {
@@ -82,7 +79,7 @@ type glossaryArgs struct {
 	LanguageCodesSet *LanguageCodesSet `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair *LanguageCodePair `pulumi:"languagePair"`
-	Location     string            `pulumi:"location"`
+	Location     *string           `pulumi:"location"`
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -96,7 +93,7 @@ type GlossaryArgs struct {
 	LanguageCodesSet LanguageCodesSetPtrInput
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

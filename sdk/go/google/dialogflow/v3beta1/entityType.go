@@ -49,9 +49,6 @@ func NewEntityType(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	var resource EntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:EntityType", name, args, &resource, opts...)
 	if err != nil {
@@ -98,7 +95,7 @@ type entityTypeArgs struct {
 	// Indicates the kind of entity type.
 	Kind         EntityTypeKind `pulumi:"kind"`
 	LanguageCode *string        `pulumi:"languageCode"`
-	Location     string         `pulumi:"location"`
+	Location     *string        `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -122,7 +119,7 @@ type EntityTypeArgs struct {
 	// Indicates the kind of entity type.
 	Kind         EntityTypeKindInput
 	LanguageCode pulumi.StringPtrInput
-	Location     pulumi.StringInput
+	Location     pulumi.StringPtrInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

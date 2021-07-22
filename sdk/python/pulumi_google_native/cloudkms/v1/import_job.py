@@ -18,8 +18,8 @@ class ImportJobArgs:
                  import_job_id: pulumi.Input[str],
                  import_method: pulumi.Input['ImportJobImportMethod'],
                  key_ring_id: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  protection_level: pulumi.Input['ImportJobProtectionLevel'],
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ImportJob resource.
@@ -29,8 +29,9 @@ class ImportJobArgs:
         pulumi.set(__self__, "import_job_id", import_job_id)
         pulumi.set(__self__, "import_method", import_method)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "protection_level", protection_level)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -65,15 +66,6 @@ class ImportJobArgs:
         pulumi.set(self, "key_ring_id", value)
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
-
-    @property
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> pulumi.Input['ImportJobProtectionLevel']:
         """
@@ -84,6 +76,15 @@ class ImportJobArgs:
     @protection_level.setter
     def protection_level(self, value: pulumi.Input['ImportJobProtectionLevel']):
         pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -168,8 +169,6 @@ class ImportJob(pulumi.CustomResource):
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")
             __props__.__dict__["key_ring_id"] = key_ring_id
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if protection_level is None and not opts.urn:
