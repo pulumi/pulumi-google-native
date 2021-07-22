@@ -103,3 +103,18 @@ func TestProjectIamPolicyTs(t *testing.T) {
 
 	integration.ProgramTest(t, &test)
 }
+
+func TestClusterTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "cluster-ts", "step1"),
+			EditDirs: []integration.EditDir{
+				{
+					Dir: "step2",
+				},
+			},
+			SkipRefresh: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}

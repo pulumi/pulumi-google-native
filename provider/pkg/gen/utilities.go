@@ -42,6 +42,11 @@ func apiPropNameToSdkName(name string) string {
 	}
 }
 
+func stripDesiredPrefix(name string) string {
+	name = strings.TrimPrefix(name, "desired")
+	return ToLowerCamel(name)
+}
+
 // propertyFormatRegexes is a list of regular expressions to match property formats in property descriptions.
 var propertyFormatRegexes = []*regexp.Regexp{
 	// Example: "The resource name in the format `foo/*`"

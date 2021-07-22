@@ -191,7 +191,13 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 
 		for _, typeName := range codegen.SortedKeys(res) {
 			// Generate the resource itself.
-			err := gen.genResource(typeName, res[typeName])
+			patternParams := codegen.NewStringSet()
+			err := gen.genResource(typeName, res[typeName], patternParams)
+			if err != nil {
+				return nil, nil, err
+			}
+			// Generate any overlays for resources.
+			err = gen.genResourceOverlays(typeName, res[typeName], patternParams)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -296,7 +302,7 @@ func (g *packageGenerator) genToken(typeName string) string {
 	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 }
 
-func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource) error {
+func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource, patternParams codegen.StringSet) error {
 	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -313,7 +319,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		CreateVerb: dd.createMethod.HttpMethod,
 		NoDelete:   dd.deleteMethod == nil,
 	}
-	patternParams := codegen.NewStringSet()
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
@@ -522,6 +527,30 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	}
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
+	return nil
+}
+
+func (g *packageGenerator) genResourceOverlays(typeName string, dd discoveryDocumentResource, patternParams codegen.StringSet) error {
+	resourceTok := g.genToken(typeName)
+	switch resourceTok {
+	case "google-native:container/v1:Cluster", "google-native:container/v1beta1:Cluster":
+		resourceMeta := g.metadata.Resources[resourceTok]
+		updateRequest := g.rest.Schemas[dd.updateMethod.Request.Ref]
+		updateBag, err := g.genProperties(typeName, &updateRequest, "update", false, patternParams)
+		if err != nil {
+			return err
+		}
+		for name, value := range updateBag.properties {
+			if _, has := resourceMeta.CreateProperties[stripDesiredPrefix(name)]; has {
+				value.SdkName = stripDesiredPrefix(name)
+				resourceMeta.UpdateProperties[name] = value
+			} else if name == "desiredClusterAutoscaling" {
+				value.SdkName = "autoscaling"
+				resourceMeta.UpdateProperties[name] = value
+			}
+		}
+		g.metadata.Resources[resourceTok] = resourceMeta
+	}
 	return nil
 }
 

@@ -52,11 +52,11 @@ namespace Pulumi.GoogleNative.Container.V1
     /// The desired datapath provider for the cluster.
     /// </summary>
     [EnumType]
-    public readonly struct ClusterUpdateDesiredDatapathProvider : IEquatable<ClusterUpdateDesiredDatapathProvider>
+    public readonly struct ClusterDesiredDatapathProvider : IEquatable<ClusterDesiredDatapathProvider>
     {
         private readonly string _value;
 
-        private ClusterUpdateDesiredDatapathProvider(string value)
+        private ClusterDesiredDatapathProvider(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -64,24 +64,24 @@ namespace Pulumi.GoogleNative.Container.V1
         /// <summary>
         /// Default value.
         /// </summary>
-        public static ClusterUpdateDesiredDatapathProvider DatapathProviderUnspecified { get; } = new ClusterUpdateDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED");
+        public static ClusterDesiredDatapathProvider DatapathProviderUnspecified { get; } = new ClusterDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED");
         /// <summary>
         /// Use the IPTables implementation based on kube-proxy.
         /// </summary>
-        public static ClusterUpdateDesiredDatapathProvider LegacyDatapath { get; } = new ClusterUpdateDesiredDatapathProvider("LEGACY_DATAPATH");
+        public static ClusterDesiredDatapathProvider LegacyDatapath { get; } = new ClusterDesiredDatapathProvider("LEGACY_DATAPATH");
         /// <summary>
         /// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
         /// </summary>
-        public static ClusterUpdateDesiredDatapathProvider AdvancedDatapath { get; } = new ClusterUpdateDesiredDatapathProvider("ADVANCED_DATAPATH");
+        public static ClusterDesiredDatapathProvider AdvancedDatapath { get; } = new ClusterDesiredDatapathProvider("ADVANCED_DATAPATH");
 
-        public static bool operator ==(ClusterUpdateDesiredDatapathProvider left, ClusterUpdateDesiredDatapathProvider right) => left.Equals(right);
-        public static bool operator !=(ClusterUpdateDesiredDatapathProvider left, ClusterUpdateDesiredDatapathProvider right) => !left.Equals(right);
+        public static bool operator ==(ClusterDesiredDatapathProvider left, ClusterDesiredDatapathProvider right) => left.Equals(right);
+        public static bool operator !=(ClusterDesiredDatapathProvider left, ClusterDesiredDatapathProvider right) => !left.Equals(right);
 
-        public static explicit operator string(ClusterUpdateDesiredDatapathProvider value) => value._value;
+        public static explicit operator string(ClusterDesiredDatapathProvider value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredDatapathProvider other && Equals(other);
-        public bool Equals(ClusterUpdateDesiredDatapathProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is ClusterDesiredDatapathProvider other && Equals(other);
+        public bool Equals(ClusterDesiredDatapathProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -93,11 +93,11 @@ namespace Pulumi.GoogleNative.Container.V1
     /// The desired state of IPv6 connectivity to Google Services.
     /// </summary>
     [EnumType]
-    public readonly struct ClusterUpdateDesiredPrivateIpv6GoogleAccess : IEquatable<ClusterUpdateDesiredPrivateIpv6GoogleAccess>
+    public readonly struct ClusterDesiredPrivateIpv6GoogleAccess : IEquatable<ClusterDesiredPrivateIpv6GoogleAccess>
     {
         private readonly string _value;
 
-        private ClusterUpdateDesiredPrivateIpv6GoogleAccess(string value)
+        private ClusterDesiredPrivateIpv6GoogleAccess(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -105,28 +105,28 @@ namespace Pulumi.GoogleNative.Container.V1
         /// <summary>
         /// Default value. Same as DISABLED
         /// </summary>
-        public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessUnspecified { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED");
+        public static ClusterDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessUnspecified { get; } = new ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED");
         /// <summary>
         /// No private access to or from Google Services
         /// </summary>
-        public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessDisabled { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED");
+        public static ClusterDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessDisabled { get; } = new ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED");
         /// <summary>
         /// Enables private IPv6 access to Google Services from GKE
         /// </summary>
-        public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessToGoogle { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE");
+        public static ClusterDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessToGoogle { get; } = new ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE");
         /// <summary>
         /// Enables priate IPv6 access to and from Google Services
         /// </summary>
-        public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessBidirectional { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
+        public static ClusterDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessBidirectional { get; } = new ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
 
-        public static bool operator ==(ClusterUpdateDesiredPrivateIpv6GoogleAccess left, ClusterUpdateDesiredPrivateIpv6GoogleAccess right) => left.Equals(right);
-        public static bool operator !=(ClusterUpdateDesiredPrivateIpv6GoogleAccess left, ClusterUpdateDesiredPrivateIpv6GoogleAccess right) => !left.Equals(right);
+        public static bool operator ==(ClusterDesiredPrivateIpv6GoogleAccess left, ClusterDesiredPrivateIpv6GoogleAccess right) => left.Equals(right);
+        public static bool operator !=(ClusterDesiredPrivateIpv6GoogleAccess left, ClusterDesiredPrivateIpv6GoogleAccess right) => !left.Equals(right);
 
-        public static explicit operator string(ClusterUpdateDesiredPrivateIpv6GoogleAccess value) => value._value;
+        public static explicit operator string(ClusterDesiredPrivateIpv6GoogleAccess value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredPrivateIpv6GoogleAccess other && Equals(other);
-        public bool Equals(ClusterUpdateDesiredPrivateIpv6GoogleAccess other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is ClusterDesiredPrivateIpv6GoogleAccess other && Equals(other);
+        public bool Equals(ClusterDesiredPrivateIpv6GoogleAccess other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
