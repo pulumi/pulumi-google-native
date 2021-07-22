@@ -206,6 +206,42 @@ func TestSdkPropertiesToRequestBody(t *testing.T) {
 	assert.Equal(t, sampleAPIPackage, data)
 }
 
+func TestSdkPropertiesToRequestBodyWithState(t *testing.T) {
+	// State has fewer elements in collections and different values to test
+	// that converter is prepared for this kind of changes.
+	state := map[string]interface{}{
+		"name":      "MyResource",
+		"threshold": 456,
+		"structure": map[string]interface{}{
+			"v1": "value1old",
+			"v4": false,
+		},
+		"p1": "prop1old",
+		"p2": "prop2old",
+		"p3": "prop3old",
+		"more": map[string]interface{}{
+			"items": []interface{}{
+				map[string]interface{}{"bbb": "333"},
+			},
+			"itemsMap": map[string]interface{}{
+				"key1": map[string]interface{}{"Aaa": "444"},
+			},
+		},
+		"tags": map[string]interface{}{
+			"application": "another",
+		},
+		"untypedArray": []interface{}{
+			map[string]interface{}{"key1": "value2"},
+		},
+		"untypedDict": map[string]interface{}{
+			"key1": "value1",
+		},
+	}
+	bodyProperties := resourceMap.Resources["r1"].CreateProperties
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, state)
+	assert.Equal(t, sampleAPIPackage, data)
+}
+
 func TestSdkPropertiesToRequestBodyEmptyCollections(t *testing.T) {
 	var emptyCollectionData = map[string]interface{}{
 		"more": map[string]interface{}{

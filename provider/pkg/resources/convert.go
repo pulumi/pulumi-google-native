@@ -65,7 +65,11 @@ func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, stat
 		}
 
 		for i := 0; i < s.Len(); i++ {
-			result = append(result, k.convertPropValue(prop.Items, s.Index(i).Interface(), stateSlice[i], convertMap))
+			var stateItem interface{}
+			if len(stateSlice) > i {
+				stateItem = stateSlice[i]
+			}
+			result = append(result, k.convertPropValue(prop.Items, s.Index(i).Interface(), stateItem, convertMap))
 		}
 		return result
 	}
