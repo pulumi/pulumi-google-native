@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 
 - Update dependencies to pulumi/pulumi 3.7.0
+
 - Refresh credentials for client if backing credentials are expired. [#156](https://github.com/pulumi/pulumi-google-native/pull/156)
 
 - Allow for shorthand property values instead of duplicating project, zone, etc.
@@ -11,6 +12,9 @@ CHANGELOG
 
 - Populate `project`, `location`, `zone` properties automatically from config values
   [#94](https://github.com/pulumi/pulumi-google-native/issues/94)
+
+- Fix a panic when an array property is updated to a larger number of elements
+  [#160](https://github.com/pulumi/pulumi-google-native/issues/160)
 
 ---
 
