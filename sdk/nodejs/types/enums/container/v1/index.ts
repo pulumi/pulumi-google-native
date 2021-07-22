@@ -22,7 +22,7 @@ export const CloudRunConfigLoadBalancerType = {
  */
 export type CloudRunConfigLoadBalancerType = (typeof CloudRunConfigLoadBalancerType)[keyof typeof CloudRunConfigLoadBalancerType];
 
-export const ClusterUpdateDesiredDatapathProvider = {
+export const ClusterDesiredDatapathProvider = {
     /**
      * Default value.
      */
@@ -40,9 +40,9 @@ export const ClusterUpdateDesiredDatapathProvider = {
 /**
  * The desired datapath provider for the cluster.
  */
-export type ClusterUpdateDesiredDatapathProvider = (typeof ClusterUpdateDesiredDatapathProvider)[keyof typeof ClusterUpdateDesiredDatapathProvider];
+export type ClusterDesiredDatapathProvider = (typeof ClusterDesiredDatapathProvider)[keyof typeof ClusterDesiredDatapathProvider];
 
-export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
+export const ClusterDesiredPrivateIpv6GoogleAccess = {
     /**
      * Default value. Same as DISABLED
      */
@@ -64,7 +64,7 @@ export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
 /**
  * The desired state of IPv6 connectivity to Google Services.
  */
-export type ClusterUpdateDesiredPrivateIpv6GoogleAccess = (typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess)[keyof typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess];
+export type ClusterDesiredPrivateIpv6GoogleAccess = (typeof ClusterDesiredPrivateIpv6GoogleAccess)[keyof typeof ClusterDesiredPrivateIpv6GoogleAccess];
 
 export const DatabaseEncryptionState = {
     /**

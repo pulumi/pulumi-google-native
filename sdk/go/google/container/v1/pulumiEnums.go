@@ -180,118 +180,118 @@ func (in *cloudRunConfigLoadBalancerTypePtr) ToCloudRunConfigLoadBalancerTypePtr
 }
 
 // The desired datapath provider for the cluster.
-type ClusterUpdateDesiredDatapathProvider string
+type ClusterDesiredDatapathProvider string
 
 const (
 	// Default value.
-	ClusterUpdateDesiredDatapathProviderDatapathProviderUnspecified = ClusterUpdateDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED")
+	ClusterDesiredDatapathProviderDatapathProviderUnspecified = ClusterDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED")
 	// Use the IPTables implementation based on kube-proxy.
-	ClusterUpdateDesiredDatapathProviderLegacyDatapath = ClusterUpdateDesiredDatapathProvider("LEGACY_DATAPATH")
+	ClusterDesiredDatapathProviderLegacyDatapath = ClusterDesiredDatapathProvider("LEGACY_DATAPATH")
 	// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
-	ClusterUpdateDesiredDatapathProviderAdvancedDatapath = ClusterUpdateDesiredDatapathProvider("ADVANCED_DATAPATH")
+	ClusterDesiredDatapathProviderAdvancedDatapath = ClusterDesiredDatapathProvider("ADVANCED_DATAPATH")
 )
 
-func (ClusterUpdateDesiredDatapathProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpdateDesiredDatapathProvider)(nil)).Elem()
+func (ClusterDesiredDatapathProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDesiredDatapathProvider)(nil)).Elem()
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToClusterUpdateDesiredDatapathProviderOutput() ClusterUpdateDesiredDatapathProviderOutput {
-	return pulumi.ToOutput(e).(ClusterUpdateDesiredDatapathProviderOutput)
+func (e ClusterDesiredDatapathProvider) ToClusterDesiredDatapathProviderOutput() ClusterDesiredDatapathProviderOutput {
+	return pulumi.ToOutput(e).(ClusterDesiredDatapathProviderOutput)
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToClusterUpdateDesiredDatapathProviderOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ClusterUpdateDesiredDatapathProviderOutput)
+func (e ClusterDesiredDatapathProvider) ToClusterDesiredDatapathProviderOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterDesiredDatapathProviderOutput)
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToClusterUpdateDesiredDatapathProviderPtrOutput() ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return e.ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(context.Background())
+func (e ClusterDesiredDatapathProvider) ToClusterDesiredDatapathProviderPtrOutput() ClusterDesiredDatapathProviderPtrOutput {
+	return e.ToClusterDesiredDatapathProviderPtrOutputWithContext(context.Background())
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return ClusterUpdateDesiredDatapathProvider(e).ToClusterUpdateDesiredDatapathProviderOutputWithContext(ctx).ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(ctx)
+func (e ClusterDesiredDatapathProvider) ToClusterDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderPtrOutput {
+	return ClusterDesiredDatapathProvider(e).ToClusterDesiredDatapathProviderOutputWithContext(ctx).ToClusterDesiredDatapathProviderPtrOutputWithContext(ctx)
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToStringOutput() pulumi.StringOutput {
+func (e ClusterDesiredDatapathProvider) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ClusterDesiredDatapathProvider) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ClusterDesiredDatapathProvider) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ClusterUpdateDesiredDatapathProvider) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ClusterDesiredDatapathProvider) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ClusterUpdateDesiredDatapathProviderOutput struct{ *pulumi.OutputState }
+type ClusterDesiredDatapathProviderOutput struct{ *pulumi.OutputState }
 
-func (ClusterUpdateDesiredDatapathProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpdateDesiredDatapathProvider)(nil)).Elem()
+func (ClusterDesiredDatapathProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDesiredDatapathProvider)(nil)).Elem()
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToClusterUpdateDesiredDatapathProviderOutput() ClusterUpdateDesiredDatapathProviderOutput {
+func (o ClusterDesiredDatapathProviderOutput) ToClusterDesiredDatapathProviderOutput() ClusterDesiredDatapathProviderOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToClusterUpdateDesiredDatapathProviderOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderOutput {
+func (o ClusterDesiredDatapathProviderOutput) ToClusterDesiredDatapathProviderOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToClusterUpdateDesiredDatapathProviderPtrOutput() ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return o.ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(context.Background())
+func (o ClusterDesiredDatapathProviderOutput) ToClusterDesiredDatapathProviderPtrOutput() ClusterDesiredDatapathProviderPtrOutput {
+	return o.ToClusterDesiredDatapathProviderPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUpdateDesiredDatapathProvider) *ClusterUpdateDesiredDatapathProvider {
+func (o ClusterDesiredDatapathProviderOutput) ToClusterDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDesiredDatapathProvider) *ClusterDesiredDatapathProvider {
 		return &v
-	}).(ClusterUpdateDesiredDatapathProviderPtrOutput)
+	}).(ClusterDesiredDatapathProviderPtrOutput)
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToStringOutput() pulumi.StringOutput {
+func (o ClusterDesiredDatapathProviderOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateDesiredDatapathProvider) string {
+func (o ClusterDesiredDatapathProviderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterDesiredDatapathProvider) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ClusterDesiredDatapathProviderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredDatapathProviderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateDesiredDatapathProvider) *string {
+func (o ClusterDesiredDatapathProviderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterDesiredDatapathProvider) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ClusterUpdateDesiredDatapathProviderPtrOutput struct{ *pulumi.OutputState }
+type ClusterDesiredDatapathProviderPtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterUpdateDesiredDatapathProviderPtrOutput) ElementType() reflect.Type {
-	return clusterUpdateDesiredDatapathProviderPtrType
+func (ClusterDesiredDatapathProviderPtrOutput) ElementType() reflect.Type {
+	return clusterDesiredDatapathProviderPtrType
 }
 
-func (o ClusterUpdateDesiredDatapathProviderPtrOutput) ToClusterUpdateDesiredDatapathProviderPtrOutput() ClusterUpdateDesiredDatapathProviderPtrOutput {
+func (o ClusterDesiredDatapathProviderPtrOutput) ToClusterDesiredDatapathProviderPtrOutput() ClusterDesiredDatapathProviderPtrOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredDatapathProviderPtrOutput) ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderPtrOutput {
+func (o ClusterDesiredDatapathProviderPtrOutput) ToClusterDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderPtrOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredDatapathProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ClusterDesiredDatapathProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredDatapathProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterUpdateDesiredDatapathProvider) *string {
+func (o ClusterDesiredDatapathProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterDesiredDatapathProvider) *string {
 		if e == nil {
 			return nil
 		}
@@ -300,169 +300,169 @@ func (o ClusterUpdateDesiredDatapathProviderPtrOutput) ToStringPtrOutputWithCont
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterUpdateDesiredDatapathProviderPtrOutput) Elem() ClusterUpdateDesiredDatapathProviderOutput {
-	return o.ApplyT(func(v *ClusterUpdateDesiredDatapathProvider) ClusterUpdateDesiredDatapathProvider {
-		var ret ClusterUpdateDesiredDatapathProvider
+func (o ClusterDesiredDatapathProviderPtrOutput) Elem() ClusterDesiredDatapathProviderOutput {
+	return o.ApplyT(func(v *ClusterDesiredDatapathProvider) ClusterDesiredDatapathProvider {
+		var ret ClusterDesiredDatapathProvider
 		if v != nil {
 			ret = *v
 		}
 		return ret
-	}).(ClusterUpdateDesiredDatapathProviderOutput)
+	}).(ClusterDesiredDatapathProviderOutput)
 }
 
-// ClusterUpdateDesiredDatapathProviderInput is an input type that accepts ClusterUpdateDesiredDatapathProviderArgs and ClusterUpdateDesiredDatapathProviderOutput values.
-// You can construct a concrete instance of `ClusterUpdateDesiredDatapathProviderInput` via:
+// ClusterDesiredDatapathProviderInput is an input type that accepts ClusterDesiredDatapathProviderArgs and ClusterDesiredDatapathProviderOutput values.
+// You can construct a concrete instance of `ClusterDesiredDatapathProviderInput` via:
 //
-//          ClusterUpdateDesiredDatapathProviderArgs{...}
-type ClusterUpdateDesiredDatapathProviderInput interface {
+//          ClusterDesiredDatapathProviderArgs{...}
+type ClusterDesiredDatapathProviderInput interface {
 	pulumi.Input
 
-	ToClusterUpdateDesiredDatapathProviderOutput() ClusterUpdateDesiredDatapathProviderOutput
-	ToClusterUpdateDesiredDatapathProviderOutputWithContext(context.Context) ClusterUpdateDesiredDatapathProviderOutput
+	ToClusterDesiredDatapathProviderOutput() ClusterDesiredDatapathProviderOutput
+	ToClusterDesiredDatapathProviderOutputWithContext(context.Context) ClusterDesiredDatapathProviderOutput
 }
 
-var clusterUpdateDesiredDatapathProviderPtrType = reflect.TypeOf((**ClusterUpdateDesiredDatapathProvider)(nil)).Elem()
+var clusterDesiredDatapathProviderPtrType = reflect.TypeOf((**ClusterDesiredDatapathProvider)(nil)).Elem()
 
-type ClusterUpdateDesiredDatapathProviderPtrInput interface {
+type ClusterDesiredDatapathProviderPtrInput interface {
 	pulumi.Input
 
-	ToClusterUpdateDesiredDatapathProviderPtrOutput() ClusterUpdateDesiredDatapathProviderPtrOutput
-	ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(context.Context) ClusterUpdateDesiredDatapathProviderPtrOutput
+	ToClusterDesiredDatapathProviderPtrOutput() ClusterDesiredDatapathProviderPtrOutput
+	ToClusterDesiredDatapathProviderPtrOutputWithContext(context.Context) ClusterDesiredDatapathProviderPtrOutput
 }
 
-type clusterUpdateDesiredDatapathProviderPtr string
+type clusterDesiredDatapathProviderPtr string
 
-func ClusterUpdateDesiredDatapathProviderPtr(v string) ClusterUpdateDesiredDatapathProviderPtrInput {
-	return (*clusterUpdateDesiredDatapathProviderPtr)(&v)
+func ClusterDesiredDatapathProviderPtr(v string) ClusterDesiredDatapathProviderPtrInput {
+	return (*clusterDesiredDatapathProviderPtr)(&v)
 }
 
-func (*clusterUpdateDesiredDatapathProviderPtr) ElementType() reflect.Type {
-	return clusterUpdateDesiredDatapathProviderPtrType
+func (*clusterDesiredDatapathProviderPtr) ElementType() reflect.Type {
+	return clusterDesiredDatapathProviderPtrType
 }
 
-func (in *clusterUpdateDesiredDatapathProviderPtr) ToClusterUpdateDesiredDatapathProviderPtrOutput() ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return pulumi.ToOutput(in).(ClusterUpdateDesiredDatapathProviderPtrOutput)
+func (in *clusterDesiredDatapathProviderPtr) ToClusterDesiredDatapathProviderPtrOutput() ClusterDesiredDatapathProviderPtrOutput {
+	return pulumi.ToOutput(in).(ClusterDesiredDatapathProviderPtrOutput)
 }
 
-func (in *clusterUpdateDesiredDatapathProviderPtr) ToClusterUpdateDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredDatapathProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpdateDesiredDatapathProviderPtrOutput)
+func (in *clusterDesiredDatapathProviderPtr) ToClusterDesiredDatapathProviderPtrOutputWithContext(ctx context.Context) ClusterDesiredDatapathProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterDesiredDatapathProviderPtrOutput)
 }
 
 // The desired state of IPv6 connectivity to Google Services.
-type ClusterUpdateDesiredPrivateIpv6GoogleAccess string
+type ClusterDesiredPrivateIpv6GoogleAccess string
 
 const (
 	// Default value. Same as DISABLED
-	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessUnspecified = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED")
+	ClusterDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessUnspecified = ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED")
 	// No private access to or from Google Services
-	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessDisabled = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED")
+	ClusterDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessDisabled = ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED")
 	// Enables private IPv6 access to Google Services from GKE
-	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE")
+	ClusterDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle = ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE")
 	// Enables priate IPv6 access to and from Google Services
-	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
+	ClusterDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = ClusterDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
 )
 
-func (ClusterUpdateDesiredPrivateIpv6GoogleAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpdateDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
+func (ClusterDesiredPrivateIpv6GoogleAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput {
-	return pulumi.ToOutput(e).(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput)
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToClusterDesiredPrivateIpv6GoogleAccessOutput() ClusterDesiredPrivateIpv6GoogleAccessOutput {
+	return pulumi.ToOutput(e).(ClusterDesiredPrivateIpv6GoogleAccessOutput)
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput)
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToClusterDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterDesiredPrivateIpv6GoogleAccessOutput)
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return e.ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return e.ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return ClusterUpdateDesiredPrivateIpv6GoogleAccess(e).ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx).ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx)
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return ClusterDesiredPrivateIpv6GoogleAccess(e).ToClusterDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx).ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx)
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToStringOutput() pulumi.StringOutput {
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ClusterDesiredPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput struct{ *pulumi.OutputState }
+type ClusterDesiredPrivateIpv6GoogleAccessOutput struct{ *pulumi.OutputState }
 
-func (ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterUpdateDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
+func (ClusterDesiredPrivateIpv6GoogleAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToClusterDesiredPrivateIpv6GoogleAccessOutput() ClusterDesiredPrivateIpv6GoogleAccessOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToClusterDesiredPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return o.ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return o.ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUpdateDesiredPrivateIpv6GoogleAccess) *ClusterUpdateDesiredPrivateIpv6GoogleAccess {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDesiredPrivateIpv6GoogleAccess) *ClusterDesiredPrivateIpv6GoogleAccess {
 		return &v
-	}).(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput)
+	}).(ClusterDesiredPrivateIpv6GoogleAccessPtrOutput)
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateDesiredPrivateIpv6GoogleAccess) string {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterDesiredPrivateIpv6GoogleAccess) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateDesiredPrivateIpv6GoogleAccess) *string {
+func (o ClusterDesiredPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterDesiredPrivateIpv6GoogleAccess) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
+type ClusterDesiredPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
-	return clusterUpdateDesiredPrivateIpv6GoogleAccessPtrType
+func (ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
+	return clusterDesiredPrivateIpv6GoogleAccessPtrType
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
 	return o
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterUpdateDesiredPrivateIpv6GoogleAccess) *string {
+func (o ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterDesiredPrivateIpv6GoogleAccess) *string {
 		if e == nil {
 			return nil
 		}
@@ -471,52 +471,52 @@ func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputW
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput) Elem() ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput {
-	return o.ApplyT(func(v *ClusterUpdateDesiredPrivateIpv6GoogleAccess) ClusterUpdateDesiredPrivateIpv6GoogleAccess {
-		var ret ClusterUpdateDesiredPrivateIpv6GoogleAccess
+func (o ClusterDesiredPrivateIpv6GoogleAccessPtrOutput) Elem() ClusterDesiredPrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *ClusterDesiredPrivateIpv6GoogleAccess) ClusterDesiredPrivateIpv6GoogleAccess {
+		var ret ClusterDesiredPrivateIpv6GoogleAccess
 		if v != nil {
 			ret = *v
 		}
 		return ret
-	}).(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput)
+	}).(ClusterDesiredPrivateIpv6GoogleAccessOutput)
 }
 
-// ClusterUpdateDesiredPrivateIpv6GoogleAccessInput is an input type that accepts ClusterUpdateDesiredPrivateIpv6GoogleAccessArgs and ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput values.
-// You can construct a concrete instance of `ClusterUpdateDesiredPrivateIpv6GoogleAccessInput` via:
+// ClusterDesiredPrivateIpv6GoogleAccessInput is an input type that accepts ClusterDesiredPrivateIpv6GoogleAccessArgs and ClusterDesiredPrivateIpv6GoogleAccessOutput values.
+// You can construct a concrete instance of `ClusterDesiredPrivateIpv6GoogleAccessInput` via:
 //
-//          ClusterUpdateDesiredPrivateIpv6GoogleAccessArgs{...}
-type ClusterUpdateDesiredPrivateIpv6GoogleAccessInput interface {
+//          ClusterDesiredPrivateIpv6GoogleAccessArgs{...}
+type ClusterDesiredPrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
-	ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput
-	ToClusterUpdateDesiredPrivateIpv6GoogleAccessOutputWithContext(context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput
+	ToClusterDesiredPrivateIpv6GoogleAccessOutput() ClusterDesiredPrivateIpv6GoogleAccessOutput
+	ToClusterDesiredPrivateIpv6GoogleAccessOutputWithContext(context.Context) ClusterDesiredPrivateIpv6GoogleAccessOutput
 }
 
-var clusterUpdateDesiredPrivateIpv6GoogleAccessPtrType = reflect.TypeOf((**ClusterUpdateDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
+var clusterDesiredPrivateIpv6GoogleAccessPtrType = reflect.TypeOf((**ClusterDesiredPrivateIpv6GoogleAccess)(nil)).Elem()
 
-type ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrInput interface {
+type ClusterDesiredPrivateIpv6GoogleAccessPtrInput interface {
 	pulumi.Input
 
-	ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput
-	ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput
+	ToClusterDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterDesiredPrivateIpv6GoogleAccessPtrOutput
+	ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(context.Context) ClusterDesiredPrivateIpv6GoogleAccessPtrOutput
 }
 
-type clusterUpdateDesiredPrivateIpv6GoogleAccessPtr string
+type clusterDesiredPrivateIpv6GoogleAccessPtr string
 
-func ClusterUpdateDesiredPrivateIpv6GoogleAccessPtr(v string) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrInput {
-	return (*clusterUpdateDesiredPrivateIpv6GoogleAccessPtr)(&v)
+func ClusterDesiredPrivateIpv6GoogleAccessPtr(v string) ClusterDesiredPrivateIpv6GoogleAccessPtrInput {
+	return (*clusterDesiredPrivateIpv6GoogleAccessPtr)(&v)
 }
 
-func (*clusterUpdateDesiredPrivateIpv6GoogleAccessPtr) ElementType() reflect.Type {
-	return clusterUpdateDesiredPrivateIpv6GoogleAccessPtrType
+func (*clusterDesiredPrivateIpv6GoogleAccessPtr) ElementType() reflect.Type {
+	return clusterDesiredPrivateIpv6GoogleAccessPtrType
 }
 
-func (in *clusterUpdateDesiredPrivateIpv6GoogleAccessPtr) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return pulumi.ToOutput(in).(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput)
+func (in *clusterDesiredPrivateIpv6GoogleAccessPtr) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutput() ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return pulumi.ToOutput(in).(ClusterDesiredPrivateIpv6GoogleAccessPtrOutput)
 }
 
-func (in *clusterUpdateDesiredPrivateIpv6GoogleAccessPtr) ToClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput)
+func (in *clusterDesiredPrivateIpv6GoogleAccessPtr) ToClusterDesiredPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) ClusterDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterDesiredPrivateIpv6GoogleAccessPtrOutput)
 }
 
 // Denotes the state of etcd encryption.
@@ -2244,10 +2244,10 @@ func (in *workloadMetadataConfigModePtr) ToWorkloadMetadataConfigModePtrOutputWi
 func init() {
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypePtrOutput{})
-	pulumi.RegisterOutputType(ClusterUpdateDesiredDatapathProviderOutput{})
-	pulumi.RegisterOutputType(ClusterUpdateDesiredDatapathProviderPtrOutput{})
-	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput{})
-	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDesiredDatapathProviderOutput{})
+	pulumi.RegisterOutputType(ClusterDesiredDatapathProviderPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDesiredPrivateIpv6GoogleAccessOutput{})
+	pulumi.RegisterOutputType(ClusterDesiredPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStateOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStatePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderOutput{})

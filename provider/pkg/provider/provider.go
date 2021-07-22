@@ -641,26 +641,10 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	resourceKey := string(urn.Type())
-	res, ok := p.resourceMap.Resources[resourceKey]
-	if !ok {
-		return nil, errors.Errorf("resource %q not found", resourceKey)
-	}
-
-	body := p.prepareAPIInputs(inputs, oldState, res.UpdateProperties)
-
-	uri := res.ResourceUrl(req.GetId())
-	if strings.HasSuffix(uri, ":getIamPolicy") {
-		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
-	}
-
-	op, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, body, 0)
+	updateHandler := p.updateHandler(resourceKey, req)
+	resp, err := updateHandler.Update(inputs, oldState)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
-	}
-
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
-	if err != nil {
-		return nil, errors.Wrapf(err, "waiting for completion")
+		return nil, err
 	}
 
 	// Read the inputs to persist them into state.

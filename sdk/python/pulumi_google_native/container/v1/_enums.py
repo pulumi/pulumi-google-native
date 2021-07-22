@@ -6,8 +6,8 @@ from enum import Enum
 
 __all__ = [
     'CloudRunConfigLoadBalancerType',
-    'ClusterUpdateDesiredDatapathProvider',
-    'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
+    'ClusterDesiredDatapathProvider',
+    'ClusterDesiredPrivateIpv6GoogleAccess',
     'DatabaseEncryptionState',
     'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
@@ -33,7 +33,7 @@ class CloudRunConfigLoadBalancerType(str, Enum):
     """Install internal load balancer for Cloud Run."""
 
 
-class ClusterUpdateDesiredDatapathProvider(str, Enum):
+class ClusterDesiredDatapathProvider(str, Enum):
     """
     The desired datapath provider for the cluster.
     """
@@ -45,7 +45,7 @@ class ClusterUpdateDesiredDatapathProvider(str, Enum):
     """Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more."""
 
 
-class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
+class ClusterDesiredPrivateIpv6GoogleAccess(str, Enum):
     """
     The desired state of IPv6 connectivity to Google Services.
     """
