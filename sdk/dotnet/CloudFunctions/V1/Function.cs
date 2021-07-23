@@ -106,6 +106,18 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
+        /// Secret environment variables configuration.
+        /// </summary>
+        [Output("secretEnvironmentVariables")]
+        public Output<ImmutableArray<Outputs.SecretEnvVarResponse>> SecretEnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
+        [Output("secretVolumes")]
+        public Output<ImmutableArray<Outputs.SecretVolumeResponse>> SecretVolumes { get; private set; } = null!;
+
+        /// <summary>
         /// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
         /// </summary>
         [Output("serviceAccountEmail")]
@@ -323,6 +335,30 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
+
+        [Input("secretEnvironmentVariables")]
+        private InputList<Inputs.SecretEnvVarArgs>? _secretEnvironmentVariables;
+
+        /// <summary>
+        /// Secret environment variables configuration.
+        /// </summary>
+        public InputList<Inputs.SecretEnvVarArgs> SecretEnvironmentVariables
+        {
+            get => _secretEnvironmentVariables ?? (_secretEnvironmentVariables = new InputList<Inputs.SecretEnvVarArgs>());
+            set => _secretEnvironmentVariables = value;
+        }
+
+        [Input("secretVolumes")]
+        private InputList<Inputs.SecretVolumeArgs>? _secretVolumes;
+
+        /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
+        public InputList<Inputs.SecretVolumeArgs> SecretVolumes
+        {
+            get => _secretVolumes ?? (_secretVolumes = new InputList<Inputs.SecretVolumeArgs>());
+            set => _secretVolumes = value;
+        }
 
         /// <summary>
         /// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.

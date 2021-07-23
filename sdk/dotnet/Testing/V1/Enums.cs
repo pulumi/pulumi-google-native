@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Testing.V1
     }
 
     /// <summary>
+    /// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+    /// </summary>
+    [EnumType]
+    public readonly struct AndroidRoboTestRoboMode : IEquatable<AndroidRoboTestRoboMode>
+    {
+        private readonly string _value;
+
+        private AndroidRoboTestRoboMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// LINT.IfChange This means that the server should choose the mode. Recommended.
+        /// </summary>
+        public static AndroidRoboTestRoboMode RoboModeUnspecified { get; } = new AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Runs Robo in UIAutomator-only mode without app resigning
+        /// </summary>
+        public static AndroidRoboTestRoboMode RoboVersion1 { get; } = new AndroidRoboTestRoboMode("ROBO_VERSION_1");
+        /// <summary>
+        /// Runs Robo in standard Espresso with UIAutomator fallback
+        /// </summary>
+        public static AndroidRoboTestRoboMode RoboVersion2 { get; } = new AndroidRoboTestRoboMode("ROBO_VERSION_2");
+
+        public static bool operator ==(AndroidRoboTestRoboMode left, AndroidRoboTestRoboMode right) => left.Equals(right);
+        public static bool operator !=(AndroidRoboTestRoboMode left, AndroidRoboTestRoboMode right) => !left.Equals(right);
+
+        public static explicit operator string(AndroidRoboTestRoboMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AndroidRoboTestRoboMode other && Equals(other);
+        public bool Equals(AndroidRoboTestRoboMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The type of action that Robo should perform on the specified element.
     /// </summary>
     [EnumType]

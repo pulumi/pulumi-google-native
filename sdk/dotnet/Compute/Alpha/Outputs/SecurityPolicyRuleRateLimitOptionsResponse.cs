@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse BanThreshold;
         /// <summary>
-        /// Action to take when requests are under the given threshold. When requests are throttled, this is also the action for all requests which are not dropped. Valid options are "allow", "fairshare", and "drop_overload".
+        /// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         /// </summary>
         public readonly string ConformAction;
         /// <summary>

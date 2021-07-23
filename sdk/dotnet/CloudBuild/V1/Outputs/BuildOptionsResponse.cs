@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         /// </summary>
         public readonly Outputs.PoolOptionResponse Pool;
         /// <summary>

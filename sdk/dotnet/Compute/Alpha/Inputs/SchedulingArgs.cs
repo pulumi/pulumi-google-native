@@ -28,6 +28,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? AvailabilityDomain { get; set; }
 
         /// <summary>
+        /// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
+        /// </summary>
+        [Input("currentCpus")]
+        public Input<int>? CurrentCpus { get; set; }
+
+        /// <summary>
+        /// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
+        /// </summary>
+        [Input("currentMemoryMb")]
+        public Input<string>? CurrentMemoryMb { get; set; }
+
+        /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         [Input("hostErrorTimeoutSeconds")]

@@ -12,8 +12,8 @@ namespace Pulumi.GoogleNative.DNS.V1
     /// <summary>
     /// Creates a new ResourceRecordSet.
     /// </summary>
-    [GoogleNativeResourceType("google-native:dns/v1:Rrset")]
-    public partial class Rrset : Pulumi.CustomResource
+    [GoogleNativeResourceType("google-native:dns/v1:ResourceRecordSet")]
+    public partial class ResourceRecordSet : Pulumi.CustomResource
     {
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -50,19 +50,19 @@ namespace Pulumi.GoogleNative.DNS.V1
 
 
         /// <summary>
-        /// Create a Rrset resource with the given unique name, arguments, and options.
+        /// Create a ResourceRecordSet resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Rrset(string name, RrsetArgs args, CustomResourceOptions? options = null)
-            : base("google-native:dns/v1:Rrset", name, args ?? new RrsetArgs(), MakeResourceOptions(options, ""))
+        public ResourceRecordSet(string name, ResourceRecordSetArgs args, CustomResourceOptions? options = null)
+            : base("google-native:dns/v1:ResourceRecordSet", name, args ?? new ResourceRecordSetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Rrset(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-native:dns/v1:Rrset", name, null, MakeResourceOptions(options, id))
+        private ResourceRecordSet(string name, Input<string> id, CustomResourceOptions? options = null)
+            : base("google-native:dns/v1:ResourceRecordSet", name, null, MakeResourceOptions(options, id))
         {
         }
 
@@ -78,20 +78,20 @@ namespace Pulumi.GoogleNative.DNS.V1
             return merged;
         }
         /// <summary>
-        /// Get an existing Rrset resource's state with the given name, ID, and optional extra
+        /// Get an existing ResourceRecordSet resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resulting resource.</param>
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Rrset Get(string name, Input<string> id, CustomResourceOptions? options = null)
+        public static ResourceRecordSet Get(string name, Input<string> id, CustomResourceOptions? options = null)
         {
-            return new Rrset(name, id, options);
+            return new ResourceRecordSet(name, id, options);
         }
     }
 
-    public sealed class RrsetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRecordSetArgs : Pulumi.ResourceArgs
     {
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.DNS.V1
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public RrsetArgs()
+        public ResourceRecordSetArgs()
         {
         }
     }

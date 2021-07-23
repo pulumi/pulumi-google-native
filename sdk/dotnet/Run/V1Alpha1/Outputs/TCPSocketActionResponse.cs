@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
     public sealed class TCPSocketActionResponse
     {
         /// <summary>
-        /// Optional: Host name to connect to, defaults to the pod IP. +optional
+        /// (Optional) Optional: Host name to connect to, defaults to the pod IP.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
         /// </summary>
-        public readonly Outputs.IntOrStringResponse Port;
+        public readonly int Port;
 
         [OutputConstructor]
         private TCPSocketActionResponse(
             string host,
 
-            Outputs.IntOrStringResponse port)
+            int port)
         {
             Host = host;
             Port = port;

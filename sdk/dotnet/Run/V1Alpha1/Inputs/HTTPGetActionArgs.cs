@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// HTTPGetAction describes an action based on HTTP Get requests.
+    /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
     public sealed class HTTPGetActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+        /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         private InputList<Inputs.HTTPHeaderArgs>? _httpHeaders;
 
         /// <summary>
-        /// Custom headers to set in the request. HTTP allows repeated headers. +optional
+        /// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
         public InputList<Inputs.HTTPHeaderArgs> HttpHeaders
         {
@@ -34,19 +34,13 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         }
 
         /// <summary>
-        /// Path to access on the HTTP server. +optional
+        /// (Optional) Path to access on the HTTP server.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-        /// </summary>
-        [Input("port")]
-        public Input<Inputs.IntOrStringArgs>? Port { get; set; }
-
-        /// <summary>
-        /// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+        /// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
         /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }

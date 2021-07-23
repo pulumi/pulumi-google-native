@@ -183,7 +183,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     /// </summary>
     [EnumType]
     public readonly struct AddressPurpose : IEquatable<AddressPurpose>
@@ -1431,7 +1431,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleIpProtocol : IEquatable<ForwardingRuleIpProtocol>
@@ -1498,7 +1498,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+    /// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     /// </summary>
     [EnumType]
     public readonly struct ForwardingRuleLoadBalancingScheme : IEquatable<ForwardingRuleLoadBalancingScheme>
@@ -1561,6 +1561,49 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ForwardingRuleNetworkTier other && Equals(other);
         public bool Equals(ForwardingRuleNetworkTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct ForwardingRulePscConnectionStatus : IEquatable<ForwardingRulePscConnectionStatus>
+    {
+        private readonly string _value;
+
+        private ForwardingRulePscConnectionStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The connection has been accepted by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Accepted { get; } = new ForwardingRulePscConnectionStatus("ACCEPTED");
+        /// <summary>
+        /// The connection has been closed by the producer and will not serve traffic going forward.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Closed { get; } = new ForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection is pending acceptance by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Pending { get; } = new ForwardingRulePscConnectionStatus("PENDING");
+        /// <summary>
+        /// The connection has been rejected by the producer.
+        /// </summary>
+        public static ForwardingRulePscConnectionStatus Rejected { get; } = new ForwardingRulePscConnectionStatus("REJECTED");
+        public static ForwardingRulePscConnectionStatus StatusUnspecified { get; } = new ForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED");
+
+        public static bool operator ==(ForwardingRulePscConnectionStatus left, ForwardingRulePscConnectionStatus right) => left.Equals(right);
+        public static bool operator !=(ForwardingRulePscConnectionStatus left, ForwardingRulePscConnectionStatus right) => !left.Equals(right);
+
+        public static explicit operator string(ForwardingRulePscConnectionStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ForwardingRulePscConnectionStatus other && Equals(other);
+        public bool Equals(ForwardingRulePscConnectionStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1717,7 +1760,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+    /// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     /// </summary>
     [EnumType]
     public readonly struct GlobalAddressPurpose : IEquatable<GlobalAddressPurpose>
@@ -1774,7 +1817,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+    /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleIpProtocol : IEquatable<GlobalForwardingRuleIpProtocol>
@@ -1841,7 +1884,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+    /// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     /// </summary>
     [EnumType]
     public readonly struct GlobalForwardingRuleLoadBalancingScheme : IEquatable<GlobalForwardingRuleLoadBalancingScheme>
@@ -1911,8 +1954,51 @@ namespace Pulumi.GoogleNative.Compute.V1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct GlobalForwardingRulePscConnectionStatus : IEquatable<GlobalForwardingRulePscConnectionStatus>
+    {
+        private readonly string _value;
+
+        private GlobalForwardingRulePscConnectionStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The connection has been accepted by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Accepted { get; } = new GlobalForwardingRulePscConnectionStatus("ACCEPTED");
+        /// <summary>
+        /// The connection has been closed by the producer and will not serve traffic going forward.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Closed { get; } = new GlobalForwardingRulePscConnectionStatus("CLOSED");
+        /// <summary>
+        /// The connection is pending acceptance by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Pending { get; } = new GlobalForwardingRulePscConnectionStatus("PENDING");
+        /// <summary>
+        /// The connection has been rejected by the producer.
+        /// </summary>
+        public static GlobalForwardingRulePscConnectionStatus Rejected { get; } = new GlobalForwardingRulePscConnectionStatus("REJECTED");
+        public static GlobalForwardingRulePscConnectionStatus StatusUnspecified { get; } = new GlobalForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED");
+
+        public static bool operator ==(GlobalForwardingRulePscConnectionStatus left, GlobalForwardingRulePscConnectionStatus right) => left.Equals(right);
+        public static bool operator !=(GlobalForwardingRulePscConnectionStatus left, GlobalForwardingRulePscConnectionStatus right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalForwardingRulePscConnectionStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalForwardingRulePscConnectionStatus other && Equals(other);
+        public bool Equals(GlobalForwardingRulePscConnectionStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct GlobalNetworkEndpointGroupNetworkEndpointType : IEquatable<GlobalNetworkEndpointGroupNetworkEndpointType>
@@ -2985,7 +3071,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct NetworkEndpointGroupNetworkEndpointType : IEquatable<NetworkEndpointGroupNetworkEndpointType>
@@ -3751,7 +3837,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct RegionNetworkEndpointGroupNetworkEndpointType : IEquatable<RegionNetworkEndpointGroupNetworkEndpointType>

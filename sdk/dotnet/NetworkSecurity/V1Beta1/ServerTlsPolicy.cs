@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     public partial class ServerTlsPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
         /// </summary>
         [Output("allowOpen")]
         public Output<bool> AllowOpen { get; private set; } = null!;
@@ -28,19 +28,19 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Free-text description of the resource.
+        /// Free-text description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Set of label tags associated with the resource.
+        /// Set of label tags associated with the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
         [Output("mtlsPolicy")]
         public Output<Outputs.MTLSPolicyResponse> MtlsPolicy { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Output("serverCertificate")]
         public Output<Outputs.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse> ServerCertificate { get; private set; } = null!;
@@ -109,13 +109,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     public sealed class ServerTlsPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
         /// </summary>
         [Input("allowOpen")]
         public Input<bool>? AllowOpen { get; set; }
 
         /// <summary>
-        /// Optional. Free-text description of the resource.
+        /// Free-text description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Set of label tags associated with the resource.
+        /// Set of label tags associated with the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
         [Input("mtlsPolicy")]
         public Input<Inputs.MTLSPolicyArgs>? MtlsPolicy { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Input("serverCertificate")]
         public Input<Inputs.GoogleCloudNetworksecurityV1beta1CertificateProviderArgs>? ServerCertificate { get; set; }

@@ -183,6 +183,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("storageLocations")]
         public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of user provided licenses represented by a list of URLs to the license resource.
+        /// </summary>
+        [Output("userLicenses")]
+        public Output<ImmutableArray<string>> UserLicenses { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Snapshot resource with the given unique name, arguments, and options.

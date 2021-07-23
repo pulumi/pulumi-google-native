@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.EncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Output("endpointUri")]
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         /// <summary>
         /// Configuration information specific to running Hive metastore software as the metastore service.
         /// </summary>

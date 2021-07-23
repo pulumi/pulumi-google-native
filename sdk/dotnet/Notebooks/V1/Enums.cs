@@ -85,63 +85,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
     /// <summary>
-    /// Required. Scale tier of the hardware used for notebook execution.
-    /// </summary>
-    [EnumType]
-    public readonly struct ExecutionTemplateScaleTier : IEquatable<ExecutionTemplateScaleTier>
-    {
-        private readonly string _value;
-
-        private ExecutionTemplateScaleTier(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified Scale Tier.
-        /// </summary>
-        public static ExecutionTemplateScaleTier ScaleTierUnspecified { get; } = new ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED");
-        /// <summary>
-        /// A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
-        /// </summary>
-        public static ExecutionTemplateScaleTier Basic { get; } = new ExecutionTemplateScaleTier("BASIC");
-        /// <summary>
-        /// Many workers and a few parameter servers.
-        /// </summary>
-        public static ExecutionTemplateScaleTier Standard1 { get; } = new ExecutionTemplateScaleTier("STANDARD_1");
-        /// <summary>
-        /// A large number of workers with many parameter servers.
-        /// </summary>
-        public static ExecutionTemplateScaleTier Premium1 { get; } = new ExecutionTemplateScaleTier("PREMIUM_1");
-        /// <summary>
-        /// A single worker instance with a K80 GPU.
-        /// </summary>
-        public static ExecutionTemplateScaleTier BasicGpu { get; } = new ExecutionTemplateScaleTier("BASIC_GPU");
-        /// <summary>
-        /// A single worker instance with a Cloud TPU.
-        /// </summary>
-        public static ExecutionTemplateScaleTier BasicTpu { get; } = new ExecutionTemplateScaleTier("BASIC_TPU");
-        /// <summary>
-        /// The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type.
-        /// </summary>
-        public static ExecutionTemplateScaleTier Custom { get; } = new ExecutionTemplateScaleTier("CUSTOM");
-
-        public static bool operator ==(ExecutionTemplateScaleTier left, ExecutionTemplateScaleTier right) => left.Equals(right);
-        public static bool operator !=(ExecutionTemplateScaleTier left, ExecutionTemplateScaleTier right) => !left.Equals(right);
-
-        public static explicit operator string(ExecutionTemplateScaleTier value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ExecutionTemplateScaleTier other && Equals(other);
-        public bool Equals(ExecutionTemplateScaleTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     /// </summary>
     [EnumType]
@@ -359,6 +302,51 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
     /// <summary>
+    /// Optional. Type of reservation to consume
+    /// </summary>
+    [EnumType]
+    public readonly struct ReservationAffinityConsumeReservationType : IEquatable<ReservationAffinityConsumeReservationType>
+    {
+        private readonly string _value;
+
+        private ReservationAffinityConsumeReservationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default type.
+        /// </summary>
+        public static ReservationAffinityConsumeReservationType TypeUnspecified { get; } = new ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Do not consume from any allocated capacity.
+        /// </summary>
+        public static ReservationAffinityConsumeReservationType NoReservation { get; } = new ReservationAffinityConsumeReservationType("NO_RESERVATION");
+        /// <summary>
+        /// Consume any reservation available.
+        /// </summary>
+        public static ReservationAffinityConsumeReservationType AnyReservation { get; } = new ReservationAffinityConsumeReservationType("ANY_RESERVATION");
+        /// <summary>
+        /// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        /// </summary>
+        public static ReservationAffinityConsumeReservationType SpecificReservation { get; } = new ReservationAffinityConsumeReservationType("SPECIFIC_RESERVATION");
+
+        public static bool operator ==(ReservationAffinityConsumeReservationType left, ReservationAffinityConsumeReservationType right) => left.Equals(right);
+        public static bool operator !=(ReservationAffinityConsumeReservationType left, ReservationAffinityConsumeReservationType right) => !left.Equals(right);
+
+        public static explicit operator string(ReservationAffinityConsumeReservationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ReservationAffinityConsumeReservationType other && Equals(other);
+        public bool Equals(ReservationAffinityConsumeReservationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Accelerator model.
     /// </summary>
     [EnumType]
@@ -502,6 +490,14 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received.
         /// </summary>
         public static ScheduleState UpdateFailed { get; } = new ScheduleState("UPDATE_FAILED");
+        /// <summary>
+        /// The schedule resource is being created.
+        /// </summary>
+        public static ScheduleState Initializing { get; } = new ScheduleState("INITIALIZING");
+        /// <summary>
+        /// The schedule resource is being deleted.
+        /// </summary>
+        public static ScheduleState Deleting { get; } = new ScheduleState("DELETING");
 
         public static bool operator ==(ScheduleState left, ScheduleState right) => left.Equals(right);
         public static bool operator !=(ScheduleState left, ScheduleState right) => !left.Equals(right);

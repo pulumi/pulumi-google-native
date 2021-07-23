@@ -18,27 +18,21 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly string MountPath;
         /// <summary>
-        /// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-        /// </summary>
-        public readonly string MountPropagation;
-        /// <summary>
         /// This must match the Name of a Volume.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+        /// (Optional) Only true is accepted. Defaults to true.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         public readonly string SubPath;
 
         [OutputConstructor]
         private VolumeMountResponse(
             string mountPath,
-
-            string mountPropagation,
 
             string name,
 
@@ -47,7 +41,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
             string subPath)
         {
             MountPath = mountPath;
-            MountPropagation = mountPropagation;
             Name = name;
             ReadOnly = readOnly;
             SubPath = subPath;

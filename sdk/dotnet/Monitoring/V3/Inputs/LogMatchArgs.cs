@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
 {
 
     /// <summary>
-    /// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+    /// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
     /// </summary>
     public sealed class LogMatchArgs : Pulumi.ResourceArgs
     {

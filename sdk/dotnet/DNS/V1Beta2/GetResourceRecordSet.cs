@@ -9,17 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GoogleNative.DNS.V1Beta2
 {
-    public static class GetRrset
+    public static class GetResourceRecordSet
     {
         /// <summary>
         /// Fetches the representation of an existing ResourceRecordSet.
         /// </summary>
-        public static Task<GetRrsetResult> InvokeAsync(GetRrsetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRrsetResult>("google-native:dns/v1beta2:getRrset", args ?? new GetRrsetArgs(), options.WithVersion());
+        public static Task<GetResourceRecordSetResult> InvokeAsync(GetResourceRecordSetArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceRecordSetResult>("google-native:dns/v1beta2:getResourceRecordSet", args ?? new GetResourceRecordSetArgs(), options.WithVersion());
     }
 
 
-    public sealed class GetRrsetArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceRecordSetArgs : Pulumi.InvokeArgs
     {
         [Input("clientOperationId")]
         public string? ClientOperationId { get; set; }
@@ -36,14 +36,14 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
 
-        public GetRrsetArgs()
+        public GetResourceRecordSetArgs()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetRrsetResult
+    public sealed class GetResourceRecordSetResult
     {
         public readonly string Kind;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public readonly string Type;
 
         [OutputConstructor]
-        private GetRrsetResult(
+        private GetResourceRecordSetResult(
             string kind,
 
             string name,

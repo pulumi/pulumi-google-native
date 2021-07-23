@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.EndpointResponse> Endpoints;
         /// <summary>
-        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         /// </summary>
         public readonly ImmutableArray<Outputs.EnumResponse> Enums;
         /// <summary>
@@ -132,11 +132,11 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.TypeResponse> SystemTypes;
         /// <summary>
-        /// The product title for this service.
+        /// The product title for this service, it is the name displayed in Google Cloud Console.
         /// </summary>
         public readonly string Title;
         /// <summary>
-        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         /// </summary>
         public readonly ImmutableArray<Outputs.TypeResponse> Types;
         /// <summary>

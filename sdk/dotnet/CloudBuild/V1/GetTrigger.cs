@@ -95,6 +95,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string ResourceName;
         /// <summary>
+        /// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// </summary>
+        public readonly Outputs.GitRepoSourceResponse SourceToBuild;
+        /// <summary>
         /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Substitutions;
@@ -139,6 +143,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             string resourceName,
 
+            Outputs.GitRepoSourceResponse sourceToBuild,
+
             ImmutableDictionary<string, string> substitutions,
 
             ImmutableArray<string> tags,
@@ -160,6 +166,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             Name = name;
             PubsubConfig = pubsubConfig;
             ResourceName = resourceName;
+            SourceToBuild = sourceToBuild;
             Substitutions = substitutions;
             Tags = tags;
             TriggerTemplate = triggerTemplate;

@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? Priority { get; set; }
 
         /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
+
+        /// <summary>
         /// Parameters defining the redirect action. Cannot be specified for any other actions.
         /// </summary>
         [Input("redirectOptions")]

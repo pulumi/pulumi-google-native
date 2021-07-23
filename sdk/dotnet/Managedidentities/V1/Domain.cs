@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public Output<string> Admin { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        /// </summary>
+        [Output("auditLogsEnabled")]
+        public Output<bool> AuditLogsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
         /// </summary>
         [Output("authorizedNetworks")]
@@ -138,6 +144,12 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// </summary>
         [Input("admin")]
         public Input<string>? Admin { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        /// </summary>
+        [Input("auditLogsEnabled")]
+        public Input<bool>? AuditLogsEnabled { get; set; }
 
         [Input("authorizedNetworks")]
         private InputList<string>? _authorizedNetworks;

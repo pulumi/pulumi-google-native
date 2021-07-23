@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
+        /// A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.ExternalVpnGatewayInterfaceResponse>> Interfaces { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.ExternalVpnGatewayInterfaceArgs>? _interfaces;
 
         /// <summary>
-        /// List of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
+        /// A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
         /// </summary>
         public InputList<Inputs.ExternalVpnGatewayInterfaceArgs> Interfaces
         {

@@ -70,12 +70,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? ParamsYamlFile { get; set; }
 
         /// <summary>
-        /// Scale tier of the hardware used for notebook execution.
-        /// </summary>
-        [Input("scaleTier", required: true)]
-        public Input<Pulumi.GoogleNative.Notebooks.V1.ExecutionTemplateScaleTier> ScaleTier { get; set; } = null!;
-
-        /// <summary>
         /// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         /// </summary>
         [Input("serviceAccount")]

@@ -263,6 +263,47 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
     /// <summary>
+    /// See RepoType below.
+    /// </summary>
+    [EnumType]
+    public readonly struct GitRepoSourceRepoType : IEquatable<GitRepoSourceRepoType>
+    {
+        private readonly string _value;
+
+        private GitRepoSourceRepoType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default, unknown repo type.
+        /// </summary>
+        public static GitRepoSourceRepoType Unknown { get; } = new GitRepoSourceRepoType("UNKNOWN");
+        /// <summary>
+        /// A Google Cloud Source Repositories-hosted repo.
+        /// </summary>
+        public static GitRepoSourceRepoType CloudSourceRepositories { get; } = new GitRepoSourceRepoType("CLOUD_SOURCE_REPOSITORIES");
+        /// <summary>
+        /// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
+        /// </summary>
+        public static GitRepoSourceRepoType Github { get; } = new GitRepoSourceRepoType("GITHUB");
+
+        public static bool operator ==(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => left.Equals(right);
+        public static bool operator !=(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => !left.Equals(right);
+
+        public static explicit operator string(GitRepoSourceRepoType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GitRepoSourceRepoType other && Equals(other);
+        public bool Equals(GitRepoSourceRepoType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Option to configure network egress for the workers.
     /// </summary>
     [EnumType]

@@ -42,6 +42,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RoboDirectiveResponse> RoboDirectives;
         /// <summary>
+        /// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+        /// </summary>
+        public readonly string RoboMode;
+        /// <summary>
         /// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
         /// </summary>
         public readonly Outputs.FileReferenceResponse RoboScript;
@@ -66,6 +70,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             ImmutableArray<Outputs.RoboDirectiveResponse> roboDirectives,
 
+            string roboMode,
+
             Outputs.FileReferenceResponse roboScript,
 
             ImmutableArray<Outputs.RoboStartingIntentResponse> startingIntents)
@@ -77,6 +83,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             MaxDepth = maxDepth;
             MaxSteps = maxSteps;
             RoboDirectives = roboDirectives;
+            RoboMode = roboMode;
             RoboScript = roboScript;
             StartingIntents = startingIntents;
         }

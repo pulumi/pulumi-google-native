@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly string ServiceRootUrl;
         /// <summary>
-        /// A short summary of what the service does. Can only be provided by plain text.
+        /// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
         /// </summary>
         public readonly string Summary;
 

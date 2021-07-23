@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<bool>? CanReschedule { get; set; }
 
         /// <summary>
+        /// Maintenance cannot be rescheduled to start beyond this deadline.
+        /// </summary>
+        [Input("scheduleDeadlineTime")]
+        public Input<string>? ScheduleDeadlineTime { get; set; }
+
+        /// <summary>
         /// The start time of any upcoming scheduled maintenance for this instance.
         /// </summary>
         [Input("startTime")]

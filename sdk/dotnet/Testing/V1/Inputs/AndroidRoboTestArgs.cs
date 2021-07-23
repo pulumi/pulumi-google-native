@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         }
 
         /// <summary>
+        /// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+        /// </summary>
+        [Input("roboMode")]
+        public Input<Pulumi.GoogleNative.Testing.V1.AndroidRoboTestRoboMode>? RoboMode { get; set; }
+
+        /// <summary>
         /// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
         /// </summary>
         [Input("roboScript")]

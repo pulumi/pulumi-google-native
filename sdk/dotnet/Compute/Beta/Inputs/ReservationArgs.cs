@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Share-settings for shared-reservation
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
+
+        /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// </summary>
         [Input("specificReservation")]

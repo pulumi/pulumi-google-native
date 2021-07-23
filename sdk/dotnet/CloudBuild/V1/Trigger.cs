@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
+        /// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// </summary>
+        [Output("sourceToBuild")]
+        public Output<Outputs.GitRepoSourceResponse> SourceToBuild { get; private set; } = null!;
+
+        /// <summary>
         /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         /// </summary>
         [Output("substitutions")]
@@ -254,6 +260,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
+
+        /// <summary>
+        /// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        /// </summary>
+        [Input("sourceToBuild")]
+        public Input<Inputs.GitRepoSourceArgs>? SourceToBuild { get; set; }
 
         [Input("substitutions")]
         private InputMap<string>? _substitutions;

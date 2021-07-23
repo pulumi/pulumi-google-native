@@ -19,6 +19,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly bool CanReschedule;
         /// <summary>
+        /// Maintenance cannot be rescheduled to start beyond this deadline.
+        /// </summary>
+        public readonly string ScheduleDeadlineTime;
+        /// <summary>
         /// The start time of any upcoming scheduled maintenance for this instance.
         /// </summary>
         public readonly string StartTime;
@@ -29,10 +33,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             bool canReschedule,
 
+            string scheduleDeadlineTime,
+
             string startTime)
         {
             CanDefer = canDefer;
             CanReschedule = canReschedule;
+            ScheduleDeadlineTime = scheduleDeadlineTime;
             StartTime = startTime;
         }
     }

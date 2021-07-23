@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
     public sealed class NetworkConfigResponse
     {
         /// <summary>
+        /// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        /// </summary>
+        public readonly string ConnectMode;
+        /// <summary>
         /// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
         /// </summary>
         public readonly ImmutableArray<string> IpAddresses;
@@ -32,6 +36,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
 
         [OutputConstructor]
         private NetworkConfigResponse(
+            string connectMode,
+
             ImmutableArray<string> ipAddresses,
 
             ImmutableArray<string> modes,
@@ -40,6 +46,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
 
             string reservedIpRange)
         {
+            ConnectMode = connectMode;
             IpAddresses = ipAddresses;
             Modes = modes;
             Network = network;

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string Generation;
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         /// </summary>
         public readonly string Object;
 

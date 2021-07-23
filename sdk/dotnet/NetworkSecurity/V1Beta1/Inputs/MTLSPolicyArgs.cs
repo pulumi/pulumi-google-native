@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
     /// </summary>
     public sealed class MTLSPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("clientValidationCa", required: true)]
+        [Input("clientValidationCa")]
         private InputList<Inputs.ValidationCAArgs>? _clientValidationCa;
 
         /// <summary>
-        /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         public InputList<Inputs.ValidationCAArgs> ClientValidationCa
         {

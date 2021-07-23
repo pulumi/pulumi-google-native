@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         }
 
         /// <summary>
-        /// No state specified.
+        /// No state specified. Treated as ACTIVE only at the time of resource creation.
         /// </summary>
         public static ConsentState StateUnspecified { get; } = new ConsentState("STATE_UNSPECIFIED");
         /// <summary>

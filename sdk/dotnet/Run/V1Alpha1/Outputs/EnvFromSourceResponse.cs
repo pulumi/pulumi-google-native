@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
     public sealed class EnvFromSourceResponse
     {
         /// <summary>
-        /// The ConfigMap to select from +optional
+        /// (Optional) The ConfigMap to select from
         /// </summary>
         public readonly Outputs.ConfigMapEnvSourceResponse ConfigMapRef;
         /// <summary>
-        /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+        /// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// The Secret to select from +optional
+        /// (Optional) The Secret to select from
         /// </summary>
         public readonly Outputs.SecretEnvSourceResponse SecretRef;
 

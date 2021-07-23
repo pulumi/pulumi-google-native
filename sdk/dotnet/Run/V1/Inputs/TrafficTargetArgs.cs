@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? ConfigurationName { get; set; }
 
         /// <summary>
-        /// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
         /// </summary>
         [Input("latestRevision")]
         public Input<bool>? LatestRevision { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? RevisionName { get; set; }
 
         /// <summary>
-        /// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+        /// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

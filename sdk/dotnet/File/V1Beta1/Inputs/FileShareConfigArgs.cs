@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         public Input<string>? CapacityGb { get; set; }
 
         /// <summary>
-        /// The name of the file share (must be 16 characters or less).
+        /// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -100,6 +100,14 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         public readonly string Runtime;
         /// <summary>
+        /// Secret environment variables configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecretEnvVarResponse> SecretEnvironmentVariables;
+        /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecretVolumeResponse> SecretVolumes;
+        /// <summary>
         /// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
         /// </summary>
         public readonly string ServiceAccountEmail;
@@ -176,6 +184,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 
             string runtime,
 
+            ImmutableArray<Outputs.SecretEnvVarResponse> secretEnvironmentVariables,
+
+            ImmutableArray<Outputs.SecretVolumeResponse> secretVolumes,
+
             string serviceAccountEmail,
 
             string sourceArchiveUrl,
@@ -213,6 +225,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
             Name = name;
             Network = network;
             Runtime = runtime;
+            SecretEnvironmentVariables = secretEnvironmentVariables;
+            SecretVolumes = secretVolumes;
             ServiceAccountEmail = serviceAccountEmail;
             SourceArchiveUrl = sourceArchiveUrl;
             SourceRepository = sourceRepository;

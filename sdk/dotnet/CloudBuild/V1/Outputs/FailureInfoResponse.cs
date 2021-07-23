@@ -7,29 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
+namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
     [OutputType]
-    public sealed class CapabilitiesResponse
+    public sealed class FailureInfoResponse
     {
         /// <summary>
-        /// Added capabilities +optional
+        /// Explains the failure issue in more detail using hard-coded text.
         /// </summary>
-        public readonly ImmutableArray<string> Add;
+        public readonly string Detail;
         /// <summary>
-        /// Removed capabilities +optional
+        /// The name of the failure.
         /// </summary>
-        public readonly ImmutableArray<string> Drop;
+        public readonly string Type;
 
         [OutputConstructor]
-        private CapabilitiesResponse(
-            ImmutableArray<string> add,
+        private FailureInfoResponse(
+            string detail,
 
-            ImmutableArray<string> drop)
+            string type)
         {
-            Add = add;
-            Drop = drop;
+            Detail = detail;
+            Type = type;
         }
     }
 }

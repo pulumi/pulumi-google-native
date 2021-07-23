@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Share-settings for shared-reservation
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// </summary>
         [Output("specificReservation")]
@@ -143,6 +149,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Share-settings for shared-reservation
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
         /// Reservation for instances with specific machine shapes.

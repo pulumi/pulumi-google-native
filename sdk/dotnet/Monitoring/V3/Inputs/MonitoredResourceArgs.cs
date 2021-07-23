@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         }
 
         /// <summary>
-        /// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+        /// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

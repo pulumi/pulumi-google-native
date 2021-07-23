@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<bool>? EnableHealthMonitoring { get; set; }
 
         /// <summary>
-        /// Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
         /// </summary>
         [Input("idleShutdown")]
         public Input<bool>? IdleShutdown { get; set; }
 
         /// <summary>
-        /// Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        /// Time in minutes to wait before shuting down runtime. Default: 180 minutes
         /// </summary>
         [Input("idleShutdownTimeout")]
         public Input<int>? IdleShutdownTimeout { get; set; }

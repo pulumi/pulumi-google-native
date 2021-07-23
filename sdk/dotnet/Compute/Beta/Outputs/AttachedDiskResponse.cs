@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+        /// </summary>
+        public readonly ImmutableArray<string> UserLicenses;
 
         [OutputConstructor]
         private AttachedDiskResponse(
@@ -104,7 +108,9 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string source,
 
-            string type)
+            string type,
+
+            ImmutableArray<string> userLicenses)
         {
             AutoDelete = autoDelete;
             Boot = boot;
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             ShieldedInstanceInitialState = shieldedInstanceInitialState;
             Source = source;
             Type = type;
+            UserLicenses = userLicenses;
         }
     }
 }

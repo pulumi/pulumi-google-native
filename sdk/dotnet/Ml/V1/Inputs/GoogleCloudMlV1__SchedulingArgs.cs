@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         [Input("maxWaitTime")]
         public Input<string>? MaxWaitTime { get; set; }
 
+        /// <summary>
+        /// Optional. Job scheduling will be based on this priority, which in the range [0, 1000]. The bigger the number, the higher the priority. Default to 0 if not set. If there are multiple jobs requesting same type of accelerators, the high priority job will be scheduled prior to ones with low priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
+
         public GoogleCloudMlV1__SchedulingArgs()
         {
         }

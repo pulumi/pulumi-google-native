@@ -16,31 +16,19 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     public sealed class ContainerPortArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of port to expose on the pod's IP address. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// (Optional) Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
         /// </summary>
         [Input("containerPort")]
         public Input<int>? ContainerPort { get; set; }
 
         /// <summary>
-        /// What host IP to bind the external port to. +optional
-        /// </summary>
-        [Input("hostIP")]
-        public Input<string>? HostIP { get; set; }
-
-        /// <summary>
-        /// Number of port to expose on the host. If specified, this must be a valid port number, 0 &lt; x &lt; 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-        /// </summary>
-        [Input("hostPort")]
-        public Input<int>? HostPort { get; set; }
-
-        /// <summary>
-        /// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+        /// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

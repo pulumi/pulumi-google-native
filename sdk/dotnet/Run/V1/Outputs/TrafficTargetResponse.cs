@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string ConfigurationName;
         /// <summary>
-        /// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
         /// </summary>
         public readonly bool LatestRevision;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string RevisionName;
         /// <summary>
-        /// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+        /// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
         /// </summary>
         public readonly string Tag;
         /// <summary>
