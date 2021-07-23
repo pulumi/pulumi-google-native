@@ -50,7 +50,7 @@ class ConsentState(str, Enum):
     Required. Indicates the current state of this Consent.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """No state specified."""
+    """No state specified. Treated as ACTIVE only at the time of resource creation."""
     ACTIVE = "ACTIVE"
     """The Consent is active and is considered when evaluating a user's consent on resources."""
     ARCHIVED = "ARCHIVED"

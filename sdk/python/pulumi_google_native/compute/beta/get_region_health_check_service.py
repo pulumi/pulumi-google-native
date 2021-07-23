@@ -79,7 +79,7 @@ class GetRegionHealthCheckServiceResult:
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> Sequence[str]:
         """
-        List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks must belong to the same region as zones of NEGs.
+        A list of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks must belong to the same region as zones of NEGs.
         """
         return pulumi.get(self, "health_checks")
 
@@ -111,7 +111,7 @@ class GetRegionHealthCheckServiceResult:
     @pulumi.getter(name="networkEndpointGroups")
     def network_endpoint_groups(self) -> Sequence[str]:
         """
-        List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
+        A list of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
         """
         return pulumi.get(self, "network_endpoint_groups")
 
@@ -119,7 +119,7 @@ class GetRegionHealthCheckServiceResult:
     @pulumi.getter(name="notificationEndpoints")
     def notification_endpoints(self) -> Sequence[str]:
         """
-        List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
+        A list of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
         """
         return pulumi.get(self, "notification_endpoints")
 

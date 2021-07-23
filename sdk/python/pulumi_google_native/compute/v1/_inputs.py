@@ -6811,6 +6811,7 @@ class NetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input['NetworkInterfaceStackType']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
@@ -6821,6 +6822,7 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[str] network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
         :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         """
@@ -6836,6 +6838,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -6912,6 +6916,18 @@ class NetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input['NetworkInterfaceNicType']]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")

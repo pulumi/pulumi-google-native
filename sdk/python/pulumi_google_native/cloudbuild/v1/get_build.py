@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBuildResult:
-    def __init__(__self__, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
+    def __init__(__self__, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, failure_info=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
         if artifacts and not isinstance(artifacts, dict):
             raise TypeError("Expected argument 'artifacts' to be a dict")
         pulumi.set(__self__, "artifacts", artifacts)
@@ -30,6 +30,9 @@ class GetBuildResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if failure_info and not isinstance(failure_info, dict):
+            raise TypeError("Expected argument 'failure_info' to be a dict")
+        pulumi.set(__self__, "failure_info", failure_info)
         if finish_time and not isinstance(finish_time, str):
             raise TypeError("Expected argument 'finish_time' to be a str")
         pulumi.set(__self__, "finish_time", finish_time)
@@ -128,6 +131,14 @@ class GetBuildResult:
         Time at which the request to create the build was received.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="failureInfo")
+    def failure_info(self) -> 'outputs.FailureInfoResponse':
+        """
+        Contains information about the build when status=FAILURE.
+        """
+        return pulumi.get(self, "failure_info")
 
     @property
     @pulumi.getter(name="finishTime")
@@ -316,6 +327,7 @@ class AwaitableGetBuildResult(GetBuildResult):
             available_secrets=self.available_secrets,
             build_trigger_id=self.build_trigger_id,
             create_time=self.create_time,
+            failure_info=self.failure_info,
             finish_time=self.finish_time,
             images=self.images,
             log_url=self.log_url,
@@ -366,6 +378,7 @@ def get_build(build_id: Optional[str] = None,
         available_secrets=__ret__.available_secrets,
         build_trigger_id=__ret__.build_trigger_id,
         create_time=__ret__.create_time,
+        failure_info=__ret__.failure_info,
         finish_time=__ret__.finish_time,
         images=__ret__.images,
         log_url=__ret__.log_url,

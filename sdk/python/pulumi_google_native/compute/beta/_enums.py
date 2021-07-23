@@ -145,10 +145,12 @@ __all__ = [
     'SecurityPolicyAdvancedOptionsConfigLogLevel',
     'SecurityPolicyRuleDirection',
     'SecurityPolicyRuleMatcherVersionedExpr',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
     'ServerBindingType',
     'ServiceAttachmentConnectionPreference',
+    'ShareSettingsShareType',
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
@@ -220,7 +222,7 @@ class AddressNetworkTier(str, Enum):
 
 class AddressPurpose(str, Enum):
     """
-    The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+    The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     """
     DNS_RESOLVER = "DNS_RESOLVER"
     """DNS resolver address in the subnetwork."""
@@ -667,7 +669,7 @@ class FirewallPolicyRuleDirection(str, Enum):
 
 class ForwardingRuleIpProtocol(str, Enum):
     """
-    The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+    The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     """
     AH = "AH"
     ESP = "ESP"
@@ -689,7 +691,7 @@ class ForwardingRuleIpVersion(str, Enum):
 
 class ForwardingRuleLoadBalancingScheme(str, Enum):
     """
-    Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+    Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     """
     EXTERNAL = "EXTERNAL"
     INTERNAL = "INTERNAL"
@@ -764,7 +766,7 @@ class GlobalAddressNetworkTier(str, Enum):
 
 class GlobalAddressPurpose(str, Enum):
     """
-    The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+    The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
     """
     DNS_RESOLVER = "DNS_RESOLVER"
     """DNS resolver address in the subnetwork."""
@@ -784,7 +786,7 @@ class GlobalAddressPurpose(str, Enum):
 
 class GlobalForwardingRuleIpProtocol(str, Enum):
     """
-    The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+    The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     """
     AH = "AH"
     ESP = "ESP"
@@ -806,7 +808,7 @@ class GlobalForwardingRuleIpVersion(str, Enum):
 
 class GlobalForwardingRuleLoadBalancingScheme(str, Enum):
     """
-    Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+    Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
     """
     EXTERNAL = "EXTERNAL"
     INTERNAL = "INTERNAL"
@@ -839,7 +841,7 @@ class GlobalForwardingRulePscConnectionStatus(str, Enum):
 
 class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """The network endpoint is represented by an IP address."""
@@ -851,6 +853,8 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """The network endpoint is represented by an internet IP address and port."""
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
     """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
     SERVERLESS = "SERVERLESS"
     """The network endpoint is handled by specified serverless infrastructure."""
 
@@ -1205,7 +1209,7 @@ class MetadataFilterFilterMatchCriteria(str, Enum):
 
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """The network endpoint is represented by an IP address."""
@@ -1217,6 +1221,8 @@ class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """The network endpoint is represented by an internet IP address and port."""
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
     """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
     SERVERLESS = "SERVERLESS"
     """The network endpoint is handled by specified serverless infrastructure."""
 
@@ -1501,7 +1507,7 @@ class RegionInstanceGroupManagerFailoverAction(str, Enum):
 
 class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
-    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+    Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     """
     GCE_VM_IP = "GCE_VM_IP"
     """The network endpoint is represented by an IP address."""
@@ -1513,6 +1519,8 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """The network endpoint is represented by an internet IP address and port."""
     NON_GCP_PRIVATE_IP_PORT = "NON_GCP_PRIVATE_IP_PORT"
     """The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises."""
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect"""
     SERVERLESS = "SERVERLESS"
     """The network endpoint is handled by specified serverless infrastructure."""
 
@@ -1785,6 +1793,14 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
     """Matches the source IP address of a request to the IP ranges supplied in config."""
 
 
+class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
+    """
+    Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+    """
+    ALL_IPS = "ALL_IPS"
+    IP = "IP"
+
+
 class SecurityPolicyRuleRedirectOptionsType(str, Enum):
     """
     Type of the redirect action.
@@ -1817,6 +1833,16 @@ class ServiceAttachmentConnectionPreference(str, Enum):
     ACCEPT_AUTOMATIC = "ACCEPT_AUTOMATIC"
     ACCEPT_MANUAL = "ACCEPT_MANUAL"
     CONNECTION_PREFERENCE_UNSPECIFIED = "CONNECTION_PREFERENCE_UNSPECIFIED"
+
+
+class ShareSettingsShareType(str, Enum):
+    """
+    Type of sharing for this shared-reservation
+    """
+    SHARE_TYPE_UNSPECIFIED = "SHARE_TYPE_UNSPECIFIED"
+    """Default value. This value is unused."""
+    SPECIFIC_PROJECTS = "SPECIFIC_PROJECTS"
+    """Shared-reservation is open to specific projects"""
 
 
 class SslCertificateType(str, Enum):

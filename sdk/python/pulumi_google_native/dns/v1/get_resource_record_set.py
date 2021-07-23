@@ -9,13 +9,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
-    'GetRrsetResult',
-    'AwaitableGetRrsetResult',
-    'get_rrset',
+    'GetResourceRecordSetResult',
+    'AwaitableGetResourceRecordSetResult',
+    'get_resource_record_set',
 ]
 
 @pulumi.output_type
-class GetRrsetResult:
+class GetResourceRecordSetResult:
     def __init__(__self__, kind=None, name=None, rrdatas=None, signature_rrdatas=None, ttl=None, type=None):
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -82,12 +82,12 @@ class GetRrsetResult:
         return pulumi.get(self, "type")
 
 
-class AwaitableGetRrsetResult(GetRrsetResult):
+class AwaitableGetResourceRecordSetResult(GetResourceRecordSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetRrsetResult(
+        return GetResourceRecordSetResult(
             kind=self.kind,
             name=self.name,
             rrdatas=self.rrdatas,
@@ -96,12 +96,12 @@ class AwaitableGetRrsetResult(GetRrsetResult):
             type=self.type)
 
 
-def get_rrset(client_operation_id: Optional[str] = None,
-              managed_zone: Optional[str] = None,
-              name: Optional[str] = None,
-              project: Optional[str] = None,
-              type: Optional[str] = None,
-              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRrsetResult:
+def get_resource_record_set(client_operation_id: Optional[str] = None,
+                            managed_zone: Optional[str] = None,
+                            name: Optional[str] = None,
+                            project: Optional[str] = None,
+                            type: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceRecordSetResult:
     """
     Fetches the representation of an existing ResourceRecordSet.
     """
@@ -115,9 +115,9 @@ def get_rrset(client_operation_id: Optional[str] = None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getRrset', __args__, opts=opts, typ=GetRrsetResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getResourceRecordSet', __args__, opts=opts, typ=GetResourceRecordSetResult).value
 
-    return AwaitableGetRrsetResult(
+    return AwaitableGetResourceRecordSetResult(
         kind=__ret__.kind,
         name=__ret__.name,
         rrdatas=__ret__.rrdatas,

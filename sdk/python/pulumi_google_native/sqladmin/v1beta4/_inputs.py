@@ -126,7 +126,7 @@ class BackupConfigurationArgs:
         :param pulumi.Input[bool] enabled: Whether this configuration is enabled.
         :param pulumi.Input[str] kind: This is always *sql#backupConfiguration*.
         :param pulumi.Input[str] location: Location of the backup
-        :param pulumi.Input[bool] point_in_time_recovery_enabled: Reserved for future use.
+        :param pulumi.Input[bool] point_in_time_recovery_enabled: (Postgres only) Whether point in time recovery is enabled.
         :param pulumi.Input[bool] replication_log_archiving_enabled: Reserved for future use.
         :param pulumi.Input[str] start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
         :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
@@ -214,7 +214,7 @@ class BackupConfigurationArgs:
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Reserved for future use.
+        (Postgres only) Whether point in time recovery is enabled.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
@@ -1752,16 +1752,20 @@ class SqlScheduledMaintenanceArgs:
     def __init__(__self__, *,
                  can_defer: Optional[pulumi.Input[bool]] = None,
                  can_reschedule: Optional[pulumi.Input[bool]] = None,
+                 schedule_deadline_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Any scheduled maintenancce for this instance.
         :param pulumi.Input[bool] can_reschedule: If the scheduled maintenance can be rescheduled.
+        :param pulumi.Input[str] schedule_deadline_time: Maintenance cannot be rescheduled to start beyond this deadline.
         :param pulumi.Input[str] start_time: The start time of any upcoming scheduled maintenance for this instance.
         """
         if can_defer is not None:
             pulumi.set(__self__, "can_defer", can_defer)
         if can_reschedule is not None:
             pulumi.set(__self__, "can_reschedule", can_reschedule)
+        if schedule_deadline_time is not None:
+            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
 
@@ -1785,6 +1789,18 @@ class SqlScheduledMaintenanceArgs:
     @can_reschedule.setter
     def can_reschedule(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "can_reschedule", value)
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maintenance cannot be rescheduled to start beyond this deadline.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @schedule_deadline_time.setter
+    def schedule_deadline_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_deadline_time", value)
 
     @property
     @pulumi.getter(name="startTime")

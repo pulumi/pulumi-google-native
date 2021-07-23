@@ -163,6 +163,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["default_leader"] = None
             __props__.__dict__["earliest_version_time"] = None
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["name"] = None
@@ -192,6 +193,7 @@ class Database(pulumi.CustomResource):
         __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["default_leader"] = None
         __props__.__dict__["earliest_version_time"] = None
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["encryption_info"] = None
@@ -208,6 +210,14 @@ class Database(pulumi.CustomResource):
         If exists, the time at which the database creation started.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="defaultLeader")
+    def default_leader(self) -> pulumi.Output[str]:
+        """
+        The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+        """
+        return pulumi.get(self, "default_leader")
 
     @property
     @pulumi.getter(name="earliestVersionTime")

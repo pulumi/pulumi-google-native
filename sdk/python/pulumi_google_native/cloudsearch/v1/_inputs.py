@@ -17,6 +17,7 @@ __all__ = [
     'FilterOptionsArgs',
     'FilterArgs',
     'GSuitePrincipalArgs',
+    'QueryInterpretationConfigArgs',
     'ScoringConfigArgs',
     'SortOptionsArgs',
     'SourceConfigArgs',
@@ -359,6 +360,46 @@ class GSuitePrincipalArgs:
     @gsuite_user_email.setter
     def gsuite_user_email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gsuite_user_email", value)
+
+
+@pulumi.input_type
+class QueryInterpretationConfigArgs:
+    def __init__(__self__, *,
+                 force_disable_supplemental_results: Optional[pulumi.Input[bool]] = None,
+                 force_verbatim_mode: Optional[pulumi.Input[bool]] = None):
+        """
+        Default options to interpret user query.
+        :param pulumi.Input[bool] force_disable_supplemental_results: Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+        :param pulumi.Input[bool] force_verbatim_mode: Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+        """
+        if force_disable_supplemental_results is not None:
+            pulumi.set(__self__, "force_disable_supplemental_results", force_disable_supplemental_results)
+        if force_verbatim_mode is not None:
+            pulumi.set(__self__, "force_verbatim_mode", force_verbatim_mode)
+
+    @property
+    @pulumi.getter(name="forceDisableSupplementalResults")
+    def force_disable_supplemental_results(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+        """
+        return pulumi.get(self, "force_disable_supplemental_results")
+
+    @force_disable_supplemental_results.setter
+    def force_disable_supplemental_results(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_disable_supplemental_results", value)
+
+    @property
+    @pulumi.getter(name="forceVerbatimMode")
+    def force_verbatim_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+        """
+        return pulumi.get(self, "force_verbatim_mode")
+
+    @force_verbatim_mode.setter
+    def force_verbatim_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_verbatim_mode", value)
 
 
 @pulumi.input_type

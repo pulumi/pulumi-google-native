@@ -8,10 +8,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
-__all__ = ['RrsetArgs', 'Rrset']
+__all__ = ['ResourceRecordSetInitArgs', 'ResourceRecordSet']
 
 @pulumi.input_type
-class RrsetArgs:
+class ResourceRecordSetInitArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  client_operation_id: Optional[pulumi.Input[str]] = None,
@@ -23,7 +23,7 @@ class RrsetArgs:
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a Rrset resource.
+        The set of arguments for constructing a ResourceRecordSet resource.
         :param pulumi.Input[str] name: For example, www.example.com.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
@@ -145,7 +145,7 @@ class RrsetArgs:
         pulumi.set(self, "type", value)
 
 
-class Rrset(pulumi.CustomResource):
+class ResourceRecordSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -175,18 +175,18 @@ class Rrset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RrsetArgs,
+                 args: ResourceRecordSetInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new ResourceRecordSet.
 
         :param str resource_name: The name of the resource.
-        :param RrsetArgs args: The arguments to use to populate this resource's properties.
+        :param ResourceRecordSetInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RrsetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ResourceRecordSetInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -214,7 +214,7 @@ class Rrset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RrsetArgs.__new__(RrsetArgs)
+            __props__ = ResourceRecordSetInitArgs.__new__(ResourceRecordSetInitArgs)
 
             __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["kind"] = kind
@@ -227,8 +227,8 @@ class Rrset(pulumi.CustomResource):
             __props__.__dict__["signature_rrdatas"] = signature_rrdatas
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["type"] = type
-        super(Rrset, __self__).__init__(
-            'google-native:dns/v1beta2:Rrset',
+        super(ResourceRecordSet, __self__).__init__(
+            'google-native:dns/v1:ResourceRecordSet',
             resource_name,
             __props__,
             opts)
@@ -236,9 +236,9 @@ class Rrset(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'Rrset':
+            opts: Optional[pulumi.ResourceOptions] = None) -> 'ResourceRecordSet':
         """
-        Get an existing Rrset resource's state with the given name, id, and optional extra
+        Get an existing ResourceRecordSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -247,7 +247,7 @@ class Rrset(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = RrsetArgs.__new__(RrsetArgs)
+        __props__ = ResourceRecordSetInitArgs.__new__(ResourceRecordSetInitArgs)
 
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -255,7 +255,7 @@ class Rrset(pulumi.CustomResource):
         __props__.__dict__["signature_rrdatas"] = None
         __props__.__dict__["ttl"] = None
         __props__.__dict__["type"] = None
-        return Rrset(resource_name, opts=opts, __props__=__props__)
+        return ResourceRecordSet(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

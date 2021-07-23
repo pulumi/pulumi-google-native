@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSearchApplicationResult:
-    def __init__(__self__, data_source_restrictions=None, default_facet_options=None, default_sort_options=None, display_name=None, enable_audit_log=None, name=None, operation_ids=None, scoring_config=None, source_config=None):
+    def __init__(__self__, data_source_restrictions=None, default_facet_options=None, default_sort_options=None, display_name=None, enable_audit_log=None, name=None, operation_ids=None, query_interpretation_config=None, scoring_config=None, source_config=None):
         if data_source_restrictions and not isinstance(data_source_restrictions, list):
             raise TypeError("Expected argument 'data_source_restrictions' to be a list")
         pulumi.set(__self__, "data_source_restrictions", data_source_restrictions)
@@ -39,6 +39,9 @@ class GetSearchApplicationResult:
         if operation_ids and not isinstance(operation_ids, list):
             raise TypeError("Expected argument 'operation_ids' to be a list")
         pulumi.set(__self__, "operation_ids", operation_ids)
+        if query_interpretation_config and not isinstance(query_interpretation_config, dict):
+            raise TypeError("Expected argument 'query_interpretation_config' to be a dict")
+        pulumi.set(__self__, "query_interpretation_config", query_interpretation_config)
         if scoring_config and not isinstance(scoring_config, dict):
             raise TypeError("Expected argument 'scoring_config' to be a dict")
         pulumi.set(__self__, "scoring_config", scoring_config)
@@ -103,6 +106,14 @@ class GetSearchApplicationResult:
         return pulumi.get(self, "operation_ids")
 
     @property
+    @pulumi.getter(name="queryInterpretationConfig")
+    def query_interpretation_config(self) -> 'outputs.QueryInterpretationConfigResponse':
+        """
+        The default options for query interpretation
+        """
+        return pulumi.get(self, "query_interpretation_config")
+
+    @property
     @pulumi.getter(name="scoringConfig")
     def scoring_config(self) -> 'outputs.ScoringConfigResponse':
         """
@@ -132,6 +143,7 @@ class AwaitableGetSearchApplicationResult(GetSearchApplicationResult):
             enable_audit_log=self.enable_audit_log,
             name=self.name,
             operation_ids=self.operation_ids,
+            query_interpretation_config=self.query_interpretation_config,
             scoring_config=self.scoring_config,
             source_config=self.source_config)
 
@@ -159,5 +171,6 @@ def get_search_application(debug_options_enable_debugging: Optional[str] = None,
         enable_audit_log=__ret__.enable_audit_log,
         name=__ret__.name,
         operation_ids=__ret__.operation_ids,
+        query_interpretation_config=__ret__.query_interpretation_config,
         scoring_config=__ret__.scoring_config,
         source_config=__ret__.source_config)

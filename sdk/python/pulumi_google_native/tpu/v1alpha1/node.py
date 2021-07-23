@@ -26,6 +26,7 @@ class NodeArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['SchedulingConfigArgs']] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None):
         """
@@ -58,6 +59,8 @@ class NodeArgs:
             pulumi.set(__self__, "node_id", node_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if scheduling_config is not None:
             pulumi.set(__self__, "scheduling_config", scheduling_config)
         if use_service_networking is not None:
@@ -175,6 +178,15 @@ class NodeArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="schedulingConfig")
     def scheduling_config(self) -> Optional[pulumi.Input['SchedulingConfigArgs']]:
         """
@@ -213,6 +225,7 @@ class Node(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
@@ -267,6 +280,7 @@ class Node(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
@@ -293,6 +307,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["node_id"] = node_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["scheduling_config"] = scheduling_config
             if tensorflow_version is None and not opts.urn:
                 raise TypeError("Missing required property 'tensorflow_version'")

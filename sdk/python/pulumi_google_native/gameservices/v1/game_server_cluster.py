@@ -230,6 +230,7 @@ class GameServerCluster(pulumi.CustomResource):
             if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__.__dict__["realm_id"] = realm_id
+            __props__.__dict__["cluster_state"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         super(GameServerCluster, __self__).__init__(
@@ -254,6 +255,7 @@ class GameServerCluster(pulumi.CustomResource):
 
         __props__ = GameServerClusterArgs.__new__(GameServerClusterArgs)
 
+        __props__.__dict__["cluster_state"] = None
         __props__.__dict__["connection_info"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -262,6 +264,14 @@ class GameServerCluster(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         return GameServerCluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clusterState")
+    def cluster_state(self) -> pulumi.Output['outputs.KubernetesClusterStateResponse']:
+        """
+        The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+        """
+        return pulumi.get(self, "cluster_state")
 
     @property
     @pulumi.getter(name="connectionInfo")

@@ -6,12 +6,12 @@ from enum import Enum
 
 __all__ = [
     'AcceleratorConfigType',
-    'ExecutionTemplateScaleTier',
     'InstanceBootDiskType',
     'InstanceDataDiskType',
     'InstanceDiskEncryption',
     'InstanceNicType',
     'LocalDiskInitializeParamsDiskType',
+    'ReservationAffinityConsumeReservationType',
     'RuntimeAcceleratorConfigType',
     'RuntimeAccessConfigAccessType',
     'ScheduleState',
@@ -50,26 +50,6 @@ class AcceleratorConfigType(str, Enum):
     """(Coming soon) Accelerator type is TPU V2."""
     TPU_V3 = "TPU_V3"
     """(Coming soon) Accelerator type is TPU V3."""
-
-
-class ExecutionTemplateScaleTier(str, Enum):
-    """
-    Required. Scale tier of the hardware used for notebook execution.
-    """
-    SCALE_TIER_UNSPECIFIED = "SCALE_TIER_UNSPECIFIED"
-    """Unspecified Scale Tier."""
-    BASIC = "BASIC"
-    """A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets."""
-    STANDARD1 = "STANDARD_1"
-    """Many workers and a few parameter servers."""
-    PREMIUM1 = "PREMIUM_1"
-    """A large number of workers with many parameter servers."""
-    BASIC_GPU = "BASIC_GPU"
-    """A single worker instance with a K80 GPU."""
-    BASIC_TPU = "BASIC_TPU"
-    """A single worker instance with a Cloud TPU."""
-    CUSTOM = "CUSTOM"
-    """The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type."""
 
 
 class InstanceBootDiskType(str, Enum):
@@ -138,6 +118,20 @@ class LocalDiskInitializeParamsDiskType(str, Enum):
     """Balanced persistent disk type."""
 
 
+class ReservationAffinityConsumeReservationType(str, Enum):
+    """
+    Optional. Type of reservation to consume
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """Default type."""
+    NO_RESERVATION = "NO_RESERVATION"
+    """Do not consume from any allocated capacity."""
+    ANY_RESERVATION = "ANY_RESERVATION"
+    """Consume any reservation available."""
+    SPECIFIC_RESERVATION = "SPECIFIC_RESERVATION"
+    """Must consume from a specific reservation. Must specify key value fields for specifying the reservations."""
+
+
 class RuntimeAcceleratorConfigType(str, Enum):
     """
     Accelerator model.
@@ -189,6 +183,10 @@ class ScheduleState(str, Enum):
     """The job is disabled by the system due to error. The user cannot directly set a job to be disabled."""
     UPDATE_FAILED = "UPDATE_FAILED"
     """The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received."""
+    INITIALIZING = "INITIALIZING"
+    """The schedule resource is being created."""
+    DELETING = "DELETING"
+    """The schedule resource is being deleted."""
 
 
 class SchedulerAcceleratorConfigType(str, Enum):

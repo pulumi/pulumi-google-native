@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionNetworkFirewallPolicyResult:
-    def __init__(__self__, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None):
+    def __init__(__self__, associations=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None):
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         pulumi.set(__self__, "associations", associations)
@@ -27,9 +27,6 @@ class GetRegionNetworkFirewallPolicyResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if display_name and not isinstance(display_name, str):
-            raise TypeError("Expected argument 'display_name' to be a str")
-        pulumi.set(__self__, "display_name", display_name)
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -84,14 +81,6 @@ class GetRegionNetworkFirewallPolicyResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
-        """
-        Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        """
-        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
@@ -169,7 +158,7 @@ class GetRegionNetworkFirewallPolicyResult:
     @pulumi.getter(name="shortName")
     def short_name(self) -> str:
         """
-        User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "short_name")
 
@@ -183,7 +172,6 @@ class AwaitableGetRegionNetworkFirewallPolicyResult(GetRegionNetworkFirewallPoli
             associations=self.associations,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
-            display_name=self.display_name,
             fingerprint=self.fingerprint,
             kind=self.kind,
             name=self.name,
@@ -217,7 +205,6 @@ def get_region_network_firewall_policy(firewall_policy: Optional[str] = None,
         associations=__ret__.associations,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
-        display_name=__ret__.display_name,
         fingerprint=__ret__.fingerprint,
         kind=__ret__.kind,
         name=__ret__.name,

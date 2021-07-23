@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, rollout_override=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None, user_licenses=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, str):
             raise TypeError("Expected argument 'archive_size_bytes' to be a str")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -63,6 +63,9 @@ class GetImageResult:
         if raw_disk and not isinstance(raw_disk, dict):
             raise TypeError("Expected argument 'raw_disk' to be a dict")
         pulumi.set(__self__, "raw_disk", raw_disk)
+        if rollout_override and not isinstance(rollout_override, dict):
+            raise TypeError("Expected argument 'rollout_override' to be a dict")
+        pulumi.set(__self__, "rollout_override", rollout_override)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -108,6 +111,9 @@ class GetImageResult:
         if storage_locations and not isinstance(storage_locations, list):
             raise TypeError("Expected argument 'storage_locations' to be a list")
         pulumi.set(__self__, "storage_locations", storage_locations)
+        if user_licenses and not isinstance(user_licenses, list):
+            raise TypeError("Expected argument 'user_licenses' to be a list")
+        pulumi.set(__self__, "user_licenses", user_licenses)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -230,6 +236,14 @@ class GetImageResult:
         return pulumi.get(self, "raw_disk")
 
     @property
+    @pulumi.getter(name="rolloutOverride")
+    def rollout_override(self) -> 'outputs.RolloutPolicyResponse':
+        """
+        A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        """
+        return pulumi.get(self, "rollout_override")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -349,6 +363,14 @@ class GetImageResult:
         """
         return pulumi.get(self, "storage_locations")
 
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> Sequence[str]:
+        """
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        """
+        return pulumi.get(self, "user_licenses")
+
 
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
@@ -371,6 +393,7 @@ class AwaitableGetImageResult(GetImageResult):
             licenses=self.licenses,
             name=self.name,
             raw_disk=self.raw_disk,
+            rollout_override=self.rollout_override,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             shielded_instance_initial_state=self.shielded_instance_initial_state,
@@ -385,7 +408,8 @@ class AwaitableGetImageResult(GetImageResult):
             source_snapshot_id=self.source_snapshot_id,
             source_type=self.source_type,
             status=self.status,
-            storage_locations=self.storage_locations)
+            storage_locations=self.storage_locations,
+            user_licenses=self.user_licenses)
 
 
 def get_image(image: Optional[str] = None,
@@ -419,6 +443,7 @@ def get_image(image: Optional[str] = None,
         licenses=__ret__.licenses,
         name=__ret__.name,
         raw_disk=__ret__.raw_disk,
+        rollout_override=__ret__.rollout_override,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         shielded_instance_initial_state=__ret__.shielded_instance_initial_state,
@@ -433,4 +458,5 @@ def get_image(image: Optional[str] = None,
         source_snapshot_id=__ret__.source_snapshot_id,
         source_type=__ret__.source_type,
         status=__ret__.status,
-        storage_locations=__ret__.storage_locations)
+        storage_locations=__ret__.storage_locations,
+        user_licenses=__ret__.user_licenses)

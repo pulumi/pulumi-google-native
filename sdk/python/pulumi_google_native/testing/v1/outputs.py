@@ -45,7 +45,6 @@ __all__ = [
     'ShardResponse',
     'ShardingOptionResponse',
     'StartActivityIntentResponse',
-    'SystraceSetupResponse',
     'TestDetailsResponse',
     'TestExecutionResponse',
     'TestSetupResponse',
@@ -448,6 +447,8 @@ class AndroidRoboTestResponse(dict):
             suggest = "max_steps"
         elif key == "roboDirectives":
             suggest = "robo_directives"
+        elif key == "roboMode":
+            suggest = "robo_mode"
         elif key == "roboScript":
             suggest = "robo_script"
         elif key == "startingIntents":
@@ -472,6 +473,7 @@ class AndroidRoboTestResponse(dict):
                  max_depth: int,
                  max_steps: int,
                  robo_directives: Sequence['outputs.RoboDirectiveResponse'],
+                 robo_mode: str,
                  robo_script: 'outputs.FileReferenceResponse',
                  starting_intents: Sequence['outputs.RoboStartingIntentResponse']):
         """
@@ -483,6 +485,7 @@ class AndroidRoboTestResponse(dict):
         :param int max_depth: The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
         :param int max_steps: The max number of steps Robo can execute. Default is no limit.
         :param Sequence['RoboDirectiveResponse'] robo_directives: A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
+        :param str robo_mode: The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
         :param 'FileReferenceResponse' robo_script: A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
         :param Sequence['RoboStartingIntentResponse'] starting_intents: The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
         """
@@ -493,6 +496,7 @@ class AndroidRoboTestResponse(dict):
         pulumi.set(__self__, "max_depth", max_depth)
         pulumi.set(__self__, "max_steps", max_steps)
         pulumi.set(__self__, "robo_directives", robo_directives)
+        pulumi.set(__self__, "robo_mode", robo_mode)
         pulumi.set(__self__, "robo_script", robo_script)
         pulumi.set(__self__, "starting_intents", starting_intents)
 
@@ -551,6 +555,14 @@ class AndroidRoboTestResponse(dict):
         A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
         """
         return pulumi.get(self, "robo_directives")
+
+    @property
+    @pulumi.getter(name="roboMode")
+    def robo_mode(self) -> str:
+        """
+        The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+        """
+        return pulumi.get(self, "robo_mode")
 
     @property
     @pulumi.getter(name="roboScript")
@@ -2047,41 +2059,6 @@ class StartActivityIntentResponse(dict):
 
 
 @pulumi.output_type
-class SystraceSetupResponse(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "durationSeconds":
-            suggest = "duration_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SystraceSetupResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SystraceSetupResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SystraceSetupResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 duration_seconds: int):
-        """
-        :param int duration_seconds: Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-        """
-        pulumi.set(__self__, "duration_seconds", duration_seconds)
-
-    @property
-    @pulumi.getter(name="durationSeconds")
-    def duration_seconds(self) -> int:
-        """
-        Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-        """
-        return pulumi.get(self, "duration_seconds")
-
-
-@pulumi.output_type
 class TestDetailsResponse(dict):
     """
     Additional details about the progress of the running test.
@@ -2305,8 +2282,7 @@ class TestSetupResponse(dict):
                  dont_autogrant_permissions: bool,
                  environment_variables: Sequence['outputs.EnvironmentVariableResponse'],
                  files_to_push: Sequence['outputs.DeviceFileResponse'],
-                 network_profile: str,
-                 systrace: 'outputs.SystraceSetupResponse'):
+                 network_profile: str):
         """
         A description of how to set up the Android device prior to running the test.
         :param 'AccountResponse' account: The device will be logged in on this account for the duration of the test.
@@ -2316,7 +2292,6 @@ class TestSetupResponse(dict):
         :param Sequence['EnvironmentVariableResponse'] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param Sequence['DeviceFileResponse'] files_to_push: List of files to push to the device before starting the test.
         :param str network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-        :param 'SystraceSetupResponse' systrace: Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "additional_apks", additional_apks)
@@ -2325,7 +2300,6 @@ class TestSetupResponse(dict):
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "files_to_push", files_to_push)
         pulumi.set(__self__, "network_profile", network_profile)
-        pulumi.set(__self__, "systrace", systrace)
 
     @property
     @pulumi.getter
@@ -2382,14 +2356,6 @@ class TestSetupResponse(dict):
         The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         """
         return pulumi.get(self, "network_profile")
-
-    @property
-    @pulumi.getter
-    def systrace(self) -> 'outputs.SystraceSetupResponse':
-        """
-        Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-        """
-        return pulumi.get(self, "systrace")
 
 
 @pulumi.output_type

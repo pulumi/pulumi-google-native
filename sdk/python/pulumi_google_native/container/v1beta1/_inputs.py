@@ -2437,7 +2437,7 @@ class NodePoolAutoscalingArgs:
         NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         :param pulumi.Input[bool] autoprovisioned: Can this node pool be deleted automatically.
         :param pulumi.Input[bool] enabled: Is autoscaling enabled for this node pool.
-        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         :param pulumi.Input[int] min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
         """
         if autoprovisioned is not None:
@@ -2477,7 +2477,7 @@ class NodePoolAutoscalingArgs:
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
         """
         return pulumi.get(self, "max_node_count")
 

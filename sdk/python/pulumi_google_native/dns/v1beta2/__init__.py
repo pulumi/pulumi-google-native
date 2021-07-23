@@ -10,13 +10,13 @@ from .change import *
 from .get_change import *
 from .get_managed_zone import *
 from .get_policy import *
+from .get_resource_record_set import *
 from .get_response_policy import *
 from .get_response_policy_rule import *
-from .get_rrset import *
 from .managed_zone import *
 from .policy import *
+from .resource_record_set import *
 from .response_policy import *
 from .response_policy_rule import *
-from .rrset import *
 from ._inputs import *
 from . import outputs

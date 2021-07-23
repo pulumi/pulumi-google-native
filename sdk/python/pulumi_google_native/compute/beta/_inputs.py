@@ -112,6 +112,7 @@ __all__ = [
     'NetworkEndpointGroupAppEngineArgs',
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
+    'NetworkEndpointGroupServerlessDeploymentArgs',
     'NetworkInterfaceArgs',
     'NetworkPerformanceConfigArgs',
     'NetworkRoutingConfigArgs',
@@ -144,6 +145,7 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicyArgs',
     'ResourcePolicyWeeklyCycleDayOfWeekArgs',
     'ResourcePolicyWeeklyCycleArgs',
+    'RolloutPolicyArgs',
     'RouterAdvertisedIpRangeArgs',
     'RouterBgpPeerBfdArgs',
     'RouterBgpPeerArgs',
@@ -165,12 +167,15 @@ __all__ = [
     'SecurityPolicyRuleMatcherConfigLayer4ConfigArgs',
     'SecurityPolicyRuleMatcherConfigArgs',
     'SecurityPolicyRuleMatcherArgs',
+    'SecurityPolicyRuleRateLimitOptionsThresholdArgs',
+    'SecurityPolicyRuleRateLimitOptionsArgs',
     'SecurityPolicyRuleRedirectOptionsArgs',
     'SecurityPolicyRuleArgs',
     'SecuritySettingsArgs',
     'ServerBindingArgs',
     'ServiceAccountArgs',
     'ServiceAttachmentConsumerProjectLimitArgs',
+    'ShareSettingsArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedInstanceIntegrityPolicyArgs',
     'ShieldedVmConfigArgs',
@@ -2100,16 +2105,20 @@ class BackendServiceCdnPolicyArgs:
 class BackendServiceConnectionTrackingPolicyArgs:
     def __init__(__self__, *,
                  connection_persistence_on_unhealthy_backends: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends']] = None,
+                 enable_strong_affinity: Optional[pulumi.Input[bool]] = None,
                  idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tracking_mode: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyTrackingMode']] = None):
         """
         Connection Tracking configuration for this BackendService.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends'] connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+        :param pulumi.Input[bool] enable_strong_affinity: Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
         :param pulumi.Input[int] idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyTrackingMode'] tracking_mode: Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
         """
         if connection_persistence_on_unhealthy_backends is not None:
             pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        if enable_strong_affinity is not None:
+            pulumi.set(__self__, "enable_strong_affinity", enable_strong_affinity)
         if idle_timeout_sec is not None:
             pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
         if tracking_mode is not None:
@@ -2126,6 +2135,18 @@ class BackendServiceConnectionTrackingPolicyArgs:
     @connection_persistence_on_unhealthy_backends.setter
     def connection_persistence_on_unhealthy_backends(self, value: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends']]):
         pulumi.set(self, "connection_persistence_on_unhealthy_backends", value)
+
+    @property
+    @pulumi.getter(name="enableStrongAffinity")
+    def enable_strong_affinity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+        """
+        return pulumi.get(self, "enable_strong_affinity")
+
+    @enable_strong_affinity.setter
+    def enable_strong_affinity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_strong_affinity", value)
 
     @property
     @pulumi.getter(name="idleTimeoutSec")
@@ -3258,7 +3279,8 @@ class DeprecationStatusArgs:
                  deprecated: Optional[pulumi.Input[str]] = None,
                  obsolete: Optional[pulumi.Input[str]] = None,
                  replacement: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['DeprecationStatusState']] = None):
+                 state: Optional[pulumi.Input['DeprecationStatusState']] = None,
+                 state_override: Optional[pulumi.Input['RolloutPolicyArgs']] = None):
         """
         Deprecation status for a public resource.
         :param pulumi.Input[str] deleted: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
@@ -3266,6 +3288,7 @@ class DeprecationStatusArgs:
         :param pulumi.Input[str] obsolete: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.
         :param pulumi.Input[str] replacement: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
         :param pulumi.Input['DeprecationStatusState'] state: The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
+        :param pulumi.Input['RolloutPolicyArgs'] state_override: The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
         """
         if deleted is not None:
             pulumi.set(__self__, "deleted", deleted)
@@ -3277,6 +3300,8 @@ class DeprecationStatusArgs:
             pulumi.set(__self__, "replacement", replacement)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if state_override is not None:
+            pulumi.set(__self__, "state_override", state_override)
 
     @property
     @pulumi.getter
@@ -3337,6 +3362,18 @@ class DeprecationStatusArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input['DeprecationStatusState']]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateOverride")
+    def state_override(self) -> Optional[pulumi.Input['RolloutPolicyArgs']]:
+        """
+        The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        """
+        return pulumi.get(self, "state_override")
+
+    @state_override.setter
+    def state_override(self, value: Optional[pulumi.Input['RolloutPolicyArgs']]):
+        pulumi.set(self, "state_override", value)
 
 
 @pulumi.input_type
@@ -7290,6 +7327,78 @@ class NetworkEndpointGroupCloudRunArgs:
 
 
 @pulumi.input_type
+class NetworkEndpointGroupServerlessDeploymentArgs:
+    def __init__(__self__, *,
+                 platform: Optional[pulumi.Input[str]] = None,
+                 resource: Optional[pulumi.Input[str]] = None,
+                 url_mask: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+        :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
+        :param pulumi.Input[str] url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
+        :param pulumi.Input[str] version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
+        """
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if url_mask is not None:
+            pulumi.set(__self__, "url_mask", url_mask)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> Optional[pulumi.Input[str]]:
+        """
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
+        """
+        return pulumi.get(self, "url_mask")
+
+    @url_mask.setter
+    def url_mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_mask", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
@@ -7298,6 +7407,7 @@ class NetworkInterfaceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input['NetworkInterfaceStackType']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
@@ -7308,6 +7418,7 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[str] network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
         :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         """
@@ -7323,6 +7434,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -7399,6 +7512,18 @@ class NetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input['NetworkInterfaceNicType']]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -8441,6 +8566,7 @@ class ReservationArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -8448,6 +8574,7 @@ class ReservationArgs:
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -8456,6 +8583,8 @@ class ReservationArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
@@ -8486,6 +8615,18 @@ class ReservationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
+        """
+        Share-settings for shared-reservation
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
 
     @property
     @pulumi.getter(name="specificReservation")
@@ -9101,6 +9242,46 @@ class ResourcePolicyWeeklyCycleArgs:
     @day_of_weeks.setter
     def day_of_weeks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourcePolicyWeeklyCycleDayOfWeekArgs']]]]):
         pulumi.set(self, "day_of_weeks", value)
+
+
+@pulumi.input_type
+class RolloutPolicyArgs:
+    def __init__(__self__, *,
+                 default_rollout_time: Optional[pulumi.Input[str]] = None,
+                 location_rollout_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        A rollout policy configuration.
+        :param pulumi.Input[str] default_rollout_time: An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] location_rollout_policies: Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+        """
+        if default_rollout_time is not None:
+            pulumi.set(__self__, "default_rollout_time", default_rollout_time)
+        if location_rollout_policies is not None:
+            pulumi.set(__self__, "location_rollout_policies", location_rollout_policies)
+
+    @property
+    @pulumi.getter(name="defaultRolloutTime")
+    def default_rollout_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+        """
+        return pulumi.get(self, "default_rollout_time")
+
+    @default_rollout_time.setter
+    def default_rollout_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_rollout_time", value)
+
+    @property
+    @pulumi.getter(name="locationRolloutPolicies")
+    def location_rollout_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+        """
+        return pulumi.get(self, "location_rollout_policies")
+
+    @location_rollout_policies.setter
+    def location_rollout_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "location_rollout_policies", value)
 
 
 @pulumi.input_type
@@ -10703,6 +10884,148 @@ class SecurityPolicyRuleMatcherArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsThresholdArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
+                 interval_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] count: Number of HTTP(S) requests for calculating the threshold.
+        :param pulumi.Input[int] interval_sec: Interval over which the threshold is computed.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if interval_sec is not None:
+            pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+    @interval_sec.setter
+    def interval_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "interval_sec", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsArgs:
+    def __init__(__self__, *,
+                 ban_duration_sec: Optional[pulumi.Input[int]] = None,
+                 ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']] = None,
+                 conform_action: Optional[pulumi.Input[str]] = None,
+                 enforce_on_key: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']] = None,
+                 exceed_action: Optional[pulumi.Input[str]] = None,
+                 rate_limit_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']] = None):
+        """
+        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
+        """
+        if ban_duration_sec is not None:
+            pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
+        if ban_threshold is not None:
+            pulumi.set(__self__, "ban_threshold", ban_threshold)
+        if conform_action is not None:
+            pulumi.set(__self__, "conform_action", conform_action)
+        if enforce_on_key is not None:
+            pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        if exceed_action is not None:
+            pulumi.set(__self__, "exceed_action", exceed_action)
+        if rate_limit_threshold is not None:
+            pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
+
+    @property
+    @pulumi.getter(name="banDurationSec")
+    def ban_duration_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        return pulumi.get(self, "ban_duration_sec")
+
+    @ban_duration_sec.setter
+    def ban_duration_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ban_duration_sec", value)
+
+    @property
+    @pulumi.getter(name="banThreshold")
+    def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']]:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+        """
+        return pulumi.get(self, "ban_threshold")
+
+    @ban_threshold.setter
+    def ban_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']]):
+        pulumi.set(self, "ban_threshold", value)
+
+    @property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @conform_action.setter
+    def conform_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "conform_action", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKey")
+    def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
+        """
+        Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        """
+        return pulumi.get(self, "enforce_on_key")
+
+    @enforce_on_key.setter
+    def enforce_on_key(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]):
+        pulumi.set(self, "enforce_on_key", value)
+
+    @property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @exceed_action.setter
+    def exceed_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exceed_action", value)
+
+    @property
+    @pulumi.getter(name="rateLimitThreshold")
+    def rate_limit_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']]:
+        """
+        Threshold at which to begin ratelimiting.
+        """
+        return pulumi.get(self, "rate_limit_threshold")
+
+    @rate_limit_threshold.setter
+    def rate_limit_threshold(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']]):
+        pulumi.set(self, "rate_limit_threshold", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleRedirectOptionsArgs:
     def __init__(__self__, *,
                  target: Optional[pulumi.Input[str]] = None,
@@ -10752,6 +11075,7 @@ class SecurityPolicyRuleArgs:
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
                  redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None,
                  rule_number: Optional[pulumi.Input[str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -10766,6 +11090,7 @@ class SecurityPolicyRuleArgs:
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
         :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
         :param pulumi.Input[str] rule_number: Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
@@ -10787,6 +11112,8 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "preview", preview)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
         if redirect_options is not None:
             pulumi.set(__self__, "redirect_options", redirect_options)
         if rule_number is not None:
@@ -10891,6 +11218,18 @@ class SecurityPolicyRuleArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
 
     @property
     @pulumi.getter(name="redirectOptions")
@@ -11075,6 +11414,46 @@ class ServiceAttachmentConsumerProjectLimitArgs:
     @project_id_or_num.setter
     def project_id_or_num(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id_or_num", value)
+
+
+@pulumi.input_type
+class ShareSettingsArgs:
+    def __init__(__self__, *,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 share_type: Optional[pulumi.Input['ShareSettingsShareType']] = None):
+        """
+        The share setting for reservations and sole tenancy node groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input['ShareSettingsShareType'] share_type: Type of sharing for this shared-reservation
+        """
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "projects", value)
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input['ShareSettingsShareType']]:
+        """
+        Type of sharing for this shared-reservation
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input['ShareSettingsShareType']]):
+        pulumi.set(self, "share_type", value)
 
 
 @pulumi.input_type

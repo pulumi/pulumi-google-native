@@ -7696,6 +7696,8 @@ class NetworkInterfaceResponse(dict):
             suggest = "network_ip"
         elif key == "nicType":
             suggest = "nic_type"
+        elif key == "queueCount":
+            suggest = "queue_count"
         elif key == "stackType":
             suggest = "stack_type"
 
@@ -7722,6 +7724,7 @@ class NetworkInterfaceResponse(dict):
                  network: str,
                  network_ip: str,
                  nic_type: str,
+                 queue_count: int,
                  stack_type: str,
                  subnetwork: str):
         """
@@ -7737,6 +7740,7 @@ class NetworkInterfaceResponse(dict):
         :param str network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param str network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
         :param str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         :param str subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         """
@@ -7751,6 +7755,7 @@ class NetworkInterfaceResponse(dict):
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
         pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "queue_count", queue_count)
         pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -7841,6 +7846,14 @@ class NetworkInterfaceResponse(dict):
         The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         """
         return pulumi.get(self, "nic_type")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> int:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+        """
+        return pulumi.get(self, "queue_count")
 
     @property
     @pulumi.getter(name="stackType")

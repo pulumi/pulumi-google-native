@@ -310,7 +310,9 @@ class GkeClusterResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceLink":
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
             suggest = "resource_link"
 
         if suggest:
@@ -325,12 +327,23 @@ class GkeClusterResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cluster_missing: bool,
                  resource_link: str):
         """
         GkeCluster contains information specific to GKE clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
         :param str resource_link: Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
         pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+        """
+        return pulumi.get(self, "cluster_missing")
 
     @property
     @pulumi.getter(name="resourceLink")

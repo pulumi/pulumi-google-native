@@ -42,7 +42,6 @@ __all__ = [
     'RoboStartingIntentArgs',
     'ShardingOptionArgs',
     'StartActivityIntentArgs',
-    'SystraceSetupArgs',
     'TestSetupArgs',
     'TestSpecificationArgs',
     'TestTargetsForShardArgs',
@@ -394,6 +393,7 @@ class AndroidRoboTestArgs:
                  max_depth: Optional[pulumi.Input[int]] = None,
                  max_steps: Optional[pulumi.Input[int]] = None,
                  robo_directives: Optional[pulumi.Input[Sequence[pulumi.Input['RoboDirectiveArgs']]]] = None,
+                 robo_mode: Optional[pulumi.Input['AndroidRoboTestRoboMode']] = None,
                  robo_script: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  starting_intents: Optional[pulumi.Input[Sequence[pulumi.Input['RoboStartingIntentArgs']]]] = None):
         """
@@ -405,6 +405,7 @@ class AndroidRoboTestArgs:
         :param pulumi.Input[int] max_depth: The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
         :param pulumi.Input[int] max_steps: The max number of steps Robo can execute. Default is no limit.
         :param pulumi.Input[Sequence[pulumi.Input['RoboDirectiveArgs']]] robo_directives: A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
+        :param pulumi.Input['AndroidRoboTestRoboMode'] robo_mode: The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
         :param pulumi.Input['FileReferenceArgs'] robo_script: A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
         :param pulumi.Input[Sequence[pulumi.Input['RoboStartingIntentArgs']]] starting_intents: The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
         """
@@ -422,6 +423,8 @@ class AndroidRoboTestArgs:
             pulumi.set(__self__, "max_steps", max_steps)
         if robo_directives is not None:
             pulumi.set(__self__, "robo_directives", robo_directives)
+        if robo_mode is not None:
+            pulumi.set(__self__, "robo_mode", robo_mode)
         if robo_script is not None:
             pulumi.set(__self__, "robo_script", robo_script)
         if starting_intents is not None:
@@ -510,6 +513,18 @@ class AndroidRoboTestArgs:
     @robo_directives.setter
     def robo_directives(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoboDirectiveArgs']]]]):
         pulumi.set(self, "robo_directives", value)
+
+    @property
+    @pulumi.getter(name="roboMode")
+    def robo_mode(self) -> Optional[pulumi.Input['AndroidRoboTestRoboMode']]:
+        """
+        The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+        """
+        return pulumi.get(self, "robo_mode")
+
+    @robo_mode.setter
+    def robo_mode(self, value: Optional[pulumi.Input['AndroidRoboTestRoboMode']]):
+        pulumi.set(self, "robo_mode", value)
 
     @property
     @pulumi.getter(name="roboScript")
@@ -1640,29 +1655,6 @@ class StartActivityIntentArgs:
 
 
 @pulumi.input_type
-class SystraceSetupArgs:
-    def __init__(__self__, *,
-                 duration_seconds: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] duration_seconds: Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-        """
-        if duration_seconds is not None:
-            pulumi.set(__self__, "duration_seconds", duration_seconds)
-
-    @property
-    @pulumi.getter(name="durationSeconds")
-    def duration_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-        """
-        return pulumi.get(self, "duration_seconds")
-
-    @duration_seconds.setter
-    def duration_seconds(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "duration_seconds", value)
-
-
-@pulumi.input_type
 class TestSetupArgs:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input['AccountArgs']] = None,
@@ -1671,8 +1663,7 @@ class TestSetupArgs:
                  dont_autogrant_permissions: Optional[pulumi.Input[bool]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]]] = None,
                  files_to_push: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]]] = None,
-                 network_profile: Optional[pulumi.Input[str]] = None,
-                 systrace: Optional[pulumi.Input['SystraceSetupArgs']] = None):
+                 network_profile: Optional[pulumi.Input[str]] = None):
         """
         A description of how to set up the Android device prior to running the test.
         :param pulumi.Input['AccountArgs'] account: The device will be logged in on this account for the duration of the test.
@@ -1682,7 +1673,6 @@ class TestSetupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]] files_to_push: List of files to push to the device before starting the test.
         :param pulumi.Input[str] network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-        :param pulumi.Input['SystraceSetupArgs'] systrace: Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -1698,8 +1688,6 @@ class TestSetupArgs:
             pulumi.set(__self__, "files_to_push", files_to_push)
         if network_profile is not None:
             pulumi.set(__self__, "network_profile", network_profile)
-        if systrace is not None:
-            pulumi.set(__self__, "systrace", systrace)
 
     @property
     @pulumi.getter
@@ -1784,18 +1772,6 @@ class TestSetupArgs:
     @network_profile.setter
     def network_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_profile", value)
-
-    @property
-    @pulumi.getter
-    def systrace(self) -> Optional[pulumi.Input['SystraceSetupArgs']]:
-        """
-        Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-        """
-        return pulumi.get(self, "systrace")
-
-    @systrace.setter
-    def systrace(self, value: Optional[pulumi.Input['SystraceSetupArgs']]):
-        pulumi.set(self, "systrace", value)
 
 
 @pulumi.input_type

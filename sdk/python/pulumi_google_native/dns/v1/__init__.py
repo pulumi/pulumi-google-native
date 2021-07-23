@@ -10,9 +10,9 @@ from .change import *
 from .get_change import *
 from .get_managed_zone import *
 from .get_policy import *
-from .get_rrset import *
+from .get_resource_record_set import *
 from .managed_zone import *
 from .policy import *
-from .rrset import *
+from .resource_record_set import *
 from ._inputs import *
 from . import outputs

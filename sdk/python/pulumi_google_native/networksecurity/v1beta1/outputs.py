@@ -507,7 +507,7 @@ class MTLSPolicyResponse(dict):
                  client_validation_ca: Sequence['outputs.ValidationCAResponse']):
         """
         Specification of the MTLSPolicy.
-        :param Sequence['ValidationCAResponse'] client_validation_ca: Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param Sequence['ValidationCAResponse'] client_validation_ca:  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
         pulumi.set(__self__, "client_validation_ca", client_validation_ca)
 
@@ -515,7 +515,7 @@ class MTLSPolicyResponse(dict):
     @pulumi.getter(name="clientValidationCa")
     def client_validation_ca(self) -> Sequence['outputs.ValidationCAResponse']:
         """
-        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
         return pulumi.get(self, "client_validation_ca")
 

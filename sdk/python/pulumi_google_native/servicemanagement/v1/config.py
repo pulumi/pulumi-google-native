@@ -55,7 +55,7 @@ class ConfigArgs:
         :param pulumi.Input['CustomErrorArgs'] custom_error: Custom error configuration.
         :param pulumi.Input['DocumentationArgs'] documentation: Additional API documentation.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-        :param pulumi.Input[Sequence[pulumi.Input['EnumArgs']]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        :param pulumi.Input[Sequence[pulumi.Input['EnumArgs']]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         :param pulumi.Input['HttpArgs'] http: HTTP configuration.
         :param pulumi.Input[str] id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input['LoggingArgs'] logging: Logging configuration.
@@ -68,8 +68,8 @@ class ConfigArgs:
         :param pulumi.Input['QuotaArgs'] quota: Quota configuration.
         :param pulumi.Input['SystemParametersArgs'] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-        :param pulumi.Input[str] title: The product title for this service.
-        :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        :param pulumi.Input[str] title: The product title for this service, it is the name displayed in Google Cloud Console.
+        :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         :param pulumi.Input['UsageArgs'] usage: Configuration controlling usage of this service.
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -259,7 +259,7 @@ class ConfigArgs:
     @pulumi.getter
     def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnumArgs']]]]:
         """
-        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         """
         return pulumi.get(self, "enums")
 
@@ -415,7 +415,7 @@ class ConfigArgs:
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
-        The product title for this service.
+        The product title for this service, it is the name displayed in Google Cloud Console.
         """
         return pulumi.get(self, "title")
 
@@ -427,7 +427,7 @@ class ConfigArgs:
     @pulumi.getter
     def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TypeArgs']]]]:
         """
-        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         """
         return pulumi.get(self, "types")
 
@@ -496,7 +496,7 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomErrorArgs']] custom_error: Custom error configuration.
         :param pulumi.Input[pulumi.InputType['DocumentationArgs']] documentation: Additional API documentation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         :param pulumi.Input[pulumi.InputType['HttpArgs']] http: HTTP configuration.
         :param pulumi.Input[str] id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
         :param pulumi.Input[pulumi.InputType['LoggingArgs']] logging: Logging configuration.
@@ -509,8 +509,8 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['QuotaArgs']] quota: Quota configuration.
         :param pulumi.Input[pulumi.InputType['SystemParametersArgs']] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-        :param pulumi.Input[str] title: The product title for this service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        :param pulumi.Input[str] title: The product title for this service, it is the name displayed in Google Cloud Console.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         :param pulumi.Input[pulumi.InputType['UsageArgs']] usage: Configuration controlling usage of this service.
         """
         ...
@@ -740,7 +740,7 @@ class Config(pulumi.CustomResource):
     @pulumi.getter
     def enums(self) -> pulumi.Output[Sequence['outputs.EnumResponse']]:
         """
-        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         """
         return pulumi.get(self, "enums")
 
@@ -844,7 +844,7 @@ class Config(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        The product title for this service.
+        The product title for this service, it is the name displayed in Google Cloud Console.
         """
         return pulumi.get(self, "title")
 
@@ -852,7 +852,7 @@ class Config(pulumi.CustomResource):
     @pulumi.getter
     def types(self) -> pulumi.Output[Sequence['outputs.TypeResponse']]:
         """
-        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         """
         return pulumi.get(self, "types")
 

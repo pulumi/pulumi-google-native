@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['InterconnectArgs', 'Interconnect']
 
@@ -22,6 +23,8 @@ class InterconnectArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -36,6 +39,8 @@ class InterconnectArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
@@ -54,6 +59,10 @@ class InterconnectArgs:
             pulumi.set(__self__, "link_type", link_type)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if macsec is not None:
+            pulumi.set(__self__, "macsec", macsec)
+        if macsec_enabled is not None:
+            pulumi.set(__self__, "macsec_enabled", macsec_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if noc_contact_email is not None:
@@ -151,6 +160,30 @@ class InterconnectArgs:
 
     @property
     @pulumi.getter
+    def macsec(self) -> Optional[pulumi.Input['InterconnectMacsecArgs']]:
+        """
+        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @macsec.setter
+    def macsec(self, value: Optional[pulumi.Input['InterconnectMacsecArgs']]):
+        pulumi.set(self, "macsec", value)
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
+
+    @macsec_enabled.setter
+    def macsec_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "macsec_enabled", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -216,6 +249,8 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -234,6 +269,8 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
@@ -269,6 +306,8 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -293,6 +332,8 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["link_type"] = link_type
             __props__.__dict__["location"] = location
+            __props__.__dict__["macsec"] = macsec
+            __props__.__dict__["macsec_enabled"] = macsec_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
             __props__.__dict__["project"] = project
@@ -350,6 +391,8 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["link_type"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["macsec"] = None
+        __props__.__dict__["macsec_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["noc_contact_email"] = None
         __props__.__dict__["operational_status"] = None
@@ -481,6 +524,22 @@ class Interconnect(pulumi.CustomResource):
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def macsec(self) -> pulumi.Output['outputs.InterconnectMacsecResponse']:
+        """
+        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> pulumi.Output[bool]:
+        """
+        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
 
     @property
     @pulumi.getter

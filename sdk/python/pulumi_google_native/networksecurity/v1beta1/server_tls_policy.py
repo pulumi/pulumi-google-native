@@ -26,12 +26,12 @@ class ServerTlsPolicyArgs:
                  server_certificate: Optional[pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] = None):
         """
         The set of arguments for constructing a ServerTlsPolicy resource.
-        :param pulumi.Input[bool] allow_open: Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
-        :param pulumi.Input[str] description: Optional. Free-text description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
-        :param pulumi.Input['MTLSPolicyArgs'] mtls_policy: Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+        :param pulumi.Input[bool] allow_open:  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the resource.
+        :param pulumi.Input['MTLSPolicyArgs'] mtls_policy:  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
-        :param pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs'] server_certificate: Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+        :param pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs'] server_certificate:  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         """
         pulumi.set(__self__, "server_tls_policy_id", server_tls_policy_id)
         if allow_open is not None:
@@ -64,7 +64,7 @@ class ServerTlsPolicyArgs:
     @pulumi.getter(name="allowOpen")
     def allow_open(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+         Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
         """
         return pulumi.get(self, "allow_open")
 
@@ -76,7 +76,7 @@ class ServerTlsPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Free-text description of the resource.
+        Free-text description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -88,7 +88,7 @@ class ServerTlsPolicyArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Set of label tags associated with the resource.
+        Set of label tags associated with the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -109,7 +109,7 @@ class ServerTlsPolicyArgs:
     @pulumi.getter(name="mtlsPolicy")
     def mtls_policy(self) -> Optional[pulumi.Input['MTLSPolicyArgs']]:
         """
-        Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+         Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         """
         return pulumi.get(self, "mtls_policy")
 
@@ -142,7 +142,7 @@ class ServerTlsPolicyArgs:
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']]:
         """
-        Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         """
         return pulumi.get(self, "server_certificate")
 
@@ -171,12 +171,12 @@ class ServerTlsPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_open: Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
-        :param pulumi.Input[str] description: Optional. Free-text description of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
-        :param pulumi.Input[pulumi.InputType['MTLSPolicyArgs']] mtls_policy: Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+        :param pulumi.Input[bool] allow_open:  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+        :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the resource.
+        :param pulumi.Input[pulumi.InputType['MTLSPolicyArgs']] mtls_policy:  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] server_certificate: Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] server_certificate:  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         """
         ...
     @overload
@@ -272,7 +272,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
     @pulumi.getter(name="allowOpen")
     def allow_open(self) -> pulumi.Output[bool]:
         """
-        Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+         Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
         """
         return pulumi.get(self, "allow_open")
 
@@ -288,7 +288,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Optional. Free-text description of the resource.
+        Free-text description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -296,7 +296,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Optional. Set of label tags associated with the resource.
+        Set of label tags associated with the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -304,7 +304,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
     @pulumi.getter(name="mtlsPolicy")
     def mtls_policy(self) -> pulumi.Output['outputs.MTLSPolicyResponse']:
         """
-        Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+         Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         """
         return pulumi.get(self, "mtls_policy")
 
@@ -320,7 +320,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> pulumi.Output['outputs.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse']:
         """
-        Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         """
         return pulumi.get(self, "server_certificate")
 

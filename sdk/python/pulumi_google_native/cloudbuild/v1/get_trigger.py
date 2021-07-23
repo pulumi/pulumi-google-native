@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, autodetect=None, build=None, create_time=None, description=None, disabled=None, filename=None, filter=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, autodetect=None, build=None, create_time=None, description=None, disabled=None, filename=None, filter=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if autodetect and not isinstance(autodetect, bool):
             raise TypeError("Expected argument 'autodetect' to be a bool")
         pulumi.set(__self__, "autodetect", autodetect)
@@ -57,6 +57,9 @@ class GetTriggerResult:
         if resource_name and not isinstance(resource_name, str):
             raise TypeError("Expected argument 'resource_name' to be a str")
         pulumi.set(__self__, "resource_name", resource_name)
+        if source_to_build and not isinstance(source_to_build, dict):
+            raise TypeError("Expected argument 'source_to_build' to be a dict")
+        pulumi.set(__self__, "source_to_build", source_to_build)
         if substitutions and not isinstance(substitutions, dict):
             raise TypeError("Expected argument 'substitutions' to be a dict")
         pulumi.set(__self__, "substitutions", substitutions)
@@ -175,6 +178,14 @@ class GetTriggerResult:
         return pulumi.get(self, "resource_name")
 
     @property
+    @pulumi.getter(name="sourceToBuild")
+    def source_to_build(self) -> 'outputs.GitRepoSourceResponse':
+        """
+        The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        """
+        return pulumi.get(self, "source_to_build")
+
+    @property
     @pulumi.getter
     def substitutions(self) -> Mapping[str, str]:
         """
@@ -226,6 +237,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             name=self.name,
             pubsub_config=self.pubsub_config,
             resource_name=self.resource_name,
+            source_to_build=self.source_to_build,
             substitutions=self.substitutions,
             tags=self.tags,
             trigger_template=self.trigger_template,
@@ -265,6 +277,7 @@ def get_trigger(location: Optional[str] = None,
         name=__ret__.name,
         pubsub_config=__ret__.pubsub_config,
         resource_name=__ret__.resource_name,
+        source_to_build=__ret__.source_to_build,
         substitutions=__ret__.substitutions,
         tags=__ret__.tags,
         trigger_template=__ret__.trigger_template,

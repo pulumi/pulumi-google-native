@@ -380,6 +380,7 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["build_trigger_id"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["failure_info"] = None
             __props__.__dict__["finish_time"] = None
             __props__.__dict__["log_url"] = None
             __props__.__dict__["name"] = None
@@ -416,6 +417,7 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["available_secrets"] = None
         __props__.__dict__["build_trigger_id"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["failure_info"] = None
         __props__.__dict__["finish_time"] = None
         __props__.__dict__["images"] = None
         __props__.__dict__["log_url"] = None
@@ -471,6 +473,14 @@ class Build(pulumi.CustomResource):
         Time at which the request to create the build was received.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="failureInfo")
+    def failure_info(self) -> pulumi.Output['outputs.FailureInfoResponse']:
+        """
+        Contains information about the build when status=FAILURE.
+        """
+        return pulumi.get(self, "failure_info")
 
     @property
     @pulumi.getter(name="finishTime")

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, state=None):
+    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, macsec=None, macsec_enabled=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -63,6 +63,12 @@ class GetInterconnectResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if macsec and not isinstance(macsec, dict):
+            raise TypeError("Expected argument 'macsec' to be a dict")
+        pulumi.set(__self__, "macsec", macsec)
+        if macsec_enabled and not isinstance(macsec_enabled, bool):
+            raise TypeError("Expected argument 'macsec_enabled' to be a bool")
+        pulumi.set(__self__, "macsec_enabled", macsec_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -216,6 +222,22 @@ class GetInterconnectResult:
 
     @property
     @pulumi.getter
+    def macsec(self) -> 'outputs.InterconnectMacsecResponse':
+        """
+        Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+        """
+        return pulumi.get(self, "macsec")
+
+    @property
+    @pulumi.getter(name="macsecEnabled")
+    def macsec_enabled(self) -> bool:
+        """
+        Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+        """
+        return pulumi.get(self, "macsec_enabled")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -316,6 +338,8 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             labels=self.labels,
             link_type=self.link_type,
             location=self.location,
+            macsec=self.macsec,
+            macsec_enabled=self.macsec_enabled,
             name=self.name,
             noc_contact_email=self.noc_contact_email,
             operational_status=self.operational_status,
@@ -359,6 +383,8 @@ def get_interconnect(interconnect: Optional[str] = None,
         labels=__ret__.labels,
         link_type=__ret__.link_type,
         location=__ret__.location,
+        macsec=__ret__.macsec,
+        macsec_enabled=__ret__.macsec_enabled,
         name=__ret__.name,
         noc_contact_email=__ret__.noc_contact_email,
         operational_status=__ret__.operational_status,

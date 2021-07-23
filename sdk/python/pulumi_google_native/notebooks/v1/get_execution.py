@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, execution_template=None, name=None, output_notebook_file=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, execution_template=None, job_uri=None, name=None, output_notebook_file=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -30,6 +30,9 @@ class GetExecutionResult:
         if execution_template and not isinstance(execution_template, dict):
             raise TypeError("Expected argument 'execution_template' to be a dict")
         pulumi.set(__self__, "execution_template", execution_template)
+        if job_uri and not isinstance(job_uri, str):
+            raise TypeError("Expected argument 'job_uri' to be a str")
+        pulumi.set(__self__, "job_uri", job_uri)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -76,6 +79,14 @@ class GetExecutionResult:
         return pulumi.get(self, "execution_template")
 
     @property
+    @pulumi.getter(name="jobUri")
+    def job_uri(self) -> str:
+        """
+        The URI of the external job used to execute the notebook.
+        """
+        return pulumi.get(self, "job_uri")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -118,6 +129,7 @@ class AwaitableGetExecutionResult(GetExecutionResult):
             description=self.description,
             display_name=self.display_name,
             execution_template=self.execution_template,
+            job_uri=self.job_uri,
             name=self.name,
             output_notebook_file=self.output_notebook_file,
             state=self.state,
@@ -146,6 +158,7 @@ def get_execution(execution_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         execution_template=__ret__.execution_template,
+        job_uri=__ret__.job_uri,
         name=__ret__.name,
         output_notebook_file=__ret__.output_notebook_file,
         state=__ret__.state,
