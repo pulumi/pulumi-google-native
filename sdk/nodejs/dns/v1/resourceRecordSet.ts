@@ -7,31 +7,31 @@ import * as utilities from "../../utilities";
 /**
  * Creates a new ResourceRecordSet.
  */
-export class Rrset extends pulumi.CustomResource {
+export class ResourceRecordSet extends pulumi.CustomResource {
     /**
-     * Get an existing Rrset resource's state with the given name, ID, and optional extra
+     * Get an existing ResourceRecordSet resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Rrset {
-        return new Rrset(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): ResourceRecordSet {
+        return new ResourceRecordSet(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-native:dns/v1beta2:Rrset';
+    public static readonly __pulumiType = 'google-native:dns/v1:ResourceRecordSet';
 
     /**
-     * Returns true if the given object is an instance of Rrset.  This is designed to work even
+     * Returns true if the given object is an instance of ResourceRecordSet.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Rrset {
+    public static isInstance(obj: any): obj is ResourceRecordSet {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Rrset.__pulumiType;
+        return obj['__pulumiType'] === ResourceRecordSet.__pulumiType;
     }
 
     public readonly kind!: pulumi.Output<string>;
@@ -57,13 +57,13 @@ export class Rrset extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string>;
 
     /**
-     * Create a Rrset resource with the given unique name, arguments, and options.
+     * Create a ResourceRecordSet resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RrsetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ResourceRecordSetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
@@ -90,14 +90,14 @@ export class Rrset extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Rrset.__pulumiType, name, inputs, opts);
+        super(ResourceRecordSet.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a Rrset resource.
+ * The set of arguments for constructing a ResourceRecordSet resource.
  */
-export interface RrsetArgs {
+export interface ResourceRecordSetArgs {
     clientOperationId?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     managedZone: pulumi.Input<string>;

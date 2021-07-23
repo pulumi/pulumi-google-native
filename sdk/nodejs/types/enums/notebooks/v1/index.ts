@@ -58,42 +58,6 @@ export const AcceleratorConfigType = {
  */
 export type AcceleratorConfigType = (typeof AcceleratorConfigType)[keyof typeof AcceleratorConfigType];
 
-export const ExecutionTemplateScaleTier = {
-    /**
-     * Unspecified Scale Tier.
-     */
-    ScaleTierUnspecified: "SCALE_TIER_UNSPECIFIED",
-    /**
-     * A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
-     */
-    Basic: "BASIC",
-    /**
-     * Many workers and a few parameter servers.
-     */
-    Standard1: "STANDARD_1",
-    /**
-     * A large number of workers with many parameter servers.
-     */
-    Premium1: "PREMIUM_1",
-    /**
-     * A single worker instance with a K80 GPU.
-     */
-    BasicGpu: "BASIC_GPU",
-    /**
-     * A single worker instance with a Cloud TPU.
-     */
-    BasicTpu: "BASIC_TPU",
-    /**
-     * The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type.
-     */
-    Custom: "CUSTOM",
-} as const;
-
-/**
- * Required. Scale tier of the hardware used for notebook execution.
- */
-export type ExecutionTemplateScaleTier = (typeof ExecutionTemplateScaleTier)[keyof typeof ExecutionTemplateScaleTier];
-
 export const InstanceBootDiskType = {
     /**
      * Disk type not set.
@@ -206,6 +170,30 @@ export const LocalDiskInitializeParamsDiskType = {
  */
 export type LocalDiskInitializeParamsDiskType = (typeof LocalDiskInitializeParamsDiskType)[keyof typeof LocalDiskInitializeParamsDiskType];
 
+export const ReservationAffinityConsumeReservationType = {
+    /**
+     * Default type.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Do not consume from any allocated capacity.
+     */
+    NoReservation: "NO_RESERVATION",
+    /**
+     * Consume any reservation available.
+     */
+    AnyReservation: "ANY_RESERVATION",
+    /**
+     * Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     */
+    SpecificReservation: "SPECIFIC_RESERVATION",
+} as const;
+
+/**
+ * Optional. Type of reservation to consume
+ */
+export type ReservationAffinityConsumeReservationType = (typeof ReservationAffinityConsumeReservationType)[keyof typeof ReservationAffinityConsumeReservationType];
+
 export const RuntimeAcceleratorConfigType = {
     /**
      * Accelerator type is not specified.
@@ -299,6 +287,14 @@ export const ScheduleState = {
      * The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received.
      */
     UpdateFailed: "UPDATE_FAILED",
+    /**
+     * The schedule resource is being created.
+     */
+    Initializing: "INITIALIZING",
+    /**
+     * The schedule resource is being deleted.
+     */
+    Deleting: "DELETING",
 } as const;
 
 export type ScheduleState = (typeof ScheduleState)[keyof typeof ScheduleState];

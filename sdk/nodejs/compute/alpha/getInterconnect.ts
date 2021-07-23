@@ -89,6 +89,14 @@ export interface GetInterconnectResult {
      */
     readonly location: string;
     /**
+     * Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+     */
+    readonly macsec: outputs.compute.alpha.InterconnectMacsecResponse;
+    /**
+     * Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+     */
+    readonly macsecEnabled: boolean;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name: string;

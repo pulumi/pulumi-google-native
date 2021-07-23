@@ -9,14 +9,14 @@ export * from "./change";
 export * from "./getChange";
 export * from "./getManagedZone";
 export * from "./getPolicy";
+export * from "./getResourceRecordSet";
 export * from "./getResponsePolicy";
 export * from "./getResponsePolicyRule";
-export * from "./getRrset";
 export * from "./managedZone";
 export * from "./policy";
+export * from "./resourceRecordSet";
 export * from "./responsePolicy";
 export * from "./responsePolicyRule";
-export * from "./rrset";
 
 // Export enums:
 export * from "../../types/enums/dns/v1beta2";
@@ -25,9 +25,9 @@ export * from "../../types/enums/dns/v1beta2";
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";
 import { Policy } from "./policy";
+import { ResourceRecordSet } from "./resourceRecordSet";
 import { ResponsePolicy } from "./responsePolicy";
 import { ResponsePolicyRule } from "./responsePolicyRule";
-import { Rrset } from "./rrset";
 
 const _module = {
     version: utilities.getVersion(),
@@ -39,12 +39,12 @@ const _module = {
                 return new ManagedZone(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-native:dns/v1beta2:ResourceRecordSet":
+                return new ResourceRecordSet(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ResponsePolicy":
                 return new ResponsePolicy(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ResponsePolicyRule":
                 return new ResponsePolicyRule(name, <any>undefined, { urn })
-            case "google-native:dns/v1beta2:Rrset":
-                return new Rrset(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

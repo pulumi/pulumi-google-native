@@ -133,6 +133,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
     /**
+     * Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+     */
+    public readonly reservationAffinity!: pulumi.Output<outputs.notebooks.v1.ReservationAffinityResponse>;
+    /**
      * The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
@@ -209,6 +213,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
@@ -247,6 +252,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["noRemoveDataDisk"] = undefined /*out*/;
             inputs["postStartupScript"] = undefined /*out*/;
             inputs["proxyUri"] = undefined /*out*/;
+            inputs["reservationAffinity"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
             inputs["serviceAccountScopes"] = undefined /*out*/;
             inputs["shieldedInstanceConfig"] = undefined /*out*/;
@@ -351,6 +357,10 @@ export interface InstanceArgs {
      */
     postStartupScript?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+     */
+    reservationAffinity?: pulumi.Input<inputs.notebooks.v1.ReservationAffinityArgs>;
     /**
      * The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */

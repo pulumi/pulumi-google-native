@@ -36,7 +36,7 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+     *  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
      */
     public readonly allowOpen!: pulumi.Output<boolean>;
     /**
@@ -44,15 +44,15 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. Free-text description of the resource.
+     * Free-text description of the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Optional. Set of label tags associated with the resource.
+     * Set of label tags associated with the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+     *  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
      */
     public readonly mtlsPolicy!: pulumi.Output<outputs.networksecurity.v1beta1.MTLSPolicyResponse>;
     /**
@@ -60,7 +60,7 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+     *  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
      */
     public readonly serverCertificate!: pulumi.Output<outputs.networksecurity.v1beta1.GoogleCloudNetworksecurityV1beta1CertificateProviderResponse>;
     /**
@@ -115,20 +115,20 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
  */
 export interface ServerTlsPolicyArgs {
     /**
-     * Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+     *  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
      */
     allowOpen?: pulumi.Input<boolean>;
     /**
-     * Optional. Free-text description of the resource.
+     * Free-text description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Set of label tags associated with the resource.
+     * Set of label tags associated with the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+     *  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
      */
     mtlsPolicy?: pulumi.Input<inputs.networksecurity.v1beta1.MTLSPolicyArgs>;
     /**
@@ -137,7 +137,7 @@ export interface ServerTlsPolicyArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+     *  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
      */
     serverCertificate?: pulumi.Input<inputs.networksecurity.v1beta1.GoogleCloudNetworksecurityV1beta1CertificateProviderArgs>;
     serverTlsPolicyId: pulumi.Input<string>;

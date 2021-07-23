@@ -36,6 +36,10 @@ export class GameServerCluster extends pulumi.CustomResource {
     }
 
     /**
+     * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+     */
+    public /*out*/ readonly clusterState!: pulumi.Output<outputs.gameservices.v1.KubernetesClusterStateResponse>;
+    /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */
     public readonly connectionInfo!: pulumi.Output<outputs.gameservices.v1.GameServerClusterConnectionInfoResponse>;
@@ -90,9 +94,11 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["realmId"] = args ? args.realmId : undefined;
+            inputs["clusterState"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["clusterState"] = undefined /*out*/;
             inputs["connectionInfo"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;

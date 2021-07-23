@@ -51,6 +51,10 @@ export interface GetBuildResult {
      */
     readonly createTime: string;
     /**
+     * Contains information about the build when status=FAILURE.
+     */
+    readonly failureInfo: outputs.cloudbuild.v1.FailureInfoResponse;
+    /**
      * Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
      */
     readonly finishTime: string;

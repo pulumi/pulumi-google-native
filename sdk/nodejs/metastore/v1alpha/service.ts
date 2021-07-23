@@ -44,6 +44,10 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.metastore.v1alpha.EncryptionConfigResponse>;
+    /**
      * The URI of the endpoint used to access the metastore service.
      */
     public /*out*/ readonly endpointUri!: pulumi.Output<string>;
@@ -118,6 +122,7 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
+            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -142,6 +147,7 @@ export class Service extends pulumi.CustomResource {
         } else {
             inputs["artifactGcsUri"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
+            inputs["encryptionConfig"] = undefined /*out*/;
             inputs["endpointUri"] = undefined /*out*/;
             inputs["hiveMetastoreConfig"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
@@ -169,6 +175,10 @@ export class Service extends pulumi.CustomResource {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
+    /**
+     * Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+     */
+    encryptionConfig?: pulumi.Input<inputs.metastore.v1alpha.EncryptionConfigArgs>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      */

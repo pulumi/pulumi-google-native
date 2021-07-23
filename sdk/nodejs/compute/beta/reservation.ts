@@ -64,6 +64,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Share-settings for shared-reservation
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.beta.ShareSettingsResponse>;
+    /**
      * Reservation for instances with specific machine shapes.
      */
     public readonly specificReservation!: pulumi.Output<outputs.compute.beta.AllocationSpecificSKUReservationResponse>;
@@ -95,6 +99,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["shareSettings"] = args ? args.shareSettings : undefined;
             inputs["specificReservation"] = args ? args.specificReservation : undefined;
             inputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -112,6 +117,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["shareSettings"] = undefined /*out*/;
             inputs["specificReservation"] = undefined /*out*/;
             inputs["specificReservationRequired"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -138,6 +144,10 @@ export interface ReservationArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Share-settings for shared-reservation
+     */
+    shareSettings?: pulumi.Input<inputs.compute.beta.ShareSettingsArgs>;
     /**
      * Reservation for instances with specific machine shapes.
      */

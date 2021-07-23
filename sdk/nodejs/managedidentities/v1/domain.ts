@@ -41,6 +41,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly admin!: pulumi.Output<string>;
     /**
+     * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+     */
+    public readonly auditLogsEnabled!: pulumi.Output<boolean>;
+    /**
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
     public readonly authorizedNetworks!: pulumi.Output<string[]>;
@@ -109,6 +113,7 @@ export class Domain extends pulumi.CustomResource {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
             inputs["admin"] = args ? args.admin : undefined;
+            inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -124,6 +129,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["admin"] = undefined /*out*/;
+            inputs["auditLogsEnabled"] = undefined /*out*/;
             inputs["authorizedNetworks"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["fqdn"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface DomainArgs {
      * Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
      */
     admin?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+     */
+    auditLogsEnabled?: pulumi.Input<boolean>;
     /**
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */

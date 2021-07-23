@@ -53,6 +53,10 @@ export class Execution extends pulumi.CustomResource {
      */
     public readonly executionTemplate!: pulumi.Output<outputs.notebooks.v1.ExecutionTemplateResponse>;
     /**
+     * The URI of the external job used to execute the notebook.
+     */
+    public /*out*/ readonly jobUri!: pulumi.Output<string>;
+    /**
      * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
+            inputs["jobUri"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -99,6 +104,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["executionTemplate"] = undefined /*out*/;
+            inputs["jobUri"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["outputNotebookFile"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;

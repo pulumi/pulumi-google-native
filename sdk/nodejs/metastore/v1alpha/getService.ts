@@ -39,6 +39,10 @@ export interface GetServiceResult {
      */
     readonly createTime: string;
     /**
+     * Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+     */
+    readonly encryptionConfig: outputs.metastore.v1alpha.EncryptionConfigResponse;
+    /**
      * The URI of the endpoint used to access the metastore service.
      */
     readonly endpointUri: string;

@@ -147,6 +147,10 @@ export class Snapshot extends pulumi.CustomResource {
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
+    /**
+     * A list of user provided licenses represented by a list of URLs to the license resource.
+     */
+    public /*out*/ readonly userLicenses!: pulumi.Output<string[]>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -189,6 +193,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["storageBytes"] = undefined /*out*/;
             inputs["storageBytesStatus"] = undefined /*out*/;
+            inputs["userLicenses"] = undefined /*out*/;
         } else {
             inputs["autoCreated"] = undefined /*out*/;
             inputs["chainName"] = undefined /*out*/;
@@ -218,6 +223,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["storageBytes"] = undefined /*out*/;
             inputs["storageBytesStatus"] = undefined /*out*/;
             inputs["storageLocations"] = undefined /*out*/;
+            inputs["userLicenses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

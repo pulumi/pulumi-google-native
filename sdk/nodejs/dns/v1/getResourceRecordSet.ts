@@ -8,7 +8,7 @@ import * as utilities from "../../utilities";
 /**
  * Fetches the representation of an existing ResourceRecordSet.
  */
-export function getRrset(args: GetRrsetArgs, opts?: pulumi.InvokeOptions): Promise<GetRrsetResult> {
+export function getResourceRecordSet(args: GetResourceRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceRecordSetResult> {
     if (!opts) {
         opts = {}
     }
@@ -16,7 +16,7 @@ export function getRrset(args: GetRrsetArgs, opts?: pulumi.InvokeOptions): Promi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("google-native:dns/v1beta2:getRrset", {
+    return pulumi.runtime.invoke("google-native:dns/v1:getResourceRecordSet", {
         "clientOperationId": args.clientOperationId,
         "managedZone": args.managedZone,
         "name": args.name,
@@ -25,7 +25,7 @@ export function getRrset(args: GetRrsetArgs, opts?: pulumi.InvokeOptions): Promi
     }, opts);
 }
 
-export interface GetRrsetArgs {
+export interface GetResourceRecordSetArgs {
     clientOperationId?: string;
     managedZone: string;
     name: string;
@@ -33,7 +33,7 @@ export interface GetRrsetArgs {
     type: string;
 }
 
-export interface GetRrsetResult {
+export interface GetResourceRecordSetResult {
     readonly kind: string;
     /**
      * For example, www.example.com.

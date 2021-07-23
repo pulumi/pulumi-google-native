@@ -64,6 +64,10 @@ export class SearchApplication extends pulumi.CustomResource {
      */
     public /*out*/ readonly operationIds!: pulumi.Output<string[]>;
     /**
+     * The default options for query interpretation
+     */
+    public readonly queryInterpretationConfig!: pulumi.Output<outputs.cloudsearch.v1.QueryInterpretationConfigResponse>;
+    /**
      * Configuration for ranking results.
      */
     public readonly scoringConfig!: pulumi.Output<outputs.cloudsearch.v1.ScoringConfigResponse>;
@@ -89,6 +93,7 @@ export class SearchApplication extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["queryInterpretationConfig"] = args ? args.queryInterpretationConfig : undefined;
             inputs["scoringConfig"] = args ? args.scoringConfig : undefined;
             inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
             inputs["operationIds"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class SearchApplication extends pulumi.CustomResource {
             inputs["enableAuditLog"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["operationIds"] = undefined /*out*/;
+            inputs["queryInterpretationConfig"] = undefined /*out*/;
             inputs["scoringConfig"] = undefined /*out*/;
             inputs["sourceConfig"] = undefined /*out*/;
         }
@@ -138,6 +144,10 @@ export interface SearchApplicationArgs {
      * Name of the Search Application. Format: searchapplications/{application_id}.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The default options for query interpretation
+     */
+    queryInterpretationConfig?: pulumi.Input<inputs.cloudsearch.v1.QueryInterpretationConfigArgs>;
     /**
      * Configuration for ranking results.
      */

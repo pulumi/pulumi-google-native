@@ -140,4 +140,8 @@ export interface GetSnapshotResult {
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */
     readonly storageLocations: string[];
+    /**
+     * A list of user provided licenses represented by a list of URLs to the license resource.
+     */
+    readonly userLicenses: string[];
 }

@@ -22,6 +22,26 @@ export const AndroidInstrumentationTestOrchestratorOption = {
  */
 export type AndroidInstrumentationTestOrchestratorOption = (typeof AndroidInstrumentationTestOrchestratorOption)[keyof typeof AndroidInstrumentationTestOrchestratorOption];
 
+export const AndroidRoboTestRoboMode = {
+    /**
+     * LINT.IfChange This means that the server should choose the mode. Recommended.
+     */
+    RoboModeUnspecified: "ROBO_MODE_UNSPECIFIED",
+    /**
+     * Runs Robo in UIAutomator-only mode without app resigning
+     */
+    RoboVersion1: "ROBO_VERSION_1",
+    /**
+     * Runs Robo in standard Espresso with UIAutomator fallback
+     */
+    RoboVersion2: "ROBO_VERSION_2",
+} as const;
+
+/**
+ * The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+ */
+export type AndroidRoboTestRoboMode = (typeof AndroidRoboTestRoboMode)[keyof typeof AndroidRoboTestRoboMode];
+
 export const RoboDirectiveActionType = {
     /**
      * DO NOT USE. For proto versioning only.

@@ -104,7 +104,7 @@ export const AddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+ * The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type AddressPurpose = (typeof AddressPurpose)[keyof typeof AddressPurpose];
 
@@ -804,7 +804,7 @@ export const ForwardingRuleIpProtocol = {
 } as const;
 
 /**
- * The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+ * The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
  */
 export type ForwardingRuleIpProtocol = (typeof ForwardingRuleIpProtocol)[keyof typeof ForwardingRuleIpProtocol];
 
@@ -828,7 +828,7 @@ export const ForwardingRuleLoadBalancingScheme = {
 } as const;
 
 /**
- * Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+ * Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
  */
 export type ForwardingRuleLoadBalancingScheme = (typeof ForwardingRuleLoadBalancingScheme)[keyof typeof ForwardingRuleLoadBalancingScheme];
 
@@ -966,7 +966,7 @@ export const GlobalAddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. 
+ * The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
@@ -981,7 +981,7 @@ export const GlobalForwardingRuleIpProtocol = {
 } as const;
 
 /**
- * The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. 
+ * The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
  */
 export type GlobalForwardingRuleIpProtocol = (typeof GlobalForwardingRuleIpProtocol)[keyof typeof GlobalForwardingRuleIpProtocol];
 
@@ -1005,7 +1005,7 @@ export const GlobalForwardingRuleLoadBalancingScheme = {
 } as const;
 
 /**
- * Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+ * Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
  */
 export type GlobalForwardingRuleLoadBalancingScheme = (typeof GlobalForwardingRuleLoadBalancingScheme)[keyof typeof GlobalForwardingRuleLoadBalancingScheme];
 
@@ -1069,13 +1069,17 @@ export const GlobalNetworkEndpointGroupNetworkEndpointType = {
      */
     NonGcpPrivateIpPort: "NON_GCP_PRIVATE_IP_PORT",
     /**
+     * The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+     */
+    PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
+    /**
      * The network endpoint is handled by specified serverless infrastructure.
      */
     Serverless: "SERVERLESS",
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type GlobalNetworkEndpointGroupNetworkEndpointType = (typeof GlobalNetworkEndpointGroupNetworkEndpointType)[keyof typeof GlobalNetworkEndpointGroupNetworkEndpointType];
 
@@ -1649,13 +1653,17 @@ export const NetworkEndpointGroupNetworkEndpointType = {
      */
     NonGcpPrivateIpPort: "NON_GCP_PRIVATE_IP_PORT",
     /**
+     * The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+     */
+    PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
+    /**
      * The network endpoint is handled by specified serverless infrastructure.
      */
     Serverless: "SERVERLESS",
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type NetworkEndpointGroupNetworkEndpointType = (typeof NetworkEndpointGroupNetworkEndpointType)[keyof typeof NetworkEndpointGroupNetworkEndpointType];
 
@@ -2091,13 +2099,17 @@ export const RegionNetworkEndpointGroupNetworkEndpointType = {
      */
     NonGcpPrivateIpPort: "NON_GCP_PRIVATE_IP_PORT",
     /**
+     * The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+     */
+    PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
+    /**
      * The network endpoint is handled by specified serverless infrastructure.
      */
     Serverless: "SERVERLESS",
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type RegionNetworkEndpointGroupNetworkEndpointType = (typeof RegionNetworkEndpointGroupNetworkEndpointType)[keyof typeof RegionNetworkEndpointGroupNetworkEndpointType];
 
@@ -2499,6 +2511,16 @@ export const SecurityPolicyRuleMatcherVersionedExpr = {
  */
 export type SecurityPolicyRuleMatcherVersionedExpr = (typeof SecurityPolicyRuleMatcherVersionedExpr)[keyof typeof SecurityPolicyRuleMatcherVersionedExpr];
 
+export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
+    AllIps: "ALL_IPS",
+    Ip: "IP",
+} as const;
+
+/**
+ * Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+ */
+export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
+
 export const SecurityPolicyRuleRedirectOptionsType = {
     External302: "EXTERNAL_302",
     GoogleRecaptcha: "GOOGLE_RECAPTCHA",
@@ -2544,6 +2566,22 @@ export const ServiceAttachmentConnectionPreference = {
  * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
  */
 export type ServiceAttachmentConnectionPreference = (typeof ServiceAttachmentConnectionPreference)[keyof typeof ServiceAttachmentConnectionPreference];
+
+export const ShareSettingsShareType = {
+    /**
+     * Default value. This value is unused.
+     */
+    ShareTypeUnspecified: "SHARE_TYPE_UNSPECIFIED",
+    /**
+     * Shared-reservation is open to specific projects
+     */
+    SpecificProjects: "SPECIFIC_PROJECTS",
+} as const;
+
+/**
+ * Type of sharing for this shared-reservation
+ */
+export type ShareSettingsShareType = (typeof ShareSettingsShareType)[keyof typeof ShareSettingsShareType];
 
 export const SslCertificateType = {
     /**

@@ -127,6 +127,10 @@ export interface GetInstanceResult {
      */
     readonly proxyUri: string;
     /**
+     * Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+     */
+    readonly reservationAffinity: outputs.notebooks.v1.ReservationAffinityResponse;
+    /**
      * The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */
     readonly serviceAccount: string;
