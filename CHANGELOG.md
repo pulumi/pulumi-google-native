@@ -15,6 +15,9 @@ CHANGELOG
 
 - Fix a panic when an array property is updated to a larger number of elements
   [#160](https://github.com/pulumi/pulumi-google-native/issues/160)
+  
+- Support initialization failures by checkpointing partially created resources into the state
+  [#149](https://github.com/pulumi/pulumi-google-native/issues/149)
 
 ---
 
