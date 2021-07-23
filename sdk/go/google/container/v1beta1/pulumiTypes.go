@@ -15937,7 +15937,7 @@ type NodePoolAutoscaling struct {
 	Autoprovisioned *bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled *bool `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
 	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount *int `pulumi:"minNodeCount"`
@@ -15960,7 +15960,7 @@ type NodePoolAutoscalingArgs struct {
 	Autoprovisioned pulumi.BoolPtrInput `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
 	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
@@ -16054,7 +16054,7 @@ func (o NodePoolAutoscalingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
 }
@@ -16102,7 +16102,7 @@ func (o NodePoolAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
@@ -16128,7 +16128,7 @@ type NodePoolAutoscalingResponse struct {
 	Autoprovisioned bool `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled bool `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
 	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount int `pulumi:"minNodeCount"`
@@ -16151,7 +16151,7 @@ type NodePoolAutoscalingResponseArgs struct {
 	Autoprovisioned pulumi.BoolInput `pulumi:"autoprovisioned"`
 	// Is autoscaling enabled for this node pool.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
 	// Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
 	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
@@ -16245,7 +16245,7 @@ func (o NodePoolAutoscalingResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingResponseOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscalingResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
@@ -16293,7 +16293,7 @@ func (o NodePoolAutoscalingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+// Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
 func (o NodePoolAutoscalingResponsePtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscalingResponse) *int {
 		if v == nil {

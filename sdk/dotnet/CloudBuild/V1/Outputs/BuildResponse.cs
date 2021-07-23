@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Contains information about the build when status=FAILURE.
+        /// </summary>
+        public readonly Outputs.FailureInfoResponse FailureInfo;
+        /// <summary>
         /// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         /// </summary>
         public readonly string FinishTime;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string createTime,
 
+            Outputs.FailureInfoResponse failureInfo,
+
             string finishTime,
 
             ImmutableArray<string> images,
@@ -176,6 +182,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             AvailableSecrets = availableSecrets;
             BuildTriggerId = buildTriggerId;
             CreateTime = createTime;
+            FailureInfo = failureInfo;
             FinishTime = finishTime;
             Images = images;
             LogUrl = logUrl;

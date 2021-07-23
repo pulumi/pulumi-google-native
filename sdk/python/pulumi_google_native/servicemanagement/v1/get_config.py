@@ -181,7 +181,7 @@ class GetConfigResult:
     @pulumi.getter
     def enums(self) -> Sequence['outputs.EnumResponse']:
         """
-        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         """
         return pulumi.get(self, "enums")
 
@@ -285,7 +285,7 @@ class GetConfigResult:
     @pulumi.getter
     def title(self) -> str:
         """
-        The product title for this service.
+        The product title for this service, it is the name displayed in Google Cloud Console.
         """
         return pulumi.get(self, "title")
 
@@ -293,7 +293,7 @@ class GetConfigResult:
     @pulumi.getter
     def types(self) -> Sequence['outputs.TypeResponse']:
         """
-        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         """
         return pulumi.get(self, "types")
 

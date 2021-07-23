@@ -21,6 +21,7 @@ export function getGameServerCluster(args: GetGameServerClusterArgs, opts?: pulu
         "location": args.location,
         "project": args.project,
         "realmId": args.realmId,
+        "view": args.view,
     }, opts);
 }
 
@@ -29,9 +30,14 @@ export interface GetGameServerClusterArgs {
     location: string;
     project?: string;
     realmId: string;
+    view?: string;
 }
 
 export interface GetGameServerClusterResult {
+    /**
+     * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+     */
+    readonly clusterState: outputs.gameservices.v1.KubernetesClusterStateResponse;
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */

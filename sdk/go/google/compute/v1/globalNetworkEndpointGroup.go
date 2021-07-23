@@ -34,7 +34,7 @@ type GlobalNetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
 	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -103,7 +103,7 @@ type globalNetworkEndpointGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *GlobalNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                        `pulumi:"project"`
 	RequestId           *string                                        `pulumi:"requestId"`
@@ -129,7 +129,7 @@ type GlobalNetworkEndpointGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType GlobalNetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
 	RequestId           pulumi.StringPtrInput

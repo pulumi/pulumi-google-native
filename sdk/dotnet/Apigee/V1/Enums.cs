@@ -184,6 +184,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static InstancePeeringCidrRange Slash20 { get; } = new InstancePeeringCidrRange("SLASH_20");
         /// <summary>
+        /// `/22` CIDR range. Supported for evaluation only.
+        /// </summary>
+        public static InstancePeeringCidrRange Slash22 { get; } = new InstancePeeringCidrRange("SLASH_22");
+        /// <summary>
         /// `/23` CIDR range. Supported for evaluation only.
         /// </summary>
         public static InstancePeeringCidrRange Slash23 { get; } = new InstancePeeringCidrRange("SLASH_23");

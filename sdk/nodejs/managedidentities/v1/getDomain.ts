@@ -33,6 +33,10 @@ export interface GetDomainResult {
      */
     readonly admin: string;
     /**
+     * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+     */
+    readonly auditLogsEnabled: boolean;
+    /**
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
     readonly authorizedNetworks: string[];

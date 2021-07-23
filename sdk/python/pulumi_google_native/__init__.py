@@ -1314,7 +1314,7 @@ _utilities.register(
    "google-native:dns/v1:Change": "Change",
    "google-native:dns/v1:ManagedZone": "ManagedZone",
    "google-native:dns/v1:Policy": "Policy",
-   "google-native:dns/v1:Rrset": "Rrset"
+   "google-native:dns/v1:ResourceRecordSet": "ResourceRecordSet"
   }
  },
  {
@@ -1325,9 +1325,9 @@ _utilities.register(
    "google-native:dns/v1beta2:Change": "Change",
    "google-native:dns/v1beta2:ManagedZone": "ManagedZone",
    "google-native:dns/v1beta2:Policy": "Policy",
+   "google-native:dns/v1beta2:ResourceRecordSet": "ResourceRecordSet",
    "google-native:dns/v1beta2:ResponsePolicy": "ResponsePolicy",
-   "google-native:dns/v1beta2:ResponsePolicyRule": "ResponsePolicyRule",
-   "google-native:dns/v1beta2:Rrset": "Rrset"
+   "google-native:dns/v1beta2:ResponsePolicyRule": "ResponsePolicyRule"
   }
  },
  {

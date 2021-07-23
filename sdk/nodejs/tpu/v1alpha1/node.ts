@@ -131,6 +131,7 @@ export class Node extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["nodeId"] = args ? args.nodeId : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
             inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
@@ -199,6 +200,7 @@ export interface NodeArgs {
     network?: pulumi.Input<string>;
     nodeId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The scheduling options for this node.
      */

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
     /// </summary>
     public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        /// </summary>
+        [Input("connectMode")]
+        public Input<Pulumi.GoogleNative.File.V1Beta1.NetworkConfigConnectMode>? ConnectMode { get; set; }
+
         [Input("modes")]
         private InputList<Pulumi.GoogleNative.File.V1Beta1.NetworkConfigModesItem>? _modes;
 

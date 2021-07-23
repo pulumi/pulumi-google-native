@@ -179,6 +179,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["display_name"] = None
+            __props__.__dict__["job_uri"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
@@ -208,6 +209,7 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["execution_template"] = None
+        __props__.__dict__["job_uri"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_notebook_file"] = None
         __props__.__dict__["state"] = None
@@ -245,6 +247,14 @@ class Execution(pulumi.CustomResource):
         execute metadata including name, hardware spec, region, labels, etc.
         """
         return pulumi.get(self, "execution_template")
+
+    @property
+    @pulumi.getter(name="jobUri")
+    def job_uri(self) -> pulumi.Output[str]:
+        """
+        The URI of the external job used to execute the notebook.
+        """
+        return pulumi.get(self, "job_uri")
 
     @property
     @pulumi.getter

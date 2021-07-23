@@ -96,7 +96,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly rawDisk!: pulumi.Output<outputs.compute.alpha.ImageRawDiskResponse>;
     /**
-     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
      */
     public readonly rolloutOverride!: pulumi.Output<outputs.compute.alpha.RolloutPolicyResponse>;
     /**
@@ -163,6 +163,10 @@ export class Image extends pulumi.CustomResource {
      * Cloud Storage bucket storage location of the image (regional or multi-regional).
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
+    /**
+     * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+     */
+    public readonly userLicenses!: pulumi.Output<string[]>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -200,6 +204,7 @@ export class Image extends pulumi.CustomResource {
             inputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             inputs["sourceType"] = args ? args.sourceType : undefined;
             inputs["storageLocations"] = args ? args.storageLocations : undefined;
+            inputs["userLicenses"] = args ? args.userLicenses : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
@@ -243,6 +248,7 @@ export class Image extends pulumi.CustomResource {
             inputs["sourceType"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["storageLocations"] = undefined /*out*/;
+            inputs["userLicenses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -307,7 +313,7 @@ export interface ImageArgs {
     rawDisk?: pulumi.Input<inputs.compute.alpha.ImageRawDiskArgs>;
     requestId?: pulumi.Input<string>;
     /**
-     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
      */
     rolloutOverride?: pulumi.Input<inputs.compute.alpha.RolloutPolicyArgs>;
     /**
@@ -346,4 +352,8 @@ export interface ImageArgs {
      * Cloud Storage bucket storage location of the image (regional or multi-regional).
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+     */
+    userLicenses?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -35,12 +35,16 @@ type RegionNetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentResponseOutput `pulumi:"serverlessDeployment"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -107,11 +111,15 @@ type regionNetworkEndpointGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                        `pulumi:"project"`
-	Region              string                                         `pulumi:"region"`
-	RequestId           *string                                        `pulumi:"requestId"`
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService *string `pulumi:"pscTargetService"`
+	Region           string  `pulumi:"region"`
+	RequestId        *string `pulumi:"requestId"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	ServerlessDeployment *NetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -134,11 +142,15 @@ type RegionNetworkEndpointGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType RegionNetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
-	Region              pulumi.StringInput
-	RequestId           pulumi.StringPtrInput
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService pulumi.StringPtrInput
+	Region           pulumi.StringInput
+	RequestId        pulumi.StringPtrInput
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 }

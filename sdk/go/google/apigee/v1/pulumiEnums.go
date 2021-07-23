@@ -541,6 +541,8 @@ const (
 	InstancePeeringCidrRangeSlash19 = InstancePeeringCidrRange("SLASH_19")
 	// `/20` CIDR range.
 	InstancePeeringCidrRangeSlash20 = InstancePeeringCidrRange("SLASH_20")
+	// `/22` CIDR range. Supported for evaluation only.
+	InstancePeeringCidrRangeSlash22 = InstancePeeringCidrRange("SLASH_22")
 	// `/23` CIDR range. Supported for evaluation only.
 	InstancePeeringCidrRangeSlash23 = InstancePeeringCidrRange("SLASH_23")
 )

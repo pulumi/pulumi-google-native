@@ -214,6 +214,9 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// The scheduling options for this node.
         /// </summary>

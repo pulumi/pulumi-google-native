@@ -1665,8 +1665,6 @@ func (o FeatureStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpec struct {
-	// Customer's billing structure
-	Billing *MultiClusterIngressFeatureSpecBilling `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership *string `pulumi:"configMembership"`
 }
@@ -1684,8 +1682,6 @@ type MultiClusterIngressFeatureSpecInput interface {
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecArgs struct {
-	// Customer's billing structure
-	Billing MultiClusterIngressFeatureSpecBillingPtrInput `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
 }
@@ -1768,11 +1764,6 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
-// Customer's billing structure
-func (o MultiClusterIngressFeatureSpecOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling { return v.Billing }).(MultiClusterIngressFeatureSpecBillingPtrOutput)
-}
-
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecOutput) ConfigMembership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
@@ -1796,16 +1787,6 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatu
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
 }
 
-// Customer's billing structure
-func (o MultiClusterIngressFeatureSpecPtrOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling {
-		if v == nil {
-			return nil
-		}
-		return v.Billing
-	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
-}
-
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
@@ -1818,8 +1799,6 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.Strin
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponse struct {
-	// Customer's billing structure
-	Billing string `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership string `pulumi:"configMembership"`
 }
@@ -1837,8 +1816,6 @@ type MultiClusterIngressFeatureSpecResponseInput interface {
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponseArgs struct {
-	// Customer's billing structure
-	Billing pulumi.StringInput `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
 }
@@ -1921,11 +1898,6 @@ func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatu
 	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
 }
 
-// Customer's billing structure
-func (o MultiClusterIngressFeatureSpecResponseOutput) Billing() pulumi.StringOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.Billing }).(pulumi.StringOutput)
-}
-
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecResponseOutput) ConfigMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.ConfigMembership }).(pulumi.StringOutput)
@@ -1947,16 +1919,6 @@ func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFe
 
 func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
-}
-
-// Customer's billing structure
-func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Billing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Billing
-	}).(pulumi.StringPtrOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

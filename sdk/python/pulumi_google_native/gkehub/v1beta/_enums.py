@@ -6,7 +6,6 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
-    'MultiClusterIngressFeatureSpecBilling',
 ]
 
 
@@ -22,15 +21,3 @@ class AuditLogConfigLogType(str, Enum):
     """Data writes. Example: CloudSQL Users create"""
     DATA_READ = "DATA_READ"
     """Data reads. Example: CloudSQL Users list"""
-
-
-class MultiClusterIngressFeatureSpecBilling(str, Enum):
-    """
-    Customer's billing structure
-    """
-    BILLING_UNSPECIFIED = "BILLING_UNSPECIFIED"
-    """Unknown"""
-    PAY_AS_YOU_GO = "PAY_AS_YOU_GO"
-    """User pays a fee per-endpoint."""
-    ANTHOS_LICENSE = "ANTHOS_LICENSE"
-    """User is paying for Anthos as a whole."""

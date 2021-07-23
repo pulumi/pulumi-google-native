@@ -27,12 +27,36 @@ export const InstanceTier = {
      * HIGH_SCALE instances offer expanded capacity and performance scaling capabilities.
      */
     HighScaleSsd: "HIGH_SCALE_SSD",
+    /**
+     * ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
+     */
+    Enterprise: "ENTERPRISE",
 } as const;
 
 /**
  * The service tier of the instance.
  */
 export type InstanceTier = (typeof InstanceTier)[keyof typeof InstanceTier];
+
+export const NetworkConfigConnectMode = {
+    /**
+     * ConnectMode not set.
+     */
+    ConnectModeUnspecified: "CONNECT_MODE_UNSPECIFIED",
+    /**
+     * Connect via direct peering to the Filestore service.
+     */
+    DirectPeering: "DIRECT_PEERING",
+    /**
+     * Connect to your Filestore instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Filestore.
+     */
+    PrivateServiceAccess: "PRIVATE_SERVICE_ACCESS",
+} as const;
+
+/**
+ * The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+ */
+export type NetworkConfigConnectMode = (typeof NetworkConfigConnectMode)[keyof typeof NetworkConfigConnectMode];
 
 export const NetworkConfigModesItem = {
     /**

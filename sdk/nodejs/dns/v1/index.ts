@@ -9,10 +9,10 @@ export * from "./change";
 export * from "./getChange";
 export * from "./getManagedZone";
 export * from "./getPolicy";
-export * from "./getRrset";
+export * from "./getResourceRecordSet";
 export * from "./managedZone";
 export * from "./policy";
-export * from "./rrset";
+export * from "./resourceRecordSet";
 
 // Export enums:
 export * from "../../types/enums/dns/v1";
@@ -21,7 +21,7 @@ export * from "../../types/enums/dns/v1";
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";
 import { Policy } from "./policy";
-import { Rrset } from "./rrset";
+import { ResourceRecordSet } from "./resourceRecordSet";
 
 const _module = {
     version: utilities.getVersion(),
@@ -33,8 +33,8 @@ const _module = {
                 return new ManagedZone(name, <any>undefined, { urn })
             case "google-native:dns/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
-            case "google-native:dns/v1:Rrset":
-                return new Rrset(name, <any>undefined, { urn })
+            case "google-native:dns/v1:ResourceRecordSet":
+                return new ResourceRecordSet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

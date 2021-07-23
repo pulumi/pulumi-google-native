@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("realmId", required: true)]
         public string RealmId { get; set; } = null!;
 
+        [Input("view")]
+        public string? View { get; set; }
+
         public GetGameServerClusterArgs()
         {
         }
@@ -42,6 +45,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
     [OutputType]
     public sealed class GetGameServerClusterResult
     {
+        /// <summary>
+        /// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+        /// </summary>
+        public readonly Outputs.KubernetesClusterStateResponse ClusterState;
         /// <summary>
         /// The game server cluster connection information. This information is used to manage game server clusters.
         /// </summary>
@@ -73,6 +80,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
 
         [OutputConstructor]
         private GetGameServerClusterResult(
+            Outputs.KubernetesClusterStateResponse clusterState,
+
             Outputs.GameServerClusterConnectionInfoResponse connectionInfo,
 
             string createTime,
@@ -87,6 +96,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
 
             string updateTime)
         {
+            ClusterState = clusterState;
             ConnectionInfo = connectionInfo;
             CreateTime = createTime;
             Description = description;

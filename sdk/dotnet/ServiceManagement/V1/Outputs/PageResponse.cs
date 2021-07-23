@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
     public sealed class PageResponse
     {
         /// <summary>
-        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
         /// </summary>
         public readonly string Content;
         /// <summary>

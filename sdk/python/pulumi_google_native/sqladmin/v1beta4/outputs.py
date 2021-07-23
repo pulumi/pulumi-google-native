@@ -157,7 +157,7 @@ class BackupConfigurationResponse(dict):
         :param bool enabled: Whether this configuration is enabled.
         :param str kind: This is always *sql#backupConfiguration*.
         :param str location: Location of the backup
-        :param bool point_in_time_recovery_enabled: Reserved for future use.
+        :param bool point_in_time_recovery_enabled: (Postgres only) Whether point in time recovery is enabled.
         :param bool replication_log_archiving_enabled: Reserved for future use.
         :param str start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
         :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
@@ -216,7 +216,7 @@ class BackupConfigurationResponse(dict):
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> bool:
         """
-        Reserved for future use.
+        (Postgres only) Whether point in time recovery is enabled.
         """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
@@ -1701,6 +1701,8 @@ class SqlScheduledMaintenanceResponse(dict):
             suggest = "can_defer"
         elif key == "canReschedule":
             suggest = "can_reschedule"
+        elif key == "scheduleDeadlineTime":
+            suggest = "schedule_deadline_time"
         elif key == "startTime":
             suggest = "start_time"
 
@@ -1718,14 +1720,17 @@ class SqlScheduledMaintenanceResponse(dict):
     def __init__(__self__, *,
                  can_defer: bool,
                  can_reschedule: bool,
+                 schedule_deadline_time: str,
                  start_time: str):
         """
         Any scheduled maintenancce for this instance.
         :param bool can_reschedule: If the scheduled maintenance can be rescheduled.
+        :param str schedule_deadline_time: Maintenance cannot be rescheduled to start beyond this deadline.
         :param str start_time: The start time of any upcoming scheduled maintenance for this instance.
         """
         pulumi.set(__self__, "can_defer", can_defer)
         pulumi.set(__self__, "can_reschedule", can_reschedule)
+        pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
         pulumi.set(__self__, "start_time", start_time)
 
     @property
@@ -1740,6 +1745,14 @@ class SqlScheduledMaintenanceResponse(dict):
         If the scheduled maintenance can be rescheduled.
         """
         return pulumi.get(self, "can_reschedule")
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> str:
+        """
+        Maintenance cannot be rescheduled to start beyond this deadline.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
 
     @property
     @pulumi.getter(name="startTime")

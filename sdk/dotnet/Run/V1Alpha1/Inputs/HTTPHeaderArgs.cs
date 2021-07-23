@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// HTTPHeader describes a custom header to be used in HTTP probes
+    /// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
     /// </summary>
     public sealed class HTTPHeaderArgs : Pulumi.ResourceArgs
     {

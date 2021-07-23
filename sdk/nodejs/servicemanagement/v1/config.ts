@@ -76,7 +76,7 @@ export class Config extends pulumi.CustomResource {
      */
     public readonly endpoints!: pulumi.Output<outputs.servicemanagement.v1.EndpointResponse[]>;
     /**
-     * A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+     * A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
      */
     public readonly enums!: pulumi.Output<outputs.servicemanagement.v1.EnumResponse[]>;
     /**
@@ -128,11 +128,11 @@ export class Config extends pulumi.CustomResource {
      */
     public readonly systemTypes!: pulumi.Output<outputs.servicemanagement.v1.TypeResponse[]>;
     /**
-     * The product title for this service.
+     * The product title for this service, it is the name displayed in Google Cloud Console.
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+     * A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
      */
     public readonly types!: pulumi.Output<outputs.servicemanagement.v1.TypeResponse[]>;
     /**
@@ -262,7 +262,7 @@ export interface ConfigArgs {
      */
     endpoints?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.EndpointArgs>[]>;
     /**
-     * A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+     * A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
      */
     enums?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.EnumArgs>[]>;
     /**
@@ -315,11 +315,11 @@ export interface ConfigArgs {
      */
     systemTypes?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.TypeArgs>[]>;
     /**
-     * The product title for this service.
+     * The product title for this service, it is the name displayed in Google Cloud Console.
      */
     title?: pulumi.Input<string>;
     /**
-     * A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+     * A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
      */
     types?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.TypeArgs>[]>;
     /**

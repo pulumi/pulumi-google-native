@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+        /// </summary>
+        [Output("defaultLeader")]
+        public Output<string> DefaultLeader { get; private set; } = null!;
+
+        /// <summary>
         /// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
         /// </summary>
         [Output("earliestVersionTime")]

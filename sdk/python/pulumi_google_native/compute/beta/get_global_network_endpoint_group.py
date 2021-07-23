@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlobalNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, region=None, self_link=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, serverless_deployment=None, size=None, subnetwork=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -51,12 +51,18 @@ class GetGlobalNetworkEndpointGroupResult:
         if network_endpoint_type and not isinstance(network_endpoint_type, str):
             raise TypeError("Expected argument 'network_endpoint_type' to be a str")
         pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if psc_target_service and not isinstance(psc_target_service, str):
+            raise TypeError("Expected argument 'psc_target_service' to be a str")
+        pulumi.set(__self__, "psc_target_service", psc_target_service)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if serverless_deployment and not isinstance(serverless_deployment, dict):
+            raise TypeError("Expected argument 'serverless_deployment' to be a dict")
+        pulumi.set(__self__, "serverless_deployment", serverless_deployment)
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
@@ -151,9 +157,17 @@ class GetGlobalNetworkEndpointGroupResult:
     @pulumi.getter(name="networkEndpointType")
     def network_endpoint_type(self) -> str:
         """
-        Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         """
         return pulumi.get(self, "network_endpoint_type")
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> str:
+        """
+        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        """
+        return pulumi.get(self, "psc_target_service")
 
     @property
     @pulumi.getter
@@ -170,6 +184,14 @@ class GetGlobalNetworkEndpointGroupResult:
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serverlessDeployment")
+    def serverless_deployment(self) -> 'outputs.NetworkEndpointGroupServerlessDeploymentResponse':
+        """
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        """
+        return pulumi.get(self, "serverless_deployment")
 
     @property
     @pulumi.getter
@@ -213,8 +235,10 @@ class AwaitableGetGlobalNetworkEndpointGroupResult(GetGlobalNetworkEndpointGroup
             name=self.name,
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
+            psc_target_service=self.psc_target_service,
             region=self.region,
             self_link=self.self_link,
+            serverless_deployment=self.serverless_deployment,
             size=self.size,
             subnetwork=self.subnetwork,
             zone=self.zone)
@@ -247,8 +271,10 @@ def get_global_network_endpoint_group(network_endpoint_group: Optional[str] = No
         name=__ret__.name,
         network=__ret__.network,
         network_endpoint_type=__ret__.network_endpoint_type,
+        psc_target_service=__ret__.psc_target_service,
         region=__ret__.region,
         self_link=__ret__.self_link,
+        serverless_deployment=__ret__.serverless_deployment,
         size=__ret__.size,
         subnetwork=__ret__.subnetwork,
         zone=__ret__.zone)

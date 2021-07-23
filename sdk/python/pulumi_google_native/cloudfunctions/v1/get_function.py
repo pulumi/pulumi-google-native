@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_id=None, build_worker_pool=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, labels=None, max_instances=None, name=None, network=None, runtime=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_id=None, build_worker_pool=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, labels=None, max_instances=None, name=None, network=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -63,6 +63,12 @@ class GetFunctionResult:
         if runtime and not isinstance(runtime, str):
             raise TypeError("Expected argument 'runtime' to be a str")
         pulumi.set(__self__, "runtime", runtime)
+        if secret_environment_variables and not isinstance(secret_environment_variables, list):
+            raise TypeError("Expected argument 'secret_environment_variables' to be a list")
+        pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes and not isinstance(secret_volumes, list):
+            raise TypeError("Expected argument 'secret_volumes' to be a list")
+        pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service_account_email and not isinstance(service_account_email, str):
             raise TypeError("Expected argument 'service_account_email' to be a str")
         pulumi.set(__self__, "service_account_email", service_account_email)
@@ -218,6 +224,22 @@ class GetFunctionResult:
         return pulumi.get(self, "runtime")
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Sequence['outputs.SecretEnvVarResponse']:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Sequence['outputs.SecretVolumeResponse']:
+        """
+        Secret volumes configuration.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> str:
         """
@@ -327,6 +349,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             name=self.name,
             network=self.network,
             runtime=self.runtime,
+            secret_environment_variables=self.secret_environment_variables,
+            secret_volumes=self.secret_volumes,
             service_account_email=self.service_account_email,
             source_archive_url=self.source_archive_url,
             source_repository=self.source_repository,
@@ -373,6 +397,8 @@ def get_function(function_id: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         runtime=__ret__.runtime,
+        secret_environment_variables=__ret__.secret_environment_variables,
+        secret_volumes=__ret__.secret_volumes,
         service_account_email=__ret__.service_account_email,
         source_archive_url=__ret__.source_archive_url,
         source_repository=__ret__.source_repository,

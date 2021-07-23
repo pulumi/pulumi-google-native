@@ -89,7 +89,7 @@ export interface GetImageResult {
      */
     readonly rawDisk: outputs.compute.alpha.ImageRawDiskResponse;
     /**
-     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
      */
     readonly rolloutOverride: outputs.compute.alpha.RolloutPolicyResponse;
     /**
@@ -156,4 +156,8 @@ export interface GetImageResult {
      * Cloud Storage bucket storage location of the image (regional or multi-regional).
      */
     readonly storageLocations: string[];
+    /**
+     * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+     */
+    readonly userLicenses: string[];
 }

@@ -19,6 +19,7 @@ class DomainArgs:
                  name: pulumi.Input[str],
                  reserved_ip_range: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
+                 audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -28,6 +29,7 @@ class DomainArgs:
         :param pulumi.Input[str] name: The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+        :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
         """
@@ -37,6 +39,8 @@ class DomainArgs:
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if admin is not None:
             pulumi.set(__self__, "admin", admin)
+        if audit_logs_enabled is not None:
+            pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
         if labels is not None:
@@ -102,6 +106,18 @@ class DomainArgs:
         pulumi.set(self, "admin", value)
 
     @property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
+
+    @audit_logs_enabled.setter
+    def audit_logs_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_logs_enabled", value)
+
+    @property
     @pulumi.getter(name="authorizedNetworks")
     def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -141,6 +157,7 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
+                 audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -156,6 +173,7 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+        :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -188,6 +206,7 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
+                 audit_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -208,6 +227,7 @@ class Domain(pulumi.CustomResource):
             __props__ = DomainArgs.__new__(DomainArgs)
 
             __props__.__dict__["admin"] = admin
+            __props__.__dict__["audit_logs_enabled"] = audit_logs_enabled
             __props__.__dict__["authorized_networks"] = authorized_networks
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
@@ -252,6 +272,7 @@ class Domain(pulumi.CustomResource):
         __props__ = DomainArgs.__new__(DomainArgs)
 
         __props__.__dict__["admin"] = None
+        __props__.__dict__["audit_logs_enabled"] = None
         __props__.__dict__["authorized_networks"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["fqdn"] = None
@@ -272,6 +293,14 @@ class Domain(pulumi.CustomResource):
         Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         """
         return pulumi.get(self, "admin")
+
+    @property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
 
     @property
     @pulumi.getter(name="authorizedNetworks")

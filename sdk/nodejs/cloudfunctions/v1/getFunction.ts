@@ -91,6 +91,14 @@ export interface GetFunctionResult {
      */
     readonly runtime: string;
     /**
+     * Secret environment variables configuration.
+     */
+    readonly secretEnvironmentVariables: outputs.cloudfunctions.v1.SecretEnvVarResponse[];
+    /**
+     * Secret volumes configuration.
+     */
+    readonly secretVolumes: outputs.cloudfunctions.v1.SecretVolumeResponse[];
+    /**
      * The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
      */
     readonly serviceAccountEmail: string;

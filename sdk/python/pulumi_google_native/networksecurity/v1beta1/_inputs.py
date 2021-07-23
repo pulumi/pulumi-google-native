@@ -430,23 +430,24 @@ class HttpHeaderMatchArgs:
 @pulumi.input_type
 class MTLSPolicyArgs:
     def __init__(__self__, *,
-                 client_validation_ca: pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]):
+                 client_validation_ca: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]] = None):
         """
         Specification of the MTLSPolicy.
-        :param pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]] client_validation_ca: Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]] client_validation_ca:  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
-        pulumi.set(__self__, "client_validation_ca", client_validation_ca)
+        if client_validation_ca is not None:
+            pulumi.set(__self__, "client_validation_ca", client_validation_ca)
 
     @property
     @pulumi.getter(name="clientValidationCa")
-    def client_validation_ca(self) -> pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]:
+    def client_validation_ca(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]]:
         """
-        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
         return pulumi.get(self, "client_validation_ca")
 
     @client_validation_ca.setter
-    def client_validation_ca(self, value: pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]):
+    def client_validation_ca(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]]):
         pulumi.set(self, "client_validation_ca", value)
 
 

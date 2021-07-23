@@ -104,6 +104,10 @@ export const InstancePeeringCidrRange = {
      */
     Slash20: "SLASH_20",
     /**
+     * `/22` CIDR range. Supported for evaluation only.
+     */
+    Slash22: "SLASH_22",
+    /**
      * `/23` CIDR range. Supported for evaluation only.
      */
     Slash23: "SLASH_23",

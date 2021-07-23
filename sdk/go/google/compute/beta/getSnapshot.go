@@ -71,4 +71,6 @@ type LookupSnapshotResult struct {
 	StorageBytesStatus string `pulumi:"storageBytesStatus"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
+	// A list of user provided licenses represented by a list of URLs to the license resource.
+	UserLicenses []string `pulumi:"userLicenses"`
 }

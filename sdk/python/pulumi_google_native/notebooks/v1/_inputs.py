@@ -18,6 +18,7 @@ __all__ = [
     'ExprArgs',
     'LocalDiskInitializeParamsArgs',
     'LocalDiskArgs',
+    'ReservationAffinityArgs',
     'RuntimeAcceleratorConfigArgs',
     'RuntimeAccessConfigArgs',
     'RuntimeShieldedInstanceConfigArgs',
@@ -192,7 +193,6 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class ExecutionTemplateArgs:
     def __init__(__self__, *,
-                 scale_tier: pulumi.Input['ExecutionTemplateScaleTier'],
                  accelerator_config: Optional[pulumi.Input['SchedulerAcceleratorConfigArgs']] = None,
                  container_image_uri: Optional[pulumi.Input[str]] = None,
                  input_notebook_file: Optional[pulumi.Input[str]] = None,
@@ -204,7 +204,6 @@ class ExecutionTemplateArgs:
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The description a notebook execution workload.
-        :param pulumi.Input['ExecutionTemplateScaleTier'] scale_tier: Scale tier of the hardware used for notebook execution.
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
@@ -215,7 +214,6 @@ class ExecutionTemplateArgs:
         :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
         :param pulumi.Input[str] service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
-        pulumi.set(__self__, "scale_tier", scale_tier)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_image_uri is not None:
@@ -234,18 +232,6 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "params_yaml_file", params_yaml_file)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
-
-    @property
-    @pulumi.getter(name="scaleTier")
-    def scale_tier(self) -> pulumi.Input['ExecutionTemplateScaleTier']:
-        """
-        Scale tier of the hardware used for notebook execution.
-        """
-        return pulumi.get(self, "scale_tier")
-
-    @scale_tier.setter
-    def scale_tier(self, value: pulumi.Input['ExecutionTemplateScaleTier']):
-        pulumi.set(self, "scale_tier", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -605,6 +591,62 @@ class LocalDiskArgs:
 
 
 @pulumi.input_type
+class ReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input['ReservationAffinityConsumeReservationType'] consume_reservation_type: Optional. Type of reservation to consume
+        :param pulumi.Input[str] key: Optional. Corresponds to the label key of reservation resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Optional. Corresponds to the label values of reservation resource.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]:
+        """
+        Optional. Type of reservation to consume
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: Optional[pulumi.Input['ReservationAffinityConsumeReservationType']]):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Corresponds to the label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Corresponds to the label values of reservation resource.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
 class RuntimeAcceleratorConfigArgs:
     def __init__(__self__, *,
                  core_count: Optional[pulumi.Input[str]] = None,
@@ -754,8 +796,8 @@ class RuntimeSoftwareConfigArgs:
         Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[bool] enable_health_monitoring: Verifies core internal services are running. Default: True
-        :param pulumi.Input[bool] idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: False
-        :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        :param pulumi.Input[bool] idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
+        :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shuting down runtime. Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
@@ -803,7 +845,7 @@ class RuntimeSoftwareConfigArgs:
     @pulumi.getter(name="idleShutdown")
     def idle_shutdown(self) -> Optional[pulumi.Input[bool]]:
         """
-        Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        Runtime will automatically shutdown after idle_shutdown_time. Default: True
         """
         return pulumi.get(self, "idle_shutdown")
 
@@ -815,7 +857,7 @@ class RuntimeSoftwareConfigArgs:
     @pulumi.getter(name="idleShutdownTimeout")
     def idle_shutdown_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        Time in minutes to wait before shuting down runtime. Default: 180 minutes
         """
         return pulumi.get(self, "idle_shutdown_timeout")
 

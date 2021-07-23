@@ -354,7 +354,7 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 type ConsentStateEnum string
 
 const (
-	// No state specified.
+	// No state specified. Treated as ACTIVE only at the time of resource creation.
 	ConsentStateEnumStateUnspecified = ConsentStateEnum("STATE_UNSPECIFIED")
 	// The Consent is active and is considered when evaluating a user's consent on resources.
 	ConsentStateEnumActive = ConsentStateEnum("ACTIVE")

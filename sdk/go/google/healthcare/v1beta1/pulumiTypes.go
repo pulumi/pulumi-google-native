@@ -4511,6 +4511,8 @@ func (o ImageResponseArrayOutput) Index(i pulumi.IntInput) ImageResponseOutput {
 type NotificationConfig struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport *bool `pulumi:"sendForBulkImport"`
 }
 
 // NotificationConfigInput is an input type that accepts NotificationConfigArgs and NotificationConfigOutput values.
@@ -4528,6 +4530,8 @@ type NotificationConfigInput interface {
 type NotificationConfigArgs struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport pulumi.BoolPtrInput `pulumi:"sendForBulkImport"`
 }
 
 func (NotificationConfigArgs) ElementType() reflect.Type {
@@ -4613,6 +4617,11 @@ func (o NotificationConfigOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationConfig) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotificationConfig) *bool { return v.SendForBulkImport }).(pulumi.BoolPtrOutput)
+}
+
 type NotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigPtrOutput) ElementType() reflect.Type {
@@ -4641,10 +4650,22 @@ func (o NotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigPtrOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendForBulkImport
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies where to send notifications upon changes to a data store.
 type NotificationConfigResponse struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic string `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport bool `pulumi:"sendForBulkImport"`
 }
 
 // NotificationConfigResponseInput is an input type that accepts NotificationConfigResponseArgs and NotificationConfigResponseOutput values.
@@ -4662,6 +4683,8 @@ type NotificationConfigResponseInput interface {
 type NotificationConfigResponseArgs struct {
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+	SendForBulkImport pulumi.BoolInput `pulumi:"sendForBulkImport"`
 }
 
 func (NotificationConfigResponseArgs) ElementType() reflect.Type {
@@ -4747,6 +4770,11 @@ func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigResponseOutput) SendForBulkImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) bool { return v.SendForBulkImport }).(pulumi.BoolOutput)
+}
+
 type NotificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigResponsePtrOutput) ElementType() reflect.Type {
@@ -4773,6 +4801,16 @@ func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 		}
 		return &v.PubsubTopic
 	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+func (o NotificationConfigResponsePtrOutput) SendForBulkImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SendForBulkImport
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The content of an HL7v2 message in a structured format.

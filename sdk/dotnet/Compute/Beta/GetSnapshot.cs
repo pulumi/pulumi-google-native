@@ -132,6 +132,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         /// </summary>
         public readonly ImmutableArray<string> StorageLocations;
+        /// <summary>
+        /// A list of user provided licenses represented by a list of URLs to the license resource.
+        /// </summary>
+        public readonly ImmutableArray<string> UserLicenses;
 
         [OutputConstructor]
         private GetSnapshotResult(
@@ -181,7 +185,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string storageBytesStatus,
 
-            ImmutableArray<string> storageLocations)
+            ImmutableArray<string> storageLocations,
+
+            ImmutableArray<string> userLicenses)
         {
             AutoCreated = autoCreated;
             ChainName = chainName;
@@ -207,6 +213,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             StorageBytes = storageBytes;
             StorageBytesStatus = storageBytesStatus;
             StorageLocations = storageLocations;
+            UserLicenses = userLicenses;
         }
     }
 }

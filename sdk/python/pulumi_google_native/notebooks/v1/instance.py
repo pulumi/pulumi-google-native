@@ -39,6 +39,7 @@ class InstanceArgs:
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -68,6 +69,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -120,6 +122,8 @@ class InstanceArgs:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -403,6 +407,18 @@ class InstanceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['ReservationAffinityArgs']]:
+        """
+        Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['ReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -515,6 +531,7 @@ class Instance(pulumi.CustomResource):
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
@@ -549,6 +566,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
         :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -605,6 +623,7 @@ class Instance(pulumi.CustomResource):
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
@@ -651,6 +670,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
             __props__.__dict__["post_startup_script"] = post_startup_script
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["service_account_scopes"] = service_account_scopes
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
@@ -710,6 +730,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["no_remove_data_disk"] = None
         __props__.__dict__["post_startup_script"] = None
         __props__.__dict__["proxy_uri"] = None
+        __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_account_scopes"] = None
         __props__.__dict__["shielded_instance_config"] = None
@@ -912,6 +933,14 @@ class Instance(pulumi.CustomResource):
         The proxy endpoint that is used to access the Jupyter notebook.
         """
         return pulumi.get(self, "proxy_uri")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Output['outputs.ReservationAffinityResponse']:
+        """
+        Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+        """
+        return pulumi.get(self, "reservation_affinity")
 
     @property
     @pulumi.getter(name="serviceAccount")

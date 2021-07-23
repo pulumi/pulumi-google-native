@@ -808,7 +808,7 @@ class DomainMappingStatusArgs:
         :param pulumi.Input[str] mapped_route_name: The name of the route that the mapping currently points to.
         :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-        :param pulumi.Input[str] url: Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+        :param pulumi.Input[str] url: Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -873,7 +873,7 @@ class DomainMappingStatusArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+        Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
         """
         return pulumi.get(self, "url")
 
@@ -2020,7 +2020,7 @@ class RevisionSpecArgs:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
-        :param pulumi.Input[int] container_concurrency: (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        :param pulumi.Input[int] container_concurrency: Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
         :param pulumi.Input[str] service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param pulumi.Input[int] timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
@@ -2040,7 +2040,7 @@ class RevisionSpecArgs:
     @pulumi.getter(name="containerConcurrency")
     def container_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -2569,10 +2569,10 @@ class TrafficTargetArgs:
         """
         TrafficTarget holds a single entry of the routing table for a Route.
         :param pulumi.Input[str] configuration_name: ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
-        :param pulumi.Input[bool] latest_revision: LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+        :param pulumi.Input[bool] latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
         :param pulumi.Input[int] percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
         :param pulumi.Input[str] revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
-        :param pulumi.Input[str] tag: Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+        :param pulumi.Input[str] tag: Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
         """
         if configuration_name is not None:
             pulumi.set(__self__, "configuration_name", configuration_name)
@@ -2601,7 +2601,7 @@ class TrafficTargetArgs:
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> Optional[pulumi.Input[bool]]:
         """
-        LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
         """
         return pulumi.get(self, "latest_revision")
 
@@ -2637,7 +2637,7 @@ class TrafficTargetArgs:
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
-        Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+        Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
         """
         return pulumi.get(self, "tag")
 

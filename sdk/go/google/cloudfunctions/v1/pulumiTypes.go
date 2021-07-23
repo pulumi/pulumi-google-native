@@ -2122,6 +2122,732 @@ func (o RetryResponsePtrOutput) Elem() RetryResponseOutput {
 	return o.ApplyT(func(v *RetryResponse) RetryResponse { return *v }).(RetryResponseOutput)
 }
 
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVar struct {
+	// Name of the environment variable.
+	Key *string `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project *string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret *string `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version *string `pulumi:"version"`
+}
+
+// SecretEnvVarInput is an input type that accepts SecretEnvVarArgs and SecretEnvVarOutput values.
+// You can construct a concrete instance of `SecretEnvVarInput` via:
+//
+//          SecretEnvVarArgs{...}
+type SecretEnvVarInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarOutput() SecretEnvVarOutput
+	ToSecretEnvVarOutputWithContext(context.Context) SecretEnvVarOutput
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVarArgs struct {
+	// Name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SecretEnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVar)(nil)).Elem()
+}
+
+func (i SecretEnvVarArgs) ToSecretEnvVarOutput() SecretEnvVarOutput {
+	return i.ToSecretEnvVarOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarArgs) ToSecretEnvVarOutputWithContext(ctx context.Context) SecretEnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarOutput)
+}
+
+// SecretEnvVarArrayInput is an input type that accepts SecretEnvVarArray and SecretEnvVarArrayOutput values.
+// You can construct a concrete instance of `SecretEnvVarArrayInput` via:
+//
+//          SecretEnvVarArray{ SecretEnvVarArgs{...} }
+type SecretEnvVarArrayInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput
+	ToSecretEnvVarArrayOutputWithContext(context.Context) SecretEnvVarArrayOutput
+}
+
+type SecretEnvVarArray []SecretEnvVarInput
+
+func (SecretEnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVar)(nil)).Elem()
+}
+
+func (i SecretEnvVarArray) ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput {
+	return i.ToSecretEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarArray) ToSecretEnvVarArrayOutputWithContext(ctx context.Context) SecretEnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarArrayOutput)
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVarOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVar)(nil)).Elem()
+}
+
+func (o SecretEnvVarOutput) ToSecretEnvVarOutput() SecretEnvVarOutput {
+	return o
+}
+
+func (o SecretEnvVarOutput) ToSecretEnvVarOutputWithContext(ctx context.Context) SecretEnvVarOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o SecretEnvVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretEnvVarOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretEnvVarOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+func (o SecretEnvVarOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SecretEnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVar)(nil)).Elem()
+}
+
+func (o SecretEnvVarArrayOutput) ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarArrayOutput) ToSecretEnvVarArrayOutputWithContext(ctx context.Context) SecretEnvVarArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarArrayOutput) Index(i pulumi.IntInput) SecretEnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretEnvVar {
+		return vs[0].([]SecretEnvVar)[vs[1].(int)]
+	}).(SecretEnvVarOutput)
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVarResponse struct {
+	// Name of the environment variable.
+	Key string `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version string `pulumi:"version"`
+}
+
+// SecretEnvVarResponseInput is an input type that accepts SecretEnvVarResponseArgs and SecretEnvVarResponseOutput values.
+// You can construct a concrete instance of `SecretEnvVarResponseInput` via:
+//
+//          SecretEnvVarResponseArgs{...}
+type SecretEnvVarResponseInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput
+	ToSecretEnvVarResponseOutputWithContext(context.Context) SecretEnvVarResponseOutput
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVarResponseArgs struct {
+	// Name of the environment variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (SecretEnvVarResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (i SecretEnvVarResponseArgs) ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput {
+	return i.ToSecretEnvVarResponseOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarResponseArgs) ToSecretEnvVarResponseOutputWithContext(ctx context.Context) SecretEnvVarResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarResponseOutput)
+}
+
+// SecretEnvVarResponseArrayInput is an input type that accepts SecretEnvVarResponseArray and SecretEnvVarResponseArrayOutput values.
+// You can construct a concrete instance of `SecretEnvVarResponseArrayInput` via:
+//
+//          SecretEnvVarResponseArray{ SecretEnvVarResponseArgs{...} }
+type SecretEnvVarResponseArrayInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput
+	ToSecretEnvVarResponseArrayOutputWithContext(context.Context) SecretEnvVarResponseArrayOutput
+}
+
+type SecretEnvVarResponseArray []SecretEnvVarResponseInput
+
+func (SecretEnvVarResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (i SecretEnvVarResponseArray) ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput {
+	return i.ToSecretEnvVarResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarResponseArray) ToSecretEnvVarResponseArrayOutputWithContext(ctx context.Context) SecretEnvVarResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarResponseArrayOutput)
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+type SecretEnvVarResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (o SecretEnvVarResponseOutput) ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseOutput) ToSecretEnvVarResponseOutputWithContext(ctx context.Context) SecretEnvVarResponseOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o SecretEnvVarResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretEnvVarResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretEnvVarResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+func (o SecretEnvVarResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SecretEnvVarResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (o SecretEnvVarResponseArrayOutput) ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseArrayOutput) ToSecretEnvVarResponseArrayOutputWithContext(ctx context.Context) SecretEnvVarResponseArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseArrayOutput) Index(i pulumi.IntInput) SecretEnvVarResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretEnvVarResponse {
+		return vs[0].([]SecretEnvVarResponse)[vs[1].(int)]
+	}).(SecretEnvVarResponseOutput)
+}
+
+// Configuration for a single version.
+type SecretVersion struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path *string `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version *string `pulumi:"version"`
+}
+
+// SecretVersionInput is an input type that accepts SecretVersionArgs and SecretVersionOutput values.
+// You can construct a concrete instance of `SecretVersionInput` via:
+//
+//          SecretVersionArgs{...}
+type SecretVersionInput interface {
+	pulumi.Input
+
+	ToSecretVersionOutput() SecretVersionOutput
+	ToSecretVersionOutputWithContext(context.Context) SecretVersionOutput
+}
+
+// Configuration for a single version.
+type SecretVersionArgs struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SecretVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutput() SecretVersionOutput {
+	return i.ToSecretVersionOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput)
+}
+
+// SecretVersionArrayInput is an input type that accepts SecretVersionArray and SecretVersionArrayOutput values.
+// You can construct a concrete instance of `SecretVersionArrayInput` via:
+//
+//          SecretVersionArray{ SecretVersionArgs{...} }
+type SecretVersionArrayInput interface {
+	pulumi.Input
+
+	ToSecretVersionArrayOutput() SecretVersionArrayOutput
+	ToSecretVersionArrayOutputWithContext(context.Context) SecretVersionArrayOutput
+}
+
+type SecretVersionArray []SecretVersionInput
+
+func (SecretVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersionArray) ToSecretVersionArrayOutput() SecretVersionArrayOutput {
+	return i.ToSecretVersionArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArray) ToSecretVersionArrayOutputWithContext(ctx context.Context) SecretVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionArrayOutput)
+}
+
+// Configuration for a single version.
+type SecretVersionOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutput() SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return o
+}
+
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+func (o SecretVersionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+func (o SecretVersionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SecretVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionArrayOutput) ToSecretVersionArrayOutput() SecretVersionArrayOutput {
+	return o
+}
+
+func (o SecretVersionArrayOutput) ToSecretVersionArrayOutputWithContext(ctx context.Context) SecretVersionArrayOutput {
+	return o
+}
+
+func (o SecretVersionArrayOutput) Index(i pulumi.IntInput) SecretVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVersion {
+		return vs[0].([]SecretVersion)[vs[1].(int)]
+	}).(SecretVersionOutput)
+}
+
+// Configuration for a single version.
+type SecretVersionResponse struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path string `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version string `pulumi:"version"`
+}
+
+// SecretVersionResponseInput is an input type that accepts SecretVersionResponseArgs and SecretVersionResponseOutput values.
+// You can construct a concrete instance of `SecretVersionResponseInput` via:
+//
+//          SecretVersionResponseArgs{...}
+type SecretVersionResponseInput interface {
+	pulumi.Input
+
+	ToSecretVersionResponseOutput() SecretVersionResponseOutput
+	ToSecretVersionResponseOutputWithContext(context.Context) SecretVersionResponseOutput
+}
+
+// Configuration for a single version.
+type SecretVersionResponseArgs struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (SecretVersionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersionResponse)(nil)).Elem()
+}
+
+func (i SecretVersionResponseArgs) ToSecretVersionResponseOutput() SecretVersionResponseOutput {
+	return i.ToSecretVersionResponseOutputWithContext(context.Background())
+}
+
+func (i SecretVersionResponseArgs) ToSecretVersionResponseOutputWithContext(ctx context.Context) SecretVersionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionResponseOutput)
+}
+
+// SecretVersionResponseArrayInput is an input type that accepts SecretVersionResponseArray and SecretVersionResponseArrayOutput values.
+// You can construct a concrete instance of `SecretVersionResponseArrayInput` via:
+//
+//          SecretVersionResponseArray{ SecretVersionResponseArgs{...} }
+type SecretVersionResponseArrayInput interface {
+	pulumi.Input
+
+	ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput
+	ToSecretVersionResponseArrayOutputWithContext(context.Context) SecretVersionResponseArrayOutput
+}
+
+type SecretVersionResponseArray []SecretVersionResponseInput
+
+func (SecretVersionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersionResponse)(nil)).Elem()
+}
+
+func (i SecretVersionResponseArray) ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput {
+	return i.ToSecretVersionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVersionResponseArray) ToSecretVersionResponseArrayOutputWithContext(ctx context.Context) SecretVersionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionResponseArrayOutput)
+}
+
+// Configuration for a single version.
+type SecretVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersionResponse)(nil)).Elem()
+}
+
+func (o SecretVersionResponseOutput) ToSecretVersionResponseOutput() SecretVersionResponseOutput {
+	return o
+}
+
+func (o SecretVersionResponseOutput) ToSecretVersionResponseOutputWithContext(ctx context.Context) SecretVersionResponseOutput {
+	return o
+}
+
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+func (o SecretVersionResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVersionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+func (o SecretVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SecretVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVersionResponse)(nil)).Elem()
+}
+
+func (o SecretVersionResponseArrayOutput) ToSecretVersionResponseArrayOutput() SecretVersionResponseArrayOutput {
+	return o
+}
+
+func (o SecretVersionResponseArrayOutput) ToSecretVersionResponseArrayOutputWithContext(ctx context.Context) SecretVersionResponseArrayOutput {
+	return o
+}
+
+func (o SecretVersionResponseArrayOutput) Index(i pulumi.IntInput) SecretVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVersionResponse {
+		return vs[0].([]SecretVersionResponse)[vs[1].(int)]
+	}).(SecretVersionResponseOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolume struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+	MountPath *string `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project *string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret *string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions []SecretVersion `pulumi:"versions"`
+}
+
+// SecretVolumeInput is an input type that accepts SecretVolumeArgs and SecretVolumeOutput values.
+// You can construct a concrete instance of `SecretVolumeInput` via:
+//
+//          SecretVolumeArgs{...}
+type SecretVolumeInput interface {
+	pulumi.Input
+
+	ToSecretVolumeOutput() SecretVolumeOutput
+	ToSecretVolumeOutputWithContext(context.Context) SecretVolumeOutput
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolumeArgs struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions SecretVersionArrayInput `pulumi:"versions"`
+}
+
+func (SecretVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolume)(nil)).Elem()
+}
+
+func (i SecretVolumeArgs) ToSecretVolumeOutput() SecretVolumeOutput {
+	return i.ToSecretVolumeOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeArgs) ToSecretVolumeOutputWithContext(ctx context.Context) SecretVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeOutput)
+}
+
+// SecretVolumeArrayInput is an input type that accepts SecretVolumeArray and SecretVolumeArrayOutput values.
+// You can construct a concrete instance of `SecretVolumeArrayInput` via:
+//
+//          SecretVolumeArray{ SecretVolumeArgs{...} }
+type SecretVolumeArrayInput interface {
+	pulumi.Input
+
+	ToSecretVolumeArrayOutput() SecretVolumeArrayOutput
+	ToSecretVolumeArrayOutputWithContext(context.Context) SecretVolumeArrayOutput
+}
+
+type SecretVolumeArray []SecretVolumeInput
+
+func (SecretVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolume)(nil)).Elem()
+}
+
+func (i SecretVolumeArray) ToSecretVolumeArrayOutput() SecretVolumeArrayOutput {
+	return i.ToSecretVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeArray) ToSecretVolumeArrayOutputWithContext(ctx context.Context) SecretVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeArrayOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolumeOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolume)(nil)).Elem()
+}
+
+func (o SecretVolumeOutput) ToSecretVolumeOutput() SecretVolumeOutput {
+	return o
+}
+
+func (o SecretVolumeOutput) ToSecretVolumeOutputWithContext(ctx context.Context) SecretVolumeOutput {
+	return o
+}
+
+// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+func (o SecretVolumeOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretVolumeOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretVolumeOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVolume) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+func (o SecretVolumeOutput) Versions() SecretVersionArrayOutput {
+	return o.ApplyT(func(v SecretVolume) []SecretVersion { return v.Versions }).(SecretVersionArrayOutput)
+}
+
+type SecretVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolume)(nil)).Elem()
+}
+
+func (o SecretVolumeArrayOutput) ToSecretVolumeArrayOutput() SecretVolumeArrayOutput {
+	return o
+}
+
+func (o SecretVolumeArrayOutput) ToSecretVolumeArrayOutputWithContext(ctx context.Context) SecretVolumeArrayOutput {
+	return o
+}
+
+func (o SecretVolumeArrayOutput) Index(i pulumi.IntInput) SecretVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolume {
+		return vs[0].([]SecretVolume)[vs[1].(int)]
+	}).(SecretVolumeOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolumeResponse struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+	MountPath string `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions []SecretVersionResponse `pulumi:"versions"`
+}
+
+// SecretVolumeResponseInput is an input type that accepts SecretVolumeResponseArgs and SecretVolumeResponseOutput values.
+// You can construct a concrete instance of `SecretVolumeResponseInput` via:
+//
+//          SecretVolumeResponseArgs{...}
+type SecretVolumeResponseInput interface {
+	pulumi.Input
+
+	ToSecretVolumeResponseOutput() SecretVolumeResponseOutput
+	ToSecretVolumeResponseOutputWithContext(context.Context) SecretVolumeResponseOutput
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolumeResponseArgs struct {
+	// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+	Versions SecretVersionResponseArrayInput `pulumi:"versions"`
+}
+
+func (SecretVolumeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolumeResponse)(nil)).Elem()
+}
+
+func (i SecretVolumeResponseArgs) ToSecretVolumeResponseOutput() SecretVolumeResponseOutput {
+	return i.ToSecretVolumeResponseOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeResponseArgs) ToSecretVolumeResponseOutputWithContext(ctx context.Context) SecretVolumeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeResponseOutput)
+}
+
+// SecretVolumeResponseArrayInput is an input type that accepts SecretVolumeResponseArray and SecretVolumeResponseArrayOutput values.
+// You can construct a concrete instance of `SecretVolumeResponseArrayInput` via:
+//
+//          SecretVolumeResponseArray{ SecretVolumeResponseArgs{...} }
+type SecretVolumeResponseArrayInput interface {
+	pulumi.Input
+
+	ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput
+	ToSecretVolumeResponseArrayOutputWithContext(context.Context) SecretVolumeResponseArrayOutput
+}
+
+type SecretVolumeResponseArray []SecretVolumeResponseInput
+
+func (SecretVolumeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolumeResponse)(nil)).Elem()
+}
+
+func (i SecretVolumeResponseArray) ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput {
+	return i.ToSecretVolumeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeResponseArray) ToSecretVolumeResponseArrayOutputWithContext(ctx context.Context) SecretVolumeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeResponseArrayOutput)
+}
+
+// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+type SecretVolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolumeResponse)(nil)).Elem()
+}
+
+func (o SecretVolumeResponseOutput) ToSecretVolumeResponseOutput() SecretVolumeResponseOutput {
+	return o
+}
+
+func (o SecretVolumeResponseOutput) ToSecretVolumeResponseOutputWithContext(ctx context.Context) SecretVolumeResponseOutput {
+	return o
+}
+
+// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+func (o SecretVolumeResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretVolumeResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretVolumeResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+func (o SecretVolumeResponseOutput) Versions() SecretVersionResponseArrayOutput {
+	return o.ApplyT(func(v SecretVolumeResponse) []SecretVersionResponse { return v.Versions }).(SecretVersionResponseArrayOutput)
+}
+
+type SecretVolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretVolumeResponse)(nil)).Elem()
+}
+
+func (o SecretVolumeResponseArrayOutput) ToSecretVolumeResponseArrayOutput() SecretVolumeResponseArrayOutput {
+	return o
+}
+
+func (o SecretVolumeResponseArrayOutput) ToSecretVolumeResponseArrayOutputWithContext(ctx context.Context) SecretVolumeResponseArrayOutput {
+	return o
+}
+
+func (o SecretVolumeResponseArrayOutput) Index(i pulumi.IntInput) SecretVolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolumeResponse {
+		return vs[0].([]SecretVolumeResponse)[vs[1].(int)]
+	}).(SecretVolumeResponseOutput)
+}
+
 // Describes SourceRepository, used to represent parameters related to source repository where a function is hosted.
 type SourceRepository struct {
 	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats: To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*` To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the main directory.
@@ -2441,6 +3167,18 @@ func init() {
 	pulumi.RegisterOutputType(RetryPtrOutput{})
 	pulumi.RegisterOutputType(RetryResponseOutput{})
 	pulumi.RegisterOutputType(RetryResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarArrayOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarResponseOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretVersionOutput{})
+	pulumi.RegisterOutputType(SecretVersionArrayOutput{})
+	pulumi.RegisterOutputType(SecretVersionResponseOutput{})
+	pulumi.RegisterOutputType(SecretVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretVolumeOutput{})
+	pulumi.RegisterOutputType(SecretVolumeArrayOutput{})
+	pulumi.RegisterOutputType(SecretVolumeResponseOutput{})
+	pulumi.RegisterOutputType(SecretVolumeResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourceRepositoryOutput{})
 	pulumi.RegisterOutputType(SourceRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(SourceRepositoryResponseOutput{})

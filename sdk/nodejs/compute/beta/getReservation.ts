@@ -59,6 +59,10 @@ export interface GetReservationResult {
      */
     readonly selfLink: string;
     /**
+     * Share-settings for shared-reservation
+     */
+    readonly shareSettings: outputs.compute.beta.ShareSettingsResponse;
+    /**
      * Reservation for instances with specific machine shapes.
      */
     readonly specificReservation: outputs.compute.beta.AllocationSpecificSKUReservationResponse;

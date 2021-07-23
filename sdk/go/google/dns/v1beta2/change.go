@@ -72,10 +72,10 @@ func (ChangeState) ElementType() reflect.Type {
 
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions         []ResourceRecordSet `pulumi:"additions"`
-	ClientOperationId *string             `pulumi:"clientOperationId"`
+	Additions         []ResourceRecordSetType `pulumi:"additions"`
+	ClientOperationId *string                 `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions []ResourceRecordSet `pulumi:"deletions"`
+	Deletions []ResourceRecordSetType `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id *string `pulumi:"id"`
 	// If the DNS queries for the zone will be served.
@@ -92,10 +92,10 @@ type changeArgs struct {
 // The set of arguments for constructing a Change resource.
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions         ResourceRecordSetArrayInput
+	Additions         ResourceRecordSetTypeArrayInput
 	ClientOperationId pulumi.StringPtrInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions ResourceRecordSetArrayInput
+	Deletions ResourceRecordSetTypeArrayInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id pulumi.StringPtrInput
 	// If the DNS queries for the zone will be served.

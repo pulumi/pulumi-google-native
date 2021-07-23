@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
     public sealed class ConfigMapKeySelectorResponse
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+        /// The key to select.
         /// </summary>
         public readonly string Key;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.LocalObjectReferenceResponse LocalObjectReference;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+        /// The ConfigMap to select from.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+        /// (Optional) Specify whether the ConfigMap or its key must be defined
         /// </summary>
         public readonly bool Optional;
 

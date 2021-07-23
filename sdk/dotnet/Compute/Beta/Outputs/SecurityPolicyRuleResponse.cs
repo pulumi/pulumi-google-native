@@ -50,6 +50,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleRateLimitOptionsResponse RateLimitOptions;
+        /// <summary>
         /// Parameters defining the redirect action. Cannot be specified for any other actions.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse RedirectOptions;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             int priority,
 
+            Outputs.SecurityPolicyRuleRateLimitOptionsResponse rateLimitOptions,
+
             Outputs.SecurityPolicyRuleRedirectOptionsResponse redirectOptions,
 
             string ruleNumber,
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Match = match;
             Preview = preview;
             Priority = priority;
+            RateLimitOptions = rateLimitOptions;
             RedirectOptions = redirectOptions;
             RuleNumber = ruleNumber;
             RuleTupleCount = ruleTupleCount;

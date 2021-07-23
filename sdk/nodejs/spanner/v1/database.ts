@@ -41,6 +41,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+     */
+    public /*out*/ readonly defaultLeader!: pulumi.Output<string>;
+    /**
      * Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
      */
     public /*out*/ readonly earliestVersionTime!: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class Database extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["defaultLeader"] = undefined /*out*/;
             inputs["earliestVersionTime"] = undefined /*out*/;
             inputs["encryptionInfo"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class Database extends pulumi.CustomResource {
             inputs["versionRetentionPeriod"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
+            inputs["defaultLeader"] = undefined /*out*/;
             inputs["earliestVersionTime"] = undefined /*out*/;
             inputs["encryptionConfig"] = undefined /*out*/;
             inputs["encryptionInfo"] = undefined /*out*/;

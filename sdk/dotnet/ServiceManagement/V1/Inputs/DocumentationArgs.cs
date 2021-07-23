@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? ServiceRootUrl { get; set; }
 
         /// <summary>
-        /// A short summary of what the service does. Can only be provided by plain text.
+        /// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
         /// </summary>
         [Input("summary")]
         public Input<string>? Summary { get; set; }

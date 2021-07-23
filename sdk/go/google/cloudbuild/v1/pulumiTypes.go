@@ -1017,7 +1017,7 @@ type BuildOptions struct {
 	Logging *BuildOptionsLogging `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	MachineType *BuildOptionsMachineType `pulumi:"machineType"`
-	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 	Pool *PoolOption `pulumi:"pool"`
 	// Requested verifiability options.
 	RequestedVerifyOption *BuildOptionsRequestedVerifyOption `pulumi:"requestedVerifyOption"`
@@ -1058,7 +1058,7 @@ type BuildOptionsArgs struct {
 	Logging BuildOptionsLoggingPtrInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	MachineType BuildOptionsMachineTypePtrInput `pulumi:"machineType"`
-	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 	Pool PoolOptionPtrInput `pulumi:"pool"`
 	// Requested verifiability options.
 	RequestedVerifyOption BuildOptionsRequestedVerifyOptionPtrInput `pulumi:"requestedVerifyOption"`
@@ -1182,7 +1182,7 @@ func (o BuildOptionsOutput) MachineType() BuildOptionsMachineTypePtrOutput {
 	return o.ApplyT(func(v BuildOptions) *BuildOptionsMachineType { return v.MachineType }).(BuildOptionsMachineTypePtrOutput)
 }
 
-// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 func (o BuildOptionsOutput) Pool() PoolOptionPtrOutput {
 	return o.ApplyT(func(v BuildOptions) *PoolOption { return v.Pool }).(PoolOptionPtrOutput)
 }
@@ -1295,7 +1295,7 @@ func (o BuildOptionsPtrOutput) MachineType() BuildOptionsMachineTypePtrOutput {
 	}).(BuildOptionsMachineTypePtrOutput)
 }
 
-// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 func (o BuildOptionsPtrOutput) Pool() PoolOptionPtrOutput {
 	return o.ApplyT(func(v *BuildOptions) *PoolOption {
 		if v == nil {
@@ -1379,7 +1379,7 @@ type BuildOptionsResponse struct {
 	Logging string `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	MachineType string `pulumi:"machineType"`
-	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 	Pool PoolOptionResponse `pulumi:"pool"`
 	// Requested verifiability options.
 	RequestedVerifyOption string `pulumi:"requestedVerifyOption"`
@@ -1420,7 +1420,7 @@ type BuildOptionsResponseArgs struct {
 	Logging pulumi.StringInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 	Pool PoolOptionResponseInput `pulumi:"pool"`
 	// Requested verifiability options.
 	RequestedVerifyOption pulumi.StringInput `pulumi:"requestedVerifyOption"`
@@ -1544,7 +1544,7 @@ func (o BuildOptionsResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 func (o BuildOptionsResponseOutput) Pool() PoolOptionResponseOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) PoolOptionResponse { return v.Pool }).(PoolOptionResponseOutput)
 }
@@ -1657,7 +1657,7 @@ func (o BuildOptionsResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 func (o BuildOptionsResponsePtrOutput) Pool() PoolOptionResponsePtrOutput {
 	return o.ApplyT(func(v *BuildOptionsResponse) *PoolOptionResponse {
 		if v == nil {
@@ -1737,6 +1737,8 @@ type BuildResponse struct {
 	BuildTriggerId string `pulumi:"buildTriggerId"`
 	// Time at which the request to create the build was received.
 	CreateTime string `pulumi:"createTime"`
+	// Contains information about the build when status=FAILURE.
+	FailureInfo FailureInfoResponse `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime string `pulumi:"finishTime"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -1804,6 +1806,8 @@ type BuildResponseArgs struct {
 	BuildTriggerId pulumi.StringInput `pulumi:"buildTriggerId"`
 	// Time at which the request to create the build was received.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Contains information about the build when status=FAILURE.
+	FailureInfo FailureInfoResponseInput `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime pulumi.StringInput `pulumi:"finishTime"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -1946,6 +1950,11 @@ func (o BuildResponseOutput) BuildTriggerId() pulumi.StringOutput {
 // Time at which the request to create the build was received.
 func (o BuildResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Contains information about the build when status=FAILURE.
+func (o BuildResponseOutput) FailureInfo() FailureInfoResponseOutput {
+	return o.ApplyT(func(v BuildResponse) FailureInfoResponse { return v.FailureInfo }).(FailureInfoResponseOutput)
 }
 
 // Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
@@ -2114,6 +2123,16 @@ func (o BuildResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
 		}
 		return &v.CreateTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the build when status=FAILURE.
+func (o BuildResponsePtrOutput) FailureInfo() FailureInfoResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *FailureInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.FailureInfo
+	}).(FailureInfoResponsePtrOutput)
 }
 
 // Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
@@ -2834,6 +2853,159 @@ func (o BuiltImageResponseArrayOutput) Index(i pulumi.IntInput) BuiltImageRespon
 	}).(BuiltImageResponseOutput)
 }
 
+// A fatal problem encountered during the execution of the build.
+type FailureInfoResponse struct {
+	// Explains the failure issue in more detail using hard-coded text.
+	Detail string `pulumi:"detail"`
+	// The name of the failure.
+	Type string `pulumi:"type"`
+}
+
+// FailureInfoResponseInput is an input type that accepts FailureInfoResponseArgs and FailureInfoResponseOutput values.
+// You can construct a concrete instance of `FailureInfoResponseInput` via:
+//
+//          FailureInfoResponseArgs{...}
+type FailureInfoResponseInput interface {
+	pulumi.Input
+
+	ToFailureInfoResponseOutput() FailureInfoResponseOutput
+	ToFailureInfoResponseOutputWithContext(context.Context) FailureInfoResponseOutput
+}
+
+// A fatal problem encountered during the execution of the build.
+type FailureInfoResponseArgs struct {
+	// Explains the failure issue in more detail using hard-coded text.
+	Detail pulumi.StringInput `pulumi:"detail"`
+	// The name of the failure.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FailureInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureInfoResponse)(nil)).Elem()
+}
+
+func (i FailureInfoResponseArgs) ToFailureInfoResponseOutput() FailureInfoResponseOutput {
+	return i.ToFailureInfoResponseOutputWithContext(context.Background())
+}
+
+func (i FailureInfoResponseArgs) ToFailureInfoResponseOutputWithContext(ctx context.Context) FailureInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponseOutput)
+}
+
+func (i FailureInfoResponseArgs) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
+	return i.ToFailureInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FailureInfoResponseArgs) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponseOutput).ToFailureInfoResponsePtrOutputWithContext(ctx)
+}
+
+// FailureInfoResponsePtrInput is an input type that accepts FailureInfoResponseArgs, FailureInfoResponsePtr and FailureInfoResponsePtrOutput values.
+// You can construct a concrete instance of `FailureInfoResponsePtrInput` via:
+//
+//          FailureInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FailureInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput
+	ToFailureInfoResponsePtrOutputWithContext(context.Context) FailureInfoResponsePtrOutput
+}
+
+type failureInfoResponsePtrType FailureInfoResponseArgs
+
+func FailureInfoResponsePtr(v *FailureInfoResponseArgs) FailureInfoResponsePtrInput {
+	return (*failureInfoResponsePtrType)(v)
+}
+
+func (*failureInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailureInfoResponse)(nil)).Elem()
+}
+
+func (i *failureInfoResponsePtrType) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
+	return i.ToFailureInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *failureInfoResponsePtrType) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponsePtrOutput)
+}
+
+// A fatal problem encountered during the execution of the build.
+type FailureInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (FailureInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureInfoResponse)(nil)).Elem()
+}
+
+func (o FailureInfoResponseOutput) ToFailureInfoResponseOutput() FailureInfoResponseOutput {
+	return o
+}
+
+func (o FailureInfoResponseOutput) ToFailureInfoResponseOutputWithContext(ctx context.Context) FailureInfoResponseOutput {
+	return o
+}
+
+func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
+	return o.ToFailureInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
+	return o.ApplyT(func(v FailureInfoResponse) *FailureInfoResponse {
+		return &v
+	}).(FailureInfoResponsePtrOutput)
+}
+
+// Explains the failure issue in more detail using hard-coded text.
+func (o FailureInfoResponseOutput) Detail() pulumi.StringOutput {
+	return o.ApplyT(func(v FailureInfoResponse) string { return v.Detail }).(pulumi.StringOutput)
+}
+
+// The name of the failure.
+func (o FailureInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FailureInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FailureInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FailureInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailureInfoResponse)(nil)).Elem()
+}
+
+func (o FailureInfoResponsePtrOutput) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
+	return o
+}
+
+func (o FailureInfoResponsePtrOutput) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
+	return o
+}
+
+func (o FailureInfoResponsePtrOutput) Elem() FailureInfoResponseOutput {
+	return o.ApplyT(func(v *FailureInfoResponse) FailureInfoResponse { return *v }).(FailureInfoResponseOutput)
+}
+
+// Explains the failure issue in more detail using hard-coded text.
+func (o FailureInfoResponsePtrOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailureInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the failure.
+func (o FailureInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailureInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
 type GitHubEventsConfig struct {
 	// The installationID that emits the GitHub event.
@@ -3254,6 +3426,350 @@ func (o GitHubEventsConfigResponsePtrOutput) Push() PushFilterResponsePtrOutput 
 	}).(PushFilterResponsePtrOutput)
 }
 
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSource struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref *string `pulumi:"ref"`
+	// See RepoType below.
+	RepoType *GitRepoSourceRepoType `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri *string `pulumi:"uri"`
+}
+
+// GitRepoSourceInput is an input type that accepts GitRepoSourceArgs and GitRepoSourceOutput values.
+// You can construct a concrete instance of `GitRepoSourceInput` via:
+//
+//          GitRepoSourceArgs{...}
+type GitRepoSourceInput interface {
+	pulumi.Input
+
+	ToGitRepoSourceOutput() GitRepoSourceOutput
+	ToGitRepoSourceOutputWithContext(context.Context) GitRepoSourceOutput
+}
+
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSourceArgs struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// See RepoType below.
+	RepoType GitRepoSourceRepoTypePtrInput `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GitRepoSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitRepoSource)(nil)).Elem()
+}
+
+func (i GitRepoSourceArgs) ToGitRepoSourceOutput() GitRepoSourceOutput {
+	return i.ToGitRepoSourceOutputWithContext(context.Background())
+}
+
+func (i GitRepoSourceArgs) ToGitRepoSourceOutputWithContext(ctx context.Context) GitRepoSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceOutput)
+}
+
+func (i GitRepoSourceArgs) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
+	return i.ToGitRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GitRepoSourceArgs) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceOutput).ToGitRepoSourcePtrOutputWithContext(ctx)
+}
+
+// GitRepoSourcePtrInput is an input type that accepts GitRepoSourceArgs, GitRepoSourcePtr and GitRepoSourcePtrOutput values.
+// You can construct a concrete instance of `GitRepoSourcePtrInput` via:
+//
+//          GitRepoSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GitRepoSourcePtrInput interface {
+	pulumi.Input
+
+	ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput
+	ToGitRepoSourcePtrOutputWithContext(context.Context) GitRepoSourcePtrOutput
+}
+
+type gitRepoSourcePtrType GitRepoSourceArgs
+
+func GitRepoSourcePtr(v *GitRepoSourceArgs) GitRepoSourcePtrInput {
+	return (*gitRepoSourcePtrType)(v)
+}
+
+func (*gitRepoSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitRepoSource)(nil)).Elem()
+}
+
+func (i *gitRepoSourcePtrType) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
+	return i.ToGitRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *gitRepoSourcePtrType) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourcePtrOutput)
+}
+
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSourceOutput struct{ *pulumi.OutputState }
+
+func (GitRepoSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitRepoSource)(nil)).Elem()
+}
+
+func (o GitRepoSourceOutput) ToGitRepoSourceOutput() GitRepoSourceOutput {
+	return o
+}
+
+func (o GitRepoSourceOutput) ToGitRepoSourceOutputWithContext(ctx context.Context) GitRepoSourceOutput {
+	return o
+}
+
+func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
+	return o.ToGitRepoSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *GitRepoSource {
+		return &v
+	}).(GitRepoSourcePtrOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o GitRepoSourceOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// See RepoType below.
+func (o GitRepoSourceOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *GitRepoSourceRepoType { return v.RepoType }).(GitRepoSourceRepoTypePtrOutput)
+}
+
+// The URI of the repo (required).
+func (o GitRepoSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GitRepoSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GitRepoSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitRepoSource)(nil)).Elem()
+}
+
+func (o GitRepoSourcePtrOutput) ToGitRepoSourcePtrOutput() GitRepoSourcePtrOutput {
+	return o
+}
+
+func (o GitRepoSourcePtrOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Context) GitRepoSourcePtrOutput {
+	return o
+}
+
+func (o GitRepoSourcePtrOutput) Elem() GitRepoSourceOutput {
+	return o.ApplyT(func(v *GitRepoSource) GitRepoSource { return *v }).(GitRepoSourceOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o GitRepoSourcePtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// See RepoType below.
+func (o GitRepoSourcePtrOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *GitRepoSourceRepoType {
+		if v == nil {
+			return nil
+		}
+		return v.RepoType
+	}).(GitRepoSourceRepoTypePtrOutput)
+}
+
+// The URI of the repo (required).
+func (o GitRepoSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSourceResponse struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref string `pulumi:"ref"`
+	// See RepoType below.
+	RepoType string `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri string `pulumi:"uri"`
+}
+
+// GitRepoSourceResponseInput is an input type that accepts GitRepoSourceResponseArgs and GitRepoSourceResponseOutput values.
+// You can construct a concrete instance of `GitRepoSourceResponseInput` via:
+//
+//          GitRepoSourceResponseArgs{...}
+type GitRepoSourceResponseInput interface {
+	pulumi.Input
+
+	ToGitRepoSourceResponseOutput() GitRepoSourceResponseOutput
+	ToGitRepoSourceResponseOutputWithContext(context.Context) GitRepoSourceResponseOutput
+}
+
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSourceResponseArgs struct {
+	// The branch or tag to use. Must start with "refs/" (required).
+	Ref pulumi.StringInput `pulumi:"ref"`
+	// See RepoType below.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The URI of the repo (required).
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GitRepoSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitRepoSourceResponse)(nil)).Elem()
+}
+
+func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponseOutput() GitRepoSourceResponseOutput {
+	return i.ToGitRepoSourceResponseOutputWithContext(context.Background())
+}
+
+func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponseOutputWithContext(ctx context.Context) GitRepoSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponseOutput)
+}
+
+func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
+	return i.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponseOutput).ToGitRepoSourceResponsePtrOutputWithContext(ctx)
+}
+
+// GitRepoSourceResponsePtrInput is an input type that accepts GitRepoSourceResponseArgs, GitRepoSourceResponsePtr and GitRepoSourceResponsePtrOutput values.
+// You can construct a concrete instance of `GitRepoSourceResponsePtrInput` via:
+//
+//          GitRepoSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GitRepoSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput
+	ToGitRepoSourceResponsePtrOutputWithContext(context.Context) GitRepoSourceResponsePtrOutput
+}
+
+type gitRepoSourceResponsePtrType GitRepoSourceResponseArgs
+
+func GitRepoSourceResponsePtr(v *GitRepoSourceResponseArgs) GitRepoSourceResponsePtrInput {
+	return (*gitRepoSourceResponsePtrType)(v)
+}
+
+func (*gitRepoSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitRepoSourceResponse)(nil)).Elem()
+}
+
+func (i *gitRepoSourceResponsePtrType) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
+	return i.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gitRepoSourceResponsePtrType) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponsePtrOutput)
+}
+
+// GitRepoSource describes a repo and ref of a code repository.
+type GitRepoSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GitRepoSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitRepoSourceResponse)(nil)).Elem()
+}
+
+func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutput() GitRepoSourceResponseOutput {
+	return o
+}
+
+func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutputWithContext(ctx context.Context) GitRepoSourceResponseOutput {
+	return o
+}
+
+func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
+	return o.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) *GitRepoSourceResponse {
+		return &v
+	}).(GitRepoSourceResponsePtrOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o GitRepoSourceResponseOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+// See RepoType below.
+func (o GitRepoSourceResponseOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The URI of the repo (required).
+func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GitRepoSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitRepoSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitRepoSourceResponse)(nil)).Elem()
+}
+
+func (o GitRepoSourceResponsePtrOutput) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o GitRepoSourceResponsePtrOutput) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o GitRepoSourceResponsePtrOutput) Elem() GitRepoSourceResponseOutput {
+	return o.ApplyT(func(v *GitRepoSourceResponse) GitRepoSourceResponse { return *v }).(GitRepoSourceResponseOutput)
+}
+
+// The branch or tag to use. Must start with "refs/" (required).
+func (o GitRepoSourceResponsePtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// See RepoType below.
+func (o GitRepoSourceResponsePtrOutput) RepoType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (required).
+func (o GitRepoSourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
 type InlineSecret struct {
 	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
@@ -3476,7 +3992,7 @@ func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretRe
 type NetworkConfig struct {
 	// Option to configure network egress for the workers.
 	EgressOption *NetworkConfigEgressOption `pulumi:"egressOption"`
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
@@ -3495,7 +4011,7 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Option to configure network egress for the workers.
 	EgressOption NetworkConfigEgressOptionPtrInput `pulumi:"egressOption"`
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
 }
 
@@ -3582,7 +4098,7 @@ func (o NetworkConfigOutput) EgressOption() NetworkConfigEgressOptionPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *NetworkConfigEgressOption { return v.EgressOption }).(NetworkConfigEgressOptionPtrOutput)
 }
 
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
@@ -3615,7 +4131,7 @@ func (o NetworkConfigPtrOutput) EgressOption() NetworkConfigEgressOptionPtrOutpu
 	}).(NetworkConfigEgressOptionPtrOutput)
 }
 
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
@@ -3629,7 +4145,7 @@ func (o NetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 type NetworkConfigResponse struct {
 	// Option to configure network egress for the workers.
 	EgressOption string `pulumi:"egressOption"`
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
@@ -3648,7 +4164,7 @@ type NetworkConfigResponseInput interface {
 type NetworkConfigResponseArgs struct {
 	// Option to configure network egress for the workers.
 	EgressOption pulumi.StringInput `pulumi:"egressOption"`
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
 }
 
@@ -3735,7 +4251,7 @@ func (o NetworkConfigResponseOutput) EgressOption() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.EgressOption }).(pulumi.StringOutput)
 }
 
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
@@ -3768,7 +4284,7 @@ func (o NetworkConfigResponsePtrOutput) EgressOption() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) *string {
 		if v == nil {
@@ -3778,7 +4294,7 @@ func (o NetworkConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOption struct {
 	// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 	Name *string `pulumi:"name"`
@@ -3795,7 +4311,7 @@ type PoolOptionInput interface {
 	ToPoolOptionOutputWithContext(context.Context) PoolOptionOutput
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionArgs struct {
 	// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3854,7 +4370,7 @@ func (i *poolOptionPtrType) ToPoolOptionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionPtrOutput)
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionOutput struct{ *pulumi.OutputState }
 
 func (PoolOptionOutput) ElementType() reflect.Type {
@@ -3912,7 +4428,7 @@ func (o PoolOptionPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionResponse struct {
 	// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 	Name string `pulumi:"name"`
@@ -3929,7 +4445,7 @@ type PoolOptionResponseInput interface {
 	ToPoolOptionResponseOutputWithContext(context.Context) PoolOptionResponseOutput
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionResponseArgs struct {
 	// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 	Name pulumi.StringInput `pulumi:"name"`
@@ -3988,7 +4504,7 @@ func (i *poolOptionResponsePtrType) ToPoolOptionResponsePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionResponsePtrOutput)
 }
 
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionResponseOutput struct{ *pulumi.OutputState }
 
 func (PoolOptionResponseOutput) ElementType() reflect.Type {
@@ -7449,7 +7965,7 @@ type StorageSource struct {
 	Bucket *string `pulumi:"bucket"`
 	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation *string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object *string `pulumi:"object"`
 }
 
@@ -7470,7 +7986,7 @@ type StorageSourceArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object pulumi.StringPtrInput `pulumi:"object"`
 }
 
@@ -7562,7 +8078,7 @@ func (o StorageSourceOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSource) *string { return v.Generation }).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourceOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageSource) *string { return v.Object }).(pulumi.StringPtrOutput)
 }
@@ -7605,7 +8121,7 @@ func (o StorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSource) *string {
 		if v == nil {
@@ -7965,7 +8481,7 @@ type StorageSourceResponse struct {
 	Bucket string `pulumi:"bucket"`
 	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation string `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object string `pulumi:"object"`
 }
 
@@ -7986,7 +8502,7 @@ type StorageSourceResponseArgs struct {
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
 	Generation pulumi.StringInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -8078,7 +8594,7 @@ func (o StorageSourceResponseOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -8121,7 +8637,7 @@ func (o StorageSourceResponsePtrOutput) Generation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourceResponsePtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSourceResponse) *string {
 		if v == nil {
@@ -8919,9 +9435,9 @@ func (o WebhookConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfig struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType *string `pulumi:"machineType"`
 }
 
@@ -8938,9 +9454,9 @@ type WorkerConfigInput interface {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigArgs struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 }
 
@@ -9022,12 +9538,12 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Conte
 	}).(WorkerConfigPtrOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
 }
 
-// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 func (o WorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -9050,7 +9566,7 @@ func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
 	return o.ApplyT(func(v *WorkerConfig) WorkerConfig { return *v }).(WorkerConfigOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerConfig) *string {
 		if v == nil {
@@ -9060,7 +9576,7 @@ func (o WorkerConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 func (o WorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerConfig) *string {
 		if v == nil {
@@ -9072,9 +9588,9 @@ func (o WorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigResponse struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType string `pulumi:"machineType"`
 }
 
@@ -9091,9 +9607,9 @@ type WorkerConfigResponseInput interface {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigResponseArgs struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 }
 
@@ -9175,12 +9691,12 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(c
 	}).(WorkerConfigResponsePtrOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 func (o WorkerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -9203,7 +9719,7 @@ func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
 	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse { return *v }).(WorkerConfigResponseOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerConfigResponse) *string {
 		if v == nil {
@@ -9213,7 +9729,7 @@ func (o WorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerConfigResponse) *string {
 		if v == nil {
@@ -9246,10 +9762,16 @@ func init() {
 	pulumi.RegisterOutputType(BuildStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
+	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
+	pulumi.RegisterOutputType(FailureInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigResponseOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitRepoSourceOutput{})
+	pulumi.RegisterOutputType(GitRepoSourcePtrOutput{})
+	pulumi.RegisterOutputType(GitRepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(GitRepoSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(InlineSecretOutput{})
 	pulumi.RegisterOutputType(InlineSecretArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseOutput{})

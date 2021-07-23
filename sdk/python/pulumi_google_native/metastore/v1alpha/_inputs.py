@@ -15,6 +15,7 @@ __all__ = [
     'BindingArgs',
     'DataCatalogConfigArgs',
     'DatabaseDumpArgs',
+    'EncryptionConfigArgs',
     'ExprArgs',
     'HiveMetastoreConfigArgs',
     'KerberosConfigArgs',
@@ -253,6 +254,30 @@ class DatabaseDumpArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input['DatabaseDumpType']]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class EncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key: Optional[pulumi.Input[str]] = None):
+        """
+        Encryption settings for the service.
+        :param pulumi.Input[str] kms_key: The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
 
 @pulumi.input_type

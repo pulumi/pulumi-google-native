@@ -34,6 +34,8 @@ type LookupBuildResult struct {
 	BuildTriggerId string `pulumi:"buildTriggerId"`
 	// Time at which the request to create the build was received.
 	CreateTime string `pulumi:"createTime"`
+	// Contains information about the build when status=FAILURE.
+	FailureInfo FailureInfoResponse `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime string `pulumi:"finishTime"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.

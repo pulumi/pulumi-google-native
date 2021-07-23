@@ -106,6 +106,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.ImageRawDiskResponse> RawDisk { get; private set; } = null!;
 
         /// <summary>
+        /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        /// </summary>
+        [Output("rolloutOverride")]
+        public Output<Outputs.RolloutPolicyResponse> RolloutOverride { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -194,6 +200,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("storageLocations")]
         public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        /// </summary>
+        [Output("userLicenses")]
+        public Output<ImmutableArray<string>> UserLicenses { get; private set; } = null!;
 
 
         /// <summary>
@@ -346,6 +358,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        /// </summary>
+        [Input("rolloutOverride")]
+        public Input<Inputs.RolloutPolicyArgs>? RolloutOverride { get; set; }
+
+        /// <summary>
         /// Set the secure boot keys of shielded instance.
         /// </summary>
         [Input("shieldedInstanceInitialState")]
@@ -403,6 +421,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             get => _storageLocations ?? (_storageLocations = new InputList<string>());
             set => _storageLocations = value;
+        }
+
+        [Input("userLicenses")]
+        private InputList<string>? _userLicenses;
+
+        /// <summary>
+        /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        /// </summary>
+        public InputList<string> UserLicenses
+        {
+            get => _userLicenses ?? (_userLicenses = new InputList<string>());
+            set => _userLicenses = value;
         }
 
         public ImageArgs()

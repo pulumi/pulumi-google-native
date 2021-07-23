@@ -53,6 +53,10 @@ export class Build extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Contains information about the build when status=FAILURE.
+     */
+    public /*out*/ readonly failureInfo!: pulumi.Output<outputs.cloudbuild.v1.FailureInfoResponse>;
+    /**
      * Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
      */
     public /*out*/ readonly finishTime!: pulumi.Output<string>;
@@ -176,6 +180,7 @@ export class Build extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["buildTriggerId"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
+            inputs["failureInfo"] = undefined /*out*/;
             inputs["finishTime"] = undefined /*out*/;
             inputs["logUrl"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -191,6 +196,7 @@ export class Build extends pulumi.CustomResource {
             inputs["availableSecrets"] = undefined /*out*/;
             inputs["buildTriggerId"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
+            inputs["failureInfo"] = undefined /*out*/;
             inputs["finishTime"] = undefined /*out*/;
             inputs["images"] = undefined /*out*/;
             inputs["logUrl"] = undefined /*out*/;

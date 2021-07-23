@@ -32635,6 +32635,8 @@ type NetworkInterface struct {
 	NetworkIP *string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType *NetworkInterfaceNicType `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount *int `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType *NetworkInterfaceStackType `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -32666,6 +32668,8 @@ type NetworkInterfaceArgs struct {
 	NetworkIP pulumi.StringPtrInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType NetworkInterfaceNicTypePtrInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType NetworkInterfaceStackTypePtrInput `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -32754,6 +32758,11 @@ func (o NetworkInterfaceOutput) NicType() NetworkInterfaceNicTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceNicType { return v.NicType }).(NetworkInterfaceNicTypePtrOutput)
 }
 
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+func (o NetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceOutput) StackType() NetworkInterfaceStackTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceStackType { return v.StackType }).(NetworkInterfaceStackTypePtrOutput)
@@ -32808,6 +32817,8 @@ type NetworkInterfaceResponse struct {
 	NetworkIP string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount int `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType string `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -32849,6 +32860,8 @@ type NetworkInterfaceResponseArgs struct {
 	NetworkIP pulumi.StringInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType pulumi.StringInput `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -32960,6 +32973,11 @@ func (o NetworkInterfaceResponseOutput) NetworkIP() pulumi.StringOutput {
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 func (o NetworkInterfaceResponseOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+func (o NetworkInterfaceResponseOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkInterfaceResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.

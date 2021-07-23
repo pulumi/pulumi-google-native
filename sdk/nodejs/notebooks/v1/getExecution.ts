@@ -47,6 +47,10 @@ export interface GetExecutionResult {
      */
     readonly executionTemplate: outputs.notebooks.v1.ExecutionTemplateResponse;
     /**
+     * The URI of the external job used to execute the notebook.
+     */
+    readonly jobUri: string;
+    /**
      * The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
      */
     readonly name: string;

@@ -3111,6 +3111,235 @@ func (o GkeClusterReferenceResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The state of the Kubernetes cluster.
+type KubernetesClusterStateResponse struct {
+	// The version of Agones currently installed in the registered Kubernetes cluster.
+	AgonesVersionInstalled string `pulumi:"agonesVersionInstalled"`
+	// The version of Agones that is targeted to be installed in the cluster.
+	AgonesVersionTargeted string `pulumi:"agonesVersionTargeted"`
+	// The state for the installed versions of Agones/Kubernetes.
+	InstallationState string `pulumi:"installationState"`
+	// The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+	KubernetesVersionInstalled string `pulumi:"kubernetesVersionInstalled"`
+	// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+	Provider string `pulumi:"provider"`
+	// The detailed error message for the installed versions of Agones/Kubernetes.
+	VersionInstalledErrorMessage string `pulumi:"versionInstalledErrorMessage"`
+}
+
+// KubernetesClusterStateResponseInput is an input type that accepts KubernetesClusterStateResponseArgs and KubernetesClusterStateResponseOutput values.
+// You can construct a concrete instance of `KubernetesClusterStateResponseInput` via:
+//
+//          KubernetesClusterStateResponseArgs{...}
+type KubernetesClusterStateResponseInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterStateResponseOutput() KubernetesClusterStateResponseOutput
+	ToKubernetesClusterStateResponseOutputWithContext(context.Context) KubernetesClusterStateResponseOutput
+}
+
+// The state of the Kubernetes cluster.
+type KubernetesClusterStateResponseArgs struct {
+	// The version of Agones currently installed in the registered Kubernetes cluster.
+	AgonesVersionInstalled pulumi.StringInput `pulumi:"agonesVersionInstalled"`
+	// The version of Agones that is targeted to be installed in the cluster.
+	AgonesVersionTargeted pulumi.StringInput `pulumi:"agonesVersionTargeted"`
+	// The state for the installed versions of Agones/Kubernetes.
+	InstallationState pulumi.StringInput `pulumi:"installationState"`
+	// The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+	KubernetesVersionInstalled pulumi.StringInput `pulumi:"kubernetesVersionInstalled"`
+	// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// The detailed error message for the installed versions of Agones/Kubernetes.
+	VersionInstalledErrorMessage pulumi.StringInput `pulumi:"versionInstalledErrorMessage"`
+}
+
+func (KubernetesClusterStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterStateResponse)(nil)).Elem()
+}
+
+func (i KubernetesClusterStateResponseArgs) ToKubernetesClusterStateResponseOutput() KubernetesClusterStateResponseOutput {
+	return i.ToKubernetesClusterStateResponseOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterStateResponseArgs) ToKubernetesClusterStateResponseOutputWithContext(ctx context.Context) KubernetesClusterStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterStateResponseOutput)
+}
+
+func (i KubernetesClusterStateResponseArgs) ToKubernetesClusterStateResponsePtrOutput() KubernetesClusterStateResponsePtrOutput {
+	return i.ToKubernetesClusterStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterStateResponseArgs) ToKubernetesClusterStateResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterStateResponseOutput).ToKubernetesClusterStateResponsePtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterStateResponsePtrInput is an input type that accepts KubernetesClusterStateResponseArgs, KubernetesClusterStateResponsePtr and KubernetesClusterStateResponsePtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterStateResponsePtrInput` via:
+//
+//          KubernetesClusterStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesClusterStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterStateResponsePtrOutput() KubernetesClusterStateResponsePtrOutput
+	ToKubernetesClusterStateResponsePtrOutputWithContext(context.Context) KubernetesClusterStateResponsePtrOutput
+}
+
+type kubernetesClusterStateResponsePtrType KubernetesClusterStateResponseArgs
+
+func KubernetesClusterStateResponsePtr(v *KubernetesClusterStateResponseArgs) KubernetesClusterStateResponsePtrInput {
+	return (*kubernetesClusterStateResponsePtrType)(v)
+}
+
+func (*kubernetesClusterStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterStateResponse)(nil)).Elem()
+}
+
+func (i *kubernetesClusterStateResponsePtrType) ToKubernetesClusterStateResponsePtrOutput() KubernetesClusterStateResponsePtrOutput {
+	return i.ToKubernetesClusterStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterStateResponsePtrType) ToKubernetesClusterStateResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterStateResponsePtrOutput)
+}
+
+// The state of the Kubernetes cluster.
+type KubernetesClusterStateResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterStateResponse)(nil)).Elem()
+}
+
+func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponseOutput() KubernetesClusterStateResponseOutput {
+	return o
+}
+
+func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponseOutputWithContext(ctx context.Context) KubernetesClusterStateResponseOutput {
+	return o
+}
+
+func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponsePtrOutput() KubernetesClusterStateResponsePtrOutput {
+	return o.ToKubernetesClusterStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterStateResponseOutput) ToKubernetesClusterStateResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterStateResponsePtrOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) *KubernetesClusterStateResponse {
+		return &v
+	}).(KubernetesClusterStateResponsePtrOutput)
+}
+
+// The version of Agones currently installed in the registered Kubernetes cluster.
+func (o KubernetesClusterStateResponseOutput) AgonesVersionInstalled() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.AgonesVersionInstalled }).(pulumi.StringOutput)
+}
+
+// The version of Agones that is targeted to be installed in the cluster.
+func (o KubernetesClusterStateResponseOutput) AgonesVersionTargeted() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.AgonesVersionTargeted }).(pulumi.StringOutput)
+}
+
+// The state for the installed versions of Agones/Kubernetes.
+func (o KubernetesClusterStateResponseOutput) InstallationState() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.InstallationState }).(pulumi.StringOutput)
+}
+
+// The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+func (o KubernetesClusterStateResponseOutput) KubernetesVersionInstalled() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.KubernetesVersionInstalled }).(pulumi.StringOutput)
+}
+
+// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+func (o KubernetesClusterStateResponseOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// The detailed error message for the installed versions of Agones/Kubernetes.
+func (o KubernetesClusterStateResponseOutput) VersionInstalledErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.VersionInstalledErrorMessage }).(pulumi.StringOutput)
+}
+
+type KubernetesClusterStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterStateResponse)(nil)).Elem()
+}
+
+func (o KubernetesClusterStateResponsePtrOutput) ToKubernetesClusterStateResponsePtrOutput() KubernetesClusterStateResponsePtrOutput {
+	return o
+}
+
+func (o KubernetesClusterStateResponsePtrOutput) ToKubernetesClusterStateResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterStateResponsePtrOutput {
+	return o
+}
+
+func (o KubernetesClusterStateResponsePtrOutput) Elem() KubernetesClusterStateResponseOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) KubernetesClusterStateResponse { return *v }).(KubernetesClusterStateResponseOutput)
+}
+
+// The version of Agones currently installed in the registered Kubernetes cluster.
+func (o KubernetesClusterStateResponsePtrOutput) AgonesVersionInstalled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AgonesVersionInstalled
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of Agones that is targeted to be installed in the cluster.
+func (o KubernetesClusterStateResponsePtrOutput) AgonesVersionTargeted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AgonesVersionTargeted
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state for the installed versions of Agones/Kubernetes.
+func (o KubernetesClusterStateResponsePtrOutput) InstallationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstallationState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+func (o KubernetesClusterStateResponsePtrOutput) KubernetesVersionInstalled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesVersionInstalled
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+func (o KubernetesClusterStateResponsePtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Provider
+	}).(pulumi.StringPtrOutput)
+}
+
+// The detailed error message for the installed versions of Agones/Kubernetes.
+func (o KubernetesClusterStateResponsePtrOutput) VersionInstalledErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionInstalledErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
 // The label selector, used to group labels on the resources.
 type LabelSelector struct {
 	// Resource labels for this selector.
@@ -4411,6 +4640,8 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterReferencePtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterStateResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(LabelSelectorOutput{})
 	pulumi.RegisterOutputType(LabelSelectorArrayOutput{})
 	pulumi.RegisterOutputType(LabelSelectorResponseOutput{})

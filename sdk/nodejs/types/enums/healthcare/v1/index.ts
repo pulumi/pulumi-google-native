@@ -48,7 +48,7 @@ export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof 
 
 export const ConsentState = {
     /**
-     * No state specified.
+     * No state specified. Treated as ACTIVE only at the time of resource creation.
      */
     StateUnspecified: "STATE_UNSPECIFIED",
     /**

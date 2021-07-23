@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Contains information about the build when status=FAILURE.
+        /// </summary>
+        [Output("failureInfo")]
+        public Output<Outputs.FailureInfoResponse> FailureInfo { get; private set; } = null!;
+
+        /// <summary>
         /// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         /// </summary>
         [Output("finishTime")]

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// VolumeMount describes a mounting of a Volume within a container.
+    /// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
     /// </summary>
     public sealed class VolumeMountArgs : Pulumi.ResourceArgs
     {
@@ -22,25 +22,19 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-        /// </summary>
-        [Input("mountPropagation")]
-        public Input<string>? MountPropagation { get; set; }
-
-        /// <summary>
         /// This must match the Name of a Volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+        /// (Optional) Only true is accepted. Defaults to true.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         [Input("subPath")]
         public Input<string>? SubPath { get; set; }

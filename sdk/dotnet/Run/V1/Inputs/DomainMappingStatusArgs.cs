@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+        /// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

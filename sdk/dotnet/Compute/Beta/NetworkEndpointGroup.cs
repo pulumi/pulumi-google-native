@@ -76,10 +76,16 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string> NetworkEndpointType { get; private set; } = null!;
+
+        /// <summary>
+        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// </summary>
+        [Output("pscTargetService")]
+        public Output<string> PscTargetService { get; private set; } = null!;
 
         /// <summary>
         /// The URL of the region where the network endpoint group is located.
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// </summary>
+        [Output("serverlessDeployment")]
+        public Output<Outputs.NetworkEndpointGroupServerlessDeploymentResponse> ServerlessDeployment { get; private set; } = null!;
 
         /// <summary>
         /// [Output only] Number of network endpoints in the network endpoint group.
@@ -211,7 +223,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.NetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }
@@ -219,8 +231,20 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// </summary>
+        [Input("pscTargetService")]
+        public Input<string>? PscTargetService { get; set; }
+
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// </summary>
+        [Input("serverlessDeployment")]
+        public Input<Inputs.NetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
 
         /// <summary>
         /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.

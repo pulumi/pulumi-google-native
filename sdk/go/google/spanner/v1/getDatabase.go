@@ -26,6 +26,8 @@ type LookupDatabaseArgs struct {
 type LookupDatabaseResult struct {
 	// If exists, the time at which the database creation started.
 	CreateTime string `pulumi:"createTime"`
+	// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+	DefaultLeader string `pulumi:"defaultLeader"`
 	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	EarliestVersionTime string `pulumi:"earliestVersionTime"`
 	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.

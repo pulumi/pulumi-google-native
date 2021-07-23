@@ -51,45 +51,4 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
         public override string ToString() => _value;
     }
-
-    /// <summary>
-    /// Customer's billing structure
-    /// </summary>
-    [EnumType]
-    public readonly struct MultiClusterIngressFeatureSpecBilling : IEquatable<MultiClusterIngressFeatureSpecBilling>
-    {
-        private readonly string _value;
-
-        private MultiClusterIngressFeatureSpecBilling(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unknown
-        /// </summary>
-        public static MultiClusterIngressFeatureSpecBilling BillingUnspecified { get; } = new MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED");
-        /// <summary>
-        /// User pays a fee per-endpoint.
-        /// </summary>
-        public static MultiClusterIngressFeatureSpecBilling PayAsYouGo { get; } = new MultiClusterIngressFeatureSpecBilling("PAY_AS_YOU_GO");
-        /// <summary>
-        /// User is paying for Anthos as a whole.
-        /// </summary>
-        public static MultiClusterIngressFeatureSpecBilling AnthosLicense { get; } = new MultiClusterIngressFeatureSpecBilling("ANTHOS_LICENSE");
-
-        public static bool operator ==(MultiClusterIngressFeatureSpecBilling left, MultiClusterIngressFeatureSpecBilling right) => left.Equals(right);
-        public static bool operator !=(MultiClusterIngressFeatureSpecBilling left, MultiClusterIngressFeatureSpecBilling right) => !left.Equals(right);
-
-        public static explicit operator string(MultiClusterIngressFeatureSpecBilling value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is MultiClusterIngressFeatureSpecBilling other && Equals(other);
-        public bool Equals(MultiClusterIngressFeatureSpecBilling other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
 }

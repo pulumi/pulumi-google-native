@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDomainResult:
-    def __init__(__self__, admin=None, authorized_networks=None, create_time=None, fqdn=None, labels=None, locations=None, name=None, reserved_ip_range=None, state=None, status_message=None, trusts=None, update_time=None):
+    def __init__(__self__, admin=None, audit_logs_enabled=None, authorized_networks=None, create_time=None, fqdn=None, labels=None, locations=None, name=None, reserved_ip_range=None, state=None, status_message=None, trusts=None, update_time=None):
         if admin and not isinstance(admin, str):
             raise TypeError("Expected argument 'admin' to be a str")
         pulumi.set(__self__, "admin", admin)
+        if audit_logs_enabled and not isinstance(audit_logs_enabled, bool):
+            raise TypeError("Expected argument 'audit_logs_enabled' to be a bool")
+        pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         if authorized_networks and not isinstance(authorized_networks, list):
             raise TypeError("Expected argument 'authorized_networks' to be a list")
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -62,6 +65,14 @@ class GetDomainResult:
         Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         """
         return pulumi.get(self, "admin")
+
+    @property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> bool:
+        """
+        Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
 
     @property
     @pulumi.getter(name="authorizedNetworks")
@@ -159,6 +170,7 @@ class AwaitableGetDomainResult(GetDomainResult):
             yield self
         return GetDomainResult(
             admin=self.admin,
+            audit_logs_enabled=self.audit_logs_enabled,
             authorized_networks=self.authorized_networks,
             create_time=self.create_time,
             fqdn=self.fqdn,
@@ -189,6 +201,7 @@ def get_domain(domain_id: Optional[str] = None,
 
     return AwaitableGetDomainResult(
         admin=__ret__.admin,
+        audit_logs_enabled=__ret__.audit_logs_enabled,
         authorized_networks=__ret__.authorized_networks,
         create_time=__ret__.create_time,
         fqdn=__ret__.fqdn,

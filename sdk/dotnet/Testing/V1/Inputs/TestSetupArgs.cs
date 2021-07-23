@@ -81,12 +81,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         [Input("networkProfile")]
         public Input<string>? NetworkProfile { get; set; }
 
-        /// <summary>
-        /// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-        /// </summary>
-        [Input("systrace")]
-        public Input<Inputs.SystraceSetupArgs>? Systrace { get; set; }
-
         public TestSetupArgs()
         {
         }

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None):
+    def __init__(__self__, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if auto_created and not isinstance(auto_created, bool):
             raise TypeError("Expected argument 'auto_created' to be a bool")
         pulumi.set(__self__, "auto_created", auto_created)
@@ -102,6 +102,9 @@ class GetSnapshotResult:
         if storage_locations and not isinstance(storage_locations, list):
             raise TypeError("Expected argument 'storage_locations' to be a list")
         pulumi.set(__self__, "storage_locations", storage_locations)
+        if user_licenses and not isinstance(user_licenses, list):
+            raise TypeError("Expected argument 'user_licenses' to be a list")
+        pulumi.set(__self__, "user_licenses", user_licenses)
 
     @property
     @pulumi.getter(name="autoCreated")
@@ -327,6 +330,14 @@ class GetSnapshotResult:
         """
         return pulumi.get(self, "storage_locations")
 
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> Sequence[str]:
+        """
+        A list of user provided licenses represented by a list of URLs to the license resource.
+        """
+        return pulumi.get(self, "user_licenses")
+
 
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
@@ -361,7 +372,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             status=self.status,
             storage_bytes=self.storage_bytes,
             storage_bytes_status=self.storage_bytes_status,
-            storage_locations=self.storage_locations)
+            storage_locations=self.storage_locations,
+            user_licenses=self.user_licenses)
 
 
 def get_snapshot(project: Optional[str] = None,
@@ -407,4 +419,5 @@ def get_snapshot(project: Optional[str] = None,
         status=__ret__.status,
         storage_bytes=__ret__.storage_bytes,
         storage_bytes_status=__ret__.storage_bytes_status,
-        storage_locations=__ret__.storage_locations)
+        storage_locations=__ret__.storage_locations,
+        user_licenses=__ret__.user_licenses)

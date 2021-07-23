@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+    /// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     /// </summary>
     public sealed class SecretEnvSourceArgs : Pulumi.ResourceArgs
     {
@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<Inputs.LocalObjectReferenceArgs>? LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+        /// The Secret to select from.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+        /// (Optional) Specify whether the Secret must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

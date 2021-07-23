@@ -81,6 +81,8 @@ class InstancePeeringCidrRange(str, Enum):
     """`/19` CIDR range."""
     SLASH20 = "SLASH_20"
     """`/20` CIDR range."""
+    SLASH22 = "SLASH_22"
+    """`/22` CIDR range. Supported for evaluation only."""
     SLASH23 = "SLASH_23"
     """`/23` CIDR range. Supported for evaluation only."""
 

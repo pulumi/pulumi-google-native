@@ -276,7 +276,7 @@ type BackupConfiguration struct {
 	Kind *string `pulumi:"kind"`
 	// Location of the backup
 	Location *string `pulumi:"location"`
-	// Reserved for future use.
+	// (Postgres only) Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled *bool `pulumi:"replicationLogArchivingEnabled"`
@@ -309,7 +309,7 @@ type BackupConfigurationArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Location of the backup
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Reserved for future use.
+	// (Postgres only) Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled pulumi.BoolPtrInput `pulumi:"replicationLogArchivingEnabled"`
@@ -422,7 +422,7 @@ func (o BackupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Reserved for future use.
+// (Postgres only) Whether point in time recovery is enabled.
 func (o BackupConfigurationOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupConfiguration) *bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -510,7 +510,7 @@ func (o BackupConfigurationPtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reserved for future use.
+// (Postgres only) Whether point in time recovery is enabled.
 func (o BackupConfigurationPtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupConfiguration) *bool {
 		if v == nil {
@@ -562,7 +562,7 @@ type BackupConfigurationResponse struct {
 	Kind string `pulumi:"kind"`
 	// Location of the backup
 	Location string `pulumi:"location"`
-	// Reserved for future use.
+	// (Postgres only) Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled bool `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled bool `pulumi:"replicationLogArchivingEnabled"`
@@ -595,7 +595,7 @@ type BackupConfigurationResponseArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Location of the backup
 	Location pulumi.StringInput `pulumi:"location"`
-	// Reserved for future use.
+	// (Postgres only) Whether point in time recovery is enabled.
 	PointInTimeRecoveryEnabled pulumi.BoolInput `pulumi:"pointInTimeRecoveryEnabled"`
 	// Reserved for future use.
 	ReplicationLogArchivingEnabled pulumi.BoolInput `pulumi:"replicationLogArchivingEnabled"`
@@ -708,7 +708,7 @@ func (o BackupConfigurationResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Reserved for future use.
+// (Postgres only) Whether point in time recovery is enabled.
 func (o BackupConfigurationResponseOutput) PointInTimeRecoveryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolOutput)
 }
@@ -796,7 +796,7 @@ func (o BackupConfigurationResponsePtrOutput) Location() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reserved for future use.
+// (Postgres only) Whether point in time recovery is enabled.
 func (o BackupConfigurationResponsePtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupConfigurationResponse) *bool {
 		if v == nil {
@@ -7871,6 +7871,8 @@ type SqlScheduledMaintenance struct {
 	CanDefer *bool `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
 	CanReschedule *bool `pulumi:"canReschedule"`
+	// Maintenance cannot be rescheduled to start beyond this deadline.
+	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -7891,6 +7893,8 @@ type SqlScheduledMaintenanceArgs struct {
 	CanDefer pulumi.BoolPtrInput `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
 	CanReschedule pulumi.BoolPtrInput `pulumi:"canReschedule"`
+	// Maintenance cannot be rescheduled to start beyond this deadline.
+	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
@@ -7981,6 +7985,11 @@ func (o SqlScheduledMaintenanceOutput) CanReschedule() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlScheduledMaintenance) *bool { return v.CanReschedule }).(pulumi.BoolPtrOutput)
 }
 
+// Maintenance cannot be rescheduled to start beyond this deadline.
+func (o SqlScheduledMaintenanceOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenance) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
+}
+
 // The start time of any upcoming scheduled maintenance for this instance.
 func (o SqlScheduledMaintenanceOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlScheduledMaintenance) *string { return v.StartTime }).(pulumi.StringPtrOutput)
@@ -8023,6 +8032,16 @@ func (o SqlScheduledMaintenancePtrOutput) CanReschedule() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maintenance cannot be rescheduled to start beyond this deadline.
+func (o SqlScheduledMaintenancePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleDeadlineTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // The start time of any upcoming scheduled maintenance for this instance.
 func (o SqlScheduledMaintenancePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlScheduledMaintenance) *string {
@@ -8038,6 +8057,8 @@ type SqlScheduledMaintenanceResponse struct {
 	CanDefer bool `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
 	CanReschedule bool `pulumi:"canReschedule"`
+	// Maintenance cannot be rescheduled to start beyond this deadline.
+	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime string `pulumi:"startTime"`
 }
@@ -8058,6 +8079,8 @@ type SqlScheduledMaintenanceResponseArgs struct {
 	CanDefer pulumi.BoolInput `pulumi:"canDefer"`
 	// If the scheduled maintenance can be rescheduled.
 	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
+	// Maintenance cannot be rescheduled to start beyond this deadline.
+	ScheduleDeadlineTime pulumi.StringInput `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
@@ -8148,6 +8171,11 @@ func (o SqlScheduledMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput
 	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
 }
 
+// Maintenance cannot be rescheduled to start beyond this deadline.
+func (o SqlScheduledMaintenanceResponseOutput) ScheduleDeadlineTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) string { return v.ScheduleDeadlineTime }).(pulumi.StringOutput)
+}
+
 // The start time of any upcoming scheduled maintenance for this instance.
 func (o SqlScheduledMaintenanceResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) string { return v.StartTime }).(pulumi.StringOutput)
@@ -8188,6 +8216,16 @@ func (o SqlScheduledMaintenanceResponsePtrOutput) CanReschedule() pulumi.BoolPtr
 		}
 		return &v.CanReschedule
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Maintenance cannot be rescheduled to start beyond this deadline.
+func (o SqlScheduledMaintenanceResponsePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleDeadlineTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // The start time of any upcoming scheduled maintenance for this instance.

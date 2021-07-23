@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Outputs
     public sealed class MTLSPolicyResponse
     {
         /// <summary>
-        /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         public readonly ImmutableArray<Outputs.ValidationCAResponse> ClientValidationCa;
 

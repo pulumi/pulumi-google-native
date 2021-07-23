@@ -57,6 +57,10 @@ export interface GetSearchApplicationResult {
      */
     readonly operationIds: string[];
     /**
+     * The default options for query interpretation
+     */
+    readonly queryInterpretationConfig: outputs.cloudsearch.v1.QueryInterpretationConfigResponse;
+    /**
      * Configuration for ranking results.
      */
     readonly scoringConfig: outputs.cloudsearch.v1.ScoringConfigResponse;

@@ -96,6 +96,14 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
+     * Secret environment variables configuration.
+     */
+    public readonly secretEnvironmentVariables!: pulumi.Output<outputs.cloudfunctions.v1.SecretEnvVarResponse[]>;
+    /**
+     * Secret volumes configuration.
+     */
+    public readonly secretVolumes!: pulumi.Output<outputs.cloudfunctions.v1.SecretVolumeResponse[]>;
+    /**
      * The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
@@ -167,6 +175,8 @@ export class Function extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["runtime"] = args ? args.runtime : undefined;
+            inputs["secretEnvironmentVariables"] = args ? args.secretEnvironmentVariables : undefined;
+            inputs["secretVolumes"] = args ? args.secretVolumes : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["sourceArchiveUrl"] = args ? args.sourceArchiveUrl : undefined;
             inputs["sourceRepository"] = args ? args.sourceRepository : undefined;
@@ -195,6 +205,8 @@ export class Function extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
             inputs["runtime"] = undefined /*out*/;
+            inputs["secretEnvironmentVariables"] = undefined /*out*/;
+            inputs["secretVolumes"] = undefined /*out*/;
             inputs["serviceAccountEmail"] = undefined /*out*/;
             inputs["sourceArchiveUrl"] = undefined /*out*/;
             inputs["sourceRepository"] = undefined /*out*/;
@@ -276,6 +288,14 @@ export interface FunctionArgs {
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
      */
     runtime?: pulumi.Input<string>;
+    /**
+     * Secret environment variables configuration.
+     */
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v1.SecretEnvVarArgs>[]>;
+    /**
+     * Secret volumes configuration.
+     */
+    secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v1.SecretVolumeArgs>[]>;
     /**
      * The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
      */

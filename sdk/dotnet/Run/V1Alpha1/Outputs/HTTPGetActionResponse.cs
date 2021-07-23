@@ -14,23 +14,19 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
     public sealed class HTTPGetActionResponse
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+        /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Custom headers to set in the request. HTTP allows repeated headers. +optional
+        /// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
         public readonly ImmutableArray<Outputs.HTTPHeaderResponse> HttpHeaders;
         /// <summary>
-        /// Path to access on the HTTP server. +optional
+        /// (Optional) Path to access on the HTTP server.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-        /// </summary>
-        public readonly Outputs.IntOrStringResponse Port;
-        /// <summary>
-        /// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+        /// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
         /// </summary>
         public readonly string Scheme;
 
@@ -42,14 +38,11 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 
             string path,
 
-            Outputs.IntOrStringResponse port,
-
             string scheme)
         {
             Host = host;
             HttpHeaders = httpHeaders;
             Path = path;
-            Port = port;
             Scheme = scheme;
         }
     }

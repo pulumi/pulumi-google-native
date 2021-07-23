@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// Volume represents a named volume in a container.
+    /// Not supported by Cloud Run Volume represents a named volume in a container.
     /// </summary>
     public sealed class VolumeArgs : Pulumi.ResourceArgs
     {

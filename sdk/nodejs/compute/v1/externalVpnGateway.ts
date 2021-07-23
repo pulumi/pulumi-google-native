@@ -44,7 +44,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * List of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
+     * A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
      */
     public readonly interfaces!: pulumi.Output<outputs.compute.v1.ExternalVpnGatewayInterfaceResponse[]>;
     /**
@@ -121,7 +121,7 @@ export interface ExternalVpnGatewayArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * List of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
+     * A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.ExternalVpnGatewayInterfaceArgs>[]>;
     /**

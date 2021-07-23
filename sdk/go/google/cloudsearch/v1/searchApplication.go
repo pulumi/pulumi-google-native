@@ -28,6 +28,8 @@ type SearchApplication struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
 	OperationIds pulumi.StringArrayOutput `pulumi:"operationIds"`
+	// The default options for query interpretation
+	QueryInterpretationConfig QueryInterpretationConfigResponseOutput `pulumi:"queryInterpretationConfig"`
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigResponseOutput `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
@@ -85,6 +87,8 @@ type searchApplicationArgs struct {
 	EnableAuditLog *bool `pulumi:"enableAuditLog"`
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
+	// The default options for query interpretation
+	QueryInterpretationConfig *QueryInterpretationConfig `pulumi:"queryInterpretationConfig"`
 	// Configuration for ranking results.
 	ScoringConfig *ScoringConfig `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
@@ -105,6 +109,8 @@ type SearchApplicationArgs struct {
 	EnableAuditLog pulumi.BoolPtrInput
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
+	// The default options for query interpretation
+	QueryInterpretationConfig QueryInterpretationConfigPtrInput
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigPtrInput
 	// Configuration for a sources specified in data_source_restrictions.

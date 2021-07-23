@@ -2919,6 +2919,8 @@ type AttachedDiskResponse struct {
 	Source string `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type string `pulumi:"type"`
+	// A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+	UserLicenses []string `pulumi:"userLicenses"`
 }
 
 // AttachedDiskResponseInput is an input type that accepts AttachedDiskResponseArgs and AttachedDiskResponseOutput values.
@@ -2964,6 +2966,8 @@ type AttachedDiskResponseArgs struct {
 	Source pulumi.StringInput `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type pulumi.StringInput `pulumi:"type"`
+	// A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+	UserLicenses pulumi.StringArrayInput `pulumi:"userLicenses"`
 }
 
 func (AttachedDiskResponseArgs) ElementType() reflect.Type {
@@ -3091,6 +3095,11 @@ func (o AttachedDiskResponseOutput) Source() pulumi.StringOutput {
 // Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 func (o AttachedDiskResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
+func (o AttachedDiskResponseOutput) UserLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskResponse) []string { return v.UserLicenses }).(pulumi.StringArrayOutput)
 }
 
 type AttachedDiskResponseArrayOutput struct{ *pulumi.OutputState }
@@ -8846,6 +8855,8 @@ func (o BackendServiceCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.Str
 type BackendServiceConnectionTrackingPolicy struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
 	ConnectionPersistenceOnUnhealthyBackends *BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+	EnableStrongAffinity *bool `pulumi:"enableStrongAffinity"`
 	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 	IdleTimeoutSec *int `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
@@ -8867,6 +8878,8 @@ type BackendServiceConnectionTrackingPolicyInput interface {
 type BackendServiceConnectionTrackingPolicyArgs struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
 	ConnectionPersistenceOnUnhealthyBackends BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+	EnableStrongAffinity pulumi.BoolPtrInput `pulumi:"enableStrongAffinity"`
 	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 	IdleTimeoutSec pulumi.IntPtrInput `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
@@ -8958,6 +8971,11 @@ func (o BackendServiceConnectionTrackingPolicyOutput) ConnectionPersistenceOnUnh
 	}).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
+// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+func (o BackendServiceConnectionTrackingPolicyOutput) EnableStrongAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *bool { return v.EnableStrongAffinity }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 func (o BackendServiceConnectionTrackingPolicyOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *int { return v.IdleTimeoutSec }).(pulumi.IntPtrOutput)
@@ -8998,6 +9016,16 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) ConnectionPersistenceOn
 	}).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
+// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+func (o BackendServiceConnectionTrackingPolicyPtrOutput) EnableStrongAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStrongAffinity
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *int {
@@ -9022,6 +9050,8 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) TrackingMode() BackendS
 type BackendServiceConnectionTrackingPolicyResponse struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
 	ConnectionPersistenceOnUnhealthyBackends string `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+	EnableStrongAffinity bool `pulumi:"enableStrongAffinity"`
 	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 	IdleTimeoutSec int `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
@@ -9043,6 +9073,8 @@ type BackendServiceConnectionTrackingPolicyResponseInput interface {
 type BackendServiceConnectionTrackingPolicyResponseArgs struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
 	ConnectionPersistenceOnUnhealthyBackends pulumi.StringInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
+	// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+	EnableStrongAffinity pulumi.BoolInput `pulumi:"enableStrongAffinity"`
 	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 	IdleTimeoutSec pulumi.IntInput `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
@@ -9134,6 +9166,11 @@ func (o BackendServiceConnectionTrackingPolicyResponseOutput) ConnectionPersiste
 	}).(pulumi.StringOutput)
 }
 
+// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+func (o BackendServiceConnectionTrackingPolicyResponseOutput) EnableStrongAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) bool { return v.EnableStrongAffinity }).(pulumi.BoolOutput)
+}
+
 // Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) IdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) int { return v.IdleTimeoutSec }).(pulumi.IntOutput)
@@ -9172,6 +9209,16 @@ func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) ConnectionPersi
 		}
 		return &v.ConnectionPersistenceOnUnhealthyBackends
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) EnableStrongAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableStrongAffinity
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
@@ -13862,6 +13909,8 @@ type DeprecationStatus struct {
 	Replacement *string `pulumi:"replacement"`
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 	State *DeprecationStatusState `pulumi:"state"`
+	// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+	StateOverride *RolloutPolicy `pulumi:"stateOverride"`
 }
 
 // DeprecationStatusInput is an input type that accepts DeprecationStatusArgs and DeprecationStatusOutput values.
@@ -13887,6 +13936,8 @@ type DeprecationStatusArgs struct {
 	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 	State DeprecationStatusStatePtrInput `pulumi:"state"`
+	// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+	StateOverride RolloutPolicyPtrInput `pulumi:"stateOverride"`
 }
 
 func (DeprecationStatusArgs) ElementType() reflect.Type {
@@ -13992,6 +14043,11 @@ func (o DeprecationStatusOutput) State() DeprecationStatusStatePtrOutput {
 	return o.ApplyT(func(v DeprecationStatus) *DeprecationStatusState { return v.State }).(DeprecationStatusStatePtrOutput)
 }
 
+// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+func (o DeprecationStatusOutput) StateOverride() RolloutPolicyPtrOutput {
+	return o.ApplyT(func(v DeprecationStatus) *RolloutPolicy { return v.StateOverride }).(RolloutPolicyPtrOutput)
+}
+
 type DeprecationStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (DeprecationStatusPtrOutput) ElementType() reflect.Type {
@@ -14060,6 +14116,16 @@ func (o DeprecationStatusPtrOutput) State() DeprecationStatusStatePtrOutput {
 	}).(DeprecationStatusStatePtrOutput)
 }
 
+// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+func (o DeprecationStatusPtrOutput) StateOverride() RolloutPolicyPtrOutput {
+	return o.ApplyT(func(v *DeprecationStatus) *RolloutPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.StateOverride
+	}).(RolloutPolicyPtrOutput)
+}
+
 // Deprecation status for a public resource.
 type DeprecationStatusResponse struct {
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
@@ -14072,6 +14138,8 @@ type DeprecationStatusResponse struct {
 	Replacement string `pulumi:"replacement"`
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 	State string `pulumi:"state"`
+	// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+	StateOverride RolloutPolicyResponse `pulumi:"stateOverride"`
 }
 
 // DeprecationStatusResponseInput is an input type that accepts DeprecationStatusResponseArgs and DeprecationStatusResponseOutput values.
@@ -14097,6 +14165,8 @@ type DeprecationStatusResponseArgs struct {
 	Replacement pulumi.StringInput `pulumi:"replacement"`
 	// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 	State pulumi.StringInput `pulumi:"state"`
+	// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+	StateOverride RolloutPolicyResponseInput `pulumi:"stateOverride"`
 }
 
 func (DeprecationStatusResponseArgs) ElementType() reflect.Type {
@@ -14202,6 +14272,11 @@ func (o DeprecationStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v DeprecationStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+func (o DeprecationStatusResponseOutput) StateOverride() RolloutPolicyResponseOutput {
+	return o.ApplyT(func(v DeprecationStatusResponse) RolloutPolicyResponse { return v.StateOverride }).(RolloutPolicyResponseOutput)
+}
+
 type DeprecationStatusResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (DeprecationStatusResponsePtrOutput) ElementType() reflect.Type {
@@ -14268,6 +14343,16 @@ func (o DeprecationStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
 		}
 		return &v.State
 	}).(pulumi.StringPtrOutput)
+}
+
+// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+func (o DeprecationStatusResponsePtrOutput) StateOverride() RolloutPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *DeprecationStatusResponse) *RolloutPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StateOverride
+	}).(RolloutPolicyResponsePtrOutput)
 }
 
 // A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
@@ -34449,6 +34534,390 @@ func (o NetworkEndpointGroupCloudRunResponsePtrOutput) UrlMask() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeployment struct {
+	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	Platform *string `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+	Resource *string `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	UrlMask *string `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+	Version *string `pulumi:"version"`
+}
+
+// NetworkEndpointGroupServerlessDeploymentInput is an input type that accepts NetworkEndpointGroupServerlessDeploymentArgs and NetworkEndpointGroupServerlessDeploymentOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupServerlessDeploymentInput` via:
+//
+//          NetworkEndpointGroupServerlessDeploymentArgs{...}
+type NetworkEndpointGroupServerlessDeploymentInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupServerlessDeploymentOutput() NetworkEndpointGroupServerlessDeploymentOutput
+	ToNetworkEndpointGroupServerlessDeploymentOutputWithContext(context.Context) NetworkEndpointGroupServerlessDeploymentOutput
+}
+
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeploymentArgs struct {
+	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (NetworkEndpointGroupServerlessDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentArgs) ToNetworkEndpointGroupServerlessDeploymentOutput() NetworkEndpointGroupServerlessDeploymentOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentArgs) ToNetworkEndpointGroupServerlessDeploymentOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentArgs) ToNetworkEndpointGroupServerlessDeploymentPtrOutput() NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentArgs) ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentOutput).ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(ctx)
+}
+
+// NetworkEndpointGroupServerlessDeploymentPtrInput is an input type that accepts NetworkEndpointGroupServerlessDeploymentArgs, NetworkEndpointGroupServerlessDeploymentPtr and NetworkEndpointGroupServerlessDeploymentPtrOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupServerlessDeploymentPtrInput` via:
+//
+//          NetworkEndpointGroupServerlessDeploymentArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkEndpointGroupServerlessDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupServerlessDeploymentPtrOutput() NetworkEndpointGroupServerlessDeploymentPtrOutput
+	ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(context.Context) NetworkEndpointGroupServerlessDeploymentPtrOutput
+}
+
+type networkEndpointGroupServerlessDeploymentPtrType NetworkEndpointGroupServerlessDeploymentArgs
+
+func NetworkEndpointGroupServerlessDeploymentPtr(v *NetworkEndpointGroupServerlessDeploymentArgs) NetworkEndpointGroupServerlessDeploymentPtrInput {
+	return (*networkEndpointGroupServerlessDeploymentPtrType)(v)
+}
+
+func (*networkEndpointGroupServerlessDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (i *networkEndpointGroupServerlessDeploymentPtrType) ToNetworkEndpointGroupServerlessDeploymentPtrOutput() NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupServerlessDeploymentPtrType) ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentPtrOutput)
+}
+
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeploymentOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupServerlessDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupServerlessDeploymentOutput() NetworkEndpointGroupServerlessDeploymentOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupServerlessDeploymentOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupServerlessDeploymentPtrOutput() NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return o.ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *NetworkEndpointGroupServerlessDeployment {
+		return &v
+	}).(NetworkEndpointGroupServerlessDeploymentPtrOutput)
+}
+
+// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+func (o NetworkEndpointGroupServerlessDeploymentOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+func (o NetworkEndpointGroupServerlessDeploymentOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+func (o NetworkEndpointGroupServerlessDeploymentOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
+}
+
+// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+func (o NetworkEndpointGroupServerlessDeploymentOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type NetworkEndpointGroupServerlessDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupServerlessDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) ToNetworkEndpointGroupServerlessDeploymentPtrOutput() NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) ToNetworkEndpointGroupServerlessDeploymentPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Elem() NetworkEndpointGroupServerlessDeploymentOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) NetworkEndpointGroupServerlessDeployment { return *v }).(NetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeploymentResponse struct {
+	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	Platform string `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+	Resource string `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	UrlMask string `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+	Version string `pulumi:"version"`
+}
+
+// NetworkEndpointGroupServerlessDeploymentResponseInput is an input type that accepts NetworkEndpointGroupServerlessDeploymentResponseArgs and NetworkEndpointGroupServerlessDeploymentResponseOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupServerlessDeploymentResponseInput` via:
+//
+//          NetworkEndpointGroupServerlessDeploymentResponseArgs{...}
+type NetworkEndpointGroupServerlessDeploymentResponseInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupServerlessDeploymentResponseOutput() NetworkEndpointGroupServerlessDeploymentResponseOutput
+	ToNetworkEndpointGroupServerlessDeploymentResponseOutputWithContext(context.Context) NetworkEndpointGroupServerlessDeploymentResponseOutput
+}
+
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeploymentResponseArgs struct {
+	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	Platform pulumi.StringInput `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (NetworkEndpointGroupServerlessDeploymentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentResponse)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentResponseArgs) ToNetworkEndpointGroupServerlessDeploymentResponseOutput() NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentResponseOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentResponseArgs) ToNetworkEndpointGroupServerlessDeploymentResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentResponseOutput)
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentResponseArgs) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutput() NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupServerlessDeploymentResponseArgs) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentResponseOutput).ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(ctx)
+}
+
+// NetworkEndpointGroupServerlessDeploymentResponsePtrInput is an input type that accepts NetworkEndpointGroupServerlessDeploymentResponseArgs, NetworkEndpointGroupServerlessDeploymentResponsePtr and NetworkEndpointGroupServerlessDeploymentResponsePtrOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupServerlessDeploymentResponsePtrInput` via:
+//
+//          NetworkEndpointGroupServerlessDeploymentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkEndpointGroupServerlessDeploymentResponsePtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutput() NetworkEndpointGroupServerlessDeploymentResponsePtrOutput
+	ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(context.Context) NetworkEndpointGroupServerlessDeploymentResponsePtrOutput
+}
+
+type networkEndpointGroupServerlessDeploymentResponsePtrType NetworkEndpointGroupServerlessDeploymentResponseArgs
+
+func NetworkEndpointGroupServerlessDeploymentResponsePtr(v *NetworkEndpointGroupServerlessDeploymentResponseArgs) NetworkEndpointGroupServerlessDeploymentResponsePtrInput {
+	return (*networkEndpointGroupServerlessDeploymentResponsePtrType)(v)
+}
+
+func (*networkEndpointGroupServerlessDeploymentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupServerlessDeploymentResponse)(nil)).Elem()
+}
+
+func (i *networkEndpointGroupServerlessDeploymentResponsePtrType) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutput() NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return i.ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupServerlessDeploymentResponsePtrType) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupServerlessDeploymentResponsePtrOutput)
+}
+
+// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+type NetworkEndpointGroupServerlessDeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupServerlessDeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentResponse)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpointGroupServerlessDeploymentResponseOutput() NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpointGroupServerlessDeploymentResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutput() NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return o.ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) *NetworkEndpointGroupServerlessDeploymentResponse {
+		return &v
+	}).(NetworkEndpointGroupServerlessDeploymentResponsePtrOutput)
+}
+
+// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) UrlMask() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type NetworkEndpointGroupServerlessDeploymentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupServerlessDeploymentResponse)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutput() NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) ToNetworkEndpointGroupServerlessDeploymentResponsePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupServerlessDeploymentResponsePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) Elem() NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeploymentResponse) NetworkEndpointGroupServerlessDeploymentResponse {
+		return *v
+	}).(NetworkEndpointGroupServerlessDeploymentResponseOutput)
+}
+
+// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) UrlMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UrlMask
+	}).(pulumi.StringPtrOutput)
+}
+
+// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
+func (o NetworkEndpointGroupServerlessDeploymentResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // A network interface resource attached to an instance.
 type NetworkInterface struct {
 	// An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
@@ -34463,6 +34932,8 @@ type NetworkInterface struct {
 	NetworkIP *string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType *NetworkInterfaceNicType `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount *int `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType *NetworkInterfaceStackType `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -34494,6 +34965,8 @@ type NetworkInterfaceArgs struct {
 	NetworkIP pulumi.StringPtrInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType NetworkInterfaceNicTypePtrInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType NetworkInterfaceStackTypePtrInput `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -34582,6 +35055,11 @@ func (o NetworkInterfaceOutput) NicType() NetworkInterfaceNicTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceNicType { return v.NicType }).(NetworkInterfaceNicTypePtrOutput)
 }
 
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+func (o NetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceOutput) StackType() NetworkInterfaceStackTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceStackType { return v.StackType }).(NetworkInterfaceStackTypePtrOutput)
@@ -34636,6 +35114,8 @@ type NetworkInterfaceResponse struct {
 	NetworkIP string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount int `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType string `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -34677,6 +35157,8 @@ type NetworkInterfaceResponseArgs struct {
 	NetworkIP pulumi.StringInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
 	StackType pulumi.StringInput `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
@@ -34788,6 +35270,11 @@ func (o NetworkInterfaceResponseOutput) NetworkIP() pulumi.StringOutput {
 // The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 func (o NetworkInterfaceResponseOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.NicType }).(pulumi.StringOutput)
+}
+
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+func (o NetworkInterfaceResponseOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkInterfaceResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
@@ -40473,6 +40960,8 @@ type ReservationType struct {
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Share-settings for shared-reservation
+	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -40498,6 +40987,8 @@ type ReservationTypeArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsPtrInput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -40566,6 +41057,11 @@ func (o ReservationTypeOutput) Description() pulumi.StringPtrOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Share-settings for shared-reservation
+func (o ReservationTypeOutput) ShareSettings() ShareSettingsPtrOutput {
+	return o.ApplyT(func(v ReservationType) *ShareSettings { return v.ShareSettings }).(ShareSettingsPtrOutput)
 }
 
 // Reservation for instances with specific machine shapes.
@@ -40965,6 +41461,8 @@ type ReservationResponse struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -41002,6 +41500,8 @@ type ReservationResponseArgs struct {
 	SatisfiesPzs pulumi.BoolInput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsResponseInput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseInput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -41097,6 +41597,11 @@ func (o ReservationResponseOutput) SatisfiesPzs() pulumi.BoolOutput {
 // Server-defined fully-qualified URL for this resource.
 func (o ReservationResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share-settings for shared-reservation
+func (o ReservationResponseOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v ReservationResponse) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }
 
 // Reservation for instances with specific machine shapes.
@@ -45250,6 +45755,312 @@ func (o ResourcePolicyWeeklyCycleResponsePtrOutput) DayOfWeeks() ResourcePolicyW
 		}
 		return v.DayOfWeeks
 	}).(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput)
+}
+
+// A rollout policy configuration.
+type RolloutPolicy struct {
+	// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+	DefaultRolloutTime *string `pulumi:"defaultRolloutTime"`
+	// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+	LocationRolloutPolicies map[string]string `pulumi:"locationRolloutPolicies"`
+}
+
+// RolloutPolicyInput is an input type that accepts RolloutPolicyArgs and RolloutPolicyOutput values.
+// You can construct a concrete instance of `RolloutPolicyInput` via:
+//
+//          RolloutPolicyArgs{...}
+type RolloutPolicyInput interface {
+	pulumi.Input
+
+	ToRolloutPolicyOutput() RolloutPolicyOutput
+	ToRolloutPolicyOutputWithContext(context.Context) RolloutPolicyOutput
+}
+
+// A rollout policy configuration.
+type RolloutPolicyArgs struct {
+	// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+	DefaultRolloutTime pulumi.StringPtrInput `pulumi:"defaultRolloutTime"`
+	// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+	LocationRolloutPolicies pulumi.StringMapInput `pulumi:"locationRolloutPolicies"`
+}
+
+func (RolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutPolicy)(nil)).Elem()
+}
+
+func (i RolloutPolicyArgs) ToRolloutPolicyOutput() RolloutPolicyOutput {
+	return i.ToRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i RolloutPolicyArgs) ToRolloutPolicyOutputWithContext(ctx context.Context) RolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyOutput)
+}
+
+func (i RolloutPolicyArgs) ToRolloutPolicyPtrOutput() RolloutPolicyPtrOutput {
+	return i.ToRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutPolicyArgs) ToRolloutPolicyPtrOutputWithContext(ctx context.Context) RolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyOutput).ToRolloutPolicyPtrOutputWithContext(ctx)
+}
+
+// RolloutPolicyPtrInput is an input type that accepts RolloutPolicyArgs, RolloutPolicyPtr and RolloutPolicyPtrOutput values.
+// You can construct a concrete instance of `RolloutPolicyPtrInput` via:
+//
+//          RolloutPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type RolloutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRolloutPolicyPtrOutput() RolloutPolicyPtrOutput
+	ToRolloutPolicyPtrOutputWithContext(context.Context) RolloutPolicyPtrOutput
+}
+
+type rolloutPolicyPtrType RolloutPolicyArgs
+
+func RolloutPolicyPtr(v *RolloutPolicyArgs) RolloutPolicyPtrInput {
+	return (*rolloutPolicyPtrType)(v)
+}
+
+func (*rolloutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutPolicy)(nil)).Elem()
+}
+
+func (i *rolloutPolicyPtrType) ToRolloutPolicyPtrOutput() RolloutPolicyPtrOutput {
+	return i.ToRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutPolicyPtrType) ToRolloutPolicyPtrOutputWithContext(ctx context.Context) RolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyPtrOutput)
+}
+
+// A rollout policy configuration.
+type RolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (RolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutPolicy)(nil)).Elem()
+}
+
+func (o RolloutPolicyOutput) ToRolloutPolicyOutput() RolloutPolicyOutput {
+	return o
+}
+
+func (o RolloutPolicyOutput) ToRolloutPolicyOutputWithContext(ctx context.Context) RolloutPolicyOutput {
+	return o
+}
+
+func (o RolloutPolicyOutput) ToRolloutPolicyPtrOutput() RolloutPolicyPtrOutput {
+	return o.ToRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutPolicyOutput) ToRolloutPolicyPtrOutputWithContext(ctx context.Context) RolloutPolicyPtrOutput {
+	return o.ApplyT(func(v RolloutPolicy) *RolloutPolicy {
+		return &v
+	}).(RolloutPolicyPtrOutput)
+}
+
+// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+func (o RolloutPolicyOutput) DefaultRolloutTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutPolicy) *string { return v.DefaultRolloutTime }).(pulumi.StringPtrOutput)
+}
+
+// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+func (o RolloutPolicyOutput) LocationRolloutPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RolloutPolicy) map[string]string { return v.LocationRolloutPolicies }).(pulumi.StringMapOutput)
+}
+
+type RolloutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutPolicy)(nil)).Elem()
+}
+
+func (o RolloutPolicyPtrOutput) ToRolloutPolicyPtrOutput() RolloutPolicyPtrOutput {
+	return o
+}
+
+func (o RolloutPolicyPtrOutput) ToRolloutPolicyPtrOutputWithContext(ctx context.Context) RolloutPolicyPtrOutput {
+	return o
+}
+
+func (o RolloutPolicyPtrOutput) Elem() RolloutPolicyOutput {
+	return o.ApplyT(func(v *RolloutPolicy) RolloutPolicy { return *v }).(RolloutPolicyOutput)
+}
+
+// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+func (o RolloutPolicyPtrOutput) DefaultRolloutTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRolloutTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+func (o RolloutPolicyPtrOutput) LocationRolloutPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RolloutPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationRolloutPolicies
+	}).(pulumi.StringMapOutput)
+}
+
+// A rollout policy configuration.
+type RolloutPolicyResponse struct {
+	// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+	DefaultRolloutTime string `pulumi:"defaultRolloutTime"`
+	// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+	LocationRolloutPolicies map[string]string `pulumi:"locationRolloutPolicies"`
+}
+
+// RolloutPolicyResponseInput is an input type that accepts RolloutPolicyResponseArgs and RolloutPolicyResponseOutput values.
+// You can construct a concrete instance of `RolloutPolicyResponseInput` via:
+//
+//          RolloutPolicyResponseArgs{...}
+type RolloutPolicyResponseInput interface {
+	pulumi.Input
+
+	ToRolloutPolicyResponseOutput() RolloutPolicyResponseOutput
+	ToRolloutPolicyResponseOutputWithContext(context.Context) RolloutPolicyResponseOutput
+}
+
+// A rollout policy configuration.
+type RolloutPolicyResponseArgs struct {
+	// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+	DefaultRolloutTime pulumi.StringInput `pulumi:"defaultRolloutTime"`
+	// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+	LocationRolloutPolicies pulumi.StringMapInput `pulumi:"locationRolloutPolicies"`
+}
+
+func (RolloutPolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutPolicyResponse)(nil)).Elem()
+}
+
+func (i RolloutPolicyResponseArgs) ToRolloutPolicyResponseOutput() RolloutPolicyResponseOutput {
+	return i.ToRolloutPolicyResponseOutputWithContext(context.Background())
+}
+
+func (i RolloutPolicyResponseArgs) ToRolloutPolicyResponseOutputWithContext(ctx context.Context) RolloutPolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyResponseOutput)
+}
+
+func (i RolloutPolicyResponseArgs) ToRolloutPolicyResponsePtrOutput() RolloutPolicyResponsePtrOutput {
+	return i.ToRolloutPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RolloutPolicyResponseArgs) ToRolloutPolicyResponsePtrOutputWithContext(ctx context.Context) RolloutPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyResponseOutput).ToRolloutPolicyResponsePtrOutputWithContext(ctx)
+}
+
+// RolloutPolicyResponsePtrInput is an input type that accepts RolloutPolicyResponseArgs, RolloutPolicyResponsePtr and RolloutPolicyResponsePtrOutput values.
+// You can construct a concrete instance of `RolloutPolicyResponsePtrInput` via:
+//
+//          RolloutPolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RolloutPolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToRolloutPolicyResponsePtrOutput() RolloutPolicyResponsePtrOutput
+	ToRolloutPolicyResponsePtrOutputWithContext(context.Context) RolloutPolicyResponsePtrOutput
+}
+
+type rolloutPolicyResponsePtrType RolloutPolicyResponseArgs
+
+func RolloutPolicyResponsePtr(v *RolloutPolicyResponseArgs) RolloutPolicyResponsePtrInput {
+	return (*rolloutPolicyResponsePtrType)(v)
+}
+
+func (*rolloutPolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutPolicyResponse)(nil)).Elem()
+}
+
+func (i *rolloutPolicyResponsePtrType) ToRolloutPolicyResponsePtrOutput() RolloutPolicyResponsePtrOutput {
+	return i.ToRolloutPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutPolicyResponsePtrType) ToRolloutPolicyResponsePtrOutputWithContext(ctx context.Context) RolloutPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutPolicyResponsePtrOutput)
+}
+
+// A rollout policy configuration.
+type RolloutPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RolloutPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutPolicyResponse)(nil)).Elem()
+}
+
+func (o RolloutPolicyResponseOutput) ToRolloutPolicyResponseOutput() RolloutPolicyResponseOutput {
+	return o
+}
+
+func (o RolloutPolicyResponseOutput) ToRolloutPolicyResponseOutputWithContext(ctx context.Context) RolloutPolicyResponseOutput {
+	return o
+}
+
+func (o RolloutPolicyResponseOutput) ToRolloutPolicyResponsePtrOutput() RolloutPolicyResponsePtrOutput {
+	return o.ToRolloutPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RolloutPolicyResponseOutput) ToRolloutPolicyResponsePtrOutputWithContext(ctx context.Context) RolloutPolicyResponsePtrOutput {
+	return o.ApplyT(func(v RolloutPolicyResponse) *RolloutPolicyResponse {
+		return &v
+	}).(RolloutPolicyResponsePtrOutput)
+}
+
+// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+func (o RolloutPolicyResponseOutput) DefaultRolloutTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutPolicyResponse) string { return v.DefaultRolloutTime }).(pulumi.StringOutput)
+}
+
+// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+func (o RolloutPolicyResponseOutput) LocationRolloutPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RolloutPolicyResponse) map[string]string { return v.LocationRolloutPolicies }).(pulumi.StringMapOutput)
+}
+
+type RolloutPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutPolicyResponse)(nil)).Elem()
+}
+
+func (o RolloutPolicyResponsePtrOutput) ToRolloutPolicyResponsePtrOutput() RolloutPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RolloutPolicyResponsePtrOutput) ToRolloutPolicyResponsePtrOutputWithContext(ctx context.Context) RolloutPolicyResponsePtrOutput {
+	return o
+}
+
+func (o RolloutPolicyResponsePtrOutput) Elem() RolloutPolicyResponseOutput {
+	return o.ApplyT(func(v *RolloutPolicyResponse) RolloutPolicyResponse { return *v }).(RolloutPolicyResponseOutput)
+}
+
+// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+func (o RolloutPolicyResponsePtrOutput) DefaultRolloutTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultRolloutTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+func (o RolloutPolicyResponsePtrOutput) LocationRolloutPolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RolloutPolicyResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationRolloutPolicies
+	}).(pulumi.StringMapOutput)
 }
 
 type RouteWarningsItemDataItemResponse struct {
@@ -50878,6 +51689,8 @@ type SecurityPolicyRule struct {
 	Preview *bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 	Priority *int `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// Parameters defining the redirect action. Cannot be specified for any other actions.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
@@ -50917,6 +51730,8 @@ type SecurityPolicyRuleArgs struct {
 	Preview pulumi.BoolPtrInput `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
 	// Parameters defining the redirect action. Cannot be specified for any other actions.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
@@ -51017,6 +51832,11 @@ func (o SecurityPolicyRuleOutput) Preview() pulumi.BoolPtrOutput {
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 func (o SecurityPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
 // Parameters defining the redirect action. Cannot be specified for any other actions.
@@ -52158,6 +52978,552 @@ func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOu
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
 }
 
+type SecurityPolicyRuleRateLimitOptions struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec *int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction *string `pulumi:"conformAction"`
+	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
+	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	ExceedAction *string `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs and SecurityPolicyRuleRateLimitOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsArgs{...}
+type SecurityPolicyRuleRateLimitOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput
+	ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsArgs struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec pulumi.IntPtrInput `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
+	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
+	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsArgs) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsOutput).ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsArgs, SecurityPolicyRuleRateLimitOptionsPtr and SecurityPolicyRuleRateLimitOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsPtrInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyRuleRateLimitOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsPtrType SecurityPolicyRuleRateLimitOptionsArgs
+
+func SecurityPolicyRuleRateLimitOptionsPtr(v *SecurityPolicyRuleRateLimitOptionsArgs) SecurityPolicyRuleRateLimitOptionsPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsPtrType) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutput() SecurityPolicyRuleRateLimitOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptions {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) BanDurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *int { return v.BanDurationSec }).(pulumi.IntPtrOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
+}
+
+// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		return v.EnforceOnKey
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutput() SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ToSecurityPolicyRuleRateLimitOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) SecurityPolicyRuleRateLimitOptions { return *v }).(SecurityPolicyRuleRateLimitOptionsOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanDurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BanDurationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConformAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKey
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponse struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction string `pulumi:"conformAction"`
+	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	ExceedAction string `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsResponseInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsResponseArgs and SecurityPolicyRuleRateLimitOptionsResponseOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsResponseInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsResponseArgs{...}
+type SecurityPolicyRuleRateLimitOptionsResponseInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput
+	ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponseArgs struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec pulumi.IntInput `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponseInput `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction pulumi.StringInput `pulumi:"conformAction"`
+	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	EnforceOnKey pulumi.StringInput `pulumi:"enforceOnKey"`
+	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	ExceedAction pulumi.StringInput `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponseInput `pulumi:"rateLimitThreshold"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsResponseArgs) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsResponseArgs) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count *int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec *int `pulumi:"intervalSec"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsThresholdInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsThresholdArgs and SecurityPolicyRuleRateLimitOptionsThresholdOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsThresholdInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsThresholdArgs{...}
+type SecurityPolicyRuleRateLimitOptionsThresholdInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput
+	ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntPtrInput `pulumi:"intervalSec"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdOutput).ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsThresholdPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsThresholdArgs, SecurityPolicyRuleRateLimitOptionsThresholdPtr and SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsThresholdPtrInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsThresholdArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyRuleRateLimitOptionsThresholdPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsThresholdPtrType SecurityPolicyRuleRateLimitOptionsThresholdArgs
+
+func SecurityPolicyRuleRateLimitOptionsThresholdPtr(v *SecurityPolicyRuleRateLimitOptionsThresholdArgs) SecurityPolicyRuleRateLimitOptionsThresholdPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsThresholdPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsThresholdPtrType) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsThresholdPtrType) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThreshold) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThreshold) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) IntervalSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThreshold) *int { return v.IntervalSec }).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) SecurityPolicyRuleRateLimitOptionsThreshold {
+		return *v
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdOutput)
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) IntervalSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalSec
+	}).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdResponse struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsThresholdResponseInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs and SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsThresholdResponseInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs{...}
+type SecurityPolicyRuleRateLimitOptionsThresholdResponseInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutput() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput
+	ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntInput `pulumi:"intervalSec"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdResponse)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutput() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdResponseArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutput() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThresholdResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThresholdResponse) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
 type SecurityPolicyRuleRedirectOptions struct {
 	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
 	Target *string `pulumi:"target"`
@@ -52389,6 +53755,8 @@ type SecurityPolicyRuleResponse struct {
 	Preview bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 	Priority int `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponse `pulumi:"rateLimitOptions"`
 	// Parameters defining the redirect action. Cannot be specified for any other actions.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
@@ -52432,6 +53800,8 @@ type SecurityPolicyRuleResponseArgs struct {
 	Preview pulumi.BoolInput `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 	Priority pulumi.IntInput `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponseInput `pulumi:"rateLimitOptions"`
 	// Parameters defining the redirect action. Cannot be specified for any other actions.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsResponseInput `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
@@ -52539,6 +53909,13 @@ func (o SecurityPolicyRuleResponseOutput) Preview() pulumi.BoolOutput {
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
 func (o SecurityPolicyRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+func (o SecurityPolicyRuleResponseOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRateLimitOptionsResponse {
+		return v.RateLimitOptions
+	}).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
 }
 
 // Parameters defining the redirect action. Cannot be specified for any other actions.
@@ -53808,6 +55185,312 @@ func (o ServiceAttachmentConsumerProjectLimitResponseArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConsumerProjectLimitResponse {
 		return vs[0].([]ServiceAttachmentConsumerProjectLimitResponse)[vs[1].(int)]
 	}).(ServiceAttachmentConsumerProjectLimitResponseOutput)
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettings struct {
+	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+	Projects []string `pulumi:"projects"`
+	// Type of sharing for this shared-reservation
+	ShareType *ShareSettingsShareType `pulumi:"shareType"`
+}
+
+// ShareSettingsInput is an input type that accepts ShareSettingsArgs and ShareSettingsOutput values.
+// You can construct a concrete instance of `ShareSettingsInput` via:
+//
+//          ShareSettingsArgs{...}
+type ShareSettingsInput interface {
+	pulumi.Input
+
+	ToShareSettingsOutput() ShareSettingsOutput
+	ToShareSettingsOutputWithContext(context.Context) ShareSettingsOutput
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettingsArgs struct {
+	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// Type of sharing for this shared-reservation
+	ShareType ShareSettingsShareTypePtrInput `pulumi:"shareType"`
+}
+
+func (ShareSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettings)(nil)).Elem()
+}
+
+func (i ShareSettingsArgs) ToShareSettingsOutput() ShareSettingsOutput {
+	return i.ToShareSettingsOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsArgs) ToShareSettingsOutputWithContext(ctx context.Context) ShareSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsOutput)
+}
+
+func (i ShareSettingsArgs) ToShareSettingsPtrOutput() ShareSettingsPtrOutput {
+	return i.ToShareSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsArgs) ToShareSettingsPtrOutputWithContext(ctx context.Context) ShareSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsOutput).ToShareSettingsPtrOutputWithContext(ctx)
+}
+
+// ShareSettingsPtrInput is an input type that accepts ShareSettingsArgs, ShareSettingsPtr and ShareSettingsPtrOutput values.
+// You can construct a concrete instance of `ShareSettingsPtrInput` via:
+//
+//          ShareSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type ShareSettingsPtrInput interface {
+	pulumi.Input
+
+	ToShareSettingsPtrOutput() ShareSettingsPtrOutput
+	ToShareSettingsPtrOutputWithContext(context.Context) ShareSettingsPtrOutput
+}
+
+type shareSettingsPtrType ShareSettingsArgs
+
+func ShareSettingsPtr(v *ShareSettingsArgs) ShareSettingsPtrInput {
+	return (*shareSettingsPtrType)(v)
+}
+
+func (*shareSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareSettings)(nil)).Elem()
+}
+
+func (i *shareSettingsPtrType) ToShareSettingsPtrOutput() ShareSettingsPtrOutput {
+	return i.ToShareSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *shareSettingsPtrType) ToShareSettingsPtrOutputWithContext(ctx context.Context) ShareSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsPtrOutput)
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettingsOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettings)(nil)).Elem()
+}
+
+func (o ShareSettingsOutput) ToShareSettingsOutput() ShareSettingsOutput {
+	return o
+}
+
+func (o ShareSettingsOutput) ToShareSettingsOutputWithContext(ctx context.Context) ShareSettingsOutput {
+	return o
+}
+
+func (o ShareSettingsOutput) ToShareSettingsPtrOutput() ShareSettingsPtrOutput {
+	return o.ToShareSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsOutput) ToShareSettingsPtrOutputWithContext(ctx context.Context) ShareSettingsPtrOutput {
+	return o.ApplyT(func(v ShareSettings) *ShareSettings {
+		return &v
+	}).(ShareSettingsPtrOutput)
+}
+
+// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+func (o ShareSettingsOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ShareSettings) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// Type of sharing for this shared-reservation
+func (o ShareSettingsOutput) ShareType() ShareSettingsShareTypePtrOutput {
+	return o.ApplyT(func(v ShareSettings) *ShareSettingsShareType { return v.ShareType }).(ShareSettingsShareTypePtrOutput)
+}
+
+type ShareSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareSettings)(nil)).Elem()
+}
+
+func (o ShareSettingsPtrOutput) ToShareSettingsPtrOutput() ShareSettingsPtrOutput {
+	return o
+}
+
+func (o ShareSettingsPtrOutput) ToShareSettingsPtrOutputWithContext(ctx context.Context) ShareSettingsPtrOutput {
+	return o
+}
+
+func (o ShareSettingsPtrOutput) Elem() ShareSettingsOutput {
+	return o.ApplyT(func(v *ShareSettings) ShareSettings { return *v }).(ShareSettingsOutput)
+}
+
+// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+func (o ShareSettingsPtrOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShareSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(pulumi.StringArrayOutput)
+}
+
+// Type of sharing for this shared-reservation
+func (o ShareSettingsPtrOutput) ShareType() ShareSettingsShareTypePtrOutput {
+	return o.ApplyT(func(v *ShareSettings) *ShareSettingsShareType {
+		if v == nil {
+			return nil
+		}
+		return v.ShareType
+	}).(ShareSettingsShareTypePtrOutput)
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettingsResponse struct {
+	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+	Projects []string `pulumi:"projects"`
+	// Type of sharing for this shared-reservation
+	ShareType string `pulumi:"shareType"`
+}
+
+// ShareSettingsResponseInput is an input type that accepts ShareSettingsResponseArgs and ShareSettingsResponseOutput values.
+// You can construct a concrete instance of `ShareSettingsResponseInput` via:
+//
+//          ShareSettingsResponseArgs{...}
+type ShareSettingsResponseInput interface {
+	pulumi.Input
+
+	ToShareSettingsResponseOutput() ShareSettingsResponseOutput
+	ToShareSettingsResponseOutputWithContext(context.Context) ShareSettingsResponseOutput
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettingsResponseArgs struct {
+	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// Type of sharing for this shared-reservation
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+}
+
+func (ShareSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsResponse)(nil)).Elem()
+}
+
+func (i ShareSettingsResponseArgs) ToShareSettingsResponseOutput() ShareSettingsResponseOutput {
+	return i.ToShareSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsResponseArgs) ToShareSettingsResponseOutputWithContext(ctx context.Context) ShareSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsResponseOutput)
+}
+
+func (i ShareSettingsResponseArgs) ToShareSettingsResponsePtrOutput() ShareSettingsResponsePtrOutput {
+	return i.ToShareSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsResponseArgs) ToShareSettingsResponsePtrOutputWithContext(ctx context.Context) ShareSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsResponseOutput).ToShareSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// ShareSettingsResponsePtrInput is an input type that accepts ShareSettingsResponseArgs, ShareSettingsResponsePtr and ShareSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `ShareSettingsResponsePtrInput` via:
+//
+//          ShareSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ShareSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToShareSettingsResponsePtrOutput() ShareSettingsResponsePtrOutput
+	ToShareSettingsResponsePtrOutputWithContext(context.Context) ShareSettingsResponsePtrOutput
+}
+
+type shareSettingsResponsePtrType ShareSettingsResponseArgs
+
+func ShareSettingsResponsePtr(v *ShareSettingsResponseArgs) ShareSettingsResponsePtrInput {
+	return (*shareSettingsResponsePtrType)(v)
+}
+
+func (*shareSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareSettingsResponse)(nil)).Elem()
+}
+
+func (i *shareSettingsResponsePtrType) ToShareSettingsResponsePtrOutput() ShareSettingsResponsePtrOutput {
+	return i.ToShareSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *shareSettingsResponsePtrType) ToShareSettingsResponsePtrOutputWithContext(ctx context.Context) ShareSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsResponsePtrOutput)
+}
+
+// The share setting for reservations and sole tenancy node groups.
+type ShareSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsResponseOutput) ToShareSettingsResponseOutput() ShareSettingsResponseOutput {
+	return o
+}
+
+func (o ShareSettingsResponseOutput) ToShareSettingsResponseOutputWithContext(ctx context.Context) ShareSettingsResponseOutput {
+	return o
+}
+
+func (o ShareSettingsResponseOutput) ToShareSettingsResponsePtrOutput() ShareSettingsResponsePtrOutput {
+	return o.ToShareSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsResponseOutput) ToShareSettingsResponsePtrOutputWithContext(ctx context.Context) ShareSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) *ShareSettingsResponse {
+		return &v
+	}).(ShareSettingsResponsePtrOutput)
+}
+
+// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+func (o ShareSettingsResponseOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// Type of sharing for this shared-reservation
+func (o ShareSettingsResponseOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+type ShareSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShareSettingsResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsResponsePtrOutput) ToShareSettingsResponsePtrOutput() ShareSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ShareSettingsResponsePtrOutput) ToShareSettingsResponsePtrOutputWithContext(ctx context.Context) ShareSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ShareSettingsResponsePtrOutput) Elem() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v *ShareSettingsResponse) ShareSettingsResponse { return *v }).(ShareSettingsResponseOutput)
+}
+
+// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+func (o ShareSettingsResponsePtrOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShareSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(pulumi.StringArrayOutput)
+}
+
+// Type of sharing for this shared-reservation
+func (o ShareSettingsResponsePtrOutput) ShareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShareSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ShareType
+	}).(pulumi.StringPtrOutput)
 }
 
 // A set of Shielded Instance options.
@@ -60761,6 +62444,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentResponseOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
@@ -60897,6 +62584,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponsePtrOutput{})
+	pulumi.RegisterOutputType(RolloutPolicyOutput{})
+	pulumi.RegisterOutputType(RolloutPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RolloutPolicyResponseOutput{})
+	pulumi.RegisterOutputType(RolloutPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemResponseOutput{})
@@ -60984,6 +62675,12 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsResponseOutput{})
@@ -61009,6 +62706,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(ShareSettingsOutput{})
+	pulumi.RegisterOutputType(ShareSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ShareSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ShareSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})

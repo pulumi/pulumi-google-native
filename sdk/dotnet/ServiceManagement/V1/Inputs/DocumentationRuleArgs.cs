@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? DeprecationDescription { get; set; }
 
         /// <summary>
-        /// Description of the selected API(s).
+        /// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+        /// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
         /// </summary>
         [Input("selector")]
         public Input<string>? Selector { get; set; }

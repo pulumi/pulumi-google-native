@@ -32,6 +32,8 @@ class FunctionArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input['SourceRepositoryArgs']] = None,
@@ -56,6 +58,8 @@ class FunctionArgs:
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
         :param pulumi.Input[str] service_account_email: The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
         :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
         :param pulumi.Input['SourceRepositoryArgs'] source_repository: **Beta Feature** The source repository where a function is hosted.
@@ -97,6 +101,10 @@ class FunctionArgs:
             pulumi.set(__self__, "project", project)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
+        if secret_environment_variables is not None:
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes is not None:
+            pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if source_archive_url is not None:
@@ -301,6 +309,30 @@ class FunctionArgs:
         pulumi.set(self, "runtime", value)
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]]:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @secret_environment_variables.setter
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]]):
+        pulumi.set(self, "secret_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]]:
+        """
+        Secret volumes configuration.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @secret_volumes.setter
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]]):
+        pulumi.set(self, "secret_volumes", value)
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
@@ -418,6 +450,8 @@ class Function(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input[pulumi.InputType['SourceRepositoryArgs']]] = None,
@@ -446,6 +480,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[str] network: The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]] secret_environment_variables: Secret environment variables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]] secret_volumes: Secret volumes configuration.
         :param pulumi.Input[str] service_account_email: The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
         :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
         :param pulumi.Input[pulumi.InputType['SourceRepositoryArgs']] source_repository: **Beta Feature** The source repository where a function is hosted.
@@ -495,6 +531,8 @@ class Function(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input[pulumi.InputType['SourceRepositoryArgs']]] = None,
@@ -531,6 +569,8 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["runtime"] = runtime
+            __props__.__dict__["secret_environment_variables"] = secret_environment_variables
+            __props__.__dict__["secret_volumes"] = secret_volumes
             __props__.__dict__["service_account_email"] = service_account_email
             __props__.__dict__["source_archive_url"] = source_archive_url
             __props__.__dict__["source_repository"] = source_repository
@@ -580,6 +620,8 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["runtime"] = None
+        __props__.__dict__["secret_environment_variables"] = None
+        __props__.__dict__["secret_volumes"] = None
         __props__.__dict__["service_account_email"] = None
         __props__.__dict__["source_archive_url"] = None
         __props__.__dict__["source_repository"] = None
@@ -712,6 +754,22 @@ class Function(pulumi.CustomResource):
         The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
         """
         return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> pulumi.Output[Sequence['outputs.SecretEnvVarResponse']]:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> pulumi.Output[Sequence['outputs.SecretVolumeResponse']]:
+        """
+        Secret volumes configuration.
+        """
+        return pulumi.get(self, "secret_volumes")
 
     @property
     @pulumi.getter(name="serviceAccountEmail")

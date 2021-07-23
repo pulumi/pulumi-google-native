@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AndroidInstrumentationTestOrchestratorOption',
+    'AndroidRoboTestRoboMode',
     'RoboDirectiveActionType',
 ]
 
@@ -20,6 +21,18 @@ class AndroidInstrumentationTestOrchestratorOption(str, Enum):
     """Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended."""
     DO_NOT_USE_ORCHESTRATOR = "DO_NOT_USE_ORCHESTRATOR"
     """Run test without using orchestrator."""
+
+
+class AndroidRoboTestRoboMode(str, Enum):
+    """
+    The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+    """
+    ROBO_MODE_UNSPECIFIED = "ROBO_MODE_UNSPECIFIED"
+    """LINT.IfChange This means that the server should choose the mode. Recommended."""
+    ROBO_VERSION1 = "ROBO_VERSION_1"
+    """Runs Robo in UIAutomator-only mode without app resigning"""
+    ROBO_VERSION2 = "ROBO_VERSION_2"
+    """Runs Robo in standard Espresso with UIAutomator fallback"""
 
 
 class RoboDirectiveActionType(str, Enum):

@@ -10,230 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Adds and removes POSIX capabilities from running containers.
-type Capabilities struct {
-	// Added capabilities +optional
-	Add []string `pulumi:"add"`
-	// Removed capabilities +optional
-	Drop []string `pulumi:"drop"`
-}
-
-// CapabilitiesInput is an input type that accepts CapabilitiesArgs and CapabilitiesOutput values.
-// You can construct a concrete instance of `CapabilitiesInput` via:
-//
-//          CapabilitiesArgs{...}
-type CapabilitiesInput interface {
-	pulumi.Input
-
-	ToCapabilitiesOutput() CapabilitiesOutput
-	ToCapabilitiesOutputWithContext(context.Context) CapabilitiesOutput
-}
-
-// Adds and removes POSIX capabilities from running containers.
-type CapabilitiesArgs struct {
-	// Added capabilities +optional
-	Add pulumi.StringArrayInput `pulumi:"add"`
-	// Removed capabilities +optional
-	Drop pulumi.StringArrayInput `pulumi:"drop"`
-}
-
-func (CapabilitiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Capabilities)(nil)).Elem()
-}
-
-func (i CapabilitiesArgs) ToCapabilitiesOutput() CapabilitiesOutput {
-	return i.ToCapabilitiesOutputWithContext(context.Background())
-}
-
-func (i CapabilitiesArgs) ToCapabilitiesOutputWithContext(ctx context.Context) CapabilitiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilitiesOutput)
-}
-
-func (i CapabilitiesArgs) ToCapabilitiesPtrOutput() CapabilitiesPtrOutput {
-	return i.ToCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i CapabilitiesArgs) ToCapabilitiesPtrOutputWithContext(ctx context.Context) CapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilitiesOutput).ToCapabilitiesPtrOutputWithContext(ctx)
-}
-
-// CapabilitiesPtrInput is an input type that accepts CapabilitiesArgs, CapabilitiesPtr and CapabilitiesPtrOutput values.
-// You can construct a concrete instance of `CapabilitiesPtrInput` via:
-//
-//          CapabilitiesArgs{...}
-//
-//  or:
-//
-//          nil
-type CapabilitiesPtrInput interface {
-	pulumi.Input
-
-	ToCapabilitiesPtrOutput() CapabilitiesPtrOutput
-	ToCapabilitiesPtrOutputWithContext(context.Context) CapabilitiesPtrOutput
-}
-
-type capabilitiesPtrType CapabilitiesArgs
-
-func CapabilitiesPtr(v *CapabilitiesArgs) CapabilitiesPtrInput {
-	return (*capabilitiesPtrType)(v)
-}
-
-func (*capabilitiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Capabilities)(nil)).Elem()
-}
-
-func (i *capabilitiesPtrType) ToCapabilitiesPtrOutput() CapabilitiesPtrOutput {
-	return i.ToCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (i *capabilitiesPtrType) ToCapabilitiesPtrOutputWithContext(ctx context.Context) CapabilitiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilitiesPtrOutput)
-}
-
-// Adds and removes POSIX capabilities from running containers.
-type CapabilitiesOutput struct{ *pulumi.OutputState }
-
-func (CapabilitiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Capabilities)(nil)).Elem()
-}
-
-func (o CapabilitiesOutput) ToCapabilitiesOutput() CapabilitiesOutput {
-	return o
-}
-
-func (o CapabilitiesOutput) ToCapabilitiesOutputWithContext(ctx context.Context) CapabilitiesOutput {
-	return o
-}
-
-func (o CapabilitiesOutput) ToCapabilitiesPtrOutput() CapabilitiesPtrOutput {
-	return o.ToCapabilitiesPtrOutputWithContext(context.Background())
-}
-
-func (o CapabilitiesOutput) ToCapabilitiesPtrOutputWithContext(ctx context.Context) CapabilitiesPtrOutput {
-	return o.ApplyT(func(v Capabilities) *Capabilities {
-		return &v
-	}).(CapabilitiesPtrOutput)
-}
-
-// Added capabilities +optional
-func (o CapabilitiesOutput) Add() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Capabilities) []string { return v.Add }).(pulumi.StringArrayOutput)
-}
-
-// Removed capabilities +optional
-func (o CapabilitiesOutput) Drop() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Capabilities) []string { return v.Drop }).(pulumi.StringArrayOutput)
-}
-
-type CapabilitiesPtrOutput struct{ *pulumi.OutputState }
-
-func (CapabilitiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Capabilities)(nil)).Elem()
-}
-
-func (o CapabilitiesPtrOutput) ToCapabilitiesPtrOutput() CapabilitiesPtrOutput {
-	return o
-}
-
-func (o CapabilitiesPtrOutput) ToCapabilitiesPtrOutputWithContext(ctx context.Context) CapabilitiesPtrOutput {
-	return o
-}
-
-func (o CapabilitiesPtrOutput) Elem() CapabilitiesOutput {
-	return o.ApplyT(func(v *Capabilities) Capabilities { return *v }).(CapabilitiesOutput)
-}
-
-// Added capabilities +optional
-func (o CapabilitiesPtrOutput) Add() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Capabilities) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Add
-	}).(pulumi.StringArrayOutput)
-}
-
-// Removed capabilities +optional
-func (o CapabilitiesPtrOutput) Drop() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Capabilities) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Drop
-	}).(pulumi.StringArrayOutput)
-}
-
-// Adds and removes POSIX capabilities from running containers.
-type CapabilitiesResponse struct {
-	// Added capabilities +optional
-	Add []string `pulumi:"add"`
-	// Removed capabilities +optional
-	Drop []string `pulumi:"drop"`
-}
-
-// CapabilitiesResponseInput is an input type that accepts CapabilitiesResponseArgs and CapabilitiesResponseOutput values.
-// You can construct a concrete instance of `CapabilitiesResponseInput` via:
-//
-//          CapabilitiesResponseArgs{...}
-type CapabilitiesResponseInput interface {
-	pulumi.Input
-
-	ToCapabilitiesResponseOutput() CapabilitiesResponseOutput
-	ToCapabilitiesResponseOutputWithContext(context.Context) CapabilitiesResponseOutput
-}
-
-// Adds and removes POSIX capabilities from running containers.
-type CapabilitiesResponseArgs struct {
-	// Added capabilities +optional
-	Add pulumi.StringArrayInput `pulumi:"add"`
-	// Removed capabilities +optional
-	Drop pulumi.StringArrayInput `pulumi:"drop"`
-}
-
-func (CapabilitiesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CapabilitiesResponse)(nil)).Elem()
-}
-
-func (i CapabilitiesResponseArgs) ToCapabilitiesResponseOutput() CapabilitiesResponseOutput {
-	return i.ToCapabilitiesResponseOutputWithContext(context.Background())
-}
-
-func (i CapabilitiesResponseArgs) ToCapabilitiesResponseOutputWithContext(ctx context.Context) CapabilitiesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapabilitiesResponseOutput)
-}
-
-// Adds and removes POSIX capabilities from running containers.
-type CapabilitiesResponseOutput struct{ *pulumi.OutputState }
-
-func (CapabilitiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CapabilitiesResponse)(nil)).Elem()
-}
-
-func (o CapabilitiesResponseOutput) ToCapabilitiesResponseOutput() CapabilitiesResponseOutput {
-	return o
-}
-
-func (o CapabilitiesResponseOutput) ToCapabilitiesResponseOutputWithContext(ctx context.Context) CapabilitiesResponseOutput {
-	return o
-}
-
-// Added capabilities +optional
-func (o CapabilitiesResponseOutput) Add() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CapabilitiesResponse) []string { return v.Add }).(pulumi.StringArrayOutput)
-}
-
-// Removed capabilities +optional
-func (o CapabilitiesResponseOutput) Drop() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CapabilitiesResponse) []string { return v.Drop }).(pulumi.StringArrayOutput)
-}
-
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSource struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -248,13 +31,13 @@ type ConfigMapEnvSourceInput interface {
 	ToConfigMapEnvSourceOutputWithContext(context.Context) ConfigMapEnvSourceOutput
 }
 
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -311,7 +94,7 @@ func (i *configMapEnvSourcePtrType) ToConfigMapEnvSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourcePtrOutput)
 }
 
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapEnvSourceOutput) ElementType() reflect.Type {
@@ -341,12 +124,12 @@ func (o ConfigMapEnvSourceOutput) LocalObjectReference() LocalObjectReferencePtr
 	return o.ApplyT(func(v ConfigMapEnvSource) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapEnvSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapEnvSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -379,7 +162,7 @@ func (o ConfigMapEnvSourcePtrOutput) LocalObjectReference() LocalObjectReference
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapEnvSource) *string {
 		if v == nil {
@@ -389,7 +172,7 @@ func (o ConfigMapEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapEnvSource) *bool {
 		if v == nil {
@@ -399,13 +182,13 @@ func (o ConfigMapEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponse struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -420,13 +203,13 @@ type ConfigMapEnvSourceResponseInput interface {
 	ToConfigMapEnvSourceResponseOutputWithContext(context.Context) ConfigMapEnvSourceResponseOutput
 }
 
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponseArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+	// (Optional) Specify whether the ConfigMap must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -442,7 +225,7 @@ func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourceResponseOutput)
 }
 
-// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapEnvSourceResponseOutput) ElementType() reflect.Type {
@@ -462,25 +245,25 @@ func (o ConfigMapEnvSourceResponseOutput) LocalObjectReference() LocalObjectRefe
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapEnvSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+// (Optional) Specify whether the ConfigMap must be defined
 func (o ConfigMapEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelector struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+	// The key to select.
 	Key *string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -495,15 +278,15 @@ type ConfigMapKeySelectorInput interface {
 	ToConfigMapKeySelectorOutputWithContext(context.Context) ConfigMapKeySelectorOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+	// The key to select.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -560,7 +343,7 @@ func (i *configMapKeySelectorPtrType) ToConfigMapKeySelectorPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorOutput) ElementType() reflect.Type {
@@ -585,7 +368,7 @@ func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutputWithContext(c
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -595,12 +378,12 @@ func (o ConfigMapKeySelectorOutput) LocalObjectReference() LocalObjectReferenceP
 	return o.ApplyT(func(v ConfigMapKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -623,7 +406,7 @@ func (o ConfigMapKeySelectorPtrOutput) Elem() ConfigMapKeySelectorOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) ConfigMapKeySelector { return *v }).(ConfigMapKeySelectorOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -643,7 +426,7 @@ func (o ConfigMapKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferen
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -653,7 +436,7 @@ func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *bool {
 		if v == nil {
@@ -663,15 +446,15 @@ func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+	// The key to select.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -686,15 +469,15 @@ type ConfigMapKeySelectorResponseInput interface {
 	ToConfigMapKeySelectorResponseOutputWithContext(context.Context) ConfigMapKeySelectorResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+	// The key to select.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+	// The ConfigMap to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+	// (Optional) Specify whether the ConfigMap or its key must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -710,7 +493,7 @@ func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+// Not supported by Cloud Run Selects a key from a ConfigMap.
 type ConfigMapKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -725,7 +508,7 @@ func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutput
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+// The key to select.
 func (o ConfigMapKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -735,25 +518,25 @@ func (o ConfigMapKeySelectorResponseOutput) LocalObjectReference() LocalObjectRe
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+// The ConfigMap to select from.
 func (o ConfigMapKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+// (Optional) Specify whether the ConfigMap or its key must be defined
 func (o ConfigMapKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSource struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode *int `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
 	// Name of the config.
 	Name *string `pulumi:"name"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -768,15 +551,15 @@ type ConfigMapVolumeSourceInput interface {
 	ToConfigMapVolumeSourceOutputWithContext(context.Context) ConfigMapVolumeSourceOutput
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceArgs struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
 	// Name of the config.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -833,7 +616,7 @@ func (i *configMapVolumeSourcePtrType) ToConfigMapVolumeSourcePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapVolumeSourceOutput) ElementType() reflect.Type {
@@ -858,12 +641,12 @@ func (o ConfigMapVolumeSourceOutput) ToConfigMapVolumeSourcePtrOutputWithContext
 	}).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourceOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) []KeyToPath { return v.Items }).(KeyToPathArrayOutput)
 }
@@ -873,7 +656,7 @@ func (o ConfigMapVolumeSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -896,7 +679,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Elem() ConfigMapVolumeSourceOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) ConfigMapVolumeSource { return *v }).(ConfigMapVolumeSourceOutput)
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *int {
 		if v == nil {
@@ -906,7 +689,7 @@ func (o ConfigMapVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) []KeyToPath {
 		if v == nil {
@@ -926,7 +709,7 @@ func (o ConfigMapVolumeSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapVolumeSource) *bool {
 		if v == nil {
@@ -936,15 +719,15 @@ func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponse struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode int `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
 	// Name of the config.
 	Name string `pulumi:"name"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
 }
 
@@ -959,15 +742,15 @@ type ConfigMapVolumeSourceResponseInput interface {
 	ToConfigMapVolumeSourceResponseOutputWithContext(context.Context) ConfigMapVolumeSourceResponseOutput
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponseArgs struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
 	// Name of the config.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -983,7 +766,7 @@ func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourceResponseOutput)
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapVolumeSourceResponseOutput) ElementType() reflect.Type {
@@ -998,12 +781,12 @@ func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutp
 	return o
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o ConfigMapVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
-// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o ConfigMapVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
 }
@@ -1013,54 +796,45 @@ func (o ConfigMapVolumeSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o ConfigMapVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type Container struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    []string `pulumi:"args"`
 	Command []string `pulumi:"command"`
-	// List of environment variables to set in the container. Cannot be updated. +optional
+	// (Optional) List of environment variables to set in the container.
 	Env []EnvVar `pulumi:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []EnvFromSource `pulumi:"envFrom"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image *string `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-	Lifecycle *Lifecycle `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe *Probe `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name *string `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPort `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe *Probe `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources *ResourceRequirements `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext *SecurityContext `pulumi:"securityContext"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-	Stdin *bool `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-	StdinOnce *bool `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe *Probe `pulumi:"startupProbe"`
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath *string `pulumi:"terminationMessagePath"`
-	// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy *string `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-	Tty *bool `pulumi:"tty"`
-	// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-	VolumeDevices []VolumeDevice `pulumi:"volumeDevices"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts []VolumeMount `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir *string `pulumi:"workingDir"`
 }
 
@@ -1077,47 +851,38 @@ type ContainerInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    pulumi.StringArrayInput `pulumi:"args"`
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// List of environment variables to set in the container. Cannot be updated. +optional
+	// (Optional) List of environment variables to set in the container.
 	Env EnvVarArrayInput `pulumi:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom EnvFromSourceArrayInput `pulumi:"envFrom"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-	Lifecycle LifecyclePtrInput `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbePtrInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortArrayInput `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbePtrInput `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsPtrInput `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextPtrInput `pulumi:"securityContext"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-	Stdin pulumi.BoolPtrInput `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-	StdinOnce pulumi.BoolPtrInput `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe ProbePtrInput `pulumi:"startupProbe"`
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath pulumi.StringPtrInput `pulumi:"terminationMessagePath"`
-	// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy pulumi.StringPtrInput `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-	Tty pulumi.BoolPtrInput `pulumi:"tty"`
-	// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-	VolumeDevices VolumeDeviceArrayInput `pulumi:"volumeDevices"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts VolumeMountArrayInput `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
@@ -1173,107 +938,86 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
 func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// List of environment variables to set in the container. Cannot be updated. +optional
+// (Optional) List of environment variables to set in the container.
 func (o ContainerOutput) Env() EnvVarArrayOutput {
 	return o.ApplyT(func(v Container) []EnvVar { return v.Env }).(EnvVarArrayOutput)
 }
 
-// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 func (o ContainerOutput) EnvFrom() EnvFromSourceArrayOutput {
 	return o.ApplyT(func(v Container) []EnvFromSource { return v.EnvFrom }).(EnvFromSourceArrayOutput)
 }
 
-// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 func (o ContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-func (o ContainerOutput) Lifecycle() LifecyclePtrOutput {
-	return o.ApplyT(func(v Container) *Lifecycle { return v.Lifecycle }).(LifecyclePtrOutput)
-}
-
-// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerOutput) LivenessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.LivenessProbe }).(ProbePtrOutput)
 }
 
-// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 func (o ContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 func (o ContainerOutput) Ports() ContainerPortArrayOutput {
 	return o.ApplyT(func(v Container) []ContainerPort { return v.Ports }).(ContainerPortArrayOutput)
 }
 
-// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerOutput) ReadinessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.ReadinessProbe }).(ProbePtrOutput)
 }
 
-// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o ContainerOutput) Resources() ResourceRequirementsPtrOutput {
 	return o.ApplyT(func(v Container) *ResourceRequirements { return v.Resources }).(ResourceRequirementsPtrOutput)
 }
 
-// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o ContainerOutput) SecurityContext() SecurityContextPtrOutput {
 	return o.ApplyT(func(v Container) *SecurityContext { return v.SecurityContext }).(SecurityContextPtrOutput)
 }
 
-// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-func (o ContainerOutput) Stdin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Container) *bool { return v.Stdin }).(pulumi.BoolPtrOutput)
+// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ContainerOutput) StartupProbe() ProbePtrOutput {
+	return o.ApplyT(func(v Container) *Probe { return v.StartupProbe }).(ProbePtrOutput)
 }
 
-// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-func (o ContainerOutput) StdinOnce() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Container) *bool { return v.StdinOnce }).(pulumi.BoolPtrOutput)
-}
-
-// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 func (o ContainerOutput) TerminationMessagePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.TerminationMessagePath }).(pulumi.StringPtrOutput)
 }
 
-// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 func (o ContainerOutput) TerminationMessagePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.TerminationMessagePolicy }).(pulumi.StringPtrOutput)
 }
 
-// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-func (o ContainerOutput) Tty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Container) *bool { return v.Tty }).(pulumi.BoolPtrOutput)
-}
-
-// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-func (o ContainerOutput) VolumeDevices() VolumeDeviceArrayOutput {
-	return o.ApplyT(func(v Container) []VolumeDevice { return v.VolumeDevices }).(VolumeDeviceArrayOutput)
-}
-
-// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 func (o ContainerOutput) VolumeMounts() VolumeMountArrayOutput {
 	return o.ApplyT(func(v Container) []VolumeMount { return v.VolumeMounts }).(VolumeMountArrayOutput)
 }
 
-// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o ContainerOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }
@@ -1300,15 +1044,11 @@ func (o ContainerArrayOutput) Index(i pulumi.IntInput) ContainerOutput {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPort struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 	ContainerPort *int `pulumi:"containerPort"`
-	// What host IP to bind the external port to. +optional
-	HostIP *string `pulumi:"hostIP"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-	HostPort *int `pulumi:"hostPort"`
-	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -1325,15 +1065,11 @@ type ContainerPortInput interface {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPortArgs struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
-	// What host IP to bind the external port to. +optional
-	HostIP pulumi.StringPtrInput `pulumi:"hostIP"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-	HostPort pulumi.IntPtrInput `pulumi:"hostPort"`
-	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -1389,27 +1125,17 @@ func (o ContainerPortOutput) ToContainerPortOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 func (o ContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
-// What host IP to bind the external port to. +optional
-func (o ContainerPortOutput) HostIP() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerPort) *string { return v.HostIP }).(pulumi.StringPtrOutput)
-}
-
-// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-func (o ContainerPortOutput) HostPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ContainerPort) *int { return v.HostPort }).(pulumi.IntPtrOutput)
-}
-
-// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 func (o ContainerPortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 func (o ContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -1436,15 +1162,11 @@ func (o ContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerPortOutput {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPortResponse struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 	ContainerPort int `pulumi:"containerPort"`
-	// What host IP to bind the external port to. +optional
-	HostIP string `pulumi:"hostIP"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-	HostPort int `pulumi:"hostPort"`
-	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name string `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -1461,15 +1183,11 @@ type ContainerPortResponseInput interface {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPortResponseArgs struct {
-	// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
-	// What host IP to bind the external port to. +optional
-	HostIP pulumi.StringInput `pulumi:"hostIP"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-	HostPort pulumi.IntInput `pulumi:"hostPort"`
-	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringInput `pulumi:"name"`
-	// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+	// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -1525,27 +1243,17 @@ func (o ContainerPortResponseOutput) ToContainerPortResponseOutputWithContext(ct
 	return o
 }
 
-// Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
 func (o ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
 }
 
-// What host IP to bind the external port to. +optional
-func (o ContainerPortResponseOutput) HostIP() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerPortResponse) string { return v.HostIP }).(pulumi.StringOutput)
-}
-
-// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-func (o ContainerPortResponseOutput) HostPort() pulumi.IntOutput {
-	return o.ApplyT(func(v ContainerPortResponse) int { return v.HostPort }).(pulumi.IntOutput)
-}
-
-// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 func (o ContainerPortResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerPortResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
 func (o ContainerPortResponseOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerPortResponse) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1572,47 +1280,38 @@ func (o ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) ContainerPort
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerResponse struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    []string `pulumi:"args"`
 	Command []string `pulumi:"command"`
-	// List of environment variables to set in the container. Cannot be updated. +optional
+	// (Optional) List of environment variables to set in the container.
 	Env []EnvVarResponse `pulumi:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []EnvFromSourceResponse `pulumi:"envFrom"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-	Lifecycle LifecycleResponse `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name string `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPortResponse `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbeResponse `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsResponse `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextResponse `pulumi:"securityContext"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-	Stdin bool `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-	StdinOnce bool `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe ProbeResponse `pulumi:"startupProbe"`
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath string `pulumi:"terminationMessagePath"`
-	// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy string `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-	Tty bool `pulumi:"tty"`
-	// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-	VolumeDevices []VolumeDeviceResponse `pulumi:"volumeDevices"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir string `pulumi:"workingDir"`
 }
 
@@ -1629,47 +1328,38 @@ type ContainerResponseInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerResponseArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+	// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    pulumi.StringArrayInput `pulumi:"args"`
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// List of environment variables to set in the container. Cannot be updated. +optional
+	// (Optional) List of environment variables to set in the container.
 	Env EnvVarResponseArrayInput `pulumi:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+	// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom EnvFromSourceResponseArrayInput `pulumi:"envFrom"`
-	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+	// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-	Lifecycle LifecycleResponseInput `pulumi:"lifecycle"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbeResponseInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+	// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringInput `pulumi:"name"`
-	// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortResponseArrayInput `pulumi:"ports"`
-	// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	ReadinessProbe ProbeResponseInput `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+	// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources ResourceRequirementsResponseInput `pulumi:"resources"`
-	// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+	// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 	SecurityContext SecurityContextResponseInput `pulumi:"securityContext"`
-	// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-	Stdin pulumi.BoolInput `pulumi:"stdin"`
-	// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-	StdinOnce pulumi.BoolInput `pulumi:"stdinOnce"`
-	// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+	// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	StartupProbe ProbeResponseInput `pulumi:"startupProbe"`
+	// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath pulumi.StringInput `pulumi:"terminationMessagePath"`
-	// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+	// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy pulumi.StringInput `pulumi:"terminationMessagePolicy"`
-	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-	Tty pulumi.BoolInput `pulumi:"tty"`
-	// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-	VolumeDevices VolumeDeviceResponseArrayInput `pulumi:"volumeDevices"`
-	// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+	// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 	VolumeMounts VolumeMountResponseArrayInput `pulumi:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+	// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
 }
 
@@ -1725,107 +1415,86 @@ func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
 func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// List of environment variables to set in the container. Cannot be updated. +optional
+// (Optional) List of environment variables to set in the container.
 func (o ContainerResponseOutput) Env() EnvVarResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvVarResponse { return v.Env }).(EnvVarResponseArrayOutput)
 }
 
-// List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+// (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 func (o ContainerResponseOutput) EnvFrom() EnvFromSourceResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvFromSourceResponse { return v.EnvFrom }).(EnvFromSourceResponseArrayOutput)
 }
 
-// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 func (o ContainerResponseOutput) ImagePullPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-func (o ContainerResponseOutput) Lifecycle() LifecycleResponseOutput {
-	return o.ApplyT(func(v ContainerResponse) LifecycleResponse { return v.Lifecycle }).(LifecycleResponseOutput)
-}
-
-// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
 }
 
-// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 func (o ContainerResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 func (o ContainerResponseOutput) Ports() ContainerPortResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []ContainerPortResponse { return v.Ports }).(ContainerPortResponseArrayOutput)
 }
 
-// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ContainerResponseOutput) ReadinessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.ReadinessProbe }).(ProbeResponseOutput)
 }
 
-// Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+// (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
 }
 
-// Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+// (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 func (o ContainerResponseOutput) SecurityContext() SecurityContextResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) SecurityContextResponse { return v.SecurityContext }).(SecurityContextResponseOutput)
 }
 
-// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-func (o ContainerResponseOutput) Stdin() pulumi.BoolOutput {
-	return o.ApplyT(func(v ContainerResponse) bool { return v.Stdin }).(pulumi.BoolOutput)
+// (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ContainerResponseOutput) StartupProbe() ProbeResponseOutput {
+	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.StartupProbe }).(ProbeResponseOutput)
 }
 
-// Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-func (o ContainerResponseOutput) StdinOnce() pulumi.BoolOutput {
-	return o.ApplyT(func(v ContainerResponse) bool { return v.StdinOnce }).(pulumi.BoolOutput)
-}
-
-// Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+// (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 func (o ContainerResponseOutput) TerminationMessagePath() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePath }).(pulumi.StringOutput)
 }
 
-// Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+// (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
 func (o ContainerResponseOutput) TerminationMessagePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePolicy }).(pulumi.StringOutput)
 }
 
-// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-func (o ContainerResponseOutput) Tty() pulumi.BoolOutput {
-	return o.ApplyT(func(v ContainerResponse) bool { return v.Tty }).(pulumi.BoolOutput)
-}
-
-// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-func (o ContainerResponseOutput) VolumeDevices() VolumeDeviceResponseArrayOutput {
-	return o.ApplyT(func(v ContainerResponse) []VolumeDeviceResponse { return v.VolumeDevices }).(VolumeDeviceResponseArrayOutput)
-}
-
-// Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
 func (o ContainerResponseOutput) VolumeMounts() VolumeMountResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
 }
 
-// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+// (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
@@ -1850,13 +1519,13 @@ func (o ContainerResponseArrayOutput) Index(i pulumi.IntInput) ContainerResponse
 	}).(ContainerResponseOutput)
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSource struct {
-	// The ConfigMap to select from +optional
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef *ConfigMapEnvSource `pulumi:"configMapRef"`
-	// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix *string `pulumi:"prefix"`
-	// The Secret to select from +optional
+	// (Optional) The Secret to select from
 	SecretRef *SecretEnvSource `pulumi:"secretRef"`
 }
 
@@ -1871,13 +1540,13 @@ type EnvFromSourceInput interface {
 	ToEnvFromSourceOutputWithContext(context.Context) EnvFromSourceOutput
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceArgs struct {
-	// The ConfigMap to select from +optional
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourcePtrInput `pulumi:"configMapRef"`
-	// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The Secret to select from +optional
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourcePtrInput `pulumi:"secretRef"`
 }
 
@@ -1918,7 +1587,7 @@ func (i EnvFromSourceArray) ToEnvFromSourceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceArrayOutput)
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceOutput struct{ *pulumi.OutputState }
 
 func (EnvFromSourceOutput) ElementType() reflect.Type {
@@ -1933,17 +1602,17 @@ func (o EnvFromSourceOutput) ToEnvFromSourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The ConfigMap to select from +optional
+// (Optional) The ConfigMap to select from
 func (o EnvFromSourceOutput) ConfigMapRef() ConfigMapEnvSourcePtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *ConfigMapEnvSource { return v.ConfigMapRef }).(ConfigMapEnvSourcePtrOutput)
 }
 
-// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 func (o EnvFromSourceOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The Secret to select from +optional
+// (Optional) The Secret to select from
 func (o EnvFromSourceOutput) SecretRef() SecretEnvSourcePtrOutput {
 	return o.ApplyT(func(v EnvFromSource) *SecretEnvSource { return v.SecretRef }).(SecretEnvSourcePtrOutput)
 }
@@ -1968,13 +1637,13 @@ func (o EnvFromSourceArrayOutput) Index(i pulumi.IntInput) EnvFromSourceOutput {
 	}).(EnvFromSourceOutput)
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponse struct {
-	// The ConfigMap to select from +optional
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourceResponse `pulumi:"configMapRef"`
-	// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix string `pulumi:"prefix"`
-	// The Secret to select from +optional
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourceResponse `pulumi:"secretRef"`
 }
 
@@ -1989,13 +1658,13 @@ type EnvFromSourceResponseInput interface {
 	ToEnvFromSourceResponseOutputWithContext(context.Context) EnvFromSourceResponseOutput
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponseArgs struct {
-	// The ConfigMap to select from +optional
+	// (Optional) The ConfigMap to select from
 	ConfigMapRef ConfigMapEnvSourceResponseInput `pulumi:"configMapRef"`
-	// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+	// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// The Secret to select from +optional
+	// (Optional) The Secret to select from
 	SecretRef SecretEnvSourceResponseInput `pulumi:"secretRef"`
 }
 
@@ -2036,7 +1705,7 @@ func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseArrayOutput)
 }
 
-// EnvFromSource represents the source of a set of ConfigMaps
+// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvFromSourceResponseOutput) ElementType() reflect.Type {
@@ -2051,17 +1720,17 @@ func (o EnvFromSourceResponseOutput) ToEnvFromSourceResponseOutputWithContext(ct
 	return o
 }
 
-// The ConfigMap to select from +optional
+// (Optional) The ConfigMap to select from
 func (o EnvFromSourceResponseOutput) ConfigMapRef() ConfigMapEnvSourceResponseOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) ConfigMapEnvSourceResponse { return v.ConfigMapRef }).(ConfigMapEnvSourceResponseOutput)
 }
 
-// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 func (o EnvFromSourceResponseOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// The Secret to select from +optional
+// (Optional) The Secret to select from
 func (o EnvFromSourceResponseOutput) SecretRef() SecretEnvSourceResponseOutput {
 	return o.ApplyT(func(v EnvFromSourceResponse) SecretEnvSourceResponse { return v.SecretRef }).(SecretEnvSourceResponseOutput)
 }
@@ -2090,9 +1759,9 @@ func (o EnvFromSourceResponseArrayOutput) Index(i pulumi.IntInput) EnvFromSource
 type EnvVar struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name *string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value *string `pulumi:"value"`
-	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom *EnvVarSource `pulumi:"valueFrom"`
 }
 
@@ -2111,9 +1780,9 @@ type EnvVarInput interface {
 type EnvVarArgs struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourcePtrInput `pulumi:"valueFrom"`
 }
 
@@ -2174,12 +1843,12 @@ func (o EnvVarOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvVar) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 func (o EnvVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 func (o EnvVarOutput) ValueFrom() EnvVarSourcePtrOutput {
 	return o.ApplyT(func(v EnvVar) *EnvVarSource { return v.ValueFrom }).(EnvVarSourcePtrOutput)
 }
@@ -2208,9 +1877,9 @@ func (o EnvVarArrayOutput) Index(i pulumi.IntInput) EnvVarOutput {
 type EnvVarResponse struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value string `pulumi:"value"`
-	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
 }
 
@@ -2229,9 +1898,9 @@ type EnvVarResponseInput interface {
 type EnvVarResponseArgs struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 	Value pulumi.StringInput `pulumi:"value"`
-	// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+	// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponseInput `pulumi:"valueFrom"`
 }
 
@@ -2292,12 +1961,12 @@ func (o EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
 func (o EnvVarResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
 func (o EnvVarResponseOutput) ValueFrom() EnvVarSourceResponseOutput {
 	return o.ApplyT(func(v EnvVarResponse) EnvVarSourceResponse { return v.ValueFrom }).(EnvVarSourceResponseOutput)
 }
@@ -2322,11 +1991,11 @@ func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput
 	}).(EnvVarResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSource struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef *ConfigMapKeySelector `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef *SecretKeySelector `pulumi:"secretKeyRef"`
 }
 
@@ -2341,11 +2010,11 @@ type EnvVarSourceInput interface {
 	ToEnvVarSourceOutputWithContext(context.Context) EnvVarSourceOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorPtrInput `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorPtrInput `pulumi:"secretKeyRef"`
 }
 
@@ -2402,7 +2071,7 @@ func (i *envVarSourcePtrType) ToEnvVarSourcePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceOutput struct{ *pulumi.OutputState }
 
 func (EnvVarSourceOutput) ElementType() reflect.Type {
@@ -2427,12 +2096,12 @@ func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Conte
 	}).(EnvVarSourcePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourceOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *ConfigMapKeySelector { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourceOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *SecretKeySelector { return v.SecretKeyRef }).(SecretKeySelectorPtrOutput)
 }
@@ -2455,7 +2124,7 @@ func (o EnvVarSourcePtrOutput) Elem() EnvVarSourceOutput {
 	return o.ApplyT(func(v *EnvVarSource) EnvVarSource { return *v }).(EnvVarSourceOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *ConfigMapKeySelector {
 		if v == nil {
@@ -2465,7 +2134,7 @@ func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *SecretKeySelector {
 		if v == nil {
@@ -2475,11 +2144,11 @@ func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponse struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorResponse `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
 }
 
@@ -2494,11 +2163,11 @@ type EnvVarSourceResponseInput interface {
 	ToEnvVarSourceResponseOutputWithContext(context.Context) EnvVarSourceResponseOutput
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponseArgs struct {
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+	// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 	ConfigMapKeyRef ConfigMapKeySelectorResponseInput `pulumi:"configMapKeyRef"`
-	// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+	// (Optional) Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
 }
 
@@ -2514,7 +2183,7 @@ func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+// EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvVarSourceResponseOutput) ElementType() reflect.Type {
@@ -2529,19 +2198,19 @@ func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutputWithContext(ctx 
 	return o
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
 func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+// (Optional) Selects a key (version) of a secret in Secret Manager.
 func (o EnvVarSourceResponseOutput) SecretKeyRef() SecretKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) SecretKeySelectorResponse { return v.SecretKeyRef }).(SecretKeySelectorResponseOutput)
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecAction struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command []string `pulumi:"command"`
 }
 
@@ -2556,9 +2225,9 @@ type ExecActionInput interface {
 	ToExecActionOutputWithContext(context.Context) ExecActionOutput
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 }
 
@@ -2615,7 +2284,7 @@ func (i *execActionPtrType) ToExecActionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionPtrOutput)
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionOutput struct{ *pulumi.OutputState }
 
 func (ExecActionOutput) ElementType() reflect.Type {
@@ -2640,7 +2309,7 @@ func (o ExecActionOutput) ToExecActionPtrOutputWithContext(ctx context.Context) 
 	}).(ExecActionPtrOutput)
 }
 
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecAction) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -2663,7 +2332,7 @@ func (o ExecActionPtrOutput) Elem() ExecActionOutput {
 	return o.ApplyT(func(v *ExecAction) ExecAction { return *v }).(ExecActionOutput)
 }
 
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ExecAction) []string {
 		if v == nil {
@@ -2673,9 +2342,9 @@ func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponse struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command []string `pulumi:"command"`
 }
 
@@ -2690,9 +2359,9 @@ type ExecActionResponseInput interface {
 	ToExecActionResponseOutputWithContext(context.Context) ExecActionResponseOutput
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponseArgs struct {
-	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+	// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 }
 
@@ -2708,7 +2377,7 @@ func (i ExecActionResponseArgs) ToExecActionResponseOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExecActionResponseOutput)
 }
 
-// ExecAction describes a "run in container" action.
+// Not supported by Cloud Run ExecAction describes a "run in container" action.
 type ExecActionResponseOutput struct{ *pulumi.OutputState }
 
 func (ExecActionResponseOutput) ElementType() reflect.Type {
@@ -2723,22 +2392,20 @@ func (o ExecActionResponseOutput) ToExecActionResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+// (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
 func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetAction struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host *string `pulumi:"host"`
-	// Custom headers to set in the request. HTTP allows repeated headers. +optional
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []HTTPHeader `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server. +optional
+	// (Optional) Path to access on the HTTP server.
 	Path *string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port *IntOrString `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme *string `pulumi:"scheme"`
 }
 
@@ -2753,17 +2420,15 @@ type HTTPGetActionInput interface {
 	ToHTTPGetActionOutputWithContext(context.Context) HTTPGetActionOutput
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Custom headers to set in the request. HTTP allows repeated headers. +optional
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders HTTPHeaderArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server. +optional
+	// (Optional) Path to access on the HTTP server.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringPtrInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
@@ -2820,7 +2485,7 @@ func (i *httpgetActionPtrType) ToHTTPGetActionPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionPtrOutput)
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionOutput struct{ *pulumi.OutputState }
 
 func (HTTPGetActionOutput) ElementType() reflect.Type {
@@ -2845,27 +2510,22 @@ func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Con
 	}).(HTTPGetActionPtrOutput)
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Custom headers to set in the request. HTTP allows repeated headers. +optional
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v HTTPGetAction) []HTTPHeader { return v.HttpHeaders }).(HTTPHeaderArrayOutput)
 }
 
-// Path to access on the HTTP server. +optional
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o HTTPGetActionOutput) Port() IntOrStringPtrOutput {
-	return o.ApplyT(func(v HTTPGetAction) *IntOrString { return v.Port }).(IntOrStringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -2888,7 +2548,7 @@ func (o HTTPGetActionPtrOutput) Elem() HTTPGetActionOutput {
 	return o.ApplyT(func(v *HTTPGetAction) HTTPGetAction { return *v }).(HTTPGetActionOutput)
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -2898,7 +2558,7 @@ func (o HTTPGetActionPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom headers to set in the request. HTTP allows repeated headers. +optional
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionPtrOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v *HTTPGetAction) []HTTPHeader {
 		if v == nil {
@@ -2908,7 +2568,7 @@ func (o HTTPGetActionPtrOutput) HttpHeaders() HTTPHeaderArrayOutput {
 	}).(HTTPHeaderArrayOutput)
 }
 
-// Path to access on the HTTP server. +optional
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -2918,17 +2578,7 @@ func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o HTTPGetActionPtrOutput) Port() IntOrStringPtrOutput {
-	return o.ApplyT(func(v *HTTPGetAction) *IntOrString {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(IntOrStringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
 		if v == nil {
@@ -2938,17 +2588,15 @@ func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponse struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host string `pulumi:"host"`
-	// Custom headers to set in the request. HTTP allows repeated headers. +optional
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []HTTPHeaderResponse `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server. +optional
+	// (Optional) Path to access on the HTTP server.
 	Path string `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringResponse `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme string `pulumi:"scheme"`
 }
 
@@ -2963,17 +2611,15 @@ type HTTPGetActionResponseInput interface {
 	ToHTTPGetActionResponseOutputWithContext(context.Context) HTTPGetActionResponseOutput
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponseArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+	// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Custom headers to set in the request. HTTP allows repeated headers. +optional
+	// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders HTTPHeaderResponseArrayInput `pulumi:"httpHeaders"`
-	// Path to access on the HTTP server. +optional
+	// (Optional) Path to access on the HTTP server.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringResponseInput `pulumi:"port"`
-	// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+	// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 }
 
@@ -2989,7 +2635,7 @@ func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionResponseOutput)
 }
 
-// HTTPGetAction describes an action based on HTTP Get requests.
+// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponseOutput struct{ *pulumi.OutputState }
 
 func (HTTPGetActionResponseOutput) ElementType() reflect.Type {
@@ -3004,32 +2650,27 @@ func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutputWithContext(ct
 	return o
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
 func (o HTTPGetActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Custom headers to set in the request. HTTP allows repeated headers. +optional
+// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
 func (o HTTPGetActionResponseOutput) HttpHeaders() HTTPHeaderResponseArrayOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) []HTTPHeaderResponse { return v.HttpHeaders }).(HTTPHeaderResponseArrayOutput)
 }
 
-// Path to access on the HTTP server. +optional
+// (Optional) Path to access on the HTTP server.
 func (o HTTPGetActionResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o HTTPGetActionResponseOutput) Port() IntOrStringResponseOutput {
-	return o.ApplyT(func(v HTTPGetActionResponse) IntOrStringResponse { return v.Port }).(IntOrStringResponseOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to HTTP. +optional
+// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
 func (o HTTPGetActionResponseOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeader struct {
 	// The header field name
 	Name *string `pulumi:"name"`
@@ -3048,7 +2689,7 @@ type HTTPHeaderInput interface {
 	ToHTTPHeaderOutputWithContext(context.Context) HTTPHeaderOutput
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderArgs struct {
 	// The header field name
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3093,7 +2734,7 @@ func (i HTTPHeaderArray) ToHTTPHeaderArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderArrayOutput)
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderOutput struct{ *pulumi.OutputState }
 
 func (HTTPHeaderOutput) ElementType() reflect.Type {
@@ -3138,7 +2779,7 @@ func (o HTTPHeaderArrayOutput) Index(i pulumi.IntInput) HTTPHeaderOutput {
 	}).(HTTPHeaderOutput)
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponse struct {
 	// The header field name
 	Name string `pulumi:"name"`
@@ -3157,7 +2798,7 @@ type HTTPHeaderResponseInput interface {
 	ToHTTPHeaderResponseOutputWithContext(context.Context) HTTPHeaderResponseOutput
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponseArgs struct {
 	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
@@ -3202,7 +2843,7 @@ func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseArrayOutput)
 }
 
-// HTTPHeader describes a custom header to be used in HTTP probes
+// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderResponseOutput struct{ *pulumi.OutputState }
 
 func (HTTPHeaderResponseOutput) ElementType() reflect.Type {
@@ -3245,251 +2886,6 @@ func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HTTPHeaderResponse {
 		return vs[0].([]HTTPHeaderResponse)[vs[1].(int)]
 	}).(HTTPHeaderResponseOutput)
-}
-
-// Handler defines a specific action that should be taken
-type Handler struct {
-	// One and only one of the following should be specified. Exec specifies the action to take. +optional
-	Exec *ExecAction `pulumi:"exec"`
-	// HTTPGet specifies the http request to perform. +optional
-	HttpGet *HTTPGetAction `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSocket *TCPSocketAction `pulumi:"tcpSocket"`
-}
-
-// HandlerInput is an input type that accepts HandlerArgs and HandlerOutput values.
-// You can construct a concrete instance of `HandlerInput` via:
-//
-//          HandlerArgs{...}
-type HandlerInput interface {
-	pulumi.Input
-
-	ToHandlerOutput() HandlerOutput
-	ToHandlerOutputWithContext(context.Context) HandlerOutput
-}
-
-// Handler defines a specific action that should be taken
-type HandlerArgs struct {
-	// One and only one of the following should be specified. Exec specifies the action to take. +optional
-	Exec ExecActionPtrInput `pulumi:"exec"`
-	// HTTPGet specifies the http request to perform. +optional
-	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSocket TCPSocketActionPtrInput `pulumi:"tcpSocket"`
-}
-
-func (HandlerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Handler)(nil)).Elem()
-}
-
-func (i HandlerArgs) ToHandlerOutput() HandlerOutput {
-	return i.ToHandlerOutputWithContext(context.Background())
-}
-
-func (i HandlerArgs) ToHandlerOutputWithContext(ctx context.Context) HandlerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HandlerOutput)
-}
-
-func (i HandlerArgs) ToHandlerPtrOutput() HandlerPtrOutput {
-	return i.ToHandlerPtrOutputWithContext(context.Background())
-}
-
-func (i HandlerArgs) ToHandlerPtrOutputWithContext(ctx context.Context) HandlerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HandlerOutput).ToHandlerPtrOutputWithContext(ctx)
-}
-
-// HandlerPtrInput is an input type that accepts HandlerArgs, HandlerPtr and HandlerPtrOutput values.
-// You can construct a concrete instance of `HandlerPtrInput` via:
-//
-//          HandlerArgs{...}
-//
-//  or:
-//
-//          nil
-type HandlerPtrInput interface {
-	pulumi.Input
-
-	ToHandlerPtrOutput() HandlerPtrOutput
-	ToHandlerPtrOutputWithContext(context.Context) HandlerPtrOutput
-}
-
-type handlerPtrType HandlerArgs
-
-func HandlerPtr(v *HandlerArgs) HandlerPtrInput {
-	return (*handlerPtrType)(v)
-}
-
-func (*handlerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Handler)(nil)).Elem()
-}
-
-func (i *handlerPtrType) ToHandlerPtrOutput() HandlerPtrOutput {
-	return i.ToHandlerPtrOutputWithContext(context.Background())
-}
-
-func (i *handlerPtrType) ToHandlerPtrOutputWithContext(ctx context.Context) HandlerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HandlerPtrOutput)
-}
-
-// Handler defines a specific action that should be taken
-type HandlerOutput struct{ *pulumi.OutputState }
-
-func (HandlerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Handler)(nil)).Elem()
-}
-
-func (o HandlerOutput) ToHandlerOutput() HandlerOutput {
-	return o
-}
-
-func (o HandlerOutput) ToHandlerOutputWithContext(ctx context.Context) HandlerOutput {
-	return o
-}
-
-func (o HandlerOutput) ToHandlerPtrOutput() HandlerPtrOutput {
-	return o.ToHandlerPtrOutputWithContext(context.Background())
-}
-
-func (o HandlerOutput) ToHandlerPtrOutputWithContext(ctx context.Context) HandlerPtrOutput {
-	return o.ApplyT(func(v Handler) *Handler {
-		return &v
-	}).(HandlerPtrOutput)
-}
-
-// One and only one of the following should be specified. Exec specifies the action to take. +optional
-func (o HandlerOutput) Exec() ExecActionPtrOutput {
-	return o.ApplyT(func(v Handler) *ExecAction { return v.Exec }).(ExecActionPtrOutput)
-}
-
-// HTTPGet specifies the http request to perform. +optional
-func (o HandlerOutput) HttpGet() HTTPGetActionPtrOutput {
-	return o.ApplyT(func(v Handler) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o HandlerOutput) TcpSocket() TCPSocketActionPtrOutput {
-	return o.ApplyT(func(v Handler) *TCPSocketAction { return v.TcpSocket }).(TCPSocketActionPtrOutput)
-}
-
-type HandlerPtrOutput struct{ *pulumi.OutputState }
-
-func (HandlerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Handler)(nil)).Elem()
-}
-
-func (o HandlerPtrOutput) ToHandlerPtrOutput() HandlerPtrOutput {
-	return o
-}
-
-func (o HandlerPtrOutput) ToHandlerPtrOutputWithContext(ctx context.Context) HandlerPtrOutput {
-	return o
-}
-
-func (o HandlerPtrOutput) Elem() HandlerOutput {
-	return o.ApplyT(func(v *Handler) Handler { return *v }).(HandlerOutput)
-}
-
-// One and only one of the following should be specified. Exec specifies the action to take. +optional
-func (o HandlerPtrOutput) Exec() ExecActionPtrOutput {
-	return o.ApplyT(func(v *Handler) *ExecAction {
-		if v == nil {
-			return nil
-		}
-		return v.Exec
-	}).(ExecActionPtrOutput)
-}
-
-// HTTPGet specifies the http request to perform. +optional
-func (o HandlerPtrOutput) HttpGet() HTTPGetActionPtrOutput {
-	return o.ApplyT(func(v *Handler) *HTTPGetAction {
-		if v == nil {
-			return nil
-		}
-		return v.HttpGet
-	}).(HTTPGetActionPtrOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o HandlerPtrOutput) TcpSocket() TCPSocketActionPtrOutput {
-	return o.ApplyT(func(v *Handler) *TCPSocketAction {
-		if v == nil {
-			return nil
-		}
-		return v.TcpSocket
-	}).(TCPSocketActionPtrOutput)
-}
-
-// Handler defines a specific action that should be taken
-type HandlerResponse struct {
-	// One and only one of the following should be specified. Exec specifies the action to take. +optional
-	Exec ExecActionResponse `pulumi:"exec"`
-	// HTTPGet specifies the http request to perform. +optional
-	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
-}
-
-// HandlerResponseInput is an input type that accepts HandlerResponseArgs and HandlerResponseOutput values.
-// You can construct a concrete instance of `HandlerResponseInput` via:
-//
-//          HandlerResponseArgs{...}
-type HandlerResponseInput interface {
-	pulumi.Input
-
-	ToHandlerResponseOutput() HandlerResponseOutput
-	ToHandlerResponseOutputWithContext(context.Context) HandlerResponseOutput
-}
-
-// Handler defines a specific action that should be taken
-type HandlerResponseArgs struct {
-	// One and only one of the following should be specified. Exec specifies the action to take. +optional
-	Exec ExecActionResponseInput `pulumi:"exec"`
-	// HTTPGet specifies the http request to perform. +optional
-	HttpGet HTTPGetActionResponseInput `pulumi:"httpGet"`
-	// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-	TcpSocket TCPSocketActionResponseInput `pulumi:"tcpSocket"`
-}
-
-func (HandlerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HandlerResponse)(nil)).Elem()
-}
-
-func (i HandlerResponseArgs) ToHandlerResponseOutput() HandlerResponseOutput {
-	return i.ToHandlerResponseOutputWithContext(context.Background())
-}
-
-func (i HandlerResponseArgs) ToHandlerResponseOutputWithContext(ctx context.Context) HandlerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HandlerResponseOutput)
-}
-
-// Handler defines a specific action that should be taken
-type HandlerResponseOutput struct{ *pulumi.OutputState }
-
-func (HandlerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HandlerResponse)(nil)).Elem()
-}
-
-func (o HandlerResponseOutput) ToHandlerResponseOutput() HandlerResponseOutput {
-	return o
-}
-
-func (o HandlerResponseOutput) ToHandlerResponseOutputWithContext(ctx context.Context) HandlerResponseOutput {
-	return o
-}
-
-// One and only one of the following should be specified. Exec specifies the action to take. +optional
-func (o HandlerResponseOutput) Exec() ExecActionResponseOutput {
-	return o.ApplyT(func(v HandlerResponse) ExecActionResponse { return v.Exec }).(ExecActionResponseOutput)
-}
-
-// HTTPGet specifies the http request to perform. +optional
-func (o HandlerResponseOutput) HttpGet() HTTPGetActionResponseOutput {
-	return o.ApplyT(func(v HandlerResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
-}
-
-// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-func (o HandlerResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
-	return o.ApplyT(func(v HandlerResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
 }
 
 // InstanceSpec is a description of an instance.
@@ -4524,251 +3920,6 @@ func (o InstanceTemplateSpecResponsePtrOutput) Spec() InstanceSpecResponsePtrOut
 		}
 		return &v.Spec
 	}).(InstanceSpecResponsePtrOutput)
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrString struct {
-	// The int value.
-	IntVal *int `pulumi:"intVal"`
-	// The string value.
-	StrVal *string `pulumi:"strVal"`
-	// The type of the value.
-	Type *int `pulumi:"type"`
-}
-
-// IntOrStringInput is an input type that accepts IntOrStringArgs and IntOrStringOutput values.
-// You can construct a concrete instance of `IntOrStringInput` via:
-//
-//          IntOrStringArgs{...}
-type IntOrStringInput interface {
-	pulumi.Input
-
-	ToIntOrStringOutput() IntOrStringOutput
-	ToIntOrStringOutputWithContext(context.Context) IntOrStringOutput
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrStringArgs struct {
-	// The int value.
-	IntVal pulumi.IntPtrInput `pulumi:"intVal"`
-	// The string value.
-	StrVal pulumi.StringPtrInput `pulumi:"strVal"`
-	// The type of the value.
-	Type pulumi.IntPtrInput `pulumi:"type"`
-}
-
-func (IntOrStringArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntOrString)(nil)).Elem()
-}
-
-func (i IntOrStringArgs) ToIntOrStringOutput() IntOrStringOutput {
-	return i.ToIntOrStringOutputWithContext(context.Background())
-}
-
-func (i IntOrStringArgs) ToIntOrStringOutputWithContext(ctx context.Context) IntOrStringOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntOrStringOutput)
-}
-
-func (i IntOrStringArgs) ToIntOrStringPtrOutput() IntOrStringPtrOutput {
-	return i.ToIntOrStringPtrOutputWithContext(context.Background())
-}
-
-func (i IntOrStringArgs) ToIntOrStringPtrOutputWithContext(ctx context.Context) IntOrStringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntOrStringOutput).ToIntOrStringPtrOutputWithContext(ctx)
-}
-
-// IntOrStringPtrInput is an input type that accepts IntOrStringArgs, IntOrStringPtr and IntOrStringPtrOutput values.
-// You can construct a concrete instance of `IntOrStringPtrInput` via:
-//
-//          IntOrStringArgs{...}
-//
-//  or:
-//
-//          nil
-type IntOrStringPtrInput interface {
-	pulumi.Input
-
-	ToIntOrStringPtrOutput() IntOrStringPtrOutput
-	ToIntOrStringPtrOutputWithContext(context.Context) IntOrStringPtrOutput
-}
-
-type intOrStringPtrType IntOrStringArgs
-
-func IntOrStringPtr(v *IntOrStringArgs) IntOrStringPtrInput {
-	return (*intOrStringPtrType)(v)
-}
-
-func (*intOrStringPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IntOrString)(nil)).Elem()
-}
-
-func (i *intOrStringPtrType) ToIntOrStringPtrOutput() IntOrStringPtrOutput {
-	return i.ToIntOrStringPtrOutputWithContext(context.Background())
-}
-
-func (i *intOrStringPtrType) ToIntOrStringPtrOutputWithContext(ctx context.Context) IntOrStringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntOrStringPtrOutput)
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrStringOutput struct{ *pulumi.OutputState }
-
-func (IntOrStringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntOrString)(nil)).Elem()
-}
-
-func (o IntOrStringOutput) ToIntOrStringOutput() IntOrStringOutput {
-	return o
-}
-
-func (o IntOrStringOutput) ToIntOrStringOutputWithContext(ctx context.Context) IntOrStringOutput {
-	return o
-}
-
-func (o IntOrStringOutput) ToIntOrStringPtrOutput() IntOrStringPtrOutput {
-	return o.ToIntOrStringPtrOutputWithContext(context.Background())
-}
-
-func (o IntOrStringOutput) ToIntOrStringPtrOutputWithContext(ctx context.Context) IntOrStringPtrOutput {
-	return o.ApplyT(func(v IntOrString) *IntOrString {
-		return &v
-	}).(IntOrStringPtrOutput)
-}
-
-// The int value.
-func (o IntOrStringOutput) IntVal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IntOrString) *int { return v.IntVal }).(pulumi.IntPtrOutput)
-}
-
-// The string value.
-func (o IntOrStringOutput) StrVal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IntOrString) *string { return v.StrVal }).(pulumi.StringPtrOutput)
-}
-
-// The type of the value.
-func (o IntOrStringOutput) Type() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v IntOrString) *int { return v.Type }).(pulumi.IntPtrOutput)
-}
-
-type IntOrStringPtrOutput struct{ *pulumi.OutputState }
-
-func (IntOrStringPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IntOrString)(nil)).Elem()
-}
-
-func (o IntOrStringPtrOutput) ToIntOrStringPtrOutput() IntOrStringPtrOutput {
-	return o
-}
-
-func (o IntOrStringPtrOutput) ToIntOrStringPtrOutputWithContext(ctx context.Context) IntOrStringPtrOutput {
-	return o
-}
-
-func (o IntOrStringPtrOutput) Elem() IntOrStringOutput {
-	return o.ApplyT(func(v *IntOrString) IntOrString { return *v }).(IntOrStringOutput)
-}
-
-// The int value.
-func (o IntOrStringPtrOutput) IntVal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *IntOrString) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntVal
-	}).(pulumi.IntPtrOutput)
-}
-
-// The string value.
-func (o IntOrStringPtrOutput) StrVal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IntOrString) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StrVal
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the value.
-func (o IntOrStringPtrOutput) Type() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *IntOrString) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.IntPtrOutput)
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrStringResponse struct {
-	// The int value.
-	IntVal int `pulumi:"intVal"`
-	// The string value.
-	StrVal string `pulumi:"strVal"`
-	// The type of the value.
-	Type int `pulumi:"type"`
-}
-
-// IntOrStringResponseInput is an input type that accepts IntOrStringResponseArgs and IntOrStringResponseOutput values.
-// You can construct a concrete instance of `IntOrStringResponseInput` via:
-//
-//          IntOrStringResponseArgs{...}
-type IntOrStringResponseInput interface {
-	pulumi.Input
-
-	ToIntOrStringResponseOutput() IntOrStringResponseOutput
-	ToIntOrStringResponseOutputWithContext(context.Context) IntOrStringResponseOutput
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrStringResponseArgs struct {
-	// The int value.
-	IntVal pulumi.IntInput `pulumi:"intVal"`
-	// The string value.
-	StrVal pulumi.StringInput `pulumi:"strVal"`
-	// The type of the value.
-	Type pulumi.IntInput `pulumi:"type"`
-}
-
-func (IntOrStringResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntOrStringResponse)(nil)).Elem()
-}
-
-func (i IntOrStringResponseArgs) ToIntOrStringResponseOutput() IntOrStringResponseOutput {
-	return i.ToIntOrStringResponseOutputWithContext(context.Background())
-}
-
-func (i IntOrStringResponseArgs) ToIntOrStringResponseOutputWithContext(ctx context.Context) IntOrStringResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntOrStringResponseOutput)
-}
-
-// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-type IntOrStringResponseOutput struct{ *pulumi.OutputState }
-
-func (IntOrStringResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntOrStringResponse)(nil)).Elem()
-}
-
-func (o IntOrStringResponseOutput) ToIntOrStringResponseOutput() IntOrStringResponseOutput {
-	return o
-}
-
-func (o IntOrStringResponseOutput) ToIntOrStringResponseOutputWithContext(ctx context.Context) IntOrStringResponseOutput {
-	return o
-}
-
-// The int value.
-func (o IntOrStringResponseOutput) IntVal() pulumi.IntOutput {
-	return o.ApplyT(func(v IntOrStringResponse) int { return v.IntVal }).(pulumi.IntOutput)
-}
-
-// The string value.
-func (o IntOrStringResponseOutput) StrVal() pulumi.StringOutput {
-	return o.ApplyT(func(v IntOrStringResponse) string { return v.StrVal }).(pulumi.StringOutput)
-}
-
-// The type of the value.
-func (o IntOrStringResponseOutput) Type() pulumi.IntOutput {
-	return o.ApplyT(func(v IntOrStringResponse) int { return v.Type }).(pulumi.IntOutput)
 }
 
 // JobCondition defines a readiness condition for a Revision.
@@ -6093,11 +5244,11 @@ func (o JobStatusResponsePtrOutput) Succeeded() pulumi.IntPtrOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPath struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key *string `pulumi:"key"`
-	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode *int `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path *string `pulumi:"path"`
 }
 
@@ -6114,11 +5265,11 @@ type KeyToPathInput interface {
 
 // Maps a string key to a path within a volume.
 type KeyToPathArgs struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -6174,17 +5325,17 @@ func (o KeyToPathOutput) ToKeyToPathOutputWithContext(ctx context.Context) KeyTo
 	return o
 }
 
-// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 func (o KeyToPathOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -6211,11 +5362,11 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPathResponse struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key string `pulumi:"key"`
-	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode int `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path string `pulumi:"path"`
 }
 
@@ -6232,11 +5383,11 @@ type KeyToPathResponseInput interface {
 
 // Maps a string key to a path within a volume.
 type KeyToPathResponseArgs struct {
-	// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+	// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntInput `pulumi:"mode"`
-	// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -6292,17 +5443,17 @@ func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
 func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 func (o KeyToPathResponseOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v KeyToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+// The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
 func (o KeyToPathResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -6327,226 +5478,9 @@ func (o KeyToPathResponseArrayOutput) Index(i pulumi.IntInput) KeyToPathResponse
 	}).(KeyToPathResponseOutput)
 }
 
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type Lifecycle struct {
-	// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PostStart *Handler `pulumi:"postStart"`
-	// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PreStop *Handler `pulumi:"preStop"`
-}
-
-// LifecycleInput is an input type that accepts LifecycleArgs and LifecycleOutput values.
-// You can construct a concrete instance of `LifecycleInput` via:
-//
-//          LifecycleArgs{...}
-type LifecycleInput interface {
-	pulumi.Input
-
-	ToLifecycleOutput() LifecycleOutput
-	ToLifecycleOutputWithContext(context.Context) LifecycleOutput
-}
-
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type LifecycleArgs struct {
-	// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PostStart HandlerPtrInput `pulumi:"postStart"`
-	// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PreStop HandlerPtrInput `pulumi:"preStop"`
-}
-
-func (LifecycleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lifecycle)(nil)).Elem()
-}
-
-func (i LifecycleArgs) ToLifecycleOutput() LifecycleOutput {
-	return i.ToLifecycleOutputWithContext(context.Background())
-}
-
-func (i LifecycleArgs) ToLifecycleOutputWithContext(ctx context.Context) LifecycleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecycleOutput)
-}
-
-func (i LifecycleArgs) ToLifecyclePtrOutput() LifecyclePtrOutput {
-	return i.ToLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (i LifecycleArgs) ToLifecyclePtrOutputWithContext(ctx context.Context) LifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecycleOutput).ToLifecyclePtrOutputWithContext(ctx)
-}
-
-// LifecyclePtrInput is an input type that accepts LifecycleArgs, LifecyclePtr and LifecyclePtrOutput values.
-// You can construct a concrete instance of `LifecyclePtrInput` via:
-//
-//          LifecycleArgs{...}
-//
-//  or:
-//
-//          nil
-type LifecyclePtrInput interface {
-	pulumi.Input
-
-	ToLifecyclePtrOutput() LifecyclePtrOutput
-	ToLifecyclePtrOutputWithContext(context.Context) LifecyclePtrOutput
-}
-
-type lifecyclePtrType LifecycleArgs
-
-func LifecyclePtr(v *LifecycleArgs) LifecyclePtrInput {
-	return (*lifecyclePtrType)(v)
-}
-
-func (*lifecyclePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Lifecycle)(nil)).Elem()
-}
-
-func (i *lifecyclePtrType) ToLifecyclePtrOutput() LifecyclePtrOutput {
-	return i.ToLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (i *lifecyclePtrType) ToLifecyclePtrOutputWithContext(ctx context.Context) LifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePtrOutput)
-}
-
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type LifecycleOutput struct{ *pulumi.OutputState }
-
-func (LifecycleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lifecycle)(nil)).Elem()
-}
-
-func (o LifecycleOutput) ToLifecycleOutput() LifecycleOutput {
-	return o
-}
-
-func (o LifecycleOutput) ToLifecycleOutputWithContext(ctx context.Context) LifecycleOutput {
-	return o
-}
-
-func (o LifecycleOutput) ToLifecyclePtrOutput() LifecyclePtrOutput {
-	return o.ToLifecyclePtrOutputWithContext(context.Background())
-}
-
-func (o LifecycleOutput) ToLifecyclePtrOutputWithContext(ctx context.Context) LifecyclePtrOutput {
-	return o.ApplyT(func(v Lifecycle) *Lifecycle {
-		return &v
-	}).(LifecyclePtrOutput)
-}
-
-// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecycleOutput) PostStart() HandlerPtrOutput {
-	return o.ApplyT(func(v Lifecycle) *Handler { return v.PostStart }).(HandlerPtrOutput)
-}
-
-// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecycleOutput) PreStop() HandlerPtrOutput {
-	return o.ApplyT(func(v Lifecycle) *Handler { return v.PreStop }).(HandlerPtrOutput)
-}
-
-type LifecyclePtrOutput struct{ *pulumi.OutputState }
-
-func (LifecyclePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Lifecycle)(nil)).Elem()
-}
-
-func (o LifecyclePtrOutput) ToLifecyclePtrOutput() LifecyclePtrOutput {
-	return o
-}
-
-func (o LifecyclePtrOutput) ToLifecyclePtrOutputWithContext(ctx context.Context) LifecyclePtrOutput {
-	return o
-}
-
-func (o LifecyclePtrOutput) Elem() LifecycleOutput {
-	return o.ApplyT(func(v *Lifecycle) Lifecycle { return *v }).(LifecycleOutput)
-}
-
-// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecyclePtrOutput) PostStart() HandlerPtrOutput {
-	return o.ApplyT(func(v *Lifecycle) *Handler {
-		if v == nil {
-			return nil
-		}
-		return v.PostStart
-	}).(HandlerPtrOutput)
-}
-
-// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecyclePtrOutput) PreStop() HandlerPtrOutput {
-	return o.ApplyT(func(v *Lifecycle) *Handler {
-		if v == nil {
-			return nil
-		}
-		return v.PreStop
-	}).(HandlerPtrOutput)
-}
-
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type LifecycleResponse struct {
-	// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PostStart HandlerResponse `pulumi:"postStart"`
-	// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PreStop HandlerResponse `pulumi:"preStop"`
-}
-
-// LifecycleResponseInput is an input type that accepts LifecycleResponseArgs and LifecycleResponseOutput values.
-// You can construct a concrete instance of `LifecycleResponseInput` via:
-//
-//          LifecycleResponseArgs{...}
-type LifecycleResponseInput interface {
-	pulumi.Input
-
-	ToLifecycleResponseOutput() LifecycleResponseOutput
-	ToLifecycleResponseOutputWithContext(context.Context) LifecycleResponseOutput
-}
-
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type LifecycleResponseArgs struct {
-	// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PostStart HandlerResponseInput `pulumi:"postStart"`
-	// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-	PreStop HandlerResponseInput `pulumi:"preStop"`
-}
-
-func (LifecycleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecycleResponse)(nil)).Elem()
-}
-
-func (i LifecycleResponseArgs) ToLifecycleResponseOutput() LifecycleResponseOutput {
-	return i.ToLifecycleResponseOutputWithContext(context.Background())
-}
-
-func (i LifecycleResponseArgs) ToLifecycleResponseOutputWithContext(ctx context.Context) LifecycleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecycleResponseOutput)
-}
-
-// Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-type LifecycleResponseOutput struct{ *pulumi.OutputState }
-
-func (LifecycleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecycleResponse)(nil)).Elem()
-}
-
-func (o LifecycleResponseOutput) ToLifecycleResponseOutput() LifecycleResponseOutput {
-	return o
-}
-
-func (o LifecycleResponseOutput) ToLifecycleResponseOutputWithContext(ctx context.Context) LifecycleResponseOutput {
-	return o
-}
-
-// PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecycleResponseOutput) PostStart() HandlerResponseOutput {
-	return o.ApplyT(func(v LifecycleResponse) HandlerResponse { return v.PostStart }).(HandlerResponseOutput)
-}
-
-// PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-func (o LifecycleResponseOutput) PreStop() HandlerResponseOutput {
-	return o.ApplyT(func(v LifecycleResponse) HandlerResponse { return v.PreStop }).(HandlerResponseOutput)
-}
-
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReference struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
 }
 
@@ -6561,9 +5495,9 @@ type LocalObjectReferenceInput interface {
 	ToLocalObjectReferenceOutputWithContext(context.Context) LocalObjectReferenceOutput
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceArgs struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -6620,7 +5554,7 @@ func (i *localObjectReferencePtrType) ToLocalObjectReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferencePtrOutput)
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceOutput struct{ *pulumi.OutputState }
 
 func (LocalObjectReferenceOutput) ElementType() reflect.Type {
@@ -6645,7 +5579,7 @@ func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutputWithContext(c
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalObjectReference) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -6668,7 +5602,7 @@ func (o LocalObjectReferencePtrOutput) Elem() LocalObjectReferenceOutput {
 	return o.ApplyT(func(v *LocalObjectReference) LocalObjectReference { return *v }).(LocalObjectReferenceOutput)
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalObjectReference) *string {
 		if v == nil {
@@ -6678,9 +5612,9 @@ func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponse struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 }
 
@@ -6695,9 +5629,9 @@ type LocalObjectReferenceResponseInput interface {
 	ToLocalObjectReferenceResponseOutputWithContext(context.Context) LocalObjectReferenceResponseOutput
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponseArgs struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -6713,7 +5647,7 @@ func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseOutput)
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (LocalObjectReferenceResponseOutput) ElementType() reflect.Type {
@@ -6728,42 +5662,42 @@ func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput
 	return o
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMeta struct {
-	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName *string `pulumi:"clusterName"`
-	// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds *int `pulumi:"deletionGracePeriodSeconds"`
-	// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp *string `pulumi:"deletionTimestamp"`
-	// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers []string `pulumi:"finalizers"`
-	// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName *string `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation *int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
 	Name *string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace *string `pulumi:"namespace"`
-	// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences []OwnerReference `pulumi:"ownerReferences"`
-	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion *string `pulumi:"resourceVersion"`
-	// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 	SelfLink *string `pulumi:"selfLink"`
-	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 	Uid *string `pulumi:"uid"`
 }
 
@@ -6778,37 +5712,37 @@ type ObjectMetaInput interface {
 	ToObjectMetaOutputWithContext(context.Context) ObjectMetaOutput
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaArgs struct {
-	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp pulumi.StringPtrInput `pulumi:"creationTimestamp"`
-	// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds pulumi.IntPtrInput `pulumi:"deletionGracePeriodSeconds"`
-	// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp pulumi.StringPtrInput `pulumi:"deletionTimestamp"`
-	// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences OwnerReferenceArrayInput `pulumi:"ownerReferences"`
-	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
@@ -6865,7 +5799,7 @@ func (i *objectMetaPtrType) ToObjectMetaPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPtrOutput)
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaOutput struct{ *pulumi.OutputState }
 
 func (ObjectMetaOutput) ElementType() reflect.Type {
@@ -6890,47 +5824,47 @@ func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) 
 	}).(ObjectMetaPtrOutput)
 }
 
-// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 func (o ObjectMetaOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.CreationTimestamp }).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *int { return v.DeletionGracePeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.DeletionTimestamp }).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectMeta) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
 }
 
-// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 func (o ObjectMetaOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 func (o ObjectMetaOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -6945,22 +5879,22 @@ func (o ObjectMetaOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	return o.ApplyT(func(v ObjectMeta) []OwnerReference { return v.OwnerReferences }).(OwnerReferenceArrayOutput)
 }
 
-// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 func (o ObjectMetaOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
-// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 func (o ObjectMetaOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
-// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
@@ -6983,7 +5917,7 @@ func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
 	return o.ApplyT(func(v *ObjectMeta) ObjectMeta { return *v }).(ObjectMetaOutput)
 }
 
-// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMeta) map[string]string {
 		if v == nil {
@@ -6993,7 +5927,7 @@ func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7003,7 +5937,7 @@ func (o ObjectMetaPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7013,7 +5947,7 @@ func (o ObjectMetaPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *int {
 		if v == nil {
@@ -7023,7 +5957,7 @@ func (o ObjectMetaPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7033,7 +5967,7 @@ func (o ObjectMetaPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectMeta) []string {
 		if v == nil {
@@ -7043,7 +5977,7 @@ func (o ObjectMetaPtrOutput) Finalizers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaPtrOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7053,7 +5987,7 @@ func (o ObjectMetaPtrOutput) GenerateName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 func (o ObjectMetaPtrOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *int {
 		if v == nil {
@@ -7063,7 +5997,7 @@ func (o ObjectMetaPtrOutput) Generation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMeta) map[string]string {
 		if v == nil {
@@ -7093,7 +6027,7 @@ func (o ObjectMetaPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaPtrOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	return o.ApplyT(func(v *ObjectMeta) []OwnerReference {
 		if v == nil {
@@ -7103,7 +6037,7 @@ func (o ObjectMetaPtrOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	}).(OwnerReferenceArrayOutput)
 }
 
-// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 func (o ObjectMetaPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7113,7 +6047,7 @@ func (o ObjectMetaPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 func (o ObjectMetaPtrOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7123,7 +6057,7 @@ func (o ObjectMetaPtrOutput) SelfLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -7133,37 +6067,37 @@ func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponse struct {
-	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
-	// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName string `pulumi:"clusterName"`
-	// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds int `pulumi:"deletionGracePeriodSeconds"`
-	// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp string `pulumi:"deletionTimestamp"`
-	// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers []string `pulumi:"finalizers"`
-	// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName string `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
 	Name string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace string `pulumi:"namespace"`
-	// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences []OwnerReferenceResponse `pulumi:"ownerReferences"`
-	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion string `pulumi:"resourceVersion"`
-	// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 	SelfLink string `pulumi:"selfLink"`
-	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 	Uid string `pulumi:"uid"`
 }
 
@@ -7178,37 +6112,37 @@ type ObjectMetaResponseInput interface {
 	ToObjectMetaResponseOutputWithContext(context.Context) ObjectMetaResponseOutput
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponseArgs struct {
-	// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+	// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
-	// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+	// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds pulumi.IntInput `pulumi:"deletionGracePeriodSeconds"`
-	// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+	// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	DeletionTimestamp pulumi.StringInput `pulumi:"deletionTimestamp"`
-	// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+	// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
-	// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+	// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 	GenerateName pulumi.StringInput `pulumi:"generateName"`
-	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 	Generation pulumi.IntInput `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
 	Name pulumi.StringInput `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+	// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 	OwnerReferences OwnerReferenceResponseArrayInput `pulumi:"ownerReferences"`
-	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+	// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
-	// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 	Uid pulumi.StringInput `pulumi:"uid"`
 }
 
@@ -7265,7 +6199,7 @@ func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponsePtrOutput)
 }
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponseOutput struct{ *pulumi.OutputState }
 
 func (ObjectMetaResponseOutput) ElementType() reflect.Type {
@@ -7290,47 +6224,47 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutputWithContext(ctx c
 	}).(ObjectMetaResponsePtrOutput)
 }
 
-// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaResponseOutput) DeletionGracePeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) int { return v.DeletionGracePeriodSeconds }).(pulumi.IntOutput)
 }
 
-// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponseOutput) DeletionTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.DeletionTimestamp }).(pulumi.StringOutput)
 }
 
-// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaResponseOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaResponseOutput) GenerateName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.GenerateName }).(pulumi.StringOutput)
 }
 
-// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 func (o ObjectMetaResponseOutput) Generation() pulumi.IntOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) int { return v.Generation }).(pulumi.IntOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 func (o ObjectMetaResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -7345,22 +6279,22 @@ func (o ObjectMetaResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaResponseOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) []OwnerReferenceResponse { return v.OwnerReferences }).(OwnerReferenceResponseArrayOutput)
 }
 
-// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 func (o ObjectMetaResponseOutput) ResourceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ResourceVersion }).(pulumi.StringOutput)
 }
 
-// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 func (o ObjectMetaResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
@@ -7383,7 +6317,7 @@ func (o ObjectMetaResponsePtrOutput) Elem() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse { return *v }).(ObjectMetaResponseOutput)
 }
 
-// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
 func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
 		if v == nil {
@@ -7393,7 +6327,7 @@ func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
 func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7403,7 +6337,7 @@ func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7413,7 +6347,7 @@ func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *int {
 		if v == nil {
@@ -7423,7 +6357,7 @@ func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7433,7 +6367,7 @@ func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
 func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) []string {
 		if v == nil {
@@ -7443,7 +6377,7 @@ func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
 func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7453,7 +6387,7 @@ func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
 func (o ObjectMetaResponsePtrOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *int {
 		if v == nil {
@@ -7463,7 +6397,7 @@ func (o ObjectMetaResponsePtrOutput) Generation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
 func (o ObjectMetaResponsePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
 		if v == nil {
@@ -7493,7 +6427,7 @@ func (o ObjectMetaResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
 func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) []OwnerReferenceResponse {
 		if v == nil {
@@ -7503,7 +6437,7 @@ func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArr
 	}).(OwnerReferenceResponseArrayOutput)
 }
 
-// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+// Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
 func (o ObjectMetaResponsePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7513,7 +6447,7 @@ func (o ObjectMetaResponsePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
 func (o ObjectMetaResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7523,7 +6457,7 @@ func (o ObjectMetaResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaResponsePtrOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMetaResponse) *string {
 		if v == nil {
@@ -7823,19 +6757,23 @@ func (o OwnerReferenceResponseArrayOutput) Index(i pulumi.IntInput) OwnerReferen
 	}).(OwnerReferenceResponseOutput)
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type Probe struct {
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec *ExecAction `pulumi:"exec"`
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// The action taken to determine the health of a container
-	Handler *Handler `pulumi:"handler"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet *HTTPGetAction `pulumi:"httpGet"`
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold *int `pulumi:"successThreshold"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket *TCPSocketAction `pulumi:"tcpSocket"`
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -7850,19 +6788,23 @@ type ProbeInput interface {
 	ToProbeOutputWithContext(context.Context) ProbeOutput
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeArgs struct {
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec ExecActionPtrInput `pulumi:"exec"`
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// The action taken to determine the health of a container
-	Handler HandlerPtrInput `pulumi:"handler"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket TCPSocketActionPtrInput `pulumi:"tcpSocket"`
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -7919,7 +6861,7 @@ func (i *probePtrType) ToProbePtrOutputWithContext(ctx context.Context) ProbePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ProbePtrOutput)
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeOutput struct{ *pulumi.OutputState }
 
 func (ProbeOutput) ElementType() reflect.Type {
@@ -7944,32 +6886,42 @@ func (o ProbeOutput) ToProbePtrOutputWithContext(ctx context.Context) ProbePtrOu
 	}).(ProbePtrOutput)
 }
 
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+func (o ProbeOutput) Exec() ExecActionPtrOutput {
+	return o.ApplyT(func(v Probe) *ExecAction { return v.Exec }).(ExecActionPtrOutput)
+}
+
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The action taken to determine the health of a container
-func (o ProbeOutput) Handler() HandlerPtrOutput {
-	return o.ApplyT(func(v Probe) *Handler { return v.Handler }).(HandlerPtrOutput)
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+func (o ProbeOutput) HttpGet() HTTPGetActionPtrOutput {
+	return o.ApplyT(func(v Probe) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
-// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+func (o ProbeOutput) TcpSocket() TCPSocketActionPtrOutput {
+	return o.ApplyT(func(v Probe) *TCPSocketAction { return v.TcpSocket }).(TCPSocketActionPtrOutput)
+}
+
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -7992,7 +6944,17 @@ func (o ProbePtrOutput) Elem() ProbeOutput {
 	return o.ApplyT(func(v *Probe) Probe { return *v }).(ProbeOutput)
 }
 
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+func (o ProbePtrOutput) Exec() ExecActionPtrOutput {
+	return o.ApplyT(func(v *Probe) *ExecAction {
+		if v == nil {
+			return nil
+		}
+		return v.Exec
+	}).(ExecActionPtrOutput)
+}
+
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -8002,17 +6964,17 @@ func (o ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The action taken to determine the health of a container
-func (o ProbePtrOutput) Handler() HandlerPtrOutput {
-	return o.ApplyT(func(v *Probe) *Handler {
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
+	return o.ApplyT(func(v *Probe) *HTTPGetAction {
 		if v == nil {
 			return nil
 		}
-		return v.Handler
-	}).(HandlerPtrOutput)
+		return v.HttpGet
+	}).(HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -8022,7 +6984,7 @@ func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -8032,7 +6994,7 @@ func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -8042,7 +7004,17 @@ func (o ProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+func (o ProbePtrOutput) TcpSocket() TCPSocketActionPtrOutput {
+	return o.ApplyT(func(v *Probe) *TCPSocketAction {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(TCPSocketActionPtrOutput)
+}
+
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -8052,19 +7024,23 @@ func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponse struct {
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec ExecActionResponse `pulumi:"exec"`
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold int `pulumi:"failureThreshold"`
-	// The action taken to determine the health of a container
-	Handler HandlerResponse `pulumi:"handler"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds int `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold int `pulumi:"successThreshold"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
@@ -8079,19 +7055,23 @@ type ProbeResponseInput interface {
 	ToProbeResponseOutputWithContext(context.Context) ProbeResponseOutput
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponseArgs struct {
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+	// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec ExecActionResponseInput `pulumi:"exec"`
+	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
-	// The action taken to determine the health of a container
-	Handler HandlerResponseInput `pulumi:"handler"`
-	// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet HTTPGetActionResponseInput `pulumi:"httpGet"`
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
-	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket TCPSocketActionResponseInput `pulumi:"tcpSocket"`
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
 }
 
@@ -8107,7 +7087,7 @@ func (i ProbeResponseArgs) ToProbeResponseOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ProbeResponseOutput)
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
 type ProbeResponseOutput struct{ *pulumi.OutputState }
 
 func (ProbeResponseOutput) ElementType() reflect.Type {
@@ -8122,41 +7102,51 @@ func (o ProbeResponseOutput) ToProbeResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+func (o ProbeResponseOutput) Exec() ExecActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) ExecActionResponse { return v.Exec }).(ExecActionResponseOutput)
+}
+
+// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbeResponseOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
-// The action taken to determine the health of a container
-func (o ProbeResponseOutput) Handler() HandlerResponseOutput {
-	return o.ApplyT(func(v ProbeResponse) HandlerResponse { return v.Handler }).(HandlerResponseOutput)
+// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+func (o ProbeResponseOutput) HttpGet() HTTPGetActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
 }
 
-// Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
-// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 func (o ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
-// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
 func (o ProbeResponseOutput) SuccessThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+func (o ProbeResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
+}
+
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirements struct {
-	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -8173,9 +7163,9 @@ type ResourceRequirementsInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsArgs struct {
-	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -8257,12 +7247,12 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(c
 	}).(ResourceRequirementsPtrOutput)
 }
 
-// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -8285,7 +7275,7 @@ func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
 	return o.ApplyT(func(v *ResourceRequirements) ResourceRequirements { return *v }).(ResourceRequirementsOutput)
 }
 
-// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -8295,7 +7285,7 @@ func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -8307,9 +7297,9 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponse struct {
-	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -8326,9 +7316,9 @@ type ResourceRequirementsResponseInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponseArgs struct {
-	// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -8359,296 +7349,23 @@ func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput
 	return o
 }
 
-// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
 
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptions struct {
-	// Level is SELinux level label that applies to the container. +optional
-	Level *string `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container. +optional
-	Role *string `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container. +optional
-	Type *string `pulumi:"type"`
-	// User is a SELinux user label that applies to the container. +optional
-	User *string `pulumi:"user"`
-}
-
-// SELinuxOptionsInput is an input type that accepts SELinuxOptionsArgs and SELinuxOptionsOutput values.
-// You can construct a concrete instance of `SELinuxOptionsInput` via:
-//
-//          SELinuxOptionsArgs{...}
-type SELinuxOptionsInput interface {
-	pulumi.Input
-
-	ToSELinuxOptionsOutput() SELinuxOptionsOutput
-	ToSELinuxOptionsOutputWithContext(context.Context) SELinuxOptionsOutput
-}
-
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptionsArgs struct {
-	// Level is SELinux level label that applies to the container. +optional
-	Level pulumi.StringPtrInput `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container. +optional
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container. +optional
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// User is a SELinux user label that applies to the container. +optional
-	User pulumi.StringPtrInput `pulumi:"user"`
-}
-
-func (SELinuxOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SELinuxOptions)(nil)).Elem()
-}
-
-func (i SELinuxOptionsArgs) ToSELinuxOptionsOutput() SELinuxOptionsOutput {
-	return i.ToSELinuxOptionsOutputWithContext(context.Background())
-}
-
-func (i SELinuxOptionsArgs) ToSELinuxOptionsOutputWithContext(ctx context.Context) SELinuxOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SELinuxOptionsOutput)
-}
-
-func (i SELinuxOptionsArgs) ToSELinuxOptionsPtrOutput() SELinuxOptionsPtrOutput {
-	return i.ToSELinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i SELinuxOptionsArgs) ToSELinuxOptionsPtrOutputWithContext(ctx context.Context) SELinuxOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SELinuxOptionsOutput).ToSELinuxOptionsPtrOutputWithContext(ctx)
-}
-
-// SELinuxOptionsPtrInput is an input type that accepts SELinuxOptionsArgs, SELinuxOptionsPtr and SELinuxOptionsPtrOutput values.
-// You can construct a concrete instance of `SELinuxOptionsPtrInput` via:
-//
-//          SELinuxOptionsArgs{...}
-//
-//  or:
-//
-//          nil
-type SELinuxOptionsPtrInput interface {
-	pulumi.Input
-
-	ToSELinuxOptionsPtrOutput() SELinuxOptionsPtrOutput
-	ToSELinuxOptionsPtrOutputWithContext(context.Context) SELinuxOptionsPtrOutput
-}
-
-type selinuxOptionsPtrType SELinuxOptionsArgs
-
-func SELinuxOptionsPtr(v *SELinuxOptionsArgs) SELinuxOptionsPtrInput {
-	return (*selinuxOptionsPtrType)(v)
-}
-
-func (*selinuxOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SELinuxOptions)(nil)).Elem()
-}
-
-func (i *selinuxOptionsPtrType) ToSELinuxOptionsPtrOutput() SELinuxOptionsPtrOutput {
-	return i.ToSELinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *selinuxOptionsPtrType) ToSELinuxOptionsPtrOutputWithContext(ctx context.Context) SELinuxOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SELinuxOptionsPtrOutput)
-}
-
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptionsOutput struct{ *pulumi.OutputState }
-
-func (SELinuxOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SELinuxOptions)(nil)).Elem()
-}
-
-func (o SELinuxOptionsOutput) ToSELinuxOptionsOutput() SELinuxOptionsOutput {
-	return o
-}
-
-func (o SELinuxOptionsOutput) ToSELinuxOptionsOutputWithContext(ctx context.Context) SELinuxOptionsOutput {
-	return o
-}
-
-func (o SELinuxOptionsOutput) ToSELinuxOptionsPtrOutput() SELinuxOptionsPtrOutput {
-	return o.ToSELinuxOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o SELinuxOptionsOutput) ToSELinuxOptionsPtrOutputWithContext(ctx context.Context) SELinuxOptionsPtrOutput {
-	return o.ApplyT(func(v SELinuxOptions) *SELinuxOptions {
-		return &v
-	}).(SELinuxOptionsPtrOutput)
-}
-
-// Level is SELinux level label that applies to the container. +optional
-func (o SELinuxOptionsOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SELinuxOptions) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// Role is a SELinux role label that applies to the container. +optional
-func (o SELinuxOptionsOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SELinuxOptions) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// Type is a SELinux type label that applies to the container. +optional
-func (o SELinuxOptionsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SELinuxOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// User is a SELinux user label that applies to the container. +optional
-func (o SELinuxOptionsOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SELinuxOptions) *string { return v.User }).(pulumi.StringPtrOutput)
-}
-
-type SELinuxOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (SELinuxOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SELinuxOptions)(nil)).Elem()
-}
-
-func (o SELinuxOptionsPtrOutput) ToSELinuxOptionsPtrOutput() SELinuxOptionsPtrOutput {
-	return o
-}
-
-func (o SELinuxOptionsPtrOutput) ToSELinuxOptionsPtrOutputWithContext(ctx context.Context) SELinuxOptionsPtrOutput {
-	return o
-}
-
-func (o SELinuxOptionsPtrOutput) Elem() SELinuxOptionsOutput {
-	return o.ApplyT(func(v *SELinuxOptions) SELinuxOptions { return *v }).(SELinuxOptionsOutput)
-}
-
-// Level is SELinux level label that applies to the container. +optional
-func (o SELinuxOptionsPtrOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SELinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Level
-	}).(pulumi.StringPtrOutput)
-}
-
-// Role is a SELinux role label that applies to the container. +optional
-func (o SELinuxOptionsPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SELinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Role
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type is a SELinux type label that applies to the container. +optional
-func (o SELinuxOptionsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SELinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// User is a SELinux user label that applies to the container. +optional
-func (o SELinuxOptionsPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SELinuxOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.User
-	}).(pulumi.StringPtrOutput)
-}
-
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptionsResponse struct {
-	// Level is SELinux level label that applies to the container. +optional
-	Level string `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container. +optional
-	Role string `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container. +optional
-	Type string `pulumi:"type"`
-	// User is a SELinux user label that applies to the container. +optional
-	User string `pulumi:"user"`
-}
-
-// SELinuxOptionsResponseInput is an input type that accepts SELinuxOptionsResponseArgs and SELinuxOptionsResponseOutput values.
-// You can construct a concrete instance of `SELinuxOptionsResponseInput` via:
-//
-//          SELinuxOptionsResponseArgs{...}
-type SELinuxOptionsResponseInput interface {
-	pulumi.Input
-
-	ToSELinuxOptionsResponseOutput() SELinuxOptionsResponseOutput
-	ToSELinuxOptionsResponseOutputWithContext(context.Context) SELinuxOptionsResponseOutput
-}
-
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptionsResponseArgs struct {
-	// Level is SELinux level label that applies to the container. +optional
-	Level pulumi.StringInput `pulumi:"level"`
-	// Role is a SELinux role label that applies to the container. +optional
-	Role pulumi.StringInput `pulumi:"role"`
-	// Type is a SELinux type label that applies to the container. +optional
-	Type pulumi.StringInput `pulumi:"type"`
-	// User is a SELinux user label that applies to the container. +optional
-	User pulumi.StringInput `pulumi:"user"`
-}
-
-func (SELinuxOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SELinuxOptionsResponse)(nil)).Elem()
-}
-
-func (i SELinuxOptionsResponseArgs) ToSELinuxOptionsResponseOutput() SELinuxOptionsResponseOutput {
-	return i.ToSELinuxOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i SELinuxOptionsResponseArgs) ToSELinuxOptionsResponseOutputWithContext(ctx context.Context) SELinuxOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SELinuxOptionsResponseOutput)
-}
-
-// SELinuxOptions are the labels to be applied to the container
-type SELinuxOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (SELinuxOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SELinuxOptionsResponse)(nil)).Elem()
-}
-
-func (o SELinuxOptionsResponseOutput) ToSELinuxOptionsResponseOutput() SELinuxOptionsResponseOutput {
-	return o
-}
-
-func (o SELinuxOptionsResponseOutput) ToSELinuxOptionsResponseOutputWithContext(ctx context.Context) SELinuxOptionsResponseOutput {
-	return o
-}
-
-// Level is SELinux level label that applies to the container. +optional
-func (o SELinuxOptionsResponseOutput) Level() pulumi.StringOutput {
-	return o.ApplyT(func(v SELinuxOptionsResponse) string { return v.Level }).(pulumi.StringOutput)
-}
-
-// Role is a SELinux role label that applies to the container. +optional
-func (o SELinuxOptionsResponseOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v SELinuxOptionsResponse) string { return v.Role }).(pulumi.StringOutput)
-}
-
-// Type is a SELinux type label that applies to the container. +optional
-func (o SELinuxOptionsResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SELinuxOptionsResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// User is a SELinux user label that applies to the container. +optional
-func (o SELinuxOptionsResponseOutput) User() pulumi.StringOutput {
-	return o.ApplyT(func(v SELinuxOptionsResponse) string { return v.User }).(pulumi.StringOutput)
-}
-
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSource struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+	// (Optional) Specify whether the Secret must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -8663,13 +7380,13 @@ type SecretEnvSourceInput interface {
 	ToSecretEnvSourceOutputWithContext(context.Context) SecretEnvSourceOutput
 }
 
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+	// (Optional) Specify whether the Secret must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -8726,7 +7443,7 @@ func (i *secretEnvSourcePtrType) ToSecretEnvSourcePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourcePtrOutput)
 }
 
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvSourceOutput) ElementType() reflect.Type {
@@ -8756,12 +7473,12 @@ func (o SecretEnvSourceOutput) LocalObjectReference() LocalObjectReferencePtrOut
 	return o.ApplyT(func(v SecretEnvSource) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvSource) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretEnvSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -8794,7 +7511,7 @@ func (o SecretEnvSourcePtrOutput) LocalObjectReference() LocalObjectReferencePtr
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretEnvSource) *string {
 		if v == nil {
@@ -8804,7 +7521,7 @@ func (o SecretEnvSourcePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretEnvSource) *bool {
 		if v == nil {
@@ -8814,13 +7531,13 @@ func (o SecretEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponse struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+	// (Optional) Specify whether the Secret must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -8835,13 +7552,13 @@ type SecretEnvSourceResponseInput interface {
 	ToSecretEnvSourceResponseOutputWithContext(context.Context) SecretEnvSourceResponseOutput
 }
 
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponseArgs struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	// The Secret to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+	// (Optional) Specify whether the Secret must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -8857,7 +7574,7 @@ func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourceResponseOutput)
 }
 
-// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
 type SecretEnvSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvSourceResponseOutput) ElementType() reflect.Type {
@@ -8877,25 +7594,25 @@ func (o SecretEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferen
 	return o.ApplyT(func(v SecretEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+// The Secret to select from.
 func (o SecretEnvSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+// (Optional) Specify whether the Secret must be defined
 func (o SecretEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelector struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key *string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name *string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -8910,15 +7627,15 @@ type SecretKeySelectorInput interface {
 	ToSecretKeySelectorOutputWithContext(context.Context) SecretKeySelectorOutput
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorArgs struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -8975,7 +7692,7 @@ func (i *secretKeySelectorPtrType) ToSecretKeySelectorPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorOutput) ElementType() reflect.Type {
@@ -9000,7 +7717,7 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx con
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -9010,12 +7727,12 @@ func (o SecretKeySelectorOutput) LocalObjectReference() LocalObjectReferencePtrO
 	return o.ApplyT(func(v SecretKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretKeySelector) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -9038,7 +7755,7 @@ func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
 	return o.ApplyT(func(v *SecretKeySelector) SecretKeySelector { return *v }).(SecretKeySelectorOutput)
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -9058,7 +7775,7 @@ func (o SecretKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferenceP
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -9068,7 +7785,7 @@ func (o SecretKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *bool {
 		if v == nil {
@@ -9078,15 +7795,15 @@ func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponse struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name string `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional bool `pulumi:"optional"`
 }
 
@@ -9101,15 +7818,15 @@ type SecretKeySelectorResponseInput interface {
 	ToSecretKeySelectorResponseOutputWithContext(context.Context) SecretKeySelectorResponseOutput
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseArgs struct {
-	// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+	// (Optional) Specify whether the Secret or its key must be defined
 	Optional pulumi.BoolInput `pulumi:"optional"`
 }
 
@@ -9125,7 +7842,7 @@ func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorResponseOutput)
 }
 
-// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+// SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -9140,7 +7857,7 @@ func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithCo
 	return o
 }
 
-// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -9150,25 +7867,25 @@ func (o SecretKeySelectorResponseOutput) LocalObjectReference() LocalObjectRefer
 	return o.ApplyT(func(v SecretKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
 func (o SecretKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+// (Optional) Specify whether the Secret or its key must be defined
 func (o SecretKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSource struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode *int `pulumi:"defaultMode"`
-	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPath `pulumi:"items"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional *bool `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName *string `pulumi:"secretName"`
 }
 
@@ -9183,15 +7900,15 @@ type SecretVolumeSourceInput interface {
 	ToSecretVolumeSourceOutputWithContext(context.Context) SecretVolumeSourceOutput
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceArgs struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode pulumi.IntPtrInput `pulumi:"defaultMode"`
-	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathArrayInput `pulumi:"items"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
 }
 
@@ -9248,7 +7965,7 @@ func (i *secretVolumeSourcePtrType) ToSecretVolumeSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourcePtrOutput)
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceOutput struct{ *pulumi.OutputState }
 
 func (SecretVolumeSourceOutput) ElementType() reflect.Type {
@@ -9273,22 +7990,22 @@ func (o SecretVolumeSourceOutput) ToSecretVolumeSourcePtrOutputWithContext(ctx c
 	}).(SecretVolumeSourcePtrOutput)
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourceOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *int { return v.DefaultMode }).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSource) []KeyToPath { return v.Items }).(KeyToPathArrayOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourceOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretVolumeSource) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
@@ -9311,7 +8028,7 @@ func (o SecretVolumeSourcePtrOutput) Elem() SecretVolumeSourceOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) SecretVolumeSource { return *v }).(SecretVolumeSourceOutput)
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *int {
 		if v == nil {
@@ -9321,7 +8038,7 @@ func (o SecretVolumeSourcePtrOutput) DefaultMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) []KeyToPath {
 		if v == nil {
@@ -9331,7 +8048,7 @@ func (o SecretVolumeSourcePtrOutput) Items() KeyToPathArrayOutput {
 	}).(KeyToPathArrayOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *bool {
 		if v == nil {
@@ -9341,7 +8058,7 @@ func (o SecretVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretVolumeSource) *string {
 		if v == nil {
@@ -9351,15 +8068,15 @@ func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponse struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode int `pulumi:"defaultMode"`
-	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items []KeyToPathResponse `pulumi:"items"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional bool `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName string `pulumi:"secretName"`
 }
 
@@ -9374,15 +8091,15 @@ type SecretVolumeSourceResponseInput interface {
 	ToSecretVolumeSourceResponseOutputWithContext(context.Context) SecretVolumeSourceResponseOutput
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseArgs struct {
-	// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
-	// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 	Items KeyToPathResponseArrayInput `pulumi:"items"`
-	// Specify whether the Secret or its keys must be defined.
+	// (Optional) Specify whether the Secret or its keys must be defined.
 	Optional pulumi.BoolInput `pulumi:"optional"`
-	// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
 }
 
@@ -9398,7 +8115,7 @@ func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourceResponseOutput)
 }
 
-// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretVolumeSourceResponseOutput) ElementType() reflect.Type {
@@ -9413,44 +8130,30 @@ func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutputWith
 	return o
 }
 
-// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
 func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
-// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
 func (o SecretVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
 }
 
-// Specify whether the Secret or its keys must be defined.
+// (Optional) Specify whether the Secret or its keys must be defined.
 func (o SecretVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
 func (o SecretVolumeSourceResponseOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretVolumeSourceResponse) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContext struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-	Capabilities *Capabilities `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-	Privileged *bool `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. +optional
-	ReadOnlyRootFilesystem *bool `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsGroup *int `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsNonRoot *bool `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser *int `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	SeLinuxOptions *SELinuxOptions `pulumi:"seLinuxOptions"`
 }
 
 // SecurityContextInput is an input type that accepts SecurityContextArgs and SecurityContextOutput values.
@@ -9464,24 +8167,10 @@ type SecurityContextInput interface {
 	ToSecurityContextOutputWithContext(context.Context) SecurityContextOutput
 }
 
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextArgs struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-	Capabilities CapabilitiesPtrInput `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. +optional
-	ReadOnlyRootFilesystem pulumi.BoolPtrInput `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsGroup pulumi.IntPtrInput `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsNonRoot pulumi.BoolPtrInput `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	SeLinuxOptions SELinuxOptionsPtrInput `pulumi:"seLinuxOptions"`
 }
 
 func (SecurityContextArgs) ElementType() reflect.Type {
@@ -9537,7 +8226,7 @@ func (i *securityContextPtrType) ToSecurityContextPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextPtrOutput)
 }
 
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextOutput struct{ *pulumi.OutputState }
 
 func (SecurityContextOutput) ElementType() reflect.Type {
@@ -9562,44 +8251,9 @@ func (o SecurityContextOutput) ToSecurityContextPtrOutputWithContext(ctx context
 	}).(SecurityContextPtrOutput)
 }
 
-// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-func (o SecurityContextOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
-}
-
-// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-func (o SecurityContextOutput) Capabilities() CapabilitiesPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *Capabilities { return v.Capabilities }).(CapabilitiesPtrOutput)
-}
-
-// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-func (o SecurityContextOutput) Privileged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
-}
-
-// Whether this container has a read-only root filesystem. Default is false. +optional
-func (o SecurityContextOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *bool { return v.ReadOnlyRootFilesystem }).(pulumi.BoolPtrOutput)
-}
-
-// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextOutput) RunAsGroup() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *int { return v.RunAsGroup }).(pulumi.IntPtrOutput)
-}
-
-// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *bool { return v.RunAsNonRoot }).(pulumi.BoolPtrOutput)
-}
-
-// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecurityContext) *int { return v.RunAsUser }).(pulumi.IntPtrOutput)
-}
-
-// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextOutput) SeLinuxOptions() SELinuxOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityContext) *SELinuxOptions { return v.SeLinuxOptions }).(SELinuxOptionsPtrOutput)
 }
 
 type SecurityContextPtrOutput struct{ *pulumi.OutputState }
@@ -9620,67 +8274,7 @@ func (o SecurityContextPtrOutput) Elem() SecurityContextOutput {
 	return o.ApplyT(func(v *SecurityContext) SecurityContext { return *v }).(SecurityContextOutput)
 }
 
-// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-func (o SecurityContextPtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowPrivilegeEscalation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-func (o SecurityContextPtrOutput) Capabilities() CapabilitiesPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *Capabilities {
-		if v == nil {
-			return nil
-		}
-		return v.Capabilities
-	}).(CapabilitiesPtrOutput)
-}
-
-// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-func (o SecurityContextPtrOutput) Privileged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Privileged
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether this container has a read-only root filesystem. Default is false. +optional
-func (o SecurityContextPtrOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ReadOnlyRootFilesystem
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextPtrOutput) RunAsGroup() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RunAsGroup
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextPtrOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RunAsNonRoot
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityContext) *int {
 		if v == nil {
@@ -9690,34 +8284,10 @@ func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextPtrOutput) SeLinuxOptions() SELinuxOptionsPtrOutput {
-	return o.ApplyT(func(v *SecurityContext) *SELinuxOptions {
-		if v == nil {
-			return nil
-		}
-		return v.SeLinuxOptions
-	}).(SELinuxOptionsPtrOutput)
-}
-
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponse struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-	AllowPrivilegeEscalation bool `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-	Capabilities CapabilitiesResponse `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-	Privileged bool `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. +optional
-	ReadOnlyRootFilesystem bool `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsGroup int `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsNonRoot bool `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser int `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	SeLinuxOptions SELinuxOptionsResponse `pulumi:"seLinuxOptions"`
 }
 
 // SecurityContextResponseInput is an input type that accepts SecurityContextResponseArgs and SecurityContextResponseOutput values.
@@ -9731,24 +8301,10 @@ type SecurityContextResponseInput interface {
 	ToSecurityContextResponseOutputWithContext(context.Context) SecurityContextResponseOutput
 }
 
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponseArgs struct {
-	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-	AllowPrivilegeEscalation pulumi.BoolInput `pulumi:"allowPrivilegeEscalation"`
-	// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-	Capabilities CapabilitiesResponseInput `pulumi:"capabilities"`
-	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-	Privileged pulumi.BoolInput `pulumi:"privileged"`
-	// Whether this container has a read-only root filesystem. Default is false. +optional
-	ReadOnlyRootFilesystem pulumi.BoolInput `pulumi:"readOnlyRootFilesystem"`
-	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsGroup pulumi.IntInput `pulumi:"runAsGroup"`
-	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	RunAsNonRoot pulumi.BoolInput `pulumi:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+	// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser pulumi.IntInput `pulumi:"runAsUser"`
-	// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-	SeLinuxOptions SELinuxOptionsResponseInput `pulumi:"seLinuxOptions"`
 }
 
 func (SecurityContextResponseArgs) ElementType() reflect.Type {
@@ -9763,7 +8319,7 @@ func (i SecurityContextResponseArgs) ToSecurityContextResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextResponseOutput)
 }
 
-// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContextResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityContextResponseOutput) ElementType() reflect.Type {
@@ -9778,52 +8334,17 @@ func (o SecurityContextResponseOutput) ToSecurityContextResponseOutputWithContex
 	return o
 }
 
-// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-func (o SecurityContextResponseOutput) AllowPrivilegeEscalation() pulumi.BoolOutput {
-	return o.ApplyT(func(v SecurityContextResponse) bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolOutput)
-}
-
-// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-func (o SecurityContextResponseOutput) Capabilities() CapabilitiesResponseOutput {
-	return o.ApplyT(func(v SecurityContextResponse) CapabilitiesResponse { return v.Capabilities }).(CapabilitiesResponseOutput)
-}
-
-// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-func (o SecurityContextResponseOutput) Privileged() pulumi.BoolOutput {
-	return o.ApplyT(func(v SecurityContextResponse) bool { return v.Privileged }).(pulumi.BoolOutput)
-}
-
-// Whether this container has a read-only root filesystem. Default is false. +optional
-func (o SecurityContextResponseOutput) ReadOnlyRootFilesystem() pulumi.BoolOutput {
-	return o.ApplyT(func(v SecurityContextResponse) bool { return v.ReadOnlyRootFilesystem }).(pulumi.BoolOutput)
-}
-
-// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextResponseOutput) RunAsGroup() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityContextResponse) int { return v.RunAsGroup }).(pulumi.IntOutput)
-}
-
-// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextResponseOutput) RunAsNonRoot() pulumi.BoolOutput {
-	return o.ApplyT(func(v SecurityContextResponse) bool { return v.RunAsNonRoot }).(pulumi.BoolOutput)
-}
-
-// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 func (o SecurityContextResponseOutput) RunAsUser() pulumi.IntOutput {
 	return o.ApplyT(func(v SecurityContextResponse) int { return v.RunAsUser }).(pulumi.IntOutput)
 }
 
-// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-func (o SecurityContextResponseOutput) SeLinuxOptions() SELinuxOptionsResponseOutput {
-	return o.ApplyT(func(v SecurityContextResponse) SELinuxOptionsResponse { return v.SeLinuxOptions }).(SELinuxOptionsResponseOutput)
-}
-
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketAction struct {
-	// Optional: Host name to connect to, defaults to the pod IP. +optional
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host *string `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port *IntOrString `pulumi:"port"`
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port *int `pulumi:"port"`
 }
 
 // TCPSocketActionInput is an input type that accepts TCPSocketActionArgs and TCPSocketActionOutput values.
@@ -9837,12 +8358,12 @@ type TCPSocketActionInput interface {
 	ToTCPSocketActionOutputWithContext(context.Context) TCPSocketActionOutput
 }
 
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionArgs struct {
-	// Optional: Host name to connect to, defaults to the pod IP. +optional
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringPtrInput `pulumi:"port"`
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (TCPSocketActionArgs) ElementType() reflect.Type {
@@ -9898,7 +8419,7 @@ func (i *tcpsocketActionPtrType) ToTCPSocketActionPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionPtrOutput)
 }
 
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionOutput struct{ *pulumi.OutputState }
 
 func (TCPSocketActionOutput) ElementType() reflect.Type {
@@ -9923,14 +8444,14 @@ func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutputWithContext(ctx context
 	}).(TCPSocketActionPtrOutput)
 }
 
-// Optional: Host name to connect to, defaults to the pod IP. +optional
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPSocketAction) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o TCPSocketActionOutput) Port() IntOrStringPtrOutput {
-	return o.ApplyT(func(v TCPSocketAction) *IntOrString { return v.Port }).(IntOrStringPtrOutput)
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+func (o TCPSocketActionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TCPSocketAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 type TCPSocketActionPtrOutput struct{ *pulumi.OutputState }
@@ -9951,7 +8472,7 @@ func (o TCPSocketActionPtrOutput) Elem() TCPSocketActionOutput {
 	return o.ApplyT(func(v *TCPSocketAction) TCPSocketAction { return *v }).(TCPSocketActionOutput)
 }
 
-// Optional: Host name to connect to, defaults to the pod IP. +optional
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPSocketAction) *string {
 		if v == nil {
@@ -9961,22 +8482,22 @@ func (o TCPSocketActionPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o TCPSocketActionPtrOutput) Port() IntOrStringPtrOutput {
-	return o.ApplyT(func(v *TCPSocketAction) *IntOrString {
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+func (o TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TCPSocketAction) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Port
-	}).(IntOrStringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponse struct {
-	// Optional: Host name to connect to, defaults to the pod IP. +optional
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host string `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringResponse `pulumi:"port"`
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port int `pulumi:"port"`
 }
 
 // TCPSocketActionResponseInput is an input type that accepts TCPSocketActionResponseArgs and TCPSocketActionResponseOutput values.
@@ -9990,12 +8511,12 @@ type TCPSocketActionResponseInput interface {
 	ToTCPSocketActionResponseOutputWithContext(context.Context) TCPSocketActionResponseOutput
 }
 
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponseArgs struct {
-	// Optional: Host name to connect to, defaults to the pod IP. +optional
+	// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-	Port IntOrStringResponseInput `pulumi:"port"`
+	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (TCPSocketActionResponseArgs) ElementType() reflect.Type {
@@ -10010,7 +8531,7 @@ func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionResponseOutput)
 }
 
-// TCPSocketAction describes an action based on opening a socket
+// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponseOutput struct{ *pulumi.OutputState }
 
 func (TCPSocketActionResponseOutput) ElementType() reflect.Type {
@@ -10025,17 +8546,17 @@ func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutputWithContex
 	return o
 }
 
-// Optional: Host name to connect to, defaults to the pod IP. +optional
+// (Optional) Optional: Host name to connect to, defaults to the pod IP.
 func (o TCPSocketActionResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-func (o TCPSocketActionResponseOutput) Port() IntOrStringResponseOutput {
-	return o.ApplyT(func(v TCPSocketActionResponse) IntOrStringResponse { return v.Port }).(IntOrStringResponseOutput)
+// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type Volume struct {
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
 	// Volume's name.
@@ -10054,7 +8575,7 @@ type VolumeInput interface {
 	ToVolumeOutputWithContext(context.Context) VolumeOutput
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeArgs struct {
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
 	// Volume's name.
@@ -10099,7 +8620,7 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeOutput struct{ *pulumi.OutputState }
 
 func (VolumeOutput) ElementType() reflect.Type {
@@ -10147,235 +8668,15 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 	}).(VolumeOutput)
 }
 
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDevice struct {
-	// devicePath is the path inside of the container that the device will be mapped to.
-	DevicePath *string `pulumi:"devicePath"`
-	// name must match the name of a persistentVolumeClaim in the pod
-	Name *string `pulumi:"name"`
-}
-
-// VolumeDeviceInput is an input type that accepts VolumeDeviceArgs and VolumeDeviceOutput values.
-// You can construct a concrete instance of `VolumeDeviceInput` via:
-//
-//          VolumeDeviceArgs{...}
-type VolumeDeviceInput interface {
-	pulumi.Input
-
-	ToVolumeDeviceOutput() VolumeDeviceOutput
-	ToVolumeDeviceOutputWithContext(context.Context) VolumeDeviceOutput
-}
-
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDeviceArgs struct {
-	// devicePath is the path inside of the container that the device will be mapped to.
-	DevicePath pulumi.StringPtrInput `pulumi:"devicePath"`
-	// name must match the name of a persistentVolumeClaim in the pod
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (VolumeDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeDevice)(nil)).Elem()
-}
-
-func (i VolumeDeviceArgs) ToVolumeDeviceOutput() VolumeDeviceOutput {
-	return i.ToVolumeDeviceOutputWithContext(context.Background())
-}
-
-func (i VolumeDeviceArgs) ToVolumeDeviceOutputWithContext(ctx context.Context) VolumeDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeDeviceOutput)
-}
-
-// VolumeDeviceArrayInput is an input type that accepts VolumeDeviceArray and VolumeDeviceArrayOutput values.
-// You can construct a concrete instance of `VolumeDeviceArrayInput` via:
-//
-//          VolumeDeviceArray{ VolumeDeviceArgs{...} }
-type VolumeDeviceArrayInput interface {
-	pulumi.Input
-
-	ToVolumeDeviceArrayOutput() VolumeDeviceArrayOutput
-	ToVolumeDeviceArrayOutputWithContext(context.Context) VolumeDeviceArrayOutput
-}
-
-type VolumeDeviceArray []VolumeDeviceInput
-
-func (VolumeDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeDevice)(nil)).Elem()
-}
-
-func (i VolumeDeviceArray) ToVolumeDeviceArrayOutput() VolumeDeviceArrayOutput {
-	return i.ToVolumeDeviceArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeDeviceArray) ToVolumeDeviceArrayOutputWithContext(ctx context.Context) VolumeDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeDeviceArrayOutput)
-}
-
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDeviceOutput struct{ *pulumi.OutputState }
-
-func (VolumeDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeDevice)(nil)).Elem()
-}
-
-func (o VolumeDeviceOutput) ToVolumeDeviceOutput() VolumeDeviceOutput {
-	return o
-}
-
-func (o VolumeDeviceOutput) ToVolumeDeviceOutputWithContext(ctx context.Context) VolumeDeviceOutput {
-	return o
-}
-
-// devicePath is the path inside of the container that the device will be mapped to.
-func (o VolumeDeviceOutput) DevicePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeDevice) *string { return v.DevicePath }).(pulumi.StringPtrOutput)
-}
-
-// name must match the name of a persistentVolumeClaim in the pod
-func (o VolumeDeviceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type VolumeDeviceArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeDevice)(nil)).Elem()
-}
-
-func (o VolumeDeviceArrayOutput) ToVolumeDeviceArrayOutput() VolumeDeviceArrayOutput {
-	return o
-}
-
-func (o VolumeDeviceArrayOutput) ToVolumeDeviceArrayOutputWithContext(ctx context.Context) VolumeDeviceArrayOutput {
-	return o
-}
-
-func (o VolumeDeviceArrayOutput) Index(i pulumi.IntInput) VolumeDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeDevice {
-		return vs[0].([]VolumeDevice)[vs[1].(int)]
-	}).(VolumeDeviceOutput)
-}
-
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDeviceResponse struct {
-	// devicePath is the path inside of the container that the device will be mapped to.
-	DevicePath string `pulumi:"devicePath"`
-	// name must match the name of a persistentVolumeClaim in the pod
-	Name string `pulumi:"name"`
-}
-
-// VolumeDeviceResponseInput is an input type that accepts VolumeDeviceResponseArgs and VolumeDeviceResponseOutput values.
-// You can construct a concrete instance of `VolumeDeviceResponseInput` via:
-//
-//          VolumeDeviceResponseArgs{...}
-type VolumeDeviceResponseInput interface {
-	pulumi.Input
-
-	ToVolumeDeviceResponseOutput() VolumeDeviceResponseOutput
-	ToVolumeDeviceResponseOutputWithContext(context.Context) VolumeDeviceResponseOutput
-}
-
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDeviceResponseArgs struct {
-	// devicePath is the path inside of the container that the device will be mapped to.
-	DevicePath pulumi.StringInput `pulumi:"devicePath"`
-	// name must match the name of a persistentVolumeClaim in the pod
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (VolumeDeviceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeDeviceResponse)(nil)).Elem()
-}
-
-func (i VolumeDeviceResponseArgs) ToVolumeDeviceResponseOutput() VolumeDeviceResponseOutput {
-	return i.ToVolumeDeviceResponseOutputWithContext(context.Background())
-}
-
-func (i VolumeDeviceResponseArgs) ToVolumeDeviceResponseOutputWithContext(ctx context.Context) VolumeDeviceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeDeviceResponseOutput)
-}
-
-// VolumeDeviceResponseArrayInput is an input type that accepts VolumeDeviceResponseArray and VolumeDeviceResponseArrayOutput values.
-// You can construct a concrete instance of `VolumeDeviceResponseArrayInput` via:
-//
-//          VolumeDeviceResponseArray{ VolumeDeviceResponseArgs{...} }
-type VolumeDeviceResponseArrayInput interface {
-	pulumi.Input
-
-	ToVolumeDeviceResponseArrayOutput() VolumeDeviceResponseArrayOutput
-	ToVolumeDeviceResponseArrayOutputWithContext(context.Context) VolumeDeviceResponseArrayOutput
-}
-
-type VolumeDeviceResponseArray []VolumeDeviceResponseInput
-
-func (VolumeDeviceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeDeviceResponse)(nil)).Elem()
-}
-
-func (i VolumeDeviceResponseArray) ToVolumeDeviceResponseArrayOutput() VolumeDeviceResponseArrayOutput {
-	return i.ToVolumeDeviceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeDeviceResponseArray) ToVolumeDeviceResponseArrayOutputWithContext(ctx context.Context) VolumeDeviceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeDeviceResponseArrayOutput)
-}
-
-// volumeDevice describes a mapping of a raw block device within a container.
-type VolumeDeviceResponseOutput struct{ *pulumi.OutputState }
-
-func (VolumeDeviceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeDeviceResponse)(nil)).Elem()
-}
-
-func (o VolumeDeviceResponseOutput) ToVolumeDeviceResponseOutput() VolumeDeviceResponseOutput {
-	return o
-}
-
-func (o VolumeDeviceResponseOutput) ToVolumeDeviceResponseOutputWithContext(ctx context.Context) VolumeDeviceResponseOutput {
-	return o
-}
-
-// devicePath is the path inside of the container that the device will be mapped to.
-func (o VolumeDeviceResponseOutput) DevicePath() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeDeviceResponse) string { return v.DevicePath }).(pulumi.StringOutput)
-}
-
-// name must match the name of a persistentVolumeClaim in the pod
-func (o VolumeDeviceResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeDeviceResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type VolumeDeviceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeDeviceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeDeviceResponse)(nil)).Elem()
-}
-
-func (o VolumeDeviceResponseArrayOutput) ToVolumeDeviceResponseArrayOutput() VolumeDeviceResponseArrayOutput {
-	return o
-}
-
-func (o VolumeDeviceResponseArrayOutput) ToVolumeDeviceResponseArrayOutputWithContext(ctx context.Context) VolumeDeviceResponseArrayOutput {
-	return o
-}
-
-func (o VolumeDeviceResponseArrayOutput) Index(i pulumi.IntInput) VolumeDeviceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeDeviceResponse {
-		return vs[0].([]VolumeDeviceResponse)[vs[1].(int)]
-	}).(VolumeDeviceResponseOutput)
-}
-
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMount struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath *string `pulumi:"mountPath"`
-	// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-	MountPropagation *string `pulumi:"mountPropagation"`
 	// This must match the Name of a Volume.
 	Name *string `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath *string `pulumi:"subPath"`
 }
 
@@ -10390,17 +8691,15 @@ type VolumeMountInput interface {
 	ToVolumeMountOutputWithContext(context.Context) VolumeMountOutput
 }
 
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-	MountPropagation pulumi.StringPtrInput `pulumi:"mountPropagation"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
@@ -10441,7 +8740,7 @@ func (i VolumeMountArray) ToVolumeMountArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountArrayOutput)
 }
 
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountOutput) ElementType() reflect.Type {
@@ -10461,22 +8760,17 @@ func (o VolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-func (o VolumeMountOutput) MountPropagation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeMount) *string { return v.MountPropagation }).(pulumi.StringPtrOutput)
-}
-
 // This must match the Name of a Volume.
 func (o VolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+// (Optional) Only true is accepted. Defaults to true.
 func (o VolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 func (o VolumeMountOutput) SubPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
@@ -10501,17 +8795,15 @@ func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
 	}).(VolumeMountOutput)
 }
 
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponse struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath string `pulumi:"mountPath"`
-	// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-	MountPropagation string `pulumi:"mountPropagation"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly bool `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath string `pulumi:"subPath"`
 }
 
@@ -10526,17 +8818,15 @@ type VolumeMountResponseInput interface {
 	ToVolumeMountResponseOutputWithContext(context.Context) VolumeMountResponseOutput
 }
 
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-	MountPropagation pulumi.StringInput `pulumi:"mountPropagation"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+	// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
@@ -10577,7 +8867,7 @@ func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseArrayOutput)
 }
 
-// VolumeMount describes a mounting of a Volume within a container.
+// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountResponseOutput) ElementType() reflect.Type {
@@ -10597,22 +8887,17 @@ func (o VolumeMountResponseOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-func (o VolumeMountResponseOutput) MountPropagation() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeMountResponse) string { return v.MountPropagation }).(pulumi.StringOutput)
-}
-
 // This must match the Name of a Volume.
 func (o VolumeMountResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+// (Optional) Only true is accepted. Defaults to true.
 func (o VolumeMountResponseOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v VolumeMountResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
 func (o VolumeMountResponseOutput) SubPath() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.SubPath }).(pulumi.StringOutput)
 }
@@ -10637,7 +8922,7 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 	}).(VolumeMountResponseOutput)
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponse struct {
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
 	// Volume's name.
@@ -10656,7 +8941,7 @@ type VolumeResponseInput interface {
 	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponseArgs struct {
 	ConfigMap ConfigMapVolumeSourceResponseInput `pulumi:"configMap"`
 	// Volume's name.
@@ -10701,7 +8986,7 @@ func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
 }
 
-// Volume represents a named volume in a container.
+// Not supported by Cloud Run Volume represents a named volume in a container.
 type VolumeResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeResponseOutput) ElementType() reflect.Type {
@@ -10750,9 +9035,6 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
-	pulumi.RegisterOutputType(CapabilitiesOutput{})
-	pulumi.RegisterOutputType(CapabilitiesPtrOutput{})
-	pulumi.RegisterOutputType(CapabilitiesResponseOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceResponseOutput{})
@@ -10791,9 +9073,6 @@ func init() {
 	pulumi.RegisterOutputType(HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderResponseArrayOutput{})
-	pulumi.RegisterOutputType(HandlerOutput{})
-	pulumi.RegisterOutputType(HandlerPtrOutput{})
-	pulumi.RegisterOutputType(HandlerResponseOutput{})
 	pulumi.RegisterOutputType(InstanceSpecOutput{})
 	pulumi.RegisterOutputType(InstanceSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecResponseOutput{})
@@ -10806,9 +9085,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecResponseOutput{})
 	pulumi.RegisterOutputType(InstanceTemplateSpecResponsePtrOutput{})
-	pulumi.RegisterOutputType(IntOrStringOutput{})
-	pulumi.RegisterOutputType(IntOrStringPtrOutput{})
-	pulumi.RegisterOutputType(IntOrStringResponseOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})
 	pulumi.RegisterOutputType(JobConditionArrayOutput{})
 	pulumi.RegisterOutputType(JobConditionResponseOutput{})
@@ -10825,9 +9101,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
 	pulumi.RegisterOutputType(KeyToPathResponseOutput{})
 	pulumi.RegisterOutputType(KeyToPathResponseArrayOutput{})
-	pulumi.RegisterOutputType(LifecycleOutput{})
-	pulumi.RegisterOutputType(LifecyclePtrOutput{})
-	pulumi.RegisterOutputType(LifecycleResponseOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferencePtrOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceResponseOutput{})
@@ -10845,9 +9118,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRequirementsOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsResponseOutput{})
-	pulumi.RegisterOutputType(SELinuxOptionsOutput{})
-	pulumi.RegisterOutputType(SELinuxOptionsPtrOutput{})
-	pulumi.RegisterOutputType(SELinuxOptionsResponseOutput{})
 	pulumi.RegisterOutputType(SecretEnvSourceOutput{})
 	pulumi.RegisterOutputType(SecretEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(SecretEnvSourceResponseOutput{})
@@ -10865,10 +9135,6 @@ func init() {
 	pulumi.RegisterOutputType(TCPSocketActionResponseOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
-	pulumi.RegisterOutputType(VolumeDeviceOutput{})
-	pulumi.RegisterOutputType(VolumeDeviceArrayOutput{})
-	pulumi.RegisterOutputType(VolumeDeviceResponseOutput{})
-	pulumi.RegisterOutputType(VolumeDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountOutput{})
 	pulumi.RegisterOutputType(VolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountResponseOutput{})

@@ -76,9 +76,13 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
+    /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    public readonly pscTargetService!: pulumi.Output<string>;
     /**
      * The URL of the region where the network endpoint group is located.
      */
@@ -87,6 +91,10 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     */
+    public readonly serverlessDeployment!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupServerlessDeploymentResponse>;
     /**
      * [Output only] Number of network endpoints in the network endpoint group.
      */
@@ -124,8 +132,10 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -144,8 +154,10 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
             inputs["networkEndpointType"] = undefined /*out*/;
+            inputs["pscTargetService"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["serverlessDeployment"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
             inputs["subnetwork"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
@@ -194,12 +206,20 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     networkEndpointType?: pulumi.Input<enums.compute.beta.RegionNetworkEndpointGroupNetworkEndpointType>;
     project?: pulumi.Input<string>;
+    /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    pscTargetService?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     */
+    serverlessDeployment?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupServerlessDeploymentArgs>;
     /**
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      */

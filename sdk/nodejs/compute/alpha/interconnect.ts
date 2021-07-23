@@ -96,6 +96,14 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+     */
+    public readonly macsec!: pulumi.Output<outputs.compute.alpha.InterconnectMacsecResponse>;
+    /**
+     * Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+     */
+    public readonly macsecEnabled!: pulumi.Output<boolean>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -154,6 +162,8 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["linkType"] = args ? args.linkType : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["macsec"] = args ? args.macsec : undefined;
+            inputs["macsecEnabled"] = args ? args.macsecEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nocContactEmail"] = args ? args.nocContactEmail : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -190,6 +200,8 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["linkType"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
+            inputs["macsec"] = undefined /*out*/;
+            inputs["macsecEnabled"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["nocContactEmail"] = undefined /*out*/;
             inputs["operationalStatus"] = undefined /*out*/;
@@ -240,6 +252,14 @@ export interface InterconnectArgs {
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+     */
+    macsec?: pulumi.Input<inputs.compute.alpha.InterconnectMacsecArgs>;
+    /**
+     * Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+     */
+    macsecEnabled?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

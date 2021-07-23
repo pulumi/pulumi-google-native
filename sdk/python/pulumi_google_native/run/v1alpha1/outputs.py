@@ -10,7 +10,6 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'CapabilitiesResponse',
     'ConfigMapEnvSourceResponse',
     'ConfigMapKeySelectorResponse',
     'ConfigMapVolumeSourceResponse',
@@ -22,69 +21,31 @@ __all__ = [
     'ExecActionResponse',
     'HTTPGetActionResponse',
     'HTTPHeaderResponse',
-    'HandlerResponse',
     'InstanceSpecResponse',
     'InstanceStatusResponse',
     'InstanceTemplateSpecResponse',
-    'IntOrStringResponse',
     'JobConditionResponse',
     'JobSpecResponse',
     'JobStatusResponse',
     'KeyToPathResponse',
-    'LifecycleResponse',
     'LocalObjectReferenceResponse',
     'ObjectMetaResponse',
     'OwnerReferenceResponse',
     'ProbeResponse',
     'ResourceRequirementsResponse',
-    'SELinuxOptionsResponse',
     'SecretEnvSourceResponse',
     'SecretKeySelectorResponse',
     'SecretVolumeSourceResponse',
     'SecurityContextResponse',
     'TCPSocketActionResponse',
-    'VolumeDeviceResponse',
     'VolumeMountResponse',
     'VolumeResponse',
 ]
 
 @pulumi.output_type
-class CapabilitiesResponse(dict):
-    """
-    Adds and removes POSIX capabilities from running containers.
-    """
-    def __init__(__self__, *,
-                 add: Sequence[str],
-                 drop: Sequence[str]):
-        """
-        Adds and removes POSIX capabilities from running containers.
-        :param Sequence[str] add: Added capabilities +optional
-        :param Sequence[str] drop: Removed capabilities +optional
-        """
-        pulumi.set(__self__, "add", add)
-        pulumi.set(__self__, "drop", drop)
-
-    @property
-    @pulumi.getter
-    def add(self) -> Sequence[str]:
-        """
-        Added capabilities +optional
-        """
-        return pulumi.get(self, "add")
-
-    @property
-    @pulumi.getter
-    def drop(self) -> Sequence[str]:
-        """
-        Removed capabilities +optional
-        """
-        return pulumi.get(self, "drop")
-
-
-@pulumi.output_type
 class ConfigMapEnvSourceResponse(dict):
     """
-    ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+    Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -108,10 +69,10 @@ class ConfigMapEnvSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+        Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
-        :param bool optional: Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+        :param str name: The ConfigMap to select from.
+        :param bool optional: (Optional) Specify whether the ConfigMap must be defined
         """
         pulumi.set(__self__, "local_object_reference", local_object_reference)
         pulumi.set(__self__, "name", name)
@@ -129,7 +90,7 @@ class ConfigMapEnvSourceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+        The ConfigMap to select from.
         """
         return pulumi.get(self, "name")
 
@@ -137,7 +98,7 @@ class ConfigMapEnvSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+        (Optional) Specify whether the ConfigMap must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -145,7 +106,7 @@ class ConfigMapEnvSourceResponse(dict):
 @pulumi.output_type
 class ConfigMapKeySelectorResponse(dict):
     """
-    Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+    Not supported by Cloud Run Selects a key from a ConfigMap.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -170,11 +131,11 @@ class ConfigMapKeySelectorResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
-        :param str key: Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+        Not supported by Cloud Run Selects a key from a ConfigMap.
+        :param str key: The key to select.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
-        :param bool optional: Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+        :param str name: The ConfigMap to select from.
+        :param bool optional: (Optional) Specify whether the ConfigMap or its key must be defined
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "local_object_reference", local_object_reference)
@@ -185,7 +146,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+        The key to select.
         """
         return pulumi.get(self, "key")
 
@@ -201,7 +162,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+        The ConfigMap to select from.
         """
         return pulumi.get(self, "name")
 
@@ -209,7 +170,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+        (Optional) Specify whether the ConfigMap or its key must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -217,7 +178,7 @@ class ConfigMapKeySelectorResponse(dict):
 @pulumi.output_type
 class ConfigMapVolumeSourceResponse(dict):
     """
-    Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+    Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -242,11 +203,11 @@ class ConfigMapVolumeSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
-        :param int default_mode: Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-        :param Sequence['KeyToPathResponse'] items: If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        :param int default_mode: (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param Sequence['KeyToPathResponse'] items: (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
         :param str name: Name of the config.
-        :param bool optional: Specify whether the Secret or its keys must be defined.
+        :param bool optional: (Optional) Specify whether the Secret or its keys must be defined.
         """
         pulumi.set(__self__, "default_mode", default_mode)
         pulumi.set(__self__, "items", items)
@@ -257,7 +218,7 @@ class ConfigMapVolumeSourceResponse(dict):
     @pulumi.getter(name="defaultMode")
     def default_mode(self) -> int:
         """
-        Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         """
         return pulumi.get(self, "default_mode")
 
@@ -265,7 +226,7 @@ class ConfigMapVolumeSourceResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.KeyToPathResponse']:
         """
-        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
         """
         return pulumi.get(self, "items")
 
@@ -281,7 +242,7 @@ class ConfigMapVolumeSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Specify whether the Secret or its keys must be defined.
+        (Optional) Specify whether the Secret or its keys must be defined.
         """
         return pulumi.get(self, "optional")
 
@@ -296,10 +257,6 @@ class ContainerPortResponse(dict):
         suggest = None
         if key == "containerPort":
             suggest = "container_port"
-        elif key == "hostIP":
-            suggest = "host_ip"
-        elif key == "hostPort":
-            suggest = "host_port"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ContainerPortResponse. Access the value via the '{suggest}' property getter instead.")
@@ -314,21 +271,15 @@ class ContainerPortResponse(dict):
 
     def __init__(__self__, *,
                  container_port: int,
-                 host_ip: str,
-                 host_port: int,
                  name: str,
                  protocol: str):
         """
         ContainerPort represents a network port in a single container.
-        :param int container_port: Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
-        :param str host_ip: What host IP to bind the external port to. +optional
-        :param int host_port: Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-        :param str name: If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
-        :param str protocol: Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+        :param int container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param str name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        :param str protocol: (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         pulumi.set(__self__, "container_port", container_port)
-        pulumi.set(__self__, "host_ip", host_ip)
-        pulumi.set(__self__, "host_port", host_port)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "protocol", protocol)
 
@@ -336,31 +287,15 @@ class ContainerPortResponse(dict):
     @pulumi.getter(name="containerPort")
     def container_port(self) -> int:
         """
-        Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
         """
         return pulumi.get(self, "container_port")
-
-    @property
-    @pulumi.getter(name="hostIP")
-    def host_ip(self) -> str:
-        """
-        What host IP to bind the external port to. +optional
-        """
-        return pulumi.get(self, "host_ip")
-
-    @property
-    @pulumi.getter(name="hostPort")
-    def host_port(self) -> int:
-        """
-        Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-        """
-        return pulumi.get(self, "host_port")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
@@ -368,7 +303,7 @@ class ContainerPortResponse(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+        (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         return pulumi.get(self, "protocol")
 
@@ -391,14 +326,12 @@ class ContainerResponse(dict):
             suggest = "readiness_probe"
         elif key == "securityContext":
             suggest = "security_context"
-        elif key == "stdinOnce":
-            suggest = "stdin_once"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
         elif key == "terminationMessagePath":
             suggest = "termination_message_path"
         elif key == "terminationMessagePolicy":
             suggest = "termination_message_policy"
-        elif key == "volumeDevices":
-            suggest = "volume_devices"
         elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
@@ -422,44 +355,35 @@ class ContainerResponse(dict):
                  env_from: Sequence['outputs.EnvFromSourceResponse'],
                  image: str,
                  image_pull_policy: str,
-                 lifecycle: 'outputs.LifecycleResponse',
                  liveness_probe: 'outputs.ProbeResponse',
                  name: str,
                  ports: Sequence['outputs.ContainerPortResponse'],
                  readiness_probe: 'outputs.ProbeResponse',
                  resources: 'outputs.ResourceRequirementsResponse',
                  security_context: 'outputs.SecurityContextResponse',
-                 stdin: bool,
-                 stdin_once: bool,
+                 startup_probe: 'outputs.ProbeResponse',
                  termination_message_path: str,
                  termination_message_policy: str,
-                 tty: bool,
-                 volume_devices: Sequence['outputs.VolumeDeviceResponse'],
                  volume_mounts: Sequence['outputs.VolumeMountResponse'],
                  working_dir: str):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-        :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-        :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container. Cannot be updated. +optional
-        :param Sequence['EnvFromSourceResponse'] env_from: List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
-        :param str image: Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
-        :param 'LifecycleResponse' lifecycle: Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-        :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
-        :param str name: Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
-        :param Sequence['ContainerPortResponse'] ports: List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
-        :param 'ProbeResponse' readiness_probe: Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
-        :param 'ResourceRequirementsResponse' resources: Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
-        :param 'SecurityContextResponse' security_context: Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
-        :param bool stdin: Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
-        :param bool stdin_once: Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-        :param str termination_message_path: Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
-        :param str termination_message_policy: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
-        :param bool tty: Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-        :param Sequence['VolumeDeviceResponse'] volume_devices: volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-        :param Sequence['VolumeMountResponse'] volume_mounts: Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
-        :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+        :param Sequence[str] args: (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence['EnvVarResponse'] env: (Optional) List of environment variables to set in the container.
+        :param Sequence['EnvFromSourceResponse'] env_from: (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        :param str image: Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param str image_pull_policy: (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        :param 'ProbeResponse' liveness_probe: (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param str name: (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        :param Sequence['ContainerPortResponse'] ports: (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+        :param 'ProbeResponse' readiness_probe: (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'ResourceRequirementsResponse' resources: (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'SecurityContextResponse' security_context: (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        :param 'ProbeResponse' startup_probe: (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param str termination_message_path: (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+        :param str termination_message_policy: (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        :param Sequence['VolumeMountResponse'] volume_mounts: (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
+        :param str working_dir: (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
@@ -467,19 +391,15 @@ class ContainerResponse(dict):
         pulumi.set(__self__, "env_from", env_from)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "image_pull_policy", image_pull_policy)
-        pulumi.set(__self__, "lifecycle", lifecycle)
         pulumi.set(__self__, "liveness_probe", liveness_probe)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "readiness_probe", readiness_probe)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "security_context", security_context)
-        pulumi.set(__self__, "stdin", stdin)
-        pulumi.set(__self__, "stdin_once", stdin_once)
+        pulumi.set(__self__, "startup_probe", startup_probe)
         pulumi.set(__self__, "termination_message_path", termination_message_path)
         pulumi.set(__self__, "termination_message_policy", termination_message_policy)
-        pulumi.set(__self__, "tty", tty)
-        pulumi.set(__self__, "volume_devices", volume_devices)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
 
@@ -487,23 +407,20 @@ class ContainerResponse(dict):
     @pulumi.getter
     def args(self) -> Sequence[str]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+        (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "args")
 
     @property
     @pulumi.getter
     def command(self) -> Sequence[str]:
-        """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-        """
         return pulumi.get(self, "command")
 
     @property
     @pulumi.getter
     def env(self) -> Sequence['outputs.EnvVarResponse']:
         """
-        List of environment variables to set in the container. Cannot be updated. +optional
+        (Optional) List of environment variables to set in the container.
         """
         return pulumi.get(self, "env")
 
@@ -511,7 +428,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="envFrom")
     def env_from(self) -> Sequence['outputs.EnvFromSourceResponse']:
         """
-        List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+        (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
         """
         return pulumi.get(self, "env_from")
 
@@ -519,7 +436,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+        Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -527,23 +444,15 @@ class ContainerResponse(dict):
     @pulumi.getter(name="imagePullPolicy")
     def image_pull_policy(self) -> str:
         """
-        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+        (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
         """
         return pulumi.get(self, "image_pull_policy")
-
-    @property
-    @pulumi.getter
-    def lifecycle(self) -> 'outputs.LifecycleResponse':
-        """
-        Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-        """
-        return pulumi.get(self, "lifecycle")
 
     @property
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> 'outputs.ProbeResponse':
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "liveness_probe")
 
@@ -551,7 +460,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+        (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         """
         return pulumi.get(self, "name")
 
@@ -559,7 +468,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def ports(self) -> Sequence['outputs.ContainerPortResponse']:
         """
-        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+        (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         """
         return pulumi.get(self, "ports")
 
@@ -567,7 +476,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="readinessProbe")
     def readiness_probe(self) -> 'outputs.ProbeResponse':
         """
-        Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "readiness_probe")
 
@@ -575,7 +484,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def resources(self) -> 'outputs.ResourceRequirementsResponse':
         """
-        Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+        (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
 
@@ -583,31 +492,23 @@ class ContainerResponse(dict):
     @pulumi.getter(name="securityContext")
     def security_context(self) -> 'outputs.SecurityContextResponse':
         """
-        Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+        (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         """
         return pulumi.get(self, "security_context")
 
     @property
-    @pulumi.getter
-    def stdin(self) -> bool:
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> 'outputs.ProbeResponse':
         """
-        Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
+        (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
-        return pulumi.get(self, "stdin")
-
-    @property
-    @pulumi.getter(name="stdinOnce")
-    def stdin_once(self) -> bool:
-        """
-        Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-        """
-        return pulumi.get(self, "stdin_once")
+        return pulumi.get(self, "startup_probe")
 
     @property
     @pulumi.getter(name="terminationMessagePath")
     def termination_message_path(self) -> str:
         """
-        Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+        (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
         """
         return pulumi.get(self, "termination_message_path")
 
@@ -615,31 +516,15 @@ class ContainerResponse(dict):
     @pulumi.getter(name="terminationMessagePolicy")
     def termination_message_policy(self) -> str:
         """
-        Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+        (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
         """
         return pulumi.get(self, "termination_message_policy")
-
-    @property
-    @pulumi.getter
-    def tty(self) -> bool:
-        """
-        Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-        """
-        return pulumi.get(self, "tty")
-
-    @property
-    @pulumi.getter(name="volumeDevices")
-    def volume_devices(self) -> Sequence['outputs.VolumeDeviceResponse']:
-        """
-        volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-        """
-        return pulumi.get(self, "volume_devices")
 
     @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Sequence['outputs.VolumeMountResponse']:
         """
-        Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+        (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
         """
         return pulumi.get(self, "volume_mounts")
 
@@ -647,7 +532,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
         """
-        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+        (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
 
@@ -655,7 +540,7 @@ class ContainerResponse(dict):
 @pulumi.output_type
 class EnvFromSourceResponse(dict):
     """
-    EnvFromSource represents the source of a set of ConfigMaps
+    Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
     """
     @staticmethod
     def __key_warning(key: str):
@@ -681,10 +566,10 @@ class EnvFromSourceResponse(dict):
                  prefix: str,
                  secret_ref: 'outputs.SecretEnvSourceResponse'):
         """
-        EnvFromSource represents the source of a set of ConfigMaps
-        :param 'ConfigMapEnvSourceResponse' config_map_ref: The ConfigMap to select from +optional
-        :param str prefix: An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
-        :param 'SecretEnvSourceResponse' secret_ref: The Secret to select from +optional
+        Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
+        :param 'ConfigMapEnvSourceResponse' config_map_ref: (Optional) The ConfigMap to select from
+        :param str prefix: (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        :param 'SecretEnvSourceResponse' secret_ref: (Optional) The Secret to select from
         """
         pulumi.set(__self__, "config_map_ref", config_map_ref)
         pulumi.set(__self__, "prefix", prefix)
@@ -694,7 +579,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter(name="configMapRef")
     def config_map_ref(self) -> 'outputs.ConfigMapEnvSourceResponse':
         """
-        The ConfigMap to select from +optional
+        (Optional) The ConfigMap to select from
         """
         return pulumi.get(self, "config_map_ref")
 
@@ -702,7 +587,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter
     def prefix(self) -> str:
         """
-        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+        (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         """
         return pulumi.get(self, "prefix")
 
@@ -710,7 +595,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> 'outputs.SecretEnvSourceResponse':
         """
-        The Secret to select from +optional
+        (Optional) The Secret to select from
         """
         return pulumi.get(self, "secret_ref")
 
@@ -744,8 +629,8 @@ class EnvVarResponse(dict):
         """
         EnvVar represents an environment variable present in a Container.
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER.
-        :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
-        :param 'EnvVarSourceResponse' value_from: Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+        :param str value: (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param 'EnvVarSourceResponse' value_from: (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -763,7 +648,7 @@ class EnvVarResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+        (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
         """
         return pulumi.get(self, "value")
 
@@ -771,7 +656,7 @@ class EnvVarResponse(dict):
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> 'outputs.EnvVarSourceResponse':
         """
-        Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+        (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
         """
         return pulumi.get(self, "value_from")
 
@@ -779,7 +664,7 @@ class EnvVarResponse(dict):
 @pulumi.output_type
 class EnvVarSourceResponse(dict):
     """
-    Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+    EnvVarSource represents a source for the value of an EnvVar.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -804,9 +689,9 @@ class EnvVarSourceResponse(dict):
                  config_map_key_ref: 'outputs.ConfigMapKeySelectorResponse',
                  secret_key_ref: 'outputs.SecretKeySelectorResponse'):
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
-        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
-        :param 'SecretKeySelectorResponse' secret_key_ref: Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+        EnvVarSource represents a source for the value of an EnvVar.
+        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        :param 'SecretKeySelectorResponse' secret_key_ref: (Optional) Selects a key (version) of a secret in Secret Manager.
         """
         pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -815,7 +700,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="configMapKeyRef")
     def config_map_key_ref(self) -> 'outputs.ConfigMapKeySelectorResponse':
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+        (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
         """
         return pulumi.get(self, "config_map_key_ref")
 
@@ -823,7 +708,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> 'outputs.SecretKeySelectorResponse':
         """
-        Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+        (Optional) Selects a key (version) of a secret in Secret Manager.
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -831,13 +716,13 @@ class EnvVarSourceResponse(dict):
 @pulumi.output_type
 class ExecActionResponse(dict):
     """
-    ExecAction describes a "run in container" action.
+    Not supported by Cloud Run ExecAction describes a "run in container" action.
     """
     def __init__(__self__, *,
                  command: Sequence[str]):
         """
-        ExecAction describes a "run in container" action.
-        :param Sequence[str] command: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+        Not supported by Cloud Run ExecAction describes a "run in container" action.
+        :param Sequence[str] command: (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         pulumi.set(__self__, "command", command)
 
@@ -845,7 +730,7 @@ class ExecActionResponse(dict):
     @pulumi.getter
     def command(self) -> Sequence[str]:
         """
-        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+        (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         return pulumi.get(self, "command")
 
@@ -853,7 +738,7 @@ class ExecActionResponse(dict):
 @pulumi.output_type
 class HTTPGetActionResponse(dict):
     """
-    HTTPGetAction describes an action based on HTTP Get requests.
+    Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -876,27 +761,24 @@ class HTTPGetActionResponse(dict):
                  host: str,
                  http_headers: Sequence['outputs.HTTPHeaderResponse'],
                  path: str,
-                 port: 'outputs.IntOrStringResponse',
                  scheme: str):
         """
-        HTTPGetAction describes an action based on HTTP Get requests.
-        :param str host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
-        :param Sequence['HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers. +optional
-        :param str path: Path to access on the HTTP server. +optional
-        :param 'IntOrStringResponse' port: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-        :param str scheme: Scheme to use for connecting to the host. Defaults to HTTP. +optional
+        Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
+        :param str host: (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param Sequence['HTTPHeaderResponse'] http_headers: (Optional) Custom headers to set in the request. HTTP allows repeated headers.
+        :param str path: (Optional) Path to access on the HTTP server.
+        :param str scheme: (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter
     def host(self) -> str:
         """
-        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+        (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
         """
         return pulumi.get(self, "host")
 
@@ -904,7 +786,7 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter(name="httpHeaders")
     def http_headers(self) -> Sequence['outputs.HTTPHeaderResponse']:
         """
-        Custom headers to set in the request. HTTP allows repeated headers. +optional
+        (Optional) Custom headers to set in the request. HTTP allows repeated headers.
         """
         return pulumi.get(self, "http_headers")
 
@@ -912,23 +794,15 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Path to access on the HTTP server. +optional
+        (Optional) Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.IntOrStringResponse':
-        """
-        Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def scheme(self) -> str:
         """
-        Scheme to use for connecting to the host. Defaults to HTTP. +optional
+        (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
         """
         return pulumi.get(self, "scheme")
 
@@ -936,13 +810,13 @@ class HTTPGetActionResponse(dict):
 @pulumi.output_type
 class HTTPHeaderResponse(dict):
     """
-    HTTPHeader describes a custom header to be used in HTTP probes
+    Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
     """
     def __init__(__self__, *,
                  name: str,
                  value: str):
         """
-        HTTPHeader describes a custom header to be used in HTTP probes
+        Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
         :param str name: The header field name
         :param str value: The header field value
         """
@@ -964,71 +838,6 @@ class HTTPHeaderResponse(dict):
         The header field value
         """
         return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class HandlerResponse(dict):
-    """
-    Handler defines a specific action that should be taken
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exec":
-            suggest = "exec_"
-        elif key == "httpGet":
-            suggest = "http_get"
-        elif key == "tcpSocket":
-            suggest = "tcp_socket"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HandlerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        HandlerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        HandlerResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 exec_: 'outputs.ExecActionResponse',
-                 http_get: 'outputs.HTTPGetActionResponse',
-                 tcp_socket: 'outputs.TCPSocketActionResponse'):
-        """
-        Handler defines a specific action that should be taken
-        :param 'ExecActionResponse' exec_: One and only one of the following should be specified. Exec specifies the action to take. +optional
-        :param 'HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. +optional
-        :param 'TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-        """
-        pulumi.set(__self__, "exec_", exec_)
-        pulumi.set(__self__, "http_get", http_get)
-        pulumi.set(__self__, "tcp_socket", tcp_socket)
-
-    @property
-    @pulumi.getter(name="exec")
-    def exec_(self) -> 'outputs.ExecActionResponse':
-        """
-        One and only one of the following should be specified. Exec specifies the action to take. +optional
-        """
-        return pulumi.get(self, "exec_")
-
-    @property
-    @pulumi.getter(name="httpGet")
-    def http_get(self) -> 'outputs.HTTPGetActionResponse':
-        """
-        HTTPGet specifies the http request to perform. +optional
-        """
-        return pulumi.get(self, "http_get")
-
-    @property
-    @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> 'outputs.TCPSocketActionResponse':
-        """
-        TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-        """
-        return pulumi.get(self, "tcp_socket")
 
 
 @pulumi.output_type
@@ -1260,69 +1069,6 @@ class InstanceTemplateSpecResponse(dict):
         Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
         """
         return pulumi.get(self, "spec")
-
-
-@pulumi.output_type
-class IntOrStringResponse(dict):
-    """
-    IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "intVal":
-            suggest = "int_val"
-        elif key == "strVal":
-            suggest = "str_val"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IntOrStringResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        IntOrStringResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        IntOrStringResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 int_val: int,
-                 str_val: str,
-                 type: int):
-        """
-        IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-        :param int int_val: The int value.
-        :param str str_val: The string value.
-        :param int type: The type of the value.
-        """
-        pulumi.set(__self__, "int_val", int_val)
-        pulumi.set(__self__, "str_val", str_val)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="intVal")
-    def int_val(self) -> int:
-        """
-        The int value.
-        """
-        return pulumi.get(self, "int_val")
-
-    @property
-    @pulumi.getter(name="strVal")
-    def str_val(self) -> str:
-        """
-        The string value.
-        """
-        return pulumi.get(self, "str_val")
-
-    @property
-    @pulumi.getter
-    def type(self) -> int:
-        """
-        The type of the value.
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -1661,9 +1407,9 @@ class KeyToPathResponse(dict):
                  path: str):
         """
         Maps a string key to a path within a volume.
-        :param str key: Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
-        :param int mode: Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
-        :param str path: Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        :param str key: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+        :param int mode: (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        :param str path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "mode", mode)
@@ -1673,7 +1419,7 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
         """
         return pulumi.get(self, "key")
 
@@ -1681,7 +1427,7 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def mode(self) -> int:
         """
-        Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+        (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         """
         return pulumi.get(self, "mode")
 
@@ -1689,73 +1435,21 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         return pulumi.get(self, "path")
 
 
 @pulumi.output_type
-class LifecycleResponse(dict):
-    """
-    Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "postStart":
-            suggest = "post_start"
-        elif key == "preStop":
-            suggest = "pre_stop"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in LifecycleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        LifecycleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        LifecycleResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 post_start: 'outputs.HandlerResponse',
-                 pre_stop: 'outputs.HandlerResponse'):
-        """
-        Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-        :param 'HandlerResponse' post_start: PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        :param 'HandlerResponse' pre_stop: PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        """
-        pulumi.set(__self__, "post_start", post_start)
-        pulumi.set(__self__, "pre_stop", pre_stop)
-
-    @property
-    @pulumi.getter(name="postStart")
-    def post_start(self) -> 'outputs.HandlerResponse':
-        """
-        PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        """
-        return pulumi.get(self, "post_start")
-
-    @property
-    @pulumi.getter(name="preStop")
-    def pre_stop(self) -> 'outputs.HandlerResponse':
-        """
-        PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        """
-        return pulumi.get(self, "pre_stop")
-
-
-@pulumi.output_type
 class LocalObjectReferenceResponse(dict):
     """
-    LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
     """
     def __init__(__self__, *,
                  name: str):
         """
-        LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-        :param str name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+        :param str name: (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         pulumi.set(__self__, "name", name)
 
@@ -1763,7 +1457,7 @@ class LocalObjectReferenceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -1771,7 +1465,7 @@ class LocalObjectReferenceResponse(dict):
 @pulumi.output_type
 class ObjectMetaResponse(dict):
     """
-    ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+    k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1821,22 +1515,22 @@ class ObjectMetaResponse(dict):
                  self_link: str,
                  uid: str):
         """
-        ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-        :param Mapping[str, str] annotations: Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
-        :param str cluster_name: Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
-        :param str creation_timestamp: CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
-        :param int deletion_grace_period_seconds: Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
-        :param str deletion_timestamp: DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
-        :param Sequence[str] finalizers: Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
-        :param str generate_name: Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
-        :param int generation: A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
-        :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+        k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+        :param Mapping[str, str] annotations: (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        :param str cluster_name: (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+        :param str creation_timestamp: (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        :param int deletion_grace_period_seconds: (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+        :param str deletion_timestamp: (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        :param Sequence[str] finalizers: (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+        :param str generate_name: (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+        :param int generation: (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+        :param Mapping[str, str] labels: (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
         :param str name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
         :param str namespace: Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
-        :param Sequence['OwnerReferenceResponse'] owner_references: List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
-        :param str resource_version: An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-        :param str self_link: SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
-        :param str uid: UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+        :param Sequence['OwnerReferenceResponse'] owner_references: (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+        :param str resource_version: Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param str self_link: (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+        :param str uid: (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1858,7 +1552,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+        (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
         """
         return pulumi.get(self, "annotations")
 
@@ -1866,7 +1560,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+        (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -1874,7 +1568,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1882,7 +1576,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="deletionGracePeriodSeconds")
     def deletion_grace_period_seconds(self) -> int:
         """
-        Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+        (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
         """
         return pulumi.get(self, "deletion_grace_period_seconds")
 
@@ -1890,7 +1584,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="deletionTimestamp")
     def deletion_timestamp(self) -> str:
         """
-        DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         """
         return pulumi.get(self, "deletion_timestamp")
 
@@ -1898,7 +1592,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def finalizers(self) -> Sequence[str]:
         """
-        Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+        (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
         """
         return pulumi.get(self, "finalizers")
 
@@ -1906,7 +1600,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="generateName")
     def generate_name(self) -> str:
         """
-        Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+        (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
         """
         return pulumi.get(self, "generate_name")
 
@@ -1914,7 +1608,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def generation(self) -> int:
         """
-        A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+        (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
         """
         return pulumi.get(self, "generation")
 
@@ -1922,7 +1616,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+        (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
         """
         return pulumi.get(self, "labels")
 
@@ -1946,7 +1640,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="ownerReferences")
     def owner_references(self) -> Sequence['outputs.OwnerReferenceResponse']:
         """
-        List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+        (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
         """
         return pulumi.get(self, "owner_references")
 
@@ -1954,7 +1648,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
         """
-        An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+        Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         """
         return pulumi.get(self, "resource_version")
 
@@ -1962,7 +1656,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+        (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
         """
         return pulumi.get(self, "self_link")
 
@@ -1970,7 +1664,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def uid(self) -> str:
         """
-        UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+        (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         """
         return pulumi.get(self, "uid")
 
@@ -2074,19 +1768,25 @@ class OwnerReferenceResponse(dict):
 @pulumi.output_type
 class ProbeResponse(dict):
     """
-    Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+    Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "failureThreshold":
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "failureThreshold":
             suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
         elif key == "initialDelaySeconds":
             suggest = "initial_delay_seconds"
         elif key == "periodSeconds":
             suggest = "period_seconds"
         elif key == "successThreshold":
             suggest = "success_threshold"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
         elif key == "timeoutSeconds":
             suggest = "timeout_seconds"
 
@@ -2102,49 +1802,63 @@ class ProbeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 exec_: 'outputs.ExecActionResponse',
                  failure_threshold: int,
-                 handler: 'outputs.HandlerResponse',
+                 http_get: 'outputs.HTTPGetActionResponse',
                  initial_delay_seconds: int,
                  period_seconds: int,
                  success_threshold: int,
+                 tcp_socket: 'outputs.TCPSocketActionResponse',
                  timeout_seconds: int):
         """
-        Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
-        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
-        :param 'HandlerResponse' handler: The action taken to determine the health of a container
-        :param int initial_delay_seconds: Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
-        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
-        :param int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
-        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+        :param 'ExecActionResponse' exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        :param int failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'HTTPGetActionResponse' http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+        :param int initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+        :param int success_threshold: (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+        :param 'TCPSocketActionResponse' tcp_socket: (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+        :param int timeout_seconds: (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
+        pulumi.set(__self__, "exec_", exec_)
         pulumi.set(__self__, "failure_threshold", failure_threshold)
-        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "http_get", http_get)
         pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         pulumi.set(__self__, "period_seconds", period_seconds)
         pulumi.set(__self__, "success_threshold", success_threshold)
+        pulumi.set(__self__, "tcp_socket", tcp_socket)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> 'outputs.ExecActionResponse':
+        """
+        (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        """
+        return pulumi.get(self, "exec_")
 
     @property
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> int:
         """
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+        (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
     @property
-    @pulumi.getter
-    def handler(self) -> 'outputs.HandlerResponse':
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> 'outputs.HTTPGetActionResponse':
         """
-        The action taken to determine the health of a container
+        (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         """
-        return pulumi.get(self, "handler")
+        return pulumi.get(self, "http_get")
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
         """
-        Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -2152,7 +1866,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
         """
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
         """
         return pulumi.get(self, "period_seconds")
 
@@ -2160,15 +1874,23 @@ class ProbeResponse(dict):
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> int:
         """
-        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+        (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
         """
         return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> 'outputs.TCPSocketActionResponse':
+        """
+        (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+        """
+        return pulumi.get(self, "tcp_socket")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2183,8 +1905,8 @@ class ResourceRequirementsResponse(dict):
                  requests: Mapping[str, str]):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param Mapping[str, str] limits: Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param Mapping[str, str] requests: Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] limits: (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] requests: (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "requests", requests)
@@ -2193,7 +1915,7 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
         """
-        Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -2201,70 +1923,15 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         """
-        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
 
 
 @pulumi.output_type
-class SELinuxOptionsResponse(dict):
-    """
-    SELinuxOptions are the labels to be applied to the container
-    """
-    def __init__(__self__, *,
-                 level: str,
-                 role: str,
-                 type: str,
-                 user: str):
-        """
-        SELinuxOptions are the labels to be applied to the container
-        :param str level: Level is SELinux level label that applies to the container. +optional
-        :param str role: Role is a SELinux role label that applies to the container. +optional
-        :param str type: Type is a SELinux type label that applies to the container. +optional
-        :param str user: User is a SELinux user label that applies to the container. +optional
-        """
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
-
-    @property
-    @pulumi.getter
-    def level(self) -> str:
-        """
-        Level is SELinux level label that applies to the container. +optional
-        """
-        return pulumi.get(self, "level")
-
-    @property
-    @pulumi.getter
-    def role(self) -> str:
-        """
-        Role is a SELinux role label that applies to the container. +optional
-        """
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Type is a SELinux type label that applies to the container. +optional
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def user(self) -> str:
-        """
-        User is a SELinux user label that applies to the container. +optional
-        """
-        return pulumi.get(self, "user")
-
-
-@pulumi.output_type
 class SecretEnvSourceResponse(dict):
     """
-    SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+    Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2288,10 +1955,10 @@ class SecretEnvSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+        Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
-        :param bool optional: Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+        :param str name: The Secret to select from.
+        :param bool optional: (Optional) Specify whether the Secret must be defined
         """
         pulumi.set(__self__, "local_object_reference", local_object_reference)
         pulumi.set(__self__, "name", name)
@@ -2309,7 +1976,7 @@ class SecretEnvSourceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+        The Secret to select from.
         """
         return pulumi.get(self, "name")
 
@@ -2317,7 +1984,7 @@ class SecretEnvSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+        (Optional) Specify whether the Secret must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -2325,7 +1992,7 @@ class SecretEnvSourceResponse(dict):
 @pulumi.output_type
 class SecretKeySelectorResponse(dict):
     """
-    Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+    SecretKeySelector selects a key of a Secret.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2350,11 +2017,11 @@ class SecretKeySelectorResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
-        :param str key: Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+        SecretKeySelector selects a key of a Secret.
+        :param str key: A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
-        :param bool optional: Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+        :param str name: The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
+        :param bool optional: (Optional) Specify whether the Secret or its key must be defined
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "local_object_reference", local_object_reference)
@@ -2365,7 +2032,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+        A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
         """
         return pulumi.get(self, "key")
 
@@ -2381,7 +2048,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+        The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
         """
         return pulumi.get(self, "name")
 
@@ -2389,7 +2056,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+        (Optional) Specify whether the Secret or its key must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -2397,7 +2064,7 @@ class SecretKeySelectorResponse(dict):
 @pulumi.output_type
 class SecretVolumeSourceResponse(dict):
     """
-    The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+    The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2424,11 +2091,11 @@ class SecretVolumeSourceResponse(dict):
                  optional: bool,
                  secret_name: str):
         """
-        The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
-        :param int default_mode: Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-        :param Sequence['KeyToPathResponse'] items: Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
-        :param bool optional: Specify whether the Secret or its keys must be defined.
-        :param str secret_name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+        The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+        :param int default_mode: (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+        :param Sequence['KeyToPathResponse'] items: (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
+        :param bool optional: (Optional) Specify whether the Secret or its keys must be defined.
+        :param str secret_name: The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
         """
         pulumi.set(__self__, "default_mode", default_mode)
         pulumi.set(__self__, "items", items)
@@ -2439,7 +2106,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter(name="defaultMode")
     def default_mode(self) -> int:
         """
-        Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
         """
         return pulumi.get(self, "default_mode")
 
@@ -2447,7 +2114,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.KeyToPathResponse']:
         """
-        Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
         """
         return pulumi.get(self, "items")
 
@@ -2455,7 +2122,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Specify whether the Secret or its keys must be defined.
+        (Optional) Specify whether the Secret or its keys must be defined.
         """
         return pulumi.get(self, "optional")
 
@@ -2463,7 +2130,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter(name="secretName")
     def secret_name(self) -> str:
         """
-        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+        The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
         """
         return pulumi.get(self, "secret_name")
 
@@ -2471,23 +2138,13 @@ class SecretVolumeSourceResponse(dict):
 @pulumi.output_type
 class SecurityContextResponse(dict):
     """
-    SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+    Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowPrivilegeEscalation":
-            suggest = "allow_privilege_escalation"
-        elif key == "readOnlyRootFilesystem":
-            suggest = "read_only_root_filesystem"
-        elif key == "runAsGroup":
-            suggest = "run_as_group"
-        elif key == "runAsNonRoot":
-            suggest = "run_as_non_root"
-        elif key == "runAsUser":
+        if key == "runAsUser":
             suggest = "run_as_user"
-        elif key == "seLinuxOptions":
-            suggest = "se_linux_options"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SecurityContextResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2501,111 +2158,34 @@ class SecurityContextResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 allow_privilege_escalation: bool,
-                 capabilities: 'outputs.CapabilitiesResponse',
-                 privileged: bool,
-                 read_only_root_filesystem: bool,
-                 run_as_group: int,
-                 run_as_non_root: bool,
-                 run_as_user: int,
-                 se_linux_options: 'outputs.SELinuxOptionsResponse'):
+                 run_as_user: int):
         """
-        SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
-        :param bool allow_privilege_escalation: AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-        :param 'CapabilitiesResponse' capabilities: The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-        :param bool privileged: Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-        :param bool read_only_root_filesystem: Whether this container has a read-only root filesystem. Default is false. +optional
-        :param int run_as_group: The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        :param bool run_as_non_root: Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        :param int run_as_user: The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        :param 'SELinuxOptionsResponse' se_linux_options: The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+        Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+        :param int run_as_user: (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
         """
-        pulumi.set(__self__, "allow_privilege_escalation", allow_privilege_escalation)
-        pulumi.set(__self__, "capabilities", capabilities)
-        pulumi.set(__self__, "privileged", privileged)
-        pulumi.set(__self__, "read_only_root_filesystem", read_only_root_filesystem)
-        pulumi.set(__self__, "run_as_group", run_as_group)
-        pulumi.set(__self__, "run_as_non_root", run_as_non_root)
         pulumi.set(__self__, "run_as_user", run_as_user)
-        pulumi.set(__self__, "se_linux_options", se_linux_options)
-
-    @property
-    @pulumi.getter(name="allowPrivilegeEscalation")
-    def allow_privilege_escalation(self) -> bool:
-        """
-        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-        """
-        return pulumi.get(self, "allow_privilege_escalation")
-
-    @property
-    @pulumi.getter
-    def capabilities(self) -> 'outputs.CapabilitiesResponse':
-        """
-        The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-        """
-        return pulumi.get(self, "capabilities")
-
-    @property
-    @pulumi.getter
-    def privileged(self) -> bool:
-        """
-        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-        """
-        return pulumi.get(self, "privileged")
-
-    @property
-    @pulumi.getter(name="readOnlyRootFilesystem")
-    def read_only_root_filesystem(self) -> bool:
-        """
-        Whether this container has a read-only root filesystem. Default is false. +optional
-        """
-        return pulumi.get(self, "read_only_root_filesystem")
-
-    @property
-    @pulumi.getter(name="runAsGroup")
-    def run_as_group(self) -> int:
-        """
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        """
-        return pulumi.get(self, "run_as_group")
-
-    @property
-    @pulumi.getter(name="runAsNonRoot")
-    def run_as_non_root(self) -> bool:
-        """
-        Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        """
-        return pulumi.get(self, "run_as_non_root")
 
     @property
     @pulumi.getter(name="runAsUser")
     def run_as_user(self) -> int:
         """
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+        (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
         """
         return pulumi.get(self, "run_as_user")
-
-    @property
-    @pulumi.getter(name="seLinuxOptions")
-    def se_linux_options(self) -> 'outputs.SELinuxOptionsResponse':
-        """
-        The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        """
-        return pulumi.get(self, "se_linux_options")
 
 
 @pulumi.output_type
 class TCPSocketActionResponse(dict):
     """
-    TCPSocketAction describes an action based on opening a socket
+    Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
     """
     def __init__(__self__, *,
                  host: str,
-                 port: 'outputs.IntOrStringResponse'):
+                 port: int):
         """
-        TCPSocketAction describes an action based on opening a socket
-        :param str host: Optional: Host name to connect to, defaults to the pod IP. +optional
-        :param 'IntOrStringResponse' port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+        Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
+        :param str host: (Optional) Optional: Host name to connect to, defaults to the pod IP.
+        :param int port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -2614,81 +2194,29 @@ class TCPSocketActionResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        Optional: Host name to connect to, defaults to the pod IP. +optional
+        (Optional) Optional: Host name to connect to, defaults to the pod IP.
         """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
-    def port(self) -> 'outputs.IntOrStringResponse':
+    def port(self) -> int:
         """
-        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
         """
         return pulumi.get(self, "port")
 
 
 @pulumi.output_type
-class VolumeDeviceResponse(dict):
-    """
-    volumeDevice describes a mapping of a raw block device within a container.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "devicePath":
-            suggest = "device_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VolumeDeviceResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        VolumeDeviceResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        VolumeDeviceResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 device_path: str,
-                 name: str):
-        """
-        volumeDevice describes a mapping of a raw block device within a container.
-        :param str device_path: devicePath is the path inside of the container that the device will be mapped to.
-        :param str name: name must match the name of a persistentVolumeClaim in the pod
-        """
-        pulumi.set(__self__, "device_path", device_path)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="devicePath")
-    def device_path(self) -> str:
-        """
-        devicePath is the path inside of the container that the device will be mapped to.
-        """
-        return pulumi.get(self, "device_path")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        name must match the name of a persistentVolumeClaim in the pod
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
 class VolumeMountResponse(dict):
     """
-    VolumeMount describes a mounting of a Volume within a container.
+    Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "mountPath":
             suggest = "mount_path"
-        elif key == "mountPropagation":
-            suggest = "mount_propagation"
         elif key == "readOnly":
             suggest = "read_only"
         elif key == "subPath":
@@ -2707,20 +2235,17 @@ class VolumeMountResponse(dict):
 
     def __init__(__self__, *,
                  mount_path: str,
-                 mount_propagation: str,
                  name: str,
                  read_only: bool,
                  sub_path: str):
         """
-        VolumeMount describes a mounting of a Volume within a container.
+        Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param str mount_propagation: mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
         :param str name: This must match the Name of a Volume.
-        :param bool read_only: Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
-        :param str sub_path: Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+        :param bool read_only: (Optional) Only true is accepted. Defaults to true.
+        :param str sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
         pulumi.set(__self__, "mount_path", mount_path)
-        pulumi.set(__self__, "mount_propagation", mount_propagation)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "read_only", read_only)
         pulumi.set(__self__, "sub_path", sub_path)
@@ -2734,14 +2259,6 @@ class VolumeMountResponse(dict):
         return pulumi.get(self, "mount_path")
 
     @property
-    @pulumi.getter(name="mountPropagation")
-    def mount_propagation(self) -> str:
-        """
-        mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-        """
-        return pulumi.get(self, "mount_propagation")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -2753,7 +2270,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
         """
-        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+        (Optional) Only true is accepted. Defaults to true.
         """
         return pulumi.get(self, "read_only")
 
@@ -2761,7 +2278,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="subPath")
     def sub_path(self) -> str:
         """
-        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+        (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
         return pulumi.get(self, "sub_path")
 
@@ -2769,7 +2286,7 @@ class VolumeMountResponse(dict):
 @pulumi.output_type
 class VolumeResponse(dict):
     """
-    Volume represents a named volume in a container.
+    Not supported by Cloud Run Volume represents a named volume in a container.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2793,7 +2310,7 @@ class VolumeResponse(dict):
                  name: str,
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
-        Volume represents a named volume in a container.
+        Not supported by Cloud Run Volume represents a named volume in a container.
         :param str name: Volume's name.
         """
         pulumi.set(__self__, "config_map", config_map)

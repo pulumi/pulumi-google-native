@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<Outputs.ExecutionTemplateResponse> ExecutionTemplate { get; private set; } = null!;
 
         /// <summary>
+        /// The URI of the external job used to execute the notebook.
+        /// </summary>
+        [Output("jobUri")]
+        public Output<string> JobUri { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
         /// </summary>
         [Output("name")]

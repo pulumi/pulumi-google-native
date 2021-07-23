@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     public sealed class PageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+        /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }

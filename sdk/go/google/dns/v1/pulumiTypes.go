@@ -3889,7 +3889,7 @@ func (o PolicyNetworkResponseArrayOutput) Index(i pulumi.IntInput) PolicyNetwork
 }
 
 // A unit of data that is returned by the DNS servers.
-type ResourceRecordSet struct {
+type ResourceRecordSetType struct {
 	Kind *string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name *string `pulumi:"name"`
@@ -3903,19 +3903,19 @@ type ResourceRecordSet struct {
 	Type *string `pulumi:"type"`
 }
 
-// ResourceRecordSetInput is an input type that accepts ResourceRecordSetArgs and ResourceRecordSetOutput values.
-// You can construct a concrete instance of `ResourceRecordSetInput` via:
+// ResourceRecordSetTypeInput is an input type that accepts ResourceRecordSetTypeArgs and ResourceRecordSetTypeOutput values.
+// You can construct a concrete instance of `ResourceRecordSetTypeInput` via:
 //
-//          ResourceRecordSetArgs{...}
-type ResourceRecordSetInput interface {
+//          ResourceRecordSetTypeArgs{...}
+type ResourceRecordSetTypeInput interface {
 	pulumi.Input
 
-	ToResourceRecordSetOutput() ResourceRecordSetOutput
-	ToResourceRecordSetOutputWithContext(context.Context) ResourceRecordSetOutput
+	ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput
+	ToResourceRecordSetTypeOutputWithContext(context.Context) ResourceRecordSetTypeOutput
 }
 
 // A unit of data that is returned by the DNS servers.
-type ResourceRecordSetArgs struct {
+type ResourceRecordSetTypeArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// For example, www.example.com.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3929,105 +3929,105 @@ type ResourceRecordSetArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (ResourceRecordSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetType)(nil)).Elem()
 }
 
-func (i ResourceRecordSetArgs) ToResourceRecordSetOutput() ResourceRecordSetOutput {
-	return i.ToResourceRecordSetOutputWithContext(context.Background())
+func (i ResourceRecordSetTypeArgs) ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput {
+	return i.ToResourceRecordSetTypeOutputWithContext(context.Background())
 }
 
-func (i ResourceRecordSetArgs) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetOutput)
+func (i ResourceRecordSetTypeArgs) ToResourceRecordSetTypeOutputWithContext(ctx context.Context) ResourceRecordSetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetTypeOutput)
 }
 
-// ResourceRecordSetArrayInput is an input type that accepts ResourceRecordSetArray and ResourceRecordSetArrayOutput values.
-// You can construct a concrete instance of `ResourceRecordSetArrayInput` via:
+// ResourceRecordSetTypeArrayInput is an input type that accepts ResourceRecordSetTypeArray and ResourceRecordSetTypeArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordSetTypeArrayInput` via:
 //
-//          ResourceRecordSetArray{ ResourceRecordSetArgs{...} }
-type ResourceRecordSetArrayInput interface {
+//          ResourceRecordSetTypeArray{ ResourceRecordSetTypeArgs{...} }
+type ResourceRecordSetTypeArrayInput interface {
 	pulumi.Input
 
-	ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput
-	ToResourceRecordSetArrayOutputWithContext(context.Context) ResourceRecordSetArrayOutput
+	ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput
+	ToResourceRecordSetTypeArrayOutputWithContext(context.Context) ResourceRecordSetTypeArrayOutput
 }
 
-type ResourceRecordSetArray []ResourceRecordSetInput
+type ResourceRecordSetTypeArray []ResourceRecordSetTypeInput
 
-func (ResourceRecordSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetType)(nil)).Elem()
 }
 
-func (i ResourceRecordSetArray) ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput {
-	return i.ToResourceRecordSetArrayOutputWithContext(context.Background())
+func (i ResourceRecordSetTypeArray) ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput {
+	return i.ToResourceRecordSetTypeArrayOutputWithContext(context.Background())
 }
 
-func (i ResourceRecordSetArray) ToResourceRecordSetArrayOutputWithContext(ctx context.Context) ResourceRecordSetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetArrayOutput)
+func (i ResourceRecordSetTypeArray) ToResourceRecordSetTypeArrayOutputWithContext(ctx context.Context) ResourceRecordSetTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetTypeArrayOutput)
 }
 
 // A unit of data that is returned by the DNS servers.
-type ResourceRecordSetOutput struct{ *pulumi.OutputState }
+type ResourceRecordSetTypeOutput struct{ *pulumi.OutputState }
 
-func (ResourceRecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetType)(nil)).Elem()
 }
 
-func (o ResourceRecordSetOutput) ToResourceRecordSetOutput() ResourceRecordSetOutput {
+func (o ResourceRecordSetTypeOutput) ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput {
 	return o
 }
 
-func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
+func (o ResourceRecordSetTypeOutput) ToResourceRecordSetTypeOutputWithContext(ctx context.Context) ResourceRecordSetTypeOutput {
 	return o
 }
 
-func (o ResourceRecordSetOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o ResourceRecordSetTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // For example, www.example.com.
-func (o ResourceRecordSetOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ResourceRecordSetTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-func (o ResourceRecordSetOutput) Rrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceRecordSet) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+func (o ResourceRecordSetTypeOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
 // As defined in RFC 4034 (section 3.2).
-func (o ResourceRecordSetOutput) SignatureRrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceRecordSet) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
+func (o ResourceRecordSetTypeOutput) SignatureRrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
 
 // Number of seconds that this ResourceRecordSet can be cached by resolvers.
-func (o ResourceRecordSetOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+func (o ResourceRecordSetTypeOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
 // The identifier of a supported record type. See the list of Supported DNS record types.
-func (o ResourceRecordSetOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o ResourceRecordSetTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type ResourceRecordSetArrayOutput struct{ *pulumi.OutputState }
+type ResourceRecordSetTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (ResourceRecordSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetType)(nil)).Elem()
 }
 
-func (o ResourceRecordSetArrayOutput) ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput {
+func (o ResourceRecordSetTypeArrayOutput) ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput {
 	return o
 }
 
-func (o ResourceRecordSetArrayOutput) ToResourceRecordSetArrayOutputWithContext(ctx context.Context) ResourceRecordSetArrayOutput {
+func (o ResourceRecordSetTypeArrayOutput) ToResourceRecordSetTypeArrayOutputWithContext(ctx context.Context) ResourceRecordSetTypeArrayOutput {
 	return o
 }
 
-func (o ResourceRecordSetArrayOutput) Index(i pulumi.IntInput) ResourceRecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordSet {
-		return vs[0].([]ResourceRecordSet)[vs[1].(int)]
-	}).(ResourceRecordSetOutput)
+func (o ResourceRecordSetTypeArrayOutput) Index(i pulumi.IntInput) ResourceRecordSetTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordSetType {
+		return vs[0].([]ResourceRecordSetType)[vs[1].(int)]
+	}).(ResourceRecordSetTypeOutput)
 }
 
 // A unit of data that is returned by the DNS servers.
@@ -4229,8 +4229,8 @@ func init() {
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkResponseOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkResponseArrayOutput{})
-	pulumi.RegisterOutputType(ResourceRecordSetOutput{})
-	pulumi.RegisterOutputType(ResourceRecordSetArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetTypeOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseArrayOutput{})
 }

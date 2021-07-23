@@ -115,6 +115,8 @@ __all__ = [
     'InterconnectAttachmentPartnerMetadataResponse',
     'InterconnectAttachmentPrivateInfoResponse',
     'InterconnectCircuitInfoResponse',
+    'InterconnectMacsecPreSharedKeyResponse',
+    'InterconnectMacsecResponse',
     'InterconnectOutageNotificationResponse',
     'LicenseResourceCommitmentResponse',
     'LicenseResourceRequirementsResponse',
@@ -2662,6 +2664,8 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
         suggest = None
         if key == "connectionPersistenceOnUnhealthyBackends":
             suggest = "connection_persistence_on_unhealthy_backends"
+        elif key == "enableStrongAffinity":
+            suggest = "enable_strong_affinity"
         elif key == "idleTimeoutSec":
             suggest = "idle_timeout_sec"
         elif key == "trackingMode":
@@ -2680,15 +2684,18 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
 
     def __init__(__self__, *,
                  connection_persistence_on_unhealthy_backends: str,
+                 enable_strong_affinity: bool,
                  idle_timeout_sec: int,
                  tracking_mode: str):
         """
         Connection Tracking configuration for this BackendService.
         :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+        :param bool enable_strong_affinity: Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
         :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
         :param str tracking_mode: Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
         """
         pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        pulumi.set(__self__, "enable_strong_affinity", enable_strong_affinity)
         pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
         pulumi.set(__self__, "tracking_mode", tracking_mode)
 
@@ -2699,6 +2706,14 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
         Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
         """
         return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
+
+    @property
+    @pulumi.getter(name="enableStrongAffinity")
+    def enable_strong_affinity(self) -> bool:
+        """
+        Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+        """
+        return pulumi.get(self, "enable_strong_affinity")
 
     @property
     @pulumi.getter(name="idleTimeoutSec")
@@ -3879,7 +3894,7 @@ class DeprecationStatusResponse(dict):
         :param str obsolete: An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.
         :param str replacement: The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
         :param str state: The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
-        :param 'RolloutPolicyResponse' state_override: The rollout policy of this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state.
+        :param 'RolloutPolicyResponse' state_override: The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
         """
         pulumi.set(__self__, "deleted", deleted)
         pulumi.set(__self__, "deprecated", deprecated)
@@ -3932,7 +3947,7 @@ class DeprecationStatusResponse(dict):
     @pulumi.getter(name="stateOverride")
     def state_override(self) -> 'outputs.RolloutPolicyResponse':
         """
-        The rollout policy of this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state.
+        The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
         """
         return pulumi.get(self, "state_override")
 
@@ -8073,6 +8088,108 @@ class InterconnectCircuitInfoResponse(dict):
         Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by Google to the customer in the LOA.
         """
         return pulumi.get(self, "google_demarc_id")
+
+
+@pulumi.output_type
+class InterconnectMacsecPreSharedKeyResponse(dict):
+    """
+    Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectMacsecPreSharedKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectMacsecPreSharedKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectMacsecPreSharedKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 start_time: str):
+        """
+        Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.
+        :param str name: A name for this pre-shared key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param str start_time: A RFC3339 timestamp on or after which the key is valid. startTime can be in the future. If the keychain has a single key, startTime can be omitted. If the keychain has multiple keys, startTime is mandatory for each key. The start times of keys must be in increasing order. The start times of two consecutive keys must be at least 6 hours apart.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A name for this pre-shared key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        A RFC3339 timestamp on or after which the key is valid. startTime can be in the future. If the keychain has a single key, startTime can be omitted. If the keychain has multiple keys, startTime is mandatory for each key. The start times of keys must be in increasing order. The start times of two consecutive keys must be at least 6 hours apart.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InterconnectMacsecResponse(dict):
+    """
+    Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "preSharedKeys":
+            suggest = "pre_shared_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectMacsecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectMacsecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectMacsecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fail_open: bool,
+                 pre_shared_keys: Sequence['outputs.InterconnectMacsecPreSharedKeyResponse']):
+        """
+        Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+        :param bool fail_open: If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+        :param Sequence['InterconnectMacsecPreSharedKeyResponse'] pre_shared_keys: A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+        """
+        pulumi.set(__self__, "fail_open", fail_open)
+        pulumi.set(__self__, "pre_shared_keys", pre_shared_keys)
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> bool:
+        """
+        If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @property
+    @pulumi.getter(name="preSharedKeys")
+    def pre_shared_keys(self) -> Sequence['outputs.InterconnectMacsecPreSharedKeyResponse']:
+        """
+        A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+        """
+        return pulumi.get(self, "pre_shared_keys")
 
 
 @pulumi.output_type
@@ -13698,6 +13815,10 @@ class SchedulingResponse(dict):
             suggest = "automatic_restart"
         elif key == "availabilityDomain":
             suggest = "availability_domain"
+        elif key == "currentCpus":
+            suggest = "current_cpus"
+        elif key == "currentMemoryMb":
+            suggest = "current_memory_mb"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "latencyTolerant":
@@ -13731,6 +13852,8 @@ class SchedulingResponse(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  availability_domain: int,
+                 current_cpus: int,
+                 current_memory_mb: str,
                  host_error_timeout_seconds: int,
                  latency_tolerant: bool,
                  location_hint: str,
@@ -13745,6 +13868,8 @@ class SchedulingResponse(dict):
         Sets the scheduling options for an Instance. NextID: 21
         :param bool automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         :param int availability_domain: Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
+        :param int current_cpus: Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
+        :param str current_memory_mb: Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
         :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param bool latency_tolerant: Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
         :param str location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
@@ -13758,6 +13883,8 @@ class SchedulingResponse(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "availability_domain", availability_domain)
+        pulumi.set(__self__, "current_cpus", current_cpus)
+        pulumi.set(__self__, "current_memory_mb", current_memory_mb)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "latency_tolerant", latency_tolerant)
         pulumi.set(__self__, "location_hint", location_hint)
@@ -13784,6 +13911,22 @@ class SchedulingResponse(dict):
         Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
         """
         return pulumi.get(self, "availability_domain")
+
+    @property
+    @pulumi.getter(name="currentCpus")
+    def current_cpus(self) -> int:
+        """
+        Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
+        """
+        return pulumi.get(self, "current_cpus")
+
+    @property
+    @pulumi.getter(name="currentMemoryMb")
+    def current_memory_mb(self) -> str:
+        """
+        Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
+        """
+        return pulumi.get(self, "current_memory_mb")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -14521,7 +14664,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         """
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-        :param str conform_action: Action to take when requests are under the given threshold. When requests are throttled, this is also the action for all requests which are not dropped. Valid options are "allow", "fairshare", and "drop_overload".
+        :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         :param str enforce_on_key: Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
         :param str exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
@@ -14553,7 +14696,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="conformAction")
     def conform_action(self) -> str:
         """
-        Action to take when requests are under the given threshold. When requests are throttled, this is also the action for all requests which are not dropped. Valid options are "allow", "fairshare", and "drop_overload".
+        Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         """
         return pulumi.get(self, "conform_action")
 

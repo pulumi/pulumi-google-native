@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, create_time=None, earliest_version_time=None, encryption_config=None, encryption_info=None, name=None, restore_info=None, state=None, version_retention_period=None):
+    def __init__(__self__, create_time=None, default_leader=None, earliest_version_time=None, encryption_config=None, encryption_info=None, name=None, restore_info=None, state=None, version_retention_period=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if default_leader and not isinstance(default_leader, str):
+            raise TypeError("Expected argument 'default_leader' to be a str")
+        pulumi.set(__self__, "default_leader", default_leader)
         if earliest_version_time and not isinstance(earliest_version_time, str):
             raise TypeError("Expected argument 'earliest_version_time' to be a str")
         pulumi.set(__self__, "earliest_version_time", earliest_version_time)
@@ -50,6 +53,14 @@ class GetDatabaseResult:
         If exists, the time at which the database creation started.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="defaultLeader")
+    def default_leader(self) -> str:
+        """
+        The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+        """
+        return pulumi.get(self, "default_leader")
 
     @property
     @pulumi.getter(name="earliestVersionTime")
@@ -115,6 +126,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             yield self
         return GetDatabaseResult(
             create_time=self.create_time,
+            default_leader=self.default_leader,
             earliest_version_time=self.earliest_version_time,
             encryption_config=self.encryption_config,
             encryption_info=self.encryption_info,
@@ -143,6 +155,7 @@ def get_database(database_id: Optional[str] = None,
 
     return AwaitableGetDatabaseResult(
         create_time=__ret__.create_time,
+        default_leader=__ret__.default_leader,
         earliest_version_time=__ret__.earliest_version_time,
         encryption_config=__ret__.encryption_config,
         encryption_info=__ret__.encryption_info,

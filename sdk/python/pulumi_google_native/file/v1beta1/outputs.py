@@ -50,7 +50,7 @@ class FileShareConfigResponse(dict):
         """
         File share configuration for the instance.
         :param str capacity_gb: File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
-        :param str name: The name of the file share (must be 16 characters or less).
+        :param str name: The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
         :param Sequence['NfsExportOptionsResponse'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param str source_backup: The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
         """
@@ -71,7 +71,7 @@ class FileShareConfigResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the file share (must be 16 characters or less).
+        The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
         """
         return pulumi.get(self, "name")
 
@@ -100,7 +100,9 @@ class NetworkConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipAddresses":
+        if key == "connectMode":
+            suggest = "connect_mode"
+        elif key == "ipAddresses":
             suggest = "ip_addresses"
         elif key == "reservedIpRange":
             suggest = "reserved_ip_range"
@@ -117,21 +119,32 @@ class NetworkConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 connect_mode: str,
                  ip_addresses: Sequence[str],
                  modes: Sequence[str],
                  network: str,
                  reserved_ip_range: str):
         """
         Network configuration for the instance.
+        :param str connect_mode: The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param Sequence[str] ip_addresses: IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
         :param Sequence[str] modes: Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         :param str network: The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
         :param str reserved_ip_range: A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
         """
+        pulumi.set(__self__, "connect_mode", connect_mode)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         pulumi.set(__self__, "modes", modes)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+
+    @property
+    @pulumi.getter(name="connectMode")
+    def connect_mode(self) -> str:
+        """
+        The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        """
+        return pulumi.get(self, "connect_mode")
 
     @property
     @pulumi.getter(name="ipAddresses")

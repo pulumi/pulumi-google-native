@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<Pulumi.GoogleNative.Compute.V1.NetworkInterfaceNicType>? NicType { get; set; }
 
         /// <summary>
+        /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+        /// </summary>
+        [Input("queueCount")]
+        public Input<int>? QueueCount { get; set; }
+
+        /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         /// </summary>
         [Input("stackType")]

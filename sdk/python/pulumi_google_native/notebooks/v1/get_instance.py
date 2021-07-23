@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, container_image=None, create_time=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
+    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, container_image=None, create_time=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -90,6 +90,9 @@ class GetInstanceResult:
         if proxy_uri and not isinstance(proxy_uri, str):
             raise TypeError("Expected argument 'proxy_uri' to be a str")
         pulumi.set(__self__, "proxy_uri", proxy_uri)
+        if reservation_affinity and not isinstance(reservation_affinity, dict):
+            raise TypeError("Expected argument 'reservation_affinity' to be a dict")
+        pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
@@ -311,6 +314,14 @@ class GetInstanceResult:
         return pulumi.get(self, "proxy_uri")
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> 'outputs.ReservationAffinityResponse':
+        """
+        Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
@@ -413,6 +424,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             no_remove_data_disk=self.no_remove_data_disk,
             post_startup_script=self.post_startup_script,
             proxy_uri=self.proxy_uri,
+            reservation_affinity=self.reservation_affinity,
             service_account=self.service_account,
             service_account_scopes=self.service_account_scopes,
             shielded_instance_config=self.shielded_instance_config,
@@ -466,6 +478,7 @@ def get_instance(instance_id: Optional[str] = None,
         no_remove_data_disk=__ret__.no_remove_data_disk,
         post_startup_script=__ret__.post_startup_script,
         proxy_uri=__ret__.proxy_uri,
+        reservation_affinity=__ret__.reservation_affinity,
         service_account=__ret__.service_account,
         service_account_scopes=__ret__.service_account_scopes,
         shielded_instance_config=__ret__.shielded_instance_config,

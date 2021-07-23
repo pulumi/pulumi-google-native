@@ -22,9 +22,12 @@ type LookupGameServerClusterArgs struct {
 	Location            string  `pulumi:"location"`
 	Project             *string `pulumi:"project"`
 	RealmId             string  `pulumi:"realmId"`
+	View                *string `pulumi:"view"`
 }
 
 type LookupGameServerClusterResult struct {
+	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	ClusterState KubernetesClusterStateResponse `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponse `pulumi:"connectionInfo"`
 	// The creation time.

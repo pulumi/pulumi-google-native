@@ -22,6 +22,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int AvailabilityDomain;
         /// <summary>
+        /// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
+        /// </summary>
+        public readonly int CurrentCpus;
+        /// <summary>
+        /// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
+        /// </summary>
+        public readonly string CurrentMemoryMb;
+        /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         public readonly int HostErrorTimeoutSeconds;
@@ -68,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int availabilityDomain,
 
+            int currentCpus,
+
+            string currentMemoryMb,
+
             int hostErrorTimeoutSeconds,
 
             bool latencyTolerant,
@@ -90,6 +102,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
+            CurrentCpus = currentCpus;
+            CurrentMemoryMb = currentMemoryMb;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             LatencyTolerant = latencyTolerant;
             LocationHint = locationHint;

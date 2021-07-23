@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Output<ImmutableArray<string>> OperationIds { get; private set; } = null!;
 
         /// <summary>
+        /// The default options for query interpretation
+        /// </summary>
+        [Output("queryInterpretationConfig")]
+        public Output<Outputs.QueryInterpretationConfigResponse> QueryInterpretationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for ranking results.
         /// </summary>
         [Output("scoringConfig")]
@@ -161,6 +167,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The default options for query interpretation
+        /// </summary>
+        [Input("queryInterpretationConfig")]
+        public Input<Inputs.QueryInterpretationConfigArgs>? QueryInterpretationConfig { get; set; }
 
         /// <summary>
         /// Configuration for ranking results.

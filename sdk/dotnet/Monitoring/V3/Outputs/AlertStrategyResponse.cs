@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class AlertStrategyResponse
     {
         /// <summary>
-        /// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>
         public readonly Outputs.NotificationRateLimitResponse NotificationRateLimit;
 

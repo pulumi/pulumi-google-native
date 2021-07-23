@@ -266,7 +266,7 @@ func (o AggregationResponseArrayOutput) Index(i pulumi.IntInput) AggregationResp
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategy struct {
-	// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit *NotificationRateLimit `pulumi:"notificationRateLimit"`
 }
 
@@ -283,7 +283,7 @@ type AlertStrategyInput interface {
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyArgs struct {
-	// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitPtrInput `pulumi:"notificationRateLimit"`
 }
 
@@ -365,7 +365,7 @@ func (o AlertStrategyOutput) ToAlertStrategyPtrOutputWithContext(ctx context.Con
 	}).(AlertStrategyPtrOutput)
 }
 
-// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v AlertStrategy) *NotificationRateLimit { return v.NotificationRateLimit }).(NotificationRateLimitPtrOutput)
 }
@@ -388,7 +388,7 @@ func (o AlertStrategyPtrOutput) Elem() AlertStrategyOutput {
 	return o.ApplyT(func(v *AlertStrategy) AlertStrategy { return *v }).(AlertStrategyOutput)
 }
 
-// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v *AlertStrategy) *NotificationRateLimit {
 		if v == nil {
@@ -400,7 +400,7 @@ func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtr
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyResponse struct {
-	// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitResponse `pulumi:"notificationRateLimit"`
 }
 
@@ -417,7 +417,7 @@ type AlertStrategyResponseInput interface {
 
 // Control over how the notification channels in notification_channels are notified when this alert fires.
 type AlertStrategyResponseArgs struct {
-	// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitResponseInput `pulumi:"notificationRateLimit"`
 }
 
@@ -499,7 +499,7 @@ func (o AlertStrategyResponseOutput) ToAlertStrategyResponsePtrOutputWithContext
 	}).(AlertStrategyResponsePtrOutput)
 }
 
-// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyResponseOutput) NotificationRateLimit() NotificationRateLimitResponseOutput {
 	return o.ApplyT(func(v AlertStrategyResponse) NotificationRateLimitResponse { return v.NotificationRateLimit }).(NotificationRateLimitResponseOutput)
 }
@@ -522,7 +522,7 @@ func (o AlertStrategyResponsePtrOutput) Elem() AlertStrategyResponseOutput {
 	return o.ApplyT(func(v *AlertStrategyResponse) AlertStrategyResponse { return *v }).(AlertStrategyResponseOutput)
 }
 
-// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyResponsePtrOutput) NotificationRateLimit() NotificationRateLimitResponsePtrOutput {
 	return o.ApplyT(func(v *AlertStrategyResponse) *NotificationRateLimitResponse {
 		if v == nil {
@@ -5812,7 +5812,7 @@ func (o LatencyCriteriaResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatch struct {
 	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
 	Filter string `pulumi:"filter"`
@@ -5831,7 +5831,7 @@ type LogMatchInput interface {
 	ToLogMatchOutputWithContext(context.Context) LogMatchOutput
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchArgs struct {
 	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
 	Filter pulumi.StringInput `pulumi:"filter"`
@@ -5892,7 +5892,7 @@ func (i *logMatchPtrType) ToLogMatchPtrOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogMatchPtrOutput)
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchOutput struct{ *pulumi.OutputState }
 
 func (LogMatchOutput) ElementType() reflect.Type {
@@ -5965,7 +5965,7 @@ func (o LogMatchPtrOutput) LabelExtractors() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchResponse struct {
 	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
 	Filter string `pulumi:"filter"`
@@ -5984,7 +5984,7 @@ type LogMatchResponseInput interface {
 	ToLogMatchResponseOutputWithContext(context.Context) LogMatchResponseOutput
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchResponseArgs struct {
 	// A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
 	Filter pulumi.StringInput `pulumi:"filter"`
@@ -6004,7 +6004,7 @@ func (i LogMatchResponseArgs) ToLogMatchResponseOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LogMatchResponseOutput)
 }
 
-// A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
 type LogMatchResponseOutput struct{ *pulumi.OutputState }
 
 func (LogMatchResponseOutput) ElementType() reflect.Type {
@@ -7647,7 +7647,7 @@ func (o MetricThresholdResponseOutput) Trigger() TriggerResponseOutput {
 type MonitoredResource struct {
 	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 	Labels map[string]string `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type string `pulumi:"type"`
 }
 
@@ -7666,7 +7666,7 @@ type MonitoredResourceInput interface {
 type MonitoredResourceArgs struct {
 	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -7753,7 +7753,7 @@ func (o MonitoredResourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7786,7 +7786,7 @@ func (o MonitoredResourcePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourcePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitoredResource) *string {
 		if v == nil {
@@ -7800,7 +7800,7 @@ func (o MonitoredResourcePtrOutput) Type() pulumi.StringPtrOutput {
 type MonitoredResourceResponse struct {
 	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 	Labels map[string]string `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type string `pulumi:"type"`
 }
 
@@ -7819,7 +7819,7 @@ type MonitoredResourceResponseInput interface {
 type MonitoredResourceResponseArgs struct {
 	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -7906,7 +7906,7 @@ func (o MonitoredResourceResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7939,7 +7939,7 @@ func (o MonitoredResourceResponsePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourceResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitoredResourceResponse) *string {
 		if v == nil {

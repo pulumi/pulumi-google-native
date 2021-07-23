@@ -17,7 +17,9 @@ __all__ = [
     'BuildResponse',
     'BuildStepResponse',
     'BuiltImageResponse',
+    'FailureInfoResponse',
     'GitHubEventsConfigResponse',
+    'GitRepoSourceResponse',
     'InlineSecretResponse',
     'NetworkConfigResponse',
     'PoolOptionResponse',
@@ -178,7 +180,7 @@ class BuildOptionsResponse(dict):
         :param str log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
         :param str logging: Option to specify the logging mode, which determines if and where build logs are stored.
         :param str machine_type: Compute Engine machine type on which to run the build.
-        :param 'PoolOptionResponse' pool: Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        :param 'PoolOptionResponse' pool: Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         :param str requested_verify_option: Requested verifiability options.
         :param Sequence[str] secret_env: A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
         :param Sequence[str] source_provenance_hash: Requested hash for SourceProvenance.
@@ -252,7 +254,7 @@ class BuildOptionsResponse(dict):
     @pulumi.getter
     def pool(self) -> 'outputs.PoolOptionResponse':
         """
-        Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         """
         return pulumi.get(self, "pool")
 
@@ -319,6 +321,8 @@ class BuildResponse(dict):
             suggest = "build_trigger_id"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "failureInfo":
+            suggest = "failure_info"
         elif key == "finishTime":
             suggest = "finish_time"
         elif key == "logUrl":
@@ -352,6 +356,7 @@ class BuildResponse(dict):
                  available_secrets: 'outputs.SecretsResponse',
                  build_trigger_id: str,
                  create_time: str,
+                 failure_info: 'outputs.FailureInfoResponse',
                  finish_time: str,
                  images: Sequence[str],
                  log_url: str,
@@ -380,6 +385,7 @@ class BuildResponse(dict):
         :param 'SecretsResponse' available_secrets: Secrets and secret environment variables.
         :param str build_trigger_id: The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         :param str create_time: Time at which the request to create the build was received.
+        :param 'FailureInfoResponse' failure_info: Contains information about the build when status=FAILURE.
         :param str finish_time: Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param str log_url: URL to logs for this build in Google Cloud Console.
@@ -407,6 +413,7 @@ class BuildResponse(dict):
         pulumi.set(__self__, "available_secrets", available_secrets)
         pulumi.set(__self__, "build_trigger_id", build_trigger_id)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "failure_info", failure_info)
         pulumi.set(__self__, "finish_time", finish_time)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "log_url", log_url)
@@ -461,6 +468,14 @@ class BuildResponse(dict):
         Time at which the request to create the build was received.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="failureInfo")
+    def failure_info(self) -> 'outputs.FailureInfoResponse':
+        """
+        Contains information about the build when status=FAILURE.
+        """
+        return pulumi.get(self, "failure_info")
 
     @property
     @pulumi.getter(name="finishTime")
@@ -865,6 +880,39 @@ class BuiltImageResponse(dict):
 
 
 @pulumi.output_type
+class FailureInfoResponse(dict):
+    """
+    A fatal problem encountered during the execution of the build.
+    """
+    def __init__(__self__, *,
+                 detail: str,
+                 type: str):
+        """
+        A fatal problem encountered during the execution of the build.
+        :param str detail: Explains the failure issue in more detail using hard-coded text.
+        :param str type: The name of the failure.
+        """
+        pulumi.set(__self__, "detail", detail)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def detail(self) -> str:
+        """
+        Explains the failure issue in more detail using hard-coded text.
+        """
+        return pulumi.get(self, "detail")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The name of the failure.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GitHubEventsConfigResponse(dict):
     """
     GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
@@ -950,6 +998,67 @@ class GitHubEventsConfigResponse(dict):
 
 
 @pulumi.output_type
+class GitRepoSourceResponse(dict):
+    """
+    GitRepoSource describes a repo and ref of a code repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoType":
+            suggest = "repo_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitRepoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitRepoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitRepoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ref: str,
+                 repo_type: str,
+                 uri: str):
+        """
+        GitRepoSource describes a repo and ref of a code repository.
+        :param str ref: The branch or tag to use. Must start with "refs/" (required).
+        :param str repo_type: See RepoType below.
+        :param str uri: The URI of the repo (required).
+        """
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        The branch or tag to use. Must start with "refs/" (required).
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        """
+        See RepoType below.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the repo (required).
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class InlineSecretResponse(dict):
     """
     Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
@@ -1031,7 +1140,7 @@ class NetworkConfigResponse(dict):
         """
         Defines the network configuration for the pool.
         :param str egress_option: Option to configure network egress for the workers.
-        :param str peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        :param str peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
         """
         pulumi.set(__self__, "egress_option", egress_option)
         pulumi.set(__self__, "peered_network", peered_network)
@@ -1048,7 +1157,7 @@ class NetworkConfigResponse(dict):
     @pulumi.getter(name="peeredNetwork")
     def peered_network(self) -> str:
         """
-        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
         """
         return pulumi.get(self, "peered_network")
 
@@ -1056,12 +1165,12 @@ class NetworkConfigResponse(dict):
 @pulumi.output_type
 class PoolOptionResponse(dict):
     """
-    Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+    Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
     """
     def __init__(__self__, *,
                  name: str):
         """
-        Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         :param str name: The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
         """
         pulumi.set(__self__, "name", name)
@@ -1901,7 +2010,7 @@ class StorageSourceResponse(dict):
         Location of the source in an archive file in Google Cloud Storage.
         :param str bucket: Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         :param str generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        :param str object: Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        :param str object: Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "generation", generation)
@@ -1927,7 +2036,7 @@ class StorageSourceResponse(dict):
     @pulumi.getter
     def object(self) -> str:
         """
-        Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         """
         return pulumi.get(self, "object")
 
@@ -2112,8 +2221,8 @@ class WorkerConfigResponse(dict):
                  machine_type: str):
         """
         Defines the configuration to be used for creating workers in the pool.
-        :param str disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
-        :param str machine_type: Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+        :param str disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param str machine_type: Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
         """
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -2122,7 +2231,7 @@ class WorkerConfigResponse(dict):
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -2130,7 +2239,7 @@ class WorkerConfigResponse(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+        Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
         """
         return pulumi.get(self, "machine_type")
 

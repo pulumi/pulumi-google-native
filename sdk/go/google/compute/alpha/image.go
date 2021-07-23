@@ -44,7 +44,7 @@ type Image struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parameters of the raw disk image.
 	RawDisk ImageRawDiskResponseOutput `pulumi:"rawDisk"`
-	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
 	RolloutOverride RolloutPolicyResponseOutput `pulumi:"rolloutOverride"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
@@ -78,6 +78,8 @@ type Image struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Cloud Storage bucket storage location of the image (regional or multi-regional).
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses pulumi.StringArrayOutput `pulumi:"userLicenses"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +148,7 @@ type imageArgs struct {
 	// The parameters of the raw disk image.
 	RawDisk   *ImageRawDisk `pulumi:"rawDisk"`
 	RequestId *string       `pulumi:"requestId"`
-	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
 	RolloutOverride *RolloutPolicy `pulumi:"rolloutOverride"`
 	// Set the secure boot keys of shielded instance.
 	ShieldedInstanceInitialState *InitialStateConfig `pulumi:"shieldedInstanceInitialState"`
@@ -166,6 +168,8 @@ type imageArgs struct {
 	SourceType *ImageSourceType `pulumi:"sourceType"`
 	// Cloud Storage bucket storage location of the image (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses []string `pulumi:"userLicenses"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -197,7 +201,7 @@ type ImageArgs struct {
 	// The parameters of the raw disk image.
 	RawDisk   ImageRawDiskPtrInput
 	RequestId pulumi.StringPtrInput
-	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
 	RolloutOverride RolloutPolicyPtrInput
 	// Set the secure boot keys of shielded instance.
 	ShieldedInstanceInitialState InitialStateConfigPtrInput
@@ -217,6 +221,8 @@ type ImageArgs struct {
 	SourceType ImageSourceTypePtrInput
 	// Cloud Storage bucket storage location of the image (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses pulumi.StringArrayInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {

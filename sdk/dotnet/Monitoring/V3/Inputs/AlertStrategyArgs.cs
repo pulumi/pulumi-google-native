@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     public sealed class AlertStrategyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>
         [Input("notificationRateLimit")]
         public Input<Inputs.NotificationRateLimitArgs>? NotificationRateLimit { get; set; }

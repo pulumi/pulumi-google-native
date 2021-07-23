@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ResourceRecordResponse> ResourceRecords;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+        /// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
         /// </summary>
         public readonly string Url;
 

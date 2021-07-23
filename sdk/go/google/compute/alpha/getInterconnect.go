@@ -53,6 +53,10 @@ type LookupInterconnectResult struct {
 	LinkType string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location string `pulumi:"location"`
+	// Configuration to enable Media Access Control security (MACsec) on the Interconnect between Google and your on-premises router.
+	Macsec InterconnectMacsecResponse `pulumi:"macsec"`
+	// Enable or disable MACsec on this Interconnect. MACsec enablement will fail if the macsec object is not specified.
+	MacsecEnabled bool `pulumi:"macsecEnabled"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.

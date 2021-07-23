@@ -31,6 +31,7 @@ class ImageArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 rollout_override: Optional[pulumi.Input['RolloutPolicyArgs']] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input['InitialStateConfigArgs']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -39,7 +40,8 @@ class ImageArgs:
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_type: Optional[pulumi.Input['ImageSourceType']] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
@@ -54,6 +56,7 @@ class ImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input['RolloutPolicyArgs'] rollout_override: A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
         :param pulumi.Input['InitialStateConfigArgs'] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
         :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -63,6 +66,7 @@ class ImageArgs:
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -94,6 +98,8 @@ class ImageArgs:
             pulumi.set(__self__, "raw_disk", raw_disk)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if rollout_override is not None:
+            pulumi.set(__self__, "rollout_override", rollout_override)
         if shielded_instance_initial_state is not None:
             pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source_disk is not None:
@@ -112,6 +118,8 @@ class ImageArgs:
             pulumi.set(__self__, "source_type", source_type)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
+        if user_licenses is not None:
+            pulumi.set(__self__, "user_licenses", user_licenses)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -285,6 +293,18 @@ class ImageArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="rolloutOverride")
+    def rollout_override(self) -> Optional[pulumi.Input['RolloutPolicyArgs']]:
+        """
+        A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        """
+        return pulumi.get(self, "rollout_override")
+
+    @rollout_override.setter
+    def rollout_override(self, value: Optional[pulumi.Input['RolloutPolicyArgs']]):
+        pulumi.set(self, "rollout_override", value)
+
+    @property
     @pulumi.getter(name="shieldedInstanceInitialState")
     def shielded_instance_initial_state(self) -> Optional[pulumi.Input['InitialStateConfigArgs']]:
         """
@@ -392,6 +412,18 @@ class ImageArgs:
     def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "storage_locations", value)
 
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        """
+        return pulumi.get(self, "user_licenses")
+
+    @user_licenses.setter
+    def user_licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_licenses", value)
+
 
 class Image(pulumi.CustomResource):
     @overload
@@ -413,6 +445,7 @@ class Image(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 rollout_override: Optional[pulumi.Input[pulumi.InputType['RolloutPolicyArgs']]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
@@ -422,6 +455,7 @@ class Image(pulumi.CustomResource):
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_type: Optional[pulumi.Input['ImageSourceType']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Creates an image in the specified project using the data included in the request.
@@ -440,6 +474,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[pulumi.InputType['RolloutPolicyArgs']] rollout_override: A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
         :param pulumi.Input[pulumi.InputType['InitialStateConfigArgs']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
         :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -449,6 +484,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         ...
     @overload
@@ -489,6 +525,7 @@ class Image(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 rollout_override: Optional[pulumi.Input[pulumi.InputType['RolloutPolicyArgs']]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
@@ -498,6 +535,7 @@ class Image(pulumi.CustomResource):
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_type: Optional[pulumi.Input['ImageSourceType']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -525,6 +563,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_disk"] = raw_disk
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["rollout_override"] = rollout_override
             __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
@@ -534,6 +573,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_type"] = source_type
             __props__.__dict__["storage_locations"] = storage_locations
+            __props__.__dict__["user_licenses"] = user_licenses
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
@@ -580,6 +620,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["licenses"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["raw_disk"] = None
+        __props__.__dict__["rollout_override"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["shielded_instance_initial_state"] = None
@@ -595,6 +636,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["source_type"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["storage_locations"] = None
+        __props__.__dict__["user_licenses"] = None
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -718,6 +760,14 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "raw_disk")
 
     @property
+    @pulumi.getter(name="rolloutOverride")
+    def rollout_override(self) -> pulumi.Output['outputs.RolloutPolicyResponse']:
+        """
+        A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+        """
+        return pulumi.get(self, "rollout_override")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -836,4 +886,12 @@ class Image(pulumi.CustomResource):
         Cloud Storage bucket storage location of the image (regional or multi-regional).
         """
         return pulumi.get(self, "storage_locations")
+
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        """
+        return pulumi.get(self, "user_licenses")
 

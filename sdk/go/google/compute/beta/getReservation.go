@@ -38,6 +38,8 @@ type LookupReservationResult struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.

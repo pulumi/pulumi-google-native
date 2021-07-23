@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         public readonly ImmutableArray<string> OperationIds;
         /// <summary>
+        /// The default options for query interpretation
+        /// </summary>
+        public readonly Outputs.QueryInterpretationConfigResponse QueryInterpretationConfig;
+        /// <summary>
         /// Configuration for ranking results.
         /// </summary>
         public readonly Outputs.ScoringConfigResponse ScoringConfig;
@@ -89,6 +93,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
 
             ImmutableArray<string> operationIds,
 
+            Outputs.QueryInterpretationConfigResponse queryInterpretationConfig,
+
             Outputs.ScoringConfigResponse scoringConfig,
 
             ImmutableArray<Outputs.SourceConfigResponse> sourceConfig)
@@ -100,6 +106,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
             EnableAuditLog = enableAuditLog;
             Name = name;
             OperationIds = operationIds;
+            QueryInterpretationConfig = queryInterpretationConfig;
             ScoringConfig = scoringConfig;
             SourceConfig = sourceConfig;
         }

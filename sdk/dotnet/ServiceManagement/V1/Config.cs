@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<ImmutableArray<Outputs.EndpointResponse>> Endpoints { get; private set; } = null!;
 
         /// <summary>
-        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         /// </summary>
         [Output("enums")]
         public Output<ImmutableArray<Outputs.EnumResponse>> Enums { get; private set; } = null!;
@@ -154,13 +154,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<ImmutableArray<Outputs.TypeResponse>> SystemTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The product title for this service.
+        /// The product title for this service, it is the name displayed in Google Cloud Console.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         /// </summary>
         [Output("types")]
         public Output<ImmutableArray<Outputs.TypeResponse>> Types { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         private InputList<Inputs.EnumArgs>? _enums;
 
         /// <summary>
-        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         /// </summary>
         public InputList<Inputs.EnumArgs> Enums
         {
@@ -400,7 +400,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         }
 
         /// <summary>
-        /// The product title for this service.
+        /// The product title for this service, it is the name displayed in Google Cloud Console.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         private InputList<Inputs.TypeArgs>? _types;
 
         /// <summary>
-        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
         /// </summary>
         public InputList<Inputs.TypeArgs> Types
         {

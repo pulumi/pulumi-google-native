@@ -85,6 +85,10 @@ export interface GetTriggerResult {
      */
     readonly resourceName: string;
     /**
+     * The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+     */
+    readonly sourceToBuild: outputs.cloudbuild.v1.GitRepoSourceResponse;
+    /**
      * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
      */
     readonly substitutions: {[key: string]: string};

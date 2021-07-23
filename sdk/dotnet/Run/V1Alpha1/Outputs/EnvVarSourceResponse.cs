@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
     public sealed class EnvVarSourceResponse
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+        /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
         /// </summary>
         public readonly Outputs.ConfigMapKeySelectorResponse ConfigMapKeyRef;
         /// <summary>
-        /// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+        /// (Optional) Selects a key (version) of a secret in Secret Manager.
         /// </summary>
         public readonly Outputs.SecretKeySelectorResponse SecretKeyRef;
 

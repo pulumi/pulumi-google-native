@@ -312,6 +312,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_bytes"] = None
             __props__.__dict__["storage_bytes_status"] = None
+            __props__.__dict__["user_licenses"] = None
         super(Snapshot, __self__).__init__(
             'google-native:compute/beta:Snapshot',
             resource_name,
@@ -358,6 +359,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["storage_bytes"] = None
         __props__.__dict__["storage_bytes_status"] = None
         __props__.__dict__["storage_locations"] = None
+        __props__.__dict__["user_licenses"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -551,4 +553,12 @@ class Snapshot(pulumi.CustomResource):
         Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         return pulumi.get(self, "storage_locations")
+
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of user provided licenses represented by a list of URLs to the license resource.
+        """
+        return pulumi.get(self, "user_licenses")
 

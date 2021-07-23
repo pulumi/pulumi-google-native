@@ -197,183 +197,6 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
 }
 
-// Required. Scale tier of the hardware used for notebook execution.
-type ExecutionTemplateScaleTier string
-
-const (
-	// Unspecified Scale Tier.
-	ExecutionTemplateScaleTierScaleTierUnspecified = ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED")
-	// A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
-	ExecutionTemplateScaleTierBasic = ExecutionTemplateScaleTier("BASIC")
-	// Many workers and a few parameter servers.
-	ExecutionTemplateScaleTierStandard1 = ExecutionTemplateScaleTier("STANDARD_1")
-	// A large number of workers with many parameter servers.
-	ExecutionTemplateScaleTierPremium1 = ExecutionTemplateScaleTier("PREMIUM_1")
-	// A single worker instance with a K80 GPU.
-	ExecutionTemplateScaleTierBasicGpu = ExecutionTemplateScaleTier("BASIC_GPU")
-	// A single worker instance with a Cloud TPU.
-	ExecutionTemplateScaleTierBasicTpu = ExecutionTemplateScaleTier("BASIC_TPU")
-	// The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type.
-	ExecutionTemplateScaleTierCustom = ExecutionTemplateScaleTier("CUSTOM")
-)
-
-func (ExecutionTemplateScaleTier) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionTemplateScaleTier)(nil)).Elem()
-}
-
-func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput {
-	return pulumi.ToOutput(e).(ExecutionTemplateScaleTierOutput)
-}
-
-func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ExecutionTemplateScaleTierOutput)
-}
-
-func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
-	return e.ToExecutionTemplateScaleTierPtrOutputWithContext(context.Background())
-}
-
-func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
-	return ExecutionTemplateScaleTier(e).ToExecutionTemplateScaleTierOutputWithContext(ctx).ToExecutionTemplateScaleTierPtrOutputWithContext(ctx)
-}
-
-func (e ExecutionTemplateScaleTier) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ExecutionTemplateScaleTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ExecutionTemplateScaleTier) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ExecutionTemplateScaleTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ExecutionTemplateScaleTierOutput struct{ *pulumi.OutputState }
-
-func (ExecutionTemplateScaleTierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionTemplateScaleTier)(nil)).Elem()
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput {
-	return o
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierOutput {
-	return o
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
-	return o.ToExecutionTemplateScaleTierPtrOutputWithContext(context.Background())
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionTemplateScaleTier) *ExecutionTemplateScaleTier {
-		return &v
-	}).(ExecutionTemplateScaleTierPtrOutput)
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateScaleTier) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ExecutionTemplateScaleTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateScaleTier) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ExecutionTemplateScaleTierPtrOutput struct{ *pulumi.OutputState }
-
-func (ExecutionTemplateScaleTierPtrOutput) ElementType() reflect.Type {
-	return executionTemplateScaleTierPtrType
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
-	return o
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
-	return o
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExecutionTemplateScaleTier) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecutionTemplateScaleTierPtrOutput) Elem() ExecutionTemplateScaleTierOutput {
-	return o.ApplyT(func(v *ExecutionTemplateScaleTier) ExecutionTemplateScaleTier {
-		var ret ExecutionTemplateScaleTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecutionTemplateScaleTierOutput)
-}
-
-// ExecutionTemplateScaleTierInput is an input type that accepts ExecutionTemplateScaleTierArgs and ExecutionTemplateScaleTierOutput values.
-// You can construct a concrete instance of `ExecutionTemplateScaleTierInput` via:
-//
-//          ExecutionTemplateScaleTierArgs{...}
-type ExecutionTemplateScaleTierInput interface {
-	pulumi.Input
-
-	ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput
-	ToExecutionTemplateScaleTierOutputWithContext(context.Context) ExecutionTemplateScaleTierOutput
-}
-
-var executionTemplateScaleTierPtrType = reflect.TypeOf((**ExecutionTemplateScaleTier)(nil)).Elem()
-
-type ExecutionTemplateScaleTierPtrInput interface {
-	pulumi.Input
-
-	ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput
-	ToExecutionTemplateScaleTierPtrOutputWithContext(context.Context) ExecutionTemplateScaleTierPtrOutput
-}
-
-type executionTemplateScaleTierPtr string
-
-func ExecutionTemplateScaleTierPtr(v string) ExecutionTemplateScaleTierPtrInput {
-	return (*executionTemplateScaleTierPtr)(&v)
-}
-
-func (*executionTemplateScaleTierPtr) ElementType() reflect.Type {
-	return executionTemplateScaleTierPtrType
-}
-
-func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
-	return pulumi.ToOutput(in).(ExecutionTemplateScaleTierPtrOutput)
-}
-
-func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateScaleTierPtrOutput)
-}
-
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 type InstanceBootDiskType string
 
@@ -1225,6 +1048,177 @@ func (in *localDiskInitializeParamsDiskTypePtr) ToLocalDiskInitializeParamsDiskT
 	return pulumi.ToOutputWithContext(ctx, in).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
+// Optional. Type of reservation to consume
+type ReservationAffinityConsumeReservationType string
+
+const (
+	// Default type.
+	ReservationAffinityConsumeReservationTypeTypeUnspecified = ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED")
+	// Do not consume from any allocated capacity.
+	ReservationAffinityConsumeReservationTypeNoReservation = ReservationAffinityConsumeReservationType("NO_RESERVATION")
+	// Consume any reservation available.
+	ReservationAffinityConsumeReservationTypeAnyReservation = ReservationAffinityConsumeReservationType("ANY_RESERVATION")
+	// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+	ReservationAffinityConsumeReservationTypeSpecificReservation = ReservationAffinityConsumeReservationType("SPECIFIC_RESERVATION")
+)
+
+func (ReservationAffinityConsumeReservationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutput(e).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return e.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return ReservationAffinityConsumeReservationType(e).ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx).ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ReservationAffinityConsumeReservationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ReservationAffinityConsumeReservationTypeOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityConsumeReservationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinityConsumeReservationType) *ReservationAffinityConsumeReservationType {
+		return &v
+	}).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationAffinityConsumeReservationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationAffinityConsumeReservationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
+	return reservationAffinityConsumeReservationTypePtrType
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ReservationAffinityConsumeReservationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
+		var ret ReservationAffinityConsumeReservationType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+// ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
+// You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
+//
+//          ReservationAffinityConsumeReservationTypeArgs{...}
+type ReservationAffinityConsumeReservationTypeInput interface {
+	pulumi.Input
+
+	ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput
+	ToReservationAffinityConsumeReservationTypeOutputWithContext(context.Context) ReservationAffinityConsumeReservationTypeOutput
+}
+
+var reservationAffinityConsumeReservationTypePtrType = reflect.TypeOf((**ReservationAffinityConsumeReservationType)(nil)).Elem()
+
+type ReservationAffinityConsumeReservationTypePtrInput interface {
+	pulumi.Input
+
+	ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput
+	ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Context) ReservationAffinityConsumeReservationTypePtrOutput
+}
+
+type reservationAffinityConsumeReservationTypePtr string
+
+func ReservationAffinityConsumeReservationTypePtr(v string) ReservationAffinityConsumeReservationTypePtrInput {
+	return (*reservationAffinityConsumeReservationTypePtr)(&v)
+}
+
+func (*reservationAffinityConsumeReservationTypePtr) ElementType() reflect.Type {
+	return reservationAffinityConsumeReservationTypePtrType
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutput(in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
 // Accelerator model.
 type RuntimeAcceleratorConfigType string
 
@@ -1592,6 +1586,10 @@ const (
 	ScheduleStateEnumDisabled = ScheduleStateEnum("DISABLED")
 	// The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received.
 	ScheduleStateEnumUpdateFailed = ScheduleStateEnum("UPDATE_FAILED")
+	// The schedule resource is being created.
+	ScheduleStateEnumInitializing = ScheduleStateEnum("INITIALIZING")
+	// The schedule resource is being deleted.
+	ScheduleStateEnumDeleting = ScheduleStateEnum("DELETING")
 )
 
 func (ScheduleStateEnum) ElementType() reflect.Type {
@@ -2442,8 +2440,6 @@ func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutput
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigTypeOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigTypePtrOutput{})
-	pulumi.RegisterOutputType(ExecutionTemplateScaleTierOutput{})
-	pulumi.RegisterOutputType(ExecutionTemplateScaleTierPtrOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypeOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskTypeOutput{})
@@ -2454,6 +2450,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceNicTypePtrOutput{})
 	pulumi.RegisterOutputType(LocalDiskInitializeParamsDiskTypeOutput{})
 	pulumi.RegisterOutputType(LocalDiskInitializeParamsDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeAcceleratorConfigTypeOutput{})
 	pulumi.RegisterOutputType(RuntimeAcceleratorConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeAccessConfigAccessTypeOutput{})

@@ -161,6 +161,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> ProxyUri { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+        /// </summary>
+        [Output("reservationAffinity")]
+        public Output<Outputs.ReservationAffinityResponse> ReservationAffinity { get; private set; } = null!;
+
+        /// <summary>
         /// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         [Output("serviceAccount")]
@@ -405,6 +411,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
         /// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.

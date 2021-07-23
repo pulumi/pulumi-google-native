@@ -20,6 +20,7 @@ class ReservationInitArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,7 @@ class ReservationInitArgs:
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -39,6 +41,8 @@ class ReservationInitArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
         if specific_reservation_required is not None:
@@ -89,6 +93,18 @@ class ReservationInitArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
+        """
+        Share-settings for shared-reservation
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']]:
         """
@@ -134,6 +150,7 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -145,6 +162,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: Share-settings for shared-reservation
         :param pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -177,6 +195,7 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -196,6 +215,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["specific_reservation"] = specific_reservation
             __props__.__dict__["specific_reservation_required"] = specific_reservation_required
             __props__.__dict__["zone"] = zone
@@ -234,6 +254,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["share_settings"] = None
         __props__.__dict__["specific_reservation"] = None
         __props__.__dict__["specific_reservation_required"] = None
         __props__.__dict__["status"] = None
@@ -295,6 +316,14 @@ class Reservation(pulumi.CustomResource):
         Server-defined fully-qualified URL for this resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.ShareSettingsResponse']:
+        """
+        Share-settings for shared-reservation
+        """
+        return pulumi.get(self, "share_settings")
 
     @property
     @pulumi.getter(name="specificReservation")

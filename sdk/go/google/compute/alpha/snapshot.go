@@ -70,6 +70,8 @@ type Snapshot struct {
 	StorageBytesStatus pulumi.StringOutput `pulumi:"storageBytesStatus"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
+	// A list of user provided licenses represented by a list of URLs to the license resource.
+	UserLicenses pulumi.StringArrayOutput `pulumi:"userLicenses"`
 }
 
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.

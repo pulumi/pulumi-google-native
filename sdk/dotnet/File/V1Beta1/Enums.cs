@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// HIGH_SCALE instances offer expanded capacity and performance scaling capabilities.
         /// </summary>
         public static InstanceTier HighScaleSsd { get; } = new InstanceTier("HIGH_SCALE_SSD");
+        /// <summary>
+        /// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
+        /// </summary>
+        public static InstanceTier Enterprise { get; } = new InstanceTier("ENTERPRISE");
 
         public static bool operator ==(InstanceTier left, InstanceTier right) => left.Equals(right);
         public static bool operator !=(InstanceTier left, InstanceTier right) => !left.Equals(right);
@@ -53,6 +57,47 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceTier other && Equals(other);
         public bool Equals(InstanceTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkConfigConnectMode : IEquatable<NetworkConfigConnectMode>
+    {
+        private readonly string _value;
+
+        private NetworkConfigConnectMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// ConnectMode not set.
+        /// </summary>
+        public static NetworkConfigConnectMode ConnectModeUnspecified { get; } = new NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Connect via direct peering to the Filestore service.
+        /// </summary>
+        public static NetworkConfigConnectMode DirectPeering { get; } = new NetworkConfigConnectMode("DIRECT_PEERING");
+        /// <summary>
+        /// Connect to your Filestore instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Filestore.
+        /// </summary>
+        public static NetworkConfigConnectMode PrivateServiceAccess { get; } = new NetworkConfigConnectMode("PRIVATE_SERVICE_ACCESS");
+
+        public static bool operator ==(NetworkConfigConnectMode left, NetworkConfigConnectMode right) => left.Equals(right);
+        public static bool operator !=(NetworkConfigConnectMode left, NetworkConfigConnectMode right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkConfigConnectMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkConfigConnectMode other && Equals(other);
+        public bool Equals(NetworkConfigConnectMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -4968,7 +4968,7 @@ export namespace cloudbuild {
              */
             machineType?: pulumi.Input<enums.cloudbuild.v1.BuildOptionsMachineType>;
             /**
-             * Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+             * Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
              */
             pool?: pulumi.Input<inputs.cloudbuild.v1.PoolOptionArgs>;
             /**
@@ -5070,6 +5070,24 @@ export namespace cloudbuild {
         }
 
         /**
+         * GitRepoSource describes a repo and ref of a code repository.
+         */
+        export interface GitRepoSourceArgs {
+            /**
+             * The branch or tag to use. Must start with "refs/" (required).
+             */
+            ref?: pulumi.Input<string>;
+            /**
+             * See RepoType below.
+             */
+            repoType?: pulumi.Input<enums.cloudbuild.v1.GitRepoSourceRepoType>;
+            /**
+             * The URI of the repo (required).
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
          * Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
          */
         export interface InlineSecretArgs {
@@ -5092,13 +5110,13 @@ export namespace cloudbuild {
              */
             egressOption?: pulumi.Input<enums.cloudbuild.v1.NetworkConfigEgressOption>;
             /**
-             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
              */
             peeredNetwork: pulumi.Input<string>;
         }
 
         /**
-         * Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+         * Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
          */
         export interface PoolOptionArgs {
             /**
@@ -5286,7 +5304,7 @@ export namespace cloudbuild {
              */
             generation?: pulumi.Input<string>;
             /**
-             * Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+             * Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
              */
             object?: pulumi.Input<string>;
         }
@@ -5342,11 +5360,11 @@ export namespace cloudbuild {
          */
         export interface WorkerConfigArgs {
             /**
-             * Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+             * Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
              */
             diskSizeGb?: pulumi.Input<string>;
             /**
-             * Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+             * Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
              */
             machineType?: pulumi.Input<string>;
         }
@@ -5748,6 +5766,64 @@ export namespace cloudfunctions {
          * Describes the retry policy in case of function's execution failure. A function execution will be retried on any failure. A failed execution will be retried up to 7 days with an exponential backoff (capped at 10 seconds). Retried execution is charged as any other execution.
          */
         export interface RetryArgs {
+        }
+
+        /**
+         * Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+         */
+        export interface SecretEnvVarArgs {
+            /**
+             * Name of the environment variable.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * Name of the secret in secret manager (not the full resource name).
+             */
+            secret?: pulumi.Input<string>;
+            /**
+             * Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for a single version.
+         */
+        export interface SecretVersionArgs {
+            /**
+             * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
+             */
+            path?: pulumi.Input<string>;
+            /**
+             * Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container. Secret value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to retrieve the secret value.
+         */
+        export interface SecretVolumeArgs {
+            /**
+             * The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+             */
+            mountPath?: pulumi.Input<string>;
+            /**
+             * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+             */
+            project?: pulumi.Input<string>;
+            /**
+             * Name of the secret in secret manager (not the full resource name).
+             */
+            secret?: pulumi.Input<string>;
+            /**
+             * List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
+             */
+            versions?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.v1.SecretVersionArgs>[]>;
         }
 
         /**
@@ -6959,6 +7035,20 @@ export namespace cloudsearch {
              * This principal references a G Suite user account
              */
             gsuiteUserEmail?: pulumi.Input<string>;
+        }
+
+        /**
+         * Default options to interpret user query.
+         */
+        export interface QueryInterpretationConfigArgs {
+            /**
+             * Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+             */
+            forceDisableSupplementalResults?: pulumi.Input<boolean>;
+            /**
+             * Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+             */
+            forceVerbatimMode?: pulumi.Input<boolean>;
         }
 
         /**
@@ -8905,6 +8995,10 @@ export namespace compute {
              */
             connectionPersistenceOnUnhealthyBackends?: pulumi.Input<enums.compute.alpha.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>;
             /**
+             * Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+             */
+            enableStrongAffinity?: pulumi.Input<boolean>;
+            /**
              * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
              */
             idleTimeoutSec?: pulumi.Input<number>;
@@ -9261,7 +9355,7 @@ export namespace compute {
              */
             state?: pulumi.Input<enums.compute.alpha.DeprecationStatusState>;
             /**
-             * The rollout policy of this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state.
+             * The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
              */
             stateOverride?: pulumi.Input<inputs.compute.alpha.RolloutPolicyArgs>;
         }
@@ -10295,6 +10389,34 @@ export namespace compute {
              * URL of the Partner's portal for this Attachment. Partners may customise this to be a deep link to the specific resource on the Partner portal. This value may be validated to match approved Partner values.
              */
             portalUrl?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
+         */
+        export interface InterconnectMacsecArgs {
+            /**
+             * If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
+             */
+            failOpen?: pulumi.Input<boolean>;
+            /**
+             * A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK will be generated for each key in the key chain. Google router will automatically pick the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
+             */
+            preSharedKeys: pulumi.Input<pulumi.Input<inputs.compute.alpha.InterconnectMacsecPreSharedKeyArgs>[]>;
+        }
+
+        /**
+         * Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.
+         */
+        export interface InterconnectMacsecPreSharedKeyArgs {
+            /**
+             * A name for this pre-shared key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+             */
+            name: pulumi.Input<string>;
+            /**
+             * A RFC3339 timestamp on or after which the key is valid. startTime can be in the future. If the keychain has a single key, startTime can be omitted. If the keychain has multiple keys, startTime is mandatory for each key. The start times of keys must be in increasing order. The start times of two consecutive keys must be at least 6 hours apart.
+             */
+            startTime?: pulumi.Input<string>;
         }
 
         /**
@@ -11555,6 +11677,14 @@ export namespace compute {
              */
             availabilityDomain?: pulumi.Input<number>;
             /**
+             * Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
+             */
+            currentCpus?: pulumi.Input<number>;
+            /**
+             * Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
+             */
+            currentMemoryMb?: pulumi.Input<string>;
+            /**
              * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
              */
             hostErrorTimeoutSeconds?: pulumi.Input<number>;
@@ -11827,7 +11957,7 @@ export namespace compute {
              */
             banThreshold?: pulumi.Input<inputs.compute.alpha.SecurityPolicyRuleRateLimitOptionsThresholdArgs>;
             /**
-             * Action to take when requests are under the given threshold. When requests are throttled, this is also the action for all requests which are not dropped. Valid options are "allow", "fairshare", and "drop_overload".
+             * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
              */
             conformAction?: pulumi.Input<string>;
             /**
@@ -12969,6 +13099,10 @@ export namespace compute {
              */
             connectionPersistenceOnUnhealthyBackends?: pulumi.Input<enums.compute.beta.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>;
             /**
+             * Enable Strong Session Affinity. This is only available in External TCP/UDP load balancer.
+             */
+            enableStrongAffinity?: pulumi.Input<boolean>;
+            /**
              * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the maximum is 16 hours. This field will be supported only if the Connection Tracking key is less than 5-tuple.
              */
             idleTimeoutSec?: pulumi.Input<number>;
@@ -13277,6 +13411,10 @@ export namespace compute {
              * The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
              */
             state?: pulumi.Input<enums.compute.beta.DeprecationStatusState>;
+            /**
+             * The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
+             */
+            stateOverride?: pulumi.Input<inputs.compute.beta.RolloutPolicyArgs>;
         }
 
         /**
@@ -14458,6 +14596,28 @@ export namespace compute {
         }
 
         /**
+         * Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
+         */
+        export interface NetworkEndpointGroupServerlessDeploymentArgs {
+            /**
+             * The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+             */
+            platform?: pulumi.Input<string>;
+            /**
+             * The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
+             */
+            resource?: pulumi.Input<string>;
+            /**
+             * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
+             */
+            urlMask?: pulumi.Input<string>;
+            /**
+             * The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
+             */
+            version?: pulumi.Input<string>;
+        }
+
+        /**
          * A network interface resource attached to an instance.
          */
         export interface NetworkInterfaceArgs {
@@ -14485,6 +14645,10 @@ export namespace compute {
              * The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
              */
             nicType?: pulumi.Input<enums.compute.beta.NetworkInterfaceNicType>;
+            /**
+             * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+             */
+            queueCount?: pulumi.Input<number>;
             /**
              * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
              */
@@ -14783,6 +14947,10 @@ export namespace compute {
              */
             name?: pulumi.Input<string>;
             /**
+             * Share-settings for shared-reservation
+             */
+            shareSettings?: pulumi.Input<inputs.compute.beta.ShareSettingsArgs>;
+            /**
              * Reservation for instances with specific machine shapes.
              */
             specificReservation?: pulumi.Input<inputs.compute.beta.AllocationSpecificSKUReservationArgs>;
@@ -14996,6 +15164,20 @@ export namespace compute {
              * Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
              */
             startTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * A rollout policy configuration.
+         */
+        export interface RolloutPolicyArgs {
+            /**
+             * An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
+             */
+            defaultRolloutTime?: pulumi.Input<string>;
+            /**
+             * Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+             */
+            locationRolloutPolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
 
         /**
@@ -15421,6 +15603,10 @@ export namespace compute {
              */
             priority?: pulumi.Input<number>;
             /**
+             * Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+             */
+            rateLimitOptions?: pulumi.Input<inputs.compute.beta.SecurityPolicyRuleRateLimitOptionsArgs>;
+            /**
              * Parameters defining the redirect action. Cannot be specified for any other actions.
              */
             redirectOptions?: pulumi.Input<inputs.compute.beta.SecurityPolicyRuleRedirectOptionsArgs>;
@@ -15500,6 +15686,44 @@ export namespace compute {
             ports?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
+        export interface SecurityPolicyRuleRateLimitOptionsArgs {
+            /**
+             * Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+             */
+            banDurationSec?: pulumi.Input<number>;
+            /**
+             * Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+             */
+            banThreshold?: pulumi.Input<inputs.compute.beta.SecurityPolicyRuleRateLimitOptionsThresholdArgs>;
+            /**
+             * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+             */
+            conformAction?: pulumi.Input<string>;
+            /**
+             * Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+             */
+            enforceOnKey?: pulumi.Input<enums.compute.beta.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
+            /**
+             * When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+             */
+            exceedAction?: pulumi.Input<string>;
+            /**
+             * Threshold at which to begin ratelimiting.
+             */
+            rateLimitThreshold?: pulumi.Input<inputs.compute.beta.SecurityPolicyRuleRateLimitOptionsThresholdArgs>;
+        }
+
+        export interface SecurityPolicyRuleRateLimitOptionsThresholdArgs {
+            /**
+             * Number of HTTP(S) requests for calculating the threshold.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Interval over which the threshold is computed.
+             */
+            intervalSec?: pulumi.Input<number>;
+        }
+
         export interface SecurityPolicyRuleRedirectOptionsArgs {
             /**
              * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
@@ -15552,6 +15776,20 @@ export namespace compute {
              * The project id or number for the project to set the limit for.
              */
             projectIdOrNum?: pulumi.Input<string>;
+        }
+
+        /**
+         * The share setting for reservations and sole tenancy node groups.
+         */
+        export interface ShareSettingsArgs {
+            /**
+             * A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+             */
+            projects?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Type of sharing for this shared-reservation
+             */
+            shareType?: pulumi.Input<enums.compute.beta.ShareSettingsShareType>;
         }
 
         /**
@@ -17866,6 +18104,10 @@ export namespace compute {
              */
             nicType?: pulumi.Input<enums.compute.v1.NetworkInterfaceNicType>;
             /**
+             * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
+             */
+            queueCount?: pulumi.Input<number>;
+            /**
              * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
              */
             stackType?: pulumi.Input<enums.compute.v1.NetworkInterfaceStackType>;
@@ -19745,7 +19987,7 @@ export namespace container {
              */
             enabled?: pulumi.Input<boolean>;
             /**
-             * Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+             * Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
              */
             maxNodeCount?: pulumi.Input<number>;
             /**
@@ -20841,7 +21083,7 @@ export namespace container {
              */
             enabled?: pulumi.Input<boolean>;
             /**
-             * Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+             * Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
              */
             maxNodeCount?: pulumi.Input<number>;
             /**
@@ -35179,7 +35421,7 @@ export namespace file {
              */
             capacityGb?: pulumi.Input<string>;
             /**
-             * The name of the file share (must be 16 characters or less).
+             * The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
              */
             name?: pulumi.Input<string>;
             /**
@@ -35196,6 +35438,10 @@ export namespace file {
          * Network configuration for the instance.
          */
         export interface NetworkConfigArgs {
+            /**
+             * The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+             */
+            connectMode?: pulumi.Input<enums.file.v1beta1.NetworkConfigConnectMode>;
             /**
              * Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
              */
@@ -36362,10 +36608,6 @@ export namespace gkehub {
          */
         export interface MultiClusterIngressFeatureSpecArgs {
             /**
-             * Customer's billing structure
-             */
-            billing?: pulumi.Input<enums.gkehub.v1alpha.MultiClusterIngressFeatureSpecBilling>;
-            /**
              * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
              */
             configMembership?: pulumi.Input<string>;
@@ -36593,10 +36835,6 @@ export namespace gkehub {
          * **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
          */
         export interface MultiClusterIngressFeatureSpecArgs {
-            /**
-             * Customer's billing structure
-             */
-            billing?: pulumi.Input<enums.gkehub.v1beta.MultiClusterIngressFeatureSpecBilling>;
             /**
              * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
              */
@@ -37392,6 +37630,10 @@ export namespace healthcare {
              * The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
              */
             pubsubTopic?: pulumi.Input<string>;
+            /**
+             * Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+             */
+            sendForBulkImport?: pulumi.Input<boolean>;
         }
 
         /**
@@ -38355,6 +38597,16 @@ export namespace metastore {
         }
 
         /**
+         * Encryption settings for the service.
+         */
+        export interface EncryptionConfigArgs {
+            /**
+             * The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+             */
+            kmsKey?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprArgs {
@@ -39290,6 +39542,10 @@ export namespace ml {
              * Optional. The maximum job wait time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, there is no limit to the wait time. The minimum for this field is `1800s` (30 minutes). If the training job has not entered the `RUNNING` state after this duration, AI Platform Training cancels it. After the job begins running, it can no longer be cancelled due to the maximum wait time. Therefore the duration limited by this field does not overlap with the duration limited by Scheduling.max_running_time. For example, if the job temporarily stops running and retries due to a [VM restart](/ai-platform/training/docs/overview#restarts), this cannot lead to a maximum wait time cancellation. However, independently of this constraint, AI Platform Training might stop a job if there are too many retries due to exhausted resources in a region. The following example describes how you might use this field: To cancel your job if it doesn't start running within 1 hour, set this field to `3600s` (1 hour * 60 minutes / hour * 60 seconds / minute). If the job is still in the `QUEUED` or `PREPARING` state after an hour of waiting, AI Platform Training cancels the job. If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ```yaml trainingInput: scheduling: maxWaitTime: 3600s ```
              */
             maxWaitTime?: pulumi.Input<string>;
+            /**
+             * Optional. Job scheduling will be based on this priority, which in the range [0, 1000]. The bigger the number, the higher the priority. Default to 0 if not set. If there are multiple jobs requesting same type of accelerators, the high priority job will be scheduled prior to ones with low priority.
+             */
+            priority?: pulumi.Input<number>;
         }
 
         /**
@@ -40001,7 +40257,7 @@ export namespace monitoring {
          */
         export interface AlertStrategyArgs {
             /**
-             * Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+             * Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
              */
             notificationRateLimit?: pulumi.Input<inputs.monitoring.v3.NotificationRateLimitArgs>;
         }
@@ -40309,7 +40565,7 @@ export namespace monitoring {
         }
 
         /**
-         * A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+         * A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
          */
         export interface LogMatchArgs {
             /**
@@ -40437,7 +40693,7 @@ export namespace monitoring {
              */
             labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+             * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
              */
             type: pulumi.Input<string>;
         }
@@ -41100,9 +41356,9 @@ export namespace networksecurity {
          */
         export interface MTLSPolicyArgs {
             /**
-             * Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+             *  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
              */
-            clientValidationCa: pulumi.Input<pulumi.Input<inputs.networksecurity.v1beta1.ValidationCAArgs>[]>;
+            clientValidationCa?: pulumi.Input<pulumi.Input<inputs.networksecurity.v1beta1.ValidationCAArgs>[]>;
         }
 
         /**
@@ -41245,10 +41501,6 @@ export namespace notebooks {
              */
             paramsYamlFile?: pulumi.Input<string>;
             /**
-             * Scale tier of the hardware used for notebook execution.
-             */
-            scaleTier: pulumi.Input<enums.notebooks.v1.ExecutionTemplateScaleTier>;
-            /**
              * The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
              */
             serviceAccount?: pulumi.Input<string>;
@@ -41329,6 +41581,24 @@ export namespace notebooks {
         }
 
         /**
+         * Reservation Affinity for consuming Zonal reservation.
+         */
+        export interface ReservationAffinityArgs {
+            /**
+             * Optional. Type of reservation to consume
+             */
+            consumeReservationType?: pulumi.Input<enums.notebooks.v1.ReservationAffinityConsumeReservationType>;
+            /**
+             * Optional. Corresponds to the label key of reservation resource.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Optional. Corresponds to the label values of reservation resource.
+             */
+            values?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
          * Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
          */
         export interface RuntimeAcceleratorConfigArgs {
@@ -41387,11 +41657,11 @@ export namespace notebooks {
              */
             enableHealthMonitoring?: pulumi.Input<boolean>;
             /**
-             * Runtime will automatically shutdown after idle_shutdown_time. Default: False
+             * Runtime will automatically shutdown after idle_shutdown_time. Default: True
              */
             idleShutdown?: pulumi.Input<boolean>;
             /**
-             * Time in minutes to wait before shuting down runtime. Default: 90 minutes
+             * Time in minutes to wait before shuting down runtime. Default: 180 minutes
              */
             idleShutdownTimeout?: pulumi.Input<number>;
             /**
@@ -45429,7 +45699,7 @@ export namespace run {
              */
             resourceRecords?: pulumi.Input<pulumi.Input<inputs.run.v1.ResourceRecordArgs>[]>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+             * Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
              */
             url?: pulumi.Input<string>;
         }
@@ -45781,7 +46051,7 @@ export namespace run {
          */
         export interface RevisionSpecArgs {
             /**
-             * (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+             * Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
              */
             containerConcurrency?: pulumi.Input<number>;
             /**
@@ -45956,7 +46226,7 @@ export namespace run {
              */
             configurationName?: pulumi.Input<string>;
             /**
-             * LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+             * Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
              */
             latestRevision?: pulumi.Input<boolean>;
             /**
@@ -45968,7 +46238,7 @@ export namespace run {
              */
             revisionName?: pulumi.Input<string>;
             /**
-             * Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+             * Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
              */
             tag?: pulumi.Input<string>;
         }
@@ -46011,21 +46281,7 @@ export namespace run {
 
     export namespace v1alpha1 {
         /**
-         * Adds and removes POSIX capabilities from running containers.
-         */
-        export interface CapabilitiesArgs {
-            /**
-             * Added capabilities +optional
-             */
-            add?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Removed capabilities +optional
-             */
-            drop?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+         * Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
          */
         export interface ConfigMapEnvSourceArgs {
             /**
@@ -46033,21 +46289,21 @@ export namespace run {
              */
             localObjectReference?: pulumi.Input<inputs.run.v1alpha1.LocalObjectReferenceArgs>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+             * The ConfigMap to select from.
              */
             name?: pulumi.Input<string>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined +optional
+             * (Optional) Specify whether the ConfigMap must be defined
              */
             optional?: pulumi.Input<boolean>;
         }
 
         /**
-         * Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
+         * Not supported by Cloud Run Selects a key from a ConfigMap.
          */
         export interface ConfigMapKeySelectorArgs {
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.
+             * The key to select.
              */
             key?: pulumi.Input<string>;
             /**
@@ -46055,25 +46311,25 @@ export namespace run {
              */
             localObjectReference?: pulumi.Input<inputs.run.v1alpha1.LocalObjectReferenceArgs>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
+             * The ConfigMap to select from.
              */
             name?: pulumi.Input<string>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key must be defined +optional
+             * (Optional) Specify whether the ConfigMap or its key must be defined
              */
             optional?: pulumi.Input<boolean>;
         }
 
         /**
-         * Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+         * Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
          */
         export interface ConfigMapVolumeSourceArgs {
             /**
-             * Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+             * (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
              */
             defaultMode?: pulumi.Input<number>;
             /**
-             * If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+             * (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
              */
             items?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.KeyToPathArgs>[]>;
             /**
@@ -46081,7 +46337,7 @@ export namespace run {
              */
             name?: pulumi.Input<string>;
             /**
-             * Specify whether the Secret or its keys must be defined.
+             * (Optional) Specify whether the Secret or its keys must be defined.
              */
             optional?: pulumi.Input<boolean>;
         }
@@ -46091,87 +46347,68 @@ export namespace run {
          */
         export interface ContainerArgs {
             /**
-             * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
+             * (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
              */
             args?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional
-             */
             command?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * List of environment variables to set in the container. Cannot be updated. +optional
+             * (Optional) List of environment variables to set in the container.
              */
             env?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.EnvVarArgs>[]>;
             /**
-             * List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+             * (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
              */
             envFrom?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.EnvFromSourceArgs>[]>;
             /**
-             * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images
+             * Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
              */
             image?: pulumi.Input<string>;
             /**
-             * Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+             * (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
              */
             imagePullPolicy?: pulumi.Input<string>;
             /**
-             * Actions that the management system should take in response to container lifecycle events. Cannot be updated. +optional
-             */
-            lifecycle?: pulumi.Input<inputs.run.v1alpha1.LifecycleArgs>;
-            /**
-             * Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+             * (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
              */
             livenessProbe?: pulumi.Input<inputs.run.v1alpha1.ProbeArgs>;
             /**
-             * Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot be updated.
+             * (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
              */
             name?: pulumi.Input<string>;
             /**
-             * List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be updated. +optional
+             * (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
              */
             ports?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.ContainerPortArgs>[]>;
             /**
-             * Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+             * (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
              */
             readinessProbe?: pulumi.Input<inputs.run.v1alpha1.ProbeArgs>;
             /**
-             * Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+             * (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
              */
             resources?: pulumi.Input<inputs.run.v1alpha1.ResourceRequirementsArgs>;
             /**
-             * Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+             * (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
              */
             securityContext?: pulumi.Input<inputs.run.v1alpha1.SecurityContextArgs>;
             /**
-             * Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false. +optional
+             * (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
              */
-            stdin?: pulumi.Input<boolean>;
+            startupProbe?: pulumi.Input<inputs.run.v1alpha1.ProbeArgs>;
             /**
-             * Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false +optional
-             */
-            stdinOnce?: pulumi.Input<boolean>;
-            /**
-             * Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+             * (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
              */
             terminationMessagePath?: pulumi.Input<string>;
             /**
-             * Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. +optional
+             * (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
              */
             terminationMessagePolicy?: pulumi.Input<string>;
             /**
-             * Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false. +optional
-             */
-            tty?: pulumi.Input<boolean>;
-            /**
-             * volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future. +optional
-             */
-            volumeDevices?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.VolumeDeviceArgs>[]>;
-            /**
-             * Pod volumes to mount into the container's filesystem. Cannot be updated. +optional
+             * (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
              */
             volumeMounts?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.VolumeMountArgs>[]>;
             /**
-             * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. +optional
+             * (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
              */
             workingDir?: pulumi.Input<string>;
         }
@@ -46181,41 +46418,33 @@ export namespace run {
          */
         export interface ContainerPortArgs {
             /**
-             * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
+             * (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
              */
             containerPort?: pulumi.Input<number>;
             /**
-             * What host IP to bind the external port to. +optional
-             */
-            hostIP?: pulumi.Input<string>;
-            /**
-             * Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this. +optional
-             */
-            hostPort?: pulumi.Input<number>;
-            /**
-             * If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services. +optional
+             * (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
              */
             name?: pulumi.Input<string>;
             /**
-             * Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional
+             * (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
              */
             protocol?: pulumi.Input<string>;
         }
 
         /**
-         * EnvFromSource represents the source of a set of ConfigMaps
+         * Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
          */
         export interface EnvFromSourceArgs {
             /**
-             * The ConfigMap to select from +optional
+             * (Optional) The ConfigMap to select from
              */
             configMapRef?: pulumi.Input<inputs.run.v1alpha1.ConfigMapEnvSourceArgs>;
             /**
-             * An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+             * (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
              */
             prefix?: pulumi.Input<string>;
             /**
-             * The Secret to select from +optional
+             * (Optional) The Secret to select from
              */
             secretRef?: pulumi.Input<inputs.run.v1alpha1.SecretEnvSourceArgs>;
         }
@@ -46229,67 +46458,63 @@ export namespace run {
              */
             name?: pulumi.Input<string>;
             /**
-             * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
+             * (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
              */
             value?: pulumi.Input<string>;
             /**
-             * Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+             * (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
              */
             valueFrom?: pulumi.Input<inputs.run.v1alpha1.EnvVarSourceArgs>;
         }
 
         /**
-         * Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
+         * EnvVarSource represents a source for the value of an EnvVar.
          */
         export interface EnvVarSourceArgs {
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
+             * (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
              */
             configMapKeyRef?: pulumi.Input<inputs.run.v1alpha1.ConfigMapKeySelectorArgs>;
             /**
-             * Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
+             * (Optional) Selects a key (version) of a secret in Secret Manager.
              */
             secretKeyRef?: pulumi.Input<inputs.run.v1alpha1.SecretKeySelectorArgs>;
         }
 
         /**
-         * ExecAction describes a "run in container" action.
+         * Not supported by Cloud Run ExecAction describes a "run in container" action.
          */
         export interface ExecActionArgs {
             /**
-             * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+             * (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
              */
             command?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
-         * HTTPGetAction describes an action based on HTTP Get requests.
+         * Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
          */
         export interface HTTPGetActionArgs {
             /**
-             * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. +optional
+             * (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
              */
             host?: pulumi.Input<string>;
             /**
-             * Custom headers to set in the request. HTTP allows repeated headers. +optional
+             * (Optional) Custom headers to set in the request. HTTP allows repeated headers.
              */
             httpHeaders?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.HTTPHeaderArgs>[]>;
             /**
-             * Path to access on the HTTP server. +optional
+             * (Optional) Path to access on the HTTP server.
              */
             path?: pulumi.Input<string>;
             /**
-             * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-             */
-            port?: pulumi.Input<inputs.run.v1alpha1.IntOrStringArgs>;
-            /**
-             * Scheme to use for connecting to the host. Defaults to HTTP. +optional
+             * (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
              */
             scheme?: pulumi.Input<string>;
         }
 
         /**
-         * HTTPHeader describes a custom header to be used in HTTP probes
+         * Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
          */
         export interface HTTPHeaderArgs {
             /**
@@ -46300,24 +46525,6 @@ export namespace run {
              * The header field value
              */
             value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Handler defines a specific action that should be taken
-         */
-        export interface HandlerArgs {
-            /**
-             * One and only one of the following should be specified. Exec specifies the action to take. +optional
-             */
-            exec?: pulumi.Input<inputs.run.v1alpha1.ExecActionArgs>;
-            /**
-             * HTTPGet specifies the http request to perform. +optional
-             */
-            httpGet?: pulumi.Input<inputs.run.v1alpha1.HTTPGetActionArgs>;
-            /**
-             * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-             */
-            tcpSocket?: pulumi.Input<inputs.run.v1alpha1.TCPSocketActionArgs>;
         }
 
         /**
@@ -46392,24 +46599,6 @@ export namespace run {
              * Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
              */
             spec?: pulumi.Input<inputs.run.v1alpha1.InstanceSpecArgs>;
-        }
-
-        /**
-         * IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
-         */
-        export interface IntOrStringArgs {
-            /**
-             * The int value.
-             */
-            intVal?: pulumi.Input<number>;
-            /**
-             * The string value.
-             */
-            strVal?: pulumi.Input<string>;
-            /**
-             * The type of the value.
-             */
-            type?: pulumi.Input<number>;
         }
 
         /**
@@ -46519,81 +46708,67 @@ export namespace run {
          */
         export interface KeyToPathArgs {
             /**
-             * Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+             * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
              */
             key?: pulumi.Input<string>;
             /**
-             * Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
+             * (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
              */
             mode?: pulumi.Input<number>;
             /**
-             * Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+             * The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
              */
             path?: pulumi.Input<string>;
         }
 
         /**
-         * Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted.
-         */
-        export interface LifecycleArgs {
-            /**
-             * PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-             */
-            postStart?: pulumi.Input<inputs.run.v1alpha1.HandlerArgs>;
-            /**
-             * PreStop is called immediately before a container is terminated. The container is terminated after the handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the handler, the container is eventually terminated. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-             */
-            preStop?: pulumi.Input<inputs.run.v1alpha1.HandlerArgs>;
-        }
-
-        /**
-         * LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+         * Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
          */
         export interface LocalObjectReferenceArgs {
             /**
-             * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+             * (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
              */
             name?: pulumi.Input<string>;
         }
 
         /**
-         * ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+         * k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
          */
         export interface ObjectMetaArgs {
             /**
-             * Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+             * (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
              */
             annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional
+             * (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
              */
             clusterName?: pulumi.Input<string>;
             /**
-             * CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+             * (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
              */
             creationTimestamp?: pulumi.Input<string>;
             /**
-             * Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional
+             * (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
              */
             deletionGracePeriodSeconds?: pulumi.Input<number>;
             /**
-             * DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+             * (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
              */
             deletionTimestamp?: pulumi.Input<string>;
             /**
-             * Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional +patchStrategy=merge
+             * (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
              */
             finalizers?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string generateName = 2;
+             * (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
              */
             generateName?: pulumi.Input<string>;
             /**
-             * A sequence number representing a specific generation of the desired state. Populated by the system. Read-only. +optional
+             * (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
              */
             generation?: pulumi.Input<number>;
             /**
-             * Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels +optional
+             * (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -46605,19 +46780,19 @@ export namespace run {
              */
             namespace?: pulumi.Input<string>;
             /**
-             * List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected. +optional
+             * (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
              */
             ownerReferences?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.OwnerReferenceArgs>[]>;
             /**
-             * An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
+             * Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
              */
             resourceVersion?: pulumi.Input<string>;
             /**
-             * SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink = 4;
+             * (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
              */
             selfLink?: pulumi.Input<string>;
             /**
-             * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+             * (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
              */
             uid?: pulumi.Input<string>;
         }
@@ -46653,31 +46828,39 @@ export namespace run {
         }
 
         /**
-         * Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+         * Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
          */
         export interface ProbeArgs {
             /**
-             * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. +optional
+             * (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+             */
+            exec?: pulumi.Input<inputs.run.v1alpha1.ExecActionArgs>;
+            /**
+             * (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
              */
             failureThreshold?: pulumi.Input<number>;
             /**
-             * The action taken to determine the health of a container
+             * (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
              */
-            handler?: pulumi.Input<inputs.run.v1alpha1.HandlerArgs>;
+            httpGet?: pulumi.Input<inputs.run.v1alpha1.HTTPGetActionArgs>;
             /**
-             * Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+             * (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
              */
             initialDelaySeconds?: pulumi.Input<number>;
             /**
-             * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+             * (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
              */
             periodSeconds?: pulumi.Input<number>;
             /**
-             * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1. +optional
+             * (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
              */
             successThreshold?: pulumi.Input<number>;
             /**
-             * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+             * (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+             */
+            tcpSocket?: pulumi.Input<inputs.run.v1alpha1.TCPSocketActionArgs>;
+            /**
+             * (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
              */
             timeoutSeconds?: pulumi.Input<number>;
         }
@@ -46687,39 +46870,17 @@ export namespace run {
          */
         export interface ResourceRequirementsArgs {
             /**
-             * Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+             * (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
             limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+             * (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
              */
             requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
 
         /**
-         * SELinuxOptions are the labels to be applied to the container
-         */
-        export interface SELinuxOptionsArgs {
-            /**
-             * Level is SELinux level label that applies to the container. +optional
-             */
-            level?: pulumi.Input<string>;
-            /**
-             * Role is a SELinux role label that applies to the container. +optional
-             */
-            role?: pulumi.Input<string>;
-            /**
-             * Type is a SELinux type label that applies to the container. +optional
-             */
-            type?: pulumi.Input<string>;
-            /**
-             * User is a SELinux user label that applies to the container. +optional
-             */
-            user?: pulumi.Input<string>;
-        }
-
-        /**
-         * SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+         * Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
          */
         export interface SecretEnvSourceArgs {
             /**
@@ -46727,21 +46888,21 @@ export namespace run {
              */
             localObjectReference?: pulumi.Input<inputs.run.v1alpha1.LocalObjectReferenceArgs>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+             * The Secret to select from.
              */
             name?: pulumi.Input<string>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined +optional
+             * (Optional) Specify whether the Secret must be defined
              */
             optional?: pulumi.Input<boolean>;
         }
 
         /**
-         * Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+         * SecretKeySelector selects a key of a Secret.
          */
         export interface SecretKeySelectorArgs {
             /**
-             * Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+             * A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
              */
             key?: pulumi.Input<string>;
             /**
@@ -46749,91 +46910,63 @@ export namespace run {
              */
             localObjectReference?: pulumi.Input<inputs.run.v1alpha1.LocalObjectReferenceArgs>;
             /**
-             * Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+             * The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
              */
             name?: pulumi.Input<string>;
             /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
+             * (Optional) Specify whether the Secret or its key must be defined
              */
             optional?: pulumi.Input<boolean>;
         }
 
         /**
-         * The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+         * The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
          */
         export interface SecretVolumeSourceArgs {
             /**
-             * Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+             * (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
              */
             defaultMode?: pulumi.Input<number>;
             /**
-             * Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+             * (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
              */
             items?: pulumi.Input<pulumi.Input<inputs.run.v1alpha1.KeyToPathArgs>[]>;
             /**
-             * Specify whether the Secret or its keys must be defined.
+             * (Optional) Specify whether the Secret or its keys must be defined.
              */
             optional?: pulumi.Input<boolean>;
             /**
-             * Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+             * The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
              */
             secretName?: pulumi.Input<string>;
         }
 
         /**
-         * SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+         * Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
          */
         export interface SecurityContextArgs {
             /**
-             * AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional
-             */
-            allowPrivilegeEscalation?: pulumi.Input<boolean>;
-            /**
-             * The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. +optional
-             */
-            capabilities?: pulumi.Input<inputs.run.v1alpha1.CapabilitiesArgs>;
-            /**
-             * Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional
-             */
-            privileged?: pulumi.Input<boolean>;
-            /**
-             * Whether this container has a read-only root filesystem. Default is false. +optional
-             */
-            readOnlyRootFilesystem?: pulumi.Input<boolean>;
-            /**
-             * The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-             */
-            runAsGroup?: pulumi.Input<number>;
-            /**
-             * Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-             */
-            runAsNonRoot?: pulumi.Input<boolean>;
-            /**
-             * The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
+             * (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
              */
             runAsUser?: pulumi.Input<number>;
-            /**
-             * The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-             */
-            seLinuxOptions?: pulumi.Input<inputs.run.v1alpha1.SELinuxOptionsArgs>;
         }
 
         /**
-         * TCPSocketAction describes an action based on opening a socket
+         * Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
          */
         export interface TCPSocketActionArgs {
             /**
-             * Optional: Host name to connect to, defaults to the pod IP. +optional
+             * (Optional) Optional: Host name to connect to, defaults to the pod IP.
              */
             host?: pulumi.Input<string>;
             /**
-             * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+             * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
              */
-            port?: pulumi.Input<inputs.run.v1alpha1.IntOrStringArgs>;
+            port?: pulumi.Input<number>;
         }
 
         /**
-         * Volume represents a named volume in a container.
+         * Not supported by Cloud Run Volume represents a named volume in a container.
          */
         export interface VolumeArgs {
             configMap?: pulumi.Input<inputs.run.v1alpha1.ConfigMapVolumeSourceArgs>;
@@ -46845,21 +46978,7 @@ export namespace run {
         }
 
         /**
-         * volumeDevice describes a mapping of a raw block device within a container.
-         */
-        export interface VolumeDeviceArgs {
-            /**
-             * devicePath is the path inside of the container that the device will be mapped to.
-             */
-            devicePath?: pulumi.Input<string>;
-            /**
-             * name must match the name of a persistentVolumeClaim in the pod
-             */
-            name?: pulumi.Input<string>;
-        }
-
-        /**
-         * VolumeMount describes a mounting of a Volume within a container.
+         * Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
          */
         export interface VolumeMountArgs {
             /**
@@ -46867,19 +46986,15 @@ export namespace run {
              */
             mountPath?: pulumi.Input<string>;
             /**
-             * mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-             */
-            mountPropagation?: pulumi.Input<string>;
-            /**
              * This must match the Name of a Volume.
              */
             name?: pulumi.Input<string>;
             /**
-             * Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
+             * (Optional) Only true is accepted. Defaults to true.
              */
             readOnly?: pulumi.Input<boolean>;
             /**
-             * Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). +optional
+             * (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
              */
             subPath?: pulumi.Input<string>;
         }
@@ -47814,7 +47929,7 @@ export namespace servicemanagement {
              */
             serviceRootUrl?: pulumi.Input<string>;
             /**
-             * A short summary of what the service does. Can only be provided by plain text.
+             * A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
              */
             summary?: pulumi.Input<string>;
         }
@@ -47828,11 +47943,11 @@ export namespace servicemanagement {
              */
             deprecationDescription?: pulumi.Input<string>;
             /**
-             * Description of the selected API(s).
+             * The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
              */
             description?: pulumi.Input<string>;
             /**
-             * The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+             * The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
              */
             selector?: pulumi.Input<string>;
         }
@@ -48326,7 +48441,7 @@ export namespace servicemanagement {
          */
         export interface PageArgs {
             /**
-             * The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+             * The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
              */
             content?: pulumi.Input<string>;
             /**
@@ -48725,7 +48840,7 @@ export namespace sqladmin {
              */
             location?: pulumi.Input<string>;
             /**
-             * Reserved for future use.
+             * (Postgres only) Whether point in time recovery is enabled.
              */
             pointInTimeRecoveryEnabled?: pulumi.Input<boolean>;
             /**
@@ -49195,6 +49310,10 @@ export namespace sqladmin {
              * If the scheduled maintenance can be rescheduled.
              */
             canReschedule?: pulumi.Input<boolean>;
+            /**
+             * Maintenance cannot be rescheduled to start beyond this deadline.
+             */
+            scheduleDeadlineTime?: pulumi.Input<string>;
             /**
              * The start time of any upcoming scheduled maintenance for this instance.
              */
@@ -49922,7 +50041,7 @@ export namespace storagetransfer {
         }
 
         /**
-         * Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+         * Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving PosixFilesystem.
          */
         export interface ObjectConditionsArgs {
             /**
@@ -50194,6 +50313,10 @@ export namespace testing {
              * A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
              */
             roboDirectives?: pulumi.Input<pulumi.Input<inputs.testing.v1.RoboDirectiveArgs>[]>;
+            /**
+             * The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+             */
+            roboMode?: pulumi.Input<enums.testing.v1.AndroidRoboTestRoboMode>;
             /**
              * A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
              */
@@ -50588,13 +50711,6 @@ export namespace testing {
             uri?: pulumi.Input<string>;
         }
 
-        export interface SystraceSetupArgs {
-            /**
-             * Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-             */
-            durationSeconds?: pulumi.Input<number>;
-        }
-
         /**
          * A description of how to set up the Android device prior to running the test.
          */
@@ -50627,10 +50743,6 @@ export namespace testing {
              * The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
              */
             networkProfile?: pulumi.Input<string>;
-            /**
-             * Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-             */
-            systrace?: pulumi.Input<inputs.testing.v1.SystraceSetupArgs>;
         }
 
         /**
