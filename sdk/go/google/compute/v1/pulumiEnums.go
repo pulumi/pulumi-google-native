@@ -843,7 +843,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -5785,7 +5785,7 @@ func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleDirectionPtrOutput)
 }
 
-// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type ForwardingRuleIpProtocol string
 
 const (
@@ -6120,7 +6120,7 @@ func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpVersionPtrOutput)
 }
 
-// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
 type ForwardingRuleLoadBalancingScheme string
 
 const (
@@ -6453,6 +6453,177 @@ func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutput() F
 
 func (in *forwardingRuleNetworkTierPtr) ToForwardingRuleNetworkTierPtrOutputWithContext(ctx context.Context) ForwardingRuleNetworkTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleNetworkTierPtrOutput)
+}
+
+type ForwardingRulePscConnectionStatus string
+
+const (
+	// The connection has been accepted by the producer.
+	ForwardingRulePscConnectionStatusAccepted = ForwardingRulePscConnectionStatus("ACCEPTED")
+	// The connection has been closed by the producer and will not serve traffic going forward.
+	ForwardingRulePscConnectionStatusClosed = ForwardingRulePscConnectionStatus("CLOSED")
+	// The connection is pending acceptance by the producer.
+	ForwardingRulePscConnectionStatusPending = ForwardingRulePscConnectionStatus("PENDING")
+	// The connection has been rejected by the producer.
+	ForwardingRulePscConnectionStatusRejected          = ForwardingRulePscConnectionStatus("REJECTED")
+	ForwardingRulePscConnectionStatusStatusUnspecified = ForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED")
+)
+
+func (ForwardingRulePscConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRulePscConnectionStatus)(nil)).Elem()
+}
+
+func (e ForwardingRulePscConnectionStatus) ToForwardingRulePscConnectionStatusOutput() ForwardingRulePscConnectionStatusOutput {
+	return pulumi.ToOutput(e).(ForwardingRulePscConnectionStatusOutput)
+}
+
+func (e ForwardingRulePscConnectionStatus) ToForwardingRulePscConnectionStatusOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ForwardingRulePscConnectionStatusOutput)
+}
+
+func (e ForwardingRulePscConnectionStatus) ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput {
+	return e.ToForwardingRulePscConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ForwardingRulePscConnectionStatus) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
+	return ForwardingRulePscConnectionStatus(e).ToForwardingRulePscConnectionStatusOutputWithContext(ctx).ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e ForwardingRulePscConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ForwardingRulePscConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ForwardingRulePscConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ForwardingRulePscConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ForwardingRulePscConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRulePscConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRulePscConnectionStatus)(nil)).Elem()
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToForwardingRulePscConnectionStatusOutput() ForwardingRulePscConnectionStatusOutput {
+	return o
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToForwardingRulePscConnectionStatusOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusOutput {
+	return o
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput {
+	return o.ToForwardingRulePscConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardingRulePscConnectionStatus) *ForwardingRulePscConnectionStatus {
+		return &v
+	}).(ForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ForwardingRulePscConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRulePscConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ForwardingRulePscConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ForwardingRulePscConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRulePscConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return forwardingRulePscConnectionStatusPtrType
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput {
+	return o
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
+	return o
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ForwardingRulePscConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ForwardingRulePscConnectionStatusPtrOutput) Elem() ForwardingRulePscConnectionStatusOutput {
+	return o.ApplyT(func(v *ForwardingRulePscConnectionStatus) ForwardingRulePscConnectionStatus {
+		var ret ForwardingRulePscConnectionStatus
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ForwardingRulePscConnectionStatusOutput)
+}
+
+// ForwardingRulePscConnectionStatusInput is an input type that accepts ForwardingRulePscConnectionStatusArgs and ForwardingRulePscConnectionStatusOutput values.
+// You can construct a concrete instance of `ForwardingRulePscConnectionStatusInput` via:
+//
+//          ForwardingRulePscConnectionStatusArgs{...}
+type ForwardingRulePscConnectionStatusInput interface {
+	pulumi.Input
+
+	ToForwardingRulePscConnectionStatusOutput() ForwardingRulePscConnectionStatusOutput
+	ToForwardingRulePscConnectionStatusOutputWithContext(context.Context) ForwardingRulePscConnectionStatusOutput
+}
+
+var forwardingRulePscConnectionStatusPtrType = reflect.TypeOf((**ForwardingRulePscConnectionStatus)(nil)).Elem()
+
+type ForwardingRulePscConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput
+	ToForwardingRulePscConnectionStatusPtrOutputWithContext(context.Context) ForwardingRulePscConnectionStatusPtrOutput
+}
+
+type forwardingRulePscConnectionStatusPtr string
+
+func ForwardingRulePscConnectionStatusPtr(v string) ForwardingRulePscConnectionStatusPtrInput {
+	return (*forwardingRulePscConnectionStatusPtr)(&v)
+}
+
+func (*forwardingRulePscConnectionStatusPtr) ElementType() reflect.Type {
+	return forwardingRulePscConnectionStatusPtrType
+}
+
+func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionStatusPtrOutput() ForwardingRulePscConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(ForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) ForwardingRulePscConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRulePscConnectionStatusPtrOutput)
 }
 
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
@@ -7125,7 +7296,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -7302,7 +7473,7 @@ func (in *globalAddressPurposePtr) ToGlobalAddressPurposePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressPurposePtrOutput)
 }
 
-// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type GlobalForwardingRuleIpProtocol string
 
 const (
@@ -7637,7 +7808,7 @@ func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpVersionPtrOutput)
 }
 
-// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
 type GlobalForwardingRuleLoadBalancingScheme string
 
 const (
@@ -7972,7 +8143,178 @@ func (in *globalForwardingRuleNetworkTierPtr) ToGlobalForwardingRuleNetworkTierP
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleNetworkTierPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+type GlobalForwardingRulePscConnectionStatus string
+
+const (
+	// The connection has been accepted by the producer.
+	GlobalForwardingRulePscConnectionStatusAccepted = GlobalForwardingRulePscConnectionStatus("ACCEPTED")
+	// The connection has been closed by the producer and will not serve traffic going forward.
+	GlobalForwardingRulePscConnectionStatusClosed = GlobalForwardingRulePscConnectionStatus("CLOSED")
+	// The connection is pending acceptance by the producer.
+	GlobalForwardingRulePscConnectionStatusPending = GlobalForwardingRulePscConnectionStatus("PENDING")
+	// The connection has been rejected by the producer.
+	GlobalForwardingRulePscConnectionStatusRejected          = GlobalForwardingRulePscConnectionStatus("REJECTED")
+	GlobalForwardingRulePscConnectionStatusStatusUnspecified = GlobalForwardingRulePscConnectionStatus("STATUS_UNSPECIFIED")
+)
+
+func (GlobalForwardingRulePscConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalForwardingRulePscConnectionStatus)(nil)).Elem()
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToGlobalForwardingRulePscConnectionStatusOutput() GlobalForwardingRulePscConnectionStatusOutput {
+	return pulumi.ToOutput(e).(GlobalForwardingRulePscConnectionStatusOutput)
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToGlobalForwardingRulePscConnectionStatusOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GlobalForwardingRulePscConnectionStatusOutput)
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return e.ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return GlobalForwardingRulePscConnectionStatus(e).ToGlobalForwardingRulePscConnectionStatusOutputWithContext(ctx).ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GlobalForwardingRulePscConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GlobalForwardingRulePscConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (GlobalForwardingRulePscConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalForwardingRulePscConnectionStatus)(nil)).Elem()
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToGlobalForwardingRulePscConnectionStatusOutput() GlobalForwardingRulePscConnectionStatusOutput {
+	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToGlobalForwardingRulePscConnectionStatusOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusOutput {
+	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return o.ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalForwardingRulePscConnectionStatus) *GlobalForwardingRulePscConnectionStatus {
+		return &v
+	}).(GlobalForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalForwardingRulePscConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalForwardingRulePscConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalForwardingRulePscConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalForwardingRulePscConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalForwardingRulePscConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return globalForwardingRulePscConnectionStatusPtrType
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return o
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GlobalForwardingRulePscConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalForwardingRulePscConnectionStatusPtrOutput) Elem() GlobalForwardingRulePscConnectionStatusOutput {
+	return o.ApplyT(func(v *GlobalForwardingRulePscConnectionStatus) GlobalForwardingRulePscConnectionStatus {
+		var ret GlobalForwardingRulePscConnectionStatus
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GlobalForwardingRulePscConnectionStatusOutput)
+}
+
+// GlobalForwardingRulePscConnectionStatusInput is an input type that accepts GlobalForwardingRulePscConnectionStatusArgs and GlobalForwardingRulePscConnectionStatusOutput values.
+// You can construct a concrete instance of `GlobalForwardingRulePscConnectionStatusInput` via:
+//
+//          GlobalForwardingRulePscConnectionStatusArgs{...}
+type GlobalForwardingRulePscConnectionStatusInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRulePscConnectionStatusOutput() GlobalForwardingRulePscConnectionStatusOutput
+	ToGlobalForwardingRulePscConnectionStatusOutputWithContext(context.Context) GlobalForwardingRulePscConnectionStatusOutput
+}
+
+var globalForwardingRulePscConnectionStatusPtrType = reflect.TypeOf((**GlobalForwardingRulePscConnectionStatus)(nil)).Elem()
+
+type GlobalForwardingRulePscConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput
+	ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput
+}
+
+type globalForwardingRulePscConnectionStatusPtr string
+
+func GlobalForwardingRulePscConnectionStatusPtr(v string) GlobalForwardingRulePscConnectionStatusPtrInput {
+	return (*globalForwardingRulePscConnectionStatusPtr)(&v)
+}
+
+func (*globalForwardingRulePscConnectionStatusPtr) ElementType() reflect.Type {
+	return globalForwardingRulePscConnectionStatusPtrType
+}
+
+func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscConnectionStatusPtrOutput() GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
+}
+
+func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscConnectionStatusPtrOutputWithContext(ctx context.Context) GlobalForwardingRulePscConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
+}
+
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type GlobalNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -12531,7 +12873,7 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -15755,7 +16097,7 @@ func (in *regionHealthCheckTypePtr) ToRegionHealthCheckTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckTypePtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -23512,6 +23854,8 @@ func init() {
 	pulumi.RegisterOutputType(ForwardingRuleLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleNetworkTierOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleNetworkTierPtrOutput{})
+	pulumi.RegisterOutputType(ForwardingRulePscConnectionStatusOutput{})
+	pulumi.RegisterOutputType(ForwardingRulePscConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckPortSpecificationOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(GlobalAddressAddressTypeOutput{})
@@ -23530,6 +23874,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalForwardingRuleLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleNetworkTierOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleNetworkTierPtrOutput{})
+	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusOutput{})
+	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureTypeOutput{})

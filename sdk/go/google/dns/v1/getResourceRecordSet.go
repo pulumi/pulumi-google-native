@@ -8,16 +8,16 @@ import (
 )
 
 // Fetches the representation of an existing ResourceRecordSet.
-func LookupRrset(ctx *pulumi.Context, args *LookupRrsetArgs, opts ...pulumi.InvokeOption) (*LookupRrsetResult, error) {
-	var rv LookupRrsetResult
-	err := ctx.Invoke("google-native:dns/v1:getRrset", args, &rv, opts...)
+func LookupResourceRecordSet(ctx *pulumi.Context, args *LookupResourceRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupResourceRecordSetResult, error) {
+	var rv LookupResourceRecordSetResult
+	err := ctx.Invoke("google-native:dns/v1:getResourceRecordSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-type LookupRrsetArgs struct {
+type LookupResourceRecordSetArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	ManagedZone       string  `pulumi:"managedZone"`
 	Name              string  `pulumi:"name"`
@@ -25,7 +25,7 @@ type LookupRrsetArgs struct {
 	Type              string  `pulumi:"type"`
 }
 
-type LookupRrsetResult struct {
+type LookupResourceRecordSetResult struct {
 	Kind string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name string `pulumi:"name"`

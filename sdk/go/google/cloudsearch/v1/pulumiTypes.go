@@ -1733,6 +1733,312 @@ func (o GSuitePrincipalResponseArrayOutput) Index(i pulumi.IntInput) GSuitePrinc
 	}).(GSuitePrincipalResponseOutput)
 }
 
+// Default options to interpret user query.
+type QueryInterpretationConfig struct {
+	// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+	ForceDisableSupplementalResults *bool `pulumi:"forceDisableSupplementalResults"`
+	// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+	ForceVerbatimMode *bool `pulumi:"forceVerbatimMode"`
+}
+
+// QueryInterpretationConfigInput is an input type that accepts QueryInterpretationConfigArgs and QueryInterpretationConfigOutput values.
+// You can construct a concrete instance of `QueryInterpretationConfigInput` via:
+//
+//          QueryInterpretationConfigArgs{...}
+type QueryInterpretationConfigInput interface {
+	pulumi.Input
+
+	ToQueryInterpretationConfigOutput() QueryInterpretationConfigOutput
+	ToQueryInterpretationConfigOutputWithContext(context.Context) QueryInterpretationConfigOutput
+}
+
+// Default options to interpret user query.
+type QueryInterpretationConfigArgs struct {
+	// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+	ForceDisableSupplementalResults pulumi.BoolPtrInput `pulumi:"forceDisableSupplementalResults"`
+	// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+	ForceVerbatimMode pulumi.BoolPtrInput `pulumi:"forceVerbatimMode"`
+}
+
+func (QueryInterpretationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryInterpretationConfig)(nil)).Elem()
+}
+
+func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigOutput() QueryInterpretationConfigOutput {
+	return i.ToQueryInterpretationConfigOutputWithContext(context.Background())
+}
+
+func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigOutputWithContext(ctx context.Context) QueryInterpretationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigOutput)
+}
+
+func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput {
+	return i.ToQueryInterpretationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigOutput).ToQueryInterpretationConfigPtrOutputWithContext(ctx)
+}
+
+// QueryInterpretationConfigPtrInput is an input type that accepts QueryInterpretationConfigArgs, QueryInterpretationConfigPtr and QueryInterpretationConfigPtrOutput values.
+// You can construct a concrete instance of `QueryInterpretationConfigPtrInput` via:
+//
+//          QueryInterpretationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type QueryInterpretationConfigPtrInput interface {
+	pulumi.Input
+
+	ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput
+	ToQueryInterpretationConfigPtrOutputWithContext(context.Context) QueryInterpretationConfigPtrOutput
+}
+
+type queryInterpretationConfigPtrType QueryInterpretationConfigArgs
+
+func QueryInterpretationConfigPtr(v *QueryInterpretationConfigArgs) QueryInterpretationConfigPtrInput {
+	return (*queryInterpretationConfigPtrType)(v)
+}
+
+func (*queryInterpretationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryInterpretationConfig)(nil)).Elem()
+}
+
+func (i *queryInterpretationConfigPtrType) ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput {
+	return i.ToQueryInterpretationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *queryInterpretationConfigPtrType) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigPtrOutput)
+}
+
+// Default options to interpret user query.
+type QueryInterpretationConfigOutput struct{ *pulumi.OutputState }
+
+func (QueryInterpretationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryInterpretationConfig)(nil)).Elem()
+}
+
+func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigOutput() QueryInterpretationConfigOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigOutputWithContext(ctx context.Context) QueryInterpretationConfigOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput {
+	return o.ToQueryInterpretationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o QueryInterpretationConfigOutput) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
+	return o.ApplyT(func(v QueryInterpretationConfig) *QueryInterpretationConfig {
+		return &v
+	}).(QueryInterpretationConfigPtrOutput)
+}
+
+// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+func (o QueryInterpretationConfigOutput) ForceDisableSupplementalResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueryInterpretationConfig) *bool { return v.ForceDisableSupplementalResults }).(pulumi.BoolPtrOutput)
+}
+
+// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+func (o QueryInterpretationConfigOutput) ForceVerbatimMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueryInterpretationConfig) *bool { return v.ForceVerbatimMode }).(pulumi.BoolPtrOutput)
+}
+
+type QueryInterpretationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (QueryInterpretationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryInterpretationConfig)(nil)).Elem()
+}
+
+func (o QueryInterpretationConfigPtrOutput) ToQueryInterpretationConfigPtrOutput() QueryInterpretationConfigPtrOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigPtrOutput) ToQueryInterpretationConfigPtrOutputWithContext(ctx context.Context) QueryInterpretationConfigPtrOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigPtrOutput) Elem() QueryInterpretationConfigOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfig) QueryInterpretationConfig { return *v }).(QueryInterpretationConfigOutput)
+}
+
+// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+func (o QueryInterpretationConfigPtrOutput) ForceDisableSupplementalResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceDisableSupplementalResults
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+func (o QueryInterpretationConfigPtrOutput) ForceVerbatimMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceVerbatimMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Default options to interpret user query.
+type QueryInterpretationConfigResponse struct {
+	// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+	ForceDisableSupplementalResults bool `pulumi:"forceDisableSupplementalResults"`
+	// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+	ForceVerbatimMode bool `pulumi:"forceVerbatimMode"`
+}
+
+// QueryInterpretationConfigResponseInput is an input type that accepts QueryInterpretationConfigResponseArgs and QueryInterpretationConfigResponseOutput values.
+// You can construct a concrete instance of `QueryInterpretationConfigResponseInput` via:
+//
+//          QueryInterpretationConfigResponseArgs{...}
+type QueryInterpretationConfigResponseInput interface {
+	pulumi.Input
+
+	ToQueryInterpretationConfigResponseOutput() QueryInterpretationConfigResponseOutput
+	ToQueryInterpretationConfigResponseOutputWithContext(context.Context) QueryInterpretationConfigResponseOutput
+}
+
+// Default options to interpret user query.
+type QueryInterpretationConfigResponseArgs struct {
+	// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+	ForceDisableSupplementalResults pulumi.BoolInput `pulumi:"forceDisableSupplementalResults"`
+	// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+	ForceVerbatimMode pulumi.BoolInput `pulumi:"forceVerbatimMode"`
+}
+
+func (QueryInterpretationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryInterpretationConfigResponse)(nil)).Elem()
+}
+
+func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponseOutput() QueryInterpretationConfigResponseOutput {
+	return i.ToQueryInterpretationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponseOutputWithContext(ctx context.Context) QueryInterpretationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponseOutput)
+}
+
+func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
+	return i.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i QueryInterpretationConfigResponseArgs) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponseOutput).ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// QueryInterpretationConfigResponsePtrInput is an input type that accepts QueryInterpretationConfigResponseArgs, QueryInterpretationConfigResponsePtr and QueryInterpretationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `QueryInterpretationConfigResponsePtrInput` via:
+//
+//          QueryInterpretationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type QueryInterpretationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput
+	ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Context) QueryInterpretationConfigResponsePtrOutput
+}
+
+type queryInterpretationConfigResponsePtrType QueryInterpretationConfigResponseArgs
+
+func QueryInterpretationConfigResponsePtr(v *QueryInterpretationConfigResponseArgs) QueryInterpretationConfigResponsePtrInput {
+	return (*queryInterpretationConfigResponsePtrType)(v)
+}
+
+func (*queryInterpretationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryInterpretationConfigResponse)(nil)).Elem()
+}
+
+func (i *queryInterpretationConfigResponsePtrType) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
+	return i.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *queryInterpretationConfigResponsePtrType) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryInterpretationConfigResponsePtrOutput)
+}
+
+// Default options to interpret user query.
+type QueryInterpretationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (QueryInterpretationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryInterpretationConfigResponse)(nil)).Elem()
+}
+
+func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponseOutput() QueryInterpretationConfigResponseOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponseOutputWithContext(ctx context.Context) QueryInterpretationConfigResponseOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
+	return o.ToQueryInterpretationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o QueryInterpretationConfigResponseOutput) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
+	return o.ApplyT(func(v QueryInterpretationConfigResponse) *QueryInterpretationConfigResponse {
+		return &v
+	}).(QueryInterpretationConfigResponsePtrOutput)
+}
+
+// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+func (o QueryInterpretationConfigResponseOutput) ForceDisableSupplementalResults() pulumi.BoolOutput {
+	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceDisableSupplementalResults }).(pulumi.BoolOutput)
+}
+
+// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+func (o QueryInterpretationConfigResponseOutput) ForceVerbatimMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceVerbatimMode }).(pulumi.BoolOutput)
+}
+
+type QueryInterpretationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryInterpretationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryInterpretationConfigResponse)(nil)).Elem()
+}
+
+func (o QueryInterpretationConfigResponsePtrOutput) ToQueryInterpretationConfigResponsePtrOutput() QueryInterpretationConfigResponsePtrOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigResponsePtrOutput) ToQueryInterpretationConfigResponsePtrOutputWithContext(ctx context.Context) QueryInterpretationConfigResponsePtrOutput {
+	return o
+}
+
+func (o QueryInterpretationConfigResponsePtrOutput) Elem() QueryInterpretationConfigResponseOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfigResponse) QueryInterpretationConfigResponse { return *v }).(QueryInterpretationConfigResponseOutput)
+}
+
+// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
+func (o QueryInterpretationConfigResponsePtrOutput) ForceDisableSupplementalResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ForceDisableSupplementalResults
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode.
+func (o QueryInterpretationConfigResponsePtrOutput) ForceVerbatimMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueryInterpretationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ForceVerbatimMode
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Scoring configurations for a source while processing a Search or Suggest request.
 type ScoringConfig struct {
 	// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
@@ -3724,6 +4030,10 @@ func init() {
 	pulumi.RegisterOutputType(GSuitePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueryInterpretationConfigOutput{})
+	pulumi.RegisterOutputType(QueryInterpretationConfigPtrOutput{})
+	pulumi.RegisterOutputType(QueryInterpretationConfigResponseOutput{})
+	pulumi.RegisterOutputType(QueryInterpretationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScoringConfigOutput{})
 	pulumi.RegisterOutputType(ScoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScoringConfigResponseOutput{})

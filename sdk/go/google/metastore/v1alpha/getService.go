@@ -28,6 +28,8 @@ type LookupServiceResult struct {
 	ArtifactGcsUri string `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime string `pulumi:"createTime"`
+	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.

@@ -12,7 +12,7 @@ import (
 )
 
 // Creates a new ResourceRecordSet.
-type Rrset struct {
+type ResourceRecordSet struct {
 	pulumi.CustomResourceState
 
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -28,9 +28,9 @@ type Rrset struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
-// NewRrset registers a new resource with the given unique name, arguments, and options.
-func NewRrset(ctx *pulumi.Context,
-	name string, args *RrsetArgs, opts ...pulumi.ResourceOption) (*Rrset, error) {
+// NewResourceRecordSet registers a new resource with the given unique name, arguments, and options.
+func NewResourceRecordSet(ctx *pulumi.Context,
+	name string, args *ResourceRecordSetArgs, opts ...pulumi.ResourceOption) (*ResourceRecordSet, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -38,38 +38,38 @@ func NewRrset(ctx *pulumi.Context,
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
-	var resource Rrset
-	err := ctx.RegisterResource("google-native:dns/v1beta2:Rrset", name, args, &resource, opts...)
+	var resource ResourceRecordSet
+	err := ctx.RegisterResource("google-native:dns/v1beta2:ResourceRecordSet", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetRrset gets an existing Rrset resource's state with the given name, ID, and optional
+// GetResourceRecordSet gets an existing ResourceRecordSet resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetRrset(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *RrsetState, opts ...pulumi.ResourceOption) (*Rrset, error) {
-	var resource Rrset
-	err := ctx.ReadResource("google-native:dns/v1beta2:Rrset", name, id, state, &resource, opts...)
+func GetResourceRecordSet(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ResourceRecordSetState, opts ...pulumi.ResourceOption) (*ResourceRecordSet, error) {
+	var resource ResourceRecordSet
+	err := ctx.ReadResource("google-native:dns/v1beta2:ResourceRecordSet", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering Rrset resources.
-type rrsetState struct {
+// Input properties used for looking up and filtering ResourceRecordSet resources.
+type resourceRecordSetState struct {
 }
 
-type RrsetState struct {
+type ResourceRecordSetState struct {
 }
 
-func (RrsetState) ElementType() reflect.Type {
-	return reflect.TypeOf((*rrsetState)(nil)).Elem()
+func (ResourceRecordSetState) ElementType() reflect.Type {
+	return reflect.TypeOf((*resourceRecordSetState)(nil)).Elem()
 }
 
-type rrsetArgs struct {
+type resourceRecordSetArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	Kind              *string `pulumi:"kind"`
 	ManagedZone       string  `pulumi:"managedZone"`
@@ -86,8 +86,8 @@ type rrsetArgs struct {
 	Type *string `pulumi:"type"`
 }
 
-// The set of arguments for constructing a Rrset resource.
-type RrsetArgs struct {
+// The set of arguments for constructing a ResourceRecordSet resource.
+type ResourceRecordSetArgs struct {
 	ClientOperationId pulumi.StringPtrInput
 	Kind              pulumi.StringPtrInput
 	ManagedZone       pulumi.StringInput
@@ -104,45 +104,45 @@ type RrsetArgs struct {
 	Type pulumi.StringPtrInput
 }
 
-func (RrsetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*rrsetArgs)(nil)).Elem()
+func (ResourceRecordSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*resourceRecordSetArgs)(nil)).Elem()
 }
 
-type RrsetInput interface {
+type ResourceRecordSetInput interface {
 	pulumi.Input
 
-	ToRrsetOutput() RrsetOutput
-	ToRrsetOutputWithContext(ctx context.Context) RrsetOutput
+	ToResourceRecordSetOutput() ResourceRecordSetOutput
+	ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput
 }
 
-func (*Rrset) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rrset)(nil))
+func (*ResourceRecordSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSet)(nil))
 }
 
-func (i *Rrset) ToRrsetOutput() RrsetOutput {
-	return i.ToRrsetOutputWithContext(context.Background())
+func (i *ResourceRecordSet) ToResourceRecordSetOutput() ResourceRecordSetOutput {
+	return i.ToResourceRecordSetOutputWithContext(context.Background())
 }
 
-func (i *Rrset) ToRrsetOutputWithContext(ctx context.Context) RrsetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RrsetOutput)
+func (i *ResourceRecordSet) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetOutput)
 }
 
-type RrsetOutput struct {
+type ResourceRecordSetOutput struct {
 	*pulumi.OutputState
 }
 
-func (RrsetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rrset)(nil))
+func (ResourceRecordSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSet)(nil))
 }
 
-func (o RrsetOutput) ToRrsetOutput() RrsetOutput {
+func (o ResourceRecordSetOutput) ToResourceRecordSetOutput() ResourceRecordSetOutput {
 	return o
 }
 
-func (o RrsetOutput) ToRrsetOutputWithContext(ctx context.Context) RrsetOutput {
+func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
 	return o
 }
 
 func init() {
-	pulumi.RegisterOutputType(RrsetOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetOutput{})
 }

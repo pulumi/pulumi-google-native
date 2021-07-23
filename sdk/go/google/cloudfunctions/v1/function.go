@@ -44,6 +44,10 @@ type Function struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables SecretEnvVarResponseArrayOutput `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes SecretVolumeResponseArrayOutput `pulumi:"secretVolumes"`
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
@@ -137,6 +141,10 @@ type functionArgs struct {
 	Project *string `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime *string `pulumi:"runtime"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables []SecretEnvVar `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes []SecretVolume `pulumi:"secretVolumes"`
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
@@ -187,6 +195,10 @@ type FunctionArgs struct {
 	Project pulumi.StringPtrInput
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringPtrInput
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables SecretEnvVarArrayInput
+	// Secret volumes configuration.
+	SecretVolumes SecretVolumeArrayInput
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.

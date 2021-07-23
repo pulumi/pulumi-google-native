@@ -54,6 +54,10 @@ type LookupFunctionResult struct {
 	Network string `pulumi:"network"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime string `pulumi:"runtime"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	SecretVolumes []SecretVolumeResponse `pulumi:"secretVolumes"`
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.

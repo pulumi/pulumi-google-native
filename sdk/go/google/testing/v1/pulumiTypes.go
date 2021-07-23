@@ -1772,6 +1772,8 @@ type AndroidRoboTest struct {
 	MaxSteps *int `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives []RoboDirective `pulumi:"roboDirectives"`
+	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+	RoboMode *AndroidRoboTestRoboMode `pulumi:"roboMode"`
 	// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 	RoboScript *FileReference `pulumi:"roboScript"`
 	// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
@@ -1805,6 +1807,8 @@ type AndroidRoboTestArgs struct {
 	MaxSteps pulumi.IntPtrInput `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives RoboDirectiveArrayInput `pulumi:"roboDirectives"`
+	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+	RoboMode AndroidRoboTestRoboModePtrInput `pulumi:"roboMode"`
 	// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 	RoboScript FileReferencePtrInput `pulumi:"roboScript"`
 	// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
@@ -1924,6 +1928,11 @@ func (o AndroidRoboTestOutput) RoboDirectives() RoboDirectiveArrayOutput {
 	return o.ApplyT(func(v AndroidRoboTest) []RoboDirective { return v.RoboDirectives }).(RoboDirectiveArrayOutput)
 }
 
+// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+func (o AndroidRoboTestOutput) RoboMode() AndroidRoboTestRoboModePtrOutput {
+	return o.ApplyT(func(v AndroidRoboTest) *AndroidRoboTestRoboMode { return v.RoboMode }).(AndroidRoboTestRoboModePtrOutput)
+}
+
 // A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 func (o AndroidRoboTestOutput) RoboScript() FileReferencePtrOutput {
 	return o.ApplyT(func(v AndroidRoboTest) *FileReference { return v.RoboScript }).(FileReferencePtrOutput)
@@ -2022,6 +2031,16 @@ func (o AndroidRoboTestPtrOutput) RoboDirectives() RoboDirectiveArrayOutput {
 	}).(RoboDirectiveArrayOutput)
 }
 
+// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+func (o AndroidRoboTestPtrOutput) RoboMode() AndroidRoboTestRoboModePtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTest) *AndroidRoboTestRoboMode {
+		if v == nil {
+			return nil
+		}
+		return v.RoboMode
+	}).(AndroidRoboTestRoboModePtrOutput)
+}
+
 // A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 func (o AndroidRoboTestPtrOutput) RoboScript() FileReferencePtrOutput {
 	return o.ApplyT(func(v *AndroidRoboTest) *FileReference {
@@ -2058,6 +2077,8 @@ type AndroidRoboTestResponse struct {
 	MaxSteps int `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives []RoboDirectiveResponse `pulumi:"roboDirectives"`
+	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+	RoboMode string `pulumi:"roboMode"`
 	// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 	RoboScript FileReferenceResponse `pulumi:"roboScript"`
 	// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
@@ -2091,6 +2112,8 @@ type AndroidRoboTestResponseArgs struct {
 	MaxSteps pulumi.IntInput `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives RoboDirectiveResponseArrayInput `pulumi:"roboDirectives"`
+	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+	RoboMode pulumi.StringInput `pulumi:"roboMode"`
 	// A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 	RoboScript FileReferenceResponseInput `pulumi:"roboScript"`
 	// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).
@@ -2210,6 +2233,11 @@ func (o AndroidRoboTestResponseOutput) RoboDirectives() RoboDirectiveResponseArr
 	return o.ApplyT(func(v AndroidRoboTestResponse) []RoboDirectiveResponse { return v.RoboDirectives }).(RoboDirectiveResponseArrayOutput)
 }
 
+// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+func (o AndroidRoboTestResponseOutput) RoboMode() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) string { return v.RoboMode }).(pulumi.StringOutput)
+}
+
 // A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
 func (o AndroidRoboTestResponseOutput) RoboScript() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AndroidRoboTestResponse) FileReferenceResponse { return v.RoboScript }).(FileReferenceResponseOutput)
@@ -2306,6 +2334,16 @@ func (o AndroidRoboTestResponsePtrOutput) RoboDirectives() RoboDirectiveResponse
 		}
 		return v.RoboDirectives
 	}).(RoboDirectiveResponseArrayOutput)
+}
+
+// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+func (o AndroidRoboTestResponsePtrOutput) RoboMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoboMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
@@ -9627,268 +9665,6 @@ func (o StartActivityIntentResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v StartActivityIntentResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
-type SystraceSetup struct {
-	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-	DurationSeconds *int `pulumi:"durationSeconds"`
-}
-
-// SystraceSetupInput is an input type that accepts SystraceSetupArgs and SystraceSetupOutput values.
-// You can construct a concrete instance of `SystraceSetupInput` via:
-//
-//          SystraceSetupArgs{...}
-type SystraceSetupInput interface {
-	pulumi.Input
-
-	ToSystraceSetupOutput() SystraceSetupOutput
-	ToSystraceSetupOutputWithContext(context.Context) SystraceSetupOutput
-}
-
-type SystraceSetupArgs struct {
-	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-	DurationSeconds pulumi.IntPtrInput `pulumi:"durationSeconds"`
-}
-
-func (SystraceSetupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystraceSetup)(nil)).Elem()
-}
-
-func (i SystraceSetupArgs) ToSystraceSetupOutput() SystraceSetupOutput {
-	return i.ToSystraceSetupOutputWithContext(context.Background())
-}
-
-func (i SystraceSetupArgs) ToSystraceSetupOutputWithContext(ctx context.Context) SystraceSetupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupOutput)
-}
-
-func (i SystraceSetupArgs) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
-	return i.ToSystraceSetupPtrOutputWithContext(context.Background())
-}
-
-func (i SystraceSetupArgs) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupOutput).ToSystraceSetupPtrOutputWithContext(ctx)
-}
-
-// SystraceSetupPtrInput is an input type that accepts SystraceSetupArgs, SystraceSetupPtr and SystraceSetupPtrOutput values.
-// You can construct a concrete instance of `SystraceSetupPtrInput` via:
-//
-//          SystraceSetupArgs{...}
-//
-//  or:
-//
-//          nil
-type SystraceSetupPtrInput interface {
-	pulumi.Input
-
-	ToSystraceSetupPtrOutput() SystraceSetupPtrOutput
-	ToSystraceSetupPtrOutputWithContext(context.Context) SystraceSetupPtrOutput
-}
-
-type systraceSetupPtrType SystraceSetupArgs
-
-func SystraceSetupPtr(v *SystraceSetupArgs) SystraceSetupPtrInput {
-	return (*systraceSetupPtrType)(v)
-}
-
-func (*systraceSetupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystraceSetup)(nil)).Elem()
-}
-
-func (i *systraceSetupPtrType) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
-	return i.ToSystraceSetupPtrOutputWithContext(context.Background())
-}
-
-func (i *systraceSetupPtrType) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupPtrOutput)
-}
-
-type SystraceSetupOutput struct{ *pulumi.OutputState }
-
-func (SystraceSetupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystraceSetup)(nil)).Elem()
-}
-
-func (o SystraceSetupOutput) ToSystraceSetupOutput() SystraceSetupOutput {
-	return o
-}
-
-func (o SystraceSetupOutput) ToSystraceSetupOutputWithContext(ctx context.Context) SystraceSetupOutput {
-	return o
-}
-
-func (o SystraceSetupOutput) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
-	return o.ToSystraceSetupPtrOutputWithContext(context.Background())
-}
-
-func (o SystraceSetupOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
-	return o.ApplyT(func(v SystraceSetup) *SystraceSetup {
-		return &v
-	}).(SystraceSetupPtrOutput)
-}
-
-// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-func (o SystraceSetupOutput) DurationSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SystraceSetup) *int { return v.DurationSeconds }).(pulumi.IntPtrOutput)
-}
-
-type SystraceSetupPtrOutput struct{ *pulumi.OutputState }
-
-func (SystraceSetupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystraceSetup)(nil)).Elem()
-}
-
-func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
-	return o
-}
-
-func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
-	return o
-}
-
-func (o SystraceSetupPtrOutput) Elem() SystraceSetupOutput {
-	return o.ApplyT(func(v *SystraceSetup) SystraceSetup { return *v }).(SystraceSetupOutput)
-}
-
-// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-func (o SystraceSetupPtrOutput) DurationSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SystraceSetup) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DurationSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-type SystraceSetupResponse struct {
-	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-	DurationSeconds int `pulumi:"durationSeconds"`
-}
-
-// SystraceSetupResponseInput is an input type that accepts SystraceSetupResponseArgs and SystraceSetupResponseOutput values.
-// You can construct a concrete instance of `SystraceSetupResponseInput` via:
-//
-//          SystraceSetupResponseArgs{...}
-type SystraceSetupResponseInput interface {
-	pulumi.Input
-
-	ToSystraceSetupResponseOutput() SystraceSetupResponseOutput
-	ToSystraceSetupResponseOutputWithContext(context.Context) SystraceSetupResponseOutput
-}
-
-type SystraceSetupResponseArgs struct {
-	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-	DurationSeconds pulumi.IntInput `pulumi:"durationSeconds"`
-}
-
-func (SystraceSetupResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystraceSetupResponse)(nil)).Elem()
-}
-
-func (i SystraceSetupResponseArgs) ToSystraceSetupResponseOutput() SystraceSetupResponseOutput {
-	return i.ToSystraceSetupResponseOutputWithContext(context.Background())
-}
-
-func (i SystraceSetupResponseArgs) ToSystraceSetupResponseOutputWithContext(ctx context.Context) SystraceSetupResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupResponseOutput)
-}
-
-func (i SystraceSetupResponseArgs) ToSystraceSetupResponsePtrOutput() SystraceSetupResponsePtrOutput {
-	return i.ToSystraceSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SystraceSetupResponseArgs) ToSystraceSetupResponsePtrOutputWithContext(ctx context.Context) SystraceSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupResponseOutput).ToSystraceSetupResponsePtrOutputWithContext(ctx)
-}
-
-// SystraceSetupResponsePtrInput is an input type that accepts SystraceSetupResponseArgs, SystraceSetupResponsePtr and SystraceSetupResponsePtrOutput values.
-// You can construct a concrete instance of `SystraceSetupResponsePtrInput` via:
-//
-//          SystraceSetupResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SystraceSetupResponsePtrInput interface {
-	pulumi.Input
-
-	ToSystraceSetupResponsePtrOutput() SystraceSetupResponsePtrOutput
-	ToSystraceSetupResponsePtrOutputWithContext(context.Context) SystraceSetupResponsePtrOutput
-}
-
-type systraceSetupResponsePtrType SystraceSetupResponseArgs
-
-func SystraceSetupResponsePtr(v *SystraceSetupResponseArgs) SystraceSetupResponsePtrInput {
-	return (*systraceSetupResponsePtrType)(v)
-}
-
-func (*systraceSetupResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystraceSetupResponse)(nil)).Elem()
-}
-
-func (i *systraceSetupResponsePtrType) ToSystraceSetupResponsePtrOutput() SystraceSetupResponsePtrOutput {
-	return i.ToSystraceSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *systraceSetupResponsePtrType) ToSystraceSetupResponsePtrOutputWithContext(ctx context.Context) SystraceSetupResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupResponsePtrOutput)
-}
-
-type SystraceSetupResponseOutput struct{ *pulumi.OutputState }
-
-func (SystraceSetupResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystraceSetupResponse)(nil)).Elem()
-}
-
-func (o SystraceSetupResponseOutput) ToSystraceSetupResponseOutput() SystraceSetupResponseOutput {
-	return o
-}
-
-func (o SystraceSetupResponseOutput) ToSystraceSetupResponseOutputWithContext(ctx context.Context) SystraceSetupResponseOutput {
-	return o
-}
-
-func (o SystraceSetupResponseOutput) ToSystraceSetupResponsePtrOutput() SystraceSetupResponsePtrOutput {
-	return o.ToSystraceSetupResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SystraceSetupResponseOutput) ToSystraceSetupResponsePtrOutputWithContext(ctx context.Context) SystraceSetupResponsePtrOutput {
-	return o.ApplyT(func(v SystraceSetupResponse) *SystraceSetupResponse {
-		return &v
-	}).(SystraceSetupResponsePtrOutput)
-}
-
-// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-func (o SystraceSetupResponseOutput) DurationSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v SystraceSetupResponse) int { return v.DurationSeconds }).(pulumi.IntOutput)
-}
-
-type SystraceSetupResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystraceSetupResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystraceSetupResponse)(nil)).Elem()
-}
-
-func (o SystraceSetupResponsePtrOutput) ToSystraceSetupResponsePtrOutput() SystraceSetupResponsePtrOutput {
-	return o
-}
-
-func (o SystraceSetupResponsePtrOutput) ToSystraceSetupResponsePtrOutputWithContext(ctx context.Context) SystraceSetupResponsePtrOutput {
-	return o
-}
-
-func (o SystraceSetupResponsePtrOutput) Elem() SystraceSetupResponseOutput {
-	return o.ApplyT(func(v *SystraceSetupResponse) SystraceSetupResponse { return *v }).(SystraceSetupResponseOutput)
-}
-
-// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-func (o SystraceSetupResponsePtrOutput) DurationSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SystraceSetupResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DurationSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
 // Additional details about the progress of the running test.
 type TestDetailsResponse struct {
 	// If the TestState is ERROR, then this string will contain human-readable details about the error.
@@ -10141,8 +9917,6 @@ type TestSetup struct {
 	FilesToPush []DeviceFile `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile *string `pulumi:"networkProfile"`
-	// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-	Systrace *SystraceSetup `pulumi:"systrace"`
 }
 
 // TestSetupInput is an input type that accepts TestSetupArgs and TestSetupOutput values.
@@ -10172,8 +9946,6 @@ type TestSetupArgs struct {
 	FilesToPush DeviceFileArrayInput `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
-	// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-	Systrace SystraceSetupPtrInput `pulumi:"systrace"`
 }
 
 func (TestSetupArgs) ElementType() reflect.Type {
@@ -10289,11 +10061,6 @@ func (o TestSetupOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TestSetup) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
-// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-func (o TestSetupOutput) Systrace() SystraceSetupPtrOutput {
-	return o.ApplyT(func(v TestSetup) *SystraceSetup { return v.Systrace }).(SystraceSetupPtrOutput)
-}
-
 type TestSetupPtrOutput struct{ *pulumi.OutputState }
 
 func (TestSetupPtrOutput) ElementType() reflect.Type {
@@ -10382,16 +10149,6 @@ func (o TestSetupPtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-func (o TestSetupPtrOutput) Systrace() SystraceSetupPtrOutput {
-	return o.ApplyT(func(v *TestSetup) *SystraceSetup {
-		if v == nil {
-			return nil
-		}
-		return v.Systrace
-	}).(SystraceSetupPtrOutput)
-}
-
 // A description of how to set up the Android device prior to running the test.
 type TestSetupResponse struct {
 	// The device will be logged in on this account for the duration of the test.
@@ -10408,8 +10165,6 @@ type TestSetupResponse struct {
 	FilesToPush []DeviceFileResponse `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile string `pulumi:"networkProfile"`
-	// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-	Systrace SystraceSetupResponse `pulumi:"systrace"`
 }
 
 // TestSetupResponseInput is an input type that accepts TestSetupResponseArgs and TestSetupResponseOutput values.
@@ -10439,8 +10194,6 @@ type TestSetupResponseArgs struct {
 	FilesToPush DeviceFileResponseArrayInput `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringInput `pulumi:"networkProfile"`
-	// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-	Systrace SystraceSetupResponseInput `pulumi:"systrace"`
 }
 
 func (TestSetupResponseArgs) ElementType() reflect.Type {
@@ -10556,11 +10309,6 @@ func (o TestSetupResponseOutput) NetworkProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v TestSetupResponse) string { return v.NetworkProfile }).(pulumi.StringOutput)
 }
 
-// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-func (o TestSetupResponseOutput) Systrace() SystraceSetupResponseOutput {
-	return o.ApplyT(func(v TestSetupResponse) SystraceSetupResponse { return v.Systrace }).(SystraceSetupResponseOutput)
-}
-
 type TestSetupResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (TestSetupResponsePtrOutput) ElementType() reflect.Type {
@@ -10647,16 +10395,6 @@ func (o TestSetupResponsePtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 		}
 		return &v.NetworkProfile
 	}).(pulumi.StringPtrOutput)
-}
-
-// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
-func (o TestSetupResponsePtrOutput) Systrace() SystraceSetupResponsePtrOutput {
-	return o.ApplyT(func(v *TestSetupResponse) *SystraceSetupResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Systrace
-	}).(SystraceSetupResponsePtrOutput)
 }
 
 // A description of how to run the test.
@@ -12428,10 +12166,6 @@ func init() {
 	pulumi.RegisterOutputType(StartActivityIntentOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentResponseOutput{})
-	pulumi.RegisterOutputType(SystraceSetupOutput{})
-	pulumi.RegisterOutputType(SystraceSetupPtrOutput{})
-	pulumi.RegisterOutputType(SystraceSetupResponseOutput{})
-	pulumi.RegisterOutputType(SystraceSetupResponsePtrOutput{})
 	pulumi.RegisterOutputType(TestDetailsResponseOutput{})
 	pulumi.RegisterOutputType(TestExecutionResponseOutput{})
 	pulumi.RegisterOutputType(TestExecutionResponseArrayOutput{})

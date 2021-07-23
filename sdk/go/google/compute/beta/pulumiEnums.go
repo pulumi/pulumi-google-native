@@ -843,7 +843,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -6785,7 +6785,7 @@ func (in *firewallPolicyRuleDirectionPtr) ToFirewallPolicyRuleDirectionPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleDirectionPtrOutput)
 }
 
-// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type ForwardingRuleIpProtocol string
 
 const (
@@ -7121,7 +7121,7 @@ func (in *forwardingRuleIpVersionPtr) ToForwardingRuleIpVersionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRuleIpVersionPtrOutput)
 }
 
-// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
 type ForwardingRuleLoadBalancingScheme string
 
 const (
@@ -8297,7 +8297,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
+// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -8474,7 +8474,7 @@ func (in *globalAddressPurposePtr) ToGlobalAddressPurposePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressPurposePtrOutput)
 }
 
-// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products: - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or L3_DEFAULT is valid. - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid. - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP, UDP or L3_DEFAULT is valid.
+// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 type GlobalForwardingRuleIpProtocol string
 
 const (
@@ -8810,7 +8810,7 @@ func (in *globalForwardingRuleIpVersionPtr) ToGlobalForwardingRuleIpVersionPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRuleIpVersionPtrOutput)
 }
 
-// Specifies the forwarding rule type. - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP address - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing - INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP Load Balancing - INTERNAL_MANAGED is used for: - Internal HTTP(S) Load Balancing - INTERNAL_SELF_MANAGED is used for: - Traffic Director For more information about forwarding rules, refer to Forwarding rule concepts.
+// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
 type GlobalForwardingRuleLoadBalancingScheme string
 
 const (
@@ -9316,7 +9316,7 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscC
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type GlobalNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -9330,6 +9330,8 @@ const (
 	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	GlobalNetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = GlobalNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeServerless = GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -14549,7 +14551,7 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -14563,6 +14565,8 @@ const (
 	NetworkEndpointGroupNetworkEndpointTypeInternetIpPort = NetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	NetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = NetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	NetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = NetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	NetworkEndpointGroupNetworkEndpointTypeServerless = NetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -18774,7 +18778,7 @@ func (in *regionInstanceGroupManagerFailoverActionPtr) ToRegionInstanceGroupMana
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerFailoverActionPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -18788,6 +18792,8 @@ const (
 	RegionNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	RegionNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = RegionNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	RegionNetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = RegionNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	RegionNetworkEndpointGroupNetworkEndpointTypeServerless = RegionNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -23758,6 +23764,171 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
+// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
+
+const (
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAllIps = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp     = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
+)
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKey)(nil)).Elem()
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput)
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput)
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return e.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return SecurityPolicyRuleRateLimitOptionsEnforceOnKey(e).ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutputWithContext(ctx).ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKey)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsEnforceOnKey) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRuleRateLimitOptionsEnforceOnKey) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ElementType() reflect.Type {
+	return securityPolicyRuleRateLimitOptionsEnforceOnKeyPtrType
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyRuleRateLimitOptionsEnforceOnKey) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsEnforceOnKey) SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
+		var ret SecurityPolicyRuleRateLimitOptionsEnforceOnKey
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput)
+}
+
+// SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyArgs and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput` via:
+//
+//          SecurityPolicyRuleRateLimitOptionsEnforceOnKeyArgs{...}
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput
+}
+
+var securityPolicyRuleRateLimitOptionsEnforceOnKeyPtrType = reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsEnforceOnKey)(nil)).Elem()
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr string
+
+func SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtr(v string) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr)(&v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ElementType() reflect.Type {
+	return securityPolicyRuleRateLimitOptionsEnforceOnKeyPtrType
+}
+
+func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
 // Type of the redirect action.
 type SecurityPolicyRuleRedirectOptionsType string
 
@@ -24420,6 +24591,173 @@ func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectio
 
 func (in *serviceAttachmentConnectionPreferencePtr) ToServiceAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) ServiceAttachmentConnectionPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceAttachmentConnectionPreferencePtrOutput)
+}
+
+// Type of sharing for this shared-reservation
+type ShareSettingsShareType string
+
+const (
+	// Default value. This value is unused.
+	ShareSettingsShareTypeShareTypeUnspecified = ShareSettingsShareType("SHARE_TYPE_UNSPECIFIED")
+	// Shared-reservation is open to specific projects
+	ShareSettingsShareTypeSpecificProjects = ShareSettingsShareType("SPECIFIC_PROJECTS")
+)
+
+func (ShareSettingsShareType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsShareType)(nil)).Elem()
+}
+
+func (e ShareSettingsShareType) ToShareSettingsShareTypeOutput() ShareSettingsShareTypeOutput {
+	return pulumi.ToOutput(e).(ShareSettingsShareTypeOutput)
+}
+
+func (e ShareSettingsShareType) ToShareSettingsShareTypeOutputWithContext(ctx context.Context) ShareSettingsShareTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ShareSettingsShareTypeOutput)
+}
+
+func (e ShareSettingsShareType) ToShareSettingsShareTypePtrOutput() ShareSettingsShareTypePtrOutput {
+	return e.ToShareSettingsShareTypePtrOutputWithContext(context.Background())
+}
+
+func (e ShareSettingsShareType) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
+	return ShareSettingsShareType(e).ToShareSettingsShareTypeOutputWithContext(ctx).ToShareSettingsShareTypePtrOutputWithContext(ctx)
+}
+
+func (e ShareSettingsShareType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ShareSettingsShareType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ShareSettingsShareType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ShareSettingsShareType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ShareSettingsShareTypeOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsShareTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsShareType)(nil)).Elem()
+}
+
+func (o ShareSettingsShareTypeOutput) ToShareSettingsShareTypeOutput() ShareSettingsShareTypeOutput {
+	return o
+}
+
+func (o ShareSettingsShareTypeOutput) ToShareSettingsShareTypeOutputWithContext(ctx context.Context) ShareSettingsShareTypeOutput {
+	return o
+}
+
+func (o ShareSettingsShareTypeOutput) ToShareSettingsShareTypePtrOutput() ShareSettingsShareTypePtrOutput {
+	return o.ToShareSettingsShareTypePtrOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsShareTypeOutput) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShareSettingsShareType) *ShareSettingsShareType {
+		return &v
+	}).(ShareSettingsShareTypePtrOutput)
+}
+
+func (o ShareSettingsShareTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsShareTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ShareSettingsShareType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ShareSettingsShareTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsShareTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ShareSettingsShareType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ShareSettingsShareTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsShareTypePtrOutput) ElementType() reflect.Type {
+	return shareSettingsShareTypePtrType
+}
+
+func (o ShareSettingsShareTypePtrOutput) ToShareSettingsShareTypePtrOutput() ShareSettingsShareTypePtrOutput {
+	return o
+}
+
+func (o ShareSettingsShareTypePtrOutput) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
+	return o
+}
+
+func (o ShareSettingsShareTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ShareSettingsShareTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ShareSettingsShareType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ShareSettingsShareTypePtrOutput) Elem() ShareSettingsShareTypeOutput {
+	return o.ApplyT(func(v *ShareSettingsShareType) ShareSettingsShareType {
+		var ret ShareSettingsShareType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ShareSettingsShareTypeOutput)
+}
+
+// ShareSettingsShareTypeInput is an input type that accepts ShareSettingsShareTypeArgs and ShareSettingsShareTypeOutput values.
+// You can construct a concrete instance of `ShareSettingsShareTypeInput` via:
+//
+//          ShareSettingsShareTypeArgs{...}
+type ShareSettingsShareTypeInput interface {
+	pulumi.Input
+
+	ToShareSettingsShareTypeOutput() ShareSettingsShareTypeOutput
+	ToShareSettingsShareTypeOutputWithContext(context.Context) ShareSettingsShareTypeOutput
+}
+
+var shareSettingsShareTypePtrType = reflect.TypeOf((**ShareSettingsShareType)(nil)).Elem()
+
+type ShareSettingsShareTypePtrInput interface {
+	pulumi.Input
+
+	ToShareSettingsShareTypePtrOutput() ShareSettingsShareTypePtrOutput
+	ToShareSettingsShareTypePtrOutputWithContext(context.Context) ShareSettingsShareTypePtrOutput
+}
+
+type shareSettingsShareTypePtr string
+
+func ShareSettingsShareTypePtr(v string) ShareSettingsShareTypePtrInput {
+	return (*shareSettingsShareTypePtr)(&v)
+}
+
+func (*shareSettingsShareTypePtr) ElementType() reflect.Type {
+	return shareSettingsShareTypePtrType
+}
+
+func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutput() ShareSettingsShareTypePtrOutput {
+	return pulumi.ToOutput(in).(ShareSettingsShareTypePtrOutput)
+}
+
+func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutputWithContext(ctx context.Context) ShareSettingsShareTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ShareSettingsShareTypePtrOutput)
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -27736,6 +28074,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleDirectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypeOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyTypeOutput{})
@@ -27744,6 +28084,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerBindingTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferenceOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferencePtrOutput{})
+	pulumi.RegisterOutputType(ShareSettingsShareTypeOutput{})
+	pulumi.RegisterOutputType(ShareSettingsShareTypePtrOutput{})
 	pulumi.RegisterOutputType(SslCertificateTypeOutput{})
 	pulumi.RegisterOutputType(SslCertificateTypePtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionOutput{})

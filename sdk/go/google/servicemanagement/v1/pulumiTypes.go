@@ -4914,7 +4914,7 @@ type Documentation struct {
 	Rules []DocumentationRule `pulumi:"rules"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl *string `pulumi:"serviceRootUrl"`
-	// A short summary of what the service does. Can only be provided by plain text.
+	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 	Summary *string `pulumi:"summary"`
 }
 
@@ -4941,7 +4941,7 @@ type DocumentationArgs struct {
 	Rules DocumentationRuleArrayInput `pulumi:"rules"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl pulumi.StringPtrInput `pulumi:"serviceRootUrl"`
-	// A short summary of what the service does. Can only be provided by plain text.
+	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 	Summary pulumi.StringPtrInput `pulumi:"summary"`
 }
 
@@ -5048,7 +5048,7 @@ func (o DocumentationOutput) ServiceRootUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.ServiceRootUrl }).(pulumi.StringPtrOutput)
 }
 
-// A short summary of what the service does. Can only be provided by plain text.
+// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 func (o DocumentationOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.Summary }).(pulumi.StringPtrOutput)
 }
@@ -5121,7 +5121,7 @@ func (o DocumentationPtrOutput) ServiceRootUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A short summary of what the service does. Can only be provided by plain text.
+// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 func (o DocumentationPtrOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Documentation) *string {
 		if v == nil {
@@ -5143,7 +5143,7 @@ type DocumentationResponse struct {
 	Rules []DocumentationRuleResponse `pulumi:"rules"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl string `pulumi:"serviceRootUrl"`
-	// A short summary of what the service does. Can only be provided by plain text.
+	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 	Summary string `pulumi:"summary"`
 }
 
@@ -5170,7 +5170,7 @@ type DocumentationResponseArgs struct {
 	Rules DocumentationRuleResponseArrayInput `pulumi:"rules"`
 	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
 	ServiceRootUrl pulumi.StringInput `pulumi:"serviceRootUrl"`
-	// A short summary of what the service does. Can only be provided by plain text.
+	// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 	Summary pulumi.StringInput `pulumi:"summary"`
 }
 
@@ -5277,7 +5277,7 @@ func (o DocumentationResponseOutput) ServiceRootUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.ServiceRootUrl }).(pulumi.StringOutput)
 }
 
-// A short summary of what the service does. Can only be provided by plain text.
+// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 func (o DocumentationResponseOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.Summary }).(pulumi.StringOutput)
 }
@@ -5350,7 +5350,7 @@ func (o DocumentationResponsePtrOutput) ServiceRootUrl() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// A short summary of what the service does. Can only be provided by plain text.
+// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
 func (o DocumentationResponsePtrOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DocumentationResponse) *string {
 		if v == nil {
@@ -5364,9 +5364,9 @@ func (o DocumentationResponsePtrOutput) Summary() pulumi.StringPtrOutput {
 type DocumentationRule struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription *string `pulumi:"deprecationDescription"`
-	// Description of the selected API(s).
+	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 	Description *string `pulumi:"description"`
-	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -5385,9 +5385,9 @@ type DocumentationRuleInput interface {
 type DocumentationRuleArgs struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription pulumi.StringPtrInput `pulumi:"deprecationDescription"`
-	// Description of the selected API(s).
+	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 }
 
@@ -5448,12 +5448,12 @@ func (o DocumentationRuleOutput) DeprecationDescription() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DocumentationRule) *string { return v.DeprecationDescription }).(pulumi.StringPtrOutput)
 }
 
-// Description of the selected API(s).
+// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 func (o DocumentationRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 func (o DocumentationRuleOutput) Selector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentationRule) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
@@ -5482,9 +5482,9 @@ func (o DocumentationRuleArrayOutput) Index(i pulumi.IntInput) DocumentationRule
 type DocumentationRuleResponse struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription string `pulumi:"deprecationDescription"`
-	// Description of the selected API(s).
+	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 	Description string `pulumi:"description"`
-	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector string `pulumi:"selector"`
 }
 
@@ -5503,9 +5503,9 @@ type DocumentationRuleResponseInput interface {
 type DocumentationRuleResponseArgs struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription pulumi.StringInput `pulumi:"deprecationDescription"`
-	// Description of the selected API(s).
+	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector pulumi.StringInput `pulumi:"selector"`
 }
 
@@ -5566,12 +5566,12 @@ func (o DocumentationRuleResponseOutput) DeprecationDescription() pulumi.StringO
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.DeprecationDescription }).(pulumi.StringOutput)
 }
 
-// Description of the selected API(s).
+// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
 func (o DocumentationRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 func (o DocumentationRuleResponseOutput) Selector() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
 }
@@ -11457,7 +11457,7 @@ func (o OptionResponseArrayOutput) Index(i pulumi.IntInput) OptionResponseOutput
 
 // Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
 type Page struct {
-	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 	Content *string `pulumi:"content"`
 	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
 	Name *string `pulumi:"name"`
@@ -11478,7 +11478,7 @@ type PageInput interface {
 
 // Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
 type PageArgs struct {
-	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -11538,7 +11538,7 @@ func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return o
 }
 
-// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 func (o PageOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Page) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -11575,7 +11575,7 @@ func (o PageArrayOutput) Index(i pulumi.IntInput) PageOutput {
 
 // Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
 type PageResponse struct {
-	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 	Content string `pulumi:"content"`
 	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
 	Name string `pulumi:"name"`
@@ -11596,7 +11596,7 @@ type PageResponseInput interface {
 
 // Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
 type PageResponseArgs struct {
-	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 	Content pulumi.StringInput `pulumi:"content"`
 	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -11656,7 +11656,7 @@ func (o PageResponseOutput) ToPageResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
 func (o PageResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v PageResponse) string { return v.Content }).(pulumi.StringOutput)
 }

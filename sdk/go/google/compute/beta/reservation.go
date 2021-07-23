@@ -28,6 +28,8 @@ type Reservation struct {
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseOutput `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -83,6 +85,8 @@ type reservationArgs struct {
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
+	// Share-settings for shared-reservation
+	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -99,6 +103,8 @@ type ReservationArgs struct {
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
+	// Share-settings for shared-reservation
+	ShareSettings ShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput
 	// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.

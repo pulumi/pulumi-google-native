@@ -14,7 +14,7 @@ import (
 type FileShareConfig struct {
 	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb *string `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
+	// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 	Name *string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptions `pulumi:"nfsExportOptions"`
@@ -37,7 +37,7 @@ type FileShareConfigInput interface {
 type FileShareConfigArgs struct {
 	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb pulumi.StringPtrInput `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
+	// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsArrayInput `pulumi:"nfsExportOptions"`
@@ -102,7 +102,7 @@ func (o FileShareConfigOutput) CapacityGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileShareConfig) *string { return v.CapacityGb }).(pulumi.StringPtrOutput)
 }
 
-// The name of the file share (must be 16 characters or less).
+// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 func (o FileShareConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileShareConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -141,7 +141,7 @@ func (o FileShareConfigArrayOutput) Index(i pulumi.IntInput) FileShareConfigOutp
 type FileShareConfigResponse struct {
 	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb string `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
+	// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptionsResponse `pulumi:"nfsExportOptions"`
@@ -164,7 +164,7 @@ type FileShareConfigResponseInput interface {
 type FileShareConfigResponseArgs struct {
 	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb pulumi.StringInput `pulumi:"capacityGb"`
-	// The name of the file share (must be 16 characters or less).
+	// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 	Name pulumi.StringInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsResponseArrayInput `pulumi:"nfsExportOptions"`
@@ -229,7 +229,7 @@ func (o FileShareConfigResponseOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.CapacityGb }).(pulumi.StringOutput)
 }
 
-// The name of the file share (must be 16 characters or less).
+// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
 func (o FileShareConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -266,6 +266,8 @@ func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareCo
 
 // Network configuration for the instance.
 type NetworkConfig struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode *NetworkConfigConnectMode `pulumi:"connectMode"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes []NetworkConfigModesItem `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
@@ -287,6 +289,8 @@ type NetworkConfigInput interface {
 
 // Network configuration for the instance.
 type NetworkConfigArgs struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode NetworkConfigConnectModePtrInput `pulumi:"connectMode"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes NetworkConfigModesItemArrayInput `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
@@ -347,6 +351,11 @@ func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+func (o NetworkConfigOutput) ConnectMode() NetworkConfigConnectModePtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigConnectMode { return v.ConnectMode }).(NetworkConfigConnectModePtrOutput)
+}
+
 // Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 func (o NetworkConfigOutput) Modes() NetworkConfigModesItemArrayOutput {
 	return o.ApplyT(func(v NetworkConfig) []NetworkConfigModesItem { return v.Modes }).(NetworkConfigModesItemArrayOutput)
@@ -384,6 +393,8 @@ func (o NetworkConfigArrayOutput) Index(i pulumi.IntInput) NetworkConfigOutput {
 
 // Network configuration for the instance.
 type NetworkConfigResponse struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode string `pulumi:"connectMode"`
 	// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
@@ -407,6 +418,8 @@ type NetworkConfigResponseInput interface {
 
 // Network configuration for the instance.
 type NetworkConfigResponseArgs struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode pulumi.StringInput `pulumi:"connectMode"`
 	// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
@@ -467,6 +480,11 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutput() NetworkConf
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
 	return o
+}
+
+// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+func (o NetworkConfigResponseOutput) ConnectMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.ConnectMode }).(pulumi.StringOutput)
 }
 
 // IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.

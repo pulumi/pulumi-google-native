@@ -15,6 +15,8 @@ import (
 type GameServerCluster struct {
 	pulumi.CustomResourceState
 
+	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	ClusterState KubernetesClusterStateResponseOutput `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponseOutput `pulumi:"connectionInfo"`
 	// The creation time.

@@ -37,6 +37,8 @@ type LookupSearchApplicationResult struct {
 	Name string `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
 	OperationIds []string `pulumi:"operationIds"`
+	// The default options for query interpretation
+	QueryInterpretationConfig QueryInterpretationConfigResponse `pulumi:"queryInterpretationConfig"`
 	// Configuration for ranking results.
 	ScoringConfig ScoringConfigResponse `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.

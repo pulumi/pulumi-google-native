@@ -2803,7 +2803,7 @@ type DomainMappingStatus struct {
 	ObservedGeneration *int `pulumi:"observedGeneration"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords []ResourceRecord `pulumi:"resourceRecords"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 	Url *string `pulumi:"url"`
 }
 
@@ -2828,7 +2828,7 @@ type DomainMappingStatusArgs struct {
 	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords ResourceRecordArrayInput `pulumi:"resourceRecords"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -2930,7 +2930,7 @@ func (o DomainMappingStatusOutput) ResourceRecords() ResourceRecordArrayOutput {
 	return o.ApplyT(func(v DomainMappingStatus) []ResourceRecord { return v.ResourceRecords }).(ResourceRecordArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 func (o DomainMappingStatusOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -2993,7 +2993,7 @@ func (o DomainMappingStatusPtrOutput) ResourceRecords() ResourceRecordArrayOutpu
 	}).(ResourceRecordArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 func (o DomainMappingStatusPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingStatus) *string {
 		if v == nil {
@@ -3013,7 +3013,7 @@ type DomainMappingStatusResponse struct {
 	ObservedGeneration int `pulumi:"observedGeneration"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 	Url string `pulumi:"url"`
 }
 
@@ -3038,7 +3038,7 @@ type DomainMappingStatusResponseArgs struct {
 	ObservedGeneration pulumi.IntInput `pulumi:"observedGeneration"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
 	ResourceRecords ResourceRecordResponseArrayInput `pulumi:"resourceRecords"`
-	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -3140,7 +3140,7 @@ func (o DomainMappingStatusResponseOutput) ResourceRecords() ResourceRecordRespo
 	return o.ApplyT(func(v DomainMappingStatusResponse) []ResourceRecordResponse { return v.ResourceRecords }).(ResourceRecordResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 func (o DomainMappingStatusResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingStatusResponse) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -3203,7 +3203,7 @@ func (o DomainMappingStatusResponsePtrOutput) ResourceRecords() ResourceRecordRe
 	}).(ResourceRecordResponseArrayOutput)
 }
 
-// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
 func (o DomainMappingStatusResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingStatusResponse) *string {
 		if v == nil {
@@ -7500,7 +7500,7 @@ func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpec struct {
-	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
 	Containers []Container `pulumi:"containers"`
@@ -7524,7 +7524,7 @@ type RevisionSpecInput interface {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecArgs struct {
-	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
 	Containers ContainerArrayInput `pulumi:"containers"`
@@ -7613,7 +7613,7 @@ func (o RevisionSpecOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Conte
 	}).(RevisionSpecPtrOutput)
 }
 
-// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RevisionSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -7655,7 +7655,7 @@ func (o RevisionSpecPtrOutput) Elem() RevisionSpecOutput {
 	return o.ApplyT(func(v *RevisionSpec) RevisionSpec { return *v }).(RevisionSpecOutput)
 }
 
-// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RevisionSpec) *int {
 		if v == nil {
@@ -7706,7 +7706,7 @@ func (o RevisionSpecPtrOutput) Volumes() VolumeArrayOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecResponse struct {
-	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
 	Containers []ContainerResponse `pulumi:"containers"`
@@ -7730,7 +7730,7 @@ type RevisionSpecResponseInput interface {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecResponseArgs struct {
-	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
 	Containers ContainerResponseArrayInput `pulumi:"containers"`
@@ -7819,7 +7819,7 @@ func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutputWithContext(c
 	}).(RevisionSpecResponsePtrOutput)
 }
 
-// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
 }
@@ -7861,7 +7861,7 @@ func (o RevisionSpecResponsePtrOutput) Elem() RevisionSpecResponseOutput {
 	return o.ApplyT(func(v *RevisionSpecResponse) RevisionSpecResponse { return *v }).(RevisionSpecResponseOutput)
 }
 
-// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
 func (o RevisionSpecResponsePtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RevisionSpecResponse) *int {
 		if v == nil {
@@ -10219,13 +10219,13 @@ func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 type TrafficTarget struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision *bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
 	Percent *int `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
 	RevisionName *string `pulumi:"revisionName"`
-	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag *string `pulumi:"tag"`
 }
 
@@ -10244,13 +10244,13 @@ type TrafficTargetInput interface {
 type TrafficTargetArgs struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName pulumi.StringPtrInput `pulumi:"configurationName"`
-	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
-	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -10311,7 +10311,7 @@ func (o TrafficTargetOutput) ConfigurationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.ConfigurationName }).(pulumi.StringPtrOutput)
 }
 
-// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 func (o TrafficTargetOutput) LatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
 }
@@ -10326,7 +10326,7 @@ func (o TrafficTargetOutput) RevisionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
 }
 
-// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 func (o TrafficTargetOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -10355,13 +10355,13 @@ func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 type TrafficTargetResponse struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName string `pulumi:"configurationName"`
-	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
 	Percent int `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
 	RevisionName string `pulumi:"revisionName"`
-	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag string `pulumi:"tag"`
 	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 	Url string `pulumi:"url"`
@@ -10382,13 +10382,13 @@ type TrafficTargetResponseInput interface {
 type TrafficTargetResponseArgs struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
-	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 	LatestRevision pulumi.BoolInput `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
 	Percent pulumi.IntInput `pulumi:"percent"`
 	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
 	RevisionName pulumi.StringInput `pulumi:"revisionName"`
-	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag pulumi.StringInput `pulumi:"tag"`
 	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 	Url pulumi.StringInput `pulumi:"url"`
@@ -10451,7 +10451,7 @@ func (o TrafficTargetResponseOutput) ConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.ConfigurationName }).(pulumi.StringOutput)
 }
 
-// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
 func (o TrafficTargetResponseOutput) LatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) bool { return v.LatestRevision }).(pulumi.BoolOutput)
 }
@@ -10466,7 +10466,7 @@ func (o TrafficTargetResponseOutput) RevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.RevisionName }).(pulumi.StringOutput)
 }
 
-// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
 func (o TrafficTargetResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.Tag }).(pulumi.StringOutput)
 }

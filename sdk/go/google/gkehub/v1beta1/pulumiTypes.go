@@ -1435,6 +1435,8 @@ func (o GkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 
 // GkeCluster contains information specific to GKE clusters.
 type GkeClusterResponse struct {
+	// If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+	ClusterMissing bool `pulumi:"clusterMissing"`
 	// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 	ResourceLink string `pulumi:"resourceLink"`
 }
@@ -1452,6 +1454,8 @@ type GkeClusterResponseInput interface {
 
 // GkeCluster contains information specific to GKE clusters.
 type GkeClusterResponseArgs struct {
+	// If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+	ClusterMissing pulumi.BoolInput `pulumi:"clusterMissing"`
 	// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 	ResourceLink pulumi.StringInput `pulumi:"resourceLink"`
 }
@@ -1534,6 +1538,11 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutputWithContext(ctx c
 	}).(GkeClusterResponsePtrOutput)
 }
 
+// If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+func (o GkeClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
+}
+
 // Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
@@ -1555,6 +1564,16 @@ func (o GkeClusterResponsePtrOutput) ToGkeClusterResponsePtrOutputWithContext(ct
 
 func (o GkeClusterResponsePtrOutput) Elem() GkeClusterResponseOutput {
 	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse { return *v }).(GkeClusterResponseOutput)
+}
+
+// If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+func (o GkeClusterResponsePtrOutput) ClusterMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeClusterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterMissing
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.

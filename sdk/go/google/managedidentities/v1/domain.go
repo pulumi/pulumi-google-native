@@ -18,6 +18,8 @@ type Domain struct {
 
 	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
 	Admin pulumi.StringOutput `pulumi:"admin"`
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled pulumi.BoolOutput `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
 	// The time the instance was created.
@@ -95,6 +97,8 @@ func (DomainState) ElementType() reflect.Type {
 type domainArgs struct {
 	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
 	Admin *string `pulumi:"admin"`
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	DomainName         string   `pulumi:"domainName"`
@@ -113,6 +117,8 @@ type domainArgs struct {
 type DomainArgs struct {
 	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
 	Admin pulumi.StringPtrInput
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled pulumi.BoolPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
 	DomainName         pulumi.StringInput

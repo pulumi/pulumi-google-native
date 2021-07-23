@@ -44,7 +44,7 @@ type LookupConfigResult struct {
 	Documentation DocumentationResponse `pulumi:"documentation"`
 	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
 	Endpoints []EndpointResponse `pulumi:"endpoints"`
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
 	Enums []EnumResponse `pulumi:"enums"`
 	// HTTP configuration.
 	Http HttpResponse `pulumi:"http"`
@@ -70,9 +70,9 @@ type LookupConfigResult struct {
 	SystemParameters SystemParametersResponse `pulumi:"systemParameters"`
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
 	SystemTypes []TypeResponse `pulumi:"systemTypes"`
-	// The product title for this service.
+	// The product title for this service, it is the name displayed in Google Cloud Console.
 	Title string `pulumi:"title"`
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
 	Types []TypeResponse `pulumi:"types"`
 	// Configuration controlling usage of this service.
 	Usage UsageResponse `pulumi:"usage"`

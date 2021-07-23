@@ -35,7 +35,7 @@ type Config struct {
 	Documentation DocumentationResponseOutput `pulumi:"documentation"`
 	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
 	Endpoints EndpointResponseArrayOutput `pulumi:"endpoints"`
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
 	Enums EnumResponseArrayOutput `pulumi:"enums"`
 	// HTTP configuration.
 	Http HttpResponseOutput `pulumi:"http"`
@@ -61,9 +61,9 @@ type Config struct {
 	SystemParameters SystemParametersResponseOutput `pulumi:"systemParameters"`
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
 	SystemTypes TypeResponseArrayOutput `pulumi:"systemTypes"`
-	// The product title for this service.
+	// The product title for this service, it is the name displayed in Google Cloud Console.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
 	Types TypeResponseArrayOutput `pulumi:"types"`
 	// Configuration controlling usage of this service.
 	Usage UsageResponseOutput `pulumi:"usage"`
@@ -131,7 +131,7 @@ type configArgs struct {
 	Documentation *Documentation `pulumi:"documentation"`
 	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
 	Endpoints []Endpoint `pulumi:"endpoints"`
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
 	Enums []Enum `pulumi:"enums"`
 	// HTTP configuration.
 	Http *Http `pulumi:"http"`
@@ -158,9 +158,9 @@ type configArgs struct {
 	SystemParameters *SystemParameters `pulumi:"systemParameters"`
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
 	SystemTypes []Type `pulumi:"systemTypes"`
-	// The product title for this service.
+	// The product title for this service, it is the name displayed in Google Cloud Console.
 	Title *string `pulumi:"title"`
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
 	Types []Type `pulumi:"types"`
 	// Configuration controlling usage of this service.
 	Usage *Usage `pulumi:"usage"`
@@ -188,7 +188,7 @@ type ConfigArgs struct {
 	Documentation DocumentationPtrInput
 	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
 	Endpoints EndpointArrayInput
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
 	Enums EnumArrayInput
 	// HTTP configuration.
 	Http HttpPtrInput
@@ -215,9 +215,9 @@ type ConfigArgs struct {
 	SystemParameters SystemParametersPtrInput
 	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
 	SystemTypes TypeArrayInput
-	// The product title for this service.
+	// The product title for this service, it is the name displayed in Google Cloud Console.
 	Title pulumi.StringPtrInput
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
 	Types TypeArrayInput
 	// Configuration controlling usage of this service.
 	Usage UsagePtrInput

@@ -179,6 +179,175 @@ func (in *androidInstrumentationTestOrchestratorOptionPtr) ToAndroidInstrumentat
 	return pulumi.ToOutputWithContext(ctx, in).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
 }
 
+// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
+type AndroidRoboTestRoboMode string
+
+const (
+	// LINT.IfChange This means that the server should choose the mode. Recommended.
+	AndroidRoboTestRoboModeRoboModeUnspecified = AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED")
+	// Runs Robo in UIAutomator-only mode without app resigning
+	AndroidRoboTestRoboModeRoboVersion1 = AndroidRoboTestRoboMode("ROBO_VERSION_1")
+	// Runs Robo in standard Espresso with UIAutomator fallback
+	AndroidRoboTestRoboModeRoboVersion2 = AndroidRoboTestRoboMode("ROBO_VERSION_2")
+)
+
+func (AndroidRoboTestRoboMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidRoboTestRoboMode)(nil)).Elem()
+}
+
+func (e AndroidRoboTestRoboMode) ToAndroidRoboTestRoboModeOutput() AndroidRoboTestRoboModeOutput {
+	return pulumi.ToOutput(e).(AndroidRoboTestRoboModeOutput)
+}
+
+func (e AndroidRoboTestRoboMode) ToAndroidRoboTestRoboModeOutputWithContext(ctx context.Context) AndroidRoboTestRoboModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AndroidRoboTestRoboModeOutput)
+}
+
+func (e AndroidRoboTestRoboMode) ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput {
+	return e.ToAndroidRoboTestRoboModePtrOutputWithContext(context.Background())
+}
+
+func (e AndroidRoboTestRoboMode) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
+	return AndroidRoboTestRoboMode(e).ToAndroidRoboTestRoboModeOutputWithContext(ctx).ToAndroidRoboTestRoboModePtrOutputWithContext(ctx)
+}
+
+func (e AndroidRoboTestRoboMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AndroidRoboTestRoboMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AndroidRoboTestRoboMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AndroidRoboTestRoboMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AndroidRoboTestRoboModeOutput struct{ *pulumi.OutputState }
+
+func (AndroidRoboTestRoboModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidRoboTestRoboMode)(nil)).Elem()
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToAndroidRoboTestRoboModeOutput() AndroidRoboTestRoboModeOutput {
+	return o
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToAndroidRoboTestRoboModeOutputWithContext(ctx context.Context) AndroidRoboTestRoboModeOutput {
+	return o
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput {
+	return o.ToAndroidRoboTestRoboModePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidRoboTestRoboMode) *AndroidRoboTestRoboMode {
+		return &v
+	}).(AndroidRoboTestRoboModePtrOutput)
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AndroidRoboTestRoboMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AndroidRoboTestRoboModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AndroidRoboTestRoboMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AndroidRoboTestRoboModePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidRoboTestRoboModePtrOutput) ElementType() reflect.Type {
+	return androidRoboTestRoboModePtrType
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput {
+	return o
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
+	return o
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AndroidRoboTestRoboMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) Elem() AndroidRoboTestRoboModeOutput {
+	return o.ApplyT(func(v *AndroidRoboTestRoboMode) AndroidRoboTestRoboMode {
+		var ret AndroidRoboTestRoboMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AndroidRoboTestRoboModeOutput)
+}
+
+// AndroidRoboTestRoboModeInput is an input type that accepts AndroidRoboTestRoboModeArgs and AndroidRoboTestRoboModeOutput values.
+// You can construct a concrete instance of `AndroidRoboTestRoboModeInput` via:
+//
+//          AndroidRoboTestRoboModeArgs{...}
+type AndroidRoboTestRoboModeInput interface {
+	pulumi.Input
+
+	ToAndroidRoboTestRoboModeOutput() AndroidRoboTestRoboModeOutput
+	ToAndroidRoboTestRoboModeOutputWithContext(context.Context) AndroidRoboTestRoboModeOutput
+}
+
+var androidRoboTestRoboModePtrType = reflect.TypeOf((**AndroidRoboTestRoboMode)(nil)).Elem()
+
+type AndroidRoboTestRoboModePtrInput interface {
+	pulumi.Input
+
+	ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput
+	ToAndroidRoboTestRoboModePtrOutputWithContext(context.Context) AndroidRoboTestRoboModePtrOutput
+}
+
+type androidRoboTestRoboModePtr string
+
+func AndroidRoboTestRoboModePtr(v string) AndroidRoboTestRoboModePtrInput {
+	return (*androidRoboTestRoboModePtr)(&v)
+}
+
+func (*androidRoboTestRoboModePtr) ElementType() reflect.Type {
+	return androidRoboTestRoboModePtrType
+}
+
+func (in *androidRoboTestRoboModePtr) ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput {
+	return pulumi.ToOutput(in).(AndroidRoboTestRoboModePtrOutput)
+}
+
+func (in *androidRoboTestRoboModePtr) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AndroidRoboTestRoboModePtrOutput)
+}
+
 // Required. The type of action that Robo should perform on the specified element.
 type RoboDirectiveActionType string
 
@@ -353,6 +522,8 @@ func (in *roboDirectiveActionTypePtr) ToRoboDirectiveActionTypePtrOutputWithCont
 func init() {
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionPtrOutput{})
+	pulumi.RegisterOutputType(AndroidRoboTestRoboModeOutput{})
+	pulumi.RegisterOutputType(AndroidRoboTestRoboModePtrOutput{})
 	pulumi.RegisterOutputType(RoboDirectiveActionTypeOutput{})
 	pulumi.RegisterOutputType(RoboDirectiveActionTypePtrOutput{})
 }

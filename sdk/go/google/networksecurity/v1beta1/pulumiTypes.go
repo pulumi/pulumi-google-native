@@ -2286,7 +2286,7 @@ func (o HttpHeaderMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicy struct {
-	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCA `pulumi:"clientValidationCa"`
 }
 
@@ -2303,7 +2303,7 @@ type MTLSPolicyInput interface {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicyArgs struct {
-	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa ValidationCAArrayInput `pulumi:"clientValidationCa"`
 }
 
@@ -2385,7 +2385,7 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(MTLSPolicyPtrOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v MTLSPolicy) []ValidationCA { return v.ClientValidationCa }).(ValidationCAArrayOutput)
 }
@@ -2408,7 +2408,7 @@ func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
 	return o.ApplyT(func(v *MTLSPolicy) MTLSPolicy { return *v }).(MTLSPolicyOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v *MTLSPolicy) []ValidationCA {
 		if v == nil {
@@ -2420,7 +2420,7 @@ func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicyResponse struct {
-	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCAResponse `pulumi:"clientValidationCa"`
 }
 
@@ -2437,7 +2437,7 @@ type MTLSPolicyResponseInput interface {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicyResponseArgs struct {
-	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa ValidationCAResponseArrayInput `pulumi:"clientValidationCa"`
 }
 
@@ -2519,7 +2519,7 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponsePtrOutputWithContext(ctx c
 	}).(MTLSPolicyResponsePtrOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
 }
@@ -2542,7 +2542,7 @@ func (o MTLSPolicyResponsePtrOutput) Elem() MTLSPolicyResponseOutput {
 	return o.ApplyT(func(v *MTLSPolicyResponse) MTLSPolicyResponse { return *v }).(MTLSPolicyResponseOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponsePtrOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v *MTLSPolicyResponse) []ValidationCAResponse {
 		if v == nil {
