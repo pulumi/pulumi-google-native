@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+---
+
+## 0.6.0 (2021-07-24)
+
 - Update dependencies to pulumi/pulumi 3.7.0
 
 - Refresh credentials for client if backing credentials are expired. [#156](https://github.com/pulumi/pulumi-google-native/pull/156)
@@ -18,8 +24,6 @@ CHANGELOG
   
 - Support initialization failures by checkpointing partially created resources into the state
   [#149](https://github.com/pulumi/pulumi-google-native/issues/149)
-
----
 
 ## 0.5.0 (2021-07-12)
 
