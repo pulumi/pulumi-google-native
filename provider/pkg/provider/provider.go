@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/golang/protobuf/ptypes/empty"
+	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
@@ -19,6 +20,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil/rpcerror"
 	rpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"google.golang.org/api/googleapi"
 	"google.golang.org/grpc/codes"
@@ -419,7 +421,27 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
 	if err != nil {
-		return nil, errors.Wrapf(err, "waiting for completion")
+		if resp == nil {
+			return nil, errors.Wrapf(err, "waiting for completion")
+		}
+		// A partial failure may have occurred because we got an error and a response.
+		// Try reading the resource state and return a partial error if there is some.
+		id, idErr := calculateResourceId(res, inputsMap, resp)
+		if idErr != nil {
+			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
+		}
+		readResp, getErr := p.client.RequestWithTimeout("GET", id, nil, 0)
+		if getErr != nil {
+			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
+		}
+		checkpoint, cpErr := plugin.MarshalProperties(
+			checkpointObject(inputs, readResp),
+			plugin.MarshalOptions{Label: fmt.Sprintf("%s.partialCheckpoint", label), KeepSecrets: true, SkipNulls: true},
+		)
+		if cpErr != nil {
+			return nil, errors.Wrapf(err, "waiting for completion / checkpoint %s", cpErr)
+		}
+		return nil, partialError(id, err, checkpoint, req.GetProperties())
 	}
 
 	// Store both outputs and inputs into the state.
@@ -447,6 +469,10 @@ func (p *googleCloudProvider) prepareAPIInputs(
 	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap)
 }
 
+// waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
+// a success or a failure of provisioning.
+// Note that both a response and an error can be returned in case of a partially-failed deployment
+// (e.g., resource is created but failed to initialize to completion).
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -461,20 +487,38 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 		done, hasDone := resp["done"].(bool)
 		status, hasStatus := resp["status"].(string)
 		if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
+			// Extract an error message from the response, if any.
+			var err error
 			if failure, has := resp["error"]; has {
-				return nil, errors.Errorf("operation errored with %+v", failure)
+				err = errors.Errorf("operation errored with %+v", failure)
+			} else if statusMessage, has := resp["statusMessage"]; has {
+				err = errors.Errorf("operation failed with %q", statusMessage)
 			}
-			if statusMessage, has := resp["statusMessage"]; has {
-				return nil, errors.Errorf("operation failed with %q", statusMessage)
-			}
+			// Extract the resource response, if any.
+			// A partial error could happen, so both response and error could be available.
 			if response, has := resp["response"].(map[string]interface{}); has {
-				return response, nil
+				return response, err
 			}
 			if operationType, has := resp["operationType"].(string); has && strings.Contains(strings.ToLower(operationType), "delete") {
-				return resp, nil
+				return resp, err
 			}
+			// Check if there's a target link.
 			if targetLink, has := resp["targetLink"].(string); has {
-				return p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+				// Try reading resource state.
+				state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+				if getErr != nil {
+					if err != nil {
+						// Return the original creation error if resource read failed.
+						return nil, err
+					}
+					return nil, getErr
+				}
+				// A partial error could happen, so both response and error could be available.
+				return state, err
+			}
+			// At this point, we assume either a complete failure or a clean response.
+			if err != nil {
+				return nil, err
 			}
 			return resp, nil
 		}
@@ -759,6 +803,18 @@ func getPulumiVersion() string {
 	// We should never get here but let's not panic and return something sensible if we do.
 	logging.V(4).Info("No Pulumi package version found, using '3' as the default version for user-agent")
 	return "3"
+}
+
+// partialError creates an error for resources that did not complete an operation in progress.
+// The last known state of the object is included in the error so that it can be checkpointed.
+func partialError(id string, err error, state *structpb.Struct, inputs *structpb.Struct) error {
+	detail := rpc.ErrorResourceInitFailed{
+		Id:         id,
+		Properties: state,
+		Reasons:    []string{err.Error()},
+		Inputs:     inputs,
+	}
+	return rpcerror.WithDetails(rpcerror.New(codes.Unknown, err.Error()), &detail)
 }
 
 // checkpointObject puts inputs in the `__inputs` field of the state.
