@@ -1,11 +1,10 @@
 {
-    "name": "simple",
+    "name": "gke-ts",
     "version": "0.1.0",
     "devDependencies": {
         "@types/node": "latest"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.0.0",
-        "@pulumi/google-native": "dev"
+        "@pulumi/pulumi": "^3.0.0"
     }
 }
