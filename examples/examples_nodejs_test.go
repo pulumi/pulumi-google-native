@@ -9,6 +9,16 @@ import (
 	"testing"
 )
 
+func TestGKE(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:         filepath.Join(getCwd(t), "gke-ts"),
+			SkipRefresh: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestCloudRunTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
