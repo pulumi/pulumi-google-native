@@ -10,7 +10,6 @@ const zone = "us-central1-a";
 new google.container.v1.Cluster("cluster", {
     location: zone,
     initialClusterVersion: "1.19.9-gke.1900",
-    network: `projects/${project}/global/networks/default`,
     // ---> CHANGE START
     // Enable workload identity.
     workloadIdentityConfig: {

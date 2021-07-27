@@ -111,6 +111,7 @@ func TestClusterTs(t *testing.T) {
 			EditDirs: []integration.EditDir{
 				{
 					Dir: "step2",
+					Additive: true,
 				},
 			},
 			SkipRefresh: true,

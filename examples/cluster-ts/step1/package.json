@@ -1,5 +1,6 @@
 {
     "name": "step1",
+    "version": "0.1.0",
     "devDependencies": {
         "@types/node": "^10.0.0"
     },
