@@ -3,7 +3,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 
-const project = "pulumi-development";
+const config = new pulumi.Config();
+const project = config.get("project") ?? "pulumi-ci-gcp-provider";
+
 const region = "us-central1";
 
 // TODO: Determine this dynamically once https://github.com/pulumi/pulumi-google-native/issues/166 is done.
