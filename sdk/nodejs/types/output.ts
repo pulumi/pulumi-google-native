@@ -24100,7 +24100,6 @@ export namespace container {
              */
             mode: string;
         }
-
     }
 
     export namespace v1beta1 {
