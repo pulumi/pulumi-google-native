@@ -1,8 +1,10 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
+import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 
-const project = "pulumi-development";
+const config = new pulumi.Config();
+const project = config.get("project") ?? "pulumi-ci-gcp-provider";
 const zone = "us-central1-a";
 
 new google.container.v1.Cluster("cluster", {
