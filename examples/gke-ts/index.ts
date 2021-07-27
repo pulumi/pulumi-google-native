@@ -1,12 +1,6 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
-import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
-
-const config = new pulumi.Config();
-const project = config.get("project") ?? "pulumi-ci-gcp-provider";
-
-const region = "us-central1";
 
 // TODO: Determine this dynamically once https://github.com/pulumi/pulumi-google-native/issues/166 is done.
 const engineVersion = "1.19.9-gke.1900";
@@ -23,9 +17,7 @@ const nodeConfig: google.types.input.container.v1.NodeConfigArgs = {
 };
 
 const cluster = new google.container.v1.Cluster("cluster", {
-    parent: `projects/${project}/locations/${region}`,
     initialClusterVersion: engineVersion,
-    network: `projects/${project}/global/networks/default`,
     nodePools: [{
         config: nodeConfig,
         initialNodeCount: 1,
