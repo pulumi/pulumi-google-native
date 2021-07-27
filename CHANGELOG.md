@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Improve GKE cluster update handling [#124](https://github.com/pulumi/pulumi-google-native/issues/124)
 
 ---
 
