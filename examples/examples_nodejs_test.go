@@ -4,9 +4,10 @@
 package examples
 
 import (
-	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"path/filepath"
 	"testing"
+
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
 func TestGKE(t *testing.T) {
@@ -89,4 +90,16 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	})
 
 	return baseJS
+}
+
+func TestProjectIamPolicyTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:         filepath.Join(getCwd(t), "project-iam-policy-ts"),
+			SkipRefresh: true,
+			SkipUpdate:  true,
+			Quick:       true,
+		})
+
+	integration.ProgramTest(t, &test)
 }
