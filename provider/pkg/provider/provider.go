@@ -697,7 +697,11 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 	uri := res.ResourceUrl(req.GetId())
 
-	if strings.HasSuffix(uri, ":getIamPolicy") {
+	// Setting the project IAM policy to empty is quiet destructive and it is hard to imagine when doing so
+	// on delete would be reasonable. Terraform provider resets the IAM policy as well but has strong warnings
+	// against deleting this resource.
+	if strings.HasSuffix(uri, ":getIamPolicy") && !strings.HasSuffix(resourceKey, ":ProjectIamPolicy") {
+		// Reset the IAM policy to nothing.
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 
 		resp, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, map[string]interface{}{}, 0)
@@ -715,9 +719,9 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 	if res.NoDelete {
 		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
-		logging.V(4).Infof("%q resources"+
+		logging.V(1).Infof("%q resources"+
 			" cannot be deleted from Google Cloud. The resource %s will be removed from Pulumi"+
-			" state, but will still be present on Google Cloud.", resourceKey, uri)
+			" state, but will still be present on Google Cloud.", resourceKey, req.GetId())
 		return &empty.Empty{}, nil
 	}
 
