@@ -40,6 +40,7 @@ type CloudAPIResource struct {
 type CloudAPIFunction struct {
 	Url    string                  `json:"url"`
 	Params []CloudAPIResourceParam `json:"params"`
+	Verb   string                  `json:"verb"`
 }
 
 // CloudAPIResourceParam is a URL parameter of an API resource.

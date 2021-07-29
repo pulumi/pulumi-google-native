@@ -8,6 +8,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"runtime/debug"
+	"strings"
+	"time"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/jpillora/backoff"
@@ -25,12 +32,6 @@ import (
 	"google.golang.org/api/googleapi"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"log"
-	"net/http"
-	"os"
-	"runtime/debug"
-	"strings"
-	"time"
 )
 
 type googleCloudProvider struct {
@@ -167,7 +168,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		return nil, err
 	}
 
-	resp, err := p.client.RequestWithTimeout("GET", uri, nil, 0)
+	resp, err := p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
