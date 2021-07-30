@@ -128,6 +128,8 @@ class IosApp(pulumi.CustomResource):
                  __props__=None):
         """
         Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,6 +148,8 @@ class IosApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param IosAppArgs args: The arguments to use to populate this resource's properties.

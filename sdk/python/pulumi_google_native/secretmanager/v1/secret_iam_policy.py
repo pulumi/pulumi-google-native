@@ -139,6 +139,8 @@ class SecretIamPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,6 +158,8 @@ class SecretIamPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param SecretIamPolicyArgs args: The arguments to use to populate this resource's properties.

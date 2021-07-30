@@ -176,6 +176,8 @@ class DebugSession(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a debug session for a deployed API Proxy revision.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -194,6 +196,8 @@ class DebugSession(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a debug session for a deployed API Proxy revision.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param DebugSessionArgs args: The arguments to use to populate this resource's properties.

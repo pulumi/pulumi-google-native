@@ -178,6 +178,8 @@ class CryptoKey(pulumi.CustomResource):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
         Auto-naming is currently not supported for this resource.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -196,6 +198,8 @@ class CryptoKey(pulumi.CustomResource):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
         Auto-naming is currently not supported for this resource.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param CryptoKeyArgs args: The arguments to use to populate this resource's properties.
