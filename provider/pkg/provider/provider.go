@@ -697,7 +697,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 	uri := res.ResourceUrl(req.GetId())
 
-	// Setting the project IAM policy to empty is quiet destructive and it is hard to imagine when doing so
+	// Setting the project IAM policy to empty is quite destructive and it is hard to imagine when doing so
 	// on delete would be reasonable. Terraform provider resets the IAM policy as well but has strong warnings
 	// against deleting this resource.
 	if strings.HasSuffix(uri, ":getIamPolicy") && !strings.HasSuffix(resourceKey, ":ProjectIamPolicy") {
