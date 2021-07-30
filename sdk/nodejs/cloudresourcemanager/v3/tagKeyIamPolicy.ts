@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class TagKeyIamPolicy extends pulumi.CustomResource {
     /**

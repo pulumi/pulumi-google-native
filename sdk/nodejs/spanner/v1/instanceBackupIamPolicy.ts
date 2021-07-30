@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class InstanceBackupIamPolicy extends pulumi.CustomResource {
     /**

@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Sets the IAM access control policy on the specified function. Replaces any existing policy.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class FunctionIamPolicy extends pulumi.CustomResource {
     /**

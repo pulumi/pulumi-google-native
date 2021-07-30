@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new participant in a conversation.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class Participant extends pulumi.CustomResource {
     /**

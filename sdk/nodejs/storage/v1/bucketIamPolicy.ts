@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Updates an IAM policy for the specified bucket.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class BucketIamPolicy extends pulumi.CustomResource {
     /**
