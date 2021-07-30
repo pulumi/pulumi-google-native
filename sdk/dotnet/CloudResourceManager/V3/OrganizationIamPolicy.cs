@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Sets the access control policy on an organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:OrganizationIamPolicy")]
     public partial class OrganizationIamPolicy : Pulumi.CustomResource

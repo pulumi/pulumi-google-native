@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     /// <summary>
     /// Atomically updates the ResourceRecordSet collection.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1beta2:Change")]
     public partial class Change : Pulumi.CustomResource

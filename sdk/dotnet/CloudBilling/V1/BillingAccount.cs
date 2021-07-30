@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
     /// <summary>
     /// This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbilling/v1:BillingAccount")]
     public partial class BillingAccount : Pulumi.CustomResource

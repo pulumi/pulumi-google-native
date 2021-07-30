@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:datamigration/v1beta1:ConnectionProfileIamPolicy")]
     public partial class ConnectionProfileIamPolicy : Pulumi.CustomResource

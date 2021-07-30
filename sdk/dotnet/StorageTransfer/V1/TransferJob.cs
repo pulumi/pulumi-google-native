@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
 {
     /// <summary>
     /// Creates a transfer job that runs periodically.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:storagetransfer/v1:TransferJob")]
     public partial class TransferJob : Pulumi.CustomResource

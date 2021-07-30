@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
     /// <summary>
     /// Creates a new execution using the latest revision of the given workflow.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:workflowexecutions/v1:Execution")]
     public partial class Execution : Pulumi.CustomResource

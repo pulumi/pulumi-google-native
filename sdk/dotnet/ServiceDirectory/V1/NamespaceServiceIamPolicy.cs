@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Sets the IAM Policy for a resource (namespace or service only).
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1:NamespaceServiceIamPolicy")]
     public partial class NamespaceServiceIamPolicy : Pulumi.CustomResource

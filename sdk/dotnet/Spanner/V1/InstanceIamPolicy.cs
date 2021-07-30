@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:spanner/v1:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : Pulumi.CustomResource

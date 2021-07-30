@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:FirewallPolicyIamPolicy")]
     public partial class FirewallPolicyIamPolicy : Pulumi.CustomResource

@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     /// <summary>
     /// Create a new CertificateAuthority in a given Project and Location.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1beta1:CertificateAuthority")]
     public partial class CertificateAuthority : Pulumi.CustomResource

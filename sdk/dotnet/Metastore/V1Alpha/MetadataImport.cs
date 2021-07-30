@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
     /// <summary>
     /// Creates a new MetadataImport in a given project and location.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1alpha:MetadataImport")]
     public partial class MetadataImport : Pulumi.CustomResource

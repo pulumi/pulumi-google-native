@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a debug session for a deployed API Proxy revision.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:DebugSession")]
     public partial class DebugSession : Pulumi.CustomResource
