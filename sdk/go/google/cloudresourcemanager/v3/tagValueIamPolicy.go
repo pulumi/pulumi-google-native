@@ -12,6 +12,8 @@ import (
 )
 
 // Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type TagValueIamPolicy struct {
 	pulumi.CustomResourceState
 
