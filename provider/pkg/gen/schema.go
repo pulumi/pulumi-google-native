@@ -500,6 +500,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	if resourceMeta.NoDelete {
+		description += "\nNote - this resource's API doesn't support deletion. When deleted, the resource will persist\n" +
+			"on Google Cloud even though it will be deleted from Pulumi state."
+	}
+
 	// Apply auto-project and auto-location population.
 	requiredInputProperties.Delete("project")
 	requiredInputProperties.Delete("location")
