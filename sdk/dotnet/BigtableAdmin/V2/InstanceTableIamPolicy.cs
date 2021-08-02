@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Sets the access control policy on a Table resource. Replaces any existing policy.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceTableIamPolicy")]
     public partial class InstanceTableIamPolicy : Pulumi.CustomResource

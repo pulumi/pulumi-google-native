@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// <summary>
     /// Creates a subscription to an API product.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Subscription")]
     public partial class Subscription : Pulumi.CustomResource

@@ -185,6 +185,8 @@ class TestCase(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a test case for the given agent.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,6 +206,8 @@ class TestCase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a test case for the given agent.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param TestCaseArgs args: The arguments to use to populate this resource's properties.

@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Sets the IAM Access control policy for the specified Service. Overwrites any existing policy.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource

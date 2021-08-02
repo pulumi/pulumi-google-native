@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
     /// Creates a source.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:Source")]
     public partial class Source : Pulumi.CustomResource

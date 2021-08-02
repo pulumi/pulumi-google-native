@@ -5,12 +5,6 @@ package gen
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
-	"github.com/pulumi/pulumi/pkg/v3/codegen"
-	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"google.golang.org/api/discovery/v1"
 	"io/ioutil"
 	"net/url"
 	"os"
@@ -18,6 +12,13 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+	"google.golang.org/api/discovery/v1"
 )
 
 // Note - this needs to be kept in sync with the layout in the SDK package
@@ -32,18 +33,18 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Keywords:    []string{"pulumi", "google cloud"},
 		Homepage:    "https://pulumi.com",
 		Repository:  "https://github.com/pulumi/pulumi-google-native",
-		Config:      schema.ConfigSpec{
+		Config: schema.ConfigSpec{
 			Variables: map[string]schema.PropertySpec{
 				"project": {
-					TypeSpec: schema.TypeSpec{Type: "string"},
+					TypeSpec:    schema.TypeSpec{Type: "string"},
 					Description: "The default project to manage resources in. If another project is specified on a resource, it will take precedence.",
 				},
 				"region": {
-					TypeSpec: schema.TypeSpec{Type: "string"},
+					TypeSpec:    schema.TypeSpec{Type: "string"},
 					Description: "The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.",
 				},
 				"zone": {
-					TypeSpec: schema.TypeSpec{Type: "string"},
+					TypeSpec:    schema.TypeSpec{Type: "string"},
 					Description: "The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.",
 				},
 				// Google Partner Name for User-Agent.
@@ -453,7 +454,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				if details.Location != "query" || !details.Required {
 					continue
 				}
-				queryParams.Add(param, "{" + param + "}")
+				queryParams.Add(param, "{"+param+"}")
 			}
 			if len(queryParams) > 0 {
 				idPath, err = url.QueryUnescape(idPath + "?" + queryParams.Encode())
@@ -499,6 +500,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	if resourceMeta.NoDelete {
+		description += "\nNote - this resource's API doesn't support deletion. When deleted, the resource will persist\n" +
+			"on Google Cloud even though it will be deleted from Pulumi state."
+	}
+
 	// Apply auto-project and auto-location population.
 	requiredInputProperties.Delete("project")
 	requiredInputProperties.Delete("location")
@@ -520,7 +526,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 }
 
 func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
-	resourceTok := g.genToken("get"+typeName)
+	resourceTok := g.genToken("get" + typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
@@ -530,8 +536,13 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		getPath = dd.getMethod.FlatPath
 	}
 
+	httpMethod := dd.getMethod.HttpMethod
+	if httpMethod == "" {
+		httpMethod = "GET"
+	}
 	functionMeta := resources.CloudAPIFunction{
-		Url: resources.CombineUrl(g.rest.BaseUrl, getPath),
+		Url:  resources.CombineUrl(g.rest.BaseUrl, getPath),
+		Verb: httpMethod,
 	}
 
 	for _, name := range codegen.SortedKeys(dd.getMethod.Parameters) {

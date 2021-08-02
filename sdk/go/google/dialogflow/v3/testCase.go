@@ -12,6 +12,8 @@ import (
 )
 
 // Creates a test case for the given agent.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type TestCase struct {
 	pulumi.CustomResourceState
 

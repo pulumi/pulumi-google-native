@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new MetadataImport in a given project and location.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class MetadataImport extends pulumi.CustomResource {
     /**

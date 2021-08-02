@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// <summary>
     /// Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:ImportJob")]
     public partial class ImportJob : Pulumi.CustomResource

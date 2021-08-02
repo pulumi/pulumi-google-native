@@ -8,6 +8,8 @@ import * as utilities from "../../utilities";
 /**
  * Creates a training or a batch prediction job.
  * Auto-naming is currently not supported for this resource.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class Job extends pulumi.CustomResource {
     /**

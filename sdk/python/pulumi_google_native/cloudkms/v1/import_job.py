@@ -111,6 +111,8 @@ class ImportJob(pulumi.CustomResource):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
         Auto-naming is currently not supported for this resource.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,6 +128,8 @@ class ImportJob(pulumi.CustomResource):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
         Auto-naming is currently not supported for this resource.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param ImportJobArgs args: The arguments to use to populate this resource's properties.

@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates a test case for the given agent.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:TestCase")]
     public partial class TestCase : Pulumi.CustomResource

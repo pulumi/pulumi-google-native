@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
 {
     /// <summary>
     /// Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbilling/v1:BillingAccountIamPolicy")]
     public partial class BillingAccountIamPolicy : Pulumi.CustomResource

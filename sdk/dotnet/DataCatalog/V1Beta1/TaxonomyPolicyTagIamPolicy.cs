@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Sets the IAM policy for a taxonomy or a policy tag.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy")]
     public partial class TaxonomyPolicyTagIamPolicy : Pulumi.CustomResource

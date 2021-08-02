@@ -12,6 +12,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// <summary>
     /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:CryptoKeyVersion")]
     public partial class CryptoKeyVersion : Pulumi.CustomResource

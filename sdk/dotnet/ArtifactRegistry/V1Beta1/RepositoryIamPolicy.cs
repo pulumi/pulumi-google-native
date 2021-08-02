@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
     /// Updates the IAM policy for a given resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:artifactregistry/v1beta1:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : Pulumi.CustomResource

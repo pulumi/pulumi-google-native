@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1beta:ServiceBackupIamPolicy")]
     public partial class ServiceBackupIamPolicy : Pulumi.CustomResource

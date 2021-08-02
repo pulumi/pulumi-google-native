@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified Source.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationSourceIamPolicy")]
     public partial class OrganizationSourceIamPolicy : Pulumi.CustomResource

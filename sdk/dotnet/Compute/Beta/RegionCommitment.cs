@@ -11,6 +11,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a commitment in the specified project using the data included in the request.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionCommitment")]
     public partial class RegionCommitment : Pulumi.CustomResource

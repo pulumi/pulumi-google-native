@@ -7,6 +7,8 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a commitment in the specified project using the data included in the request.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class RegionCommitment extends pulumi.CustomResource {
     /**
