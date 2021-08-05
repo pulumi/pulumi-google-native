@@ -236,9 +236,12 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 			if sdkName == "location" {
 				configName = "region"
 			}
+			if _, has := news[key]; has {
+				continue
+			}
 			if value, ok := p.getDefaultValue(key, configName, olds); ok {
 				news[key] = *value
-			} else if _, has := news[key]; !has {
+			} else {
 				reason := fmt.Sprintf("missing required property '%s'. Either set it explicitly or configure it with 'pulumi config set google-native:%s <value>'.", sdkName, configName)
 				failures = append(failures, &rpc.CheckFailure{
 					Reason: reason,
@@ -351,11 +354,20 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	}
 
 	var replaces []string
-	for name := range res.CreateProperties {
-		if _, ok := diff.Updates[resource.PropertyKey(name)]; ok {
-			if _, has := res.UpdateProperties[name]; !has {
-				replaces = append(replaces, name)
+	for _, p := range res.CreateParams {
+		sdkName := p.Name
+		if p.SdkName != "" {
+			sdkName = p.SdkName
+		}
+		replaces = append(replaces, sdkName)
+	}
+	for name, prop := range res.CreateProperties {
+		if _, has := res.UpdateProperties[name]; !has {
+			sdkName := name
+			if prop.SdkName != "" {
+				sdkName = prop.SdkName
 			}
+			replaces = append(replaces, sdkName)
 		}
 	}
 
