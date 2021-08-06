@@ -4,7 +4,10 @@ CHANGELOG
 ## HEAD (Unreleased)
 
 - Use the appropriate HTTP verbs for invokes [#175](https://github.com/pulumi/pulumi-google-native/pull/175)
+
 - Avoid resetting project IAM policy on deletion [#175](https://github.com/pulumi/pulumi-google-native/pull/175)
+
+- Improve replacement detection [#181](https://github.com/pulumi/pulumi-google-native/pull/181)
 
 ## 0.6.0 (2021-07-24)
 
