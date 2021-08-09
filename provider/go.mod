@@ -3,8 +3,7 @@ module github.com/pulumi/pulumi-google-native/provider
 go 1.16
 
 require (
-	github.com/agext/levenshtein v1.2.2 // indirect
-	github.com/cheggaaa/pb v1.0.27 // indirect
+	github.com/GoogleCloudPlatform/declarative-resource-client-library v0.0.0-20210804194650-6921d7329370
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
@@ -13,9 +12,9 @@ require (
 	github.com/hashicorp/hcl/v2 v2.6.0 // indirect
 	github.com/imdario/mergo v0.3.12
 	github.com/jpillora/backoff v1.0.0
-	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
+	github.com/mitchellh/mapstructure v1.4.1
 	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi/pkg/v3 v3.7.1
 	github.com/pulumi/pulumi/sdk/v3 v3.7.1
