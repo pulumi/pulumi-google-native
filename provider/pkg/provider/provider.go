@@ -13,11 +13,9 @@ import (
 	"os"
 	"runtime/debug"
 	"strings"
-	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
-	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
@@ -406,7 +404,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if err != nil {
 		return nil, err
 	}
-	body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
+	body := p.prepareAPIInputs(inputs, nil, res.CreateProperties, false)
 
 	var op map[string]interface{}
 	if res.AssetUpload {
@@ -432,7 +430,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	resp, err := p.client.WaitForResourceOpCompletion(res.BaseUrl, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -476,88 +474,10 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
-	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
+	properties map[string]resources.CloudAPIProperty, merge bool) map[string]interface{} {
 	inputsMap := inputs.Mappable()
 	stateMap := state.Mappable()
-	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap)
-}
-
-// waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
-// a success or a failure of provisioning.
-// Note that both a response and an error can be returned in case of a partially-failed deployment
-// (e.g., resource is created but failed to initialize to completion).
-func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
-	retryPolicy := backoff.Backoff{
-		Min:    1 * time.Second,
-		Max:    15 * time.Second,
-		Factor: 1.5,
-		Jitter: true,
-	}
-	for {
-		logging.V(9).Infof("waiting for completion: %+v", resp)
-
-		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
-		done, hasDone := resp["done"].(bool)
-		status, hasStatus := resp["status"].(string)
-		if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
-			// Extract an error message from the response, if any.
-			var err error
-			if failure, has := resp["error"]; has {
-				err = errors.Errorf("operation errored with %+v", failure)
-			} else if statusMessage, has := resp["statusMessage"]; has {
-				err = errors.Errorf("operation failed with %q", statusMessage)
-			}
-			// Extract the resource response, if any.
-			// A partial error could happen, so both response and error could be available.
-			if response, has := resp["response"].(map[string]interface{}); has {
-				return response, err
-			}
-			if operationType, has := resp["operationType"].(string); has && strings.Contains(strings.ToLower(operationType), "delete") {
-				return resp, err
-			}
-			// Check if there's a target link.
-			if targetLink, has := resp["targetLink"].(string); has {
-				// Try reading resource state.
-				state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
-				if getErr != nil {
-					if err != nil {
-						// Return the original creation error if resource read failed.
-						return nil, err
-					}
-					return nil, getErr
-				}
-				// A partial error could happen, so both response and error could be available.
-				return state, err
-			}
-			// At this point, we assume either a complete failure or a clean response.
-			if err != nil {
-				return nil, err
-			}
-			return resp, nil
-		}
-
-		var pollUri string
-		if selfLink, has := resp["selfLink"].(string); has && hasStatus {
-			pollUri = selfLink
-		} else {
-			if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
-				pollUri = fmt.Sprintf("%s/v1/%s", baseUrl, name)
-			}
-		}
-
-		if pollUri == "" {
-			return resp, nil
-		}
-
-		time.Sleep(retryPolicy.Duration())
-
-		op, err := p.client.RequestWithTimeout("GET", pollUri, nil, 0)
-		if err != nil {
-			return nil, errors.Wrapf(err, "polling operation status")
-		}
-
-		resp = op
-	}
+	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap, merge)
 }
 
 // Read the current live state associated with a resource.
@@ -654,8 +574,19 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	resourceKey := string(urn.Type())
-	updateHandler := p.updateHandler(resourceKey, req)
-	resp, err := updateHandler.Update(inputs, oldState)
+	res, ok := p.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource %q not found", resourceKey)
+	}
+
+	var resp map[string]interface{}
+	updateHandler, found := p.updateHandler(resourceKey, req)
+	if found {
+		resp, err = updateHandler.Update(res, inputs, oldState)
+	} else {
+		body := p.prepareAPIInputs(inputs, oldState, res.UpdateProperties, false)
+		resp, err = p.updateRoundTrip(res.ResourceUrl(req.GetId()), res, body)
+	}
 	if err != nil {
 		return nil, err
 	}
@@ -679,6 +610,23 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	return &rpc.UpdateResponse{
 		Properties: outputs,
 	}, nil
+}
+
+func (p *googleCloudProvider) updateRoundTrip(uri string, res resources.CloudAPIResource, body map[string]interface{}) (map[string]interface{}, error) {
+	if strings.HasSuffix(uri, ":getIamPolicy") {
+		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
+	}
+
+	op, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, body, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+	}
+
+	resp, err := p.client.WaitForResourceOpCompletion(res.BaseUrl, op)
+	if err != nil {
+		return nil, errors.Wrapf(err, "waiting for completion")
+	}
+	return resp, nil
 }
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
@@ -706,7 +654,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.BaseUrl, resp)
+	_, err = p.client.WaitForResourceOpCompletion(res.BaseUrl, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}

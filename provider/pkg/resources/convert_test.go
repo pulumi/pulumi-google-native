@@ -202,7 +202,7 @@ var sampleAPIUpdatePackage = map[string]interface{}{
 
 func TestSdkPropertiesToRequestBody(t *testing.T) {
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, nil)
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, nil, false)
 	assert.Equal(t, sampleAPIPackage, data)
 }
 
@@ -238,7 +238,7 @@ func TestSdkPropertiesToRequestBodyWithState(t *testing.T) {
 		},
 	}
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, state)
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, state, false)
 	assert.Equal(t, sampleAPIPackage, data)
 }
 
@@ -258,7 +258,7 @@ func TestSdkPropertiesToRequestBodyEmptyCollections(t *testing.T) {
 		},
 	}
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, emptyCollectionData, nil)
+	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, emptyCollectionData, nil, false)
 	assert.Equal(t, expectedBody, actualBody)
 }
 
@@ -278,12 +278,12 @@ func TestSdkPropertiesToRequestBodyNilCollections(t *testing.T) {
 		},
 	}
 	bodyProperties := resourceMap.Resources["r1"].CreateProperties
-	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, nilCollectionData, nil)
+	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, nilCollectionData, nil, false)
 	assert.Equal(t, expectedBody, actualBody)
 }
 
 func TestSdkPropertiesToRequestBodyCopyOutputs(t *testing.T) {
 	bodyProperties := resourceMap.Resources["r1"].UpdateProperties
-	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, sampleSdkState)
+	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, sampleSdkState, false)
 	assert.Equal(t, sampleAPIUpdatePackage, data)
 }

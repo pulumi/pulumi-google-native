@@ -15,9 +15,9 @@ type SdkShapeConverter struct {
 	Types map[string]CloudAPIType
 }
 
-type convertPropValues func(props map[string]CloudAPIProperty, inputs, state map[string]interface{}) map[string]interface{}
+type convertPropValues func(props map[string]CloudAPIProperty, inputs, state map[string]interface{}, merge bool) map[string]interface{}
 
-func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, state interface{}, convertMap convertPropValues) interface{} {
+func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, state interface{}, merge bool, convertMap convertPropValues) interface{} {
 	if value == nil {
 		return nil
 	}
@@ -39,13 +39,13 @@ func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, stat
 			if !ok {
 				return value
 			}
-			return convertMap(typ.Properties, valueMap, stateMap)
+			return convertMap(typ.Properties, valueMap, stateMap, merge)
 		}
 
 		if prop.AdditionalProperties != nil {
 			result := map[string]interface{}{}
 			for key, item := range valueMap {
-				result[key] = k.convertPropValue(prop.AdditionalProperties, item, stateMap[key], convertMap)
+				result[key] = k.convertPropValue(prop.AdditionalProperties, item, stateMap[key], merge, convertMap)
 			}
 			return result
 		}
@@ -69,7 +69,7 @@ func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, stat
 			if len(stateSlice) > i {
 				stateItem = stateSlice[i]
 			}
-			result = append(result, k.convertPropValue(prop.Items, s.Index(i).Interface(), stateItem, convertMap))
+			result = append(result, k.convertPropValue(prop.Items, s.Index(i).Interface(), stateItem, merge, convertMap))
 		}
 		return result
 	}
@@ -78,7 +78,7 @@ func (k *SdkShapeConverter) convertPropValue(prop *CloudAPIProperty, value, stat
 
 // SdkPropertiesToRequestBody converts a map of SDK properties to JSON request body to be sent to an HTTP API.
 func (k *SdkShapeConverter) SdkPropertiesToRequestBody(props map[string]CloudAPIProperty,
-	inputs map[string]interface{}, state map[string]interface{}) map[string]interface{} {
+	inputs map[string]interface{}, state map[string]interface{}, merge bool) map[string]interface{} {
 
 	body := map[string]interface{}{}
 	for name, prop := range props {
@@ -94,7 +94,12 @@ func (k *SdkShapeConverter) SdkPropertiesToRequestBody(props map[string]CloudAPI
 			values = state
 		}
 
-		if value, has := values[sdkName]; has {
+		value, has := values[sdkName]
+		if merge && !has {
+			values = state
+			value, has = values[sdkName]
+		}
+		if has {
 			if prop.Container != "" {
 				if v, has := body[prop.Container].(map[string]interface{}); has {
 					parent = v
@@ -103,7 +108,7 @@ func (k *SdkShapeConverter) SdkPropertiesToRequestBody(props map[string]CloudAPI
 					body[prop.Container] = parent
 				}
 			}
-			parent[name] = k.convertPropValue(&p, value, state[sdkName], k.SdkPropertiesToRequestBody)
+			parent[name] = k.convertPropValue(&p, value, state[sdkName], merge, k.SdkPropertiesToRequestBody)
 		}
 	}
 	return body
