@@ -4,12 +4,13 @@ package gen
 
 import (
 	"fmt"
+	"regexp"
+	"strings"
+
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	"regexp"
-	"strings"
 )
 
 var s = codegen.NewStringSet()

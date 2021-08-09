@@ -197,7 +197,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				return nil, nil, err
 			}
 			// Generate any overlays for resources.
-			err = gen.genResourceOverlays(typeName, res[typeName], patternParams)
+			err = gen.genResourceOverlays(typeName)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -530,26 +530,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	return nil
 }
 
-func (g *packageGenerator) genResourceOverlays(typeName string, dd discoveryDocumentResource, patternParams codegen.StringSet) error {
+func (g *packageGenerator) genResourceOverlays(typeName string) error {
 	resourceTok := g.genToken(typeName)
-	switch resourceTok {
-	case "google-native:container/v1:Cluster", "google-native:container/v1beta1:Cluster":
-		resourceMeta := g.metadata.Resources[resourceTok]
-		updateRequest := g.rest.Schemas[dd.updateMethod.Request.Ref]
-		updateBag, err := g.genProperties(typeName, &updateRequest, "update", false, patternParams)
-		if err != nil {
-			return err
-		}
-		for name, value := range updateBag.properties {
-			if _, has := resourceMeta.CreateProperties[stripDesiredPrefix(name)]; has {
-				value.SdkName = stripDesiredPrefix(name)
-				resourceMeta.UpdateProperties[name] = value
-			} else if name == "desiredClusterAutoscaling" {
-				value.SdkName = "autoscaling"
-				resourceMeta.UpdateProperties[name] = value
-			}
-		}
-		g.metadata.Resources[resourceTok] = resourceMeta
+	if overlay, ok := metadataOverlays[resourceTok]; ok {
+		g.metadata.Resources[resourceTok] = overlay
 	}
 	return nil
 }

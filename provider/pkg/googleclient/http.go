@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-cleanhttp"
+	"github.com/jpillora/backoff"
 	"github.com/mitchellh/go-homedir"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
@@ -67,6 +68,13 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	}
 
 	return googleClient, nil
+}
+
+func (c *GoogleClient) HttpClient(ctx context.Context) (*http.Client, error) {
+	if err := c.refreshClientCredentials(ctx); err != nil {
+		return nil, err
+	}
+	return c.http, nil
 }
 
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
@@ -137,6 +145,84 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	}
 
 	return result, nil
+}
+
+// WaitForResourceOpCompletion keeps polling the resource or operation URL until it gets
+// a success or a failure of provisioning.
+// Note that both a response and an error can be returned in case of a partially-failed deployment
+// (e.g., resource is created but failed to initialize to completion).
+func (c *GoogleClient) WaitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
+	retryPolicy := backoff.Backoff{
+		Min:    1 * time.Second,
+		Max:    15 * time.Second,
+		Factor: 1.5,
+		Jitter: true,
+	}
+	for {
+		logging.V(9).Infof("waiting for completion: %+v", resp)
+
+		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
+		done, hasDone := resp["done"].(bool)
+		status, hasStatus := resp["status"].(string)
+		if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
+			// Extract an error message from the response, if any.
+			var err error
+			if failure, has := resp["error"]; has {
+				err = errors.Errorf("operation errored with %+v", failure)
+			} else if statusMessage, has := resp["statusMessage"]; has {
+				err = errors.Errorf("operation failed with %q", statusMessage)
+			}
+			// Extract the resource response, if any.
+			// A partial error could happen, so both response and error could be available.
+			if response, has := resp["response"].(map[string]interface{}); has {
+				return response, err
+			}
+			if operationType, has := resp["operationType"].(string); has && strings.Contains(strings.ToLower(operationType), "delete") {
+				return resp, err
+			}
+			// Check if there's a target link.
+			if targetLink, has := resp["targetLink"].(string); has {
+				// Try reading resource state.
+				state, getErr := c.RequestWithTimeout("GET", targetLink, nil, 0)
+				if getErr != nil {
+					if err != nil {
+						// Return the original creation error if resource read failed.
+						return nil, err
+					}
+					return nil, getErr
+				}
+				// A partial error could happen, so both response and error could be available.
+				return state, err
+			}
+			// At this point, we assume either a complete failure or a clean response.
+			if err != nil {
+				return nil, err
+			}
+			return resp, nil
+		}
+
+		var pollUri string
+		if selfLink, has := resp["selfLink"].(string); has && hasStatus {
+			pollUri = selfLink
+		} else {
+			if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
+				pollUri = fmt.Sprintf("%s/v1/%s", baseUrl, name)
+			}
+		}
+
+		if pollUri == "" {
+			return resp, nil
+		}
+
+		time.Sleep(retryPolicy.Duration())
+
+		op, err := c.RequestWithTimeout("GET", pollUri, nil, 0)
+		if err != nil {
+			return nil, errors.Wrapf(err, "polling operation status")
+		}
+
+		resp = op
+	}
 }
 
 // multipartBoundary is a random string used to separate parts of multi-part request bodies.

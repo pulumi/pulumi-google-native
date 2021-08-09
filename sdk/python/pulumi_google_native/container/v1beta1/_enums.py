@@ -7,8 +7,6 @@ from enum import Enum
 __all__ = [
     'CloudRunConfigLoadBalancerType',
     'ClusterAutoscalingAutoscalingProfile',
-    'ClusterDesiredDatapathProvider',
-    'ClusterDesiredPrivateIpv6GoogleAccess',
     'ClusterTelemetryType',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
@@ -51,32 +49,6 @@ class ClusterAutoscalingAutoscalingProfile(str, Enum):
     """Prioritize optimizing utilization of resources."""
     BALANCED = "BALANCED"
     """Use default (balanced) autoscaling configuration."""
-
-
-class ClusterDesiredDatapathProvider(str, Enum):
-    """
-    The desired datapath provider for the cluster.
-    """
-    DATAPATH_PROVIDER_UNSPECIFIED = "DATAPATH_PROVIDER_UNSPECIFIED"
-    """Default value."""
-    LEGACY_DATAPATH = "LEGACY_DATAPATH"
-    """Use the IPTables implementation based on kube-proxy."""
-    ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
-    """Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more."""
-
-
-class ClusterDesiredPrivateIpv6GoogleAccess(str, Enum):
-    """
-    The desired state of IPv6 connectivity to Google Services.
-    """
-    PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED = "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
-    """Default value. Same as DISABLED"""
-    PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED = "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"
-    """No private access to or from Google Services"""
-    PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE = "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"
-    """Enables private IPv6 access to Google Services from GKE"""
-    PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
-    """Enables priate IPv6 access to and from Google Services"""
 
 
 class ClusterTelemetryType(str, Enum):

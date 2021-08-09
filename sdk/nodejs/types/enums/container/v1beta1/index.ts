@@ -42,50 +42,6 @@ export const ClusterAutoscalingAutoscalingProfile = {
  */
 export type ClusterAutoscalingAutoscalingProfile = (typeof ClusterAutoscalingAutoscalingProfile)[keyof typeof ClusterAutoscalingAutoscalingProfile];
 
-export const ClusterDesiredDatapathProvider = {
-    /**
-     * Default value.
-     */
-    DatapathProviderUnspecified: "DATAPATH_PROVIDER_UNSPECIFIED",
-    /**
-     * Use the IPTables implementation based on kube-proxy.
-     */
-    LegacyDatapath: "LEGACY_DATAPATH",
-    /**
-     * Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
-     */
-    AdvancedDatapath: "ADVANCED_DATAPATH",
-} as const;
-
-/**
- * The desired datapath provider for the cluster.
- */
-export type ClusterDesiredDatapathProvider = (typeof ClusterDesiredDatapathProvider)[keyof typeof ClusterDesiredDatapathProvider];
-
-export const ClusterDesiredPrivateIpv6GoogleAccess = {
-    /**
-     * Default value. Same as DISABLED
-     */
-    PrivateIpv6GoogleAccessUnspecified: "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED",
-    /**
-     * No private access to or from Google Services
-     */
-    PrivateIpv6GoogleAccessDisabled: "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED",
-    /**
-     * Enables private IPv6 access to Google Services from GKE
-     */
-    PrivateIpv6GoogleAccessToGoogle: "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE",
-    /**
-     * Enables priate IPv6 access to and from Google Services
-     */
-    PrivateIpv6GoogleAccessBidirectional: "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL",
-} as const;
-
-/**
- * The desired state of IPv6 connectivity to Google Services.
- */
-export type ClusterDesiredPrivateIpv6GoogleAccess = (typeof ClusterDesiredPrivateIpv6GoogleAccess)[keyof typeof ClusterDesiredPrivateIpv6GoogleAccess];
-
 export const ClusterTelemetryType = {
     /**
      * Not set.

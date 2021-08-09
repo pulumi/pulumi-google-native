@@ -2,6 +2,8 @@
 
 package gen
 
+import "github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
 // that is present in the discovery document.
 var resourceNameByTypeOverrides = map[string]string{
@@ -119,4 +121,374 @@ var csharpNamespaceOverrides = map[string]string{
 	"pubsublite":           "PubSubLite",
 	"recommendationengine": "RecommendationEngine",
 	"securitycenter":       "SecurityCenter",
+}
+
+var clusterAPIResource = resources.CloudAPIResource{
+	BaseUrl:    "https://container.googleapis.com/",
+	CreatePath: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
+	CreateParams: []resources.CloudAPIResourceParam{
+		{
+			Name:     "projectsId",
+			SdkName:  "project",
+			Location: "path",
+		},
+		{
+			Name:     "locationsId",
+			SdkName:  "location",
+			Location: "path",
+		},
+	},
+	CreateVerb: "POST",
+	CreateProperties: map[string]resources.CloudAPIProperty{
+		"addonsConfig": {
+			Container: "cluster",
+		},
+		"authenticatorGroupsConfig": {
+			Container: "cluster",
+		},
+		"autopilot": {
+			Container: "cluster",
+		},
+		"autoscaling": {
+			Container: "cluster",
+		},
+		"binaryAuthorization": {
+			Container: "cluster",
+		},
+		"clusterIpv4Cidr": {
+			Container: "cluster",
+		},
+		"conditions": {
+			Container: "cluster",
+		},
+		"confidentialNodes": {
+			Container: "cluster",
+		},
+		"databaseEncryption": {
+			Container: "cluster",
+		},
+		"defaultMaxPodsConstraint": {
+			Container: "cluster",
+		},
+		"description": {
+			Container: "cluster",
+		},
+		"enableKubernetesAlpha": {
+			Container: "cluster",
+		},
+		"enableTpu": {
+			Container: "cluster",
+		},
+		"initialClusterVersion": {
+			Container: "cluster",
+		},
+		"ipAllocationPolicy": {
+			Container: "cluster",
+		},
+		"labelFingerprint": {
+			Container: "cluster",
+		},
+		"legacyAbac": {
+			Container: "cluster",
+		},
+		"locations": {
+			Container: "cluster",
+		},
+		"loggingService": {
+			Container: "cluster",
+		},
+		"maintenancePolicy": {
+			Container: "cluster",
+		},
+		"masterAuth": {
+			Container: "cluster",
+		},
+		"masterAuthorizedNetworksConfig": {
+			Container: "cluster",
+		},
+		"monitoringService": {
+			Container: "cluster",
+		},
+		"name": {
+			Container: "cluster",
+		},
+		"network": {
+			Container: "cluster",
+		},
+		"networkConfig": {
+			Container: "cluster",
+		},
+		"networkPolicy": {
+			Container: "cluster",
+		},
+		"nodePools": {
+			Container: "cluster",
+		},
+		"notificationConfig": {
+			Container: "cluster",
+		},
+		"parent": {},
+		"privateClusterConfig": {
+			Container: "cluster",
+		},
+		"releaseChannel": {
+			Container: "cluster",
+		},
+		"resourceLabels": {
+			Container: "cluster",
+		},
+		"resourceUsageExportConfig": {
+			Container: "cluster",
+		},
+		"shieldedNodes": {
+			Container: "cluster",
+		},
+		"subnetwork": {
+			Container: "cluster",
+		},
+		"verticalPodAutoscaling": {
+			Container: "cluster",
+		},
+		"workloadIdentityConfig": {
+			Container: "cluster",
+		},
+	},
+	UpdateVerb: "PUT",
+	UpdateProperties: map[string]resources.CloudAPIProperty{
+		"addonsConfig": {}, //
+		//"authenticatorGroupsConfig":      {}, // recreate
+		//"autopilot":                      {}, // recreate
+		"binaryAuthorization":            {Container: "cluster"}, //
+		"autoscaling":                    {Container: "cluster"}, //
+		"databaseEncryption":             {Container: "cluster"}, //
+		"locations":                      {Container: "cluster"}, //
+		"loggingService":                 {Container: "cluster"}, //
+		"masterAuthorizedNetworksConfig": {Container: "cluster"}, //
+		"monitoringService":              {Container: "cluster"}, // monitoringservice and logging service can be updated simultaneously //
+		//"notificationConfig":             {}, // recreate
+		//"privateClusterConfig":           {}, // recreate
+		//"releaseChannel":                 {}, // recreate
+		//"resourceUsageExportConfig":      {}, // recreate
+		"shieldedNodes":          {Container: "cluster"}, //
+		"verticalPodAutoscaling": {Container: "cluster"}, //
+		"workloadIdentityConfig": {Container: "cluster"}, //
+		// network config things that can change:
+		// enableIntraNodeVisibility
+		// enableL4ilbSubsetting
+		// privateIpv6GoogleAccess
+		// defaultSnatStatus
+		// datapathProvider
+		//"networkConfig": {}, // recreate
+		"masterVersion": {Container: "cluster"}, // need to reuse initialMasterVersion for this //
+		// "nodeVersion": {}, // Not sure what to do about the default nodepool.
+
+		// non-update
+		//"resourceLabels":    {}, // recreate
+		"maintenancePolicy": {Container: "cluster"}, //
+		//"masterAuth":        {}, // recreate
+		//"networkPolicy":     {}, // recreate
+		"legacyAbac": {Container: "cluster"}, //
+	},
+	IdProperty:      "selfLink",
+	AutoNamePattern: "{name}",
+}
+
+var clusterBetaAPIResource = resources.CloudAPIResource{
+	BaseUrl:    "https://container.googleapis.com/",
+	CreatePath: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
+	CreateParams: []resources.CloudAPIResourceParam{
+		{
+			Name:     "projectsId",
+			SdkName:  "project",
+			Location: "path",
+		},
+		{
+			Name:     "locationsId",
+			SdkName:  "location",
+			Location: "path",
+		},
+	},
+	CreateVerb: "POST",
+	CreateProperties: map[string]resources.CloudAPIProperty{
+		"addonsConfig": {
+			Container: "cluster",
+		},
+		"authenticatorGroupsConfig": {
+			Container: "cluster",
+		},
+		"autopilot": {
+			Container: "cluster",
+		},
+		"autoscaling": {
+			Container: "cluster",
+		},
+		"binaryAuthorization": {
+			Container: "cluster",
+		},
+		"clusterIpv4Cidr": {
+			Container: "cluster",
+		},
+		"clusterTelemetry": {
+			Container: "cluster",
+		},
+		"conditions": {
+			Container: "cluster",
+		},
+		"confidentialNodes": {
+			Container: "cluster",
+		},
+		"databaseEncryption": {
+			Container: "cluster",
+		},
+		"defaultMaxPodsConstraint": {
+			Container: "cluster",
+		},
+		"description": {
+			Container: "cluster",
+		},
+		"enableKubernetesAlpha": {
+			Container: "cluster",
+		},
+		"initialClusterVersion": {
+			Container: "cluster",
+			SdkName:   "clusterVersion",
+		},
+		"ipAllocationPolicy": {
+			Container: "cluster",
+		},
+		"labelFingerprint": {
+			Container: "cluster",
+		},
+		"legacyAbac": {
+			Container: "cluster",
+		},
+		"locations": {
+			Container: "cluster",
+		},
+		"loggingService": {
+			Container: "cluster",
+		},
+		"maintenancePolicy": {
+			Container: "cluster",
+		},
+		"master": {
+			Container: "cluster",
+		},
+		"masterAuth": {
+			Container: "cluster",
+		},
+		"masterAuthorizedNetworksConfig": {
+			Container: "cluster",
+		},
+		"monitoringService": {
+			Container: "cluster",
+		},
+		"name": {
+			Container: "cluster",
+		},
+		"network": {
+			Container: "cluster",
+		},
+		"networkConfig": {
+			Container: "cluster",
+		},
+		"networkPolicy": {
+			Container: "cluster",
+		},
+		"nodePoolDefaults": {
+			Container: "cluster",
+		},
+		"nodePools": {
+			Container: "cluster",
+		},
+		"notificationConfig": {
+			Container: "cluster",
+		},
+		"parent": {},
+		"podSecurityPolicyConfig": {
+			Container: "cluster",
+		},
+		"privateClusterConfig": {
+			Container: "cluster",
+		},
+		"releaseChannel": {
+			Container: "cluster",
+		},
+		"resourceLabels": {
+			Container: "cluster",
+		},
+		"resourceUsageExportConfig": {
+			Container: "cluster",
+		},
+		"shieldedNodes": {
+			Container: "cluster",
+		},
+		"subnetwork": {
+			Container: "cluster",
+		},
+		"tpuConfig": {
+			Container: "cluster",
+		},
+		"verticalPodAutoscaling": {
+			Container: "cluster",
+		},
+		"workloadCertificates": {
+			Container: "cluster",
+		},
+		"workloadIdentityConfig": {
+			Container: "cluster",
+		},
+	},
+	UpdateVerb: "PUT",
+	UpdateProperties: map[string]resources.CloudAPIProperty{
+		"addonsConfig": {
+			Container: "cluster",
+		}, //
+		//"authenticatorGroupsConfig":      {}, // recreate
+		//"autopilot":                      {}, // recreate
+		"binaryAuthorization": {Container: "cluster"}, //
+		//"autoscaling":                    {}, //
+		//"clusterTelemetry":               {},
+		"databaseEncryption":             {Container: "cluster"}, //
+		"description":                    {Container: "cluster"}, //
+		"endpoint":                       {Container: "cluster"}, //
+		"locations":                      {Container: "cluster"}, //
+		"loggingService":                 {Container: "cluster"}, //
+		"master":                         {Container: "cluster"}, //
+		"masterAuthorizedNetworksConfig": {Container: "cluster"}, //
+		"monitoringService":              {Container: "cluster"}, // monitoringservice and logging service can be updated simultaneously
+		// "notificationConfig":             {}, // recreate
+		"podSecurityPolicyConfig": {Container: "cluster"},
+		// "privateClusterConfig":           {}, // recreate
+		//"releaseChannel":                 {},
+		// "resourceUsageExportConfig": {}, // recreate
+		"shieldedNodes": {Container: "cluster"}, //
+		// "tpuConfig":                 {}, // recreate
+		"verticalPodAutoscaling": {Container: "cluster"}, //
+		"workloadCertificates":   {Container: "cluster"}, //
+		"workloadIdentityConfig": {Container: "cluster"}, //
+		// network config things that can change:
+		// enableIntraNodeVisibility
+		// enableL4ilbSubsetting
+		// privateIpv6GoogleAccess
+		// defaultSnatStatus
+		// datapathProvider
+		// "networkConfig": {}, // recreate
+		"masterVersion": {Container: "cluster"}, // need to reuse initialMasterVersion for this //
+		// "nodeVersion": {}, // Not sure what to do about the default nodepool.
+
+		// non-update
+		"resourceLabels":    {Container: "cluster"}, //
+		"maintenancePolicy": {Container: "cluster"}, //
+		//"masterAuth":        {}, // recreate
+		// "networkPolicy": {}, // recreate
+		"legacyAbac": {Container: "cluster"}, //
+	},
+	IdProperty:      "selfLink",
+	AutoNamePattern: "{name}",
+}
+
+var metadataOverlays = map[string]resources.CloudAPIResource{
+	"google-native:container/v1:Cluster":      clusterAPIResource,
+	"google-native:container/v1beta1:Cluster": clusterBetaAPIResource,
 }
