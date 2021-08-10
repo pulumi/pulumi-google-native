@@ -5,6 +5,7 @@ package provider
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/mitchellh/mapstructure"
@@ -104,6 +105,101 @@ func (p *googleCloudProvider) updateClusterV1DCL(req *pulumirpc.UpdateRequest) u
 	}
 }
 
+func (p *googleCloudProvider) updateClusterNodepoolV1DCL(req *pulumirpc.UpdateRequest) updateHandlerFunc {
+	return func(res resources.CloudAPIResource, inputs, oldState resource.PropertyMap) (map[string]interface{}, error) {
+		body := p.prepareAPIInputs(inputs, oldState, res.CreateProperties, true)
+
+		var nodepool containerv1.NodePool
+		decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
+			Result:  &nodepool,
+			TagName: "json",
+		})
+		if err != nil {
+			return nil, err
+		}
+		logging.V(9).Infof("Desired raw state: %+v", body)
+		logging.V(9).Infof("Old state: %+v", oldState)
+
+		if err := decoder.Decode(body["nodePool"]); err != nil {
+			return nil, err
+		}
+
+		nodepoolBody := body["nodePool"].(map[string]interface{})
+		if nodeCount, ok := nodepoolBody["initialNodeCount"]; ok {
+			switch typedNodeCount := nodeCount.(type) {
+			case string:
+				count, err := strconv.Atoi(typedNodeCount)
+				if err != nil {
+					return nil, err
+				}
+				asInt64 := int64(count)
+				nodepool.NodeCount = &asInt64
+			case int:
+				asInt64 := int64(typedNodeCount)
+				nodepool.NodeCount = &asInt64
+			case int64:
+				nodepool.NodeCount = &typedNodeCount
+			default:
+				return nil, fmt.Errorf("unexpected type for initialNodeCount: %T", typedNodeCount)
+			}
+		}
+
+		//urn := resource.URN(req.GetUrn())
+		//label := fmt.Sprintf("%s.Diff(%s)", p.name, urn)
+		//oldStateRaw, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
+		//	Label:        fmt.Sprintf("%s.oldState", label),
+		//	KeepUnknowns: true,
+		//	KeepSecrets:  true,
+		//})
+		//if err != nil {
+		//	return nil, errors.Wrapf(err, "failed because malformed resource inputs")
+		//}
+
+		// Extract old inputs from the `__inputs` field of the old state.
+		//oldInputs := parseCheckpointObject(oldStateRaw)
+		//if nodepool.Location == nil {
+		//	if oldInputs.HasValue("location") {
+		//		location := oldInputs["location"].StringValue()
+		//		nodepool.Location = &location
+		//	}
+		//}
+		//if nodepool.Project == nil {
+		//	if oldInputs.HasValue("project") {
+		//		project := oldInputs["project"].StringValue()
+		//		nodepool.Project = &project
+		//	}
+		//}
+
+		ctx := context.Background()
+		client, err := p.client.HttpClient(ctx)
+		if err != nil {
+			return nil, err
+		}
+		// TODO: figure out logging.
+		containerClient := containerv1.NewClient(dcl.NewConfig(dcl.WithHTTPClient(client)))
+
+		logging.V(9).Infof("Desired raw state of nodepool: %+v", nodepool)
+		resp, err := containerClient.ApplyNodePool(ctx, &nodepool)
+		if err != nil {
+			logging.V(1).Infof("%+v", err)
+			return nil, err
+		}
+		result := map[string]interface{}{}
+		decoder, err = mapstructure.NewDecoder(&mapstructure.DecoderConfig{
+			Result:  &result,
+			TagName: "json",
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		if err = decoder.Decode(resp); err != nil {
+			return nil, err
+		}
+		return result, nil
+	}
+}
+
 func (p *googleCloudProvider) updateClusterV1Beta1DCL(req *pulumirpc.UpdateRequest) updateHandlerFunc {
 	return func(res resources.CloudAPIResource, inputs, oldState resource.PropertyMap) (map[string]interface{}, error) {
 		body := p.prepareAPIInputs(inputs, oldState, res.CreateProperties, true)
@@ -155,6 +251,8 @@ func (p *googleCloudProvider) updateHandler(resourceTok string, req *pulumirpc.U
 		return p.updateClusterV1DCL(req), true
 	case "google-native:container/v1beta1:Cluster":
 		return p.updateClusterV1Beta1DCL(req), true
+	case "google-native:container/v1:NodePool":
+		return p.updateClusterNodepoolV1DCL(req), true
 	}
 	return nil, false
 }

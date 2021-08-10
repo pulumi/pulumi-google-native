@@ -23,3 +23,8 @@ require (
 	google.golang.org/api v0.46.0
 	google.golang.org/grpc v1.37.0
 )
+
+replace (
+	github.com/pulumi/pulumi/pkg/v3 => ../../pulumi/pkg
+	github.com/pulumi/pulumi/sdk/v3 => ../../pulumi/sdk
+)

@@ -255,7 +255,7 @@ var clusterAPIResource = resources.CloudAPIResource{
 	},
 	UpdateVerb: "PUT",
 	UpdateProperties: map[string]resources.CloudAPIProperty{
-		"addonsConfig": {}, //
+		"addonsConfig": {Container: "cluster"}, //
 		//"authenticatorGroupsConfig":      {}, // recreate
 		//"autopilot":                      {}, // recreate
 		"binaryAuthorization":            {Container: "cluster"}, //
@@ -288,6 +288,78 @@ var clusterAPIResource = resources.CloudAPIResource{
 		//"masterAuth":        {}, // recreate
 		//"networkPolicy":     {}, // recreate
 		"legacyAbac": {Container: "cluster"}, //
+	},
+	IdProperty:      "selfLink",
+	AutoNamePattern: "{name}",
+}
+
+var clusterNodepoolAPIResource = resources.CloudAPIResource{
+	BaseUrl:    "https://container.googleapis.com/",
+	CreatePath: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
+	CreateParams: []resources.CloudAPIResourceParam{
+		{
+			Name:     "projectsId",
+			SdkName:  "project",
+			Location: "path",
+		},
+		{
+			Name:     "locationsId",
+			SdkName:  "location",
+			Location: "path",
+		},
+		{
+			Name:     "clustersId",
+			SdkName:  "clusterId",
+			Location: "path",
+		},
+	},
+	CreateVerb: "POST",
+	CreateProperties: map[string]resources.CloudAPIProperty{
+		"autoscaling": {
+			Container: "nodePool",
+		},
+		"conditions": {
+			Container: "nodePool",
+		},
+		"config": {
+			Container: "nodePool",
+		},
+		"initialNodeCount": {
+			Container: "nodePool",
+		},
+		"locations": {
+			Container: "nodePool",
+		},
+		"management": {
+			Container: "nodePool",
+		},
+		"maxPodsConstraint": {
+			Container: "nodePool",
+		},
+		"name": {
+			Container: "nodePool",
+		},
+		"parent": {},
+		"upgradeSettings": {
+			Container: "nodePool",
+		},
+		"version": {
+			Container: "nodePool",
+		},
+	},
+	UpdateVerb: "PUT",
+	UpdateProperties: map[string]resources.CloudAPIProperty{
+		"autoscaling": {Container: "nodePool"}, //
+		//"conditions": { Container: "nodePool" }, // recreate
+		"config":           {Container: "nodePool"}, //
+		"initialNodeCount": {Container: "nodePool"},
+		"locations":        {Container: "nodePool"}, //
+		"management":       {Container: "nodePool"}, //
+		//"maxPodsConstraint": { Container: "nodePool" }, // recreate
+		// "name": { Container: "nodePool" }, // recreate
+		//"parent": {},
+		// "upgradeSettings": { Container: "nodePool" }, // recreate
+		// "version": { Container: "nodePool" }, // recreate
 	},
 	IdProperty:      "selfLink",
 	AutoNamePattern: "{name}",
@@ -488,7 +560,85 @@ var clusterBetaAPIResource = resources.CloudAPIResource{
 	AutoNamePattern: "{name}",
 }
 
+var clusterNodepoolBetaAPIResource = resources.CloudAPIResource{
+	BaseUrl:    "https://container.googleapis.com/",
+	CreatePath: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
+	CreateParams: []resources.CloudAPIResourceParam{
+		{
+			Name:     "projectsId",
+			SdkName:  "project",
+			Location: "path",
+		},
+		{
+			Name:     "locationsId",
+			SdkName:  "location",
+			Location: "path",
+		},
+		{
+			Name:     "clustersId",
+			SdkName:  "clusterId",
+			Location: "path",
+		},
+	},
+	CreateVerb: "POST",
+	CreateProperties: map[string]resources.CloudAPIProperty{
+		"autoscaling": {
+			Container: "nodePool",
+		},
+		"conditions": {
+			Container: "nodePool",
+		},
+		"config": {
+			Container: "nodePool",
+		},
+		"initialNodeCount": {
+			Container: "nodePool",
+		},
+		"locations": {
+			Container: "nodePool",
+		},
+		"management": {
+			Container: "nodePool",
+		},
+		"maxPodsConstraint": {
+			Container: "nodePool",
+		},
+		"name": {
+			Container: "nodePool",
+		},
+		"networkConfig": {
+			Container: "nodePool",
+		},
+		"parent": {},
+		"upgradeSettings": {
+			Container: "nodePool",
+		},
+		"version": {
+			Container: "nodePool",
+		},
+	},
+	UpdateVerb: "PUT",
+	UpdateProperties: map[string]resources.CloudAPIProperty{
+		"autoscaling": {Container: "nodePool"}, //
+		//"conditions": { Container: "nodePool" }, // recreate
+		"config":           {Container: "nodePool"}, //
+		"initialNodeCount": {Container: "nodePool"},
+		"locations":        {Container: "nodePool"}, //
+		"management":       {Container: "nodePool"}, //
+		// networkConfig - DCL doesn't know about this field.
+		//"maxPodsConstraint": { Container: "nodePool" }, // recreate
+		// "name": { Container: "nodePool" }, // recreate
+		//"parent": {},
+		// "upgradeSettings": { Container: "nodePool" }, // recreate
+		// "version": { Container: "nodePool" }, // recreate
+	},
+	IdProperty:      "selfLink",
+	AutoNamePattern: "{name}",
+}
+
 var metadataOverlays = map[string]resources.CloudAPIResource{
-	"google-native:container/v1:Cluster":      clusterAPIResource,
-	"google-native:container/v1beta1:Cluster": clusterBetaAPIResource,
+	"google-native:container/v1:Cluster":       clusterAPIResource,
+	"google-native:container/v1beta1:Cluster":  clusterBetaAPIResource,
+	"google-native:container/v1:NodePool":      clusterNodepoolAPIResource,
+	"google-native:container/v1beta1:NodePool": clusterNodepoolBetaAPIResource,
 }
