@@ -129,10 +129,6 @@ const configConnector = new k8s.apiextensions.CustomResource("config-connector",
         // The name is restricted to ensure that there is only one ConfigConnector resource installed in your cluster
         name: "configconnector.core.cnrm.cloud.google.com"
     },
-    spec: {
-        mode: "cluster",
-        googleServiceAccount: serviceAccount.email,
-    },
 }, {provider: k8sProvider, import: "configconnector.core.cnrm.cloud.google.com"});
 
 // Step 2
