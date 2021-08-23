@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+        /// </summary>
+        [Output("relationshipTypes")]
+        public Output<ImmutableArray<string>> RelationshipTypes { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Feed resource with the given unique name, arguments, and options.
@@ -150,6 +156,18 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("relationshipTypes")]
+        private InputList<string>? _relationshipTypes;
+
+        /// <summary>
+        /// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+        /// </summary>
+        public InputList<string> RelationshipTypes
+        {
+            get => _relationshipTypes ?? (_relationshipTypes = new InputList<string>());
+            set => _relationshipTypes = value;
+        }
 
         [Input("v1Id", required: true)]
         public Input<string> V1Id { get; set; } = null!;

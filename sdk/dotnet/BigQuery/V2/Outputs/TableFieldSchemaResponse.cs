@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.TableFieldSchemaCategoriesResponse Categories;
         /// <summary>
+        /// Optional. Collation specification of the field. It only can be set on string type field.
+        /// </summary>
+        public readonly string CollationSpec;
+        /// <summary>
         /// [Optional] The field description. The maximum length is 1,024 characters.
         /// </summary>
         public readonly string Description;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private TableFieldSchemaResponse(
             Outputs.TableFieldSchemaCategoriesResponse categories,
 
+            string collationSpec,
+
             string description,
 
             ImmutableArray<Outputs.TableFieldSchemaResponse> fields,
@@ -74,6 +80,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             string type)
         {
             Categories = categories;
+            CollationSpec = collationSpec;
             Description = description;
             Fields = fields;
             MaxLength = maxLength;

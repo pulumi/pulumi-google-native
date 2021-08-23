@@ -16,13 +16,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public partial class SecuritySetting : Pulumi.CustomResource
     {
         /// <summary>
+        /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        /// </summary>
+        [Output("deidentifyTemplate")]
+        public Output<string> DeidentifyTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// The human-readable name of the security settings, unique within the location.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        /// Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        /// </summary>
+        [Output("insightsExportSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse> InsightsExportSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         /// </summary>
         [Output("inspectTemplate")]
         public Output<string> InspectTemplate { get; private set; } = null!;
@@ -103,13 +115,25 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public sealed class SecuritySettingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        /// </summary>
+        [Input("deidentifyTemplate")]
+        public Input<string>? DeidentifyTemplate { get; set; }
+
+        /// <summary>
         /// The human-readable name of the security settings, unique within the location.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        /// Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        /// </summary>
+        [Input("insightsExportSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs>? InsightsExportSettings { get; set; }
+
+        /// <summary>
+        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         /// </summary>
         [Input("inspectTemplate")]
         public Input<string>? InspectTemplate { get; set; }

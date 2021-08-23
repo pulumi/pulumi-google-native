@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class BuildDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// In-toto Provenance representation as defined in spec.
+        /// </summary>
+        [Input("intotoProvenance")]
+        public Input<Inputs.InTotoProvenanceArgs>? IntotoProvenance { get; set; }
+
+        /// <summary>
         /// The actual provenance
         /// </summary>
         [Input("provenance")]

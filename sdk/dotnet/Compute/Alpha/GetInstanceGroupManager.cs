@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.InstanceGroupManagerActionsSummaryResponse CurrentActions;
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -111,6 +111,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         /// </summary>
         public readonly string ServiceAccount;
+        /// <summary>
+        /// Stanby policy for stopped and suspended instances.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerStandbyPolicyResponse StandbyPolicy;
         /// <summary>
         /// Stateful configuration for this Instanced Group Manager
         /// </summary>
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string serviceAccount,
 
+            Outputs.InstanceGroupManagerStandbyPolicyResponse standbyPolicy,
+
             Outputs.StatefulPolicyResponse statefulPolicy,
 
             Outputs.InstanceGroupManagerStatusResponse status,
@@ -222,6 +228,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             ServiceAccount = serviceAccount;
+            StandbyPolicy = standbyPolicy;
             StatefulPolicy = statefulPolicy;
             Status = status;
             TargetPools = targetPools;

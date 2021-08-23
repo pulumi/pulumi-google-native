@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<string>? Label { get; set; }
 
         /// <summary>
+        /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+        /// </summary>
+        [Input("targetAxis")]
+        public Input<Pulumi.GoogleNative.Monitoring.V1.ThresholdTargetAxis>? TargetAxis { get; set; }
+
+        /// <summary>
         /// The value of the threshold. The value should be defined in the native scale of the metric.
         /// </summary>
         [Input("value")]

@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.EphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 
         /// <summary>
+        /// Enable or disable gvnic on the node pool.
+        /// </summary>
+        [Input("gvnic")]
+        public Input<Inputs.VirtualNICArgs>? Gvnic { get; set; }
+
+        /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         /// </summary>
         [Input("imageType")]

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+        /// </summary>
+        public readonly string MessageRetentionDuration;
+        /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         /// </summary>
         public readonly Outputs.MessageStoragePolicyResponse MessageStoragePolicy;
@@ -67,6 +71,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             ImmutableDictionary<string, string> labels,
 
+            string messageRetentionDuration,
+
             Outputs.MessageStoragePolicyResponse messageStoragePolicy,
 
             string name,
@@ -77,6 +83,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         {
             KmsKeyName = kmsKeyName;
             Labels = labels;
+            MessageRetentionDuration = messageRetentionDuration;
             MessageStoragePolicy = messageStoragePolicy;
             Name = name;
             SatisfiesPzs = satisfiesPzs;

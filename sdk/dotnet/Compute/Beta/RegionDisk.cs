@@ -232,6 +232,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
+        /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        /// </summary>
+        [Output("userLicenses")]
+        public Output<ImmutableArray<string>> UserLicenses { get; private set; } = null!;
+
+        /// <summary>
         /// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         /// </summary>
         [Output("users")]
@@ -476,6 +482,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("userLicenses")]
+        private InputList<string>? _userLicenses;
+
+        /// <summary>
+        /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        /// </summary>
+        public InputList<string> UserLicenses
+        {
+            get => _userLicenses ?? (_userLicenses = new InputList<string>());
+            set => _userLicenses = value;
+        }
 
         public RegionDiskArgs()
         {

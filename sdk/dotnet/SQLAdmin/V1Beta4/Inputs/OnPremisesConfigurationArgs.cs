@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<string>? Password { get; set; }
 
         /// <summary>
+        /// The reference to Cloud SQL instance if the source is Cloud SQL.
+        /// </summary>
+        [Input("sourceInstance")]
+        public Input<Inputs.InstanceReferenceArgs>? SourceInstance { get; set; }
+
+        /// <summary>
         /// The username for connecting to on-premises instance.
         /// </summary>
         [Input("username")]

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class RouterNatRuleActionResponse
     {
         /// <summary>
-        /// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project.
+        /// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
         /// </summary>
         public readonly ImmutableArray<string> SourceNatActiveIps;
         /// <summary>
-        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only.
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
         /// </summary>
         public readonly ImmutableArray<string> SourceNatDrainIps;
 

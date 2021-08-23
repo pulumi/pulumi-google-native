@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
 {
 
     /// <summary>
-    /// Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+    /// Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
     /// </summary>
     public sealed class LogExclusionArgs : Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity&lt;ERROR sample(insertId, 0.99)"
+        /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity&lt;ERROR sample(insertId, 0.99)
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;

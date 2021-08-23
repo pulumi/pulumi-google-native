@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.InstanceGroupManagerActionsSummaryResponse CurrentActions;
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource.
         /// </summary>
         public readonly string Description;
         /// <summary>

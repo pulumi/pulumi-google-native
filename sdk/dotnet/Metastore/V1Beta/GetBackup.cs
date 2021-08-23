@@ -59,6 +59,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Services that are restoring from the backup.
+        /// </summary>
+        public readonly ImmutableArray<string> RestoringServices;
+        /// <summary>
         /// The revision of the service at the time of backup.
         /// </summary>
         public readonly Outputs.ServiceResponse ServiceRevision;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 
             string name,
 
+            ImmutableArray<string> restoringServices,
+
             Outputs.ServiceResponse serviceRevision,
 
             string state)
@@ -85,6 +91,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
             Description = description;
             EndTime = endTime;
             Name = name;
+            RestoringServices = restoringServices;
             ServiceRevision = serviceRevision;
             State = state;
         }

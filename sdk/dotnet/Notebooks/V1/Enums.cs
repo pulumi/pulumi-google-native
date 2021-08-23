@@ -85,6 +85,47 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
     /// <summary>
+    /// The type of Job to be used on this execution.
+    /// </summary>
+    [EnumType]
+    public readonly struct ExecutionTemplateJobType : IEquatable<ExecutionTemplateJobType>
+    {
+        private readonly string _value;
+
+        private ExecutionTemplateJobType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No type specified.
+        /// </summary>
+        public static ExecutionTemplateJobType JobTypeUnspecified { get; } = new ExecutionTemplateJobType("JOB_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Custom Job in `aiplatform.googleapis.com`. Default value for an execution.
+        /// </summary>
+        public static ExecutionTemplateJobType VertexAi { get; } = new ExecutionTemplateJobType("VERTEX_AI");
+        /// <summary>
+        /// Run execution on a cluster with Dataproc as a job. https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
+        /// </summary>
+        public static ExecutionTemplateJobType Dataproc { get; } = new ExecutionTemplateJobType("DATAPROC");
+
+        public static bool operator ==(ExecutionTemplateJobType left, ExecutionTemplateJobType right) => left.Equals(right);
+        public static bool operator !=(ExecutionTemplateJobType left, ExecutionTemplateJobType right) => !left.Equals(right);
+
+        public static explicit operator string(ExecutionTemplateJobType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExecutionTemplateJobType other && Equals(other);
+        public bool Equals(ExecutionTemplateJobType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     /// </summary>
     [EnumType]

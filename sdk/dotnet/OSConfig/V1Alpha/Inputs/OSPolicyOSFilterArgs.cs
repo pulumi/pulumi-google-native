@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// The `OSFilter` is used to specify the OS filtering criteria for the resource group.
+    /// Filtering criteria to select VMs based on OS details.
     /// </summary>
     public sealed class OSPolicyOSFilterArgs : Pulumi.ResourceArgs
     {

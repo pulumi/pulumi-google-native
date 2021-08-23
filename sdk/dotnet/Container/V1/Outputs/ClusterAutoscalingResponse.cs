@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.AutoprovisioningNodePoolDefaultsResponse AutoprovisioningNodePoolDefaults;
         /// <summary>
+        /// Defines autoscaling behaviour.
+        /// </summary>
+        public readonly string AutoscalingProfile;
+        /// <summary>
         /// Enables automatic node pool creation and deletion.
         /// </summary>
         public readonly bool EnableNodeAutoprovisioning;
@@ -36,12 +40,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.AutoprovisioningNodePoolDefaultsResponse autoprovisioningNodePoolDefaults,
 
+            string autoscalingProfile,
+
             bool enableNodeAutoprovisioning,
 
             ImmutableArray<Outputs.ResourceLimitResponse> resourceLimits)
         {
             AutoprovisioningLocations = autoprovisioningLocations;
             AutoprovisioningNodePoolDefaults = autoprovisioningNodePoolDefaults;
+            AutoscalingProfile = autoscalingProfile;
             EnableNodeAutoprovisioning = enableNodeAutoprovisioning;
             ResourceLimits = resourceLimits;
         }

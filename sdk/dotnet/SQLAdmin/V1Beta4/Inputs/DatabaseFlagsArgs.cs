@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     public sealed class DatabaseFlagsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+        /// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

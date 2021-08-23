@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? DeprecationDescription { get; set; }
 
         /// <summary>
-        /// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+        /// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading &amp; trailing comments taken from the proto source definition of the proto element.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

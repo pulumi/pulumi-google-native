@@ -380,6 +380,78 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct LoggingComponentConfigEnableComponentsItem : IEquatable<LoggingComponentConfigEnableComponentsItem>
+    {
+        private readonly string _value;
+
+        private LoggingComponentConfigEnableComponentsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem ComponentUnspecified { get; } = new LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED");
+        /// <summary>
+        /// system components
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem SystemComponents { get; } = new LoggingComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+        /// <summary>
+        /// workloads
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Workloads { get; } = new LoggingComponentConfigEnableComponentsItem("WORKLOADS");
+
+        public static bool operator ==(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => left.Equals(right);
+        public static bool operator !=(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => !left.Equals(right);
+
+        public static explicit operator string(LoggingComponentConfigEnableComponentsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LoggingComponentConfigEnableComponentsItem other && Equals(other);
+        public bool Equals(LoggingComponentConfigEnableComponentsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct MonitoringComponentConfigEnableComponentsItem : IEquatable<MonitoringComponentConfigEnableComponentsItem>
+    {
+        private readonly string _value;
+
+        private MonitoringComponentConfigEnableComponentsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem ComponentUnspecified { get; } = new MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED");
+        /// <summary>
+        /// system components
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem SystemComponents { get; } = new MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+
+        public static bool operator ==(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => left.Equals(right);
+        public static bool operator !=(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => !left.Equals(right);
+
+        public static explicit operator string(MonitoringComponentConfigEnableComponentsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MonitoringComponentConfigEnableComponentsItem other && Equals(other);
+        public bool Equals(MonitoringComponentConfigEnableComponentsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
     /// </summary>

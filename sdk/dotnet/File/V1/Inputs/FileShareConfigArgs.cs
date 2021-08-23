@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.File.V1.Inputs
         }
 
         /// <summary>
-        /// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+        /// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         /// </summary>
         [Input("sourceBackup")]
         public Input<string>? SourceBackup { get; set; }

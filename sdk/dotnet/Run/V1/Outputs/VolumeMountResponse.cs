@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string MountPath;
         /// <summary>
-        /// This must match the Name of a Volume.
+        /// The name of the volume. There must be a corresponding Volume with the same name.
         /// </summary>
         public readonly string Name;
         /// <summary>

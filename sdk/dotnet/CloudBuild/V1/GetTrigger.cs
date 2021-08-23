@@ -43,6 +43,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     public sealed class GetTriggerResult
     {
         /// <summary>
+        /// Configuration for manual approval to start a build invocation of this BuildTrigger.
+        /// </summary>
+        public readonly Outputs.ApprovalConfigResponse ApprovalConfig;
+        /// <summary>
         /// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
         /// </summary>
         public readonly bool Autodetect;
@@ -67,9 +71,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string Filename;
         /// <summary>
-        /// Optional. A Common Expression Language string.
+        /// A Common Expression Language string.
         /// </summary>
         public readonly string Filter;
+        /// <summary>
+        /// The file source describing the local or remote Build template.
+        /// </summary>
+        public readonly Outputs.GitFileSourceResponse GitFileSource;
         /// <summary>
         /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         /// </summary>
@@ -95,6 +103,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string ResourceName;
         /// <summary>
+        /// The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
         /// </summary>
         public readonly Outputs.GitRepoSourceResponse SourceToBuild;
@@ -117,6 +129,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
         [OutputConstructor]
         private GetTriggerResult(
+            Outputs.ApprovalConfigResponse approvalConfig,
+
             bool autodetect,
 
             Outputs.BuildResponse build,
@@ -131,6 +145,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             string filter,
 
+            Outputs.GitFileSourceResponse gitFileSource,
+
             Outputs.GitHubEventsConfigResponse github,
 
             ImmutableArray<string> ignoredFiles,
@@ -143,6 +159,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             string resourceName,
 
+            string serviceAccount,
+
             Outputs.GitRepoSourceResponse sourceToBuild,
 
             ImmutableDictionary<string, string> substitutions,
@@ -153,6 +171,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             Outputs.WebhookConfigResponse webhookConfig)
         {
+            ApprovalConfig = approvalConfig;
             Autodetect = autodetect;
             Build = build;
             CreateTime = createTime;
@@ -160,12 +179,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             Disabled = disabled;
             Filename = filename;
             Filter = filter;
+            GitFileSource = gitFileSource;
             Github = github;
             IgnoredFiles = ignoredFiles;
             IncludedFiles = includedFiles;
             Name = name;
             PubsubConfig = pubsubConfig;
             ResourceName = resourceName;
+            ServiceAccount = serviceAccount;
             SourceToBuild = sourceToBuild;
             Substitutions = substitutions;
             Tags = tags;

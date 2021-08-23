@@ -184,6 +184,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Type;
         /// <summary>
+        /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        /// </summary>
+        public readonly ImmutableArray<string> UserLicenses;
+        /// <summary>
         /// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         /// </summary>
         public readonly ImmutableArray<string> Users;
@@ -266,6 +270,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string type,
 
+            ImmutableArray<string> userLicenses,
+
             ImmutableArray<string> users,
 
             string zone)
@@ -306,6 +312,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SourceStorageObject = sourceStorageObject;
             Status = status;
             Type = type;
+            UserLicenses = userLicenses;
             Users = users;
             Zone = zone;
         }

@@ -31,10 +31,16 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? ConformAction { get; set; }
 
         /// <summary>
-        /// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        /// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
         /// </summary>
         [Input("enforceOnKey")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>? EnforceOnKey { get; set; }
+
+        /// <summary>
+        /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+        /// </summary>
+        [Input("enforceOnKeyName")]
+        public Input<string>? EnforceOnKeyName { get; set; }
 
         /// <summary>
         /// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.

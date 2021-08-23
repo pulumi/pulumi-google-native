@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
     public sealed class SubordinateConfigResponse
     {
         /// <summary>
-        /// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        /// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         public readonly string CertificateAuthority;
         /// <summary>

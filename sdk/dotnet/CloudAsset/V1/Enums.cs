@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// The runtime OS Inventory information.
         /// </summary>
         public static FeedContentType OsInventory { get; } = new FeedContentType("OS_INVENTORY");
+        /// <summary>
+        /// The related resources.
+        /// </summary>
+        public static FeedContentType Relationship { get; } = new FeedContentType("RELATIONSHIP");
 
         public static bool operator ==(FeedContentType left, FeedContentType right) => left.Equals(right);
         public static bool operator !=(FeedContentType left, FeedContentType right) => !left.Equals(right);

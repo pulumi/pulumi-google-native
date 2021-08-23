@@ -61,6 +61,88 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
     /// <summary>
+    /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+    /// </summary>
+    [EnumType]
+    public readonly struct EnvironmentApiProxyType : IEquatable<EnvironmentApiProxyType>
+    {
+        private readonly string _value;
+
+        private EnvironmentApiProxyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// API proxy type not specified.
+        /// </summary>
+        public static EnvironmentApiProxyType ApiProxyTypeUnspecified { get; } = new EnvironmentApiProxyType("API_PROXY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Programmable API Proxies enable you to develop APIs with highly flexible behavior using bundled policy configuration and one or more programming languages to describe complex sequential and/or conditional flows of logic.
+        /// </summary>
+        public static EnvironmentApiProxyType Programmable { get; } = new EnvironmentApiProxyType("PROGRAMMABLE");
+        /// <summary>
+        /// Configurable API Proxies enable you to develop efficient APIs using simple configuration while complex execution control flow logic is handled by Apigee. This type only works with the ARCHIVE deployment type and cannot be combined with the PROXY deployment type.
+        /// </summary>
+        public static EnvironmentApiProxyType Configurable { get; } = new EnvironmentApiProxyType("CONFIGURABLE");
+
+        public static bool operator ==(EnvironmentApiProxyType left, EnvironmentApiProxyType right) => left.Equals(right);
+        public static bool operator !=(EnvironmentApiProxyType left, EnvironmentApiProxyType right) => !left.Equals(right);
+
+        public static explicit operator string(EnvironmentApiProxyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnvironmentApiProxyType other && Equals(other);
+        public bool Equals(EnvironmentApiProxyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+    /// </summary>
+    [EnumType]
+    public readonly struct EnvironmentDeploymentType : IEquatable<EnvironmentDeploymentType>
+    {
+        private readonly string _value;
+
+        private EnvironmentDeploymentType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Deployment type not specified.
+        /// </summary>
+        public static EnvironmentDeploymentType DeploymentTypeUnspecified { get; } = new EnvironmentDeploymentType("DEPLOYMENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Proxy deployment enables you to develop and deploy API proxies using Apigee on Google Cloud. This cannot currently be combined with the CONFIGURABLE API proxy type.
+        /// </summary>
+        public static EnvironmentDeploymentType Proxy { get; } = new EnvironmentDeploymentType("PROXY");
+        /// <summary>
+        /// Archive deployment enables you to develop API proxies locally then deploy an archive of your API proxy configuration to an environment in Apigee on Google Cloud. You will be prevented from performing a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment.
+        /// </summary>
+        public static EnvironmentDeploymentType Archive { get; } = new EnvironmentDeploymentType("ARCHIVE");
+
+        public static bool operator ==(EnvironmentDeploymentType left, EnvironmentDeploymentType right) => left.Equals(right);
+        public static bool operator !=(EnvironmentDeploymentType left, EnvironmentDeploymentType right) => !left.Equals(right);
+
+        public static explicit operator string(EnvironmentDeploymentType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnvironmentDeploymentType other && Equals(other);
+        public bool Equals(EnvironmentDeploymentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Sampler of distributed tracing. OFF is the default value.
     /// </summary>
     [EnumType]

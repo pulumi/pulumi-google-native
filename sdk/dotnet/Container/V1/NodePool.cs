@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.NodeNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         [Output("podIpv4CidrSize")]
@@ -209,6 +215,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.

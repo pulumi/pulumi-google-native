@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </summary>
         public readonly string Name;
         /// <summary>

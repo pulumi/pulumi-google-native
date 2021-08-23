@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Services that are restoring from the backup.
+        /// </summary>
+        [Output("restoringServices")]
+        public Output<ImmutableArray<string>> RestoringServices { get; private set; } = null!;
+
+        /// <summary>
         /// The revision of the service at the time of backup.
         /// </summary>
         [Output("serviceRevision")]

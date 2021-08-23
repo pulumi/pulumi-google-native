@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? ContainerImageUri { get; set; }
 
         /// <summary>
+        /// Parameters used in Dataproc JobType executions.
+        /// </summary>
+        [Input("dataprocParameters")]
+        public Input<Inputs.DataprocParametersArgs>? DataprocParameters { get; set; }
+
+        /// <summary>
         /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         /// </summary>
         [Input("inputNotebookFile")]
         public Input<string>? InputNotebookFile { get; set; }
+
+        /// <summary>
+        /// The type of Job to be used on this execution.
+        /// </summary>
+        [Input("jobType")]
+        public Input<Pulumi.GoogleNative.Notebooks.V1.ExecutionTemplateJobType>? JobType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

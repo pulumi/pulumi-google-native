@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
     /// <summary>
-    /// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+    /// Optional. The determinism level of the JavaScript UDF, if defined.
     /// </summary>
     [EnumType]
     public readonly struct RoutineDeterminismLevel : IEquatable<RoutineDeterminismLevel>

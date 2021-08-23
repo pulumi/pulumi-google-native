@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// The GKE config for this cluster.
+    /// The cluster's GKE config.
     /// </summary>
     public sealed class GkeClusterConfigArgs : Pulumi.ResourceArgs
     {

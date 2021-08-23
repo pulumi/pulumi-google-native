@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Serving status of this application.
         /// </summary>
         [Output("servingStatus")]
@@ -194,6 +200,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Serving status of this application.

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly bool All;
         /// <summary>
-        /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM. This filter is applied last in the filtering chain and therefore a VM is guaranteed to be excluded if it satisfies one of the below label sets.
+        /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
         /// </summary>
         public readonly ImmutableArray<Outputs.OSPolicyAssignmentLabelSetResponse> ExclusionLabels;
         /// <summary>
@@ -26,7 +26,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.OSPolicyAssignmentLabelSetResponse> InclusionLabels;
         /// <summary>
-        /// A VM is included if it's OS short name matches with any of the values provided in this list.
+        /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.OSPolicyAssignmentInstanceFilterInventoryResponse> Inventories;
+        /// <summary>
+        /// A VM is selected if it's OS short name matches with any of the values provided in this list.
         /// </summary>
         public readonly ImmutableArray<string> OsShortNames;
 
@@ -38,11 +42,14 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 
             ImmutableArray<Outputs.OSPolicyAssignmentLabelSetResponse> inclusionLabels,
 
+            ImmutableArray<Outputs.OSPolicyAssignmentInstanceFilterInventoryResponse> inventories,
+
             ImmutableArray<string> osShortNames)
         {
             All = all;
             ExclusionLabels = exclusionLabels;
             InclusionLabels = inclusionLabels;
+            Inventories = inventories;
             OsShortNames = osShortNames;
         }
     }

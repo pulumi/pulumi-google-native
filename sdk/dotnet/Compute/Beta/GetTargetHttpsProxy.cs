@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string AuthorizationPolicy;
         /// <summary>
+        /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        /// </summary>
+        public readonly string CertificateMap;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private GetTargetHttpsProxyResult(
             string authorizationPolicy,
 
+            string certificateMap,
+
             string creationTimestamp,
 
             string description,
@@ -130,6 +136,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             string urlMap)
         {
             AuthorizationPolicy = authorizationPolicy;
+            CertificateMap = certificateMap;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Fingerprint = fingerprint;

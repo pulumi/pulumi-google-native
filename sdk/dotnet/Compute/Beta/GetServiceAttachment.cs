@@ -52,10 +52,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse> ConsumerAcceptLists;
         /// <summary>
-        /// An array of forwarding rules for all the consumers connected to this service attachment.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse> ConsumerForwardingRules;
-        /// <summary>
         /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         /// </summary>
         public readonly ImmutableArray<string> ConsumerRejectLists;
@@ -116,8 +112,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse> consumerAcceptLists,
 
-            ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse> consumerForwardingRules,
-
             ImmutableArray<string> consumerRejectLists,
 
             string creationTimestamp,
@@ -147,7 +141,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ConnectedEndpoints = connectedEndpoints;
             ConnectionPreference = connectionPreference;
             ConsumerAcceptLists = consumerAcceptLists;
-            ConsumerForwardingRules = consumerForwardingRules;
             ConsumerRejectLists = consumerRejectLists;
             CreationTimestamp = creationTimestamp;
             Description = description;

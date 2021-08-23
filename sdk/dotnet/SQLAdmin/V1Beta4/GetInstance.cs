@@ -45,23 +45,27 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string ConnectionName;
         /// <summary>
+        /// The time when the instance was created in RFC 3339 format (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
         /// </summary>
         public readonly string CurrentDiskSize;
         /// <summary>
-        /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         /// </summary>
         public readonly string DatabaseVersion;
         /// <summary>
-        /// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+        /// Disk encryption configuration specific to an instance.
         /// </summary>
         public readonly Outputs.DiskEncryptionConfigurationResponse DiskEncryptionConfiguration;
         /// <summary>
-        /// Disk encryption status specific to an instance. Applies only to Second Generation instances.
+        /// Disk encryption status specific to an instance.
         /// </summary>
         public readonly Outputs.DiskEncryptionStatusResponse DiskEncryptionStatus;
         /// <summary>
-        /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        /// The name and status of the failover replica.
         /// </summary>
         public readonly Outputs.InstanceFailoverReplicaResponse FailoverReplica;
         /// <summary>
@@ -163,6 +167,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             string connectionName,
 
+            string createTime,
+
             string currentDiskSize,
 
             string databaseVersion,
@@ -221,6 +227,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         {
             BackendType = backendType;
             ConnectionName = connectionName;
+            CreateTime = createTime;
             CurrentDiskSize = currentDiskSize;
             DatabaseVersion = databaseVersion;
             DiskEncryptionConfiguration = diskEncryptionConfiguration;

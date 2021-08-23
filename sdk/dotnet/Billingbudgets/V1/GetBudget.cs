@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         /// </summary>
         public readonly string Etag;
         /// <summary>

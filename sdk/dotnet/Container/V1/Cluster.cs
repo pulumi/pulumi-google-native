@@ -160,6 +160,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
 
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// </summary>
+        [Output("loggingConfig")]
+        public Output<Outputs.LoggingConfigResponse> LoggingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </summary>
         [Output("loggingService")]
@@ -182,6 +188,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Output("masterAuthorizedNetworksConfig")]
         public Output<Outputs.MasterAuthorizedNetworksConfigResponse> MasterAuthorizedNetworksConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// </summary>
+        [Output("monitoringConfig")]
+        public Output<Outputs.MonitoringConfigResponse> MonitoringConfig { get; private set; } = null!;
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -466,6 +478,12 @@ namespace Pulumi.GoogleNative.Container.V1
         }
 
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.LoggingConfigArgs>? LoggingConfig { get; set; }
+
+        /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </summary>
         [Input("loggingService")]
@@ -488,6 +506,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("masterAuthorizedNetworksConfig")]
         public Input<Inputs.MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
+
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// </summary>
+        [Input("monitoringConfig")]
+        public Input<Inputs.MonitoringConfigArgs>? MonitoringConfig { get; set; }
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.

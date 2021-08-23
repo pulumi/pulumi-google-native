@@ -93,9 +93,25 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.RelatedUrlResponse> RelatedUrl;
         /// <summary>
+        /// A note describing SPDX Document which represents SBOM.
+        /// </summary>
+        public readonly Outputs.DocumentNoteResponse Sbom;
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         public readonly string ShortDescription;
+        /// <summary>
+        /// A note describing SPDX File.
+        /// </summary>
+        public readonly Outputs.FileNoteResponse SpdxFile;
+        /// <summary>
+        /// A note describing SPDX Package.
+        /// </summary>
+        public readonly Outputs.PackageNoteResponse SpdxPackage;
+        /// <summary>
+        /// A note describing SPDX Relationship.
+        /// </summary>
+        public readonly Outputs.RelationshipNoteResponse SpdxRelationship;
         /// <summary>
         /// The time this note was last updated. This field can be used as a filter in list requests.
         /// </summary>
@@ -135,7 +151,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             ImmutableArray<Outputs.RelatedUrlResponse> relatedUrl,
 
+            Outputs.DocumentNoteResponse sbom,
+
             string shortDescription,
+
+            Outputs.FileNoteResponse spdxFile,
+
+            Outputs.PackageNoteResponse spdxPackage,
+
+            Outputs.RelationshipNoteResponse spdxRelationship,
 
             string updateTime,
 
@@ -155,7 +179,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
             Package = package;
             RelatedNoteNames = relatedNoteNames;
             RelatedUrl = relatedUrl;
+            Sbom = sbom;
             ShortDescription = shortDescription;
+            SpdxFile = spdxFile;
+            SpdxPackage = spdxPackage;
+            SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Vulnerability = vulnerability;
         }

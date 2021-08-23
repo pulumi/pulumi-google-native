@@ -68,6 +68,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] Indicates if table names are case insensitive in the dataset.
+        /// </summary>
+        [Output("isCaseInsensitive")]
+        public Output<bool> IsCaseInsensitive { get; private set; } = null!;
+
+        /// <summary>
         /// The resource type.
         /// </summary>
         [Output("kind")]
@@ -192,6 +198,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// [Optional] Indicates if table names are case insensitive in the dataset.
+        /// </summary>
+        [Input("isCaseInsensitive")]
+        public Input<bool>? IsCaseInsensitive { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

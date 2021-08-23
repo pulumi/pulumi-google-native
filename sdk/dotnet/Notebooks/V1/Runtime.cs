@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<Outputs.RuntimeMetricsResponse> Metrics { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+        /// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

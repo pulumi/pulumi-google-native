@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse>> ConsumerAcceptLists { get; private set; } = null!;
 
         /// <summary>
-        /// An array of forwarding rules for all the consumers connected to this service attachment.
-        /// </summary>
-        [Output("consumerForwardingRules")]
-        public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse>> ConsumerForwardingRules { get; private set; } = null!;
-
-        /// <summary>
         /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         /// </summary>
         [Output("consumerRejectLists")]

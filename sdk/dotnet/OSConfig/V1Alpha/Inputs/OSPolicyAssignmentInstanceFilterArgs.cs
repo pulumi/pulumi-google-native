@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Message to represent the filters to select VMs for an assignment
+    /// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
     /// </summary>
     public sealed class OSPolicyAssignmentInstanceFilterArgs : Pulumi.ResourceArgs
     {
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         private InputList<Inputs.OSPolicyAssignmentLabelSetArgs>? _exclusionLabels;
 
         /// <summary>
-        /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM. This filter is applied last in the filtering chain and therefore a VM is guaranteed to be excluded if it satisfies one of the below label sets.
+        /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
         /// </summary>
         public InputList<Inputs.OSPolicyAssignmentLabelSetArgs> ExclusionLabels
         {
@@ -45,11 +45,23 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
             set => _inclusionLabels = value;
         }
 
+        [Input("inventories")]
+        private InputList<Inputs.OSPolicyAssignmentInstanceFilterInventoryArgs>? _inventories;
+
+        /// <summary>
+        /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        /// </summary>
+        public InputList<Inputs.OSPolicyAssignmentInstanceFilterInventoryArgs> Inventories
+        {
+            get => _inventories ?? (_inventories = new InputList<Inputs.OSPolicyAssignmentInstanceFilterInventoryArgs>());
+            set => _inventories = value;
+        }
+
         [Input("osShortNames")]
         private InputList<string>? _osShortNames;
 
         /// <summary>
-        /// A VM is included if it's OS short name matches with any of the values provided in this list.
+        /// A VM is selected if it's OS short name matches with any of the values provided in this list.
         /// </summary>
         public InputList<string> OsShortNames
         {

@@ -22,9 +22,17 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string ContainerImageUri;
         /// <summary>
+        /// Parameters used in Dataproc JobType executions.
+        /// </summary>
+        public readonly Outputs.DataprocParametersResponse DataprocParameters;
+        /// <summary>
         /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         /// </summary>
         public readonly string InputNotebookFile;
+        /// <summary>
+        /// The type of Job to be used on this execution.
+        /// </summary>
+        public readonly string JobType;
         /// <summary>
         /// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         /// </summary>
@@ -56,7 +64,11 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string containerImageUri,
 
+            Outputs.DataprocParametersResponse dataprocParameters,
+
             string inputNotebookFile,
+
+            string jobType,
 
             ImmutableDictionary<string, string> labels,
 
@@ -72,7 +84,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         {
             AcceleratorConfig = acceleratorConfig;
             ContainerImageUri = containerImageUri;
+            DataprocParameters = dataprocParameters;
             InputNotebookFile = inputNotebookFile;
+            JobType = jobType;
             Labels = labels;
             MasterType = masterType;
             OutputNotebookFolder = outputNotebookFolder;

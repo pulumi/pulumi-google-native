@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
+        /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+        /// </summary>
+        public readonly string TargetAxis;
+        /// <summary>
         /// The value of the threshold. The value should be defined in the native scale of the metric.
         /// </summary>
         public readonly double Value;
@@ -38,11 +42,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             string label,
 
+            string targetAxis,
+
             double value)
         {
             Color = color;
             Direction = direction;
             Label = label;
+            TargetAxis = targetAxis;
             Value = value;
         }
     }

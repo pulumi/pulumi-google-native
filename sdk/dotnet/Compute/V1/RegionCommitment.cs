@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("statusMessage")]
         public Output<string> StatusMessage { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionCommitment resource with the given unique name, arguments, and options.
@@ -214,6 +220,12 @@ namespace Pulumi.GoogleNative.Compute.V1
             get => _resources ?? (_resources = new InputList<Inputs.ResourceCommitmentArgs>());
             set => _resources = value;
         }
+
+        /// <summary>
+        /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionCommitmentType>? Type { get; set; }
 
         public RegionCommitmentArgs()
         {

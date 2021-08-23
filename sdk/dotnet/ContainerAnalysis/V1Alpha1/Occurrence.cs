@@ -59,6 +59,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<Outputs.DiscoveredResponse> Discovered { get; private set; } = null!;
 
         /// <summary>
+        /// This represents a DSSE attestation occurrence
+        /// </summary>
+        [Output("dsseAttestation")]
+        public Output<Outputs.DSSEAttestationOccurrenceResponse> DsseAttestation { get; private set; } = null!;
+
+        /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        [Output("envelope")]
+        public Output<Outputs.EnvelopeResponse> Envelope { get; private set; } = null!;
+
+        /// <summary>
         /// Describes the installation of a package on the linked resource.
         /// </summary>
         [Output("installation")]
@@ -99,6 +111,30 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Output("resourceUrl")]
         public Output<string> ResourceUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific software bill of materials document.
+        /// </summary>
+        [Output("sbom")]
+        public Output<Outputs.DocumentOccurrenceResponse> Sbom { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        [Output("spdxFile")]
+        public Output<Outputs.FileOccurrenceResponse> SpdxFile { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        [Output("spdxPackage")]
+        public Output<Outputs.PackageOccurrenceResponse> SpdxPackage { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific relationship between SPDX elements.
+        /// </summary>
+        [Output("spdxRelationship")]
+        public Output<Outputs.RelationshipOccurrenceResponse> SpdxRelationship { get; private set; } = null!;
 
         /// <summary>
         /// The time this `Occurrence` was last updated.
@@ -200,6 +236,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Input<Inputs.DiscoveredArgs>? Discovered { get; set; }
 
         /// <summary>
+        /// This represents a DSSE attestation occurrence
+        /// </summary>
+        [Input("dsseAttestation")]
+        public Input<Inputs.DSSEAttestationOccurrenceArgs>? DsseAttestation { get; set; }
+
+        /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        [Input("envelope")]
+        public Input<Inputs.EnvelopeArgs>? Envelope { get; set; }
+
+        /// <summary>
         /// Describes the installation of a package on the linked resource.
         /// </summary>
         [Input("installation")]
@@ -231,6 +279,30 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("resourceUrl")]
         public Input<string>? ResourceUrl { get; set; }
+
+        /// <summary>
+        /// Describes a specific software bill of materials document.
+        /// </summary>
+        [Input("sbom")]
+        public Input<Inputs.DocumentOccurrenceArgs>? Sbom { get; set; }
+
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        [Input("spdxFile")]
+        public Input<Inputs.FileOccurrenceArgs>? SpdxFile { get; set; }
+
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        [Input("spdxPackage")]
+        public Input<Inputs.PackageOccurrenceArgs>? SpdxPackage { get; set; }
+
+        /// <summary>
+        /// Describes a specific relationship between SPDX elements.
+        /// </summary>
+        [Input("spdxRelationship")]
+        public Input<Inputs.RelationshipOccurrenceArgs>? SpdxRelationship { get; set; }
 
         /// <summary>
         /// Describes an upgrade.

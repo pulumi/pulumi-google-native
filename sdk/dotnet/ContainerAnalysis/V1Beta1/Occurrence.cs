@@ -95,6 +95,30 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<Outputs.ResourceResponse> Resource { get; private set; } = null!;
 
         /// <summary>
+        /// Describes a specific SPDX Document.
+        /// </summary>
+        [Output("sbom")]
+        public Output<Outputs.DocumentOccurrenceResponse> Sbom { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        [Output("spdxFile")]
+        public Output<Outputs.FileOccurrenceResponse> SpdxFile { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        [Output("spdxPackage")]
+        public Output<Outputs.PackageOccurrenceResponse> SpdxPackage { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX Relationship.
+        /// </summary>
+        [Output("spdxRelationship")]
+        public Output<Outputs.RelationshipOccurrenceResponse> SpdxRelationship { get; private set; } = null!;
+
+        /// <summary>
         /// The time this occurrence was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -213,6 +237,30 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("resource", required: true)]
         public Input<Inputs.ResourceArgs> Resource { get; set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SPDX Document.
+        /// </summary>
+        [Input("sbom")]
+        public Input<Inputs.DocumentOccurrenceArgs>? Sbom { get; set; }
+
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        [Input("spdxFile")]
+        public Input<Inputs.FileOccurrenceArgs>? SpdxFile { get; set; }
+
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        [Input("spdxPackage")]
+        public Input<Inputs.PackageOccurrenceArgs>? SpdxPackage { get; set; }
+
+        /// <summary>
+        /// Describes a specific SPDX Relationship.
+        /// </summary>
+        [Input("spdxRelationship")]
+        public Input<Inputs.RelationshipOccurrenceArgs>? SpdxRelationship { get; set; }
 
         /// <summary>
         /// Describes a security vulnerability.

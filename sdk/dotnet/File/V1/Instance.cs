@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+        /// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

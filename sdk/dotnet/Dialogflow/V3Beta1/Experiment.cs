@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>
         [Output("experimentLength")]
         public Output<string> ExperimentLength { get; private set; } = null!;
@@ -68,6 +68,24 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Output("result")]
         public Output<Outputs.GoogleCloudDialogflowCxV3beta1ExperimentResultResponse> Result { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        /// </summary>
+        [Output("rolloutConfig")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1RolloutConfigResponse> RolloutConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        /// </summary>
+        [Output("rolloutFailureReason")]
+        public Output<string> RolloutFailureReason { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the auto rollout process.
+        /// </summary>
+        [Output("rolloutState")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1RolloutStateResponse> RolloutState { get; private set; } = null!;
 
         /// <summary>
         /// Start time of this experiment.
@@ -169,7 +187,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
-        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>
         [Input("experimentLength")]
         public Input<string>? ExperimentLength { get; set; }
@@ -197,6 +215,24 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         [Input("result")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1ExperimentResultArgs>? Result { get; set; }
+
+        /// <summary>
+        /// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        /// </summary>
+        [Input("rolloutConfig")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1RolloutConfigArgs>? RolloutConfig { get; set; }
+
+        /// <summary>
+        /// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        /// </summary>
+        [Input("rolloutFailureReason")]
+        public Input<string>? RolloutFailureReason { get; set; }
+
+        /// <summary>
+        /// State of the auto rollout process.
+        /// </summary>
+        [Input("rolloutState")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1RolloutStateArgs>? RolloutState { get; set; }
 
         /// <summary>
         /// Start time of this experiment.

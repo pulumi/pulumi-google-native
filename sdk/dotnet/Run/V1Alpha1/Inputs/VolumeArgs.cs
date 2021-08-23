@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run Volume represents a named volume in a container.
+    /// Volume represents a named volume in a container.
     /// </summary>
     public sealed class VolumeArgs : Pulumi.ResourceArgs
     {
@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
         /// <summary>
-        /// Volume's name.
+        /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

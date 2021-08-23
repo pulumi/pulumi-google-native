@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ShareSettingsResponse
     {
         /// <summary>
+        /// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> FolderMap;
+        /// <summary>
         /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
         public readonly ImmutableArray<string> Projects;
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private ShareSettingsResponse(
+            ImmutableDictionary<string, string> folderMap,
+
             ImmutableArray<string> projects,
 
             string shareType)
         {
+            FolderMap = folderMap;
             Projects = projects;
             ShareType = shareType;
         }

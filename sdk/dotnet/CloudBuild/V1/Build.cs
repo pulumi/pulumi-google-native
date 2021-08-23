@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     public partial class Build : Pulumi.CustomResource
     {
         /// <summary>
+        /// Describes this build's approval configuration, status, and result.
+        /// </summary>
+        [Output("approval")]
+        public Output<Outputs.BuildApprovalResponse> Approval { get; private set; } = null!;
+
+        /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         /// </summary>
         [Output("artifacts")]
@@ -169,7 +175,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         /// </summary>
         [Output("timing")]
         public Output<ImmutableDictionary<string, string>> Timing { get; private set; } = null!;

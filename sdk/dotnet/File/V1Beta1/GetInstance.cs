@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+        /// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

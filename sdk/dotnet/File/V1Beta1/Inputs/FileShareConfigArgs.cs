@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         public Input<string>? CapacityGb { get; set; }
 
         /// <summary>
-        /// The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
+        /// The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+        /// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         /// </summary>
         [Input("sourceBackup")]
         public Input<string>? SourceBackup { get; set; }

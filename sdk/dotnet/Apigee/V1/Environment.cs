@@ -16,10 +16,22 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        /// </summary>
+        [Output("apiProxyType")]
+        public Output<string> ApiProxyType { get; private set; } = null!;
+
+        /// <summary>
         /// Creation time of this environment as milliseconds since epoch.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+        /// </summary>
+        [Output("deploymentType")]
+        public Output<string> DeploymentType { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Description of the environment.
@@ -102,6 +114,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class EnvironmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        /// </summary>
+        [Input("apiProxyType")]
+        public Input<Pulumi.GoogleNative.Apigee.V1.EnvironmentApiProxyType>? ApiProxyType { get; set; }
+
+        /// <summary>
+        /// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+        /// </summary>
+        [Input("deploymentType")]
+        public Input<Pulumi.GoogleNative.Apigee.V1.EnvironmentDeploymentType>? DeploymentType { get; set; }
+
         /// <summary>
         /// Optional. Description of the environment.
         /// </summary>

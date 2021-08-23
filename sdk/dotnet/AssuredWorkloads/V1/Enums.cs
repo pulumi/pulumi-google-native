@@ -97,6 +97,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Health Information Trust Alliance controls
         /// </summary>
         public static WorkloadComplianceRegime Hitrust { get; } = new WorkloadComplianceRegime("HITRUST");
+        /// <summary>
+        /// Assured Workloads For EU Regions and Support controls
+        /// </summary>
+        public static WorkloadComplianceRegime EuRegionsAndSupport { get; } = new WorkloadComplianceRegime("EU_REGIONS_AND_SUPPORT");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);

@@ -42,6 +42,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// The reference to Cloud SQL instance if the source is Cloud SQL.
+        /// </summary>
+        public readonly Outputs.InstanceReferenceResponse SourceInstance;
+        /// <summary>
         /// The username for connecting to on-premises instance.
         /// </summary>
         public readonly string Username;
@@ -62,6 +66,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             string password,
 
+            Outputs.InstanceReferenceResponse sourceInstance,
+
             string username)
         {
             CaCertificate = caCertificate;
@@ -71,6 +77,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             HostPort = hostPort;
             Kind = kind;
             Password = password;
+            SourceInstance = sourceInstance;
             Username = username;
         }
     }

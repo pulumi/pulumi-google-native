@@ -101,10 +101,34 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<ImmutableArray<Outputs.RelatedUrlResponse>> RelatedUrl { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing SPDX Document which represents SBOM.
+        /// </summary>
+        [Output("sbom")]
+        public Output<Outputs.DocumentNoteResponse> Sbom { get; private set; } = null!;
+
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         [Output("shortDescription")]
         public Output<string> ShortDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing SPDX File.
+        /// </summary>
+        [Output("spdxFile")]
+        public Output<Outputs.FileNoteResponse> SpdxFile { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing SPDX Package.
+        /// </summary>
+        [Output("spdxPackage")]
+        public Output<Outputs.PackageNoteResponse> SpdxPackage { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing SPDX Relationship.
+        /// </summary>
+        [Output("spdxRelationship")]
+        public Output<Outputs.RelationshipNoteResponse> SpdxRelationship { get; private set; } = null!;
 
         /// <summary>
         /// The time this note was last updated. This field can be used as a filter in list requests.
@@ -248,10 +272,34 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         }
 
         /// <summary>
+        /// A note describing SPDX Document which represents SBOM.
+        /// </summary>
+        [Input("sbom")]
+        public Input<Inputs.DocumentNoteArgs>? Sbom { get; set; }
+
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         [Input("shortDescription")]
         public Input<string>? ShortDescription { get; set; }
+
+        /// <summary>
+        /// A note describing SPDX File.
+        /// </summary>
+        [Input("spdxFile")]
+        public Input<Inputs.FileNoteArgs>? SpdxFile { get; set; }
+
+        /// <summary>
+        /// A note describing SPDX Package.
+        /// </summary>
+        [Input("spdxPackage")]
+        public Input<Inputs.PackageNoteArgs>? SpdxPackage { get; set; }
+
+        /// <summary>
+        /// A note describing SPDX Relationship.
+        /// </summary>
+        [Input("spdxRelationship")]
+        public Input<Inputs.RelationshipNoteArgs>? SpdxRelationship { get; set; }
 
         /// <summary>
         /// A note describing a package vulnerability.

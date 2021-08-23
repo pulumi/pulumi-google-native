@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class SubordinateConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        /// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
         /// </summary>
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;

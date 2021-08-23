@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly string ClusterUuid;
         /// <summary>
-        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         public readonly Outputs.ClusterConfigResponse Config;
         /// <summary>

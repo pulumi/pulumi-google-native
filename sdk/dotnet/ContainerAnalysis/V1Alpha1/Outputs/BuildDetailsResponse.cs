@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class BuildDetailsResponse
     {
         /// <summary>
+        /// In-toto Provenance representation as defined in spec.
+        /// </summary>
+        public readonly Outputs.InTotoProvenanceResponse IntotoProvenance;
+        /// <summary>
         /// The actual provenance
         /// </summary>
         public readonly Outputs.BuildProvenanceResponse Provenance;
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private BuildDetailsResponse(
+            Outputs.InTotoProvenanceResponse intotoProvenance,
+
             Outputs.BuildProvenanceResponse provenance,
 
             string provenanceBytes)
         {
+            IntotoProvenance = intotoProvenance;
             Provenance = provenance;
             ProvenanceBytes = provenanceBytes;
         }

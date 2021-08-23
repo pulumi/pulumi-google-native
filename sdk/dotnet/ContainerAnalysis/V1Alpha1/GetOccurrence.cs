@@ -65,6 +65,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.DiscoveredResponse Discovered;
         /// <summary>
+        /// This represents a DSSE attestation occurrence
+        /// </summary>
+        public readonly Outputs.DSSEAttestationOccurrenceResponse DsseAttestation;
+        /// <summary>
+        /// https://github.com/secure-systems-lab/dsse
+        /// </summary>
+        public readonly Outputs.EnvelopeResponse Envelope;
+        /// <summary>
         /// Describes the installation of a package on the linked resource.
         /// </summary>
         public readonly Outputs.InstallationResponse Installation;
@@ -92,6 +100,22 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
         /// </summary>
         public readonly string ResourceUrl;
+        /// <summary>
+        /// Describes a specific software bill of materials document.
+        /// </summary>
+        public readonly Outputs.DocumentOccurrenceResponse Sbom;
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        public readonly Outputs.FileOccurrenceResponse SpdxFile;
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        public readonly Outputs.PackageOccurrenceResponse SpdxPackage;
+        /// <summary>
+        /// Describes a specific relationship between SPDX elements.
+        /// </summary>
+        public readonly Outputs.RelationshipOccurrenceResponse SpdxRelationship;
         /// <summary>
         /// The time this `Occurrence` was last updated.
         /// </summary>
@@ -121,6 +145,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.DiscoveredResponse discovered,
 
+            Outputs.DSSEAttestationOccurrenceResponse dsseAttestation,
+
+            Outputs.EnvelopeResponse envelope,
+
             Outputs.InstallationResponse installation,
 
             string kind,
@@ -135,6 +163,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             string resourceUrl,
 
+            Outputs.DocumentOccurrenceResponse sbom,
+
+            Outputs.FileOccurrenceResponse spdxFile,
+
+            Outputs.PackageOccurrenceResponse spdxPackage,
+
+            Outputs.RelationshipOccurrenceResponse spdxRelationship,
+
             string updateTime,
 
             Outputs.UpgradeOccurrenceResponse upgrade,
@@ -148,6 +184,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             Deployment = deployment;
             DerivedImage = derivedImage;
             Discovered = discovered;
+            DsseAttestation = dsseAttestation;
+            Envelope = envelope;
             Installation = installation;
             Kind = kind;
             Name = name;
@@ -155,6 +193,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             Remediation = remediation;
             Resource = resource;
             ResourceUrl = resourceUrl;
+            Sbom = sbom;
+            SpdxFile = spdxFile;
+            SpdxPackage = spdxPackage;
+            SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Upgrade = upgrade;
             VulnerabilityDetails = vulnerabilityDetails;

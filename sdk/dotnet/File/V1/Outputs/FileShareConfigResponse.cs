@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.File.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NfsExportOptionsResponse> NfsExportOptions;
         /// <summary>
-        /// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+        /// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         /// </summary>
         public readonly string SourceBackup;
 

@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
+        /// Configuration for Identity Service component.
+        /// </summary>
+        public readonly Outputs.IdentityServiceConfigResponse IdentityServiceConfig;
+        /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         /// </summary>
         public readonly string InitialClusterVersion;
@@ -136,6 +140,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> Locations;
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// </summary>
+        public readonly Outputs.LoggingConfigResponse LoggingConfig;
+        /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </summary>
         public readonly string LoggingService;
@@ -155,6 +163,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// The configuration options for master authorized networks feature.
         /// </summary>
         public readonly Outputs.MasterAuthorizedNetworksConfigResponse MasterAuthorizedNetworksConfig;
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// </summary>
+        public readonly Outputs.MonitoringConfigResponse MonitoringConfig;
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </summary>
@@ -290,6 +302,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string expireTime,
 
+            Outputs.IdentityServiceConfigResponse identityServiceConfig,
+
             string initialClusterVersion,
 
             Outputs.IPAllocationPolicyResponse ipAllocationPolicy,
@@ -302,6 +316,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             ImmutableArray<string> locations,
 
+            Outputs.LoggingConfigResponse loggingConfig,
+
             string loggingService,
 
             Outputs.MaintenancePolicyResponse maintenancePolicy,
@@ -311,6 +327,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             Outputs.MasterAuthResponse masterAuth,
 
             Outputs.MasterAuthorizedNetworksConfigResponse masterAuthorizedNetworksConfig,
+
+            Outputs.MonitoringConfigResponse monitoringConfig,
 
             string monitoringService,
 
@@ -378,17 +396,20 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             EnableKubernetesAlpha = enableKubernetesAlpha;
             Endpoint = endpoint;
             ExpireTime = expireTime;
+            IdentityServiceConfig = identityServiceConfig;
             InitialClusterVersion = initialClusterVersion;
             IpAllocationPolicy = ipAllocationPolicy;
             LabelFingerprint = labelFingerprint;
             LegacyAbac = legacyAbac;
             Location = location;
             Locations = locations;
+            LoggingConfig = loggingConfig;
             LoggingService = loggingService;
             MaintenancePolicy = maintenancePolicy;
             Master = master;
             MasterAuth = masterAuth;
             MasterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            MonitoringConfig = monitoringConfig;
             MonitoringService = monitoringService;
             Name = name;
             Network = network;

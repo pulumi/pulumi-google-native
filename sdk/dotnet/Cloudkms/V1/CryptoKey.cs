@@ -25,6 +25,18 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Output("destroyScheduledDuration")]
+        public Output<string> DestroyScheduledDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. Whether this key may contain imported versions only.
+        /// </summary>
+        [Output("importOnly")]
+        public Output<bool> ImportOnly { get; private set; } = null!;
+
+        /// <summary>
         /// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         /// </summary>
         [Output("labels")]
@@ -113,6 +125,18 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     {
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
+
+        /// <summary>
+        /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        [Input("destroyScheduledDuration")]
+        public Input<string>? DestroyScheduledDuration { get; set; }
+
+        /// <summary>
+        /// Immutable. Whether this key may contain imported versions only.
+        /// </summary>
+        [Input("importOnly")]
+        public Input<bool>? ImportOnly { get; set; }
 
         [Input("keyRingId", required: true)]
         public Input<string> KeyRingId { get; set; } = null!;

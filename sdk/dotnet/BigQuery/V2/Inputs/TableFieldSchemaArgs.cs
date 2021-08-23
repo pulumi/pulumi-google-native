@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.TableFieldSchemaCategoriesArgs>? Categories { get; set; }
 
         /// <summary>
+        /// Optional. Collation specification of the field. It only can be set on string type field.
+        /// </summary>
+        [Input("collationSpec")]
+        public Input<string>? CollationSpec { get; set; }
+
+        /// <summary>
         /// [Optional] The field description. The maximum length is 1,024 characters.
         /// </summary>
         [Input("description")]

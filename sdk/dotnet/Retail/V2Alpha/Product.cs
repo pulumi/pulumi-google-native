@@ -16,10 +16,16 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     public partial class Product : Pulumi.CustomResource
     {
         /// <summary>
-        /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200 by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
         /// </summary>
         [Output("attributes")]
         public Output<ImmutableDictionary<string, string>> Attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
+        /// </summary>
+        [Output("audience")]
+        public Output<Outputs.GoogleCloudRetailV2alphaAudienceResponse> Audience { get; private set; } = null!;
 
         /// <summary>
         /// The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
@@ -34,10 +40,16 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<int> AvailableQuantity { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Product becomes available for recommendation.
+        /// The timestamp when this Product becomes available for SearchService.Search.
         /// </summary>
         [Output("availableTime")]
         public Output<string> AvailableTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+        /// </summary>
+        [Output("brands")]
+        public Output<ImmutableArray<string>> Brands { get; private set; } = null!;
 
         /// <summary>
         /// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '&gt;' sign to separate different hierarchies. If '&gt;' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp; Accessories &gt; Shoes", "Sports &amp; Fitness &gt; Athletic Clothing &gt; Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
@@ -46,10 +58,46 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<ImmutableArray<string>> Categories { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        /// </summary>
+        [Output("collectionMemberIds")]
+        public Output<ImmutableArray<string>> CollectionMemberIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+        /// </summary>
+        [Output("colorInfo")]
+        public Output<Outputs.GoogleCloudRetailV2alphaColorInfoResponse> ColorInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+        /// </summary>
+        [Output("conditions")]
+        public Output<ImmutableArray<string>> Conditions { get; private set; } = null!;
+
+        /// <summary>
         /// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Output("fulfillmentInfo")]
+        public Output<ImmutableArray<Outputs.GoogleCloudRetailV2alphaFulfillmentInfoResponse>> FulfillmentInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Output("gtin")]
+        public Output<string> Gtin { get; private set; } = null!;
 
         /// <summary>
         /// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
@@ -58,10 +106,28 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<ImmutableArray<Outputs.GoogleCloudRetailV2alphaImageResponse>> Images { get; private set; } = null!;
 
         /// <summary>
+        /// Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
+        /// </summary>
+        [Output("materials")]
+        public Output<ImmutableArray<string>> Materials { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
+        /// </summary>
+        [Output("patterns")]
+        public Output<ImmutableArray<string>> Patterns { get; private set; } = null!;
 
         /// <summary>
         /// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -76,6 +142,36 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> PrimaryProductId { get; private set; } = null!;
 
         /// <summary>
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        /// </summary>
+        [Output("promotions")]
+        public Output<ImmutableArray<Outputs.GoogleCloudRetailV2alphaPromotionResponse>> Promotions { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
+        /// </summary>
+        [Output("publishTime")]
+        public Output<string> PublishTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The rating of this product.
+        /// </summary>
+        [Output("rating")]
+        public Output<Outputs.GoogleCloudRetailV2alphaRatingResponse> Rating { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
+        /// </summary>
+        [Output("retrievableFields")]
+        public Output<string> RetrievableFields { get; private set; } = null!;
+
+        /// <summary>
+        /// The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
+        /// </summary>
+        [Output("sizes")]
+        public Output<ImmutableArray<string>> Sizes { get; private set; } = null!;
+
+        /// <summary>
         /// Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
         /// </summary>
         [Output("tags")]
@@ -88,6 +184,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+        /// </summary>
+        [Output("ttl")]
+        public Output<string> Ttl { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
         /// </summary>
         [Output("type")]
@@ -98,6 +200,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
+
+        /// <summary>
+        /// Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+        /// </summary>
+        [Output("variants")]
+        public Output<ImmutableArray<Outputs.GoogleCloudRetailV2alphaProductResponse>> Variants { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,13 +256,19 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         private InputMap<string>? _attributes;
 
         /// <summary>
-        /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200 by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
         /// </summary>
         public InputMap<string> Attributes
         {
             get => _attributes ?? (_attributes = new InputMap<string>());
             set => _attributes = value;
         }
+
+        /// <summary>
+        /// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
+        /// </summary>
+        [Input("audience")]
+        public Input<Inputs.GoogleCloudRetailV2alphaAudienceArgs>? Audience { get; set; }
 
         /// <summary>
         /// The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
@@ -169,13 +283,25 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<int>? AvailableQuantity { get; set; }
 
         /// <summary>
-        /// The timestamp when this Product becomes available for recommendation.
+        /// The timestamp when this Product becomes available for SearchService.Search.
         /// </summary>
         [Input("availableTime")]
         public Input<string>? AvailableTime { get; set; }
 
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
+
+        [Input("brands")]
+        private InputList<string>? _brands;
+
+        /// <summary>
+        /// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+        /// </summary>
+        public InputList<string> Brands
+        {
+            get => _brands ?? (_brands = new InputList<string>());
+            set => _brands = value;
+        }
 
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -192,11 +318,65 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
             set => _categories = value;
         }
 
+        [Input("collectionMemberIds")]
+        private InputList<string>? _collectionMemberIds;
+
+        /// <summary>
+        /// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        /// </summary>
+        public InputList<string> CollectionMemberIds
+        {
+            get => _collectionMemberIds ?? (_collectionMemberIds = new InputList<string>());
+            set => _collectionMemberIds = value;
+        }
+
+        /// <summary>
+        /// The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+        /// </summary>
+        [Input("colorInfo")]
+        public Input<Inputs.GoogleCloudRetailV2alphaColorInfoArgs>? ColorInfo { get; set; }
+
+        [Input("conditions")]
+        private InputList<string>? _conditions;
+
+        /// <summary>
+        /// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+        /// </summary>
+        public InputList<string> Conditions
+        {
+            get => _conditions ?? (_conditions = new InputList<string>());
+            set => _conditions = value;
+        }
+
         /// <summary>
         /// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        [Input("fulfillmentInfo")]
+        private InputList<Inputs.GoogleCloudRetailV2alphaFulfillmentInfoArgs>? _fulfillmentInfo;
+
+        /// <summary>
+        /// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudRetailV2alphaFulfillmentInfoArgs> FulfillmentInfo
+        {
+            get => _fulfillmentInfo ?? (_fulfillmentInfo = new InputList<Inputs.GoogleCloudRetailV2alphaFulfillmentInfoArgs>());
+            set => _fulfillmentInfo = value;
+        }
+
+        /// <summary>
+        /// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Input("gtin")]
+        public Input<string>? Gtin { get; set; }
 
         /// <summary>
         /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org Property [Product.sku](https://schema.org/sku).
@@ -216,14 +396,44 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
             set => _images = value;
         }
 
+        /// <summary>
+        /// Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+        /// </summary>
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("materials")]
+        private InputList<string>? _materials;
+
+        /// <summary>
+        /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
+        /// </summary>
+        public InputList<string> Materials
+        {
+            get => _materials ?? (_materials = new InputList<string>());
+            set => _materials = value;
+        }
 
         /// <summary>
         /// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("patterns")]
+        private InputList<string>? _patterns;
+
+        /// <summary>
+        /// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
+        /// </summary>
+        public InputList<string> Patterns
+        {
+            get => _patterns ?? (_patterns = new InputList<string>());
+            set => _patterns = value;
+        }
 
         /// <summary>
         /// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -243,6 +453,48 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("promotions")]
+        private InputList<Inputs.GoogleCloudRetailV2alphaPromotionArgs>? _promotions;
+
+        /// <summary>
+        /// The promotions applied to the product. A maximum of 10 values are allowed per Product.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudRetailV2alphaPromotionArgs> Promotions
+        {
+            get => _promotions ?? (_promotions = new InputList<Inputs.GoogleCloudRetailV2alphaPromotionArgs>());
+            set => _promotions = value;
+        }
+
+        /// <summary>
+        /// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
+        /// </summary>
+        [Input("publishTime")]
+        public Input<string>? PublishTime { get; set; }
+
+        /// <summary>
+        /// The rating of this product.
+        /// </summary>
+        [Input("rating")]
+        public Input<Inputs.GoogleCloudRetailV2alphaRatingArgs>? Rating { get; set; }
+
+        /// <summary>
+        /// Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
+        /// </summary>
+        [Input("retrievableFields")]
+        public Input<string>? RetrievableFields { get; set; }
+
+        [Input("sizes")]
+        private InputList<string>? _sizes;
+
+        /// <summary>
+        /// The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
+        /// </summary>
+        public InputList<string> Sizes
+        {
+            get => _sizes ?? (_sizes = new InputList<string>());
+            set => _sizes = value;
+        }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -260,6 +512,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
+
+        /// <summary>
+        /// Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+        /// </summary>
+        [Input("ttl")]
+        public Input<string>? Ttl { get; set; }
 
         /// <summary>
         /// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.

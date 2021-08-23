@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Inputs.InsightsConfigArgs>? InsightsConfig { get; set; }
 
         /// <summary>
-        /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+        /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<Inputs.IpConfigurationArgs>? IpConfiguration { get; set; }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     {
         public readonly Outputs.ConfigMapVolumeSourceResponse ConfigMap;
         /// <summary>
-        /// Volume's name.
+        /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         /// </summary>
         public readonly string Name;
         public readonly Outputs.SecretVolumeSourceResponse Secret;
