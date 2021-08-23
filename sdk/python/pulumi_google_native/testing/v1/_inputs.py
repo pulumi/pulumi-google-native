@@ -397,7 +397,7 @@ class AndroidRoboTestArgs:
                  robo_script: Optional[pulumi.Input['FileReferenceArgs']] = None,
                  starting_intents: Optional[pulumi.Input[Sequence[pulumi.Input['RoboStartingIntentArgs']]]] = None):
         """
-        A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+        A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
         :param pulumi.Input['FileReferenceArgs'] app_apk: The APK for the application under test.
         :param pulumi.Input['AppBundleArgs'] app_bundle: A multi-apk app bundle for the application under test.
         :param pulumi.Input[str] app_initial_activity: The initial activity that should be used to start the app.
@@ -1169,7 +1169,7 @@ class IosTestSetupArgs:
         A description of how to set up an iOS device prior to running the test.
         :param pulumi.Input[Sequence[pulumi.Input['FileReferenceArgs']]] additional_ipas: iOS apps to install in addition to those being directly tested.
         :param pulumi.Input[str] network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-        :param pulumi.Input[Sequence[pulumi.Input['IosDeviceFileArgs']]] pull_directories: List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+        :param pulumi.Input[Sequence[pulumi.Input['IosDeviceFileArgs']]] pull_directories: List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
         :param pulumi.Input[Sequence[pulumi.Input['IosDeviceFileArgs']]] push_files: List of files to push to the device before starting the test.
         """
         if additional_ipas is not None:
@@ -1209,7 +1209,7 @@ class IosTestSetupArgs:
     @pulumi.getter(name="pullDirectories")
     def pull_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IosDeviceFileArgs']]]]:
         """
-        List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+        List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
         """
         return pulumi.get(self, "pull_directories")
 

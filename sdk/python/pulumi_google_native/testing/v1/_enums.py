@@ -28,7 +28,7 @@ class AndroidRoboTestRoboMode(str, Enum):
     The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
     """
     ROBO_MODE_UNSPECIFIED = "ROBO_MODE_UNSPECIFIED"
-    """LINT.IfChange This means that the server should choose the mode. Recommended."""
+    """This means that the server should choose the mode. Recommended."""
     ROBO_VERSION1 = "ROBO_VERSION_1"
     """Runs Robo in UIAutomator-only mode without app resigning"""
     ROBO_VERSION2 = "ROBO_VERSION_2"

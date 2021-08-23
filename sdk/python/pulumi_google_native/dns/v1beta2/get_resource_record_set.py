@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetResourceRecordSetResult',
@@ -16,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetResourceRecordSetResult:
-    def __init__(__self__, kind=None, name=None, rrdatas=None, signature_rrdatas=None, ttl=None, type=None):
+    def __init__(__self__, kind=None, name=None, routing_policy=None, rrdatas=None, signature_rrdatas=None, ttl=None, type=None):
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if routing_policy and not isinstance(routing_policy, dict):
+            raise TypeError("Expected argument 'routing_policy' to be a dict")
+        pulumi.set(__self__, "routing_policy", routing_policy)
         if rrdatas and not isinstance(rrdatas, list):
             raise TypeError("Expected argument 'rrdatas' to be a list")
         pulumi.set(__self__, "rrdatas", rrdatas)
@@ -48,6 +52,14 @@ class GetResourceRecordSetResult:
         For example, www.example.com.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> 'outputs.RRSetRoutingPolicyResponse':
+        """
+        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        """
+        return pulumi.get(self, "routing_policy")
 
     @property
     @pulumi.getter
@@ -90,6 +102,7 @@ class AwaitableGetResourceRecordSetResult(GetResourceRecordSetResult):
         return GetResourceRecordSetResult(
             kind=self.kind,
             name=self.name,
+            routing_policy=self.routing_policy,
             rrdatas=self.rrdatas,
             signature_rrdatas=self.signature_rrdatas,
             ttl=self.ttl,
@@ -120,6 +133,7 @@ def get_resource_record_set(client_operation_id: Optional[str] = None,
     return AwaitableGetResourceRecordSetResult(
         kind=__ret__.kind,
         name=__ret__.name,
+        routing_policy=__ret__.routing_policy,
         rrdatas=__ret__.rrdatas,
         signature_rrdatas=__ret__.signature_rrdatas,
         ttl=__ret__.ttl,

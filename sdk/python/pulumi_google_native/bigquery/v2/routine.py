@@ -34,12 +34,12 @@ class RoutineArgs:
         :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
         :param pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]] arguments: Optional.
-        :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
-        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
+        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
-        :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
-        :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
@@ -123,7 +123,7 @@ class RoutineArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. [Experimental] The description of the routine if defined.
+        Optional. The description of the routine, if defined.
         """
         return pulumi.get(self, "description")
 
@@ -135,7 +135,7 @@ class RoutineArgs:
     @pulumi.getter(name="determinismLevel")
     def determinism_level(self) -> Optional[pulumi.Input['RoutineDeterminismLevel']]:
         """
-        Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        Optional. The determinism level of the JavaScript UDF, if defined.
         """
         return pulumi.get(self, "determinism_level")
 
@@ -180,7 +180,7 @@ class RoutineArgs:
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> Optional[pulumi.Input['StandardSqlTableTypeArgs']]:
         """
-        Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
+        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         """
         return pulumi.get(self, "return_table_type")
 
@@ -192,7 +192,7 @@ class RoutineArgs:
     @pulumi.getter(name="returnType")
     def return_type(self) -> Optional[pulumi.Input['StandardSqlDataTypeArgs']]:
         """
-        Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         """
         return pulumi.get(self, "return_type")
 
@@ -227,12 +227,12 @@ class Routine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]] arguments: Optional.
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
-        :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
-        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
+        :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
-        :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
-        :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
         """
@@ -373,7 +373,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Optional. [Experimental] The description of the routine if defined.
+        Optional. The description of the routine, if defined.
         """
         return pulumi.get(self, "description")
 
@@ -381,7 +381,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="determinismLevel")
     def determinism_level(self) -> pulumi.Output[str]:
         """
-        Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        Optional. The determinism level of the JavaScript UDF, if defined.
         """
         return pulumi.get(self, "determinism_level")
 
@@ -421,7 +421,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> pulumi.Output['outputs.StandardSqlTableTypeResponse']:
         """
-        Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
+        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         """
         return pulumi.get(self, "return_table_type")
 
@@ -429,7 +429,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="returnType")
     def return_type(self) -> pulumi.Output['outputs.StandardSqlDataTypeResponse']:
         """
-        Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         """
         return pulumi.get(self, "return_type")
 

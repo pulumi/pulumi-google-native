@@ -98,7 +98,7 @@ class GetBackupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+        The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -122,7 +122,7 @@ class GetBackupResult:
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> str:
         """
-        The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         return pulumi.get(self, "source_instance")
 

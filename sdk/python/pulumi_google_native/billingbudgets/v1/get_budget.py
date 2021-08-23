@@ -68,7 +68,7 @@ class GetBudgetResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         """
         return pulumi.get(self, "etag")
 

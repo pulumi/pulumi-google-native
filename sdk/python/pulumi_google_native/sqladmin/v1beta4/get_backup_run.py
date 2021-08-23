@@ -84,7 +84,7 @@ class GetBackupRunResult:
     @pulumi.getter(name="diskEncryptionConfiguration")
     def disk_encryption_configuration(self) -> 'outputs.DiskEncryptionConfigurationResponse':
         """
-        Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        Encryption configuration specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_configuration")
 
@@ -92,7 +92,7 @@ class GetBackupRunResult:
     @pulumi.getter(name="diskEncryptionStatus")
     def disk_encryption_status(self) -> 'outputs.DiskEncryptionStatusResponse':
         """
-        Encryption status specific to a backup. Applies only to Second Generation instances.
+        Encryption status specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_status")
 

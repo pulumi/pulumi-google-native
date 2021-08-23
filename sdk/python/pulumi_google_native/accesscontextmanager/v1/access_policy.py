@@ -152,7 +152,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         """
         return pulumi.get(self, "name")
 

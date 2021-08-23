@@ -36,17 +36,22 @@ __all__ = [
     'KubernetesDashboardArgs',
     'LegacyAbacArgs',
     'LinuxNodeConfigArgs',
+    'LoggingComponentConfigArgs',
+    'LoggingConfigArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
     'MasterAuthorizedNetworksConfigArgs',
     'MasterAuthArgs',
     'MaxPodsConstraintArgs',
+    'MonitoringComponentConfigArgs',
+    'MonitoringConfigArgs',
     'NetworkConfigArgs',
     'NetworkPolicyConfigArgs',
     'NetworkPolicyArgs',
     'NodeConfigArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
+    'NodeNetworkConfigArgs',
     'NodePoolAutoscalingArgs',
     'NodePoolArgs',
     'NodeTaintArgs',
@@ -66,6 +71,7 @@ __all__ = [
     'TimeWindowArgs',
     'UpgradeSettingsArgs',
     'VerticalPodAutoscalingArgs',
+    'VirtualNICArgs',
     'WorkloadIdentityConfigArgs',
     'WorkloadMetadataConfigArgs',
 ]
@@ -644,12 +650,14 @@ class ClusterAutoscalingArgs:
     def __init__(__self__, *,
                  autoprovisioning_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoprovisioning_node_pool_defaults: Optional[pulumi.Input['AutoprovisioningNodePoolDefaultsArgs']] = None,
+                 autoscaling_profile: Optional[pulumi.Input['ClusterAutoscalingAutoscalingProfile']] = None,
                  enable_node_autoprovisioning: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceLimitArgs']]]] = None):
         """
         ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] autoprovisioning_locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
         :param pulumi.Input['AutoprovisioningNodePoolDefaultsArgs'] autoprovisioning_node_pool_defaults: AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
+        :param pulumi.Input['ClusterAutoscalingAutoscalingProfile'] autoscaling_profile: Defines autoscaling behaviour.
         :param pulumi.Input[bool] enable_node_autoprovisioning: Enables automatic node pool creation and deletion.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceLimitArgs']]] resource_limits: Contains global constraints regarding minimum and maximum amount of resources in the cluster.
         """
@@ -657,6 +665,8 @@ class ClusterAutoscalingArgs:
             pulumi.set(__self__, "autoprovisioning_locations", autoprovisioning_locations)
         if autoprovisioning_node_pool_defaults is not None:
             pulumi.set(__self__, "autoprovisioning_node_pool_defaults", autoprovisioning_node_pool_defaults)
+        if autoscaling_profile is not None:
+            pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
         if enable_node_autoprovisioning is not None:
             pulumi.set(__self__, "enable_node_autoprovisioning", enable_node_autoprovisioning)
         if resource_limits is not None:
@@ -685,6 +695,18 @@ class ClusterAutoscalingArgs:
     @autoprovisioning_node_pool_defaults.setter
     def autoprovisioning_node_pool_defaults(self, value: Optional[pulumi.Input['AutoprovisioningNodePoolDefaultsArgs']]):
         pulumi.set(self, "autoprovisioning_node_pool_defaults", value)
+
+    @property
+    @pulumi.getter(name="autoscalingProfile")
+    def autoscaling_profile(self) -> Optional[pulumi.Input['ClusterAutoscalingAutoscalingProfile']]:
+        """
+        Defines autoscaling behaviour.
+        """
+        return pulumi.get(self, "autoscaling_profile")
+
+    @autoscaling_profile.setter
+    def autoscaling_profile(self, value: Optional[pulumi.Input['ClusterAutoscalingAutoscalingProfile']]):
+        pulumi.set(self, "autoscaling_profile", value)
 
     @property
     @pulumi.getter(name="enableNodeAutoprovisioning")
@@ -1208,6 +1230,54 @@ class LinuxNodeConfigArgs:
 
 
 @pulumi.input_type
+class LoggingComponentConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingComponentConfigEnableComponentsItem']]]] = None):
+        """
+        LoggingComponentConfig is cluster logging component configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['LoggingComponentConfigEnableComponentsItem']]] enable_components: Select components to collect logs. An empty set would disable all logging.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoggingComponentConfigEnableComponentsItem']]]]:
+        """
+        Select components to collect logs. An empty set would disable all logging.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingComponentConfigEnableComponentsItem']]]]):
+        pulumi.set(self, "enable_components", value)
+
+
+@pulumi.input_type
+class LoggingConfigArgs:
+    def __init__(__self__, *,
+                 component_config: Optional[pulumi.Input['LoggingComponentConfigArgs']] = None):
+        """
+        LoggingConfig is cluster logging configuration.
+        :param pulumi.Input['LoggingComponentConfigArgs'] component_config: Logging components configuration
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional[pulumi.Input['LoggingComponentConfigArgs']]:
+        """
+        Logging components configuration
+        """
+        return pulumi.get(self, "component_config")
+
+    @component_config.setter
+    def component_config(self, value: Optional[pulumi.Input['LoggingComponentConfigArgs']]):
+        pulumi.set(self, "component_config", value)
+
+
+@pulumi.input_type
 class MaintenancePolicyArgs:
     def __init__(__self__, *,
                  resource_version: Optional[pulumi.Input[str]] = None,
@@ -1424,6 +1494,54 @@ class MaxPodsConstraintArgs:
 
 
 @pulumi.input_type
+class MonitoringComponentConfigArgs:
+    def __init__(__self__, *,
+                 enable_components: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringComponentConfigEnableComponentsItem']]]] = None):
+        """
+        MonitoringComponentConfig is cluster monitoring component configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoringComponentConfigEnableComponentsItem']]] enable_components: Select components to collect metrics. An empty set would disable all monitoring.
+        """
+        if enable_components is not None:
+            pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringComponentConfigEnableComponentsItem']]]]:
+        """
+        Select components to collect metrics. An empty set would disable all monitoring.
+        """
+        return pulumi.get(self, "enable_components")
+
+    @enable_components.setter
+    def enable_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoringComponentConfigEnableComponentsItem']]]]):
+        pulumi.set(self, "enable_components", value)
+
+
+@pulumi.input_type
+class MonitoringConfigArgs:
+    def __init__(__self__, *,
+                 component_config: Optional[pulumi.Input['MonitoringComponentConfigArgs']] = None):
+        """
+        MonitoringConfig is cluster monitoring configuration.
+        :param pulumi.Input['MonitoringComponentConfigArgs'] component_config: Monitoring components configuration
+        """
+        if component_config is not None:
+            pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> Optional[pulumi.Input['MonitoringComponentConfigArgs']]:
+        """
+        Monitoring components configuration
+        """
+        return pulumi.get(self, "component_config")
+
+    @component_config.setter
+    def component_config(self, value: Optional[pulumi.Input['MonitoringComponentConfigArgs']]):
+        pulumi.set(self, "component_config", value)
+
+
+@pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
                  datapath_provider: Optional[pulumi.Input['NetworkConfigDatapathProvider']] = None,
@@ -1582,6 +1700,7 @@ class NodeConfigArgs:
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 gvnic: Optional[pulumi.Input['VirtualNICArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodeKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1606,6 +1725,7 @@ class NodeConfigArgs:
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input['VirtualNICArgs'] gvnic: Enable or disable gvnic in the node pool.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param pulumi.Input['NodeKubeletConfigArgs'] kubelet_config: Node kubelet configs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -1633,6 +1753,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if gvnic is not None:
+            pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -1717,6 +1839,18 @@ class NodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def gvnic(self) -> Optional[pulumi.Input['VirtualNICArgs']]:
+        """
+        Enable or disable gvnic in the node pool.
+        """
+        return pulumi.get(self, "gvnic")
+
+    @gvnic.setter
+    def gvnic(self, value: Optional[pulumi.Input['VirtualNICArgs']]):
+        pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="imageType")
@@ -2048,6 +2182,62 @@ class NodeManagementArgs:
 
 
 @pulumi.input_type
+class NodeNetworkConfigArgs:
+    def __init__(__self__, *,
+                 create_pod_range: Optional[pulumi.Input[bool]] = None,
+                 pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 pod_range: Optional[pulumi.Input[str]] = None):
+        """
+        Parameters for node pool-level network config.
+        :param pulumi.Input[bool] create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        if create_pod_range is not None:
+            pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if pod_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+        if pod_range is not None:
+            pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "create_pod_range")
+
+    @create_pod_range.setter
+    def create_pod_range(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_pod_range", value)
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @pod_ipv4_cidr_block.setter
+    def pod_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "pod_range")
+
+    @pod_range.setter
+    def pod_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
 class NodePoolAutoscalingArgs:
     def __init__(__self__, *,
                  autoprovisioned: Optional[pulumi.Input[bool]] = None,
@@ -2130,6 +2320,7 @@ class NodePoolArgs:
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -2142,6 +2333,7 @@ class NodePoolArgs:
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
+        :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -2161,6 +2353,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -2261,6 +2455,18 @@ class NodePoolArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NodeNetworkConfigArgs']]:
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NodeNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -2959,6 +3165,30 @@ class VerticalPodAutoscalingArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enables vertical pod autoscaling.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class VirtualNICArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration of gVNIC feature.
+        :param pulumi.Input[bool] enabled: Whether gVNIC features are enabled in the node pool.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether gVNIC features are enabled in the node pool.
         """
         return pulumi.get(self, "enabled")
 

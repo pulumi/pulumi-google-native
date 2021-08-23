@@ -112,7 +112,7 @@ class GetFirewallResult:
     @pulumi.getter(name="destinationRanges")
     def destination_ranges(self) -> Sequence[str]:
         """
-        If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+        If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
         """
         return pulumi.get(self, "destination_ranges")
 
@@ -192,7 +192,7 @@ class GetFirewallResult:
     @pulumi.getter(name="sourceRanges")
     def source_ranges(self) -> Sequence[str]:
         """
-        If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
+        If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Both IPv4 and IPv6 are supported.
         """
         return pulumi.get(self, "source_ranges")
 

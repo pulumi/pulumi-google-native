@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOsPolicyAssignmentResult:
-    def __init__(__self__, baseline=None, deleted=None, description=None, instance_filter=None, name=None, os_policies=None, reconciling=None, revision_create_time=None, revision_id=None, rollout=None, rollout_state=None, uid=None):
+    def __init__(__self__, baseline=None, deleted=None, description=None, etag=None, instance_filter=None, name=None, os_policies=None, reconciling=None, revision_create_time=None, revision_id=None, rollout=None, rollout_state=None, uid=None):
         if baseline and not isinstance(baseline, bool):
             raise TypeError("Expected argument 'baseline' to be a bool")
         pulumi.set(__self__, "baseline", baseline)
@@ -27,6 +27,9 @@ class GetOsPolicyAssignmentResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if instance_filter and not isinstance(instance_filter, dict):
             raise TypeError("Expected argument 'instance_filter' to be a dict")
         pulumi.set(__self__, "instance_filter", instance_filter)
@@ -78,6 +81,14 @@ class GetOsPolicyAssignmentResult:
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="instanceFilter")
@@ -161,6 +172,7 @@ class AwaitableGetOsPolicyAssignmentResult(GetOsPolicyAssignmentResult):
             baseline=self.baseline,
             deleted=self.deleted,
             description=self.description,
+            etag=self.etag,
             instance_filter=self.instance_filter,
             name=self.name,
             os_policies=self.os_policies,
@@ -193,6 +205,7 @@ def get_os_policy_assignment(location: Optional[str] = None,
         baseline=__ret__.baseline,
         deleted=__ret__.deleted,
         description=__ret__.description,
+        etag=__ret__.etag,
         instance_filter=__ret__.instance_filter,
         name=__ret__.name,
         os_policies=__ret__.os_policies,

@@ -22,6 +22,7 @@ class NoteArgs:
                  compliance: Optional[pulumi.Input['ComplianceNoteArgs']] = None,
                  deployable: Optional[pulumi.Input['DeployableArgs']] = None,
                  discovery: Optional[pulumi.Input['DiscoveryArgs']] = None,
+                 dsse_attestation: Optional[pulumi.Input['DSSEAttestationNoteArgs']] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +30,11 @@ class NoteArgs:
                  package: Optional[pulumi.Input['PackageArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
+                 sbom: Optional[pulumi.Input['DocumentNoteArgs']] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
+                 spdx_file: Optional[pulumi.Input['FileNoteArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageNoteArgs']] = None,
+                 spdx_relationship: Optional[pulumi.Input['RelationshipNoteArgs']] = None,
                  upgrade: Optional[pulumi.Input['UpgradeNoteArgs']] = None,
                  vulnerability_type: Optional[pulumi.Input['VulnerabilityTypeArgs']] = None):
         """
@@ -40,12 +45,17 @@ class NoteArgs:
         :param pulumi.Input['ComplianceNoteArgs'] compliance: A note describing a compliance check.
         :param pulumi.Input['DeployableArgs'] deployable: A note describing something that can be deployed.
         :param pulumi.Input['DiscoveryArgs'] discovery: A note describing a provider/analysis type.
+        :param pulumi.Input['DSSEAttestationNoteArgs'] dsse_attestation: A note describing a dsse attestation note.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_url: URLs associated with this note
+        :param pulumi.Input['DocumentNoteArgs'] sbom: A note describing a software bill of materials.
         :param pulumi.Input[str] short_description: A one sentence description of this `Note`.
+        :param pulumi.Input['FileNoteArgs'] spdx_file: A note describing an SPDX File.
+        :param pulumi.Input['PackageNoteArgs'] spdx_package: A note describing an SPDX Package.
+        :param pulumi.Input['RelationshipNoteArgs'] spdx_relationship: A note describing a relationship between SPDX elements.
         :param pulumi.Input['UpgradeNoteArgs'] upgrade: A note describing an upgrade.
         :param pulumi.Input['VulnerabilityTypeArgs'] vulnerability_type: A package vulnerability type of note.
         """
@@ -61,6 +71,8 @@ class NoteArgs:
             pulumi.set(__self__, "deployable", deployable)
         if discovery is not None:
             pulumi.set(__self__, "discovery", discovery)
+        if dsse_attestation is not None:
+            pulumi.set(__self__, "dsse_attestation", dsse_attestation)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
         if long_description is not None:
@@ -75,8 +87,16 @@ class NoteArgs:
             pulumi.set(__self__, "project", project)
         if related_url is not None:
             pulumi.set(__self__, "related_url", related_url)
+        if sbom is not None:
+            pulumi.set(__self__, "sbom", sbom)
         if short_description is not None:
             pulumi.set(__self__, "short_description", short_description)
+        if spdx_file is not None:
+            pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package is not None:
+            pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship is not None:
+            pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_type is not None:
@@ -153,6 +173,18 @@ class NoteArgs:
     @discovery.setter
     def discovery(self, value: Optional[pulumi.Input['DiscoveryArgs']]):
         pulumi.set(self, "discovery", value)
+
+    @property
+    @pulumi.getter(name="dsseAttestation")
+    def dsse_attestation(self) -> Optional[pulumi.Input['DSSEAttestationNoteArgs']]:
+        """
+        A note describing a dsse attestation note.
+        """
+        return pulumi.get(self, "dsse_attestation")
+
+    @dsse_attestation.setter
+    def dsse_attestation(self, value: Optional[pulumi.Input['DSSEAttestationNoteArgs']]):
+        pulumi.set(self, "dsse_attestation", value)
 
     @property
     @pulumi.getter(name="expirationTime")
@@ -233,6 +265,18 @@ class NoteArgs:
         pulumi.set(self, "related_url", value)
 
     @property
+    @pulumi.getter
+    def sbom(self) -> Optional[pulumi.Input['DocumentNoteArgs']]:
+        """
+        A note describing a software bill of materials.
+        """
+        return pulumi.get(self, "sbom")
+
+    @sbom.setter
+    def sbom(self, value: Optional[pulumi.Input['DocumentNoteArgs']]):
+        pulumi.set(self, "sbom", value)
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,6 +287,42 @@ class NoteArgs:
     @short_description.setter
     def short_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "short_description", value)
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> Optional[pulumi.Input['FileNoteArgs']]:
+        """
+        A note describing an SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @spdx_file.setter
+    def spdx_file(self, value: Optional[pulumi.Input['FileNoteArgs']]):
+        pulumi.set(self, "spdx_file", value)
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> Optional[pulumi.Input['PackageNoteArgs']]:
+        """
+        A note describing an SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @spdx_package.setter
+    def spdx_package(self, value: Optional[pulumi.Input['PackageNoteArgs']]):
+        pulumi.set(self, "spdx_package", value)
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> Optional[pulumi.Input['RelationshipNoteArgs']]:
+        """
+        A note describing a relationship between SPDX elements.
+        """
+        return pulumi.get(self, "spdx_relationship")
+
+    @spdx_relationship.setter
+    def spdx_relationship(self, value: Optional[pulumi.Input['RelationshipNoteArgs']]):
+        pulumi.set(self, "spdx_relationship", value)
 
     @property
     @pulumi.getter
@@ -280,6 +360,7 @@ class Note(pulumi.CustomResource):
                  compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -287,7 +368,11 @@ class Note(pulumi.CustomResource):
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
                  vulnerability_type: Optional[pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']]] = None,
                  __props__=None):
@@ -302,12 +387,17 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ComplianceNoteArgs']] compliance: A note describing a compliance check.
         :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing a provider/analysis type.
+        :param pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']] dsse_attestation: A note describing a dsse attestation note.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note
+        :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing a software bill of materials.
         :param pulumi.Input[str] short_description: A one sentence description of this `Note`.
+        :param pulumi.Input[pulumi.InputType['FileNoteArgs']] spdx_file: A note describing an SPDX File.
+        :param pulumi.Input[pulumi.InputType['PackageNoteArgs']] spdx_package: A note describing an SPDX Package.
+        :param pulumi.Input[pulumi.InputType['RelationshipNoteArgs']] spdx_relationship: A note describing a relationship between SPDX elements.
         :param pulumi.Input[pulumi.InputType['UpgradeNoteArgs']] upgrade: A note describing an upgrade.
         :param pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']] vulnerability_type: A package vulnerability type of note.
         """
@@ -341,6 +431,7 @@ class Note(pulumi.CustomResource):
                  compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
                  deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
                  discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -348,7 +439,11 @@ class Note(pulumi.CustomResource):
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
                  vulnerability_type: Optional[pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']]] = None,
                  __props__=None):
@@ -369,6 +464,7 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["compliance"] = compliance
             __props__.__dict__["deployable"] = deployable
             __props__.__dict__["discovery"] = discovery
+            __props__.__dict__["dsse_attestation"] = dsse_attestation
             __props__.__dict__["expiration_time"] = expiration_time
             __props__.__dict__["long_description"] = long_description
             __props__.__dict__["name"] = name
@@ -376,7 +472,11 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["package"] = package
             __props__.__dict__["project"] = project
             __props__.__dict__["related_url"] = related_url
+            __props__.__dict__["sbom"] = sbom
             __props__.__dict__["short_description"] = short_description
+            __props__.__dict__["spdx_file"] = spdx_file
+            __props__.__dict__["spdx_package"] = spdx_package
+            __props__.__dict__["spdx_relationship"] = spdx_relationship
             __props__.__dict__["upgrade"] = upgrade
             __props__.__dict__["vulnerability_type"] = vulnerability_type
             __props__.__dict__["create_time"] = None
@@ -411,13 +511,18 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["deployable"] = None
         __props__.__dict__["discovery"] = None
+        __props__.__dict__["dsse_attestation"] = None
         __props__.__dict__["expiration_time"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["long_description"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["package"] = None
         __props__.__dict__["related_url"] = None
+        __props__.__dict__["sbom"] = None
         __props__.__dict__["short_description"] = None
+        __props__.__dict__["spdx_file"] = None
+        __props__.__dict__["spdx_package"] = None
+        __props__.__dict__["spdx_relationship"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade"] = None
         __props__.__dict__["vulnerability_type"] = None
@@ -480,6 +585,14 @@ class Note(pulumi.CustomResource):
         return pulumi.get(self, "discovery")
 
     @property
+    @pulumi.getter(name="dsseAttestation")
+    def dsse_attestation(self) -> pulumi.Output['outputs.DSSEAttestationNoteResponse']:
+        """
+        A note describing a dsse attestation note.
+        """
+        return pulumi.get(self, "dsse_attestation")
+
+    @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> pulumi.Output[str]:
         """
@@ -528,12 +641,44 @@ class Note(pulumi.CustomResource):
         return pulumi.get(self, "related_url")
 
     @property
+    @pulumi.getter
+    def sbom(self) -> pulumi.Output['outputs.DocumentNoteResponse']:
+        """
+        A note describing a software bill of materials.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> pulumi.Output[str]:
         """
         A one sentence description of this `Note`.
         """
         return pulumi.get(self, "short_description")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> pulumi.Output['outputs.FileNoteResponse']:
+        """
+        A note describing an SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> pulumi.Output['outputs.PackageNoteResponse']:
+        """
+        A note describing an SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> pulumi.Output['outputs.RelationshipNoteResponse']:
+        """
+        A note describing a relationship between SPDX elements.
+        """
+        return pulumi.get(self, "spdx_relationship")
 
     @property
     @pulumi.getter(name="updateTime")

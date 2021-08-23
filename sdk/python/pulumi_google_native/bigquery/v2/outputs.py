@@ -990,6 +990,8 @@ class CsvOptionsResponse(dict):
             suggest = "allow_quoted_newlines"
         elif key == "fieldDelimiter":
             suggest = "field_delimiter"
+        elif key == "nullMarker":
+            suggest = "null_marker"
         elif key == "skipLeadingRows":
             suggest = "skip_leading_rows"
 
@@ -1009,6 +1011,7 @@ class CsvOptionsResponse(dict):
                  allow_quoted_newlines: bool,
                  encoding: str,
                  field_delimiter: str,
+                 null_marker: str,
                  quote: str,
                  skip_leading_rows: str):
         """
@@ -1016,6 +1019,7 @@ class CsvOptionsResponse(dict):
         :param bool allow_quoted_newlines: [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
         :param str encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
         :param str field_delimiter: [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
+        :param str null_marker: [Optional] An custom string that will represent a NULL value in CSV import data.
         :param str quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param str skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
@@ -1023,6 +1027,7 @@ class CsvOptionsResponse(dict):
         pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
         pulumi.set(__self__, "encoding", encoding)
         pulumi.set(__self__, "field_delimiter", field_delimiter)
+        pulumi.set(__self__, "null_marker", null_marker)
         pulumi.set(__self__, "quote", quote)
         pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
 
@@ -1057,6 +1062,14 @@ class CsvOptionsResponse(dict):
         [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
         """
         return pulumi.get(self, "field_delimiter")
+
+    @property
+    @pulumi.getter(name="nullMarker")
+    def null_marker(self) -> str:
+        """
+        [Optional] An custom string that will represent a NULL value in CSV import data.
+        """
+        return pulumi.get(self, "null_marker")
 
     @property
     @pulumi.getter
@@ -5633,7 +5646,9 @@ class TableFieldSchemaResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxLength":
+        if key == "collationSpec":
+            suggest = "collation_spec"
+        elif key == "maxLength":
             suggest = "max_length"
         elif key == "policyTags":
             suggest = "policy_tags"
@@ -5651,6 +5666,7 @@ class TableFieldSchemaResponse(dict):
 
     def __init__(__self__, *,
                  categories: 'outputs.TableFieldSchemaCategoriesResponse',
+                 collation_spec: str,
                  description: str,
                  fields: Sequence['outputs.TableFieldSchemaResponse'],
                  max_length: str,
@@ -5662,6 +5678,7 @@ class TableFieldSchemaResponse(dict):
                  type: str):
         """
         :param 'TableFieldSchemaCategoriesResponse' categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param str collation_spec: Optional. Collation specification of the field. It only can be set on string type field.
         :param str description: [Optional] The field description. The maximum length is 1,024 characters.
         :param Sequence['TableFieldSchemaResponse'] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param str max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -5672,6 +5689,7 @@ class TableFieldSchemaResponse(dict):
         :param str type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
         pulumi.set(__self__, "categories", categories)
+        pulumi.set(__self__, "collation_spec", collation_spec)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "max_length", max_length)
@@ -5689,6 +5707,14 @@ class TableFieldSchemaResponse(dict):
         [Optional] The categories attached to this field, used for field-level access control.
         """
         return pulumi.get(self, "categories")
+
+    @property
+    @pulumi.getter(name="collationSpec")
+    def collation_spec(self) -> str:
+        """
+        Optional. Collation specification of the field. It only can be set on string type field.
+        """
+        return pulumi.get(self, "collation_spec")
 
     @property
     @pulumi.getter

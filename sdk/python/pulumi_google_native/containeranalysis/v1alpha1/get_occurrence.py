@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build_details=None, compliance=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, update_time=None, upgrade=None, vulnerability_details=None):
+    def __init__(__self__, attestation=None, build_details=None, compliance=None, create_time=None, deployment=None, derived_image=None, discovered=None, dsse_attestation=None, envelope=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, sbom=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, upgrade=None, vulnerability_details=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -39,6 +39,12 @@ class GetOccurrenceResult:
         if discovered and not isinstance(discovered, dict):
             raise TypeError("Expected argument 'discovered' to be a dict")
         pulumi.set(__self__, "discovered", discovered)
+        if dsse_attestation and not isinstance(dsse_attestation, dict):
+            raise TypeError("Expected argument 'dsse_attestation' to be a dict")
+        pulumi.set(__self__, "dsse_attestation", dsse_attestation)
+        if envelope and not isinstance(envelope, dict):
+            raise TypeError("Expected argument 'envelope' to be a dict")
+        pulumi.set(__self__, "envelope", envelope)
         if installation and not isinstance(installation, dict):
             raise TypeError("Expected argument 'installation' to be a dict")
         pulumi.set(__self__, "installation", installation)
@@ -60,6 +66,18 @@ class GetOccurrenceResult:
         if resource_url and not isinstance(resource_url, str):
             raise TypeError("Expected argument 'resource_url' to be a str")
         pulumi.set(__self__, "resource_url", resource_url)
+        if sbom and not isinstance(sbom, dict):
+            raise TypeError("Expected argument 'sbom' to be a dict")
+        pulumi.set(__self__, "sbom", sbom)
+        if spdx_file and not isinstance(spdx_file, dict):
+            raise TypeError("Expected argument 'spdx_file' to be a dict")
+        pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package and not isinstance(spdx_package, dict):
+            raise TypeError("Expected argument 'spdx_package' to be a dict")
+        pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship and not isinstance(spdx_relationship, dict):
+            raise TypeError("Expected argument 'spdx_relationship' to be a dict")
+        pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -127,6 +145,22 @@ class GetOccurrenceResult:
         return pulumi.get(self, "discovered")
 
     @property
+    @pulumi.getter(name="dsseAttestation")
+    def dsse_attestation(self) -> 'outputs.DSSEAttestationOccurrenceResponse':
+        """
+        This represents a DSSE attestation occurrence
+        """
+        return pulumi.get(self, "dsse_attestation")
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> 'outputs.EnvelopeResponse':
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
+
+    @property
     @pulumi.getter
     def installation(self) -> 'outputs.InstallationResponse':
         """
@@ -183,6 +217,38 @@ class GetOccurrenceResult:
         return pulumi.get(self, "resource_url")
 
     @property
+    @pulumi.getter
+    def sbom(self) -> 'outputs.DocumentOccurrenceResponse':
+        """
+        Describes a specific software bill of materials document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> 'outputs.FileOccurrenceResponse':
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> 'outputs.PackageOccurrenceResponse':
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> 'outputs.RelationshipOccurrenceResponse':
+        """
+        Describes a specific relationship between SPDX elements.
+        """
+        return pulumi.get(self, "spdx_relationship")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -220,6 +286,8 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             deployment=self.deployment,
             derived_image=self.derived_image,
             discovered=self.discovered,
+            dsse_attestation=self.dsse_attestation,
+            envelope=self.envelope,
             installation=self.installation,
             kind=self.kind,
             name=self.name,
@@ -227,6 +295,10 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             remediation=self.remediation,
             resource=self.resource,
             resource_url=self.resource_url,
+            sbom=self.sbom,
+            spdx_file=self.spdx_file,
+            spdx_package=self.spdx_package,
+            spdx_relationship=self.spdx_relationship,
             update_time=self.update_time,
             upgrade=self.upgrade,
             vulnerability_details=self.vulnerability_details)
@@ -255,6 +327,8 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         deployment=__ret__.deployment,
         derived_image=__ret__.derived_image,
         discovered=__ret__.discovered,
+        dsse_attestation=__ret__.dsse_attestation,
+        envelope=__ret__.envelope,
         installation=__ret__.installation,
         kind=__ret__.kind,
         name=__ret__.name,
@@ -262,6 +336,10 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         remediation=__ret__.remediation,
         resource=__ret__.resource,
         resource_url=__ret__.resource_url,
+        sbom=__ret__.sbom,
+        spdx_file=__ret__.spdx_file,
+        spdx_package=__ret__.spdx_package,
+        spdx_relationship=__ret__.spdx_relationship,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,
         vulnerability_details=__ret__.vulnerability_details)

@@ -252,7 +252,7 @@ class Runtime(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+        The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         """
         return pulumi.get(self, "name")
 

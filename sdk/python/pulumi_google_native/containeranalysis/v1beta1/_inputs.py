@@ -33,8 +33,13 @@ __all__ = [
     'DiscoveredArgs',
     'DiscoveryArgs',
     'DistributionArgs',
+    'DocumentNoteArgs',
+    'DocumentOccurrenceArgs',
     'EnvironmentArgs',
     'ExprArgs',
+    'ExternalRefArgs',
+    'FileNoteArgs',
+    'FileOccurrenceArgs',
     'FingerprintArgs',
     'GenericSignedAttestationArgs',
     'GerritSourceContextArgs',
@@ -56,10 +61,14 @@ __all__ = [
     'LinkArgs',
     'LocationArgs',
     'PackageIssueArgs',
+    'PackageNoteArgs',
+    'PackageOccurrenceArgs',
     'PackageArgs',
     'PgpSignedAttestationArgs',
     'ProjectRepoIdArgs',
     'RelatedUrlArgs',
+    'RelationshipNoteArgs',
+    'RelationshipOccurrenceArgs',
     'RepoIdArgs',
     'ResourceArgs',
     'SignatureArgs',
@@ -1584,6 +1593,198 @@ class DistributionArgs:
 
 
 @pulumi.input_type
+class DocumentNoteArgs:
+    def __init__(__self__, *,
+                 data_licence: Optional[pulumi.Input[str]] = None,
+                 spdx_version: Optional[pulumi.Input[str]] = None):
+        """
+        DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+        :param pulumi.Input[str] data_licence: Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
+        :param pulumi.Input[str] spdx_version: Provide a reference number that can be used to understand how to parse and interpret the rest of the file
+        """
+        if data_licence is not None:
+            pulumi.set(__self__, "data_licence", data_licence)
+        if spdx_version is not None:
+            pulumi.set(__self__, "spdx_version", spdx_version)
+
+    @property
+    @pulumi.getter(name="dataLicence")
+    def data_licence(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
+        """
+        return pulumi.get(self, "data_licence")
+
+    @data_licence.setter
+    def data_licence(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_licence", value)
+
+    @property
+    @pulumi.getter(name="spdxVersion")
+    def spdx_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide a reference number that can be used to understand how to parse and interpret the rest of the file
+        """
+        return pulumi.get(self, "spdx_version")
+
+    @spdx_version.setter
+    def spdx_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spdx_version", value)
+
+
+@pulumi.input_type
+class DocumentOccurrenceArgs:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 creator_comment: Optional[pulumi.Input[str]] = None,
+                 creators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 document_comment: Optional[pulumi.Input[str]] = None,
+                 external_document_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 license_list_version: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+        :param pulumi.Input[str] create_time: Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
+        :param pulumi.Input[str] creator_comment: A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] creators: Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
+        :param pulumi.Input[str] document_comment: A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_document_refs: Identify any external SPDX documents referenced within this SPDX document
+        :param pulumi.Input[str] id: Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        :param pulumi.Input[str] license_list_version: A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
+        :param pulumi.Input[str] namespace: Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
+        :param pulumi.Input[str] title: Identify name of this document as designated by creator
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if creator_comment is not None:
+            pulumi.set(__self__, "creator_comment", creator_comment)
+        if creators is not None:
+            pulumi.set(__self__, "creators", creators)
+        if document_comment is not None:
+            pulumi.set(__self__, "document_comment", document_comment)
+        if external_document_refs is not None:
+            pulumi.set(__self__, "external_document_refs", external_document_refs)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if license_list_version is not None:
+            pulumi.set(__self__, "license_list_version", license_list_version)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="creatorComment")
+    def creator_comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
+        """
+        return pulumi.get(self, "creator_comment")
+
+    @creator_comment.setter
+    def creator_comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creator_comment", value)
+
+    @property
+    @pulumi.getter
+    def creators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
+        """
+        return pulumi.get(self, "creators")
+
+    @creators.setter
+    def creators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "creators", value)
+
+    @property
+    @pulumi.getter(name="documentComment")
+    def document_comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+        """
+        return pulumi.get(self, "document_comment")
+
+    @document_comment.setter
+    def document_comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "document_comment", value)
+
+    @property
+    @pulumi.getter(name="externalDocumentRefs")
+    def external_document_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identify any external SPDX documents referenced within this SPDX document
+        """
+        return pulumi.get(self, "external_document_refs")
+
+    @external_document_refs.setter
+    def external_document_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_document_refs", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="licenseListVersion")
+    def license_list_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
+        """
+        return pulumi.get(self, "license_list_version")
+
+    @license_list_version.setter
+    def license_list_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_list_version", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify name of this document as designated by creator
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
                  custom_values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -1673,6 +1874,286 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ExternalRefArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input['ExternalRefCategory']] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 locator: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+        :param pulumi.Input['ExternalRefCategory'] category: An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+        :param pulumi.Input[str] comment: Human-readable information about the purpose and target of the reference
+        :param pulumi.Input[str] locator: The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location
+        :param pulumi.Input[str] type: Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input['ExternalRefCategory']]:
+        """
+        An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input['ExternalRefCategory']]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable information about the purpose and target of the reference
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location
+        """
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class FileNoteArgs:
+    def __init__(__self__, *,
+                 checksum: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_type: Optional[pulumi.Input['FileNoteFileType']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] checksum: Provide a unique identifier to match analysis information on each specific file in a package
+        :param pulumi.Input['FileNoteFileType'] file_type: This field provides information about the type of file identified
+        :param pulumi.Input[str] title: Identify the full path and filename that corresponds to the file information in this section
+        """
+        if checksum is not None:
+            pulumi.set(__self__, "checksum", checksum)
+        if file_type is not None:
+            pulumi.set(__self__, "file_type", file_type)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Provide a unique identifier to match analysis information on each specific file in a package
+        """
+        return pulumi.get(self, "checksum")
+
+    @checksum.setter
+    def checksum(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "checksum", value)
+
+    @property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> Optional[pulumi.Input['FileNoteFileType']]:
+        """
+        This field provides information about the type of file identified
+        """
+        return pulumi.get(self, "file_type")
+
+    @file_type.setter
+    def file_type(self, value: Optional[pulumi.Input['FileNoteFileType']]):
+        pulumi.set(self, "file_type", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the full path and filename that corresponds to the file information in this section
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FileOccurrenceArgs:
+    def __init__(__self__, *,
+                 attributions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 contributors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 copyright: Optional[pulumi.Input[str]] = None,
+                 files_license_info: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 license_comments: Optional[pulumi.Input[str]] = None,
+                 license_concluded: Optional[pulumi.Input[str]] = None,
+                 notice: Optional[pulumi.Input[str]] = None):
+        """
+        FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attributions: This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
+        :param pulumi.Input[str] comment: This field provides a place for the SPDX file creator to record any general comments about the file
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contributors: This field provides a place for the SPDX file creator to record file contributors
+        :param pulumi.Input[str] copyright: Identify the copyright holder of the file, as well as any dates present
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] files_license_info: This field contains the license information actually found in the file, if any
+        :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
+        :param pulumi.Input[str] license_comments: This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
+        :param pulumi.Input[str] license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+        :param pulumi.Input[str] notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
+        """
+        if attributions is not None:
+            pulumi.set(__self__, "attributions", attributions)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if contributors is not None:
+            pulumi.set(__self__, "contributors", contributors)
+        if copyright is not None:
+            pulumi.set(__self__, "copyright", copyright)
+        if files_license_info is not None:
+            pulumi.set(__self__, "files_license_info", files_license_info)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if license_comments is not None:
+            pulumi.set(__self__, "license_comments", license_comments)
+        if license_concluded is not None:
+            pulumi.set(__self__, "license_concluded", license_concluded)
+        if notice is not None:
+            pulumi.set(__self__, "notice", notice)
+
+    @property
+    @pulumi.getter
+    def attributions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
+        """
+        return pulumi.get(self, "attributions")
+
+    @attributions.setter
+    def attributions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "attributions", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field provides a place for the SPDX file creator to record any general comments about the file
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def contributors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This field provides a place for the SPDX file creator to record file contributors
+        """
+        return pulumi.get(self, "contributors")
+
+    @contributors.setter
+    def contributors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "contributors", value)
+
+    @property
+    @pulumi.getter
+    def copyright(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the copyright holder of the file, as well as any dates present
+        """
+        return pulumi.get(self, "copyright")
+
+    @copyright.setter
+    def copyright(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copyright", value)
+
+    @property
+    @pulumi.getter(name="filesLicenseInfo")
+    def files_license_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This field contains the license information actually found in the file, if any
+        """
+        return pulumi.get(self, "files_license_info")
+
+    @files_license_info.setter
+    def files_license_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "files_license_info", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="licenseComments")
+    def license_comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
+        """
+        return pulumi.get(self, "license_comments")
+
+    @license_comments.setter
+    def license_comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_comments", value)
+
+    @property
+    @pulumi.getter(name="licenseConcluded")
+    def license_concluded(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+        """
+        return pulumi.get(self, "license_concluded")
+
+    @license_concluded.setter
+    def license_concluded(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_concluded", value)
+
+    @property
+    @pulumi.getter
+    def notice(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
+        """
+        return pulumi.get(self, "notice")
+
+    @notice.setter
+    def notice(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notice", value)
 
 
 @pulumi.input_type
@@ -2114,7 +2595,7 @@ class GrafeasV1beta1VulnerabilityDetailsArgs:
         """
         Details of a vulnerability Occurrence.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
-        :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         pulumi.set(__self__, "package_issue", package_issue)
@@ -2139,7 +2620,7 @@ class GrafeasV1beta1VulnerabilityDetailsArgs:
     @pulumi.getter(name="effectiveSeverity")
     def effective_severity(self) -> Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity']]:
         """
-        The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+        The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         """
         return pulumi.get(self, "effective_severity")
 
@@ -2531,15 +3012,19 @@ class LocationArgs:
 class PackageIssueArgs:
     def __init__(__self__, *,
                  affected_location: pulumi.Input['VulnerabilityLocationArgs'],
-                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None):
+                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
+                 package_type: Optional[pulumi.Input[str]] = None):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
         :param pulumi.Input['VulnerabilityLocationArgs'] affected_location: The location of the vulnerability.
         :param pulumi.Input['VulnerabilityLocationArgs'] fixed_location: The location of the available fix for vulnerability.
+        :param pulumi.Input[str] package_type: The type of package (e.g. OS, MAVEN, GO).
         """
         pulumi.set(__self__, "affected_location", affected_location)
         if fixed_location is not None:
             pulumi.set(__self__, "fixed_location", fixed_location)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
 
     @property
     @pulumi.getter(name="affectedLocation")
@@ -2564,6 +3049,386 @@ class PackageIssueArgs:
     @fixed_location.setter
     def fixed_location(self, value: Optional[pulumi.Input['VulnerabilityLocationArgs']]):
         pulumi.set(self, "fixed_location", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package (e.g. OS, MAVEN, GO).
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
+
+
+@pulumi.input_type
+class PackageNoteArgs:
+    def __init__(__self__, *,
+                 analyzed: Optional[pulumi.Input[bool]] = None,
+                 attribution: Optional[pulumi.Input[str]] = None,
+                 checksum: Optional[pulumi.Input[str]] = None,
+                 copyright: Optional[pulumi.Input[str]] = None,
+                 detailed_description: Optional[pulumi.Input[str]] = None,
+                 download_location: Optional[pulumi.Input[str]] = None,
+                 external_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]]] = None,
+                 files_license_info: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 home_page: Optional[pulumi.Input[str]] = None,
+                 license_declared: Optional[pulumi.Input[str]] = None,
+                 originator: Optional[pulumi.Input[str]] = None,
+                 summary_description: Optional[pulumi.Input[str]] = None,
+                 supplier: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 verification_code: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        :param pulumi.Input[bool] analyzed: Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+        :param pulumi.Input[str] attribution: A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+        :param pulumi.Input[str] checksum: Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+        :param pulumi.Input[str] copyright: Identify the copyright holders of the package, as well as any dates present
+        :param pulumi.Input[str] detailed_description: A more detailed description of the package
+        :param pulumi.Input[str] download_location: This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+        :param pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]] external_refs: ExternalRef
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] files_license_info: Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+        :param pulumi.Input[str] home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        :param pulumi.Input[str] license_declared: List the licenses that have been declared by the authors of the package
+        :param pulumi.Input[str] originator: If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        :param pulumi.Input[str] summary_description: A short description of the package
+        :param pulumi.Input[str] supplier: Identify the actual distribution source for the package/directory identified in the SPDX file
+        :param pulumi.Input[str] title: Identify the full name of the package as given by the Package Originator
+        :param pulumi.Input[str] verification_code: This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+        :param pulumi.Input[str] version: Identify the version of the package
+        """
+        if analyzed is not None:
+            pulumi.set(__self__, "analyzed", analyzed)
+        if attribution is not None:
+            pulumi.set(__self__, "attribution", attribution)
+        if checksum is not None:
+            pulumi.set(__self__, "checksum", checksum)
+        if copyright is not None:
+            pulumi.set(__self__, "copyright", copyright)
+        if detailed_description is not None:
+            pulumi.set(__self__, "detailed_description", detailed_description)
+        if download_location is not None:
+            pulumi.set(__self__, "download_location", download_location)
+        if external_refs is not None:
+            pulumi.set(__self__, "external_refs", external_refs)
+        if files_license_info is not None:
+            pulumi.set(__self__, "files_license_info", files_license_info)
+        if home_page is not None:
+            pulumi.set(__self__, "home_page", home_page)
+        if license_declared is not None:
+            pulumi.set(__self__, "license_declared", license_declared)
+        if originator is not None:
+            pulumi.set(__self__, "originator", originator)
+        if summary_description is not None:
+            pulumi.set(__self__, "summary_description", summary_description)
+        if supplier is not None:
+            pulumi.set(__self__, "supplier", supplier)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if verification_code is not None:
+            pulumi.set(__self__, "verification_code", verification_code)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def analyzed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+        """
+        return pulumi.get(self, "analyzed")
+
+    @analyzed.setter
+    def analyzed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "analyzed", value)
+
+    @property
+    @pulumi.getter
+    def attribution(self) -> Optional[pulumi.Input[str]]:
+        """
+        A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+        """
+        return pulumi.get(self, "attribution")
+
+    @attribution.setter
+    def attribution(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribution", value)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+        """
+        return pulumi.get(self, "checksum")
+
+    @checksum.setter
+    def checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "checksum", value)
+
+    @property
+    @pulumi.getter
+    def copyright(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the copyright holders of the package, as well as any dates present
+        """
+        return pulumi.get(self, "copyright")
+
+    @copyright.setter
+    def copyright(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copyright", value)
+
+    @property
+    @pulumi.getter(name="detailedDescription")
+    def detailed_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A more detailed description of the package
+        """
+        return pulumi.get(self, "detailed_description")
+
+    @detailed_description.setter
+    def detailed_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detailed_description", value)
+
+    @property
+    @pulumi.getter(name="downloadLocation")
+    def download_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+        """
+        return pulumi.get(self, "download_location")
+
+    @download_location.setter
+    def download_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "download_location", value)
+
+    @property
+    @pulumi.getter(name="externalRefs")
+    def external_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]]]:
+        """
+        ExternalRef
+        """
+        return pulumi.get(self, "external_refs")
+
+    @external_refs.setter
+    def external_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]]]):
+        pulumi.set(self, "external_refs", value)
+
+    @property
+    @pulumi.getter(name="filesLicenseInfo")
+    def files_license_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+        """
+        return pulumi.get(self, "files_license_info")
+
+    @files_license_info.setter
+    def files_license_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "files_license_info", value)
+
+    @property
+    @pulumi.getter(name="homePage")
+    def home_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        """
+        return pulumi.get(self, "home_page")
+
+    @home_page.setter
+    def home_page(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "home_page", value)
+
+    @property
+    @pulumi.getter(name="licenseDeclared")
+    def license_declared(self) -> Optional[pulumi.Input[str]]:
+        """
+        List the licenses that have been declared by the authors of the package
+        """
+        return pulumi.get(self, "license_declared")
+
+    @license_declared.setter
+    def license_declared(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_declared", value)
+
+    @property
+    @pulumi.getter
+    def originator(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        """
+        return pulumi.get(self, "originator")
+
+    @originator.setter
+    def originator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "originator", value)
+
+    @property
+    @pulumi.getter(name="summaryDescription")
+    def summary_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A short description of the package
+        """
+        return pulumi.get(self, "summary_description")
+
+    @summary_description.setter
+    def summary_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "summary_description", value)
+
+    @property
+    @pulumi.getter
+    def supplier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the actual distribution source for the package/directory identified in the SPDX file
+        """
+        return pulumi.get(self, "supplier")
+
+    @supplier.setter
+    def supplier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "supplier", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the full name of the package as given by the Package Originator
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="verificationCode")
+    def verification_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+        """
+        return pulumi.get(self, "verification_code")
+
+    @verification_code.setter
+    def verification_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verification_code", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the version of the package
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class PackageOccurrenceArgs:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 filename: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 license_comments: Optional[pulumi.Input[str]] = None,
+                 license_concluded: Optional[pulumi.Input[str]] = None,
+                 source_info: Optional[pulumi.Input[str]] = None):
+        """
+        PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        :param pulumi.Input[str] comment: A place for the SPDX file creator to record any general comments about the package being described
+        :param pulumi.Input[str] filename: Provide the actual file name of the package, or path of the directory being treated as a package
+        :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
+        :param pulumi.Input[str] license_comments: This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
+        :param pulumi.Input[str] license_concluded: package or alternative values, if the governing license cannot be determined
+        :param pulumi.Input[str] source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if filename is not None:
+            pulumi.set(__self__, "filename", filename)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if license_comments is not None:
+            pulumi.set(__self__, "license_comments", license_comments)
+        if license_concluded is not None:
+            pulumi.set(__self__, "license_concluded", license_concluded)
+        if source_info is not None:
+            pulumi.set(__self__, "source_info", source_info)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A place for the SPDX file creator to record any general comments about the package being described
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def filename(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide the actual file name of the package, or path of the directory being treated as a package
+        """
+        return pulumi.get(self, "filename")
+
+    @filename.setter
+    def filename(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="licenseComments")
+    def license_comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
+        """
+        return pulumi.get(self, "license_comments")
+
+    @license_comments.setter
+    def license_comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_comments", value)
+
+    @property
+    @pulumi.getter(name="licenseConcluded")
+    def license_concluded(self) -> Optional[pulumi.Input[str]]:
+        """
+        package or alternative values, if the governing license cannot be determined
+        """
+        return pulumi.get(self, "license_concluded")
+
+    @license_concluded.setter
+    def license_concluded(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_concluded", value)
+
+    @property
+    @pulumi.getter(name="sourceInfo")
+    def source_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+        """
+        return pulumi.get(self, "source_info")
+
+    @source_info.setter
+    def source_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_info", value)
 
 
 @pulumi.input_type
@@ -2738,6 +3603,87 @@ class RelatedUrlArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class RelationshipNoteArgs:
+    def __init__(__self__):
+        """
+        RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        """
+        pass
+
+
+@pulumi.input_type
+class RelationshipOccurrenceArgs:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['RelationshipOccurrenceType']] = None):
+        """
+        RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        :param pulumi.Input[str] comment: A place for the SPDX file creator to record any general comments about the relationship
+        :param pulumi.Input[str] source: Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+        :param pulumi.Input[str] target: Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
+        :param pulumi.Input['RelationshipOccurrenceType'] type: The type of relationship between the source and target SPDX elements
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A place for the SPDX file creator to record any general comments about the relationship
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['RelationshipOccurrenceType']]:
+        """
+        The type of relationship between the source and target SPDX elements
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['RelationshipOccurrenceType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

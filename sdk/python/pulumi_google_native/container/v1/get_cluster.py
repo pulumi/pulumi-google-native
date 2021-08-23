@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -90,6 +90,9 @@ class GetClusterResult:
         if locations and not isinstance(locations, list):
             raise TypeError("Expected argument 'locations' to be a list")
         pulumi.set(__self__, "locations", locations)
+        if logging_config and not isinstance(logging_config, dict):
+            raise TypeError("Expected argument 'logging_config' to be a dict")
+        pulumi.set(__self__, "logging_config", logging_config)
         if logging_service and not isinstance(logging_service, str):
             raise TypeError("Expected argument 'logging_service' to be a str")
         pulumi.set(__self__, "logging_service", logging_service)
@@ -102,6 +105,9 @@ class GetClusterResult:
         if master_authorized_networks_config and not isinstance(master_authorized_networks_config, dict):
             raise TypeError("Expected argument 'master_authorized_networks_config' to be a dict")
         pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if monitoring_config and not isinstance(monitoring_config, dict):
+            raise TypeError("Expected argument 'monitoring_config' to be a dict")
+        pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service and not isinstance(monitoring_service, str):
             raise TypeError("Expected argument 'monitoring_service' to be a str")
         pulumi.set(__self__, "monitoring_service", monitoring_service)
@@ -356,6 +362,14 @@ class GetClusterResult:
         return pulumi.get(self, "locations")
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> 'outputs.LoggingConfigResponse':
+        """
+        Logging configuration for the cluster.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> str:
         """
@@ -386,6 +400,14 @@ class GetClusterResult:
         The configuration options for master authorized networks feature.
         """
         return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> 'outputs.MonitoringConfigResponse':
+        """
+        Monitoring configuration for the cluster.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -578,10 +600,12 @@ class AwaitableGetClusterResult(GetClusterResult):
             legacy_abac=self.legacy_abac,
             location=self.location,
             locations=self.locations,
+            logging_config=self.logging_config,
             logging_service=self.logging_service,
             maintenance_policy=self.maintenance_policy,
             master_auth=self.master_auth,
             master_authorized_networks_config=self.master_authorized_networks_config,
+            monitoring_config=self.monitoring_config,
             monitoring_service=self.monitoring_service,
             name=self.name,
             network=self.network,
@@ -646,10 +670,12 @@ def get_cluster(cluster_id: Optional[str] = None,
         legacy_abac=__ret__.legacy_abac,
         location=__ret__.location,
         locations=__ret__.locations,
+        logging_config=__ret__.logging_config,
         logging_service=__ret__.logging_service,
         maintenance_policy=__ret__.maintenance_policy,
         master_auth=__ret__.master_auth,
         master_authorized_networks_config=__ret__.master_authorized_networks_config,
+        monitoring_config=__ret__.monitoring_config,
         monitoring_service=__ret__.monitoring_service,
         name=__ret__.name,
         network=__ret__.network,

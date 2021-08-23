@@ -17,10 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetCryptoKeyResult:
-    def __init__(__self__, create_time=None, labels=None, name=None, next_rotation_time=None, primary=None, purpose=None, rotation_period=None, version_template=None):
+    def __init__(__self__, create_time=None, destroy_scheduled_duration=None, import_only=None, labels=None, name=None, next_rotation_time=None, primary=None, purpose=None, rotation_period=None, version_template=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
+            raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
+        pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
+        if import_only and not isinstance(import_only, bool):
+            raise TypeError("Expected argument 'import_only' to be a bool")
+        pulumi.set(__self__, "import_only", import_only)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -50,6 +56,22 @@ class GetCryptoKeyResult:
         The time at which this CryptoKey was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> str:
+        """
+        Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @property
+    @pulumi.getter(name="importOnly")
+    def import_only(self) -> bool:
+        """
+        Immutable. Whether this key may contain imported versions only.
+        """
+        return pulumi.get(self, "import_only")
 
     @property
     @pulumi.getter
@@ -115,6 +137,8 @@ class AwaitableGetCryptoKeyResult(GetCryptoKeyResult):
             yield self
         return GetCryptoKeyResult(
             create_time=self.create_time,
+            destroy_scheduled_duration=self.destroy_scheduled_duration,
+            import_only=self.import_only,
             labels=self.labels,
             name=self.name,
             next_rotation_time=self.next_rotation_time,
@@ -145,6 +169,8 @@ def get_crypto_key(crypto_key_id: Optional[str] = None,
 
     return AwaitableGetCryptoKeyResult(
         create_time=__ret__.create_time,
+        destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
+        import_only=__ret__.import_only,
         labels=__ret__.labels,
         name=__ret__.name,
         next_rotation_time=__ret__.next_rotation_time,

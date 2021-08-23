@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, autodetect=None, build=None, create_time=None, description=None, disabled=None, filename=None, filter=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, build=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+        if approval_config and not isinstance(approval_config, dict):
+            raise TypeError("Expected argument 'approval_config' to be a dict")
+        pulumi.set(__self__, "approval_config", approval_config)
         if autodetect and not isinstance(autodetect, bool):
             raise TypeError("Expected argument 'autodetect' to be a bool")
         pulumi.set(__self__, "autodetect", autodetect)
@@ -39,6 +42,9 @@ class GetTriggerResult:
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
+        if git_file_source and not isinstance(git_file_source, dict):
+            raise TypeError("Expected argument 'git_file_source' to be a dict")
+        pulumi.set(__self__, "git_file_source", git_file_source)
         if github and not isinstance(github, dict):
             raise TypeError("Expected argument 'github' to be a dict")
         pulumi.set(__self__, "github", github)
@@ -57,6 +63,9 @@ class GetTriggerResult:
         if resource_name and not isinstance(resource_name, str):
             raise TypeError("Expected argument 'resource_name' to be a str")
         pulumi.set(__self__, "resource_name", resource_name)
+        if service_account and not isinstance(service_account, str):
+            raise TypeError("Expected argument 'service_account' to be a str")
+        pulumi.set(__self__, "service_account", service_account)
         if source_to_build and not isinstance(source_to_build, dict):
             raise TypeError("Expected argument 'source_to_build' to be a dict")
         pulumi.set(__self__, "source_to_build", source_to_build)
@@ -72,6 +81,14 @@ class GetTriggerResult:
         if webhook_config and not isinstance(webhook_config, dict):
             raise TypeError("Expected argument 'webhook_config' to be a dict")
         pulumi.set(__self__, "webhook_config", webhook_config)
+
+    @property
+    @pulumi.getter(name="approvalConfig")
+    def approval_config(self) -> 'outputs.ApprovalConfigResponse':
+        """
+        Configuration for manual approval to start a build invocation of this BuildTrigger.
+        """
+        return pulumi.get(self, "approval_config")
 
     @property
     @pulumi.getter
@@ -125,9 +142,17 @@ class GetTriggerResult:
     @pulumi.getter
     def filter(self) -> str:
         """
-        Optional. A Common Expression Language string.
+        A Common Expression Language string.
         """
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="gitFileSource")
+    def git_file_source(self) -> 'outputs.GitFileSourceResponse':
+        """
+        The file source describing the local or remote Build template.
+        """
+        return pulumi.get(self, "git_file_source")
 
     @property
     @pulumi.getter
@@ -178,6 +203,14 @@ class GetTriggerResult:
         return pulumi.get(self, "resource_name")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="sourceToBuild")
     def source_to_build(self) -> 'outputs.GitRepoSourceResponse':
         """
@@ -224,6 +257,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
         if False:
             yield self
         return GetTriggerResult(
+            approval_config=self.approval_config,
             autodetect=self.autodetect,
             build=self.build,
             create_time=self.create_time,
@@ -231,12 +265,14 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             disabled=self.disabled,
             filename=self.filename,
             filter=self.filter,
+            git_file_source=self.git_file_source,
             github=self.github,
             ignored_files=self.ignored_files,
             included_files=self.included_files,
             name=self.name,
             pubsub_config=self.pubsub_config,
             resource_name=self.resource_name,
+            service_account=self.service_account,
             source_to_build=self.source_to_build,
             substitutions=self.substitutions,
             tags=self.tags,
@@ -264,6 +300,7 @@ def get_trigger(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1:getTrigger', __args__, opts=opts, typ=GetTriggerResult).value
 
     return AwaitableGetTriggerResult(
+        approval_config=__ret__.approval_config,
         autodetect=__ret__.autodetect,
         build=__ret__.build,
         create_time=__ret__.create_time,
@@ -271,12 +308,14 @@ def get_trigger(location: Optional[str] = None,
         disabled=__ret__.disabled,
         filename=__ret__.filename,
         filter=__ret__.filter,
+        git_file_source=__ret__.git_file_source,
         github=__ret__.github,
         ignored_files=__ret__.ignored_files,
         included_files=__ret__.included_files,
         name=__ret__.name,
         pubsub_config=__ret__.pubsub_config,
         resource_name=__ret__.resource_name,
+        service_account=__ret__.service_account,
         source_to_build=__ret__.source_to_build,
         substitutions=__ret__.substitutions,
         tags=__ret__.tags,

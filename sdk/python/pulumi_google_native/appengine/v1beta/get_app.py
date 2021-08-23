@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAppResult:
-    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, iap=None, location=None, name=None, serving_status=None):
+    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, iap=None, location=None, name=None, service_account=None, serving_status=None):
         if auth_domain and not isinstance(auth_domain, str):
             raise TypeError("Expected argument 'auth_domain' to be a str")
         pulumi.set(__self__, "auth_domain", auth_domain)
@@ -54,6 +54,9 @@ class GetAppResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if service_account and not isinstance(service_account, str):
+            raise TypeError("Expected argument 'service_account' to be a str")
+        pulumi.set(__self__, "service_account", service_account)
         if serving_status and not isinstance(serving_status, str):
             raise TypeError("Expected argument 'serving_status' to be a str")
         pulumi.set(__self__, "serving_status", serving_status)
@@ -152,6 +155,14 @@ class GetAppResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="servingStatus")
     def serving_status(self) -> str:
         """
@@ -178,6 +189,7 @@ class AwaitableGetAppResult(GetAppResult):
             iap=self.iap,
             location=self.location,
             name=self.name,
+            service_account=self.service_account,
             serving_status=self.serving_status)
 
 
@@ -207,4 +219,5 @@ def get_app(app_id: Optional[str] = None,
         iap=__ret__.iap,
         location=__ret__.location,
         name=__ret__.name,
+        service_account=__ret__.service_account,
         serving_status=__ret__.serving_status)

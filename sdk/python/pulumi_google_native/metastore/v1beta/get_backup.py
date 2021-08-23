@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, create_time=None, description=None, end_time=None, name=None, service_revision=None, state=None):
+    def __init__(__self__, create_time=None, description=None, end_time=None, name=None, restoring_services=None, service_revision=None, state=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -30,6 +30,9 @@ class GetBackupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if restoring_services and not isinstance(restoring_services, list):
+            raise TypeError("Expected argument 'restoring_services' to be a list")
+        pulumi.set(__self__, "restoring_services", restoring_services)
         if service_revision and not isinstance(service_revision, dict):
             raise TypeError("Expected argument 'service_revision' to be a dict")
         pulumi.set(__self__, "service_revision", service_revision)
@@ -70,6 +73,14 @@ class GetBackupResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="restoringServices")
+    def restoring_services(self) -> Sequence[str]:
+        """
+        Services that are restoring from the backup.
+        """
+        return pulumi.get(self, "restoring_services")
+
+    @property
     @pulumi.getter(name="serviceRevision")
     def service_revision(self) -> 'outputs.ServiceResponse':
         """
@@ -96,6 +107,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             description=self.description,
             end_time=self.end_time,
             name=self.name,
+            restoring_services=self.restoring_services,
             service_revision=self.service_revision,
             state=self.state)
 
@@ -124,5 +136,6 @@ def get_backup(backup_id: Optional[str] = None,
         description=__ret__.description,
         end_time=__ret__.end_time,
         name=__ret__.name,
+        restoring_services=__ret__.restoring_services,
         service_revision=__ret__.service_revision,
         state=__ret__.state)

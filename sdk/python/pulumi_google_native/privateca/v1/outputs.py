@@ -2007,7 +2007,7 @@ class SubordinateConfigResponse(dict):
                  pem_issuer_chain: 'outputs.SubordinateConfigChainResponse'):
         """
         Describes a subordinate CA's issuers. This is either a resource name to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
-        :param str certificate_authority: This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        :param str certificate_authority: This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         :param 'SubordinateConfigChainResponse' pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -2017,7 +2017,7 @@ class SubordinateConfigResponse(dict):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> str:
         """
-        This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         """
         return pulumi.get(self, "certificate_authority")
 

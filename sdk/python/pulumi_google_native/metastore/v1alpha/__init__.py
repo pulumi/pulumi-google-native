@@ -11,10 +11,14 @@ from .get_backup import *
 from .get_metadata_import import *
 from .get_service import *
 from .get_service_backup_iam_policy import *
+from .get_service_database_iam_policy import *
+from .get_service_database_table_iam_policy import *
 from .get_service_iam_policy import *
 from .metadata_import import *
 from .service import *
 from .service_backup_iam_policy import *
+from .service_database_iam_policy import *
+from .service_database_table_iam_policy import *
 from .service_iam_policy import *
 from ._inputs import *
 from . import outputs

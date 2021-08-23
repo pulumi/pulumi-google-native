@@ -6,9 +6,12 @@ from enum import Enum
 
 __all__ = [
     'CloudRunConfigLoadBalancerType',
+    'ClusterAutoscalingAutoscalingProfile',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'DatabaseEncryptionState',
+    'LoggingComponentConfigEnableComponentsItem',
+    'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPolicyProvider',
@@ -31,6 +34,18 @@ class CloudRunConfigLoadBalancerType(str, Enum):
     """Install external load balancer for Cloud Run."""
     LOAD_BALANCER_TYPE_INTERNAL = "LOAD_BALANCER_TYPE_INTERNAL"
     """Install internal load balancer for Cloud Run."""
+
+
+class ClusterAutoscalingAutoscalingProfile(str, Enum):
+    """
+    Defines autoscaling behaviour.
+    """
+    PROFILE_UNSPECIFIED = "PROFILE_UNSPECIFIED"
+    """No change to autoscaling configuration."""
+    OPTIMIZE_UTILIZATION = "OPTIMIZE_UTILIZATION"
+    """Prioritize optimizing utilization of resources."""
+    BALANCED = "BALANCED"
+    """Use default (balanced) autoscaling configuration."""
 
 
 class ClusterUpdateDesiredDatapathProvider(str, Enum):
@@ -69,6 +84,22 @@ class DatabaseEncryptionState(str, Enum):
     """Secrets in etcd are encrypted."""
     DECRYPTED = "DECRYPTED"
     """Secrets in etcd are stored in plain text (at etcd level) - this is unrelated to Compute Engine level full disk encryption."""
+
+
+class LoggingComponentConfigEnableComponentsItem(str, Enum):
+    COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
+    """Default value. This shouldn't be used."""
+    SYSTEM_COMPONENTS = "SYSTEM_COMPONENTS"
+    """system components"""
+    WORKLOADS = "WORKLOADS"
+    """workloads"""
+
+
+class MonitoringComponentConfigEnableComponentsItem(str, Enum):
+    COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
+    """Default value. This shouldn't be used."""
+    SYSTEM_COMPONENTS = "SYSTEM_COMPONENTS"
+    """system components"""
 
 
 class NetworkConfigDatapathProvider(str, Enum):

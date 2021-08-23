@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeedResult:
-    def __init__(__self__, asset_names=None, asset_types=None, condition=None, content_type=None, feed_output_config=None, name=None):
+    def __init__(__self__, asset_names=None, asset_types=None, condition=None, content_type=None, feed_output_config=None, name=None, relationship_types=None):
         if asset_names and not isinstance(asset_names, list):
             raise TypeError("Expected argument 'asset_names' to be a list")
         pulumi.set(__self__, "asset_names", asset_names)
@@ -36,6 +36,9 @@ class GetFeedResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if relationship_types and not isinstance(relationship_types, list):
+            raise TypeError("Expected argument 'relationship_types' to be a list")
+        pulumi.set(__self__, "relationship_types", relationship_types)
 
     @property
     @pulumi.getter(name="assetNames")
@@ -85,6 +88,14 @@ class GetFeedResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="relationshipTypes")
+    def relationship_types(self) -> Sequence[str]:
+        """
+        A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+        """
+        return pulumi.get(self, "relationship_types")
+
 
 class AwaitableGetFeedResult(GetFeedResult):
     # pylint: disable=using-constant-test
@@ -97,7 +108,8 @@ class AwaitableGetFeedResult(GetFeedResult):
             condition=self.condition,
             content_type=self.content_type,
             feed_output_config=self.feed_output_config,
-            name=self.name)
+            name=self.name,
+            relationship_types=self.relationship_types)
 
 
 def get_feed(feed_id: Optional[str] = None,
@@ -123,4 +135,5 @@ def get_feed(feed_id: Optional[str] = None,
         condition=__ret__.condition,
         content_type=__ret__.content_type,
         feed_output_config=__ret__.feed_output_config,
-        name=__ret__.name)
+        name=__ret__.name,
+        relationship_types=__ret__.relationship_types)

@@ -14,6 +14,8 @@ __all__ = [
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'IstioConfigAuth',
+    'LoggingComponentConfigEnableComponentsItem',
+    'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPolicyProvider',
@@ -135,6 +137,22 @@ class IstioConfigAuth(str, Enum):
     """auth not enabled"""
     AUTH_MUTUAL_TLS = "AUTH_MUTUAL_TLS"
     """auth mutual TLS enabled"""
+
+
+class LoggingComponentConfigEnableComponentsItem(str, Enum):
+    COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
+    """Default value. This shouldn't be used."""
+    SYSTEM_COMPONENTS = "SYSTEM_COMPONENTS"
+    """system components"""
+    WORKLOADS = "WORKLOADS"
+    """workloads"""
+
+
+class MonitoringComponentConfigEnableComponentsItem(str, Enum):
+    COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
+    """Default value. This shouldn't be used."""
+    SYSTEM_COMPONENTS = "SYSTEM_COMPONENTS"
+    """system components"""
 
 
 class NetworkConfigDatapathProvider(str, Enum):

@@ -17,21 +17,22 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
-                 config: pulumi.Input['ClusterConfigArgs'],
                  region: pulumi.Input[str],
+                 config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-        :param pulumi.Input['ClusterConfigArgs'] config: The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        :param pulumi.Input['ClusterConfigArgs'] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "region", region)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -53,24 +54,24 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['ClusterConfigArgs']:
-        """
-        The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['ClusterConfigArgs']):
-        pulumi.set(self, "config", value)
-
-    @property
-    @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ClusterConfigArgs']]:
+        """
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ClusterConfigArgs']]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -125,7 +126,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         """
@@ -175,8 +176,6 @@ class Cluster(pulumi.CustomResource):
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
@@ -240,7 +239,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ClusterConfigResponse']:
         """
-        The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         """
         return pulumi.get(self, "config")
 

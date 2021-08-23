@@ -18,6 +18,8 @@ class CryptoKeyArgs:
     def __init__(__self__, *,
                  crypto_key_id: pulumi.Input[str],
                  key_ring_id: pulumi.Input[str],
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
+                 import_only: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
@@ -28,6 +30,8 @@ class CryptoKeyArgs:
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         The set of arguments for constructing a CryptoKey resource.
+        :param pulumi.Input[str] destroy_scheduled_duration: Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        :param pulumi.Input[bool] import_only: Immutable. Whether this key may contain imported versions only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
@@ -36,6 +40,10 @@ class CryptoKeyArgs:
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
+        if destroy_scheduled_duration is not None:
+            pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
+        if import_only is not None:
+            pulumi.set(__self__, "import_only", import_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -70,6 +78,30 @@ class CryptoKeyArgs:
     @key_ring_id.setter
     def key_ring_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_ring_id", value)
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @destroy_scheduled_duration.setter
+    def destroy_scheduled_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destroy_scheduled_duration", value)
+
+    @property
+    @pulumi.getter(name="importOnly")
+    def import_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Immutable. Whether this key may contain imported versions only.
+        """
+        return pulumi.get(self, "import_only")
+
+    @import_only.setter
+    def import_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_only", value)
 
     @property
     @pulumi.getter
@@ -165,6 +197,8 @@ class CryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
+                 import_only: Optional[pulumi.Input[bool]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -183,6 +217,8 @@ class CryptoKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destroy_scheduled_duration: Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        :param pulumi.Input[bool] import_only: Immutable. Whether this key may contain imported versions only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
@@ -217,6 +253,8 @@ class CryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
+                 destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
+                 import_only: Optional[pulumi.Input[bool]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -241,6 +279,8 @@ class CryptoKey(pulumi.CustomResource):
             if crypto_key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key_id'")
             __props__.__dict__["crypto_key_id"] = crypto_key_id
+            __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
+            __props__.__dict__["import_only"] = import_only
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")
             __props__.__dict__["key_ring_id"] = key_ring_id
@@ -278,6 +318,8 @@ class CryptoKey(pulumi.CustomResource):
         __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["destroy_scheduled_duration"] = None
+        __props__.__dict__["import_only"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["next_rotation_time"] = None
@@ -294,6 +336,22 @@ class CryptoKey(pulumi.CustomResource):
         The time at which this CryptoKey was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> pulumi.Output[str]:
+        """
+        Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @property
+    @pulumi.getter(name="importOnly")
+    def import_only(self) -> pulumi.Output[bool]:
+        """
+        Immutable. Whether this key may contain imported versions only.
+        """
+        return pulumi.get(self, "import_only")
 
     @property
     @pulumi.getter

@@ -28,6 +28,7 @@ class InstanceGroupManagerArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']] = None,
                  stateful_policy: Optional[pulumi.Input['StatefulPolicyArgs']] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
@@ -40,7 +41,7 @@ class InstanceGroupManagerArgs:
         The set of arguments for constructing a InstanceGroupManager resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
@@ -48,6 +49,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: Stanby policy for stopped and suspended instances.
         :param pulumi.Input['StatefulPolicyArgs'] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -80,6 +82,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "request_id", request_id)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if standby_policy is not None:
+            pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_policy is not None:
             pulumi.set(__self__, "stateful_policy", stateful_policy)
         if target_pools is not None:
@@ -125,7 +129,7 @@ class InstanceGroupManagerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description of this resource. Provide this property when you create the resource.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -234,6 +238,18 @@ class InstanceGroupManagerArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']]:
+        """
+        Stanby policy for stopped and suspended instances.
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @standby_policy.setter
+    def standby_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']]):
+        pulumi.set(self, "standby_policy", value)
 
     @property
     @pulumi.getter(name="statefulPolicy")
@@ -346,6 +362,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']]] = None,
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
@@ -362,7 +379,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
@@ -370,6 +387,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']] standby_policy: Stanby policy for stopped and suspended instances.
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
@@ -414,6 +432,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 standby_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']]] = None,
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
@@ -446,6 +465,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["standby_policy"] = standby_policy
             __props__.__dict__["stateful_policy"] = stateful_policy
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
@@ -503,6 +523,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["service_account"] = None
+        __props__.__dict__["standby_policy"] = None
         __props__.__dict__["stateful_policy"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["target_pools"] = None
@@ -550,7 +571,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        An optional description of this resource. Provide this property when you create the resource.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -657,6 +678,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerStandbyPolicyResponse']:
+        """
+        Stanby policy for stopped and suspended instances.
+        """
+        return pulumi.get(self, "standby_policy")
 
     @property
     @pulumi.getter(name="statefulPolicy")

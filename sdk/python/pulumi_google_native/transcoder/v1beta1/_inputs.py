@@ -2196,7 +2196,7 @@ class VideoStreamArgs:
                  width_pixels: Optional[pulumi.Input[int]] = None):
         """
         Video stream resource.
-        :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
         :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
@@ -2263,7 +2263,7 @@ class VideoStreamArgs:
     @pulumi.getter(name="bitrateBps")
     def bitrate_bps(self) -> pulumi.Input[int]:
         """
-        The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
         """
         return pulumi.get(self, "bitrate_bps")
 

@@ -30,7 +30,6 @@ __all__ = [
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs',
-    'GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardArgs',
@@ -1045,46 +1044,6 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs:
     @salesforce_live_agent_config.setter
     def salesforce_live_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]):
         pulumi.set(self, "salesforce_live_agent_config", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs:
-    def __init__(__self__, *,
-                 followup_intent_name: Optional[pulumi.Input[str]] = None,
-                 parent_followup_intent_name: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a single followup intent in the chain.
-        :param pulumi.Input[str] followup_intent_name: The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-        """
-        if followup_intent_name is not None:
-            pulumi.set(__self__, "followup_intent_name", followup_intent_name)
-        if parent_followup_intent_name is not None:
-            pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
-
-    @property
-    @pulumi.getter(name="followupIntentName")
-    def followup_intent_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-        """
-        return pulumi.get(self, "followup_intent_name")
-
-    @followup_intent_name.setter
-    def followup_intent_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "followup_intent_name", value)
-
-    @property
-    @pulumi.getter(name="parentFollowupIntentName")
-    def parent_followup_intent_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-        """
-        return pulumi.get(self, "parent_followup_intent_name")
-
-    @parent_followup_intent_name.setter
-    def parent_followup_intent_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent_followup_intent_name", value)
 
 
 @pulumi.input_type

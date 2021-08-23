@@ -1120,7 +1120,7 @@ class JobConditionArgs:
         """
         JobCondition defines a readiness condition for a Revision.
         :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        :param pulumi.Input[str] type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
         :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
         :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
@@ -1153,7 +1153,7 @@ class JobConditionArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
         return pulumi.get(self, "type")
 
@@ -2346,9 +2346,9 @@ class VolumeMountArgs:
                  read_only: Optional[pulumi.Input[bool]] = None,
                  sub_path: Optional[pulumi.Input[str]] = None):
         """
-        Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+        VolumeMount describes a mounting of a Volume within a container.
         :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param pulumi.Input[str] name: This must match the Name of a Volume.
+        :param pulumi.Input[str] name: The name of the volume. There must be a corresponding Volume with the same name.
         :param pulumi.Input[bool] read_only: (Optional) Only true is accepted. Defaults to true.
         :param pulumi.Input[str] sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
@@ -2377,7 +2377,7 @@ class VolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        This must match the Name of a Volume.
+        The name of the volume. There must be a corresponding Volume with the same name.
         """
         return pulumi.get(self, "name")
 
@@ -2417,8 +2417,8 @@ class VolumeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
         """
-        Not supported by Cloud Run Volume represents a named volume in a container.
-        :param pulumi.Input[str] name: Volume's name.
+        Volume represents a named volume in a container.
+        :param pulumi.Input[str] name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         if config_map is not None:
             pulumi.set(__self__, "config_map", config_map)
@@ -2440,7 +2440,7 @@ class VolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         return pulumi.get(self, "name")
 

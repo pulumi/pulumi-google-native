@@ -51,10 +51,10 @@ class InstanceArgs:
         :param pulumi.Input['InstanceBackendType'] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
-        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
-        :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance.
+        :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance.
+        :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
@@ -180,7 +180,7 @@ class InstanceArgs:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input['InstanceDatabaseVersion']]:
         """
-        The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         """
         return pulumi.get(self, "database_version")
 
@@ -192,7 +192,7 @@ class InstanceArgs:
     @pulumi.getter(name="diskEncryptionConfiguration")
     def disk_encryption_configuration(self) -> Optional[pulumi.Input['DiskEncryptionConfigurationArgs']]:
         """
-        Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+        Disk encryption configuration specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_configuration")
 
@@ -204,7 +204,7 @@ class InstanceArgs:
     @pulumi.getter(name="diskEncryptionStatus")
     def disk_encryption_status(self) -> Optional[pulumi.Input['DiskEncryptionStatusArgs']]:
         """
-        Disk encryption status specific to an instance. Applies only to Second Generation instances.
+        Disk encryption status specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_status")
 
@@ -216,7 +216,7 @@ class InstanceArgs:
     @pulumi.getter(name="failoverReplica")
     def failover_replica(self) -> Optional[pulumi.Input['InstanceFailoverReplicaArgs']]:
         """
-        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        The name and status of the failover replica.
         """
         return pulumi.get(self, "failover_replica")
 
@@ -545,10 +545,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstanceBackendType'] backend_type:  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
-        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
-        :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance.
+        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance.
+        :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
@@ -669,6 +669,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["settings"] = settings
             __props__.__dict__["state"] = state
             __props__.__dict__["suspension_reason"] = suspension_reason
+            __props__.__dict__["create_time"] = None
         super(Instance, __self__).__init__(
             'google-native:sqladmin/v1beta4:Instance',
             resource_name,
@@ -693,6 +694,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["backend_type"] = None
         __props__.__dict__["connection_name"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["current_disk_size"] = None
         __props__.__dict__["database_version"] = None
         __props__.__dict__["disk_encryption_configuration"] = None
@@ -740,6 +742,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "connection_name")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the instance was created in RFC 3339 format (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="currentDiskSize")
     def current_disk_size(self) -> pulumi.Output[str]:
         """
@@ -751,7 +761,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
-        The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         """
         return pulumi.get(self, "database_version")
 
@@ -759,7 +769,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="diskEncryptionConfiguration")
     def disk_encryption_configuration(self) -> pulumi.Output['outputs.DiskEncryptionConfigurationResponse']:
         """
-        Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+        Disk encryption configuration specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_configuration")
 
@@ -767,7 +777,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="diskEncryptionStatus")
     def disk_encryption_status(self) -> pulumi.Output['outputs.DiskEncryptionStatusResponse']:
         """
-        Disk encryption status specific to an instance. Applies only to Second Generation instances.
+        Disk encryption status specific to an instance.
         """
         return pulumi.get(self, "disk_encryption_status")
 
@@ -775,7 +785,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="failoverReplica")
     def failover_replica(self) -> pulumi.Output['outputs.InstanceFailoverReplicaResponse']:
         """
-        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        The name and status of the failover replica.
         """
         return pulumi.get(self, "failover_replica")
 

@@ -14,6 +14,7 @@ __all__ = ['TargetSslProxyArgs', 'TargetSslProxy']
 @pulumi.input_type
 class TargetSslProxyArgs:
     def __init__(__self__, *,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,7 @@ class TargetSslProxyArgs:
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetSslProxy resource.
+        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -31,6 +33,8 @@ class TargetSslProxyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] ssl_policy: URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
         """
+        if certificate_map is not None:
+            pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -47,6 +51,18 @@ class TargetSslProxyArgs:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        """
+        return pulumi.get(self, "certificate_map")
+
+    @certificate_map.setter
+    def certificate_map(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_map", value)
 
     @property
     @pulumi.getter
@@ -144,6 +160,7 @@ class TargetSslProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -158,6 +175,7 @@ class TargetSslProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -189,6 +207,7 @@ class TargetSslProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -209,6 +228,7 @@ class TargetSslProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TargetSslProxyArgs.__new__(TargetSslProxyArgs)
 
+            __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -242,6 +262,7 @@ class TargetSslProxy(pulumi.CustomResource):
 
         __props__ = TargetSslProxyArgs.__new__(TargetSslProxyArgs)
 
+        __props__.__dict__["certificate_map"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
@@ -252,6 +273,14 @@ class TargetSslProxy(pulumi.CustomResource):
         __props__.__dict__["ssl_certificates"] = None
         __props__.__dict__["ssl_policy"] = None
         return TargetSslProxy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> pulumi.Output[str]:
+        """
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        """
+        return pulumi.get(self, "certificate_map")
 
     @property
     @pulumi.getter(name="creationTimestamp")

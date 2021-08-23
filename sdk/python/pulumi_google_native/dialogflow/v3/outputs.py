@@ -11,6 +11,8 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse',
+    'GoogleCloudDialogflowCxV3AdvancedSettingsResponse',
     'GoogleCloudDialogflowCxV3AudioInputResponse',
     'GoogleCloudDialogflowCxV3ConversationTurnResponse',
     'GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse',
@@ -52,6 +54,10 @@ __all__ = [
     'GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse',
     'GoogleCloudDialogflowCxV3ResponseMessageResponse',
     'GoogleCloudDialogflowCxV3ResponseMessageTextResponse',
+    'GoogleCloudDialogflowCxV3RolloutConfigResponse',
+    'GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse',
+    'GoogleCloudDialogflowCxV3RolloutStateResponse',
+    'GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse',
     'GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse',
     'GoogleCloudDialogflowCxV3TestCaseResultResponse',
     'GoogleCloudDialogflowCxV3TestConfigResponse',
@@ -65,6 +71,97 @@ __all__ = [
     'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse',
     'GoogleRpcStatusResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse(dict):
+    """
+    Define behaviors on logging.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInteractionLogging":
+            suggest = "enable_interaction_logging"
+        elif key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_interaction_logging: bool,
+                 enable_stackdriver_logging: bool):
+        """
+        Define behaviors on logging.
+        :param bool enable_interaction_logging: If true, DF Interaction logging is currently enabled.
+        :param bool enable_stackdriver_logging: If true, StackDriver logging is currently enabled.
+        """
+        pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> bool:
+        """
+        If true, DF Interaction logging is currently enabled.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> bool:
+        """
+        If true, StackDriver logging is currently enabled.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3AdvancedSettingsResponse(dict):
+    """
+    Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingSettings":
+            suggest = "logging_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3AdvancedSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logging_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse'):
+        """
+        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        :param 'GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+        """
+        pulumi.set(__self__, "logging_settings", logging_settings)
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse':
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+        """
+        return pulumi.get(self, "logging_settings")
+
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3AudioInputResponse(dict):
@@ -2458,6 +2555,238 @@ class GoogleCloudDialogflowCxV3ResponseMessageTextResponse(dict):
         A collection of text responses.
         """
         return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3RolloutConfigResponse(dict):
+    """
+    The configuration for auto rollout.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureCondition":
+            suggest = "failure_condition"
+        elif key == "rolloutCondition":
+            suggest = "rollout_condition"
+        elif key == "rolloutSteps":
+            suggest = "rollout_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3RolloutConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3RolloutConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3RolloutConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_condition: str,
+                 rollout_condition: str,
+                 rollout_steps: Sequence['outputs.GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse']):
+        """
+        The configuration for auto rollout.
+        :param str failure_condition: The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        :param str rollout_condition: The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        :param Sequence['GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse'] rollout_steps: Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+        """
+        pulumi.set(__self__, "failure_condition", failure_condition)
+        pulumi.set(__self__, "rollout_condition", rollout_condition)
+        pulumi.set(__self__, "rollout_steps", rollout_steps)
+
+    @property
+    @pulumi.getter(name="failureCondition")
+    def failure_condition(self) -> str:
+        """
+        The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        """
+        return pulumi.get(self, "failure_condition")
+
+    @property
+    @pulumi.getter(name="rolloutCondition")
+    def rollout_condition(self) -> str:
+        """
+        The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        """
+        return pulumi.get(self, "rollout_condition")
+
+    @property
+    @pulumi.getter(name="rolloutSteps")
+    def rollout_steps(self) -> Sequence['outputs.GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse']:
+        """
+        Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+        """
+        return pulumi.get(self, "rollout_steps")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse(dict):
+    """
+    A single rollout step with specified traffic allocation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "minDuration":
+            suggest = "min_duration"
+        elif key == "trafficPercent":
+            suggest = "traffic_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 min_duration: str,
+                 traffic_percent: int):
+        """
+        A single rollout step with specified traffic allocation.
+        :param str display_name: The name of the rollout step;
+        :param str min_duration: The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+        :param int traffic_percent: The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "min_duration", min_duration)
+        pulumi.set(__self__, "traffic_percent", traffic_percent)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The name of the rollout step;
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="minDuration")
+    def min_duration(self) -> str:
+        """
+        The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+        """
+        return pulumi.get(self, "min_duration")
+
+    @property
+    @pulumi.getter(name="trafficPercent")
+    def traffic_percent(self) -> int:
+        """
+        The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+        """
+        return pulumi.get(self, "traffic_percent")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3RolloutStateResponse(dict):
+    """
+    State of the auto-rollout process.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+        elif key == "stepIndex":
+            suggest = "step_index"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3RolloutStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3RolloutStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3RolloutStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_time: str,
+                 step: str,
+                 step_index: int):
+        """
+        State of the auto-rollout process.
+        :param str start_time: Start time of the current step.
+        :param str step: Display name of the current auto rollout step.
+        :param int step_index: Index of the current step in the auto rollout steps list.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "step", step)
+        pulumi.set(__self__, "step_index", step_index)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Start time of the current step.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def step(self) -> str:
+        """
+        Display name of the current auto rollout step.
+        """
+        return pulumi.get(self, "step")
+
+    @property
+    @pulumi.getter(name="stepIndex")
+    def step_index(self) -> int:
+        """
+        Index of the current step in the auto rollout steps list.
+        """
+        return pulumi.get(self, "step_index")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse(dict):
+    """
+    Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInsightsExport":
+            suggest = "enable_insights_export"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_insights_export: bool):
+        """
+        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        :param bool enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        pulumi.set(__self__, "enable_insights_export", enable_insights_export)
+
+    @property
+    @pulumi.getter(name="enableInsightsExport")
+    def enable_insights_export(self) -> bool:
+        """
+        If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        return pulumi.get(self, "enable_insights_export")
 
 
 @pulumi.output_type

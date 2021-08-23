@@ -2342,7 +2342,7 @@ class BackendArgs:
                  max_utilization: Optional[pulumi.Input[float]] = None):
         """
         Message containing information of one individual backend.
-        :param pulumi.Input['BackendBalancingMode'] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        :param pulumi.Input['BackendBalancingMode'] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
@@ -2353,6 +2353,7 @@ class BackendArgs:
         :param pulumi.Input[int] max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param pulumi.Input[float] max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param pulumi.Input[float] max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
+        :param pulumi.Input[float] max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         if balancing_mode is not None:
             pulumi.set(__self__, "balancing_mode", balancing_mode)
@@ -2383,7 +2384,7 @@ class BackendArgs:
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> Optional[pulumi.Input['BackendBalancingMode']]:
         """
-        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2514,6 +2515,9 @@ class BackendArgs:
     @property
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        """
         return pulumi.get(self, "max_utilization")
 
     @max_utilization.setter
@@ -3929,9 +3933,9 @@ class FirewallPolicyRuleMatcherArgs:
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
@@ -3944,7 +3948,7 @@ class FirewallPolicyRuleMatcherArgs:
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -3968,7 +3972,7 @@ class FirewallPolicyRuleMatcherArgs:
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -5844,7 +5848,7 @@ class ImageRawDiskArgs:
         """
         The parameters of the raw disk image.
         :param pulumi.Input['ImageRawDiskContainerType'] container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param pulumi.Input[str] source: The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        :param pulumi.Input[str] source: The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         if container_type is not None:
             pulumi.set(__self__, "container_type", container_type)
@@ -5867,7 +5871,7 @@ class ImageRawDiskArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
-        The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source")
 
@@ -10929,13 +10933,15 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                  ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']] = None,
                  conform_action: Optional[pulumi.Input[str]] = None,
                  enforce_on_key: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']] = None,
+                 enforce_on_key_name: Optional[pulumi.Input[str]] = None,
                  exceed_action: Optional[pulumi.Input[str]] = None,
                  rate_limit_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']] = None):
         """
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
         :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -10947,6 +10953,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
             pulumi.set(__self__, "conform_action", conform_action)
         if enforce_on_key is not None:
             pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        if enforce_on_key_name is not None:
+            pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         if exceed_action is not None:
             pulumi.set(__self__, "exceed_action", exceed_action)
         if rate_limit_threshold is not None:
@@ -10992,13 +11000,25 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
         """
-        Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
         """
         return pulumi.get(self, "enforce_on_key")
 
     @enforce_on_key.setter
     def enforce_on_key(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]):
         pulumi.set(self, "enforce_on_key", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @enforce_on_key_name.setter
+    def enforce_on_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce_on_key_name", value)
 
     @property
     @pulumi.getter(name="exceedAction")

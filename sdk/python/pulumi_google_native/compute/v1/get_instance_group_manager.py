@@ -118,7 +118,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        An optional description of this resource. Provide this property when you create the resource.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 

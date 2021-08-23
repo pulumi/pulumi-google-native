@@ -188,6 +188,7 @@ class Api(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["validate"] = validate
+            __props__.__dict__["labels"] = None
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None
             __props__.__dict__["revision"] = None
@@ -213,11 +214,20 @@ class Api(pulumi.CustomResource):
 
         __props__ = ApiArgs.__new__(ApiArgs)
 
+        __props__.__dict__["labels"] = None
         __props__.__dict__["latest_revision_id"] = None
         __props__.__dict__["meta_data"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["revision"] = None
         return Api(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User labels applied to this API Proxy.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="latestRevisionId")

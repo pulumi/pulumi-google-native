@@ -1247,7 +1247,7 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
         :param str start_time: Start time for the trial.
         :param str state: The detailed state of the trial.
         :param str trial_id: The trial id for these results.
-        :param Mapping[str, str] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        :param Mapping[str, str] web_access_uris: URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         pulumi.set(__self__, "all_metrics", all_metrics)
         pulumi.set(__self__, "built_in_algorithm_output", built_in_algorithm_output)
@@ -1336,7 +1336,7 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
     @pulumi.getter(name="webAccessUris")
     def web_access_uris(self) -> Mapping[str, str]:
         """
-        The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         return pulumi.get(self, "web_access_uris")
 
@@ -2461,7 +2461,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         """
         Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs).
         :param Sequence[str] args: Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
-        :param bool enable_web_access: Optional. Whether to enable web access for the training job.
+        :param bool enable_web_access: Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
         :param 'GoogleCloudMlV1__EncryptionConfigResponse' encryption_config: Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         :param 'GoogleCloudMlV1__ReplicaConfigResponse' evaluator_config: Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param str evaluator_count: Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster will be of the type specified in `evaluator_type`. This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `evaluator_type`. The default value is zero.
@@ -2526,7 +2526,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @pulumi.getter(name="enableWebAccess")
     def enable_web_access(self) -> bool:
         """
-        Optional. Whether to enable web access for the training job.
+        Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
         """
         return pulumi.get(self, "enable_web_access")
 
@@ -2775,7 +2775,7 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
         :param bool is_built_in_algorithm_job: Whether this job is a built-in Algorithm job.
         :param bool is_hyperparameter_tuning_job: Whether this job is a hyperparameter tuning job.
         :param Sequence['GoogleCloudMlV1__HyperparameterOutputResponse'] trials: Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
-        :param Mapping[str, str] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job.
+        :param Mapping[str, str] web_access_uris: URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         pulumi.set(__self__, "built_in_algorithm_output", built_in_algorithm_output)
         pulumi.set(__self__, "completed_trial_count", completed_trial_count)
@@ -2846,7 +2846,7 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
     @pulumi.getter(name="webAccessUris")
     def web_access_uris(self) -> Mapping[str, str]:
         """
-        The web URIs for the training job. Currently for debug terminal access to the job.
+        URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         return pulumi.get(self, "web_access_uris")
 

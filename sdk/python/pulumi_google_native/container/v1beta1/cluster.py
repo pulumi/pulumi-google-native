@@ -29,16 +29,19 @@ class ClusterArgs:
                  default_max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input['IdentityServiceConfigArgs']] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
                  master: Optional[pulumi.Input['MasterArgs']] = None,
                  master_auth: Optional[pulumi.Input['MasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['MonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -75,15 +78,18 @@ class ClusterArgs:
         :param pulumi.Input['MaxPodsConstraintArgs'] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
+        :param pulumi.Input['IdentityServiceConfigArgs'] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+        :param pulumi.Input['LoggingConfigArgs'] logging_config: Logging configuration for the cluster.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Configure the maintenance policy for this cluster.
         :param pulumi.Input['MasterArgs'] master: Configuration for master components.
         :param pulumi.Input['MasterAuthArgs'] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input['MonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
@@ -131,6 +137,8 @@ class ClusterArgs:
             pulumi.set(__self__, "description", description)
         if enable_kubernetes_alpha is not None:
             pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+        if identity_service_config is not None:
+            pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_cluster_version is not None:
             pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
         if ip_allocation_policy is not None:
@@ -141,6 +149,8 @@ class ClusterArgs:
             pulumi.set(__self__, "location", location)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if logging_service is not None:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
@@ -151,6 +161,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if monitoring_config is not None:
+            pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service is not None:
             pulumi.set(__self__, "monitoring_service", monitoring_service)
         if name is not None:
@@ -351,6 +363,18 @@ class ClusterArgs:
         pulumi.set(self, "enable_kubernetes_alpha", value)
 
     @property
+    @pulumi.getter(name="identityServiceConfig")
+    def identity_service_config(self) -> Optional[pulumi.Input['IdentityServiceConfigArgs']]:
+        """
+        Configuration for Identity Service component.
+        """
+        return pulumi.get(self, "identity_service_config")
+
+    @identity_service_config.setter
+    def identity_service_config(self, value: Optional[pulumi.Input['IdentityServiceConfigArgs']]):
+        pulumi.set(self, "identity_service_config", value)
+
+    @property
     @pulumi.getter(name="initialClusterVersion")
     def initial_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -406,6 +430,18 @@ class ClusterArgs:
     @locations.setter
     def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['LoggingConfigArgs']]:
+        """
+        Logging configuration for the cluster.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['LoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter(name="loggingService")
@@ -466,6 +502,18 @@ class ClusterArgs:
     @master_authorized_networks_config.setter
     def master_authorized_networks_config(self, value: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']]):
         pulumi.set(self, "master_authorized_networks_config", value)
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> Optional[pulumi.Input['MonitoringConfigArgs']]:
+        """
+        Monitoring configuration for the cluster.
+        """
+        return pulumi.get(self, "monitoring_config")
+
+    @monitoring_config.setter
+    def monitoring_config(self, value: Optional[pulumi.Input['MonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring_config", value)
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -735,16 +783,19 @@ class Cluster(pulumi.CustomResource):
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -785,15 +836,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
         :param pulumi.Input[str] description: An optional description of this cluster.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
+        :param pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+        :param pulumi.Input[pulumi.InputType['LoggingConfigArgs']] logging_config: Logging configuration for the cluster.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Configure the maintenance policy for this cluster.
         :param pulumi.Input[pulumi.InputType['MasterArgs']] master: Configuration for master components.
         :param pulumi.Input[pulumi.InputType['MasterAuthArgs']] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input[pulumi.InputType['MonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
@@ -852,16 +906,19 @@ class Cluster(pulumi.CustomResource):
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -908,16 +965,19 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["default_max_pods_constraint"] = default_max_pods_constraint
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
+            __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["legacy_abac"] = legacy_abac
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master"] = master
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
+            __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -990,17 +1050,20 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_kubernetes_alpha"] = None
         __props__.__dict__["endpoint"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["identity_service_config"] = None
         __props__.__dict__["initial_cluster_version"] = None
         __props__.__dict__["ip_allocation_policy"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["legacy_abac"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["locations"] = None
+        __props__.__dict__["logging_config"] = None
         __props__.__dict__["logging_service"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["master"] = None
         __props__.__dict__["master_auth"] = None
         __props__.__dict__["master_authorized_networks_config"] = None
+        __props__.__dict__["monitoring_config"] = None
         __props__.__dict__["monitoring_service"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -1172,6 +1235,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "expire_time")
 
     @property
+    @pulumi.getter(name="identityServiceConfig")
+    def identity_service_config(self) -> pulumi.Output['outputs.IdentityServiceConfigResponse']:
+        """
+        Configuration for Identity Service component.
+        """
+        return pulumi.get(self, "identity_service_config")
+
+    @property
     @pulumi.getter(name="initialClusterVersion")
     def initial_cluster_version(self) -> pulumi.Output[str]:
         """
@@ -1220,6 +1291,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "locations")
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.LoggingConfigResponse']:
+        """
+        Logging configuration for the cluster.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> pulumi.Output[str]:
         """
@@ -1258,6 +1337,14 @@ class Cluster(pulumi.CustomResource):
         The configuration options for master authorized networks feature.
         """
         return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> pulumi.Output['outputs.MonitoringConfigResponse']:
+        """
+        Monitoring configuration for the cluster.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter(name="monitoringService")

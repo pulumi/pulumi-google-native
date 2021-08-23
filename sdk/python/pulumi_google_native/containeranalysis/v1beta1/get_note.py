@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNoteResult:
-    def __init__(__self__, attestation_authority=None, base_image=None, build=None, create_time=None, deployable=None, discovery=None, expiration_time=None, intoto=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, short_description=None, update_time=None, vulnerability=None):
+    def __init__(__self__, attestation_authority=None, base_image=None, build=None, create_time=None, deployable=None, discovery=None, expiration_time=None, intoto=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, sbom=None, short_description=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, vulnerability=None):
         if attestation_authority and not isinstance(attestation_authority, dict):
             raise TypeError("Expected argument 'attestation_authority' to be a dict")
         pulumi.set(__self__, "attestation_authority", attestation_authority)
@@ -60,9 +60,21 @@ class GetNoteResult:
         if related_url and not isinstance(related_url, list):
             raise TypeError("Expected argument 'related_url' to be a list")
         pulumi.set(__self__, "related_url", related_url)
+        if sbom and not isinstance(sbom, dict):
+            raise TypeError("Expected argument 'sbom' to be a dict")
+        pulumi.set(__self__, "sbom", sbom)
         if short_description and not isinstance(short_description, str):
             raise TypeError("Expected argument 'short_description' to be a str")
         pulumi.set(__self__, "short_description", short_description)
+        if spdx_file and not isinstance(spdx_file, dict):
+            raise TypeError("Expected argument 'spdx_file' to be a dict")
+        pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package and not isinstance(spdx_package, dict):
+            raise TypeError("Expected argument 'spdx_package' to be a dict")
+        pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship and not isinstance(spdx_relationship, dict):
+            raise TypeError("Expected argument 'spdx_relationship' to be a dict")
+        pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -183,12 +195,44 @@ class GetNoteResult:
         return pulumi.get(self, "related_url")
 
     @property
+    @pulumi.getter
+    def sbom(self) -> 'outputs.DocumentNoteResponse':
+        """
+        A note describing SPDX Document which represents SBOM.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> str:
         """
         A one sentence description of this note.
         """
         return pulumi.get(self, "short_description")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> 'outputs.FileNoteResponse':
+        """
+        A note describing SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> 'outputs.PackageNoteResponse':
+        """
+        A note describing SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> 'outputs.RelationshipNoteResponse':
+        """
+        A note describing SPDX Relationship.
+        """
+        return pulumi.get(self, "spdx_relationship")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -227,7 +271,11 @@ class AwaitableGetNoteResult(GetNoteResult):
             package=self.package,
             related_note_names=self.related_note_names,
             related_url=self.related_url,
+            sbom=self.sbom,
             short_description=self.short_description,
+            spdx_file=self.spdx_file,
+            spdx_package=self.spdx_package,
+            spdx_relationship=self.spdx_relationship,
             update_time=self.update_time,
             vulnerability=self.vulnerability)
 
@@ -262,6 +310,10 @@ def get_note(note_id: Optional[str] = None,
         package=__ret__.package,
         related_note_names=__ret__.related_note_names,
         related_url=__ret__.related_url,
+        sbom=__ret__.sbom,
         short_description=__ret__.short_description,
+        spdx_file=__ret__.spdx_file,
+        spdx_package=__ret__.spdx_package,
+        spdx_relationship=__ret__.spdx_relationship,
         update_time=__ret__.update_time,
         vulnerability=__ret__.vulnerability)

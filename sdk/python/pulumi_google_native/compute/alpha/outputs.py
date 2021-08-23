@@ -104,6 +104,7 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
+    'InstanceGroupManagerStandbyPolicyResponse',
     'InstanceGroupManagerStatusResponse',
     'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse',
     'InstanceGroupManagerStatusStatefulResponse',
@@ -219,7 +220,6 @@ __all__ = [
     'ServerTlsSettingsResponse',
     'ServiceAccountResponse',
     'ServiceAttachmentConnectedEndpointResponse',
-    'ServiceAttachmentConsumerForwardingRuleResponse',
     'ServiceAttachmentConsumerProjectLimitResponse',
     'ShareSettingsResponse',
     'ShieldedInstanceConfigResponse',
@@ -842,6 +842,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "disk_type"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
+        elif key == "licenseCodes":
+            suggest = "license_codes"
         elif key == "multiWriter":
             suggest = "multi_writer"
         elif key == "onUpdateAction":
@@ -880,6 +882,8 @@ class AttachedDiskInitializeParamsResponse(dict):
                  guest_os_features: Sequence['outputs.GuestOsFeatureResponse'],
                  interface: str,
                  labels: Mapping[str, str],
+                 license_codes: Sequence[str],
+                 licenses: Sequence[str],
                  multi_writer: bool,
                  on_update_action: str,
                  provisioned_iops: str,
@@ -898,6 +902,8 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        :param Sequence[str] license_codes: Integer license codes indicating which licenses are attached to this disk.
+        :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param bool multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -915,6 +921,8 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "license_codes", license_codes)
+        pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "multi_writer", multi_writer)
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
@@ -980,6 +988,22 @@ class AttachedDiskInitializeParamsResponse(dict):
         Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="licenseCodes")
+    def license_codes(self) -> Sequence[str]:
+        """
+        Integer license codes indicating which licenses are attached to this disk.
+        """
+        return pulumi.get(self, "license_codes")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Sequence[str]:
+        """
+        A list of publicly visible licenses. Reserved for Google's use.
+        """
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -2281,7 +2305,7 @@ class BackendResponse(dict):
                  max_utilization: float):
         """
         Message containing information of one individual backend.
-        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         :param float capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param bool failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
@@ -2292,6 +2316,7 @@ class BackendResponse(dict):
         :param int max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
+        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         pulumi.set(__self__, "balancing_mode", balancing_mode)
         pulumi.set(__self__, "capacity_scaler", capacity_scaler)
@@ -2310,7 +2335,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> str:
         """
-        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2397,6 +2422,9 @@ class BackendResponse(dict):
     @property
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> float:
+        """
+        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        """
         return pulumi.get(self, "max_utilization")
 
 
@@ -4597,9 +4625,9 @@ class FirewallPolicyRuleMatcherResponse(dict):
                  src_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse']):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatcherLayer4ConfigResponse'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
@@ -4611,7 +4639,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Sequence[str]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -4627,7 +4655,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Sequence[str]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -6839,7 +6867,7 @@ class ImageRawDiskResponse(dict):
         """
         The parameters of the raw disk image.
         :param str container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param str source: The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        :param str source: The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         pulumi.set(__self__, "container_type", container_type)
         pulumi.set(__self__, "source", source)
@@ -6856,7 +6884,7 @@ class ImageRawDiskResponse(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source")
 
@@ -7212,6 +7240,35 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
         The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
         """
         return pulumi.get(self, "metadata_based_readiness_signal")
+
+
+@pulumi.output_type
+class InstanceGroupManagerStandbyPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialDelaySec":
+            suggest = "initial_delay_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStandbyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStandbyPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStandbyPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_delay_sec: int):
+        pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> int:
+        return pulumi.get(self, "initial_delay_sec")
 
 
 @pulumi.output_type
@@ -9566,9 +9623,9 @@ class NetworkPeeringResponse(dict):
         :param bool auto_create_routes: This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
         :param bool exchange_subnet_routes: Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
         :param bool export_custom_routes: Whether to export the custom routes to peer network.
-        :param bool export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param bool export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
         :param bool import_custom_routes: Whether to import the custom routes from peer network.
-        :param bool import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param bool import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
         :param str name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param str network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
         :param int peer_mtu: Maximum Transmission Unit in bytes.
@@ -9624,7 +9681,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
     def export_subnet_routes_with_public_ip(self) -> bool:
         """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
         """
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
@@ -9640,7 +9697,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
     def import_subnet_routes_with_public_ip(self) -> bool:
         """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
         """
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 
@@ -13186,8 +13243,8 @@ class RouterNatRuleActionResponse(dict):
                  source_nat_active_ips: Sequence[str],
                  source_nat_drain_ips: Sequence[str]):
         """
-        :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project.
-        :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only.
+        :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
         """
         pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
         pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
@@ -13196,7 +13253,7 @@ class RouterNatRuleActionResponse(dict):
     @pulumi.getter(name="sourceNatActiveIps")
     def source_nat_active_ips(self) -> Sequence[str]:
         """
-        A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project.
+        A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
         """
         return pulumi.get(self, "source_nat_active_ips")
 
@@ -13204,7 +13261,7 @@ class RouterNatRuleActionResponse(dict):
     @pulumi.getter(name="sourceNatDrainIps")
     def source_nat_drain_ips(self) -> Sequence[str]:
         """
-        A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only.
+        A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
         """
         return pulumi.get(self, "source_nat_drain_ips")
 
@@ -13236,7 +13293,7 @@ class RouterNatRuleResponse(dict):
         """
         :param 'RouterNatRuleActionResponse' action: The action to be enforced for traffic that matches this rule.
         :param str description: An optional description of this rule.
-        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
         :param int rule_number: An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
         """
         pulumi.set(__self__, "action", action)
@@ -13264,7 +13321,7 @@ class RouterNatRuleResponse(dict):
     @pulumi.getter
     def match(self) -> str:
         """
-        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
         """
         return pulumi.get(self, "match")
 
@@ -14638,6 +14695,8 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
             suggest = "conform_action"
         elif key == "enforceOnKey":
             suggest = "enforce_on_key"
+        elif key == "enforceOnKeyName":
+            suggest = "enforce_on_key_name"
         elif key == "exceedAction":
             suggest = "exceed_action"
         elif key == "rateLimitThreshold":
@@ -14659,13 +14718,15 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
                  ban_threshold: 'outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse',
                  conform_action: str,
                  enforce_on_key: str,
+                 enforce_on_key_name: str,
                  exceed_action: str,
                  rate_limit_threshold: 'outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse'):
         """
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
         :param str exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -14673,6 +14734,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         pulumi.set(__self__, "ban_threshold", ban_threshold)
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "exceed_action", exceed_action)
         pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
 
@@ -14704,9 +14766,17 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
         """
         return pulumi.get(self, "enforce_on_key")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> str:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
 
     @property
     @pulumi.getter(name="exceedAction")
@@ -15244,69 +15314,6 @@ class ServiceAttachmentConnectedEndpointResponse(dict):
 
 
 @pulumi.output_type
-class ServiceAttachmentConsumerForwardingRuleResponse(dict):
-    """
-    [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "forwardingRule":
-            suggest = "forwarding_rule"
-        elif key == "pscConnectionId":
-            suggest = "psc_connection_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConsumerForwardingRuleResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServiceAttachmentConsumerForwardingRuleResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServiceAttachmentConsumerForwardingRuleResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 forwarding_rule: str,
-                 psc_connection_id: str,
-                 status: str):
-        """
-        [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-        :param str forwarding_rule: The url of a consumer forwarding rule.
-        :param str psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
-        :param str status: The status of the forwarding rule.
-        """
-        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
-        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
-        pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> str:
-        """
-        The url of a consumer forwarding rule.
-        """
-        return pulumi.get(self, "forwarding_rule")
-
-    @property
-    @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> str:
-        """
-        The PSC connection id of the PSC Forwarding Rule.
-        """
-        return pulumi.get(self, "psc_connection_id")
-
-    @property
-    @pulumi.getter
-    def status(self) -> str:
-        """
-        The status of the forwarding rule.
-        """
-        return pulumi.get(self, "status")
-
-
-@pulumi.output_type
 class ServiceAttachmentConsumerProjectLimitResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15362,7 +15369,9 @@ class ShareSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "shareType":
+        if key == "folderMap":
+            suggest = "folder_map"
+        elif key == "shareType":
             suggest = "share_type"
 
         if suggest:
@@ -15377,15 +15386,26 @@ class ShareSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 folder_map: Mapping[str, str],
                  projects: Sequence[str],
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
+        :param Mapping[str, str] folder_map: A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
         :param Sequence[str] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
+        pulumi.set(__self__, "folder_map", folder_map)
         pulumi.set(__self__, "projects", projects)
         pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="folderMap")
+    def folder_map(self) -> Mapping[str, str]:
+        """
+        A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+        """
+        return pulumi.get(self, "folder_map")
 
     @property
     @pulumi.getter
@@ -16355,7 +16375,7 @@ class SubsettingResponse(dict):
                  subset_size: int):
         """
         Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-        :param int subset_size: The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or 'INTERNAL_SELF_MANAGED'. 'subset_size' is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+        :param int subset_size: The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
         """
         pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "subset_size", subset_size)
@@ -16369,7 +16389,7 @@ class SubsettingResponse(dict):
     @pulumi.getter(name="subsetSize")
     def subset_size(self) -> int:
         """
-        The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or 'INTERNAL_SELF_MANAGED'. 'subset_size' is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+        The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
         """
         return pulumi.get(self, "subset_size")
 

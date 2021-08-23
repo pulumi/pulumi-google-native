@@ -22,12 +22,18 @@ class OccurrenceArgs:
                  deployment: Optional[pulumi.Input['DeploymentArgs']] = None,
                  derived_image: Optional[pulumi.Input['DerivedArgs']] = None,
                  discovered: Optional[pulumi.Input['DiscoveredArgs']] = None,
+                 dsse_attestation: Optional[pulumi.Input['DSSEAttestationOccurrenceArgs']] = None,
+                 envelope: Optional[pulumi.Input['EnvelopeArgs']] = None,
                  installation: Optional[pulumi.Input['InstallationArgs']] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input['ResourceArgs']] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
+                 sbom: Optional[pulumi.Input['DocumentOccurrenceArgs']] = None,
+                 spdx_file: Optional[pulumi.Input['FileOccurrenceArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageOccurrenceArgs']] = None,
+                 spdx_relationship: Optional[pulumi.Input['RelationshipOccurrenceArgs']] = None,
                  upgrade: Optional[pulumi.Input['UpgradeOccurrenceArgs']] = None,
                  vulnerability_details: Optional[pulumi.Input['VulnerabilityDetailsArgs']] = None):
         """
@@ -38,11 +44,17 @@ class OccurrenceArgs:
         :param pulumi.Input['DeploymentArgs'] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input['DerivedArgs'] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input['DiscoveredArgs'] discovered: Describes the initial scan status for this resource.
+        :param pulumi.Input['DSSEAttestationOccurrenceArgs'] dsse_attestation: This represents a DSSE attestation occurrence
+        :param pulumi.Input['EnvelopeArgs'] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input['InstallationArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input['ResourceArgs'] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+        :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input['FileOccurrenceArgs'] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input['PackageOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input['RelationshipOccurrenceArgs'] spdx_relationship: Describes a specific relationship between SPDX elements.
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
         """
@@ -58,6 +70,10 @@ class OccurrenceArgs:
             pulumi.set(__self__, "derived_image", derived_image)
         if discovered is not None:
             pulumi.set(__self__, "discovered", discovered)
+        if dsse_attestation is not None:
+            pulumi.set(__self__, "dsse_attestation", dsse_attestation)
+        if envelope is not None:
+            pulumi.set(__self__, "envelope", envelope)
         if installation is not None:
             pulumi.set(__self__, "installation", installation)
         if note_name is not None:
@@ -70,6 +86,14 @@ class OccurrenceArgs:
             pulumi.set(__self__, "resource", resource)
         if resource_url is not None:
             pulumi.set(__self__, "resource_url", resource_url)
+        if sbom is not None:
+            pulumi.set(__self__, "sbom", sbom)
+        if spdx_file is not None:
+            pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package is not None:
+            pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship is not None:
+            pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability_details is not None:
@@ -148,6 +172,30 @@ class OccurrenceArgs:
         pulumi.set(self, "discovered", value)
 
     @property
+    @pulumi.getter(name="dsseAttestation")
+    def dsse_attestation(self) -> Optional[pulumi.Input['DSSEAttestationOccurrenceArgs']]:
+        """
+        This represents a DSSE attestation occurrence
+        """
+        return pulumi.get(self, "dsse_attestation")
+
+    @dsse_attestation.setter
+    def dsse_attestation(self, value: Optional[pulumi.Input['DSSEAttestationOccurrenceArgs']]):
+        pulumi.set(self, "dsse_attestation", value)
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> Optional[pulumi.Input['EnvelopeArgs']]:
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
+
+    @envelope.setter
+    def envelope(self, value: Optional[pulumi.Input['EnvelopeArgs']]):
+        pulumi.set(self, "envelope", value)
+
+    @property
     @pulumi.getter
     def installation(self) -> Optional[pulumi.Input['InstallationArgs']]:
         """
@@ -218,6 +266,54 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter
+    def sbom(self) -> Optional[pulumi.Input['DocumentOccurrenceArgs']]:
+        """
+        Describes a specific software bill of materials document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @sbom.setter
+    def sbom(self, value: Optional[pulumi.Input['DocumentOccurrenceArgs']]):
+        pulumi.set(self, "sbom", value)
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> Optional[pulumi.Input['FileOccurrenceArgs']]:
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @spdx_file.setter
+    def spdx_file(self, value: Optional[pulumi.Input['FileOccurrenceArgs']]):
+        pulumi.set(self, "spdx_file", value)
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> Optional[pulumi.Input['PackageOccurrenceArgs']]:
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @spdx_package.setter
+    def spdx_package(self, value: Optional[pulumi.Input['PackageOccurrenceArgs']]):
+        pulumi.set(self, "spdx_package", value)
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> Optional[pulumi.Input['RelationshipOccurrenceArgs']]:
+        """
+        Describes a specific relationship between SPDX elements.
+        """
+        return pulumi.get(self, "spdx_relationship")
+
+    @spdx_relationship.setter
+    def spdx_relationship(self, value: Optional[pulumi.Input['RelationshipOccurrenceArgs']]):
+        pulumi.set(self, "spdx_relationship", value)
+
+    @property
+    @pulumi.getter
     def upgrade(self) -> Optional[pulumi.Input['UpgradeOccurrenceArgs']]:
         """
         Describes an upgrade.
@@ -252,12 +348,18 @@ class Occurrence(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
+                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -273,11 +375,17 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input[pulumi.InputType['DerivedArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input[pulumi.InputType['DiscoveredArgs']] discovered: Describes the initial scan status for this resource.
+        :param pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']] dsse_attestation: This represents a DSSE attestation occurrence
+        :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific relationship between SPDX elements.
         :param pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']] upgrade: Describes an upgrade.
         :param pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']] vulnerability_details: Details of a security vulnerability note.
         """
@@ -312,12 +420,18 @@ class Occurrence(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
                  derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
                  discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
+                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
@@ -338,12 +452,18 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["derived_image"] = derived_image
             __props__.__dict__["discovered"] = discovered
+            __props__.__dict__["dsse_attestation"] = dsse_attestation
+            __props__.__dict__["envelope"] = envelope
             __props__.__dict__["installation"] = installation
             __props__.__dict__["note_name"] = note_name
             __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
             __props__.__dict__["resource"] = resource
             __props__.__dict__["resource_url"] = resource_url
+            __props__.__dict__["sbom"] = sbom
+            __props__.__dict__["spdx_file"] = spdx_file
+            __props__.__dict__["spdx_package"] = spdx_package
+            __props__.__dict__["spdx_relationship"] = spdx_relationship
             __props__.__dict__["upgrade"] = upgrade
             __props__.__dict__["vulnerability_details"] = vulnerability_details
             __props__.__dict__["create_time"] = None
@@ -379,6 +499,8 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["deployment"] = None
         __props__.__dict__["derived_image"] = None
         __props__.__dict__["discovered"] = None
+        __props__.__dict__["dsse_attestation"] = None
+        __props__.__dict__["envelope"] = None
         __props__.__dict__["installation"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -386,6 +508,10 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource"] = None
         __props__.__dict__["resource_url"] = None
+        __props__.__dict__["sbom"] = None
+        __props__.__dict__["spdx_file"] = None
+        __props__.__dict__["spdx_package"] = None
+        __props__.__dict__["spdx_relationship"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade"] = None
         __props__.__dict__["vulnerability_details"] = None
@@ -448,6 +574,22 @@ class Occurrence(pulumi.CustomResource):
         return pulumi.get(self, "discovered")
 
     @property
+    @pulumi.getter(name="dsseAttestation")
+    def dsse_attestation(self) -> pulumi.Output['outputs.DSSEAttestationOccurrenceResponse']:
+        """
+        This represents a DSSE attestation occurrence
+        """
+        return pulumi.get(self, "dsse_attestation")
+
+    @property
+    @pulumi.getter
+    def envelope(self) -> pulumi.Output['outputs.EnvelopeResponse']:
+        """
+        https://github.com/secure-systems-lab/dsse
+        """
+        return pulumi.get(self, "envelope")
+
+    @property
     @pulumi.getter
     def installation(self) -> pulumi.Output['outputs.InstallationResponse']:
         """
@@ -502,6 +644,38 @@ class Occurrence(pulumi.CustomResource):
         The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "resource_url")
+
+    @property
+    @pulumi.getter
+    def sbom(self) -> pulumi.Output['outputs.DocumentOccurrenceResponse']:
+        """
+        Describes a specific software bill of materials document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> pulumi.Output['outputs.FileOccurrenceResponse']:
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> pulumi.Output['outputs.PackageOccurrenceResponse']:
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> pulumi.Output['outputs.RelationshipOccurrenceResponse']:
+        """
+        Describes a specific relationship between SPDX elements.
+        """
+        return pulumi.get(self, "spdx_relationship")
 
     @property
     @pulumi.getter(name="updateTime")

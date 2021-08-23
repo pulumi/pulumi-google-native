@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetApiResult:
-    def __init__(__self__, latest_revision_id=None, meta_data=None, name=None, revision=None):
+    def __init__(__self__, labels=None, latest_revision_id=None, meta_data=None, name=None, revision=None):
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if latest_revision_id and not isinstance(latest_revision_id, str):
             raise TypeError("Expected argument 'latest_revision_id' to be a str")
         pulumi.set(__self__, "latest_revision_id", latest_revision_id)
@@ -30,6 +33,14 @@ class GetApiResult:
         if revision and not isinstance(revision, list):
             raise TypeError("Expected argument 'revision' to be a list")
         pulumi.set(__self__, "revision", revision)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User labels applied to this API Proxy.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="latestRevisionId")
@@ -70,6 +81,7 @@ class AwaitableGetApiResult(GetApiResult):
         if False:
             yield self
         return GetApiResult(
+            labels=self.labels,
             latest_revision_id=self.latest_revision_id,
             meta_data=self.meta_data,
             name=self.name,
@@ -92,6 +104,7 @@ def get_api(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getApi', __args__, opts=opts, typ=GetApiResult).value
 
     return AwaitableGetApiResult(
+        labels=__ret__.labels,
         latest_revision_id=__ret__.latest_revision_id,
         meta_data=__ret__.meta_data,
         name=__ret__.name,

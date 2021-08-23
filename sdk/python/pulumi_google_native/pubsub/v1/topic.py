@@ -19,6 +19,7 @@ class TopicArgs:
                  topic_id: pulumi.Input[str],
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
                  message_storage_policy: Optional[pulumi.Input['MessageStoragePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class TopicArgs:
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input['MessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -38,6 +40,8 @@ class TopicArgs:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if message_retention_duration is not None:
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
         if message_storage_policy is not None:
             pulumi.set(__self__, "message_storage_policy", message_storage_policy)
         if name is not None:
@@ -81,6 +85,18 @@ class TopicArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+        """
+        return pulumi.get(self, "message_retention_duration")
+
+    @message_retention_duration.setter
+    def message_retention_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_retention_duration", value)
 
     @property
     @pulumi.getter(name="messageStoragePolicy")
@@ -147,6 +163,7 @@ class Topic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,6 +178,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        :param pulumi.Input[str] message_retention_duration: Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
@@ -192,6 +210,7 @@ class Topic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -212,6 +231,7 @@ class Topic(pulumi.CustomResource):
 
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["message_retention_duration"] = message_retention_duration
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -244,6 +264,7 @@ class Topic(pulumi.CustomResource):
 
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["message_retention_duration"] = None
         __props__.__dict__["message_storage_policy"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["satisfies_pzs"] = None
@@ -265,6 +286,14 @@ class Topic(pulumi.CustomResource):
         See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> pulumi.Output[str]:
+        """
+        Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+        """
+        return pulumi.get(self, "message_retention_duration")
 
     @property
     @pulumi.getter(name="messageStoragePolicy")

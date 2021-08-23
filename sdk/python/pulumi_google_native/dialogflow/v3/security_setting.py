@@ -7,7 +7,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 
@@ -15,6 +17,8 @@ __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 class SecuritySettingArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 deidentify_template: Optional[pulumi.Input[str]] = None,
+                 insights_export_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +30,9 @@ class SecuritySettingArgs:
         """
         The set of arguments for constructing a SecuritySetting resource.
         :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
-        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        :param pulumi.Input[str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
@@ -34,6 +40,10 @@ class SecuritySettingArgs:
         :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if deidentify_template is not None:
+            pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if insights_export_settings is not None:
+            pulumi.set(__self__, "insights_export_settings", insights_export_settings)
         if inspect_template is not None:
             pulumi.set(__self__, "inspect_template", inspect_template)
         if location is not None:
@@ -64,10 +74,34 @@ class SecuritySettingArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @deidentify_template.setter
+    def deidentify_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deidentify_template", value)
+
+    @property
+    @pulumi.getter(name="insightsExportSettings")
+    def insights_export_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]:
+        """
+        Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        """
+        return pulumi.get(self, "insights_export_settings")
+
+    @insights_export_settings.setter
+    def insights_export_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]):
+        pulumi.set(self, "insights_export_settings", value)
+
+    @property
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> Optional[pulumi.Input[str]]:
         """
-        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         """
         return pulumi.get(self, "inspect_template")
 
@@ -159,7 +193,9 @@ class SecuritySetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -174,8 +210,10 @@ class SecuritySetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
         :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
-        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
@@ -206,7 +244,9 @@ class SecuritySetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -227,9 +267,11 @@ class SecuritySetting(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
+            __props__.__dict__["deidentify_template"] = deidentify_template
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["insights_export_settings"] = insights_export_settings
             __props__.__dict__["inspect_template"] = inspect_template
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -260,7 +302,9 @@ class SecuritySetting(pulumi.CustomResource):
 
         __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
+        __props__.__dict__["deidentify_template"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["insights_export_settings"] = None
         __props__.__dict__["inspect_template"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["purge_data_types"] = None
@@ -268,6 +312,14 @@ class SecuritySetting(pulumi.CustomResource):
         __props__.__dict__["redaction_strategy"] = None
         __props__.__dict__["retention_window_days"] = None
         return SecuritySetting(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> pulumi.Output[str]:
+        """
+        [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        """
+        return pulumi.get(self, "deidentify_template")
 
     @property
     @pulumi.getter(name="displayName")
@@ -278,10 +330,18 @@ class SecuritySetting(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="insightsExportSettings")
+    def insights_export_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse']:
+        """
+        Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        """
+        return pulumi.get(self, "insights_export_settings")
+
+    @property
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> pulumi.Output[str]:
         """
-        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         """
         return pulumi.get(self, "inspect_template")
 

@@ -39,6 +39,7 @@ if typing.TYPE_CHECKING:
     import pulumi_google_native.composer as composer
     import pulumi_google_native.compute as compute
     import pulumi_google_native.config as config
+    import pulumi_google_native.contactcenterinsights as contactcenterinsights
     import pulumi_google_native.container as container
     import pulumi_google_native.containeranalysis as containeranalysis
     import pulumi_google_native.datacatalog as datacatalog
@@ -79,6 +80,7 @@ if typing.TYPE_CHECKING:
     import pulumi_google_native.networkconnectivity as networkconnectivity
     import pulumi_google_native.networkmanagement as networkmanagement
     import pulumi_google_native.networksecurity as networksecurity
+    import pulumi_google_native.networkservices as networkservices
     import pulumi_google_native.notebooks as notebooks
     import pulumi_google_native.orgpolicy as orgpolicy
     import pulumi_google_native.osconfig as osconfig
@@ -143,6 +145,7 @@ else:
     composer = _utilities.lazy_import('pulumi_google_native.composer')
     compute = _utilities.lazy_import('pulumi_google_native.compute')
     config = _utilities.lazy_import('pulumi_google_native.config')
+    contactcenterinsights = _utilities.lazy_import('pulumi_google_native.contactcenterinsights')
     container = _utilities.lazy_import('pulumi_google_native.container')
     containeranalysis = _utilities.lazy_import('pulumi_google_native.containeranalysis')
     datacatalog = _utilities.lazy_import('pulumi_google_native.datacatalog')
@@ -183,6 +186,7 @@ else:
     networkconnectivity = _utilities.lazy_import('pulumi_google_native.networkconnectivity')
     networkmanagement = _utilities.lazy_import('pulumi_google_native.networkmanagement')
     networksecurity = _utilities.lazy_import('pulumi_google_native.networksecurity')
+    networkservices = _utilities.lazy_import('pulumi_google_native.networkservices')
     notebooks = _utilities.lazy_import('pulumi_google_native.notebooks')
     orgpolicy = _utilities.lazy_import('pulumi_google_native.orgpolicy')
     osconfig = _utilities.lazy_import('pulumi_google_native.osconfig')
@@ -276,6 +280,7 @@ _utilities.register(
    "google-native:apigee/v1:Api": "Api",
    "google-native:apigee/v1:ApiProduct": "ApiProduct",
    "google-native:apigee/v1:App": "App",
+   "google-native:apigee/v1:ArchiveDeployment": "ArchiveDeployment",
    "google-native:apigee/v1:CanaryEvaluation": "CanaryEvaluation",
    "google-native:apigee/v1:DataCollector": "DataCollector",
    "google-native:apigee/v1:Datastore": "Datastore",
@@ -494,6 +499,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.cloudbuild.v1",
   "classes": {
    "google-native:cloudbuild/v1:Build": "Build",
+   "google-native:cloudbuild/v1:GithubEnterpriseConfig": "GithubEnterpriseConfig",
    "google-native:cloudbuild/v1:Trigger": "Trigger",
    "google-native:cloudbuild/v1:WorkerPool": "WorkerPool"
   }
@@ -1010,6 +1016,17 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "contactcenterinsights/v1",
+  "fqn": "pulumi_google_native.contactcenterinsights.v1",
+  "classes": {
+   "google-native:contactcenterinsights/v1:Analysis": "Analysis",
+   "google-native:contactcenterinsights/v1:Conversation": "Conversation",
+   "google-native:contactcenterinsights/v1:IssueModel": "IssueModel",
+   "google-native:contactcenterinsights/v1:PhraseMatcher": "PhraseMatcher"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "container/v1",
   "fqn": "pulumi_google_native.container.v1",
   "classes": {
@@ -1363,6 +1380,7 @@ _utilities.register(
   "mod": "eventarc/v1",
   "fqn": "pulumi_google_native.eventarc.v1",
   "classes": {
+   "google-native:eventarc/v1:ChannelIamPolicy": "ChannelIamPolicy",
    "google-native:eventarc/v1:Trigger": "Trigger",
    "google-native:eventarc/v1:TriggerIamPolicy": "TriggerIamPolicy"
   }
@@ -1391,7 +1409,8 @@ _utilities.register(
   "fqn": "pulumi_google_native.file.v1beta1",
   "classes": {
    "google-native:file/v1beta1:Backup": "Backup",
-   "google-native:file/v1beta1:Instance": "Instance"
+   "google-native:file/v1beta1:Instance": "Instance",
+   "google-native:file/v1beta1:Snapshot": "Snapshot"
   }
  },
  {
@@ -1717,6 +1736,8 @@ _utilities.register(
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",
    "google-native:metastore/v1alpha:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
+   "google-native:metastore/v1alpha:ServiceDatabaseIamPolicy": "ServiceDatabaseIamPolicy",
+   "google-native:metastore/v1alpha:ServiceDatabaseTableIamPolicy": "ServiceDatabaseTableIamPolicy",
    "google-native:metastore/v1alpha:ServiceIamPolicy": "ServiceIamPolicy"
   }
  },
@@ -1776,7 +1797,6 @@ _utilities.register(
    "google-native:networkconnectivity/v1alpha1:Hub": "Hub",
    "google-native:networkconnectivity/v1alpha1:HubIamPolicy": "HubIamPolicy",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy": "InternalRangeIamPolicy",
-   "google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy": "PolicyBasedRouteIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy": "SpokeIamPolicy"
   }
@@ -1810,6 +1830,25 @@ _utilities.register(
    "google-native:networksecurity/v1beta1:ClientTlsPolicyIamPolicy": "ClientTlsPolicyIamPolicy",
    "google-native:networksecurity/v1beta1:ServerTlsPolicy": "ServerTlsPolicy",
    "google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "networkservices/v1",
+  "fqn": "pulumi_google_native.networkservices.v1",
+  "classes": {
+   "google-native:networkservices/v1:EdgeCacheKeysetIamPolicy": "EdgeCacheKeysetIamPolicy",
+   "google-native:networkservices/v1:EdgeCacheOriginIamPolicy": "EdgeCacheOriginIamPolicy",
+   "google-native:networkservices/v1:EdgeCacheServiceIamPolicy": "EdgeCacheServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "networkservices/v1beta1",
+  "fqn": "pulumi_google_native.networkservices.v1beta1",
+  "classes": {
+   "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
+   "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy"
   }
  },
  {
@@ -2138,6 +2177,17 @@ _utilities.register(
    "google-native:spanner/v1:InstanceDatabaseIamPolicy": "InstanceDatabaseIamPolicy",
    "google-native:spanner/v1:InstanceIamPolicy": "InstanceIamPolicy",
    "google-native:spanner/v1:Session": "Session"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "sqladmin/v1",
+  "fqn": "pulumi_google_native.sqladmin.v1",
+  "classes": {
+   "google-native:sqladmin/v1:BackupRun": "BackupRun",
+   "google-native:sqladmin/v1:Database": "Database",
+   "google-native:sqladmin/v1:Instance": "Instance",
+   "google-native:sqladmin/v1:SslCert": "SslCert"
   }
  },
  {

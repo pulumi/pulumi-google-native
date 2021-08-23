@@ -10,12 +10,14 @@ __all__ = [
     'AxisScale',
     'ChartOptionsMode',
     'DataSetPlotType',
+    'DataSetTargetAxis',
     'PickTimeSeriesFilterDirection',
     'PickTimeSeriesFilterRankingMethod',
     'SparkChartViewSparkChartType',
     'TextFormat',
     'ThresholdColor',
     'ThresholdDirection',
+    'ThresholdTargetAxis',
 ]
 
 
@@ -139,6 +141,18 @@ class DataSetPlotType(str, Enum):
     """The data is plotted as a heatmap. The series being plotted must have a DISTRIBUTION value type. The value of each bucket in the distribution is displayed as a color. This type is not currently available in the Stackdriver Monitoring application."""
 
 
+class DataSetTargetAxis(str, Enum):
+    """
+    Optional. The target axis to use for plotting the metric.
+    """
+    TARGET_AXIS_UNSPECIFIED = "TARGET_AXIS_UNSPECIFIED"
+    """The target axis was not specified. Defaults to Y1."""
+    Y1 = "Y1"
+    """The y_axis (the right axis of chart)."""
+    Y2 = "Y2"
+    """The y2_axis (the left axis of chart)."""
+
+
 class PickTimeSeriesFilterDirection(str, Enum):
     """
     How to use the ranking to select time series that pass through the filter.
@@ -215,3 +229,15 @@ class ThresholdDirection(str, Enum):
     """The threshold will be considered crossed if the actual value is above the threshold value."""
     BELOW = "BELOW"
     """The threshold will be considered crossed if the actual value is below the threshold value."""
+
+
+class ThresholdTargetAxis(str, Enum):
+    """
+    The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+    """
+    TARGET_AXIS_UNSPECIFIED = "TARGET_AXIS_UNSPECIFIED"
+    """The target axis was not specified. Defaults to Y1."""
+    Y1 = "Y1"
+    """The y_axis (the right axis of chart)."""
+    Y2 = "Y2"
+    """The y2_axis (the left axis of chart)."""

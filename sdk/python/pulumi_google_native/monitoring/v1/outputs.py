@@ -262,6 +262,8 @@ class DataSetResponse(dict):
             suggest = "min_alignment_period"
         elif key == "plotType":
             suggest = "plot_type"
+        elif key == "targetAxis":
+            suggest = "target_axis"
         elif key == "timeSeriesQuery":
             suggest = "time_series_query"
 
@@ -280,17 +282,20 @@ class DataSetResponse(dict):
                  legend_template: str,
                  min_alignment_period: str,
                  plot_type: str,
+                 target_axis: str,
                  time_series_query: 'outputs.TimeSeriesQueryResponse'):
         """
         Groups a time series query definition with charting options.
         :param str legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param str plot_type: How this data should be plotted on the chart.
+        :param str target_axis: Optional. The target axis to use for plotting the metric.
         :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
         pulumi.set(__self__, "legend_template", legend_template)
         pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         pulumi.set(__self__, "plot_type", plot_type)
+        pulumi.set(__self__, "target_axis", target_axis)
         pulumi.set(__self__, "time_series_query", time_series_query)
 
     @property
@@ -316,6 +321,14 @@ class DataSetResponse(dict):
         How this data should be plotted on the chart.
         """
         return pulumi.get(self, "plot_type")
+
+    @property
+    @pulumi.getter(name="targetAxis")
+    def target_axis(self) -> str:
+        """
+        Optional. The target axis to use for plotting the metric.
+        """
+        return pulumi.get(self, "target_axis")
 
     @property
     @pulumi.getter(name="timeSeriesQuery")
@@ -773,21 +786,41 @@ class ThresholdResponse(dict):
     """
     Defines a threshold for categorizing time series values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAxis":
+            suggest = "target_axis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ThresholdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ThresholdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ThresholdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  color: str,
                  direction: str,
                  label: str,
+                 target_axis: str,
                  value: float):
         """
         Defines a threshold for categorizing time series values.
         :param str color: The state color for this threshold. Color is not allowed in a XyChart.
         :param str direction: The direction for the current threshold. Direction is not allowed in a XyChart.
         :param str label: A label for the threshold.
+        :param str target_axis: The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
         :param float value: The value of the threshold. The value should be defined in the native scale of the metric.
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "direction", direction)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "target_axis", target_axis)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -813,6 +846,14 @@ class ThresholdResponse(dict):
         A label for the threshold.
         """
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter(name="targetAxis")
+    def target_axis(self) -> str:
+        """
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+        """
+        return pulumi.get(self, "target_axis")
 
     @property
     @pulumi.getter
@@ -1246,6 +1287,8 @@ class XyChartResponse(dict):
             suggest = "timeshift_duration"
         elif key == "xAxis":
             suggest = "x_axis"
+        elif key == "y2Axis":
+            suggest = "y2_axis"
         elif key == "yAxis":
             suggest = "y_axis"
 
@@ -1266,6 +1309,7 @@ class XyChartResponse(dict):
                  thresholds: Sequence['outputs.ThresholdResponse'],
                  timeshift_duration: str,
                  x_axis: 'outputs.AxisResponse',
+                 y2_axis: 'outputs.AxisResponse',
                  y_axis: 'outputs.AxisResponse'):
         """
         A chart that displays data on a 2D (X and Y axes) plane.
@@ -1274,6 +1318,7 @@ class XyChartResponse(dict):
         :param Sequence['ThresholdResponse'] thresholds: Threshold lines drawn horizontally across the chart.
         :param str timeshift_duration: The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
         :param 'AxisResponse' x_axis: The properties applied to the X axis.
+        :param 'AxisResponse' y2_axis: The properties applied to the Y2 axis.
         :param 'AxisResponse' y_axis: The properties applied to the Y axis.
         """
         pulumi.set(__self__, "chart_options", chart_options)
@@ -1281,6 +1326,7 @@ class XyChartResponse(dict):
         pulumi.set(__self__, "thresholds", thresholds)
         pulumi.set(__self__, "timeshift_duration", timeshift_duration)
         pulumi.set(__self__, "x_axis", x_axis)
+        pulumi.set(__self__, "y2_axis", y2_axis)
         pulumi.set(__self__, "y_axis", y_axis)
 
     @property
@@ -1322,6 +1368,14 @@ class XyChartResponse(dict):
         The properties applied to the X axis.
         """
         return pulumi.get(self, "x_axis")
+
+    @property
+    @pulumi.getter(name="y2Axis")
+    def y2_axis(self) -> 'outputs.AxisResponse':
+        """
+        The properties applied to the Y2 axis.
+        """
+        return pulumi.get(self, "y2_axis")
 
     @property
     @pulumi.getter(name="yAxis")

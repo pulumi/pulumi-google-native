@@ -27,7 +27,6 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationConfigResponse',
     'GoogleCloudApigeeV1GraphQLOperationGroupResponse',
     'GoogleCloudApigeeV1GraphQLOperationResponse',
-    'GoogleCloudApigeeV1IntegrationConfigResponse',
     'GoogleCloudApigeeV1MonetizationConfigResponse',
     'GoogleCloudApigeeV1OperationConfigResponse',
     'GoogleCloudApigeeV1OperationGroupResponse',
@@ -59,8 +58,6 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         suggest = None
         if key == "advancedApiOpsConfig":
             suggest = "advanced_api_ops_config"
-        elif key == "integrationConfig":
-            suggest = "integration_config"
         elif key == "monetizationConfig":
             suggest = "monetization_config"
 
@@ -77,16 +74,13 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
 
     def __init__(__self__, *,
                  advanced_api_ops_config: 'outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
-                 integration_config: 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse',
                  monetization_config: 'outputs.GoogleCloudApigeeV1MonetizationConfigResponse'):
         """
         Add-on configurations for the Apigee organization.
         :param 'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse' advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
-        :param 'GoogleCloudApigeeV1IntegrationConfigResponse' integration_config: Configuration for the Integration add-on.
         :param 'GoogleCloudApigeeV1MonetizationConfigResponse' monetization_config: Configuration for the Monetization add-on.
         """
         pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
-        pulumi.set(__self__, "integration_config", integration_config)
         pulumi.set(__self__, "monetization_config", monetization_config)
 
     @property
@@ -96,14 +90,6 @@ class GoogleCloudApigeeV1AddonsConfigResponse(dict):
         Configuration for the Advanced API Ops add-on.
         """
         return pulumi.get(self, "advanced_api_ops_config")
-
-    @property
-    @pulumi.getter(name="integrationConfig")
-    def integration_config(self) -> 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse':
-        """
-        Configuration for the Integration add-on.
-        """
-        return pulumi.get(self, "integration_config")
 
     @property
     @pulumi.getter(name="monetizationConfig")
@@ -1007,28 +993,6 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
         GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
         """
         return pulumi.get(self, "operation_types")
-
-
-@pulumi.output_type
-class GoogleCloudApigeeV1IntegrationConfigResponse(dict):
-    """
-    Configuration for the Integration add-on.
-    """
-    def __init__(__self__, *,
-                 enabled: bool):
-        """
-        Configuration for the Integration add-on.
-        :param bool enabled: Flag that specifies whether the Integration add-on is enabled.
-        """
-        pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> bool:
-        """
-        Flag that specifies whether the Integration add-on is enabled.
-        """
-        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

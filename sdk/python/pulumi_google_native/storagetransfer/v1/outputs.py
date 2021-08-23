@@ -18,8 +18,10 @@ __all__ = [
     'DateResponse',
     'GcsDataResponse',
     'HttpDataResponse',
+    'LoggingConfigResponse',
     'NotificationConfigResponse',
     'ObjectConditionsResponse',
+    'PosixFilesystemResponse',
     'ScheduleResponse',
     'TimeOfDayResponse',
     'TransferOptionsResponse',
@@ -114,7 +116,7 @@ class AwsS3DataResponse(dict):
         :param 'AwsAccessKeyResponse' aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         :param str bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-        :param str role_arn: Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
         pulumi.set(__self__, "aws_access_key", aws_access_key)
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -149,7 +151,7 @@ class AwsS3DataResponse(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
         """
-        Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
         return pulumi.get(self, "role_arn")
 
@@ -401,6 +403,45 @@ class HttpDataResponse(dict):
 
 
 @pulumi.output_type
+class LoggingConfigResponse(dict):
+    """
+    Logging configure.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableOnpremGcsTransferLogs":
+            suggest = "enable_onprem_gcs_transfer_logs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_onprem_gcs_transfer_logs: bool):
+        """
+        Logging configure.
+        :param bool enable_onprem_gcs_transfer_logs: Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        """
+        pulumi.set(__self__, "enable_onprem_gcs_transfer_logs", enable_onprem_gcs_transfer_logs)
+
+    @property
+    @pulumi.getter(name="enableOnpremGcsTransferLogs")
+    def enable_onprem_gcs_transfer_logs(self) -> bool:
+        """
+        Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        """
+        return pulumi.get(self, "enable_onprem_gcs_transfer_logs")
+
+
+@pulumi.output_type
 class NotificationConfigResponse(dict):
     """
     Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
@@ -567,6 +608,45 @@ class ObjectConditionsResponse(dict):
         If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
+
+
+@pulumi.output_type
+class PosixFilesystemResponse(dict):
+    """
+    A POSIX filesystem data source or sink.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootDirectory":
+            suggest = "root_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PosixFilesystemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PosixFilesystemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PosixFilesystemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 root_directory: str):
+        """
+        A POSIX filesystem data source or sink.
+        :param str root_directory: Root directory path to the filesystem.
+        """
+        pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> str:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
 
 
 @pulumi.output_type
@@ -800,6 +880,8 @@ class TransferSpecResponse(dict):
             suggest = "http_data_source"
         elif key == "objectConditions":
             suggest = "object_conditions"
+        elif key == "posixDataSource":
+            suggest = "posix_data_source"
         elif key == "transferOptions":
             suggest = "transfer_options"
 
@@ -821,6 +903,7 @@ class TransferSpecResponse(dict):
                  gcs_data_source: 'outputs.GcsDataResponse',
                  http_data_source: 'outputs.HttpDataResponse',
                  object_conditions: 'outputs.ObjectConditionsResponse',
+                 posix_data_source: 'outputs.PosixFilesystemResponse',
                  transfer_options: 'outputs.TransferOptionsResponse'):
         """
         Configuration for running a transfer.
@@ -830,6 +913,7 @@ class TransferSpecResponse(dict):
         :param 'GcsDataResponse' gcs_data_source: A Cloud Storage data source.
         :param 'HttpDataResponse' http_data_source: An HTTP URL data source.
         :param 'ObjectConditionsResponse' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+        :param 'PosixFilesystemResponse' posix_data_source: A POSIX Filesystem data source.
         :param 'TransferOptionsResponse' transfer_options: If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         """
         pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
@@ -838,6 +922,7 @@ class TransferSpecResponse(dict):
         pulumi.set(__self__, "gcs_data_source", gcs_data_source)
         pulumi.set(__self__, "http_data_source", http_data_source)
         pulumi.set(__self__, "object_conditions", object_conditions)
+        pulumi.set(__self__, "posix_data_source", posix_data_source)
         pulumi.set(__self__, "transfer_options", transfer_options)
 
     @property
@@ -887,6 +972,14 @@ class TransferSpecResponse(dict):
         Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
         """
         return pulumi.get(self, "object_conditions")
+
+    @property
+    @pulumi.getter(name="posixDataSource")
+    def posix_data_source(self) -> 'outputs.PosixFilesystemResponse':
+        """
+        A POSIX Filesystem data source.
+        """
+        return pulumi.get(self, "posix_data_source")
 
     @property
     @pulumi.getter(name="transferOptions")

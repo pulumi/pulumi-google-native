@@ -18,6 +18,7 @@ class TransferJobArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class TransferJobArgs:
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
+        :param pulumi.Input['LoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with 'transferJobs/OPI' specifically. For all other transfer types, this name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for PosixFilesystem transfers. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
@@ -39,6 +41,8 @@ class TransferJobArgs:
             pulumi.set(__self__, "description", description)
         if latest_operation_name is not None:
             pulumi.set(__self__, "latest_operation_name", latest_operation_name)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
@@ -75,6 +79,18 @@ class TransferJobArgs:
     @latest_operation_name.setter
     def latest_operation_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "latest_operation_name", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['LoggingConfigArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['LoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter
@@ -156,6 +172,7 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -172,6 +189,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
+        :param pulumi.Input[pulumi.InputType['LoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with 'transferJobs/OPI' specifically. For all other transfer types, this name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for PosixFilesystem transfers. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
         :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
@@ -207,6 +225,7 @@ class TransferJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -227,6 +246,7 @@ class TransferJob(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["latest_operation_name"] = latest_operation_name
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
@@ -263,6 +283,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["last_modification_time"] = None
         __props__.__dict__["latest_operation_name"] = None
+        __props__.__dict__["logging_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
         __props__.__dict__["project"] = None
@@ -310,6 +331,14 @@ class TransferJob(pulumi.CustomResource):
         The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         """
         return pulumi.get(self, "latest_operation_name")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.LoggingConfigResponse']:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
 
     @property
     @pulumi.getter

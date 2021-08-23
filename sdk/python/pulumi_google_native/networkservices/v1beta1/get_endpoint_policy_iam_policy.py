@@ -10,13 +10,13 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'GetPolicyBasedRouteIamPolicyResult',
-    'AwaitableGetPolicyBasedRouteIamPolicyResult',
-    'get_policy_based_route_iam_policy',
+    'GetEndpointPolicyIamPolicyResult',
+    'AwaitableGetEndpointPolicyIamPolicyResult',
+    'get_endpoint_policy_iam_policy',
 ]
 
 @pulumi.output_type
-class GetPolicyBasedRouteIamPolicyResult:
+class GetEndpointPolicyIamPolicyResult:
     def __init__(__self__, audit_configs=None, bindings=None, etag=None, version=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
@@ -64,36 +64,38 @@ class GetPolicyBasedRouteIamPolicyResult:
         return pulumi.get(self, "version")
 
 
-class AwaitableGetPolicyBasedRouteIamPolicyResult(GetPolicyBasedRouteIamPolicyResult):
+class AwaitableGetEndpointPolicyIamPolicyResult(GetEndpointPolicyIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetPolicyBasedRouteIamPolicyResult(
+        return GetEndpointPolicyIamPolicyResult(
             audit_configs=self.audit_configs,
             bindings=self.bindings,
             etag=self.etag,
             version=self.version)
 
 
-def get_policy_based_route_iam_policy(options_requested_policy_version: Optional[str] = None,
-                                      policy_based_route_id: Optional[str] = None,
-                                      project: Optional[str] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyBasedRouteIamPolicyResult:
+def get_endpoint_policy_iam_policy(endpoint_policy_id: Optional[str] = None,
+                                   location: Optional[str] = None,
+                                   options_requested_policy_version: Optional[str] = None,
+                                   project: Optional[str] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointPolicyIamPolicyResult:
     """
     Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     __args__ = dict()
+    __args__['endpointPolicyId'] = endpoint_policy_id
+    __args__['location'] = location
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
-    __args__['policyBasedRouteId'] = policy_based_route_id
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1alpha1:getPolicyBasedRouteIamPolicy', __args__, opts=opts, typ=GetPolicyBasedRouteIamPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1beta1:getEndpointPolicyIamPolicy', __args__, opts=opts, typ=GetEndpointPolicyIamPolicyResult).value
 
-    return AwaitableGetPolicyBasedRouteIamPolicyResult(
+    return AwaitableGetEndpointPolicyIamPolicyResult(
         audit_configs=__ret__.audit_configs,
         bindings=__ret__.bindings,
         etag=__ret__.etag,

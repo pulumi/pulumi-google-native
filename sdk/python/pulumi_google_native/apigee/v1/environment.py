@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['EnvironmentArgs', 'Environment']
@@ -16,18 +17,26 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
+                 api_proxy_type: Optional[pulumi.Input['EnvironmentApiProxyType']] = None,
+                 deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
+        :param pulumi.Input['EnvironmentApiProxyType'] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        if api_proxy_type is not None:
+            pulumi.set(__self__, "api_proxy_type", api_proxy_type)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -45,6 +54,30 @@ class EnvironmentArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> Optional[pulumi.Input['EnvironmentApiProxyType']]:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @api_proxy_type.setter
+    def api_proxy_type(self, value: Optional[pulumi.Input['EnvironmentApiProxyType']]):
+        pulumi.set(self, "api_proxy_type", value)
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input['EnvironmentDeploymentType']]:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input['EnvironmentDeploymentType']]):
+        pulumi.set(self, "deployment_type", value)
 
     @property
     @pulumi.getter
@@ -100,6 +133,8 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_proxy_type: Optional[pulumi.Input['EnvironmentApiProxyType']] = None,
+                 deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,6 +146,8 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['EnvironmentApiProxyType'] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -140,6 +177,8 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_proxy_type: Optional[pulumi.Input['EnvironmentApiProxyType']] = None,
+                 deployment_type: Optional[pulumi.Input['EnvironmentDeploymentType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -157,6 +196,8 @@ class Environment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
+            __props__.__dict__["api_proxy_type"] = api_proxy_type
+            __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -189,7 +230,9 @@ class Environment(pulumi.CustomResource):
 
         __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
+        __props__.__dict__["api_proxy_type"] = None
         __props__.__dict__["created_at"] = None
+        __props__.__dict__["deployment_type"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["last_modified_at"] = None
@@ -199,12 +242,28 @@ class Environment(pulumi.CustomResource):
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> pulumi.Output[str]:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
         Creation time of this environment as milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> pulumi.Output[str]:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+        """
+        return pulumi.get(self, "deployment_type")
 
     @property
     @pulumi.getter

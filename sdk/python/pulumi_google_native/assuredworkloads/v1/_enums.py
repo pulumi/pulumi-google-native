@@ -44,3 +44,5 @@ class WorkloadComplianceRegime(str, Enum):
     """Health Insurance Portability and Accountability Act controls"""
     HITRUST = "HITRUST"
     """Health Information Trust Alliance controls"""
+    EU_REGIONS_AND_SUPPORT = "EU_REGIONS_AND_SUPPORT"
+    """Assured Workloads For EU Regions and Support controls"""

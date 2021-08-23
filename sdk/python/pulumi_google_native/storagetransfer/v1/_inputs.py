@@ -17,8 +17,10 @@ __all__ = [
     'DateArgs',
     'GcsDataArgs',
     'HttpDataArgs',
+    'LoggingConfigArgs',
     'NotificationConfigArgs',
     'ObjectConditionsArgs',
+    'PosixFilesystemArgs',
     'ScheduleArgs',
     'TimeOfDayArgs',
     'TransferOptionsArgs',
@@ -75,7 +77,7 @@ class AwsS3DataArgs:
         :param pulumi.Input[str] bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param pulumi.Input['AwsAccessKeyArgs'] aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-        :param pulumi.Input[str] role_arn: Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
@@ -125,7 +127,7 @@ class AwsS3DataArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
         return pulumi.get(self, "role_arn")
 
@@ -345,6 +347,30 @@ class HttpDataArgs:
 
 
 @pulumi.input_type
+class LoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_onprem_gcs_transfer_logs: Optional[pulumi.Input[bool]] = None):
+        """
+        Logging configure.
+        :param pulumi.Input[bool] enable_onprem_gcs_transfer_logs: Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        """
+        if enable_onprem_gcs_transfer_logs is not None:
+            pulumi.set(__self__, "enable_onprem_gcs_transfer_logs", enable_onprem_gcs_transfer_logs)
+
+    @property
+    @pulumi.getter(name="enableOnpremGcsTransferLogs")
+    def enable_onprem_gcs_transfer_logs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        """
+        return pulumi.get(self, "enable_onprem_gcs_transfer_logs")
+
+    @enable_onprem_gcs_transfer_logs.setter
+    def enable_onprem_gcs_transfer_logs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_onprem_gcs_transfer_logs", value)
+
+
+@pulumi.input_type
 class NotificationConfigArgs:
     def __init__(__self__, *,
                  payload_format: pulumi.Input['NotificationConfigPayloadFormat'],
@@ -500,6 +526,30 @@ class ObjectConditionsArgs:
     @min_time_elapsed_since_last_modification.setter
     def min_time_elapsed_since_last_modification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_time_elapsed_since_last_modification", value)
+
+
+@pulumi.input_type
+class PosixFilesystemArgs:
+    def __init__(__self__, *,
+                 root_directory: Optional[pulumi.Input[str]] = None):
+        """
+        A POSIX filesystem data source or sink.
+        :param pulumi.Input[str] root_directory: Root directory path to the filesystem.
+        """
+        if root_directory is not None:
+            pulumi.set(__self__, "root_directory", root_directory)
+
+    @property
+    @pulumi.getter(name="rootDirectory")
+    def root_directory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root directory path to the filesystem.
+        """
+        return pulumi.get(self, "root_directory")
+
+    @root_directory.setter
+    def root_directory(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_directory", value)
 
 
 @pulumi.input_type
@@ -726,6 +776,7 @@ class TransferSpecArgs:
                  gcs_data_source: Optional[pulumi.Input['GcsDataArgs']] = None,
                  http_data_source: Optional[pulumi.Input['HttpDataArgs']] = None,
                  object_conditions: Optional[pulumi.Input['ObjectConditionsArgs']] = None,
+                 posix_data_source: Optional[pulumi.Input['PosixFilesystemArgs']] = None,
                  transfer_options: Optional[pulumi.Input['TransferOptionsArgs']] = None):
         """
         Configuration for running a transfer.
@@ -735,6 +786,7 @@ class TransferSpecArgs:
         :param pulumi.Input['GcsDataArgs'] gcs_data_source: A Cloud Storage data source.
         :param pulumi.Input['HttpDataArgs'] http_data_source: An HTTP URL data source.
         :param pulumi.Input['ObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+        :param pulumi.Input['PosixFilesystemArgs'] posix_data_source: A POSIX Filesystem data source.
         :param pulumi.Input['TransferOptionsArgs'] transfer_options: If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         """
         if aws_s3_data_source is not None:
@@ -749,6 +801,8 @@ class TransferSpecArgs:
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
             pulumi.set(__self__, "object_conditions", object_conditions)
+        if posix_data_source is not None:
+            pulumi.set(__self__, "posix_data_source", posix_data_source)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
 
@@ -823,6 +877,18 @@ class TransferSpecArgs:
     @object_conditions.setter
     def object_conditions(self, value: Optional[pulumi.Input['ObjectConditionsArgs']]):
         pulumi.set(self, "object_conditions", value)
+
+    @property
+    @pulumi.getter(name="posixDataSource")
+    def posix_data_source(self) -> Optional[pulumi.Input['PosixFilesystemArgs']]:
+        """
+        A POSIX Filesystem data source.
+        """
+        return pulumi.get(self, "posix_data_source")
+
+    @posix_data_source.setter
+    def posix_data_source(self, value: Optional[pulumi.Input['PosixFilesystemArgs']]):
+        pulumi.set(self, "posix_data_source", value)
 
     @property
     @pulumi.getter(name="transferOptions")

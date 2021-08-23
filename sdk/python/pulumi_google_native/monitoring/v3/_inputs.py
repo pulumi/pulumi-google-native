@@ -563,7 +563,7 @@ class DistributionCutArgs:
                  distribution_filter: Optional[pulumi.Input[str]] = None,
                  range: Optional[pulumi.Input['GoogleMonitoringV3RangeArgs']] = None):
         """
-        A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+        A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
         :param pulumi.Input[str] distribution_filter: A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
         :param pulumi.Input['GoogleMonitoringV3RangeArgs'] range: Range of values considered "good." For a one-sided range, set one bound to an infinite value.
         """
@@ -643,7 +643,7 @@ class GoogleMonitoringV3RangeArgs:
                  max: Optional[pulumi.Input[float]] = None,
                  min: Optional[pulumi.Input[float]] = None):
         """
-        Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+        Range of numerical values within min and max.
         :param pulumi.Input[float] max: Range maximum.
         :param pulumi.Input[float] min: Range minimum.
         """
@@ -1297,7 +1297,7 @@ class MetricRangeArgs:
                  range: Optional[pulumi.Input['GoogleMonitoringV3RangeArgs']] = None,
                  time_series: Optional[pulumi.Input[str]] = None):
         """
-        A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+        A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
         :param pulumi.Input['GoogleMonitoringV3RangeArgs'] range: Range of values considered "good." For a one-sided range, set one bound to an infinite value.
         :param pulumi.Input[str] time_series: A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
         """

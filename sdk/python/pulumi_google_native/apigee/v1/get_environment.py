@@ -17,10 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, created_at=None, description=None, display_name=None, last_modified_at=None, name=None, properties=None, state=None):
+    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, last_modified_at=None, name=None, properties=None, state=None):
+        if api_proxy_type and not isinstance(api_proxy_type, str):
+            raise TypeError("Expected argument 'api_proxy_type' to be a str")
+        pulumi.set(__self__, "api_proxy_type", api_proxy_type)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if deployment_type and not isinstance(deployment_type, str):
+            raise TypeError("Expected argument 'deployment_type' to be a str")
+        pulumi.set(__self__, "deployment_type", deployment_type)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -41,12 +47,28 @@ class GetEnvironmentResult:
         pulumi.set(__self__, "state", state)
 
     @property
+    @pulumi.getter(name="apiProxyType")
+    def api_proxy_type(self) -> str:
+        """
+        Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+        """
+        return pulumi.get(self, "api_proxy_type")
+
+    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
         Creation time of this environment as milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> str:
+        """
+        Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+        """
+        return pulumi.get(self, "deployment_type")
 
     @property
     @pulumi.getter
@@ -103,7 +125,9 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
         if False:
             yield self
         return GetEnvironmentResult(
+            api_proxy_type=self.api_proxy_type,
             created_at=self.created_at,
+            deployment_type=self.deployment_type,
             description=self.description,
             display_name=self.display_name,
             last_modified_at=self.last_modified_at,
@@ -128,7 +152,9 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
+        api_proxy_type=__ret__.api_proxy_type,
         created_at=__ret__.created_at,
+        deployment_type=__ret__.deployment_type,
         description=__ret__.description,
         display_name=__ret__.display_name,
         last_modified_at=__ret__.last_modified_at,

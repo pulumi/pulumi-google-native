@@ -2376,7 +2376,7 @@ class VideoStreamResponse(dict):
         :param float aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
         :param int b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
         :param bool b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-        :param int bitrate_bps: The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        :param int bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
         :param str codec: Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
         :param int crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param bool enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
@@ -2452,7 +2452,7 @@ class VideoStreamResponse(dict):
     @pulumi.getter(name="bitrateBps")
     def bitrate_bps(self) -> int:
         """
-        The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
         """
         return pulumi.get(self, "bitrate_bps")
 

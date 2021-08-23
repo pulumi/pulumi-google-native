@@ -13,6 +13,7 @@ __all__ = [
     'EndpointsApiServiceRolloutStrategy',
     'ErrorHandlerErrorCode',
     'IngressRuleAction',
+    'NetworkInstanceIpMode',
     'SslSettingsSslManagementType',
     'UrlMapAuthFailAction',
     'UrlMapLogin',
@@ -131,6 +132,18 @@ class IngressRuleAction(str, Enum):
     """Matching requests are allowed."""
     DENY = "DENY"
     """Matching requests are denied."""
+
+
+class NetworkInstanceIpMode(str, Enum):
+    """
+    The IP mode for instances. Only applicable in the App Engine flexible environment.
+    """
+    INSTANCE_IP_MODE_UNSPECIFIED = "INSTANCE_IP_MODE_UNSPECIFIED"
+    """Unspecified should be treated as EXTERNAL"""
+    EXTERNAL = "EXTERNAL"
+    """VMs should be created with external and internal IPs"""
+    INTERNAL = "INTERNAL"
+    """VMs should be created with internal IPs only"""
 
 
 class SslSettingsSslManagementType(str, Enum):

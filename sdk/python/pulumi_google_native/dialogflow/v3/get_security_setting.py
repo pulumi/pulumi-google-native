@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetSecuritySettingResult',
@@ -16,10 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecuritySettingResult:
-    def __init__(__self__, display_name=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_window_days=None):
+    def __init__(__self__, deidentify_template=None, display_name=None, insights_export_settings=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_window_days=None):
+        if deidentify_template and not isinstance(deidentify_template, str):
+            raise TypeError("Expected argument 'deidentify_template' to be a str")
+        pulumi.set(__self__, "deidentify_template", deidentify_template)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if insights_export_settings and not isinstance(insights_export_settings, dict):
+            raise TypeError("Expected argument 'insights_export_settings' to be a dict")
+        pulumi.set(__self__, "insights_export_settings", insights_export_settings)
         if inspect_template and not isinstance(inspect_template, str):
             raise TypeError("Expected argument 'inspect_template' to be a str")
         pulumi.set(__self__, "inspect_template", inspect_template)
@@ -40,6 +47,14 @@ class GetSecuritySettingResult:
         pulumi.set(__self__, "retention_window_days", retention_window_days)
 
     @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> str:
+        """
+        [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
@@ -48,10 +63,18 @@ class GetSecuritySettingResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="insightsExportSettings")
+    def insights_export_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse':
+        """
+        Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+        """
+        return pulumi.get(self, "insights_export_settings")
+
+    @property
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> str:
         """
-        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
         """
         return pulumi.get(self, "inspect_template")
 
@@ -102,7 +125,9 @@ class AwaitableGetSecuritySettingResult(GetSecuritySettingResult):
         if False:
             yield self
         return GetSecuritySettingResult(
+            deidentify_template=self.deidentify_template,
             display_name=self.display_name,
+            insights_export_settings=self.insights_export_settings,
             inspect_template=self.inspect_template,
             name=self.name,
             purge_data_types=self.purge_data_types,
@@ -129,7 +154,9 @@ def get_security_setting(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getSecuritySetting', __args__, opts=opts, typ=GetSecuritySettingResult).value
 
     return AwaitableGetSecuritySettingResult(
+        deidentify_template=__ret__.deidentify_template,
         display_name=__ret__.display_name,
+        insights_export_settings=__ret__.insights_export_settings,
         inspect_template=__ret__.inspect_template,
         name=__ret__.name,
         purge_data_types=__ret__.purge_data_types,
