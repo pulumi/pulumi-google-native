@@ -1074,6 +1074,175 @@ func (in *buildOptionsSubstitutionOptionPtr) ToBuildOptionsSubstitutionOptionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsSubstitutionOptionPtrOutput)
 }
 
+// See RepoType above.
+type GitFileSourceRepoType string
+
+const (
+	// The default, unknown repo type.
+	GitFileSourceRepoTypeUnknown = GitFileSourceRepoType("UNKNOWN")
+	// A Google Cloud Source Repositories-hosted repo.
+	GitFileSourceRepoTypeCloudSourceRepositories = GitFileSourceRepoType("CLOUD_SOURCE_REPOSITORIES")
+	// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
+	GitFileSourceRepoTypeGithub = GitFileSourceRepoType("GITHUB")
+)
+
+func (GitFileSourceRepoType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSourceRepoType)(nil)).Elem()
+}
+
+func (e GitFileSourceRepoType) ToGitFileSourceRepoTypeOutput() GitFileSourceRepoTypeOutput {
+	return pulumi.ToOutput(e).(GitFileSourceRepoTypeOutput)
+}
+
+func (e GitFileSourceRepoType) ToGitFileSourceRepoTypeOutputWithContext(ctx context.Context) GitFileSourceRepoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GitFileSourceRepoTypeOutput)
+}
+
+func (e GitFileSourceRepoType) ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput {
+	return e.ToGitFileSourceRepoTypePtrOutputWithContext(context.Background())
+}
+
+func (e GitFileSourceRepoType) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
+	return GitFileSourceRepoType(e).ToGitFileSourceRepoTypeOutputWithContext(ctx).ToGitFileSourceRepoTypePtrOutputWithContext(ctx)
+}
+
+func (e GitFileSourceRepoType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GitFileSourceRepoType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GitFileSourceRepoType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GitFileSourceRepoType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GitFileSourceRepoTypeOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourceRepoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSourceRepoType)(nil)).Elem()
+}
+
+func (o GitFileSourceRepoTypeOutput) ToGitFileSourceRepoTypeOutput() GitFileSourceRepoTypeOutput {
+	return o
+}
+
+func (o GitFileSourceRepoTypeOutput) ToGitFileSourceRepoTypeOutputWithContext(ctx context.Context) GitFileSourceRepoTypeOutput {
+	return o
+}
+
+func (o GitFileSourceRepoTypeOutput) ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput {
+	return o.ToGitFileSourceRepoTypePtrOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceRepoTypeOutput) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitFileSourceRepoType) *GitFileSourceRepoType {
+		return &v
+	}).(GitFileSourceRepoTypePtrOutput)
+}
+
+func (o GitFileSourceRepoTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceRepoTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GitFileSourceRepoType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GitFileSourceRepoTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceRepoTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GitFileSourceRepoType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitFileSourceRepoTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourceRepoTypePtrOutput) ElementType() reflect.Type {
+	return gitFileSourceRepoTypePtrType
+}
+
+func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput {
+	return o
+}
+
+func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
+	return o
+}
+
+func (o GitFileSourceRepoTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceRepoTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GitFileSourceRepoType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitFileSourceRepoTypePtrOutput) Elem() GitFileSourceRepoTypeOutput {
+	return o.ApplyT(func(v *GitFileSourceRepoType) GitFileSourceRepoType {
+		var ret GitFileSourceRepoType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GitFileSourceRepoTypeOutput)
+}
+
+// GitFileSourceRepoTypeInput is an input type that accepts GitFileSourceRepoTypeArgs and GitFileSourceRepoTypeOutput values.
+// You can construct a concrete instance of `GitFileSourceRepoTypeInput` via:
+//
+//          GitFileSourceRepoTypeArgs{...}
+type GitFileSourceRepoTypeInput interface {
+	pulumi.Input
+
+	ToGitFileSourceRepoTypeOutput() GitFileSourceRepoTypeOutput
+	ToGitFileSourceRepoTypeOutputWithContext(context.Context) GitFileSourceRepoTypeOutput
+}
+
+var gitFileSourceRepoTypePtrType = reflect.TypeOf((**GitFileSourceRepoType)(nil)).Elem()
+
+type GitFileSourceRepoTypePtrInput interface {
+	pulumi.Input
+
+	ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput
+	ToGitFileSourceRepoTypePtrOutputWithContext(context.Context) GitFileSourceRepoTypePtrOutput
+}
+
+type gitFileSourceRepoTypePtr string
+
+func GitFileSourceRepoTypePtr(v string) GitFileSourceRepoTypePtrInput {
+	return (*gitFileSourceRepoTypePtr)(&v)
+}
+
+func (*gitFileSourceRepoTypePtr) ElementType() reflect.Type {
+	return gitFileSourceRepoTypePtrType
+}
+
+func (in *gitFileSourceRepoTypePtr) ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput {
+	return pulumi.ToOutput(in).(GitFileSourceRepoTypePtrOutput)
+}
+
+func (in *gitFileSourceRepoTypePtr) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GitFileSourceRepoTypePtrOutput)
+}
+
 // See RepoType below.
 type GitRepoSourceRepoType string
 
@@ -1937,6 +2106,8 @@ func init() {
 	pulumi.RegisterOutputType(BuildOptionsSourceProvenanceHashItemArrayOutput{})
 	pulumi.RegisterOutputType(BuildOptionsSubstitutionOptionOutput{})
 	pulumi.RegisterOutputType(BuildOptionsSubstitutionOptionPtrOutput{})
+	pulumi.RegisterOutputType(GitFileSourceRepoTypeOutput{})
+	pulumi.RegisterOutputType(GitFileSourceRepoTypePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceRepoTypeOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceRepoTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigEgressOptionOutput{})

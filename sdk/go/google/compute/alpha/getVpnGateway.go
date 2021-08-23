@@ -42,6 +42,8 @@ type LookupVpnGatewayResult struct {
 	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces []VpnGatewayVpnGatewayInterfaceResponse `pulumi:"vpnInterfaces"`
 }

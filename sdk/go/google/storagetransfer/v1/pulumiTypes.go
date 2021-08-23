@@ -324,7 +324,7 @@ type AwsS3Data struct {
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
-	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 	RoleArn *string `pulumi:"roleArn"`
 }
 
@@ -347,7 +347,7 @@ type AwsS3DataArgs struct {
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 }
 
@@ -444,7 +444,7 @@ func (o AwsS3DataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 func (o AwsS3DataOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -497,7 +497,7 @@ func (o AwsS3DataPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 func (o AwsS3DataPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *string {
 		if v == nil {
@@ -515,7 +515,7 @@ type AwsS3DataResponse struct {
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
-	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -538,7 +538,7 @@ type AwsS3DataResponseArgs struct {
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -635,7 +635,7 @@ func (o AwsS3DataResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 func (o AwsS3DataResponseOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -688,7 +688,7 @@ func (o AwsS3DataResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
 func (o AwsS3DataResponsePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3DataResponse) *string {
 		if v == nil {
@@ -2266,6 +2266,274 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Logging configure.
+type LoggingConfig struct {
+	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	EnableOnpremGcsTransferLogs *bool `pulumi:"enableOnpremGcsTransferLogs"`
+}
+
+// LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
+// You can construct a concrete instance of `LoggingConfigInput` via:
+//
+//          LoggingConfigArgs{...}
+type LoggingConfigInput interface {
+	pulumi.Input
+
+	ToLoggingConfigOutput() LoggingConfigOutput
+	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
+}
+
+// Logging configure.
+type LoggingConfigArgs struct {
+	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	EnableOnpremGcsTransferLogs pulumi.BoolPtrInput `pulumi:"enableOnpremGcsTransferLogs"`
+}
+
+func (LoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutput() LoggingConfigOutput {
+	return i.ToLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput)
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput).ToLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// LoggingConfigPtrInput is an input type that accepts LoggingConfigArgs, LoggingConfigPtr and LoggingConfigPtrOutput values.
+// You can construct a concrete instance of `LoggingConfigPtrInput` via:
+//
+//          LoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigPtrOutput() LoggingConfigPtrOutput
+	ToLoggingConfigPtrOutputWithContext(context.Context) LoggingConfigPtrOutput
+}
+
+type loggingConfigPtrType LoggingConfigArgs
+
+func LoggingConfigPtr(v *LoggingConfigArgs) LoggingConfigPtrInput {
+	return (*loggingConfigPtrType)(v)
+}
+
+func (*loggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
+}
+
+// Logging configure.
+type LoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutput() LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *LoggingConfig {
+		return &v
+	}).(LoggingConfigPtrOutput)
+}
+
+// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+func (o LoggingConfigOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolPtrOutput)
+}
+
+type LoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig { return *v }).(LoggingConfigOutput)
+}
+
+// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+func (o LoggingConfigPtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOnpremGcsTransferLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Logging configure.
+type LoggingConfigResponse struct {
+	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	EnableOnpremGcsTransferLogs bool `pulumi:"enableOnpremGcsTransferLogs"`
+}
+
+// LoggingConfigResponseInput is an input type that accepts LoggingConfigResponseArgs and LoggingConfigResponseOutput values.
+// You can construct a concrete instance of `LoggingConfigResponseInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+type LoggingConfigResponseInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponseOutput() LoggingConfigResponseOutput
+	ToLoggingConfigResponseOutputWithContext(context.Context) LoggingConfigResponseOutput
+}
+
+// Logging configure.
+type LoggingConfigResponseArgs struct {
+	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	EnableOnpremGcsTransferLogs pulumi.BoolInput `pulumi:"enableOnpremGcsTransferLogs"`
+}
+
+func (LoggingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return i.ToLoggingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput)
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput).ToLoggingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// LoggingConfigResponsePtrInput is an input type that accepts LoggingConfigResponseArgs, LoggingConfigResponsePtr and LoggingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `LoggingConfigResponsePtrInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput
+	ToLoggingConfigResponsePtrOutputWithContext(context.Context) LoggingConfigResponsePtrOutput
+}
+
+type loggingConfigResponsePtrType LoggingConfigResponseArgs
+
+func LoggingConfigResponsePtr(v *LoggingConfigResponseArgs) LoggingConfigResponsePtrInput {
+	return (*loggingConfigResponsePtrType)(v)
+}
+
+func (*loggingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponsePtrOutput)
+}
+
+// Logging configure.
+type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+		return &v
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+func (o LoggingConfigResponseOutput) EnableOnpremGcsTransferLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolOutput)
+}
+
+type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+}
+
+// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+func (o LoggingConfigResponsePtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableOnpremGcsTransferLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfig struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
@@ -3065,6 +3333,274 @@ func (o ObjectConditionsResponsePtrOutput) MinTimeElapsedSinceLastModification()
 			return nil
 		}
 		return &v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystem struct {
+	// Root directory path to the filesystem.
+	RootDirectory *string `pulumi:"rootDirectory"`
+}
+
+// PosixFilesystemInput is an input type that accepts PosixFilesystemArgs and PosixFilesystemOutput values.
+// You can construct a concrete instance of `PosixFilesystemInput` via:
+//
+//          PosixFilesystemArgs{...}
+type PosixFilesystemInput interface {
+	pulumi.Input
+
+	ToPosixFilesystemOutput() PosixFilesystemOutput
+	ToPosixFilesystemOutputWithContext(context.Context) PosixFilesystemOutput
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystemArgs struct {
+	// Root directory path to the filesystem.
+	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
+}
+
+func (PosixFilesystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixFilesystem)(nil)).Elem()
+}
+
+func (i PosixFilesystemArgs) ToPosixFilesystemOutput() PosixFilesystemOutput {
+	return i.ToPosixFilesystemOutputWithContext(context.Background())
+}
+
+func (i PosixFilesystemArgs) ToPosixFilesystemOutputWithContext(ctx context.Context) PosixFilesystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemOutput)
+}
+
+func (i PosixFilesystemArgs) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput {
+	return i.ToPosixFilesystemPtrOutputWithContext(context.Background())
+}
+
+func (i PosixFilesystemArgs) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemOutput).ToPosixFilesystemPtrOutputWithContext(ctx)
+}
+
+// PosixFilesystemPtrInput is an input type that accepts PosixFilesystemArgs, PosixFilesystemPtr and PosixFilesystemPtrOutput values.
+// You can construct a concrete instance of `PosixFilesystemPtrInput` via:
+//
+//          PosixFilesystemArgs{...}
+//
+//  or:
+//
+//          nil
+type PosixFilesystemPtrInput interface {
+	pulumi.Input
+
+	ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput
+	ToPosixFilesystemPtrOutputWithContext(context.Context) PosixFilesystemPtrOutput
+}
+
+type posixFilesystemPtrType PosixFilesystemArgs
+
+func PosixFilesystemPtr(v *PosixFilesystemArgs) PosixFilesystemPtrInput {
+	return (*posixFilesystemPtrType)(v)
+}
+
+func (*posixFilesystemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosixFilesystem)(nil)).Elem()
+}
+
+func (i *posixFilesystemPtrType) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput {
+	return i.ToPosixFilesystemPtrOutputWithContext(context.Background())
+}
+
+func (i *posixFilesystemPtrType) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemPtrOutput)
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystemOutput struct{ *pulumi.OutputState }
+
+func (PosixFilesystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixFilesystem)(nil)).Elem()
+}
+
+func (o PosixFilesystemOutput) ToPosixFilesystemOutput() PosixFilesystemOutput {
+	return o
+}
+
+func (o PosixFilesystemOutput) ToPosixFilesystemOutputWithContext(ctx context.Context) PosixFilesystemOutput {
+	return o
+}
+
+func (o PosixFilesystemOutput) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput {
+	return o.ToPosixFilesystemPtrOutputWithContext(context.Background())
+}
+
+func (o PosixFilesystemOutput) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
+	return o.ApplyT(func(v PosixFilesystem) *PosixFilesystem {
+		return &v
+	}).(PosixFilesystemPtrOutput)
+}
+
+// Root directory path to the filesystem.
+func (o PosixFilesystemOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosixFilesystem) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+type PosixFilesystemPtrOutput struct{ *pulumi.OutputState }
+
+func (PosixFilesystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosixFilesystem)(nil)).Elem()
+}
+
+func (o PosixFilesystemPtrOutput) ToPosixFilesystemPtrOutput() PosixFilesystemPtrOutput {
+	return o
+}
+
+func (o PosixFilesystemPtrOutput) ToPosixFilesystemPtrOutputWithContext(ctx context.Context) PosixFilesystemPtrOutput {
+	return o
+}
+
+func (o PosixFilesystemPtrOutput) Elem() PosixFilesystemOutput {
+	return o.ApplyT(func(v *PosixFilesystem) PosixFilesystem { return *v }).(PosixFilesystemOutput)
+}
+
+// Root directory path to the filesystem.
+func (o PosixFilesystemPtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosixFilesystem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystemResponse struct {
+	// Root directory path to the filesystem.
+	RootDirectory string `pulumi:"rootDirectory"`
+}
+
+// PosixFilesystemResponseInput is an input type that accepts PosixFilesystemResponseArgs and PosixFilesystemResponseOutput values.
+// You can construct a concrete instance of `PosixFilesystemResponseInput` via:
+//
+//          PosixFilesystemResponseArgs{...}
+type PosixFilesystemResponseInput interface {
+	pulumi.Input
+
+	ToPosixFilesystemResponseOutput() PosixFilesystemResponseOutput
+	ToPosixFilesystemResponseOutputWithContext(context.Context) PosixFilesystemResponseOutput
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystemResponseArgs struct {
+	// Root directory path to the filesystem.
+	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
+}
+
+func (PosixFilesystemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixFilesystemResponse)(nil)).Elem()
+}
+
+func (i PosixFilesystemResponseArgs) ToPosixFilesystemResponseOutput() PosixFilesystemResponseOutput {
+	return i.ToPosixFilesystemResponseOutputWithContext(context.Background())
+}
+
+func (i PosixFilesystemResponseArgs) ToPosixFilesystemResponseOutputWithContext(ctx context.Context) PosixFilesystemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemResponseOutput)
+}
+
+func (i PosixFilesystemResponseArgs) ToPosixFilesystemResponsePtrOutput() PosixFilesystemResponsePtrOutput {
+	return i.ToPosixFilesystemResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PosixFilesystemResponseArgs) ToPosixFilesystemResponsePtrOutputWithContext(ctx context.Context) PosixFilesystemResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemResponseOutput).ToPosixFilesystemResponsePtrOutputWithContext(ctx)
+}
+
+// PosixFilesystemResponsePtrInput is an input type that accepts PosixFilesystemResponseArgs, PosixFilesystemResponsePtr and PosixFilesystemResponsePtrOutput values.
+// You can construct a concrete instance of `PosixFilesystemResponsePtrInput` via:
+//
+//          PosixFilesystemResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PosixFilesystemResponsePtrInput interface {
+	pulumi.Input
+
+	ToPosixFilesystemResponsePtrOutput() PosixFilesystemResponsePtrOutput
+	ToPosixFilesystemResponsePtrOutputWithContext(context.Context) PosixFilesystemResponsePtrOutput
+}
+
+type posixFilesystemResponsePtrType PosixFilesystemResponseArgs
+
+func PosixFilesystemResponsePtr(v *PosixFilesystemResponseArgs) PosixFilesystemResponsePtrInput {
+	return (*posixFilesystemResponsePtrType)(v)
+}
+
+func (*posixFilesystemResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosixFilesystemResponse)(nil)).Elem()
+}
+
+func (i *posixFilesystemResponsePtrType) ToPosixFilesystemResponsePtrOutput() PosixFilesystemResponsePtrOutput {
+	return i.ToPosixFilesystemResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *posixFilesystemResponsePtrType) ToPosixFilesystemResponsePtrOutputWithContext(ctx context.Context) PosixFilesystemResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixFilesystemResponsePtrOutput)
+}
+
+// A POSIX filesystem data source or sink.
+type PosixFilesystemResponseOutput struct{ *pulumi.OutputState }
+
+func (PosixFilesystemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixFilesystemResponse)(nil)).Elem()
+}
+
+func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponseOutput() PosixFilesystemResponseOutput {
+	return o
+}
+
+func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponseOutputWithContext(ctx context.Context) PosixFilesystemResponseOutput {
+	return o
+}
+
+func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponsePtrOutput() PosixFilesystemResponsePtrOutput {
+	return o.ToPosixFilesystemResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponsePtrOutputWithContext(ctx context.Context) PosixFilesystemResponsePtrOutput {
+	return o.ApplyT(func(v PosixFilesystemResponse) *PosixFilesystemResponse {
+		return &v
+	}).(PosixFilesystemResponsePtrOutput)
+}
+
+// Root directory path to the filesystem.
+func (o PosixFilesystemResponseOutput) RootDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v PosixFilesystemResponse) string { return v.RootDirectory }).(pulumi.StringOutput)
+}
+
+type PosixFilesystemResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PosixFilesystemResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosixFilesystemResponse)(nil)).Elem()
+}
+
+func (o PosixFilesystemResponsePtrOutput) ToPosixFilesystemResponsePtrOutput() PosixFilesystemResponsePtrOutput {
+	return o
+}
+
+func (o PosixFilesystemResponsePtrOutput) ToPosixFilesystemResponsePtrOutputWithContext(ctx context.Context) PosixFilesystemResponsePtrOutput {
+	return o
+}
+
+func (o PosixFilesystemResponsePtrOutput) Elem() PosixFilesystemResponseOutput {
+	return o.ApplyT(func(v *PosixFilesystemResponse) PosixFilesystemResponse { return *v }).(PosixFilesystemResponseOutput)
+}
+
+// Root directory path to the filesystem.
+func (o PosixFilesystemResponsePtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosixFilesystemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RootDirectory
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4228,6 +4764,8 @@ type TransferSpec struct {
 	HttpDataSource *HttpData `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions *ObjectConditions `pulumi:"objectConditions"`
+	// A POSIX Filesystem data source.
+	PosixDataSource *PosixFilesystem `pulumi:"posixDataSource"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions *TransferOptions `pulumi:"transferOptions"`
 }
@@ -4257,6 +4795,8 @@ type TransferSpecArgs struct {
 	HttpDataSource HttpDataPtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsPtrInput `pulumi:"objectConditions"`
+	// A POSIX Filesystem data source.
+	PosixDataSource PosixFilesystemPtrInput `pulumi:"posixDataSource"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsPtrInput `pulumi:"transferOptions"`
 }
@@ -4369,6 +4909,11 @@ func (o TransferSpecOutput) ObjectConditions() ObjectConditionsPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *ObjectConditions { return v.ObjectConditions }).(ObjectConditionsPtrOutput)
 }
 
+// A POSIX Filesystem data source.
+func (o TransferSpecOutput) PosixDataSource() PosixFilesystemPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *PosixFilesystem { return v.PosixDataSource }).(PosixFilesystemPtrOutput)
+}
+
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 func (o TransferSpecOutput) TransferOptions() TransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *TransferOptions { return v.TransferOptions }).(TransferOptionsPtrOutput)
@@ -4452,6 +4997,16 @@ func (o TransferSpecPtrOutput) ObjectConditions() ObjectConditionsPtrOutput {
 	}).(ObjectConditionsPtrOutput)
 }
 
+// A POSIX Filesystem data source.
+func (o TransferSpecPtrOutput) PosixDataSource() PosixFilesystemPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *PosixFilesystem {
+		if v == nil {
+			return nil
+		}
+		return v.PosixDataSource
+	}).(PosixFilesystemPtrOutput)
+}
+
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 func (o TransferSpecPtrOutput) TransferOptions() TransferOptionsPtrOutput {
 	return o.ApplyT(func(v *TransferSpec) *TransferOptions {
@@ -4476,6 +5031,8 @@ type TransferSpecResponse struct {
 	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsResponse `pulumi:"objectConditions"`
+	// A POSIX Filesystem data source.
+	PosixDataSource PosixFilesystemResponse `pulumi:"posixDataSource"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsResponse `pulumi:"transferOptions"`
 }
@@ -4505,6 +5062,8 @@ type TransferSpecResponseArgs struct {
 	HttpDataSource HttpDataResponseInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsResponseInput `pulumi:"objectConditions"`
+	// A POSIX Filesystem data source.
+	PosixDataSource PosixFilesystemResponseInput `pulumi:"posixDataSource"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsResponseInput `pulumi:"transferOptions"`
 }
@@ -4617,6 +5176,11 @@ func (o TransferSpecResponseOutput) ObjectConditions() ObjectConditionsResponseO
 	return o.ApplyT(func(v TransferSpecResponse) ObjectConditionsResponse { return v.ObjectConditions }).(ObjectConditionsResponseOutput)
 }
 
+// A POSIX Filesystem data source.
+func (o TransferSpecResponseOutput) PosixDataSource() PosixFilesystemResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) PosixFilesystemResponse { return v.PosixDataSource }).(PosixFilesystemResponseOutput)
+}
+
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 func (o TransferSpecResponseOutput) TransferOptions() TransferOptionsResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) TransferOptionsResponse { return v.TransferOptions }).(TransferOptionsResponseOutput)
@@ -4700,6 +5264,16 @@ func (o TransferSpecResponsePtrOutput) ObjectConditions() ObjectConditionsRespon
 	}).(ObjectConditionsResponsePtrOutput)
 }
 
+// A POSIX Filesystem data source.
+func (o TransferSpecResponsePtrOutput) PosixDataSource() PosixFilesystemResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *PosixFilesystemResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PosixDataSource
+	}).(PosixFilesystemResponsePtrOutput)
+}
+
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 func (o TransferSpecResponsePtrOutput) TransferOptions() TransferOptionsResponsePtrOutput {
 	return o.ApplyT(func(v *TransferSpecResponse) *TransferOptionsResponse {
@@ -4739,6 +5313,10 @@ func init() {
 	pulumi.RegisterOutputType(HttpDataPtrOutput{})
 	pulumi.RegisterOutputType(HttpDataResponseOutput{})
 	pulumi.RegisterOutputType(HttpDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigOutput{})
+	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
@@ -4747,6 +5325,10 @@ func init() {
 	pulumi.RegisterOutputType(ObjectConditionsPtrOutput{})
 	pulumi.RegisterOutputType(ObjectConditionsResponseOutput{})
 	pulumi.RegisterOutputType(ObjectConditionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PosixFilesystemOutput{})
+	pulumi.RegisterOutputType(PosixFilesystemPtrOutput{})
+	pulumi.RegisterOutputType(PosixFilesystemResponseOutput{})
+	pulumi.RegisterOutputType(PosixFilesystemResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})

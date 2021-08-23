@@ -28,6 +28,8 @@ type Note struct {
 	Deployable DeployableResponseOutput `pulumi:"deployable"`
 	// A note describing a provider/analysis type.
 	Discovery DiscoveryResponseOutput `pulumi:"discovery"`
+	// A note describing a dsse attestation note.
+	DsseAttestation DSSEAttestationNoteResponseOutput `pulumi:"dsseAttestation"`
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
 	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
@@ -40,8 +42,16 @@ type Note struct {
 	Package PackageResponseOutput `pulumi:"package"`
 	// URLs associated with this note
 	RelatedUrl RelatedUrlResponseArrayOutput `pulumi:"relatedUrl"`
+	// A note describing a software bill of materials.
+	Sbom DocumentNoteResponseOutput `pulumi:"sbom"`
 	// A one sentence description of this `Note`.
 	ShortDescription pulumi.StringOutput `pulumi:"shortDescription"`
+	// A note describing an SPDX File.
+	SpdxFile FileNoteResponseOutput `pulumi:"spdxFile"`
+	// A note describing an SPDX Package.
+	SpdxPackage PackageNoteResponseOutput `pulumi:"spdxPackage"`
+	// A note describing a relationship between SPDX elements.
+	SpdxRelationship RelationshipNoteResponseOutput `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A note describing an upgrade.
@@ -101,6 +111,8 @@ type noteArgs struct {
 	Deployable *Deployable `pulumi:"deployable"`
 	// A note describing a provider/analysis type.
 	Discovery *Discovery `pulumi:"discovery"`
+	// A note describing a dsse attestation note.
+	DsseAttestation *DSSEAttestationNote `pulumi:"dsseAttestation"`
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// A detailed description of this `Note`.
@@ -113,8 +125,16 @@ type noteArgs struct {
 	Project *string  `pulumi:"project"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
+	// A note describing a software bill of materials.
+	Sbom *DocumentNote `pulumi:"sbom"`
 	// A one sentence description of this `Note`.
 	ShortDescription *string `pulumi:"shortDescription"`
+	// A note describing an SPDX File.
+	SpdxFile *FileNote `pulumi:"spdxFile"`
+	// A note describing an SPDX Package.
+	SpdxPackage *PackageNote `pulumi:"spdxPackage"`
+	// A note describing a relationship between SPDX elements.
+	SpdxRelationship *RelationshipNote `pulumi:"spdxRelationship"`
 	// A note describing an upgrade.
 	Upgrade *UpgradeNote `pulumi:"upgrade"`
 	// A package vulnerability type of note.
@@ -135,6 +155,8 @@ type NoteArgs struct {
 	Deployable DeployablePtrInput
 	// A note describing a provider/analysis type.
 	Discovery DiscoveryPtrInput
+	// A note describing a dsse attestation note.
+	DsseAttestation DSSEAttestationNotePtrInput
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
 	// A detailed description of this `Note`.
@@ -147,8 +169,16 @@ type NoteArgs struct {
 	Project pulumi.StringPtrInput
 	// URLs associated with this note
 	RelatedUrl RelatedUrlArrayInput
+	// A note describing a software bill of materials.
+	Sbom DocumentNotePtrInput
 	// A one sentence description of this `Note`.
 	ShortDescription pulumi.StringPtrInput
+	// A note describing an SPDX File.
+	SpdxFile FileNotePtrInput
+	// A note describing an SPDX Package.
+	SpdxPackage PackageNotePtrInput
+	// A note describing a relationship between SPDX elements.
+	SpdxRelationship RelationshipNotePtrInput
 	// A note describing an upgrade.
 	Upgrade UpgradeNotePtrInput
 	// A package vulnerability type of note.

@@ -23,6 +23,8 @@ type LookupTargetSslProxyArgs struct {
 }
 
 type LookupTargetSslProxyResult struct {
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	CertificateMap string `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.

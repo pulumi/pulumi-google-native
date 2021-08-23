@@ -3570,6 +3570,8 @@ type CsvOptions struct {
 	Encoding *string `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
+	// [Optional] An custom string that will represent a NULL value in CSV import data.
+	NullMarker *string `pulumi:"nullMarker"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote *string `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -3596,6 +3598,8 @@ type CsvOptionsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	// [Optional] An custom string that will represent a NULL value in CSV import data.
+	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote pulumi.StringPtrInput `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -3699,6 +3703,11 @@ func (o CsvOptionsOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
+// [Optional] An custom string that will represent a NULL value in CSV import data.
+func (o CsvOptionsOutput) NullMarker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CsvOptions) *string { return v.NullMarker }).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 func (o CsvOptionsOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CsvOptions) *string { return v.Quote }).(pulumi.StringPtrOutput)
@@ -3767,6 +3776,16 @@ func (o CsvOptionsPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Optional] An custom string that will represent a NULL value in CSV import data.
+func (o CsvOptionsPtrOutput) NullMarker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NullMarker
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 func (o CsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CsvOptions) *string {
@@ -3796,6 +3815,8 @@ type CsvOptionsResponse struct {
 	Encoding string `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
+	// [Optional] An custom string that will represent a NULL value in CSV import data.
+	NullMarker string `pulumi:"nullMarker"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote string `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -3822,6 +3843,8 @@ type CsvOptionsResponseArgs struct {
 	Encoding pulumi.StringInput `pulumi:"encoding"`
 	// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
 	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
+	// [Optional] An custom string that will represent a NULL value in CSV import data.
+	NullMarker pulumi.StringInput `pulumi:"nullMarker"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote pulumi.StringInput `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -3925,6 +3948,11 @@ func (o CsvOptionsResponseOutput) FieldDelimiter() pulumi.StringOutput {
 	return o.ApplyT(func(v CsvOptionsResponse) string { return v.FieldDelimiter }).(pulumi.StringOutput)
 }
 
+// [Optional] An custom string that will represent a NULL value in CSV import data.
+func (o CsvOptionsResponseOutput) NullMarker() pulumi.StringOutput {
+	return o.ApplyT(func(v CsvOptionsResponse) string { return v.NullMarker }).(pulumi.StringOutput)
+}
+
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 func (o CsvOptionsResponseOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v CsvOptionsResponse) string { return v.Quote }).(pulumi.StringOutput)
@@ -3990,6 +4018,16 @@ func (o CsvOptionsResponsePtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.FieldDelimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Optional] An custom string that will represent a NULL value in CSV import data.
+func (o CsvOptionsResponsePtrOutput) NullMarker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CsvOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NullMarker
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20259,6 +20297,8 @@ func (o StreamingbufferResponsePtrOutput) OldestEntryTime() pulumi.StringPtrOutp
 type TableFieldSchema struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories *TableFieldSchemaCategories `pulumi:"categories"`
+	// Optional. Collation specification of the field. It only can be set on string type field.
+	CollationSpec *string `pulumi:"collationSpec"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -20292,6 +20332,8 @@ type TableFieldSchemaInput interface {
 type TableFieldSchemaArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories TableFieldSchemaCategoriesPtrInput `pulumi:"categories"`
+	// Optional. Collation specification of the field. It only can be set on string type field.
+	CollationSpec pulumi.StringPtrInput `pulumi:"collationSpec"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -20365,6 +20407,11 @@ func (o TableFieldSchemaOutput) ToTableFieldSchemaOutputWithContext(ctx context.
 // [Optional] The categories attached to this field, used for field-level access control.
 func (o TableFieldSchemaOutput) Categories() TableFieldSchemaCategoriesPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *TableFieldSchemaCategories { return v.Categories }).(TableFieldSchemaCategoriesPtrOutput)
+}
+
+// Optional. Collation specification of the field. It only can be set on string type field.
+func (o TableFieldSchemaOutput) CollationSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *string { return v.CollationSpec }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.
@@ -20806,6 +20853,8 @@ func (o TableFieldSchemaPolicyTagsResponseOutput) Names() pulumi.StringArrayOutp
 type TableFieldSchemaResponse struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories TableFieldSchemaCategoriesResponse `pulumi:"categories"`
+	// Optional. Collation specification of the field. It only can be set on string type field.
+	CollationSpec string `pulumi:"collationSpec"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -20839,6 +20888,8 @@ type TableFieldSchemaResponseInput interface {
 type TableFieldSchemaResponseArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories TableFieldSchemaCategoriesResponseInput `pulumi:"categories"`
+	// Optional. Collation specification of the field. It only can be set on string type field.
+	CollationSpec pulumi.StringInput `pulumi:"collationSpec"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -20912,6 +20963,11 @@ func (o TableFieldSchemaResponseOutput) ToTableFieldSchemaResponseOutputWithCont
 // [Optional] The categories attached to this field, used for field-level access control.
 func (o TableFieldSchemaResponseOutput) Categories() TableFieldSchemaCategoriesResponseOutput {
 	return o.ApplyT(func(v TableFieldSchemaResponse) TableFieldSchemaCategoriesResponse { return v.Categories }).(TableFieldSchemaCategoriesResponseOutput)
+}
+
+// Optional. Collation specification of the field. It only can be set on string type field.
+func (o TableFieldSchemaResponseOutput) CollationSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.CollationSpec }).(pulumi.StringOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.

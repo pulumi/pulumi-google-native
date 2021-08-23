@@ -948,6 +948,274 @@ func (o ContainerImageResponseArrayOutput) Index(i pulumi.IntInput) ContainerIma
 	}).(ContainerImageResponseOutput)
 }
 
+// Parameters used in Dataproc JobType executions.
+type DataprocParameters struct {
+	// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+	Cluster *string `pulumi:"cluster"`
+}
+
+// DataprocParametersInput is an input type that accepts DataprocParametersArgs and DataprocParametersOutput values.
+// You can construct a concrete instance of `DataprocParametersInput` via:
+//
+//          DataprocParametersArgs{...}
+type DataprocParametersInput interface {
+	pulumi.Input
+
+	ToDataprocParametersOutput() DataprocParametersOutput
+	ToDataprocParametersOutputWithContext(context.Context) DataprocParametersOutput
+}
+
+// Parameters used in Dataproc JobType executions.
+type DataprocParametersArgs struct {
+	// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+}
+
+func (DataprocParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocParameters)(nil)).Elem()
+}
+
+func (i DataprocParametersArgs) ToDataprocParametersOutput() DataprocParametersOutput {
+	return i.ToDataprocParametersOutputWithContext(context.Background())
+}
+
+func (i DataprocParametersArgs) ToDataprocParametersOutputWithContext(ctx context.Context) DataprocParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersOutput)
+}
+
+func (i DataprocParametersArgs) ToDataprocParametersPtrOutput() DataprocParametersPtrOutput {
+	return i.ToDataprocParametersPtrOutputWithContext(context.Background())
+}
+
+func (i DataprocParametersArgs) ToDataprocParametersPtrOutputWithContext(ctx context.Context) DataprocParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersOutput).ToDataprocParametersPtrOutputWithContext(ctx)
+}
+
+// DataprocParametersPtrInput is an input type that accepts DataprocParametersArgs, DataprocParametersPtr and DataprocParametersPtrOutput values.
+// You can construct a concrete instance of `DataprocParametersPtrInput` via:
+//
+//          DataprocParametersArgs{...}
+//
+//  or:
+//
+//          nil
+type DataprocParametersPtrInput interface {
+	pulumi.Input
+
+	ToDataprocParametersPtrOutput() DataprocParametersPtrOutput
+	ToDataprocParametersPtrOutputWithContext(context.Context) DataprocParametersPtrOutput
+}
+
+type dataprocParametersPtrType DataprocParametersArgs
+
+func DataprocParametersPtr(v *DataprocParametersArgs) DataprocParametersPtrInput {
+	return (*dataprocParametersPtrType)(v)
+}
+
+func (*dataprocParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocParameters)(nil)).Elem()
+}
+
+func (i *dataprocParametersPtrType) ToDataprocParametersPtrOutput() DataprocParametersPtrOutput {
+	return i.ToDataprocParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *dataprocParametersPtrType) ToDataprocParametersPtrOutputWithContext(ctx context.Context) DataprocParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersPtrOutput)
+}
+
+// Parameters used in Dataproc JobType executions.
+type DataprocParametersOutput struct{ *pulumi.OutputState }
+
+func (DataprocParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocParameters)(nil)).Elem()
+}
+
+func (o DataprocParametersOutput) ToDataprocParametersOutput() DataprocParametersOutput {
+	return o
+}
+
+func (o DataprocParametersOutput) ToDataprocParametersOutputWithContext(ctx context.Context) DataprocParametersOutput {
+	return o
+}
+
+func (o DataprocParametersOutput) ToDataprocParametersPtrOutput() DataprocParametersPtrOutput {
+	return o.ToDataprocParametersPtrOutputWithContext(context.Background())
+}
+
+func (o DataprocParametersOutput) ToDataprocParametersPtrOutputWithContext(ctx context.Context) DataprocParametersPtrOutput {
+	return o.ApplyT(func(v DataprocParameters) *DataprocParameters {
+		return &v
+	}).(DataprocParametersPtrOutput)
+}
+
+// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+func (o DataprocParametersOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataprocParameters) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+type DataprocParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (DataprocParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocParameters)(nil)).Elem()
+}
+
+func (o DataprocParametersPtrOutput) ToDataprocParametersPtrOutput() DataprocParametersPtrOutput {
+	return o
+}
+
+func (o DataprocParametersPtrOutput) ToDataprocParametersPtrOutputWithContext(ctx context.Context) DataprocParametersPtrOutput {
+	return o
+}
+
+func (o DataprocParametersPtrOutput) Elem() DataprocParametersOutput {
+	return o.ApplyT(func(v *DataprocParameters) DataprocParameters { return *v }).(DataprocParametersOutput)
+}
+
+// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+func (o DataprocParametersPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataprocParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters used in Dataproc JobType executions.
+type DataprocParametersResponse struct {
+	// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+	Cluster string `pulumi:"cluster"`
+}
+
+// DataprocParametersResponseInput is an input type that accepts DataprocParametersResponseArgs and DataprocParametersResponseOutput values.
+// You can construct a concrete instance of `DataprocParametersResponseInput` via:
+//
+//          DataprocParametersResponseArgs{...}
+type DataprocParametersResponseInput interface {
+	pulumi.Input
+
+	ToDataprocParametersResponseOutput() DataprocParametersResponseOutput
+	ToDataprocParametersResponseOutputWithContext(context.Context) DataprocParametersResponseOutput
+}
+
+// Parameters used in Dataproc JobType executions.
+type DataprocParametersResponseArgs struct {
+	// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+}
+
+func (DataprocParametersResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocParametersResponse)(nil)).Elem()
+}
+
+func (i DataprocParametersResponseArgs) ToDataprocParametersResponseOutput() DataprocParametersResponseOutput {
+	return i.ToDataprocParametersResponseOutputWithContext(context.Background())
+}
+
+func (i DataprocParametersResponseArgs) ToDataprocParametersResponseOutputWithContext(ctx context.Context) DataprocParametersResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersResponseOutput)
+}
+
+func (i DataprocParametersResponseArgs) ToDataprocParametersResponsePtrOutput() DataprocParametersResponsePtrOutput {
+	return i.ToDataprocParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DataprocParametersResponseArgs) ToDataprocParametersResponsePtrOutputWithContext(ctx context.Context) DataprocParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersResponseOutput).ToDataprocParametersResponsePtrOutputWithContext(ctx)
+}
+
+// DataprocParametersResponsePtrInput is an input type that accepts DataprocParametersResponseArgs, DataprocParametersResponsePtr and DataprocParametersResponsePtrOutput values.
+// You can construct a concrete instance of `DataprocParametersResponsePtrInput` via:
+//
+//          DataprocParametersResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DataprocParametersResponsePtrInput interface {
+	pulumi.Input
+
+	ToDataprocParametersResponsePtrOutput() DataprocParametersResponsePtrOutput
+	ToDataprocParametersResponsePtrOutputWithContext(context.Context) DataprocParametersResponsePtrOutput
+}
+
+type dataprocParametersResponsePtrType DataprocParametersResponseArgs
+
+func DataprocParametersResponsePtr(v *DataprocParametersResponseArgs) DataprocParametersResponsePtrInput {
+	return (*dataprocParametersResponsePtrType)(v)
+}
+
+func (*dataprocParametersResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocParametersResponse)(nil)).Elem()
+}
+
+func (i *dataprocParametersResponsePtrType) ToDataprocParametersResponsePtrOutput() DataprocParametersResponsePtrOutput {
+	return i.ToDataprocParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dataprocParametersResponsePtrType) ToDataprocParametersResponsePtrOutputWithContext(ctx context.Context) DataprocParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataprocParametersResponsePtrOutput)
+}
+
+// Parameters used in Dataproc JobType executions.
+type DataprocParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (DataprocParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataprocParametersResponse)(nil)).Elem()
+}
+
+func (o DataprocParametersResponseOutput) ToDataprocParametersResponseOutput() DataprocParametersResponseOutput {
+	return o
+}
+
+func (o DataprocParametersResponseOutput) ToDataprocParametersResponseOutputWithContext(ctx context.Context) DataprocParametersResponseOutput {
+	return o
+}
+
+func (o DataprocParametersResponseOutput) ToDataprocParametersResponsePtrOutput() DataprocParametersResponsePtrOutput {
+	return o.ToDataprocParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DataprocParametersResponseOutput) ToDataprocParametersResponsePtrOutputWithContext(ctx context.Context) DataprocParametersResponsePtrOutput {
+	return o.ApplyT(func(v DataprocParametersResponse) *DataprocParametersResponse {
+		return &v
+	}).(DataprocParametersResponsePtrOutput)
+}
+
+// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+func (o DataprocParametersResponseOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v DataprocParametersResponse) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+type DataprocParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataprocParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataprocParametersResponse)(nil)).Elem()
+}
+
+func (o DataprocParametersResponsePtrOutput) ToDataprocParametersResponsePtrOutput() DataprocParametersResponsePtrOutput {
+	return o
+}
+
+func (o DataprocParametersResponsePtrOutput) ToDataprocParametersResponsePtrOutputWithContext(ctx context.Context) DataprocParametersResponsePtrOutput {
+	return o
+}
+
+func (o DataprocParametersResponsePtrOutput) Elem() DataprocParametersResponseOutput {
+	return o.ApplyT(func(v *DataprocParametersResponse) DataprocParametersResponse { return *v }).(DataprocParametersResponseOutput)
+}
+
+// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+func (o DataprocParametersResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataprocParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
 // An instance-attached disk resource.
 type DiskResponse struct {
 	// Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -1593,8 +1861,12 @@ type ExecutionTemplate struct {
 	AcceleratorConfig *SchedulerAcceleratorConfig `pulumi:"acceleratorConfig"`
 	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
 	ContainerImageUri *string `pulumi:"containerImageUri"`
+	// Parameters used in Dataproc JobType executions.
+	DataprocParameters *DataprocParameters `pulumi:"dataprocParameters"`
 	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile *string `pulumi:"inputNotebookFile"`
+	// The type of Job to be used on this execution.
+	JobType *ExecutionTemplateJobType `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
@@ -1626,8 +1898,12 @@ type ExecutionTemplateArgs struct {
 	AcceleratorConfig SchedulerAcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
 	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
 	ContainerImageUri pulumi.StringPtrInput `pulumi:"containerImageUri"`
+	// Parameters used in Dataproc JobType executions.
+	DataprocParameters DataprocParametersPtrInput `pulumi:"dataprocParameters"`
 	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile pulumi.StringPtrInput `pulumi:"inputNotebookFile"`
+	// The type of Job to be used on this execution.
+	JobType ExecutionTemplateJobTypePtrInput `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
@@ -1730,9 +2006,19 @@ func (o ExecutionTemplateOutput) ContainerImageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ContainerImageUri }).(pulumi.StringPtrOutput)
 }
 
+// Parameters used in Dataproc JobType executions.
+func (o ExecutionTemplateOutput) DataprocParameters() DataprocParametersPtrOutput {
+	return o.ApplyT(func(v ExecutionTemplate) *DataprocParameters { return v.DataprocParameters }).(DataprocParametersPtrOutput)
+}
+
 // Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.InputNotebookFile }).(pulumi.StringPtrOutput)
+}
+
+// The type of Job to be used on this execution.
+func (o ExecutionTemplateOutput) JobType() ExecutionTemplateJobTypePtrOutput {
+	return o.ApplyT(func(v ExecutionTemplate) *ExecutionTemplateJobType { return v.JobType }).(ExecutionTemplateJobTypePtrOutput)
 }
 
 // Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
@@ -1803,6 +2089,16 @@ func (o ExecutionTemplatePtrOutput) ContainerImageUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters used in Dataproc JobType executions.
+func (o ExecutionTemplatePtrOutput) DataprocParameters() DataprocParametersPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *DataprocParameters {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocParameters
+	}).(DataprocParametersPtrOutput)
+}
+
 // Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplatePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
@@ -1811,6 +2107,16 @@ func (o ExecutionTemplatePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
 		}
 		return v.InputNotebookFile
 	}).(pulumi.StringPtrOutput)
+}
+
+// The type of Job to be used on this execution.
+func (o ExecutionTemplatePtrOutput) JobType() ExecutionTemplateJobTypePtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *ExecutionTemplateJobType {
+		if v == nil {
+			return nil
+		}
+		return v.JobType
+	}).(ExecutionTemplateJobTypePtrOutput)
 }
 
 // Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
@@ -1879,8 +2185,12 @@ type ExecutionTemplateResponse struct {
 	AcceleratorConfig SchedulerAcceleratorConfigResponse `pulumi:"acceleratorConfig"`
 	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
 	ContainerImageUri string `pulumi:"containerImageUri"`
+	// Parameters used in Dataproc JobType executions.
+	DataprocParameters DataprocParametersResponse `pulumi:"dataprocParameters"`
 	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile string `pulumi:"inputNotebookFile"`
+	// The type of Job to be used on this execution.
+	JobType string `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
@@ -1912,8 +2222,12 @@ type ExecutionTemplateResponseArgs struct {
 	AcceleratorConfig SchedulerAcceleratorConfigResponseInput `pulumi:"acceleratorConfig"`
 	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
 	ContainerImageUri pulumi.StringInput `pulumi:"containerImageUri"`
+	// Parameters used in Dataproc JobType executions.
+	DataprocParameters DataprocParametersResponseInput `pulumi:"dataprocParameters"`
 	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 	InputNotebookFile pulumi.StringInput `pulumi:"inputNotebookFile"`
+	// The type of Job to be used on this execution.
+	JobType pulumi.StringInput `pulumi:"jobType"`
 	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
@@ -2016,9 +2330,19 @@ func (o ExecutionTemplateResponseOutput) ContainerImageUri() pulumi.StringOutput
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ContainerImageUri }).(pulumi.StringOutput)
 }
 
+// Parameters used in Dataproc JobType executions.
+func (o ExecutionTemplateResponseOutput) DataprocParameters() DataprocParametersResponseOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) DataprocParametersResponse { return v.DataprocParameters }).(DataprocParametersResponseOutput)
+}
+
 // Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateResponseOutput) InputNotebookFile() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.InputNotebookFile }).(pulumi.StringOutput)
+}
+
+// The type of Job to be used on this execution.
+func (o ExecutionTemplateResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.JobType }).(pulumi.StringOutput)
 }
 
 // Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
@@ -2089,6 +2413,16 @@ func (o ExecutionTemplateResponsePtrOutput) ContainerImageUri() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters used in Dataproc JobType executions.
+func (o ExecutionTemplateResponsePtrOutput) DataprocParameters() DataprocParametersResponsePtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *DataprocParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DataprocParameters
+	}).(DataprocParametersResponsePtrOutput)
+}
+
 // Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
 func (o ExecutionTemplateResponsePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
@@ -2096,6 +2430,16 @@ func (o ExecutionTemplateResponsePtrOutput) InputNotebookFile() pulumi.StringPtr
 			return nil
 		}
 		return &v.InputNotebookFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of Job to be used on this execution.
+func (o ExecutionTemplateResponsePtrOutput) JobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2534,7 +2878,7 @@ func (o GuestOsFeatureResponseArrayOutput) Index(i pulumi.IntInput) GuestOsFeatu
 
 // An Local attached disk resource.
 type LocalDisk struct {
-	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams *LocalDiskInitializeParams `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
 	Interface *string `pulumi:"interface"`
@@ -2559,7 +2903,7 @@ type LocalDiskInput interface {
 
 // An Local attached disk resource.
 type LocalDiskArgs struct {
-	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
@@ -2649,7 +2993,7 @@ func (o LocalDiskOutput) ToLocalDiskPtrOutputWithContext(ctx context.Context) Lo
 	}).(LocalDiskPtrOutput)
 }
 
-// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 func (o LocalDiskOutput) InitializeParams() LocalDiskInitializeParamsPtrOutput {
 	return o.ApplyT(func(v LocalDisk) *LocalDiskInitializeParams { return v.InitializeParams }).(LocalDiskInitializeParamsPtrOutput)
 }
@@ -2692,7 +3036,7 @@ func (o LocalDiskPtrOutput) Elem() LocalDiskOutput {
 	return o.ApplyT(func(v *LocalDisk) LocalDisk { return *v }).(LocalDiskOutput)
 }
 
-// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 func (o LocalDiskPtrOutput) InitializeParams() LocalDiskInitializeParamsPtrOutput {
 	return o.ApplyT(func(v *LocalDisk) *LocalDiskInitializeParams {
 		if v == nil {
@@ -2742,7 +3086,7 @@ func (o LocalDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParams struct {
 	// Optional. Provide this property when creating the disk.
 	Description *string `pulumi:"description"`
@@ -2767,7 +3111,7 @@ type LocalDiskInitializeParamsInput interface {
 	ToLocalDiskInitializeParamsOutputWithContext(context.Context) LocalDiskInitializeParamsOutput
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParamsArgs struct {
 	// Optional. Provide this property when creating the disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -2834,7 +3178,7 @@ func (i *localDiskInitializeParamsPtrType) ToLocalDiskInitializeParamsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(LocalDiskInitializeParamsPtrOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParamsOutput struct{ *pulumi.OutputState }
 
 func (LocalDiskInitializeParamsOutput) ElementType() reflect.Type {
@@ -2952,7 +3296,7 @@ func (o LocalDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParamsResponse struct {
 	// Optional. Provide this property when creating the disk.
 	Description string `pulumi:"description"`
@@ -2977,7 +3321,7 @@ type LocalDiskInitializeParamsResponseInput interface {
 	ToLocalDiskInitializeParamsResponseOutputWithContext(context.Context) LocalDiskInitializeParamsResponseOutput
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParamsResponseArgs struct {
 	// Optional. Provide this property when creating the disk.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -3044,7 +3388,7 @@ func (i *localDiskInitializeParamsResponsePtrType) ToLocalDiskInitializeParamsRe
 	return pulumi.ToOutputWithContext(ctx, i).(LocalDiskInitializeParamsResponsePtrOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type LocalDiskInitializeParamsResponseOutput struct{ *pulumi.OutputState }
 
 func (LocalDiskInitializeParamsResponseOutput) ElementType() reflect.Type {
@@ -3164,17 +3508,17 @@ func (o LocalDiskInitializeParamsResponsePtrOutput) Labels() pulumi.StringMapOut
 
 // An Local attached disk resource.
 type LocalDiskResponse struct {
-	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+	// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
-	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
 	Boot bool `pulumi:"boot"`
-	// Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	// Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
 	DeviceName string `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []RuntimeGuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index int `pulumi:"index"`
-	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponse `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
 	Interface string `pulumi:"interface"`
@@ -3203,17 +3547,17 @@ type LocalDiskResponseInput interface {
 
 // An Local attached disk resource.
 type LocalDiskResponseArgs struct {
-	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+	// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
-	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
 	Boot pulumi.BoolInput `pulumi:"boot"`
-	// Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+	// Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures RuntimeGuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
 	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index pulumi.IntInput `pulumi:"index"`
-	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+	// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponseInput `pulumi:"initializeParams"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
 	Interface pulumi.StringInput `pulumi:"interface"`
@@ -3307,17 +3651,17 @@ func (o LocalDiskResponseOutput) ToLocalDiskResponsePtrOutputWithContext(ctx con
 	}).(LocalDiskResponsePtrOutput)
 }
 
-// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 func (o LocalDiskResponseOutput) AutoDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v LocalDiskResponse) bool { return v.AutoDelete }).(pulumi.BoolOutput)
 }
 
-// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
 func (o LocalDiskResponseOutput) Boot() pulumi.BoolOutput {
 	return o.ApplyT(func(v LocalDiskResponse) bool { return v.Boot }).(pulumi.BoolOutput)
 }
 
-// Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+// Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
 func (o LocalDiskResponseOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.DeviceName }).(pulumi.StringOutput)
 }
@@ -3332,7 +3676,7 @@ func (o LocalDiskResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v LocalDiskResponse) int { return v.Index }).(pulumi.IntOutput)
 }
 
-// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 func (o LocalDiskResponseOutput) InitializeParams() LocalDiskInitializeParamsResponseOutput {
 	return o.ApplyT(func(v LocalDiskResponse) LocalDiskInitializeParamsResponse { return v.InitializeParams }).(LocalDiskInitializeParamsResponseOutput)
 }
@@ -3385,7 +3729,7 @@ func (o LocalDiskResponsePtrOutput) Elem() LocalDiskResponseOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) LocalDiskResponse { return *v }).(LocalDiskResponseOutput)
 }
 
-// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 func (o LocalDiskResponsePtrOutput) AutoDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *bool {
 		if v == nil {
@@ -3395,7 +3739,7 @@ func (o LocalDiskResponsePtrOutput) AutoDelete() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
 func (o LocalDiskResponsePtrOutput) Boot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *bool {
 		if v == nil {
@@ -3405,7 +3749,7 @@ func (o LocalDiskResponsePtrOutput) Boot() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+// Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
 func (o LocalDiskResponsePtrOutput) DeviceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *string {
 		if v == nil {
@@ -3435,7 +3779,7 @@ func (o LocalDiskResponsePtrOutput) Index() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 func (o LocalDiskResponsePtrOutput) InitializeParams() LocalDiskInitializeParamsResponsePtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *LocalDiskInitializeParamsResponse {
 		if v == nil {
@@ -4482,9 +4826,9 @@ func (o RuntimeAccessConfigResponsePtrOutput) RuntimeOwner() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
 type RuntimeGuestOsFeatureResponse struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	// The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 	Type string `pulumi:"type"`
 }
 
@@ -4499,9 +4843,9 @@ type RuntimeGuestOsFeatureResponseInput interface {
 	ToRuntimeGuestOsFeatureResponseOutputWithContext(context.Context) RuntimeGuestOsFeatureResponseOutput
 }
 
-// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
 type RuntimeGuestOsFeatureResponseArgs struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	// The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4542,7 +4886,7 @@ func (i RuntimeGuestOsFeatureResponseArray) ToRuntimeGuestOsFeatureResponseArray
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeGuestOsFeatureResponseArrayOutput)
 }
 
-// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
 type RuntimeGuestOsFeatureResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeGuestOsFeatureResponseOutput) ElementType() reflect.Type {
@@ -4557,7 +4901,7 @@ func (o RuntimeGuestOsFeatureResponseOutput) ToRuntimeGuestOsFeatureResponseOutp
 	return o
 }
 
-// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+// The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
 func (o RuntimeGuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeGuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4716,7 +5060,7 @@ func (o RuntimeMetricsResponsePtrOutput) SystemMetrics() pulumi.StringMapOutput 
 	}).(pulumi.StringMapOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
@@ -4737,7 +5081,7 @@ type RuntimeShieldedInstanceConfigInput interface {
 	ToRuntimeShieldedInstanceConfigOutputWithContext(context.Context) RuntimeShieldedInstanceConfigOutput
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigArgs struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
@@ -4800,7 +5144,7 @@ func (i *runtimeShieldedInstanceConfigPtrType) ToRuntimeShieldedInstanceConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeShieldedInstanceConfigPtrOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -4888,7 +5232,7 @@ func (o RuntimeShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigResponse struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
@@ -4909,7 +5253,7 @@ type RuntimeShieldedInstanceConfigResponseInput interface {
 	ToRuntimeShieldedInstanceConfigResponseOutputWithContext(context.Context) RuntimeShieldedInstanceConfigResponseOutput
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigResponseArgs struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
 	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
@@ -4972,7 +5316,7 @@ func (i *runtimeShieldedInstanceConfigResponsePtrType) ToRuntimeShieldedInstance
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeShieldedInstanceConfigResponsePtrOutput)
 }
 
-// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
 type RuntimeShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
@@ -5060,7 +5404,7 @@ func (o RuntimeShieldedInstanceConfigResponsePtrOutput) EnableVtpm() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfig struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
@@ -5089,7 +5433,7 @@ type RuntimeSoftwareConfigInput interface {
 	ToRuntimeSoftwareConfigOutputWithContext(context.Context) RuntimeSoftwareConfigOutput
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfigArgs struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringPtrInput `pulumi:"customGpuDriverPath"`
@@ -5160,7 +5504,7 @@ func (i *runtimeSoftwareConfigPtrType) ToRuntimeSoftwareConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigPtrOutput)
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigOutput) ElementType() reflect.Type {
@@ -5308,7 +5652,7 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfigResponse struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath string `pulumi:"customGpuDriverPath"`
@@ -5337,7 +5681,7 @@ type RuntimeSoftwareConfigResponseInput interface {
 	ToRuntimeSoftwareConfigResponseOutputWithContext(context.Context) RuntimeSoftwareConfigResponseOutput
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfigResponseArgs struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringInput `pulumi:"customGpuDriverPath"`
@@ -5408,7 +5752,7 @@ func (i *runtimeSoftwareConfigResponsePtrType) ToRuntimeSoftwareConfigResponsePt
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigResponsePtrOutput)
 }
 
-// Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
 type RuntimeSoftwareConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigResponseOutput) ElementType() reflect.Type {
@@ -7997,6 +8341,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerImageResponseOutput{})
 	pulumi.RegisterOutputType(ContainerImageResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerImageResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataprocParametersOutput{})
+	pulumi.RegisterOutputType(DataprocParametersPtrOutput{})
+	pulumi.RegisterOutputType(DataprocParametersResponseOutput{})
+	pulumi.RegisterOutputType(DataprocParametersResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
 	pulumi.RegisterOutputType(DiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})

@@ -23,7 +23,7 @@ type RegionInstanceGroupManager struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponseOutput `pulumi:"currentActions"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyResponseOutput `pulumi:"distributionPolicy"`
@@ -109,7 +109,7 @@ type regionInstanceGroupManagerArgs struct {
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName *string `pulumi:"baseInstanceName"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
@@ -144,7 +144,7 @@ type RegionInstanceGroupManagerArgs struct {
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyPtrInput

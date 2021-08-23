@@ -1462,7 +1462,7 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type ClusterConfig struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig *AutoscalingConfig `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket *string `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
@@ -1476,19 +1476,19 @@ type ClusterConfig struct {
 	InitializationActions []NodeInitializationAction `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
 	LifecycleConfig *LifecycleConfig `pulumi:"lifecycleConfig"`
-	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's master instance.
 	MasterConfig *InstanceGroupConfig `pulumi:"masterConfig"`
 	// Optional. Metastore configuration.
 	MetastoreConfig *MetastoreConfig `pulumi:"metastoreConfig"`
-	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 	SecondaryWorkerConfig *InstanceGroupConfig `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig *SecurityConfig `pulumi:"securityConfig"`
-	// Optional. The config settings for software inside the cluster.
+	// Optional. The config settings for cluster software.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	TempBucket *string `pulumi:"tempBucket"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's worker instances.
 	WorkerConfig *InstanceGroupConfig `pulumi:"workerConfig"`
 }
 
@@ -1507,7 +1507,7 @@ type ClusterConfigInput interface {
 type ClusterConfigArgs struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket pulumi.StringPtrInput `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
@@ -1521,19 +1521,19 @@ type ClusterConfigArgs struct {
 	InitializationActions NodeInitializationActionArrayInput `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
 	LifecycleConfig LifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
-	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's master instance.
 	MasterConfig InstanceGroupConfigPtrInput `pulumi:"masterConfig"`
 	// Optional. Metastore configuration.
 	MetastoreConfig MetastoreConfigPtrInput `pulumi:"metastoreConfig"`
-	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 	SecondaryWorkerConfig InstanceGroupConfigPtrInput `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig SecurityConfigPtrInput `pulumi:"securityConfig"`
-	// Optional. The config settings for software inside the cluster.
+	// Optional. The config settings for cluster software.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's worker instances.
 	WorkerConfig InstanceGroupConfigPtrInput `pulumi:"workerConfig"`
 }
 
@@ -1620,7 +1620,7 @@ func (o ClusterConfigOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *AutoscalingConfig { return v.AutoscalingConfig }).(AutoscalingConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.ConfigBucket }).(pulumi.StringPtrOutput)
 }
@@ -1655,7 +1655,7 @@ func (o ClusterConfigOutput) LifecycleConfig() LifecycleConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *LifecycleConfig { return v.LifecycleConfig }).(LifecycleConfigPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for the master instance in a cluster.
+// Optional. The Compute Engine config settings for the cluster's master instance.
 func (o ClusterConfigOutput) MasterConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *InstanceGroupConfig { return v.MasterConfig }).(InstanceGroupConfigPtrOutput)
 }
@@ -1665,7 +1665,7 @@ func (o ClusterConfigOutput) MetastoreConfig() MetastoreConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *MetastoreConfig { return v.MetastoreConfig }).(MetastoreConfigPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 func (o ClusterConfigOutput) SecondaryWorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *InstanceGroupConfig { return v.SecondaryWorkerConfig }).(InstanceGroupConfigPtrOutput)
 }
@@ -1675,17 +1675,17 @@ func (o ClusterConfigOutput) SecurityConfig() SecurityConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *SecurityConfig { return v.SecurityConfig }).(SecurityConfigPtrOutput)
 }
 
-// Optional. The config settings for software inside the cluster.
+// Optional. The config settings for cluster software.
 func (o ClusterConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.TempBucket }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for worker instances in a cluster.
+// Optional. The Compute Engine config settings for the cluster's worker instances.
 func (o ClusterConfigOutput) WorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *InstanceGroupConfig { return v.WorkerConfig }).(InstanceGroupConfigPtrOutput)
 }
@@ -1718,7 +1718,7 @@ func (o ClusterConfigPtrOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 	}).(AutoscalingConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigPtrOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *string {
 		if v == nil {
@@ -1788,7 +1788,7 @@ func (o ClusterConfigPtrOutput) LifecycleConfig() LifecycleConfigPtrOutput {
 	}).(LifecycleConfigPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for the master instance in a cluster.
+// Optional. The Compute Engine config settings for the cluster's master instance.
 func (o ClusterConfigPtrOutput) MasterConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *InstanceGroupConfig {
 		if v == nil {
@@ -1808,7 +1808,7 @@ func (o ClusterConfigPtrOutput) MetastoreConfig() MetastoreConfigPtrOutput {
 	}).(MetastoreConfigPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 func (o ClusterConfigPtrOutput) SecondaryWorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *InstanceGroupConfig {
 		if v == nil {
@@ -1828,7 +1828,7 @@ func (o ClusterConfigPtrOutput) SecurityConfig() SecurityConfigPtrOutput {
 	}).(SecurityConfigPtrOutput)
 }
 
-// Optional. The config settings for software inside the cluster.
+// Optional. The config settings for cluster software.
 func (o ClusterConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *SoftwareConfig {
 		if v == nil {
@@ -1838,7 +1838,7 @@ func (o ClusterConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	}).(SoftwareConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *string {
 		if v == nil {
@@ -1848,7 +1848,7 @@ func (o ClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for worker instances in a cluster.
+// Optional. The Compute Engine config settings for the cluster's worker instances.
 func (o ClusterConfigPtrOutput) WorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *InstanceGroupConfig {
 		if v == nil {
@@ -1862,7 +1862,7 @@ func (o ClusterConfigPtrOutput) WorkerConfig() InstanceGroupConfigPtrOutput {
 type ClusterConfigResponse struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigResponse `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket string `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
@@ -1876,19 +1876,19 @@ type ClusterConfigResponse struct {
 	InitializationActions []NodeInitializationActionResponse `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
 	LifecycleConfig LifecycleConfigResponse `pulumi:"lifecycleConfig"`
-	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's master instance.
 	MasterConfig InstanceGroupConfigResponse `pulumi:"masterConfig"`
 	// Optional. Metastore configuration.
 	MetastoreConfig MetastoreConfigResponse `pulumi:"metastoreConfig"`
-	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 	SecondaryWorkerConfig InstanceGroupConfigResponse `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig SecurityConfigResponse `pulumi:"securityConfig"`
-	// Optional. The config settings for software inside the cluster.
+	// Optional. The config settings for cluster software.
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	TempBucket string `pulumi:"tempBucket"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's worker instances.
 	WorkerConfig InstanceGroupConfigResponse `pulumi:"workerConfig"`
 }
 
@@ -1907,7 +1907,7 @@ type ClusterConfigResponseInput interface {
 type ClusterConfigResponseArgs struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigResponseInput `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket pulumi.StringInput `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
@@ -1921,19 +1921,19 @@ type ClusterConfigResponseArgs struct {
 	InitializationActions NodeInitializationActionResponseArrayInput `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
 	LifecycleConfig LifecycleConfigResponseInput `pulumi:"lifecycleConfig"`
-	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's master instance.
 	MasterConfig InstanceGroupConfigResponseInput `pulumi:"masterConfig"`
 	// Optional. Metastore configuration.
 	MetastoreConfig MetastoreConfigResponseInput `pulumi:"metastoreConfig"`
-	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 	SecondaryWorkerConfig InstanceGroupConfigResponseInput `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig SecurityConfigResponseInput `pulumi:"securityConfig"`
-	// Optional. The config settings for software inside the cluster.
+	// Optional. The config settings for cluster software.
 	SoftwareConfig SoftwareConfigResponseInput `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	TempBucket pulumi.StringInput `pulumi:"tempBucket"`
-	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	// Optional. The Compute Engine config settings for the cluster's worker instances.
 	WorkerConfig InstanceGroupConfigResponseInput `pulumi:"workerConfig"`
 }
 
@@ -2020,7 +2020,7 @@ func (o ClusterConfigResponseOutput) AutoscalingConfig() AutoscalingConfigRespon
 	return o.ApplyT(func(v ClusterConfigResponse) AutoscalingConfigResponse { return v.AutoscalingConfig }).(AutoscalingConfigResponseOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigResponseOutput) ConfigBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) string { return v.ConfigBucket }).(pulumi.StringOutput)
 }
@@ -2055,7 +2055,7 @@ func (o ClusterConfigResponseOutput) LifecycleConfig() LifecycleConfigResponseOu
 	return o.ApplyT(func(v ClusterConfigResponse) LifecycleConfigResponse { return v.LifecycleConfig }).(LifecycleConfigResponseOutput)
 }
 
-// Optional. The Compute Engine config settings for the master instance in a cluster.
+// Optional. The Compute Engine config settings for the cluster's master instance.
 func (o ClusterConfigResponseOutput) MasterConfig() InstanceGroupConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.MasterConfig }).(InstanceGroupConfigResponseOutput)
 }
@@ -2065,7 +2065,7 @@ func (o ClusterConfigResponseOutput) MetastoreConfig() MetastoreConfigResponseOu
 	return o.ApplyT(func(v ClusterConfigResponse) MetastoreConfigResponse { return v.MetastoreConfig }).(MetastoreConfigResponseOutput)
 }
 
-// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 func (o ClusterConfigResponseOutput) SecondaryWorkerConfig() InstanceGroupConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.SecondaryWorkerConfig }).(InstanceGroupConfigResponseOutput)
 }
@@ -2075,17 +2075,17 @@ func (o ClusterConfigResponseOutput) SecurityConfig() SecurityConfigResponseOutp
 	return o.ApplyT(func(v ClusterConfigResponse) SecurityConfigResponse { return v.SecurityConfig }).(SecurityConfigResponseOutput)
 }
 
-// Optional. The config settings for software inside the cluster.
+// Optional. The config settings for cluster software.
 func (o ClusterConfigResponseOutput) SoftwareConfig() SoftwareConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) SoftwareConfigResponse { return v.SoftwareConfig }).(SoftwareConfigResponseOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigResponseOutput) TempBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) string { return v.TempBucket }).(pulumi.StringOutput)
 }
 
-// Optional. The Compute Engine config settings for worker instances in a cluster.
+// Optional. The Compute Engine config settings for the cluster's worker instances.
 func (o ClusterConfigResponseOutput) WorkerConfig() InstanceGroupConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.WorkerConfig }).(InstanceGroupConfigResponseOutput)
 }
@@ -2118,7 +2118,7 @@ func (o ClusterConfigResponsePtrOutput) AutoscalingConfig() AutoscalingConfigRes
 	}).(AutoscalingConfigResponsePtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigResponsePtrOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *string {
 		if v == nil {
@@ -2188,7 +2188,7 @@ func (o ClusterConfigResponsePtrOutput) LifecycleConfig() LifecycleConfigRespons
 	}).(LifecycleConfigResponsePtrOutput)
 }
 
-// Optional. The Compute Engine config settings for the master instance in a cluster.
+// Optional. The Compute Engine config settings for the cluster's master instance.
 func (o ClusterConfigResponsePtrOutput) MasterConfig() InstanceGroupConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
 		if v == nil {
@@ -2208,7 +2208,7 @@ func (o ClusterConfigResponsePtrOutput) MetastoreConfig() MetastoreConfigRespons
 	}).(MetastoreConfigResponsePtrOutput)
 }
 
-// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+// Optional. The Compute Engine config settings for a cluster's secondary worker instances
 func (o ClusterConfigResponsePtrOutput) SecondaryWorkerConfig() InstanceGroupConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
 		if v == nil {
@@ -2228,7 +2228,7 @@ func (o ClusterConfigResponsePtrOutput) SecurityConfig() SecurityConfigResponseP
 	}).(SecurityConfigResponsePtrOutput)
 }
 
-// Optional. The config settings for software inside the cluster.
+// Optional. The config settings for cluster software.
 func (o ClusterConfigResponsePtrOutput) SoftwareConfig() SoftwareConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *SoftwareConfigResponse {
 		if v == nil {
@@ -2238,7 +2238,7 @@ func (o ClusterConfigResponsePtrOutput) SoftwareConfig() SoftwareConfigResponseP
 	}).(SoftwareConfigResponsePtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigResponsePtrOutput) TempBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *string {
 		if v == nil {
@@ -2248,7 +2248,7 @@ func (o ClusterConfigResponsePtrOutput) TempBucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine config settings for worker instances in a cluster.
+// Optional. The Compute Engine config settings for the cluster's worker instances.
 func (o ClusterConfigResponsePtrOutput) WorkerConfig() InstanceGroupConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
 		if v == nil {
@@ -5119,7 +5119,7 @@ func (o GceClusterConfigResponsePtrOutput) ZoneUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfig struct {
 	// Optional. A target for the deployment.
 	NamespacedGkeDeploymentTarget *NamespacedGkeDeploymentTarget `pulumi:"namespacedGkeDeploymentTarget"`
@@ -5136,7 +5136,7 @@ type GkeClusterConfigInput interface {
 	ToGkeClusterConfigOutputWithContext(context.Context) GkeClusterConfigOutput
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfigArgs struct {
 	// Optional. A target for the deployment.
 	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetPtrInput `pulumi:"namespacedGkeDeploymentTarget"`
@@ -5195,7 +5195,7 @@ func (i *gkeClusterConfigPtrType) ToGkeClusterConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigPtrOutput)
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (GkeClusterConfigOutput) ElementType() reflect.Type {
@@ -5253,7 +5253,7 @@ func (o GkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() NamespacedGke
 	}).(NamespacedGkeDeploymentTargetPtrOutput)
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfigResponse struct {
 	// Optional. A target for the deployment.
 	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetResponse `pulumi:"namespacedGkeDeploymentTarget"`
@@ -5270,7 +5270,7 @@ type GkeClusterConfigResponseInput interface {
 	ToGkeClusterConfigResponseOutputWithContext(context.Context) GkeClusterConfigResponseOutput
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfigResponseArgs struct {
 	// Optional. A target for the deployment.
 	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetResponseInput `pulumi:"namespacedGkeDeploymentTarget"`
@@ -5329,7 +5329,7 @@ func (i *gkeClusterConfigResponsePtrType) ToGkeClusterConfigResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigResponsePtrOutput)
 }
 
-// The GKE config for this cluster.
+// The cluster's GKE config.
 type GkeClusterConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GkeClusterConfigResponseOutput) ElementType() reflect.Type {

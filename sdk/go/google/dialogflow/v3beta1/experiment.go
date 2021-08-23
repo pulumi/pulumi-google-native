@@ -25,7 +25,7 @@ type Experiment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength pulumi.StringOutput `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
@@ -33,6 +33,12 @@ type Experiment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Inference result of the experiment.
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponseOutput `pulumi:"result"`
+	// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+	RolloutConfig GoogleCloudDialogflowCxV3beta1RolloutConfigResponseOutput `pulumi:"rolloutConfig"`
+	// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+	RolloutFailureReason pulumi.StringOutput `pulumi:"rolloutFailureReason"`
+	// State of the auto rollout process.
+	RolloutState GoogleCloudDialogflowCxV3beta1RolloutStateResponseOutput `pulumi:"rolloutState"`
 	// Start time of this experiment.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
@@ -101,7 +107,7 @@ type experimentArgs struct {
 	// End time of this experiment.
 	EndTime       *string `pulumi:"endTime"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength *string `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime *string `pulumi:"lastUpdateTime"`
@@ -111,6 +117,12 @@ type experimentArgs struct {
 	Project *string `pulumi:"project"`
 	// Inference result of the experiment.
 	Result *GoogleCloudDialogflowCxV3beta1ExperimentResult `pulumi:"result"`
+	// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+	RolloutConfig *GoogleCloudDialogflowCxV3beta1RolloutConfig `pulumi:"rolloutConfig"`
+	// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+	RolloutFailureReason *string `pulumi:"rolloutFailureReason"`
+	// State of the auto rollout process.
+	RolloutState *GoogleCloudDialogflowCxV3beta1RolloutState `pulumi:"rolloutState"`
 	// Start time of this experiment.
 	StartTime *string `pulumi:"startTime"`
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
@@ -133,7 +145,7 @@ type ExperimentArgs struct {
 	// End time of this experiment.
 	EndTime       pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength pulumi.StringPtrInput
 	// Last update time of this experiment.
 	LastUpdateTime pulumi.StringPtrInput
@@ -143,6 +155,12 @@ type ExperimentArgs struct {
 	Project pulumi.StringPtrInput
 	// Inference result of the experiment.
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput
+	// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+	RolloutConfig GoogleCloudDialogflowCxV3beta1RolloutConfigPtrInput
+	// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+	RolloutFailureReason pulumi.StringPtrInput
+	// State of the auto rollout process.
+	RolloutState GoogleCloudDialogflowCxV3beta1RolloutStatePtrInput
 	// Start time of this experiment.
 	StartTime pulumi.StringPtrInput
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.

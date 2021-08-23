@@ -5669,9 +5669,9 @@ func (o GooglePrivacyDlpV2CryptoHashConfigResponseOutput) CryptoKey() GooglePriv
 	}).(GooglePrivacyDlpV2CryptoKeyResponseOutput)
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKey struct {
-	// Kms wrapped key
+	// Key wrapped using Cloud KMS
 	KmsWrapped *GooglePrivacyDlpV2KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
 	// Transient crypto key
 	Transient *GooglePrivacyDlpV2TransientCryptoKey `pulumi:"transient"`
@@ -5690,9 +5690,9 @@ type GooglePrivacyDlpV2CryptoKeyInput interface {
 	ToGooglePrivacyDlpV2CryptoKeyOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoKeyOutput
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKeyArgs struct {
-	// Kms wrapped key
+	// Key wrapped using Cloud KMS
 	KmsWrapped GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
 	// Transient crypto key
 	Transient GooglePrivacyDlpV2TransientCryptoKeyPtrInput `pulumi:"transient"`
@@ -5753,7 +5753,7 @@ func (i *googlePrivacyDlpV2CryptoKeyPtrType) ToGooglePrivacyDlpV2CryptoKeyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoKeyOutput) ElementType() reflect.Type {
@@ -5778,7 +5778,7 @@ func (o GooglePrivacyDlpV2CryptoKeyOutput) ToGooglePrivacyDlpV2CryptoKeyPtrOutpu
 	}).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
-// Kms wrapped key
+// Key wrapped using Cloud KMS
 func (o GooglePrivacyDlpV2CryptoKeyOutput) KmsWrapped() GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoKey) *GooglePrivacyDlpV2KmsWrappedCryptoKey { return v.KmsWrapped }).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
@@ -5811,7 +5811,7 @@ func (o GooglePrivacyDlpV2CryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2CryptoKey
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoKey) GooglePrivacyDlpV2CryptoKey { return *v }).(GooglePrivacyDlpV2CryptoKeyOutput)
 }
 
-// Kms wrapped key
+// Key wrapped using Cloud KMS
 func (o GooglePrivacyDlpV2CryptoKeyPtrOutput) KmsWrapped() GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoKey) *GooglePrivacyDlpV2KmsWrappedCryptoKey {
 		if v == nil {
@@ -5841,9 +5841,9 @@ func (o GooglePrivacyDlpV2CryptoKeyPtrOutput) Unwrapped() GooglePrivacyDlpV2Unwr
 	}).(GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput)
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKeyResponse struct {
-	// Kms wrapped key
+	// Key wrapped using Cloud KMS
 	KmsWrapped GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
 	// Transient crypto key
 	Transient GooglePrivacyDlpV2TransientCryptoKeyResponse `pulumi:"transient"`
@@ -5862,9 +5862,9 @@ type GooglePrivacyDlpV2CryptoKeyResponseInput interface {
 	ToGooglePrivacyDlpV2CryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoKeyResponseOutput
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKeyResponseArgs struct {
-	// Kms wrapped key
+	// Key wrapped using Cloud KMS
 	KmsWrapped GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput `pulumi:"kmsWrapped"`
 	// Transient crypto key
 	Transient GooglePrivacyDlpV2TransientCryptoKeyResponseInput `pulumi:"transient"`
@@ -5884,7 +5884,7 @@ func (i GooglePrivacyDlpV2CryptoKeyResponseArgs) ToGooglePrivacyDlpV2CryptoKeyRe
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoKeyResponseOutput)
 }
 
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
 type GooglePrivacyDlpV2CryptoKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoKeyResponseOutput) ElementType() reflect.Type {
@@ -5899,7 +5899,7 @@ func (o GooglePrivacyDlpV2CryptoKeyResponseOutput) ToGooglePrivacyDlpV2CryptoKey
 	return o
 }
 
-// Kms wrapped key
+// Key wrapped using Cloud KMS
 func (o GooglePrivacyDlpV2CryptoKeyResponseOutput) KmsWrapped() GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoKeyResponse) GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse {
 		return v.KmsWrapped
@@ -16958,7 +16958,7 @@ func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Name() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKey struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
@@ -16977,7 +16977,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyInput interface {
 	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
@@ -17038,7 +17038,7 @@ func (i *googlePrivacyDlpV2KmsWrappedCryptoKeyPtrType) ToGooglePrivacyDlpV2KmsWr
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ElementType() reflect.Type {
@@ -17111,7 +17111,7 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) WrappedKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
@@ -17130,7 +17130,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput interface {
 	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
@@ -17150,7 +17150,7 @@ func (i GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2K
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) ElementType() reflect.Type {

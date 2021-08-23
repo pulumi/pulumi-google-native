@@ -49,6 +49,14 @@ type LookupOccurrenceResult struct {
 	Remediation string `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponse `pulumi:"resource"`
+	// Describes a specific SPDX Document.
+	Sbom DocumentOccurrenceResponse `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrenceResponse `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrenceResponse `pulumi:"spdxPackage"`
+	// Describes a specific SPDX Relationship.
+	SpdxRelationship RelationshipOccurrenceResponse `pulumi:"spdxRelationship"`
 	// The time this occurrence was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 	// Describes a security vulnerability.

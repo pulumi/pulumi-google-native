@@ -24,6 +24,10 @@ const (
 	RepositoryFormatNpm = RepositoryFormat("NPM")
 	// PyPI package format.
 	RepositoryFormatPypi = RepositoryFormat("PYPI")
+	// APT package format.
+	RepositoryFormatApt = RepositoryFormat("APT")
+	// YUM package format.
+	RepositoryFormatYum = RepositoryFormat("YUM")
 	// Python package format.
 	RepositoryFormatPython = RepositoryFormat("PYTHON")
 )

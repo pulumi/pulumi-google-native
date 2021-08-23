@@ -42,8 +42,10 @@ type LookupTransferConfigResult struct {
 	Name string `pulumi:"name"`
 	// Next time when data transfer will run.
 	NextRunTime string `pulumi:"nextRunTime"`
-	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
 	NotificationPubsubTopic string `pulumi:"notificationPubsubTopic"`
+	// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+	OwnerInfo UserInfoResponse `pulumi:"ownerInfo"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params map[string]string `pulumi:"params"`
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.

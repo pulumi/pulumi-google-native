@@ -32,7 +32,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponse `pulumi:"currentActions"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyResponse `pulumi:"distributionPolicy"`
@@ -60,6 +60,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Stanby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyResponse `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponse `pulumi:"statefulPolicy"`
 	// The status of this managed instance group.

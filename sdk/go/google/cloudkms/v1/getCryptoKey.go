@@ -27,6 +27,10 @@ type LookupCryptoKeyArgs struct {
 type LookupCryptoKeyResult struct {
 	// The time at which this CryptoKey was created.
 	CreateTime string `pulumi:"createTime"`
+	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
+	// Immutable. Whether this key may contain imported versions only.
+	ImportOnly bool `pulumi:"importOnly"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.

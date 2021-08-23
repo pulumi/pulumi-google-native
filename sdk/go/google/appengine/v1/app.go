@@ -40,6 +40,8 @@ type App struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Serving status of this application.
 	ServingStatus pulumi.StringOutput `pulumi:"servingStatus"`
 }
@@ -100,6 +102,8 @@ type appArgs struct {
 	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location *string `pulumi:"location"`
+	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Serving status of this application.
 	ServingStatus *AppServingStatus `pulumi:"servingStatus"`
 }
@@ -123,6 +127,8 @@ type AppArgs struct {
 	Id pulumi.StringPtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringPtrInput
+	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+	ServiceAccount pulumi.StringPtrInput
 	// Serving status of this application.
 	ServingStatus AppServingStatusPtrInput
 }

@@ -15,6 +15,8 @@ import (
 type Agent struct {
 	pulumi.CustomResourceState
 
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput `pulumi:"advancedSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringOutput `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -25,7 +27,7 @@ type Agent struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolOutput `pulumi:"enableSpellCorrection"`
-	// Indicates if stackdriver logging is enabled for the agent.
+	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging pulumi.BoolOutput `pulumi:"enableStackdriverLogging"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -89,6 +91,8 @@ func (AgentState) ElementType() reflect.Type {
 }
 
 type agentArgs struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings *GoogleCloudDialogflowCxV3AdvancedSettings `pulumi:"advancedSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -99,7 +103,7 @@ type agentArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
-	// Indicates if stackdriver logging is enabled for the agent.
+	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging *bool   `pulumi:"enableStackdriverLogging"`
 	Location                 *string `pulumi:"location"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -119,6 +123,8 @@ type agentArgs struct {
 
 // The set of arguments for constructing a Agent resource.
 type AgentArgs struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
 	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -129,7 +135,7 @@ type AgentArgs struct {
 	DisplayName pulumi.StringInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
-	// Indicates if stackdriver logging is enabled for the agent.
+	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	Location                 pulumi.StringPtrInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.

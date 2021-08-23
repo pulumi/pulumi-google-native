@@ -23,6 +23,8 @@ type LookupApiArgs struct {
 }
 
 type LookupApiResult struct {
+	// User labels applied to this API Proxy.
+	Labels map[string]string `pulumi:"labels"`
 	// The id of the most recently created revision for this api proxy.
 	LatestRevisionId string `pulumi:"latestRevisionId"`
 	// Metadata describing the API proxy.

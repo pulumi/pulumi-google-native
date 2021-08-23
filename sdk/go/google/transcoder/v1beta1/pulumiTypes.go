@@ -9649,7 +9649,7 @@ type VideoStream struct {
 	BFrameCount *int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid *bool `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec *string `pulumi:"codec"`
@@ -9706,7 +9706,7 @@ type VideoStreamArgs struct {
 	BFrameCount pulumi.IntPtrInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolPtrInput `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec pulumi.StringPtrInput `pulumi:"codec"`
@@ -9840,7 +9840,7 @@ func (o VideoStreamOutput) BPyramid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VideoStream) *bool { return v.BPyramid }).(pulumi.BoolPtrOutput)
 }
 
-// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 func (o VideoStreamOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v VideoStream) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
@@ -9983,7 +9983,7 @@ func (o VideoStreamPtrOutput) BPyramid() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 func (o VideoStreamPtrOutput) BitrateBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VideoStream) *int {
 		if v == nil {
@@ -10163,7 +10163,7 @@ type VideoStreamResponse struct {
 	BFrameCount int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid bool `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec string `pulumi:"codec"`
@@ -10220,7 +10220,7 @@ type VideoStreamResponseArgs struct {
 	BFrameCount pulumi.IntInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolInput `pulumi:"bPyramid"`
-	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec pulumi.StringInput `pulumi:"codec"`
@@ -10303,7 +10303,7 @@ func (o VideoStreamResponseOutput) BPyramid() pulumi.BoolOutput {
 	return o.ApplyT(func(v VideoStreamResponse) bool { return v.BPyramid }).(pulumi.BoolOutput)
 }
 
-// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
 func (o VideoStreamResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v VideoStreamResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
 }

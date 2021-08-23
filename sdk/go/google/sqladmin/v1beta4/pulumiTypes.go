@@ -1144,7 +1144,7 @@ func (o BackupRetentionSettingsResponsePtrOutput) RetentionUnit() pulumi.StringP
 
 // Database flags for Cloud SQL instances.
 type DatabaseFlags struct {
-	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 	Name *string `pulumi:"name"`
 	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
 	Value *string `pulumi:"value"`
@@ -1163,7 +1163,7 @@ type DatabaseFlagsInput interface {
 
 // Database flags for Cloud SQL instances.
 type DatabaseFlagsArgs struct {
-	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1221,7 +1221,7 @@ func (o DatabaseFlagsOutput) ToDatabaseFlagsOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 func (o DatabaseFlagsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseFlags) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1253,7 +1253,7 @@ func (o DatabaseFlagsArrayOutput) Index(i pulumi.IntInput) DatabaseFlagsOutput {
 
 // Database flags for Cloud SQL instances.
 type DatabaseFlagsResponse struct {
-	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 	Name string `pulumi:"name"`
 	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
 	Value string `pulumi:"value"`
@@ -1272,7 +1272,7 @@ type DatabaseFlagsResponseInput interface {
 
 // Database flags for Cloud SQL instances.
 type DatabaseFlagsResponseArgs struct {
-	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -1330,7 +1330,7 @@ func (o DatabaseFlagsResponseOutput) ToDatabaseFlagsResponseOutputWithContext(ct
 	return o
 }
 
-// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
 func (o DatabaseFlagsResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseFlagsResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2212,7 +2212,7 @@ func (o DiskEncryptionStatusResponsePtrOutput) KmsKeyVersionName() pulumi.String
 type InsightsConfig struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
-	// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength *int `pulumi:"queryStringLength"`
@@ -2237,7 +2237,7 @@ type InsightsConfigInput interface {
 type InsightsConfigArgs struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
-	// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
@@ -2330,7 +2330,7 @@ func (o InsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 func (o InsightsConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InsightsConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
 }
@@ -2378,7 +2378,7 @@ func (o InsightsConfigPtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 func (o InsightsConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InsightsConfig) *int {
 		if v == nil {
@@ -2422,7 +2422,7 @@ func (o InsightsConfigPtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
 type InsightsConfigResponse struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
-	// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 	QueryPlansPerMinute int `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength int `pulumi:"queryStringLength"`
@@ -2447,7 +2447,7 @@ type InsightsConfigResponseInput interface {
 type InsightsConfigResponseArgs struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
-	// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+	// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 	QueryPlansPerMinute pulumi.IntInput `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
@@ -2540,7 +2540,7 @@ func (o InsightsConfigResponseOutput) QueryInsightsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v InsightsConfigResponse) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
 }
 
-// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 func (o InsightsConfigResponseOutput) QueryPlansPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v InsightsConfigResponse) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
@@ -2588,7 +2588,7 @@ func (o InsightsConfigResponsePtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
 func (o InsightsConfigResponsePtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InsightsConfigResponse) *int {
 		if v == nil {
@@ -2628,11 +2628,11 @@ func (o InsightsConfigResponsePtrOutput) RecordClientAddress() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplica struct {
 	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
 	Available *bool `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 	Name *string `pulumi:"name"`
 }
 
@@ -2647,11 +2647,11 @@ type InstanceFailoverReplicaInput interface {
 	ToInstanceFailoverReplicaOutputWithContext(context.Context) InstanceFailoverReplicaOutput
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplicaArgs struct {
 	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
 	Available pulumi.BoolPtrInput `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2708,7 +2708,7 @@ func (i *instanceFailoverReplicaPtrType) ToInstanceFailoverReplicaPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaPtrOutput)
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplicaOutput struct{ *pulumi.OutputState }
 
 func (InstanceFailoverReplicaOutput) ElementType() reflect.Type {
@@ -2738,7 +2738,7 @@ func (o InstanceFailoverReplicaOutput) Available() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceFailoverReplica) *bool { return v.Available }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 func (o InstanceFailoverReplicaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFailoverReplica) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2771,7 +2771,7 @@ func (o InstanceFailoverReplicaPtrOutput) Available() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 func (o InstanceFailoverReplicaPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceFailoverReplica) *string {
 		if v == nil {
@@ -2781,11 +2781,11 @@ func (o InstanceFailoverReplicaPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplicaResponse struct {
 	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
 	Available bool `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 	Name string `pulumi:"name"`
 }
 
@@ -2800,11 +2800,11 @@ type InstanceFailoverReplicaResponseInput interface {
 	ToInstanceFailoverReplicaResponseOutputWithContext(context.Context) InstanceFailoverReplicaResponseOutput
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplicaResponseArgs struct {
 	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
 	Available pulumi.BoolInput `pulumi:"available"`
-	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2861,7 +2861,7 @@ func (i *instanceFailoverReplicaResponsePtrType) ToInstanceFailoverReplicaRespon
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaResponsePtrOutput)
 }
 
-// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+// The name and status of the failover replica.
 type InstanceFailoverReplicaResponseOutput struct{ *pulumi.OutputState }
 
 func (InstanceFailoverReplicaResponseOutput) ElementType() reflect.Type {
@@ -2891,7 +2891,7 @@ func (o InstanceFailoverReplicaResponseOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceFailoverReplicaResponse) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
-// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 func (o InstanceFailoverReplicaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFailoverReplicaResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2924,7 +2924,7 @@ func (o InstanceFailoverReplicaResponsePtrOutput) Available() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
 func (o InstanceFailoverReplicaResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) *string {
 		if v == nil {
@@ -2934,8 +2934,354 @@ func (o InstanceFailoverReplicaResponsePtrOutput) Name() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to another Cloud SQL instance.
+type InstanceReference struct {
+	// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+	Name *string `pulumi:"name"`
+	// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+	Project *string `pulumi:"project"`
+	// The region of the Cloud SQL instance being referenced.
+	Region *string `pulumi:"region"`
+}
+
+// InstanceReferenceInput is an input type that accepts InstanceReferenceArgs and InstanceReferenceOutput values.
+// You can construct a concrete instance of `InstanceReferenceInput` via:
+//
+//          InstanceReferenceArgs{...}
+type InstanceReferenceInput interface {
+	pulumi.Input
+
+	ToInstanceReferenceOutput() InstanceReferenceOutput
+	ToInstanceReferenceOutputWithContext(context.Context) InstanceReferenceOutput
+}
+
+// Reference to another Cloud SQL instance.
+type InstanceReferenceArgs struct {
+	// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region of the Cloud SQL instance being referenced.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (InstanceReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReference)(nil)).Elem()
+}
+
+func (i InstanceReferenceArgs) ToInstanceReferenceOutput() InstanceReferenceOutput {
+	return i.ToInstanceReferenceOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceArgs) ToInstanceReferenceOutputWithContext(ctx context.Context) InstanceReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceOutput)
+}
+
+func (i InstanceReferenceArgs) ToInstanceReferencePtrOutput() InstanceReferencePtrOutput {
+	return i.ToInstanceReferencePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceArgs) ToInstanceReferencePtrOutputWithContext(ctx context.Context) InstanceReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceOutput).ToInstanceReferencePtrOutputWithContext(ctx)
+}
+
+// InstanceReferencePtrInput is an input type that accepts InstanceReferenceArgs, InstanceReferencePtr and InstanceReferencePtrOutput values.
+// You can construct a concrete instance of `InstanceReferencePtrInput` via:
+//
+//          InstanceReferenceArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceReferencePtrInput interface {
+	pulumi.Input
+
+	ToInstanceReferencePtrOutput() InstanceReferencePtrOutput
+	ToInstanceReferencePtrOutputWithContext(context.Context) InstanceReferencePtrOutput
+}
+
+type instanceReferencePtrType InstanceReferenceArgs
+
+func InstanceReferencePtr(v *InstanceReferenceArgs) InstanceReferencePtrInput {
+	return (*instanceReferencePtrType)(v)
+}
+
+func (*instanceReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReference)(nil)).Elem()
+}
+
+func (i *instanceReferencePtrType) ToInstanceReferencePtrOutput() InstanceReferencePtrOutput {
+	return i.ToInstanceReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReferencePtrType) ToInstanceReferencePtrOutputWithContext(ctx context.Context) InstanceReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferencePtrOutput)
+}
+
+// Reference to another Cloud SQL instance.
+type InstanceReferenceOutput struct{ *pulumi.OutputState }
+
+func (InstanceReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReference)(nil)).Elem()
+}
+
+func (o InstanceReferenceOutput) ToInstanceReferenceOutput() InstanceReferenceOutput {
+	return o
+}
+
+func (o InstanceReferenceOutput) ToInstanceReferenceOutputWithContext(ctx context.Context) InstanceReferenceOutput {
+	return o
+}
+
+func (o InstanceReferenceOutput) ToInstanceReferencePtrOutput() InstanceReferencePtrOutput {
+	return o.ToInstanceReferencePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReferenceOutput) ToInstanceReferencePtrOutputWithContext(ctx context.Context) InstanceReferencePtrOutput {
+	return o.ApplyT(func(v InstanceReference) *InstanceReference {
+		return &v
+	}).(InstanceReferencePtrOutput)
+}
+
+// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+func (o InstanceReferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+func (o InstanceReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReference) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The region of the Cloud SQL instance being referenced.
+func (o InstanceReferenceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceReference) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type InstanceReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReference)(nil)).Elem()
+}
+
+func (o InstanceReferencePtrOutput) ToInstanceReferencePtrOutput() InstanceReferencePtrOutput {
+	return o
+}
+
+func (o InstanceReferencePtrOutput) ToInstanceReferencePtrOutputWithContext(ctx context.Context) InstanceReferencePtrOutput {
+	return o
+}
+
+func (o InstanceReferencePtrOutput) Elem() InstanceReferenceOutput {
+	return o.ApplyT(func(v *InstanceReference) InstanceReference { return *v }).(InstanceReferenceOutput)
+}
+
+// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+func (o InstanceReferencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+func (o InstanceReferencePtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the Cloud SQL instance being referenced.
+func (o InstanceReferencePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to another Cloud SQL instance.
+type InstanceReferenceResponse struct {
+	// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+	Name string `pulumi:"name"`
+	// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+	Project string `pulumi:"project"`
+	// The region of the Cloud SQL instance being referenced.
+	Region string `pulumi:"region"`
+}
+
+// InstanceReferenceResponseInput is an input type that accepts InstanceReferenceResponseArgs and InstanceReferenceResponseOutput values.
+// You can construct a concrete instance of `InstanceReferenceResponseInput` via:
+//
+//          InstanceReferenceResponseArgs{...}
+type InstanceReferenceResponseInput interface {
+	pulumi.Input
+
+	ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput
+	ToInstanceReferenceResponseOutputWithContext(context.Context) InstanceReferenceResponseOutput
+}
+
+// Reference to another Cloud SQL instance.
+type InstanceReferenceResponseArgs struct {
+	// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region of the Cloud SQL instance being referenced.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (InstanceReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput {
+	return i.ToInstanceReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponseOutputWithContext(ctx context.Context) InstanceReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceResponseOutput)
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponsePtrOutput() InstanceReferenceResponsePtrOutput {
+	return i.ToInstanceReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponsePtrOutputWithContext(ctx context.Context) InstanceReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceResponseOutput).ToInstanceReferenceResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceReferenceResponsePtrInput is an input type that accepts InstanceReferenceResponseArgs, InstanceReferenceResponsePtr and InstanceReferenceResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceReferenceResponsePtrInput` via:
+//
+//          InstanceReferenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceReferenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceReferenceResponsePtrOutput() InstanceReferenceResponsePtrOutput
+	ToInstanceReferenceResponsePtrOutputWithContext(context.Context) InstanceReferenceResponsePtrOutput
+}
+
+type instanceReferenceResponsePtrType InstanceReferenceResponseArgs
+
+func InstanceReferenceResponsePtr(v *InstanceReferenceResponseArgs) InstanceReferenceResponsePtrInput {
+	return (*instanceReferenceResponsePtrType)(v)
+}
+
+func (*instanceReferenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (i *instanceReferenceResponsePtrType) ToInstanceReferenceResponsePtrOutput() InstanceReferenceResponsePtrOutput {
+	return i.ToInstanceReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReferenceResponsePtrType) ToInstanceReferenceResponsePtrOutputWithContext(ctx context.Context) InstanceReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceResponsePtrOutput)
+}
+
+// Reference to another Cloud SQL instance.
+type InstanceReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput {
+	return o
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponseOutputWithContext(ctx context.Context) InstanceReferenceResponseOutput {
+	return o
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponsePtrOutput() InstanceReferenceResponsePtrOutput {
+	return o.ToInstanceReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponsePtrOutputWithContext(ctx context.Context) InstanceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) *InstanceReferenceResponse {
+		return &v
+	}).(InstanceReferenceResponsePtrOutput)
+}
+
+// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+func (o InstanceReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+func (o InstanceReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region of the Cloud SQL instance being referenced.
+func (o InstanceReferenceResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type InstanceReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (o InstanceReferenceResponsePtrOutput) ToInstanceReferenceResponsePtrOutput() InstanceReferenceResponsePtrOutput {
+	return o
+}
+
+func (o InstanceReferenceResponsePtrOutput) ToInstanceReferenceResponsePtrOutputWithContext(ctx context.Context) InstanceReferenceResponsePtrOutput {
+	return o
+}
+
+func (o InstanceReferenceResponsePtrOutput) Elem() InstanceReferenceResponseOutput {
+	return o.ApplyT(func(v *InstanceReferenceResponse) InstanceReferenceResponse { return *v }).(InstanceReferenceResponseOutput)
+}
+
+// The name of the Cloud SQL instance being referenced. This does not include the project ID.
+func (o InstanceReferenceResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+func (o InstanceReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the Cloud SQL instance being referenced.
+func (o InstanceReferenceResponsePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
 // IP Management configuration.
 type IpConfiguration struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 	AuthorizedNetworks []AclEntry `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
@@ -2959,6 +3305,8 @@ type IpConfigurationInput interface {
 
 // IP Management configuration.
 type IpConfigurationArgs struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 	AuthorizedNetworks AclEntryArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
@@ -3047,6 +3395,11 @@ func (o IpConfigurationOutput) ToIpConfigurationPtrOutputWithContext(ctx context
 	}).(IpConfigurationPtrOutput)
 }
 
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 func (o IpConfigurationOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v IpConfiguration) []AclEntry { return v.AuthorizedNetworks }).(AclEntryArrayOutput)
@@ -3083,6 +3436,16 @@ func (o IpConfigurationPtrOutput) ToIpConfigurationPtrOutputWithContext(ctx cont
 
 func (o IpConfigurationPtrOutput) Elem() IpConfigurationOutput {
 	return o.ApplyT(func(v *IpConfiguration) IpConfiguration { return *v }).(IpConfigurationOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+func (o IpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
@@ -3127,6 +3490,8 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 
 // IP Management configuration.
 type IpConfigurationResponse struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	AllocatedIpRange string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
@@ -3150,6 +3515,8 @@ type IpConfigurationResponseInput interface {
 
 // IP Management configuration.
 type IpConfigurationResponseArgs struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 	AuthorizedNetworks AclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
@@ -3238,6 +3605,11 @@ func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutputWithCon
 	}).(IpConfigurationResponsePtrOutput)
 }
 
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
 func (o IpConfigurationResponseOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) []AclEntryResponse { return v.AuthorizedNetworks }).(AclEntryResponseArrayOutput)
@@ -3274,6 +3646,16 @@ func (o IpConfigurationResponsePtrOutput) ToIpConfigurationResponsePtrOutputWith
 
 func (o IpConfigurationResponsePtrOutput) Elem() IpConfigurationResponseOutput {
 	return o.ApplyT(func(v *IpConfigurationResponse) IpConfigurationResponse { return *v }).(IpConfigurationResponseOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+func (o IpConfigurationResponsePtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
@@ -4980,6 +5362,8 @@ type OnPremisesConfiguration struct {
 	Kind *string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password *string `pulumi:"password"`
+	// The reference to Cloud SQL instance if the source is Cloud SQL.
+	SourceInstance *InstanceReference `pulumi:"sourceInstance"`
 	// The username for connecting to on-premises instance.
 	Username *string `pulumi:"username"`
 }
@@ -5011,6 +5395,8 @@ type OnPremisesConfigurationArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The reference to Cloud SQL instance if the source is Cloud SQL.
+	SourceInstance InstanceReferencePtrInput `pulumi:"sourceInstance"`
 	// The username for connecting to on-premises instance.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -5128,6 +5514,11 @@ func (o OnPremisesConfigurationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The reference to Cloud SQL instance if the source is Cloud SQL.
+func (o OnPremisesConfigurationOutput) SourceInstance() InstanceReferencePtrOutput {
+	return o.ApplyT(func(v OnPremisesConfiguration) *InstanceReference { return v.SourceInstance }).(InstanceReferencePtrOutput)
+}
+
 // The username for connecting to on-premises instance.
 func (o OnPremisesConfigurationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremisesConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -5221,6 +5612,16 @@ func (o OnPremisesConfigurationPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The reference to Cloud SQL instance if the source is Cloud SQL.
+func (o OnPremisesConfigurationPtrOutput) SourceInstance() InstanceReferencePtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfiguration) *InstanceReference {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstance
+	}).(InstanceReferencePtrOutput)
+}
+
 // The username for connecting to on-premises instance.
 func (o OnPremisesConfigurationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremisesConfiguration) *string {
@@ -5247,6 +5648,8 @@ type OnPremisesConfigurationResponse struct {
 	Kind string `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password string `pulumi:"password"`
+	// The reference to Cloud SQL instance if the source is Cloud SQL.
+	SourceInstance InstanceReferenceResponse `pulumi:"sourceInstance"`
 	// The username for connecting to on-premises instance.
 	Username string `pulumi:"username"`
 }
@@ -5278,6 +5681,8 @@ type OnPremisesConfigurationResponseArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The password for connecting to on-premises instance.
 	Password pulumi.StringInput `pulumi:"password"`
+	// The reference to Cloud SQL instance if the source is Cloud SQL.
+	SourceInstance InstanceReferenceResponseInput `pulumi:"sourceInstance"`
 	// The username for connecting to on-premises instance.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -5395,6 +5800,11 @@ func (o OnPremisesConfigurationResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// The reference to Cloud SQL instance if the source is Cloud SQL.
+func (o OnPremisesConfigurationResponseOutput) SourceInstance() InstanceReferenceResponseOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) InstanceReferenceResponse { return v.SourceInstance }).(InstanceReferenceResponseOutput)
+}
+
 // The username for connecting to on-premises instance.
 func (o OnPremisesConfigurationResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Username }).(pulumi.StringOutput)
@@ -5486,6 +5896,16 @@ func (o OnPremisesConfigurationResponsePtrOutput) Password() pulumi.StringPtrOut
 		}
 		return &v.Password
 	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to Cloud SQL instance if the source is Cloud SQL.
+func (o OnPremisesConfigurationResponsePtrOutput) SourceInstance() InstanceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *InstanceReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceInstance
+	}).(InstanceReferenceResponsePtrOutput)
 }
 
 // The username for connecting to on-premises instance.
@@ -6214,7 +6634,7 @@ type Settings struct {
 	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig *InsightsConfig `pulumi:"insightsConfig"`
-	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfiguration *IpConfiguration `pulumi:"ipConfiguration"`
 	// This is always *sql#settings*.
 	Kind *string `pulumi:"kind"`
@@ -6273,7 +6693,7 @@ type SettingsArgs struct {
 	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigPtrInput `pulumi:"insightsConfig"`
-	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfiguration IpConfigurationPtrInput `pulumi:"ipConfiguration"`
 	// This is always *sql#settings*.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
@@ -6433,7 +6853,7 @@ func (o SettingsOutput) InsightsConfig() InsightsConfigPtrOutput {
 	return o.ApplyT(func(v Settings) *InsightsConfig { return v.InsightsConfig }).(InsightsConfigPtrOutput)
 }
 
-// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 func (o SettingsOutput) IpConfiguration() IpConfigurationPtrOutput {
 	return o.ApplyT(func(v Settings) *IpConfiguration { return v.IpConfiguration }).(IpConfigurationPtrOutput)
 }
@@ -6621,7 +7041,7 @@ func (o SettingsPtrOutput) InsightsConfig() InsightsConfigPtrOutput {
 	}).(InsightsConfigPtrOutput)
 }
 
-// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 func (o SettingsPtrOutput) IpConfiguration() IpConfigurationPtrOutput {
 	return o.ApplyT(func(v *Settings) *IpConfiguration {
 		if v == nil {
@@ -6747,7 +7167,7 @@ type SettingsResponse struct {
 	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigResponse `pulumi:"insightsConfig"`
-	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfiguration IpConfigurationResponse `pulumi:"ipConfiguration"`
 	// This is always *sql#settings*.
 	Kind string `pulumi:"kind"`
@@ -6806,7 +7226,7 @@ type SettingsResponseArgs struct {
 	DenyMaintenancePeriods DenyMaintenancePeriodResponseArrayInput `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigResponseInput `pulumi:"insightsConfig"`
-	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfiguration IpConfigurationResponseInput `pulumi:"ipConfiguration"`
 	// This is always *sql#settings*.
 	Kind pulumi.StringInput `pulumi:"kind"`
@@ -6966,7 +7386,7 @@ func (o SettingsResponseOutput) InsightsConfig() InsightsConfigResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) InsightsConfigResponse { return v.InsightsConfig }).(InsightsConfigResponseOutput)
 }
 
-// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 func (o SettingsResponseOutput) IpConfiguration() IpConfigurationResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) IpConfigurationResponse { return v.IpConfiguration }).(IpConfigurationResponseOutput)
 }
@@ -7154,7 +7574,7 @@ func (o SettingsResponsePtrOutput) InsightsConfig() InsightsConfigResponsePtrOut
 	}).(InsightsConfigResponsePtrOutput)
 }
 
-// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 func (o SettingsResponsePtrOutput) IpConfiguration() IpConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *IpConfigurationResponse {
 		if v == nil {
@@ -9153,6 +9573,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFailoverReplicaPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFailoverReplicaResponseOutput{})
 	pulumi.RegisterOutputType(InstanceFailoverReplicaResponsePtrOutput{})
+	pulumi.RegisterOutputType(InstanceReferenceOutput{})
+	pulumi.RegisterOutputType(InstanceReferencePtrOutput{})
+	pulumi.RegisterOutputType(InstanceReferenceResponseOutput{})
+	pulumi.RegisterOutputType(InstanceReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationOutput{})
 	pulumi.RegisterOutputType(IpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})

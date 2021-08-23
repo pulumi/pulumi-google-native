@@ -5965,7 +5965,7 @@ func (o AutoscalingPolicyScaleInControlResponsePtrOutput) TimeWindowSec() pulumi
 
 // Message containing information of one individual backend.
 type Backend struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode *BackendBalancingMode `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler *float64 `pulumi:"capacityScaler"`
@@ -5987,7 +5987,8 @@ type Backend struct {
 	MaxRatePerEndpoint *float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
-	MaxUtilization     *float64 `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization *float64 `pulumi:"maxUtilization"`
 }
 
 // BackendInput is an input type that accepts BackendArgs and BackendOutput values.
@@ -6003,7 +6004,7 @@ type BackendInput interface {
 
 // Message containing information of one individual backend.
 type BackendArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode BackendBalancingModePtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64PtrInput `pulumi:"capacityScaler"`
@@ -6025,7 +6026,8 @@ type BackendArgs struct {
 	MaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
-	MaxUtilization     pulumi.Float64PtrInput `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
 }
 
 func (BackendArgs) ElementType() reflect.Type {
@@ -6080,7 +6082,7 @@ func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOu
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendOutput) BalancingMode() BackendBalancingModePtrOutput {
 	return o.ApplyT(func(v Backend) *BackendBalancingMode { return v.BalancingMode }).(BackendBalancingModePtrOutput)
 }
@@ -6135,6 +6137,7 @@ func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerInstance }).(pulumi.Float64PtrOutput)
 }
 
+// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
 }
@@ -7564,7 +7567,7 @@ func (o BackendBucketCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.Stri
 
 // Message containing information of one individual backend.
 type BackendResponse struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler float64 `pulumi:"capacityScaler"`
@@ -7586,7 +7589,8 @@ type BackendResponse struct {
 	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
-	MaxUtilization     float64 `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization float64 `pulumi:"maxUtilization"`
 }
 
 // BackendResponseInput is an input type that accepts BackendResponseArgs and BackendResponseOutput values.
@@ -7602,7 +7606,7 @@ type BackendResponseInput interface {
 
 // Message containing information of one individual backend.
 type BackendResponseArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
@@ -7624,7 +7628,8 @@ type BackendResponseArgs struct {
 	MaxRatePerEndpoint pulumi.Float64Input `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64Input `pulumi:"maxRatePerInstance"`
-	MaxUtilization     pulumi.Float64Input `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization pulumi.Float64Input `pulumi:"maxUtilization"`
 }
 
 func (BackendResponseArgs) ElementType() reflect.Type {
@@ -7679,7 +7684,7 @@ func (o BackendResponseOutput) ToBackendResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendResponseOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendResponse) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
@@ -7734,6 +7739,7 @@ func (o BackendResponseOutput) MaxRatePerInstance() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
 }
 
+// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendResponseOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
 }
@@ -17692,11 +17698,11 @@ func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRu
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcher struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
 
@@ -17713,11 +17719,11 @@ type FirewallPolicyRuleMatcherInput interface {
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherArgs struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
 
@@ -17799,7 +17805,7 @@ func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherPtrOutputWit
 	}).(FirewallPolicyRuleMatcherPtrOutput)
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -17809,7 +17815,7 @@ func (o FirewallPolicyRuleMatcherOutput) Layer4Configs() FirewallPolicyRuleMatch
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config { return v.Layer4Configs }).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -17832,7 +17838,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Elem() FirewallPolicyRuleMatcherOutp
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) FirewallPolicyRuleMatcher { return *v }).(FirewallPolicyRuleMatcherOutput)
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -17852,7 +17858,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Layer4Configs() FirewallPolicyRuleMa
 	}).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -18076,11 +18082,11 @@ func (o FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput) Index(i pulumi
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherResponse struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4ConfigResponse `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
 
@@ -18097,11 +18103,11 @@ type FirewallPolicyRuleMatcherResponseInput interface {
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherResponseArgs struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigResponseArrayInput `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
 
@@ -18132,7 +18138,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) ToFirewallPolicyRuleMatcherResp
 	return o
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -18144,7 +18150,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) Layer4Configs() FirewallPolicyR
 	}).(FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -25788,7 +25794,7 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *ImageRawDiskContainerType `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source *string `pulumi:"source"`
 }
 
@@ -25807,7 +25813,7 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType ImageRawDiskContainerTypePtrInput `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -25894,7 +25900,7 @@ func (o ImageRawDiskOutput) ContainerType() ImageRawDiskContainerTypePtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *ImageRawDiskContainerType { return v.ContainerType }).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -25927,7 +25933,7 @@ func (o ImageRawDiskPtrOutput) ContainerType() ImageRawDiskContainerTypePtrOutpu
 	}).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
 		if v == nil {
@@ -25941,7 +25947,7 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source string `pulumi:"source"`
 }
 
@@ -25960,7 +25966,7 @@ type ImageRawDiskResponseInput interface {
 type ImageRawDiskResponseArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringInput `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringInput `pulumi:"source"`
 }
 
@@ -26047,7 +26053,7 @@ func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -26080,7 +26086,7 @@ func (o ImageRawDiskResponsePtrOutput) ContainerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDiskResponse) *string {
 		if v == nil {
@@ -35315,11 +35321,11 @@ type NetworkPeeringResponse struct {
 	ExchangeSubnetRoutes bool `pulumi:"exchangeSubnetRoutes"`
 	// Whether to export the custom routes to peer network.
 	ExportCustomRoutes bool `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp bool `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to import the custom routes from peer network.
 	ImportCustomRoutes bool `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
@@ -35352,11 +35358,11 @@ type NetworkPeeringResponseArgs struct {
 	ExchangeSubnetRoutes pulumi.BoolInput `pulumi:"exchangeSubnetRoutes"`
 	// Whether to export the custom routes to peer network.
 	ExportCustomRoutes pulumi.BoolInput `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to import the custom routes from peer network.
 	ImportCustomRoutes pulumi.BoolInput `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -35437,7 +35443,7 @@ func (o NetworkPeeringResponseOutput) ExportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportCustomRoutes }).(pulumi.BoolOutput)
 }
 
-// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 func (o NetworkPeeringResponseOutput) ExportSubnetRoutesWithPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportSubnetRoutesWithPublicIp }).(pulumi.BoolOutput)
 }
@@ -35447,7 +35453,7 @@ func (o NetworkPeeringResponseOutput) ImportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ImportCustomRoutes }).(pulumi.BoolOutput)
 }
 
-// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 func (o NetworkPeeringResponseOutput) ImportSubnetRoutesWithPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ImportSubnetRoutesWithPublicIp }).(pulumi.BoolOutput)
 }
@@ -52985,8 +52991,10 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
 	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
 	ExceedAction *string `pulumi:"exceedAction"`
 	// Threshold at which to begin ratelimiting.
@@ -53011,8 +53019,10 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
 	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
 	// Threshold at which to begin ratelimiting.
@@ -53113,11 +53123,16 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
 // When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
@@ -53180,7 +53195,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -53188,6 +53203,16 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPoli
 		}
 		return v.EnforceOnKey
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 // When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
@@ -53217,8 +53242,10 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
 	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
 	ExceedAction string `pulumi:"exceedAction"`
 	// Threshold at which to begin ratelimiting.
@@ -53243,8 +53270,10 @@ type SecurityPolicyRuleRateLimitOptionsResponseArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponseInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringInput `pulumi:"conformAction"`
-	// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 	EnforceOnKey pulumi.StringInput `pulumi:"enforceOnKey"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
 	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
 	ExceedAction pulumi.StringInput `pulumi:"exceedAction"`
 	// Threshold at which to begin ratelimiting.
@@ -53294,9 +53323,14 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
 // When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
@@ -54855,124 +54889,6 @@ func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConnectedEndpointResponse {
 		return vs[0].([]ServiceAttachmentConnectedEndpointResponse)[vs[1].(int)]
 	}).(ServiceAttachmentConnectedEndpointResponseOutput)
-}
-
-// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-type ServiceAttachmentConsumerForwardingRuleResponse struct {
-	// The url of a consumer forwarding rule.
-	ForwardingRule string `pulumi:"forwardingRule"`
-	// The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId string `pulumi:"pscConnectionId"`
-	// The status of the forwarding rule.
-	Status string `pulumi:"status"`
-}
-
-// ServiceAttachmentConsumerForwardingRuleResponseInput is an input type that accepts ServiceAttachmentConsumerForwardingRuleResponseArgs and ServiceAttachmentConsumerForwardingRuleResponseOutput values.
-// You can construct a concrete instance of `ServiceAttachmentConsumerForwardingRuleResponseInput` via:
-//
-//          ServiceAttachmentConsumerForwardingRuleResponseArgs{...}
-type ServiceAttachmentConsumerForwardingRuleResponseInput interface {
-	pulumi.Input
-
-	ToServiceAttachmentConsumerForwardingRuleResponseOutput() ServiceAttachmentConsumerForwardingRuleResponseOutput
-	ToServiceAttachmentConsumerForwardingRuleResponseOutputWithContext(context.Context) ServiceAttachmentConsumerForwardingRuleResponseOutput
-}
-
-// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-type ServiceAttachmentConsumerForwardingRuleResponseArgs struct {
-	// The url of a consumer forwarding rule.
-	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
-	// The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
-	// The status of the forwarding rule.
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (ServiceAttachmentConsumerForwardingRuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachmentConsumerForwardingRuleResponse)(nil)).Elem()
-}
-
-func (i ServiceAttachmentConsumerForwardingRuleResponseArgs) ToServiceAttachmentConsumerForwardingRuleResponseOutput() ServiceAttachmentConsumerForwardingRuleResponseOutput {
-	return i.ToServiceAttachmentConsumerForwardingRuleResponseOutputWithContext(context.Background())
-}
-
-func (i ServiceAttachmentConsumerForwardingRuleResponseArgs) ToServiceAttachmentConsumerForwardingRuleResponseOutputWithContext(ctx context.Context) ServiceAttachmentConsumerForwardingRuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerForwardingRuleResponseOutput)
-}
-
-// ServiceAttachmentConsumerForwardingRuleResponseArrayInput is an input type that accepts ServiceAttachmentConsumerForwardingRuleResponseArray and ServiceAttachmentConsumerForwardingRuleResponseArrayOutput values.
-// You can construct a concrete instance of `ServiceAttachmentConsumerForwardingRuleResponseArrayInput` via:
-//
-//          ServiceAttachmentConsumerForwardingRuleResponseArray{ ServiceAttachmentConsumerForwardingRuleResponseArgs{...} }
-type ServiceAttachmentConsumerForwardingRuleResponseArrayInput interface {
-	pulumi.Input
-
-	ToServiceAttachmentConsumerForwardingRuleResponseArrayOutput() ServiceAttachmentConsumerForwardingRuleResponseArrayOutput
-	ToServiceAttachmentConsumerForwardingRuleResponseArrayOutputWithContext(context.Context) ServiceAttachmentConsumerForwardingRuleResponseArrayOutput
-}
-
-type ServiceAttachmentConsumerForwardingRuleResponseArray []ServiceAttachmentConsumerForwardingRuleResponseInput
-
-func (ServiceAttachmentConsumerForwardingRuleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceAttachmentConsumerForwardingRuleResponse)(nil)).Elem()
-}
-
-func (i ServiceAttachmentConsumerForwardingRuleResponseArray) ToServiceAttachmentConsumerForwardingRuleResponseArrayOutput() ServiceAttachmentConsumerForwardingRuleResponseArrayOutput {
-	return i.ToServiceAttachmentConsumerForwardingRuleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ServiceAttachmentConsumerForwardingRuleResponseArray) ToServiceAttachmentConsumerForwardingRuleResponseArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerForwardingRuleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerForwardingRuleResponseArrayOutput)
-}
-
-// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-type ServiceAttachmentConsumerForwardingRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceAttachmentConsumerForwardingRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceAttachmentConsumerForwardingRuleResponse)(nil)).Elem()
-}
-
-func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) ToServiceAttachmentConsumerForwardingRuleResponseOutput() ServiceAttachmentConsumerForwardingRuleResponseOutput {
-	return o
-}
-
-func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) ToServiceAttachmentConsumerForwardingRuleResponseOutputWithContext(ctx context.Context) ServiceAttachmentConsumerForwardingRuleResponseOutput {
-	return o
-}
-
-// The url of a consumer forwarding rule.
-func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) ForwardingRule() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRuleResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
-}
-
-// The PSC connection id of the PSC Forwarding Rule.
-func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) PscConnectionId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRuleResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
-}
-
-// The status of the forwarding rule.
-func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRuleResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type ServiceAttachmentConsumerForwardingRuleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ServiceAttachmentConsumerForwardingRuleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceAttachmentConsumerForwardingRuleResponse)(nil)).Elem()
-}
-
-func (o ServiceAttachmentConsumerForwardingRuleResponseArrayOutput) ToServiceAttachmentConsumerForwardingRuleResponseArrayOutput() ServiceAttachmentConsumerForwardingRuleResponseArrayOutput {
-	return o
-}
-
-func (o ServiceAttachmentConsumerForwardingRuleResponseArrayOutput) ToServiceAttachmentConsumerForwardingRuleResponseArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerForwardingRuleResponseArrayOutput {
-	return o
-}
-
-func (o ServiceAttachmentConsumerForwardingRuleResponseArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConsumerForwardingRuleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConsumerForwardingRuleResponse {
-		return vs[0].([]ServiceAttachmentConsumerForwardingRuleResponse)[vs[1].(int)]
-	}).(ServiceAttachmentConsumerForwardingRuleResponseOutput)
 }
 
 type ServiceAttachmentConsumerProjectLimit struct {
@@ -62700,8 +62616,6 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseArrayOutput{})
-	pulumi.RegisterOutputType(ServiceAttachmentConsumerForwardingRuleResponseOutput{})
-	pulumi.RegisterOutputType(ServiceAttachmentConsumerForwardingRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseOutput{})

@@ -10,6 +10,484 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfig struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+}
+
+// ApprovalConfigInput is an input type that accepts ApprovalConfigArgs and ApprovalConfigOutput values.
+// You can construct a concrete instance of `ApprovalConfigInput` via:
+//
+//          ApprovalConfigArgs{...}
+type ApprovalConfigInput interface {
+	pulumi.Input
+
+	ToApprovalConfigOutput() ApprovalConfigOutput
+	ToApprovalConfigOutputWithContext(context.Context) ApprovalConfigOutput
+}
+
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfigArgs struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+	ApprovalRequired pulumi.BoolPtrInput `pulumi:"approvalRequired"`
+}
+
+func (ApprovalConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalConfig)(nil)).Elem()
+}
+
+func (i ApprovalConfigArgs) ToApprovalConfigOutput() ApprovalConfigOutput {
+	return i.ToApprovalConfigOutputWithContext(context.Background())
+}
+
+func (i ApprovalConfigArgs) ToApprovalConfigOutputWithContext(ctx context.Context) ApprovalConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigOutput)
+}
+
+func (i ApprovalConfigArgs) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput {
+	return i.ToApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApprovalConfigArgs) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigOutput).ToApprovalConfigPtrOutputWithContext(ctx)
+}
+
+// ApprovalConfigPtrInput is an input type that accepts ApprovalConfigArgs, ApprovalConfigPtr and ApprovalConfigPtrOutput values.
+// You can construct a concrete instance of `ApprovalConfigPtrInput` via:
+//
+//          ApprovalConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ApprovalConfigPtrInput interface {
+	pulumi.Input
+
+	ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput
+	ToApprovalConfigPtrOutputWithContext(context.Context) ApprovalConfigPtrOutput
+}
+
+type approvalConfigPtrType ApprovalConfigArgs
+
+func ApprovalConfigPtr(v *ApprovalConfigArgs) ApprovalConfigPtrInput {
+	return (*approvalConfigPtrType)(v)
+}
+
+func (*approvalConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalConfig)(nil)).Elem()
+}
+
+func (i *approvalConfigPtrType) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput {
+	return i.ToApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *approvalConfigPtrType) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigPtrOutput)
+}
+
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfigOutput struct{ *pulumi.OutputState }
+
+func (ApprovalConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalConfig)(nil)).Elem()
+}
+
+func (o ApprovalConfigOutput) ToApprovalConfigOutput() ApprovalConfigOutput {
+	return o
+}
+
+func (o ApprovalConfigOutput) ToApprovalConfigOutputWithContext(ctx context.Context) ApprovalConfigOutput {
+	return o
+}
+
+func (o ApprovalConfigOutput) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput {
+	return o.ToApprovalConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApprovalConfigOutput) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
+	return o.ApplyT(func(v ApprovalConfig) *ApprovalConfig {
+		return &v
+	}).(ApprovalConfigPtrOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+func (o ApprovalConfigOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalConfig) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+type ApprovalConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApprovalConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalConfig)(nil)).Elem()
+}
+
+func (o ApprovalConfigPtrOutput) ToApprovalConfigPtrOutput() ApprovalConfigPtrOutput {
+	return o
+}
+
+func (o ApprovalConfigPtrOutput) ToApprovalConfigPtrOutputWithContext(ctx context.Context) ApprovalConfigPtrOutput {
+	return o
+}
+
+func (o ApprovalConfigPtrOutput) Elem() ApprovalConfigOutput {
+	return o.ApplyT(func(v *ApprovalConfig) ApprovalConfig { return *v }).(ApprovalConfigOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+func (o ApprovalConfigPtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApprovalConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfigResponse struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+	ApprovalRequired bool `pulumi:"approvalRequired"`
+}
+
+// ApprovalConfigResponseInput is an input type that accepts ApprovalConfigResponseArgs and ApprovalConfigResponseOutput values.
+// You can construct a concrete instance of `ApprovalConfigResponseInput` via:
+//
+//          ApprovalConfigResponseArgs{...}
+type ApprovalConfigResponseInput interface {
+	pulumi.Input
+
+	ToApprovalConfigResponseOutput() ApprovalConfigResponseOutput
+	ToApprovalConfigResponseOutputWithContext(context.Context) ApprovalConfigResponseOutput
+}
+
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfigResponseArgs struct {
+	// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+	ApprovalRequired pulumi.BoolInput `pulumi:"approvalRequired"`
+}
+
+func (ApprovalConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalConfigResponse)(nil)).Elem()
+}
+
+func (i ApprovalConfigResponseArgs) ToApprovalConfigResponseOutput() ApprovalConfigResponseOutput {
+	return i.ToApprovalConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ApprovalConfigResponseArgs) ToApprovalConfigResponseOutputWithContext(ctx context.Context) ApprovalConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponseOutput)
+}
+
+func (i ApprovalConfigResponseArgs) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
+	return i.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ApprovalConfigResponseArgs) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponseOutput).ToApprovalConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ApprovalConfigResponsePtrInput is an input type that accepts ApprovalConfigResponseArgs, ApprovalConfigResponsePtr and ApprovalConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ApprovalConfigResponsePtrInput` via:
+//
+//          ApprovalConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ApprovalConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput
+	ToApprovalConfigResponsePtrOutputWithContext(context.Context) ApprovalConfigResponsePtrOutput
+}
+
+type approvalConfigResponsePtrType ApprovalConfigResponseArgs
+
+func ApprovalConfigResponsePtr(v *ApprovalConfigResponseArgs) ApprovalConfigResponsePtrInput {
+	return (*approvalConfigResponsePtrType)(v)
+}
+
+func (*approvalConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalConfigResponse)(nil)).Elem()
+}
+
+func (i *approvalConfigResponsePtrType) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
+	return i.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *approvalConfigResponsePtrType) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponsePtrOutput)
+}
+
+// ApprovalConfig describes configuration for manual approval of a build.
+type ApprovalConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ApprovalConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalConfigResponse)(nil)).Elem()
+}
+
+func (o ApprovalConfigResponseOutput) ToApprovalConfigResponseOutput() ApprovalConfigResponseOutput {
+	return o
+}
+
+func (o ApprovalConfigResponseOutput) ToApprovalConfigResponseOutputWithContext(ctx context.Context) ApprovalConfigResponseOutput {
+	return o
+}
+
+func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
+	return o.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
+	return o.ApplyT(func(v ApprovalConfigResponse) *ApprovalConfigResponse {
+		return &v
+	}).(ApprovalConfigResponsePtrOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+func (o ApprovalConfigResponseOutput) ApprovalRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v ApprovalConfigResponse) bool { return v.ApprovalRequired }).(pulumi.BoolOutput)
+}
+
+type ApprovalConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApprovalConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalConfigResponse)(nil)).Elem()
+}
+
+func (o ApprovalConfigResponsePtrOutput) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalConfigResponsePtrOutput) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalConfigResponsePtrOutput) Elem() ApprovalConfigResponseOutput {
+	return o.ApplyT(func(v *ApprovalConfigResponse) ApprovalConfigResponse { return *v }).(ApprovalConfigResponseOutput)
+}
+
+// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+func (o ApprovalConfigResponsePtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApprovalConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ApprovalRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+type ApprovalResultResponse struct {
+	// The time when the approval decision was made.
+	ApprovalTime string `pulumi:"approvalTime"`
+	// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+	ApproverAccount string `pulumi:"approverAccount"`
+	// Optional. An optional comment for this manual approval result.
+	Comment string `pulumi:"comment"`
+	// The decision of this manual approval.
+	Decision string `pulumi:"decision"`
+	// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+	Url string `pulumi:"url"`
+}
+
+// ApprovalResultResponseInput is an input type that accepts ApprovalResultResponseArgs and ApprovalResultResponseOutput values.
+// You can construct a concrete instance of `ApprovalResultResponseInput` via:
+//
+//          ApprovalResultResponseArgs{...}
+type ApprovalResultResponseInput interface {
+	pulumi.Input
+
+	ToApprovalResultResponseOutput() ApprovalResultResponseOutput
+	ToApprovalResultResponseOutputWithContext(context.Context) ApprovalResultResponseOutput
+}
+
+// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+type ApprovalResultResponseArgs struct {
+	// The time when the approval decision was made.
+	ApprovalTime pulumi.StringInput `pulumi:"approvalTime"`
+	// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+	ApproverAccount pulumi.StringInput `pulumi:"approverAccount"`
+	// Optional. An optional comment for this manual approval result.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The decision of this manual approval.
+	Decision pulumi.StringInput `pulumi:"decision"`
+	// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (ApprovalResultResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalResultResponse)(nil)).Elem()
+}
+
+func (i ApprovalResultResponseArgs) ToApprovalResultResponseOutput() ApprovalResultResponseOutput {
+	return i.ToApprovalResultResponseOutputWithContext(context.Background())
+}
+
+func (i ApprovalResultResponseArgs) ToApprovalResultResponseOutputWithContext(ctx context.Context) ApprovalResultResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponseOutput)
+}
+
+func (i ApprovalResultResponseArgs) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
+	return i.ToApprovalResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ApprovalResultResponseArgs) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponseOutput).ToApprovalResultResponsePtrOutputWithContext(ctx)
+}
+
+// ApprovalResultResponsePtrInput is an input type that accepts ApprovalResultResponseArgs, ApprovalResultResponsePtr and ApprovalResultResponsePtrOutput values.
+// You can construct a concrete instance of `ApprovalResultResponsePtrInput` via:
+//
+//          ApprovalResultResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ApprovalResultResponsePtrInput interface {
+	pulumi.Input
+
+	ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput
+	ToApprovalResultResponsePtrOutputWithContext(context.Context) ApprovalResultResponsePtrOutput
+}
+
+type approvalResultResponsePtrType ApprovalResultResponseArgs
+
+func ApprovalResultResponsePtr(v *ApprovalResultResponseArgs) ApprovalResultResponsePtrInput {
+	return (*approvalResultResponsePtrType)(v)
+}
+
+func (*approvalResultResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalResultResponse)(nil)).Elem()
+}
+
+func (i *approvalResultResponsePtrType) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
+	return i.ToApprovalResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *approvalResultResponsePtrType) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponsePtrOutput)
+}
+
+// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+type ApprovalResultResponseOutput struct{ *pulumi.OutputState }
+
+func (ApprovalResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalResultResponse)(nil)).Elem()
+}
+
+func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutput() ApprovalResultResponseOutput {
+	return o
+}
+
+func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutputWithContext(ctx context.Context) ApprovalResultResponseOutput {
+	return o
+}
+
+func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
+	return o.ToApprovalResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) *ApprovalResultResponse {
+		return &v
+	}).(ApprovalResultResponsePtrOutput)
+}
+
+// The time when the approval decision was made.
+func (o ApprovalResultResponseOutput) ApprovalTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) string { return v.ApprovalTime }).(pulumi.StringOutput)
+}
+
+// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+func (o ApprovalResultResponseOutput) ApproverAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) string { return v.ApproverAccount }).(pulumi.StringOutput)
+}
+
+// Optional. An optional comment for this manual approval result.
+func (o ApprovalResultResponseOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The decision of this manual approval.
+func (o ApprovalResultResponseOutput) Decision() pulumi.StringOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) string { return v.Decision }).(pulumi.StringOutput)
+}
+
+// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+func (o ApprovalResultResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ApprovalResultResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ApprovalResultResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApprovalResultResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalResultResponse)(nil)).Elem()
+}
+
+func (o ApprovalResultResponsePtrOutput) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalResultResponsePtrOutput) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalResultResponsePtrOutput) Elem() ApprovalResultResponseOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) ApprovalResultResponse { return *v }).(ApprovalResultResponseOutput)
+}
+
+// The time when the approval decision was made.
+func (o ApprovalResultResponsePtrOutput) ApprovalTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApprovalTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+func (o ApprovalResultResponsePtrOutput) ApproverAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApproverAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An optional comment for this manual approval result.
+func (o ApprovalResultResponsePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The decision of this manual approval.
+func (o ApprovalResultResponsePtrOutput) Decision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Decision
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+func (o ApprovalResultResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
 type ArtifactObjects struct {
 	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -641,7 +1119,7 @@ func (o ArtifactsResponsePtrOutput) Objects() ArtifactObjectsResponsePtrOutput {
 	}).(ArtifactObjectsResponsePtrOutput)
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildType struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts *Artifacts `pulumi:"artifacts"`
@@ -682,7 +1160,7 @@ type BuildTypeInput interface {
 	ToBuildTypeOutputWithContext(context.Context) BuildTypeOutput
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildTypeArgs struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts ArtifactsPtrInput `pulumi:"artifacts"`
@@ -765,7 +1243,7 @@ func (i *buildTypePtrType) ToBuildTypePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BuildTypePtrOutput)
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildTypeOutput struct{ *pulumi.OutputState }
 
 func (BuildTypeOutput) ElementType() reflect.Type {
@@ -1000,6 +1478,178 @@ func (o BuildTypePtrOutput) Timeout() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// BuildApproval describes a build's approval configuration, state, and result.
+type BuildApprovalResponse struct {
+	// Configuration for manual approval of this build.
+	Config ApprovalConfigResponse `pulumi:"config"`
+	// Result of manual approval for this Build.
+	Result ApprovalResultResponse `pulumi:"result"`
+	// The state of this build's approval.
+	State string `pulumi:"state"`
+}
+
+// BuildApprovalResponseInput is an input type that accepts BuildApprovalResponseArgs and BuildApprovalResponseOutput values.
+// You can construct a concrete instance of `BuildApprovalResponseInput` via:
+//
+//          BuildApprovalResponseArgs{...}
+type BuildApprovalResponseInput interface {
+	pulumi.Input
+
+	ToBuildApprovalResponseOutput() BuildApprovalResponseOutput
+	ToBuildApprovalResponseOutputWithContext(context.Context) BuildApprovalResponseOutput
+}
+
+// BuildApproval describes a build's approval configuration, state, and result.
+type BuildApprovalResponseArgs struct {
+	// Configuration for manual approval of this build.
+	Config ApprovalConfigResponseInput `pulumi:"config"`
+	// Result of manual approval for this Build.
+	Result ApprovalResultResponseInput `pulumi:"result"`
+	// The state of this build's approval.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (BuildApprovalResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildApprovalResponse)(nil)).Elem()
+}
+
+func (i BuildApprovalResponseArgs) ToBuildApprovalResponseOutput() BuildApprovalResponseOutput {
+	return i.ToBuildApprovalResponseOutputWithContext(context.Background())
+}
+
+func (i BuildApprovalResponseArgs) ToBuildApprovalResponseOutputWithContext(ctx context.Context) BuildApprovalResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponseOutput)
+}
+
+func (i BuildApprovalResponseArgs) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
+	return i.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildApprovalResponseArgs) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponseOutput).ToBuildApprovalResponsePtrOutputWithContext(ctx)
+}
+
+// BuildApprovalResponsePtrInput is an input type that accepts BuildApprovalResponseArgs, BuildApprovalResponsePtr and BuildApprovalResponsePtrOutput values.
+// You can construct a concrete instance of `BuildApprovalResponsePtrInput` via:
+//
+//          BuildApprovalResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildApprovalResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput
+	ToBuildApprovalResponsePtrOutputWithContext(context.Context) BuildApprovalResponsePtrOutput
+}
+
+type buildApprovalResponsePtrType BuildApprovalResponseArgs
+
+func BuildApprovalResponsePtr(v *BuildApprovalResponseArgs) BuildApprovalResponsePtrInput {
+	return (*buildApprovalResponsePtrType)(v)
+}
+
+func (*buildApprovalResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildApprovalResponse)(nil)).Elem()
+}
+
+func (i *buildApprovalResponsePtrType) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
+	return i.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildApprovalResponsePtrType) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponsePtrOutput)
+}
+
+// BuildApproval describes a build's approval configuration, state, and result.
+type BuildApprovalResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildApprovalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildApprovalResponse)(nil)).Elem()
+}
+
+func (o BuildApprovalResponseOutput) ToBuildApprovalResponseOutput() BuildApprovalResponseOutput {
+	return o
+}
+
+func (o BuildApprovalResponseOutput) ToBuildApprovalResponseOutputWithContext(ctx context.Context) BuildApprovalResponseOutput {
+	return o
+}
+
+func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
+	return o.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
+	return o.ApplyT(func(v BuildApprovalResponse) *BuildApprovalResponse {
+		return &v
+	}).(BuildApprovalResponsePtrOutput)
+}
+
+// Configuration for manual approval of this build.
+func (o BuildApprovalResponseOutput) Config() ApprovalConfigResponseOutput {
+	return o.ApplyT(func(v BuildApprovalResponse) ApprovalConfigResponse { return v.Config }).(ApprovalConfigResponseOutput)
+}
+
+// Result of manual approval for this Build.
+func (o BuildApprovalResponseOutput) Result() ApprovalResultResponseOutput {
+	return o.ApplyT(func(v BuildApprovalResponse) ApprovalResultResponse { return v.Result }).(ApprovalResultResponseOutput)
+}
+
+// The state of this build's approval.
+func (o BuildApprovalResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildApprovalResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type BuildApprovalResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildApprovalResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildApprovalResponse)(nil)).Elem()
+}
+
+func (o BuildApprovalResponsePtrOutput) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
+	return o
+}
+
+func (o BuildApprovalResponsePtrOutput) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
+	return o
+}
+
+func (o BuildApprovalResponsePtrOutput) Elem() BuildApprovalResponseOutput {
+	return o.ApplyT(func(v *BuildApprovalResponse) BuildApprovalResponse { return *v }).(BuildApprovalResponseOutput)
+}
+
+// Configuration for manual approval of this build.
+func (o BuildApprovalResponsePtrOutput) Config() ApprovalConfigResponsePtrOutput {
+	return o.ApplyT(func(v *BuildApprovalResponse) *ApprovalConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Config
+	}).(ApprovalConfigResponsePtrOutput)
+}
+
+// Result of manual approval for this Build.
+func (o BuildApprovalResponsePtrOutput) Result() ApprovalResultResponsePtrOutput {
+	return o.ApplyT(func(v *BuildApprovalResponse) *ApprovalResultResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Result
+	}).(ApprovalResultResponsePtrOutput)
+}
+
+// The state of this build's approval.
+func (o BuildApprovalResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildApprovalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1727,8 +2377,10 @@ func (o BuildOptionsResponsePtrOutput) WorkerPool() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildResponse struct {
+	// Describes this build's approval configuration, status, and result.
+	Approval BuildApprovalResponse `pulumi:"approval"`
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts ArtifactsResponse `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
@@ -1779,7 +2431,7 @@ type BuildResponse struct {
 	Tags []string `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout string `pulumi:"timeout"`
-	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`
@@ -1796,8 +2448,10 @@ type BuildResponseInput interface {
 	ToBuildResponseOutputWithContext(context.Context) BuildResponseOutput
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildResponseArgs struct {
+	// Describes this build's approval configuration, status, and result.
+	Approval BuildApprovalResponseInput `pulumi:"approval"`
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts ArtifactsResponseInput `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
@@ -1848,7 +2502,7 @@ type BuildResponseArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout pulumi.StringInput `pulumi:"timeout"`
-	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing pulumi.StringMapInput `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings WarningResponseArrayInput `pulumi:"warnings"`
@@ -1907,7 +2561,7 @@ func (i *buildResponsePtrType) ToBuildResponsePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BuildResponsePtrOutput)
 }
 
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildResponseOutput struct{ *pulumi.OutputState }
 
 func (BuildResponseOutput) ElementType() reflect.Type {
@@ -1930,6 +2584,11 @@ func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Con
 	return o.ApplyT(func(v BuildResponse) *BuildResponse {
 		return &v
 	}).(BuildResponsePtrOutput)
+}
+
+// Describes this build's approval configuration, status, and result.
+func (o BuildResponseOutput) Approval() BuildApprovalResponseOutput {
+	return o.ApplyT(func(v BuildResponse) BuildApprovalResponse { return v.Approval }).(BuildApprovalResponseOutput)
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -2057,7 +2716,7 @@ func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
 }
@@ -2083,6 +2742,16 @@ func (o BuildResponsePtrOutput) ToBuildResponsePtrOutputWithContext(ctx context.
 
 func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
 	return o.ApplyT(func(v *BuildResponse) BuildResponse { return *v }).(BuildResponseOutput)
+}
+
+// Describes this build's approval configuration, status, and result.
+func (o BuildResponsePtrOutput) Approval() BuildApprovalResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *BuildApprovalResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Approval
+	}).(BuildApprovalResponsePtrOutput)
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -2335,7 +3004,7 @@ func (o BuildResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 func (o BuildResponsePtrOutput) Timing() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BuildResponse) map[string]string {
 		if v == nil {
@@ -2369,6 +3038,8 @@ type BuildStep struct {
 	Id *string `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
+	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+	Script *string `pulumi:"script"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv []string `pulumi:"secretEnv"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -2404,6 +3075,8 @@ type BuildStepArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+	Script pulumi.StringPtrInput `pulumi:"script"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -2496,6 +3169,11 @@ func (o BuildStepOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildStep) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+func (o BuildStepOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildStep) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
 // A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 func (o BuildStepOutput) SecretEnv() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStep) []string { return v.SecretEnv }).(pulumi.StringArrayOutput)
@@ -2550,6 +3228,8 @@ type BuildStepResponse struct {
 	Name string `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
 	PullTiming TimeSpanResponse `pulumi:"pullTiming"`
+	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+	Script string `pulumi:"script"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv []string `pulumi:"secretEnv"`
 	// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
@@ -2589,6 +3269,8 @@ type BuildStepResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
 	PullTiming TimeSpanResponseInput `pulumi:"pullTiming"`
+	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+	Script pulumi.StringInput `pulumi:"script"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
 	// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
@@ -2683,6 +3365,11 @@ func (o BuildStepResponseOutput) Name() pulumi.StringOutput {
 // Stores timing information for pulling this build step's builder image only.
 func (o BuildStepResponseOutput) PullTiming() TimeSpanResponseOutput {
 	return o.ApplyT(func(v BuildStepResponse) TimeSpanResponse { return v.PullTiming }).(TimeSpanResponseOutput)
+}
+
+// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+func (o BuildStepResponseOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Script }).(pulumi.StringOutput)
 }
 
 // A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
@@ -3006,8 +3693,926 @@ func (o FailureInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSource struct {
+	// The path of the file, with the repo root as the root of the path.
+	Path *string `pulumi:"path"`
+	// See RepoType above.
+	RepoType *GitFileSourceRepoType `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision *string `pulumi:"revision"`
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Uri *string `pulumi:"uri"`
+}
+
+// GitFileSourceInput is an input type that accepts GitFileSourceArgs and GitFileSourceOutput values.
+// You can construct a concrete instance of `GitFileSourceInput` via:
+//
+//          GitFileSourceArgs{...}
+type GitFileSourceInput interface {
+	pulumi.Input
+
+	ToGitFileSourceOutput() GitFileSourceOutput
+	ToGitFileSourceOutputWithContext(context.Context) GitFileSourceOutput
+}
+
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSourceArgs struct {
+	// The path of the file, with the repo root as the root of the path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// See RepoType above.
+	RepoType GitFileSourceRepoTypePtrInput `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GitFileSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSource)(nil)).Elem()
+}
+
+func (i GitFileSourceArgs) ToGitFileSourceOutput() GitFileSourceOutput {
+	return i.ToGitFileSourceOutputWithContext(context.Background())
+}
+
+func (i GitFileSourceArgs) ToGitFileSourceOutputWithContext(ctx context.Context) GitFileSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceOutput)
+}
+
+func (i GitFileSourceArgs) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
+	return i.ToGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GitFileSourceArgs) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceOutput).ToGitFileSourcePtrOutputWithContext(ctx)
+}
+
+// GitFileSourcePtrInput is an input type that accepts GitFileSourceArgs, GitFileSourcePtr and GitFileSourcePtrOutput values.
+// You can construct a concrete instance of `GitFileSourcePtrInput` via:
+//
+//          GitFileSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GitFileSourcePtrInput interface {
+	pulumi.Input
+
+	ToGitFileSourcePtrOutput() GitFileSourcePtrOutput
+	ToGitFileSourcePtrOutputWithContext(context.Context) GitFileSourcePtrOutput
+}
+
+type gitFileSourcePtrType GitFileSourceArgs
+
+func GitFileSourcePtr(v *GitFileSourceArgs) GitFileSourcePtrInput {
+	return (*gitFileSourcePtrType)(v)
+}
+
+func (*gitFileSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitFileSource)(nil)).Elem()
+}
+
+func (i *gitFileSourcePtrType) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
+	return i.ToGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *gitFileSourcePtrType) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourcePtrOutput)
+}
+
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSourceOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSource)(nil)).Elem()
+}
+
+func (o GitFileSourceOutput) ToGitFileSourceOutput() GitFileSourceOutput {
+	return o
+}
+
+func (o GitFileSourceOutput) ToGitFileSourceOutputWithContext(ctx context.Context) GitFileSourceOutput {
+	return o
+}
+
+func (o GitFileSourceOutput) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
+	return o.ToGitFileSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
+	return o.ApplyT(func(v GitFileSource) *GitFileSource {
+		return &v
+	}).(GitFileSourcePtrOutput)
+}
+
+// The path of the file, with the repo root as the root of the path.
+func (o GitFileSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// See RepoType above.
+func (o GitFileSourceOutput) RepoType() GitFileSourceRepoTypePtrOutput {
+	return o.ApplyT(func(v GitFileSource) *GitFileSourceRepoType { return v.RepoType }).(GitFileSourceRepoTypePtrOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o GitFileSourceOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GitFileSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitFileSource)(nil)).Elem()
+}
+
+func (o GitFileSourcePtrOutput) ToGitFileSourcePtrOutput() GitFileSourcePtrOutput {
+	return o
+}
+
+func (o GitFileSourcePtrOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Context) GitFileSourcePtrOutput {
+	return o
+}
+
+func (o GitFileSourcePtrOutput) Elem() GitFileSourceOutput {
+	return o.ApplyT(func(v *GitFileSource) GitFileSource { return *v }).(GitFileSourceOutput)
+}
+
+// The path of the file, with the repo root as the root of the path.
+func (o GitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// See RepoType above.
+func (o GitFileSourcePtrOutput) RepoType() GitFileSourceRepoTypePtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *GitFileSourceRepoType {
+		if v == nil {
+			return nil
+		}
+		return v.RepoType
+	}).(GitFileSourceRepoTypePtrOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o GitFileSourcePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSourceResponse struct {
+	// The path of the file, with the repo root as the root of the path.
+	Path string `pulumi:"path"`
+	// See RepoType above.
+	RepoType string `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision string `pulumi:"revision"`
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Uri string `pulumi:"uri"`
+}
+
+// GitFileSourceResponseInput is an input type that accepts GitFileSourceResponseArgs and GitFileSourceResponseOutput values.
+// You can construct a concrete instance of `GitFileSourceResponseInput` via:
+//
+//          GitFileSourceResponseArgs{...}
+type GitFileSourceResponseInput interface {
+	pulumi.Input
+
+	ToGitFileSourceResponseOutput() GitFileSourceResponseOutput
+	ToGitFileSourceResponseOutputWithContext(context.Context) GitFileSourceResponseOutput
+}
+
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSourceResponseArgs struct {
+	// The path of the file, with the repo root as the root of the path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// See RepoType above.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+	Revision pulumi.StringInput `pulumi:"revision"`
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GitFileSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSourceResponse)(nil)).Elem()
+}
+
+func (i GitFileSourceResponseArgs) ToGitFileSourceResponseOutput() GitFileSourceResponseOutput {
+	return i.ToGitFileSourceResponseOutputWithContext(context.Background())
+}
+
+func (i GitFileSourceResponseArgs) ToGitFileSourceResponseOutputWithContext(ctx context.Context) GitFileSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponseOutput)
+}
+
+func (i GitFileSourceResponseArgs) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
+	return i.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GitFileSourceResponseArgs) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponseOutput).ToGitFileSourceResponsePtrOutputWithContext(ctx)
+}
+
+// GitFileSourceResponsePtrInput is an input type that accepts GitFileSourceResponseArgs, GitFileSourceResponsePtr and GitFileSourceResponsePtrOutput values.
+// You can construct a concrete instance of `GitFileSourceResponsePtrInput` via:
+//
+//          GitFileSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GitFileSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput
+	ToGitFileSourceResponsePtrOutputWithContext(context.Context) GitFileSourceResponsePtrOutput
+}
+
+type gitFileSourceResponsePtrType GitFileSourceResponseArgs
+
+func GitFileSourceResponsePtr(v *GitFileSourceResponseArgs) GitFileSourceResponsePtrInput {
+	return (*gitFileSourceResponsePtrType)(v)
+}
+
+func (*gitFileSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitFileSourceResponse)(nil)).Elem()
+}
+
+func (i *gitFileSourceResponsePtrType) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
+	return i.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gitFileSourceResponsePtrType) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponsePtrOutput)
+}
+
+// GitFileSource describes a file within a (possibly remote) code repository.
+type GitFileSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitFileSourceResponse)(nil)).Elem()
+}
+
+func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutput() GitFileSourceResponseOutput {
+	return o
+}
+
+func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutputWithContext(ctx context.Context) GitFileSourceResponseOutput {
+	return o
+}
+
+func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
+	return o.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) *GitFileSourceResponse {
+		return &v
+	}).(GitFileSourceResponsePtrOutput)
+}
+
+// The path of the file, with the repo root as the root of the path.
+func (o GitFileSourceResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// See RepoType above.
+func (o GitFileSourceResponseOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o GitFileSourceResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GitFileSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitFileSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitFileSourceResponse)(nil)).Elem()
+}
+
+func (o GitFileSourceResponsePtrOutput) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
+	return o
+}
+
+func (o GitFileSourceResponsePtrOutput) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
+	return o
+}
+
+func (o GitFileSourceResponsePtrOutput) Elem() GitFileSourceResponseOutput {
+	return o.ApplyT(func(v *GitFileSourceResponse) GitFileSourceResponse { return *v }).(GitFileSourceResponseOutput)
+}
+
+// The path of the file, with the repo root as the root of the path.
+func (o GitFileSourceResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// See RepoType above.
+func (o GitFileSourceResponsePtrOutput) RepoType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+func (o GitFileSourceResponsePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecrets struct {
+	// The resource name for the OAuth client ID secret in Secret Manager.
+	OauthClientIdName *string `pulumi:"oauthClientIdName"`
+	// The resource name for the OAuth client ID secret version in Secret Manager.
+	OauthClientIdVersionName *string `pulumi:"oauthClientIdVersionName"`
+	// The resource name for the OAuth secret in Secret Manager.
+	OauthSecretName *string `pulumi:"oauthSecretName"`
+	// The resource name for the OAuth secret secret version in Secret Manager.
+	OauthSecretVersionName *string `pulumi:"oauthSecretVersionName"`
+	// The resource name for the private key secret.
+	PrivateKeyName *string `pulumi:"privateKeyName"`
+	// The resource name for the private key secret version.
+	PrivateKeyVersionName *string `pulumi:"privateKeyVersionName"`
+	// The resource name for the webhook secret in Secret Manager.
+	WebhookSecretName *string `pulumi:"webhookSecretName"`
+	// The resource name for the webhook secret secret version in Secret Manager.
+	WebhookSecretVersionName *string `pulumi:"webhookSecretVersionName"`
+}
+
+// GitHubEnterpriseSecretsInput is an input type that accepts GitHubEnterpriseSecretsArgs and GitHubEnterpriseSecretsOutput values.
+// You can construct a concrete instance of `GitHubEnterpriseSecretsInput` via:
+//
+//          GitHubEnterpriseSecretsArgs{...}
+type GitHubEnterpriseSecretsInput interface {
+	pulumi.Input
+
+	ToGitHubEnterpriseSecretsOutput() GitHubEnterpriseSecretsOutput
+	ToGitHubEnterpriseSecretsOutputWithContext(context.Context) GitHubEnterpriseSecretsOutput
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecretsArgs struct {
+	// The resource name for the OAuth client ID secret in Secret Manager.
+	OauthClientIdName pulumi.StringPtrInput `pulumi:"oauthClientIdName"`
+	// The resource name for the OAuth client ID secret version in Secret Manager.
+	OauthClientIdVersionName pulumi.StringPtrInput `pulumi:"oauthClientIdVersionName"`
+	// The resource name for the OAuth secret in Secret Manager.
+	OauthSecretName pulumi.StringPtrInput `pulumi:"oauthSecretName"`
+	// The resource name for the OAuth secret secret version in Secret Manager.
+	OauthSecretVersionName pulumi.StringPtrInput `pulumi:"oauthSecretVersionName"`
+	// The resource name for the private key secret.
+	PrivateKeyName pulumi.StringPtrInput `pulumi:"privateKeyName"`
+	// The resource name for the private key secret version.
+	PrivateKeyVersionName pulumi.StringPtrInput `pulumi:"privateKeyVersionName"`
+	// The resource name for the webhook secret in Secret Manager.
+	WebhookSecretName pulumi.StringPtrInput `pulumi:"webhookSecretName"`
+	// The resource name for the webhook secret secret version in Secret Manager.
+	WebhookSecretVersionName pulumi.StringPtrInput `pulumi:"webhookSecretVersionName"`
+}
+
+func (GitHubEnterpriseSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEnterpriseSecrets)(nil)).Elem()
+}
+
+func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsOutput() GitHubEnterpriseSecretsOutput {
+	return i.ToGitHubEnterpriseSecretsOutputWithContext(context.Background())
+}
+
+func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsOutput)
+}
+
+func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput {
+	return i.ToGitHubEnterpriseSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i GitHubEnterpriseSecretsArgs) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsOutput).ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx)
+}
+
+// GitHubEnterpriseSecretsPtrInput is an input type that accepts GitHubEnterpriseSecretsArgs, GitHubEnterpriseSecretsPtr and GitHubEnterpriseSecretsPtrOutput values.
+// You can construct a concrete instance of `GitHubEnterpriseSecretsPtrInput` via:
+//
+//          GitHubEnterpriseSecretsArgs{...}
+//
+//  or:
+//
+//          nil
+type GitHubEnterpriseSecretsPtrInput interface {
+	pulumi.Input
+
+	ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput
+	ToGitHubEnterpriseSecretsPtrOutputWithContext(context.Context) GitHubEnterpriseSecretsPtrOutput
+}
+
+type gitHubEnterpriseSecretsPtrType GitHubEnterpriseSecretsArgs
+
+func GitHubEnterpriseSecretsPtr(v *GitHubEnterpriseSecretsArgs) GitHubEnterpriseSecretsPtrInput {
+	return (*gitHubEnterpriseSecretsPtrType)(v)
+}
+
+func (*gitHubEnterpriseSecretsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEnterpriseSecrets)(nil)).Elem()
+}
+
+func (i *gitHubEnterpriseSecretsPtrType) ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput {
+	return i.ToGitHubEnterpriseSecretsPtrOutputWithContext(context.Background())
+}
+
+func (i *gitHubEnterpriseSecretsPtrType) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsPtrOutput)
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecretsOutput struct{ *pulumi.OutputState }
+
+func (GitHubEnterpriseSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEnterpriseSecrets)(nil)).Elem()
+}
+
+func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsOutput() GitHubEnterpriseSecretsOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput {
+	return o.ToGitHubEnterpriseSecretsPtrOutputWithContext(context.Background())
+}
+
+func (o GitHubEnterpriseSecretsOutput) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *GitHubEnterpriseSecrets {
+		return &v
+	}).(GitHubEnterpriseSecretsPtrOutput)
+}
+
+// The resource name for the OAuth client ID secret in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) OauthClientIdName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.OauthClientIdName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth client ID secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) OauthClientIdVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.OauthClientIdVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) OauthSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.OauthSecretName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) OauthSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.OauthSecretVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret.
+func (o GitHubEnterpriseSecretsOutput) PrivateKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.PrivateKeyName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret version.
+func (o GitHubEnterpriseSecretsOutput) PrivateKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.PrivateKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) WebhookSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.WebhookSecretName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecrets) *string { return v.WebhookSecretVersionName }).(pulumi.StringPtrOutput)
+}
+
+type GitHubEnterpriseSecretsPtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubEnterpriseSecretsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEnterpriseSecrets)(nil)).Elem()
+}
+
+func (o GitHubEnterpriseSecretsPtrOutput) ToGitHubEnterpriseSecretsPtrOutput() GitHubEnterpriseSecretsPtrOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsPtrOutput) ToGitHubEnterpriseSecretsPtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsPtrOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsPtrOutput) Elem() GitHubEnterpriseSecretsOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) GitHubEnterpriseSecrets { return *v }).(GitHubEnterpriseSecretsOutput)
+}
+
+// The resource name for the OAuth client ID secret in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) OauthClientIdName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthClientIdName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth client ID secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) OauthClientIdVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthClientIdVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) OauthSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) OauthSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret.
+func (o GitHubEnterpriseSecretsPtrOutput) PrivateKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret version.
+func (o GitHubEnterpriseSecretsPtrOutput) PrivateKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) WebhookSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsPtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecrets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecretsResponse struct {
+	// The resource name for the OAuth client ID secret in Secret Manager.
+	OauthClientIdName string `pulumi:"oauthClientIdName"`
+	// The resource name for the OAuth client ID secret version in Secret Manager.
+	OauthClientIdVersionName string `pulumi:"oauthClientIdVersionName"`
+	// The resource name for the OAuth secret in Secret Manager.
+	OauthSecretName string `pulumi:"oauthSecretName"`
+	// The resource name for the OAuth secret secret version in Secret Manager.
+	OauthSecretVersionName string `pulumi:"oauthSecretVersionName"`
+	// The resource name for the private key secret.
+	PrivateKeyName string `pulumi:"privateKeyName"`
+	// The resource name for the private key secret version.
+	PrivateKeyVersionName string `pulumi:"privateKeyVersionName"`
+	// The resource name for the webhook secret in Secret Manager.
+	WebhookSecretName string `pulumi:"webhookSecretName"`
+	// The resource name for the webhook secret secret version in Secret Manager.
+	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
+}
+
+// GitHubEnterpriseSecretsResponseInput is an input type that accepts GitHubEnterpriseSecretsResponseArgs and GitHubEnterpriseSecretsResponseOutput values.
+// You can construct a concrete instance of `GitHubEnterpriseSecretsResponseInput` via:
+//
+//          GitHubEnterpriseSecretsResponseArgs{...}
+type GitHubEnterpriseSecretsResponseInput interface {
+	pulumi.Input
+
+	ToGitHubEnterpriseSecretsResponseOutput() GitHubEnterpriseSecretsResponseOutput
+	ToGitHubEnterpriseSecretsResponseOutputWithContext(context.Context) GitHubEnterpriseSecretsResponseOutput
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecretsResponseArgs struct {
+	// The resource name for the OAuth client ID secret in Secret Manager.
+	OauthClientIdName pulumi.StringInput `pulumi:"oauthClientIdName"`
+	// The resource name for the OAuth client ID secret version in Secret Manager.
+	OauthClientIdVersionName pulumi.StringInput `pulumi:"oauthClientIdVersionName"`
+	// The resource name for the OAuth secret in Secret Manager.
+	OauthSecretName pulumi.StringInput `pulumi:"oauthSecretName"`
+	// The resource name for the OAuth secret secret version in Secret Manager.
+	OauthSecretVersionName pulumi.StringInput `pulumi:"oauthSecretVersionName"`
+	// The resource name for the private key secret.
+	PrivateKeyName pulumi.StringInput `pulumi:"privateKeyName"`
+	// The resource name for the private key secret version.
+	PrivateKeyVersionName pulumi.StringInput `pulumi:"privateKeyVersionName"`
+	// The resource name for the webhook secret in Secret Manager.
+	WebhookSecretName pulumi.StringInput `pulumi:"webhookSecretName"`
+	// The resource name for the webhook secret secret version in Secret Manager.
+	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
+}
+
+func (GitHubEnterpriseSecretsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEnterpriseSecretsResponse)(nil)).Elem()
+}
+
+func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponseOutput() GitHubEnterpriseSecretsResponseOutput {
+	return i.ToGitHubEnterpriseSecretsResponseOutputWithContext(context.Background())
+}
+
+func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponseOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponseOutput)
+}
+
+func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
+	return i.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponseOutput).ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx)
+}
+
+// GitHubEnterpriseSecretsResponsePtrInput is an input type that accepts GitHubEnterpriseSecretsResponseArgs, GitHubEnterpriseSecretsResponsePtr and GitHubEnterpriseSecretsResponsePtrOutput values.
+// You can construct a concrete instance of `GitHubEnterpriseSecretsResponsePtrInput` via:
+//
+//          GitHubEnterpriseSecretsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GitHubEnterpriseSecretsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput
+	ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Context) GitHubEnterpriseSecretsResponsePtrOutput
+}
+
+type gitHubEnterpriseSecretsResponsePtrType GitHubEnterpriseSecretsResponseArgs
+
+func GitHubEnterpriseSecretsResponsePtr(v *GitHubEnterpriseSecretsResponseArgs) GitHubEnterpriseSecretsResponsePtrInput {
+	return (*gitHubEnterpriseSecretsResponsePtrType)(v)
+}
+
+func (*gitHubEnterpriseSecretsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEnterpriseSecretsResponse)(nil)).Elem()
+}
+
+func (i *gitHubEnterpriseSecretsResponsePtrType) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
+	return i.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gitHubEnterpriseSecretsResponsePtrType) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponsePtrOutput)
+}
+
+// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+type GitHubEnterpriseSecretsResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubEnterpriseSecretsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEnterpriseSecretsResponse)(nil)).Elem()
+}
+
+func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponseOutput() GitHubEnterpriseSecretsResponseOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponseOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponseOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
+	return o.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) *GitHubEnterpriseSecretsResponse {
+		return &v
+	}).(GitHubEnterpriseSecretsResponsePtrOutput)
+}
+
+// The resource name for the OAuth client ID secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) OauthClientIdName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.OauthClientIdName }).(pulumi.StringOutput)
+}
+
+// The resource name for the OAuth client ID secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) OauthClientIdVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.OauthClientIdVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the OAuth secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) OauthSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.OauthSecretName }).(pulumi.StringOutput)
+}
+
+// The resource name for the OAuth secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) OauthSecretVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.OauthSecretVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the private key secret.
+func (o GitHubEnterpriseSecretsResponseOutput) PrivateKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.PrivateKeyName }).(pulumi.StringOutput)
+}
+
+// The resource name for the private key secret version.
+func (o GitHubEnterpriseSecretsResponseOutput) PrivateKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.PrivateKeyVersionName }).(pulumi.StringOutput)
+}
+
+// The resource name for the webhook secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) WebhookSecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.WebhookSecretName }).(pulumi.StringOutput)
+}
+
+// The resource name for the webhook secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponseOutput) WebhookSecretVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
+}
+
+type GitHubEnterpriseSecretsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubEnterpriseSecretsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEnterpriseSecretsResponse)(nil)).Elem()
+}
+
+func (o GitHubEnterpriseSecretsResponsePtrOutput) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsResponsePtrOutput) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
+	return o
+}
+
+func (o GitHubEnterpriseSecretsResponsePtrOutput) Elem() GitHubEnterpriseSecretsResponseOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) GitHubEnterpriseSecretsResponse { return *v }).(GitHubEnterpriseSecretsResponseOutput)
+}
+
+// The resource name for the OAuth client ID secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthClientIdName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthClientIdName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth client ID secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthClientIdVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthClientIdVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the OAuth secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) PrivateKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the private key secret version.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) PrivateKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) WebhookSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name for the webhook secret secret version in Secret Manager.
+func (o GitHubEnterpriseSecretsResponsePtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfig struct {
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	EnterpriseConfigResourceName *string `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId *string `pulumi:"installationId"`
 	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
@@ -3031,8 +4636,10 @@ type GitHubEventsConfigInput interface {
 	ToGitHubEventsConfigOutputWithContext(context.Context) GitHubEventsConfigOutput
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigArgs struct {
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	EnterpriseConfigResourceName pulumi.StringPtrInput `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId pulumi.StringPtrInput `pulumi:"installationId"`
 	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
@@ -3098,7 +4705,7 @@ func (i *gitHubEventsConfigPtrType) ToGitHubEventsConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigPtrOutput)
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigOutput struct{ *pulumi.OutputState }
 
 func (GitHubEventsConfigOutput) ElementType() reflect.Type {
@@ -3121,6 +4728,11 @@ func (o GitHubEventsConfigOutput) ToGitHubEventsConfigPtrOutputWithContext(ctx c
 	return o.ApplyT(func(v GitHubEventsConfig) *GitHubEventsConfig {
 		return &v
 	}).(GitHubEventsConfigPtrOutput)
+}
+
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+func (o GitHubEventsConfigOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitHubEventsConfig) *string { return v.EnterpriseConfigResourceName }).(pulumi.StringPtrOutput)
 }
 
 // The installationID that emits the GitHub event.
@@ -3164,6 +4776,16 @@ func (o GitHubEventsConfigPtrOutput) ToGitHubEventsConfigPtrOutputWithContext(ct
 
 func (o GitHubEventsConfigPtrOutput) Elem() GitHubEventsConfigOutput {
 	return o.ApplyT(func(v *GitHubEventsConfig) GitHubEventsConfig { return *v }).(GitHubEventsConfigOutput)
+}
+
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+func (o GitHubEventsConfigPtrOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnterpriseConfigResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The installationID that emits the GitHub event.
@@ -3216,8 +4838,10 @@ func (o GitHubEventsConfigPtrOutput) Push() PushFilterPtrOutput {
 	}).(PushFilterPtrOutput)
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigResponse struct {
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	EnterpriseConfigResourceName string `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId string `pulumi:"installationId"`
 	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
@@ -3241,8 +4865,10 @@ type GitHubEventsConfigResponseInput interface {
 	ToGitHubEventsConfigResponseOutputWithContext(context.Context) GitHubEventsConfigResponseOutput
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigResponseArgs struct {
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	EnterpriseConfigResourceName pulumi.StringInput `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId pulumi.StringInput `pulumi:"installationId"`
 	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
@@ -3308,7 +4934,7 @@ func (i *gitHubEventsConfigResponsePtrType) ToGitHubEventsConfigResponsePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponsePtrOutput)
 }
 
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GitHubEventsConfigResponseOutput) ElementType() reflect.Type {
@@ -3331,6 +4957,11 @@ func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutputW
 	return o.ApplyT(func(v GitHubEventsConfigResponse) *GitHubEventsConfigResponse {
 		return &v
 	}).(GitHubEventsConfigResponsePtrOutput)
+}
+
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+func (o GitHubEventsConfigResponseOutput) EnterpriseConfigResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.EnterpriseConfigResourceName }).(pulumi.StringOutput)
 }
 
 // The installationID that emits the GitHub event.
@@ -3374,6 +5005,16 @@ func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutp
 
 func (o GitHubEventsConfigResponsePtrOutput) Elem() GitHubEventsConfigResponseOutput {
 	return o.ApplyT(func(v *GitHubEventsConfigResponse) GitHubEventsConfigResponse { return *v }).(GitHubEventsConfigResponseOutput)
+}
+
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+func (o GitHubEventsConfigResponsePtrOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EnterpriseConfigResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The installationID that emits the GitHub event.
@@ -9740,6 +11381,12 @@ func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApprovalConfigOutput{})
+	pulumi.RegisterOutputType(ApprovalConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApprovalConfigResponseOutput{})
+	pulumi.RegisterOutputType(ApprovalConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApprovalResultResponseOutput{})
+	pulumi.RegisterOutputType(ApprovalResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsResponseOutput{})
@@ -9750,6 +11397,8 @@ func init() {
 	pulumi.RegisterOutputType(ArtifactsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeOutput{})
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
+	pulumi.RegisterOutputType(BuildApprovalResponseOutput{})
+	pulumi.RegisterOutputType(BuildApprovalResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsOutput{})
 	pulumi.RegisterOutputType(BuildOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsResponseOutput{})
@@ -9764,6 +11413,14 @@ func init() {
 	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitFileSourceOutput{})
+	pulumi.RegisterOutputType(GitFileSourcePtrOutput{})
+	pulumi.RegisterOutputType(GitFileSourceResponseOutput{})
+	pulumi.RegisterOutputType(GitFileSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(GitHubEnterpriseSecretsOutput{})
+	pulumi.RegisterOutputType(GitHubEnterpriseSecretsPtrOutput{})
+	pulumi.RegisterOutputType(GitHubEnterpriseSecretsResponseOutput{})
+	pulumi.RegisterOutputType(GitHubEnterpriseSecretsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigResponseOutput{})

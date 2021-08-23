@@ -23,8 +23,12 @@ type LookupEnvironmentArgs struct {
 }
 
 type LookupEnvironmentResult struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+	ApiProxyType string `pulumi:"apiProxyType"`
 	// Creation time of this environment as milliseconds since epoch.
 	CreatedAt string `pulumi:"createdAt"`
+	// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+	DeploymentType string `pulumi:"deploymentType"`
 	// Optional. Description of the environment.
 	Description string `pulumi:"description"`
 	// Optional. Display name for this environment.

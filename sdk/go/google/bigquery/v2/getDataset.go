@@ -40,6 +40,8 @@ type LookupDatasetResult struct {
 	Etag string `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName string `pulumi:"friendlyName"`
+	// [Optional] Indicates if table names are case insensitive in the dataset.
+	IsCaseInsensitive bool `pulumi:"isCaseInsensitive"`
 	// The resource type.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.

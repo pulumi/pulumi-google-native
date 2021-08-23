@@ -26,6 +26,8 @@ type LookupBuildArgs struct {
 }
 
 type LookupBuildResult struct {
+	// Describes this build's approval configuration, status, and result.
+	Approval BuildApprovalResponse `pulumi:"approval"`
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts ArtifactsResponse `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
@@ -76,7 +78,7 @@ type LookupBuildResult struct {
 	Tags []string `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout string `pulumi:"timeout"`
-	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`

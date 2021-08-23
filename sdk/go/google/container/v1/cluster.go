@@ -62,6 +62,8 @@ type Cluster struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
+	// Logging configuration for the cluster.
+	LoggingConfig LoggingConfigResponseOutput `pulumi:"loggingConfig"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	LoggingService pulumi.StringOutput `pulumi:"loggingService"`
 	// Configure the maintenance policy for this cluster.
@@ -70,6 +72,8 @@ type Cluster struct {
 	MasterAuth MasterAuthResponseOutput `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigResponseOutput `pulumi:"masterAuthorizedNetworksConfig"`
+	// Monitoring configuration for the cluster.
+	MonitoringConfig MonitoringConfigResponseOutput `pulumi:"monitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService pulumi.StringOutput `pulumi:"monitoringService"`
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -186,6 +190,8 @@ type clusterArgs struct {
 	Location   *string     `pulumi:"location"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations []string `pulumi:"locations"`
+	// Logging configuration for the cluster.
+	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	LoggingService *string `pulumi:"loggingService"`
 	// Configure the maintenance policy for this cluster.
@@ -194,6 +200,8 @@ type clusterArgs struct {
 	MasterAuth *MasterAuth `pulumi:"masterAuth"`
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
+	// Monitoring configuration for the cluster.
+	MonitoringConfig *MonitoringConfig `pulumi:"monitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
@@ -266,6 +274,8 @@ type ClusterArgs struct {
 	Location   pulumi.StringPtrInput
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
 	Locations pulumi.StringArrayInput
+	// Logging configuration for the cluster.
+	LoggingConfig LoggingConfigPtrInput
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	LoggingService pulumi.StringPtrInput
 	// Configure the maintenance policy for this cluster.
@@ -274,6 +284,8 @@ type ClusterArgs struct {
 	MasterAuth MasterAuthPtrInput
 	// The configuration options for master authorized networks feature.
 	MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput
+	// Monitoring configuration for the cluster.
+	MonitoringConfig MonitoringConfigPtrInput
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	MonitoringService pulumi.StringPtrInput
 	// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.

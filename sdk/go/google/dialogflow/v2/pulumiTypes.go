@@ -6031,115 +6031,6 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 }
 
 // Represents a single followup intent in the chain.
-type GoogleCloudDialogflowV2IntentFollowupIntentInfo struct {
-	// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-	FollowupIntentName *string `pulumi:"followupIntentName"`
-	// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
-}
-
-// GoogleCloudDialogflowV2IntentFollowupIntentInfoInput is an input type that accepts GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs and GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentFollowupIntentInfoInput` via:
-//
-//          GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs{...}
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput
-}
-
-// Represents a single followup intent in the chain.
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs struct {
-	// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-	FollowupIntentName pulumi.StringPtrInput `pulumi:"followupIntentName"`
-	// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-	ParentFollowupIntentName pulumi.StringPtrInput `pulumi:"parentFollowupIntentName"`
-}
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentFollowupIntentInfo)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput {
-	return i.ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput)
-}
-
-// GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentFollowupIntentInfoArray and GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentFollowupIntentInfoArray{ GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs{...} }
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoArray []GoogleCloudDialogflowV2IntentFollowupIntentInfoInput
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentFollowupIntentInfo)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoArray) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoArray) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput)
-}
-
-// Represents a single followup intent in the chain.
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentFollowupIntentInfo)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput {
-	return o
-}
-
-// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput) FollowupIntentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentFollowupIntentInfo) *string { return v.FollowupIntentName }).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput) ParentFollowupIntentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentFollowupIntentInfo) *string { return v.ParentFollowupIntentName }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentFollowupIntentInfo)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2IntentFollowupIntentInfo {
-		return vs[0].([]GoogleCloudDialogflowV2IntentFollowupIntentInfo)[vs[1].(int)]
-	}).(GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput)
-}
-
-// Represents a single followup intent in the chain.
 type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse struct {
 	// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
 	FollowupIntentName string `pulumi:"followupIntentName"`
@@ -15341,8 +15232,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageOutput{})

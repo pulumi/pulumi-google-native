@@ -32,7 +32,7 @@ type LookupRuntimeResult struct {
 	HealthState string `pulumi:"healthState"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 	Metrics RuntimeMetricsResponse `pulumi:"metrics"`
-	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
 	Name string `pulumi:"name"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigResponse `pulumi:"softwareConfig"`

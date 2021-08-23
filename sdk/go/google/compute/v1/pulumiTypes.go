@@ -5476,7 +5476,7 @@ func (o AutoscalingPolicyScaleInControlResponsePtrOutput) TimeWindowSec() pulumi
 
 // Message containing information of one individual backend.
 type Backend struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode *BackendBalancingMode `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler *float64 `pulumi:"capacityScaler"`
@@ -5498,7 +5498,8 @@ type Backend struct {
 	MaxRatePerEndpoint *float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
-	MaxUtilization     *float64 `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization *float64 `pulumi:"maxUtilization"`
 }
 
 // BackendInput is an input type that accepts BackendArgs and BackendOutput values.
@@ -5514,7 +5515,7 @@ type BackendInput interface {
 
 // Message containing information of one individual backend.
 type BackendArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode BackendBalancingModePtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64PtrInput `pulumi:"capacityScaler"`
@@ -5536,7 +5537,8 @@ type BackendArgs struct {
 	MaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
-	MaxUtilization     pulumi.Float64PtrInput `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
 }
 
 func (BackendArgs) ElementType() reflect.Type {
@@ -5591,7 +5593,7 @@ func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOu
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendOutput) BalancingMode() BackendBalancingModePtrOutput {
 	return o.ApplyT(func(v Backend) *BackendBalancingMode { return v.BalancingMode }).(BackendBalancingModePtrOutput)
 }
@@ -5646,6 +5648,7 @@ func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerInstance }).(pulumi.Float64PtrOutput)
 }
 
+// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
 }
@@ -6727,7 +6730,7 @@ func (o BackendBucketCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.Stri
 
 // Message containing information of one individual backend.
 type BackendResponse struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler float64 `pulumi:"capacityScaler"`
@@ -6749,7 +6752,8 @@ type BackendResponse struct {
 	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
-	MaxUtilization     float64 `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization float64 `pulumi:"maxUtilization"`
 }
 
 // BackendResponseInput is an input type that accepts BackendResponseArgs and BackendResponseOutput values.
@@ -6765,7 +6769,7 @@ type BackendResponseInput interface {
 
 // Message containing information of one individual backend.
 type BackendResponseArgs struct {
-	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
@@ -6787,7 +6791,8 @@ type BackendResponseArgs struct {
 	MaxRatePerEndpoint pulumi.Float64Input `pulumi:"maxRatePerEndpoint"`
 	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64Input `pulumi:"maxRatePerInstance"`
-	MaxUtilization     pulumi.Float64Input `pulumi:"maxUtilization"`
+	// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+	MaxUtilization pulumi.Float64Input `pulumi:"maxUtilization"`
 }
 
 func (BackendResponseArgs) ElementType() reflect.Type {
@@ -6842,7 +6847,7 @@ func (o BackendResponseOutput) ToBackendResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 func (o BackendResponseOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendResponse) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
@@ -6897,6 +6902,7 @@ func (o BackendResponseOutput) MaxRatePerInstance() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
 }
 
+// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
 func (o BackendResponseOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
 }
@@ -12168,6 +12174,8 @@ type CustomerEncryptionKey struct {
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey *string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
 }
 
 // CustomerEncryptionKeyInput is an input type that accepts CustomerEncryptionKeyArgs and CustomerEncryptionKeyOutput values.
@@ -12188,6 +12196,8 @@ type CustomerEncryptionKeyArgs struct {
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
 }
 
 func (CustomerEncryptionKeyArgs) ElementType() reflect.Type {
@@ -12282,6 +12292,11 @@ func (o CustomerEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+func (o CustomerEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
+}
+
 type CustomerEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyPtrOutput) ElementType() reflect.Type {
@@ -12330,6 +12345,16 @@ func (o CustomerEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+func (o CustomerEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type CustomerEncryptionKeyResponse struct {
 	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -12337,6 +12362,8 @@ type CustomerEncryptionKeyResponse struct {
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
 	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	Sha256 string `pulumi:"sha256"`
 }
@@ -12359,6 +12386,8 @@ type CustomerEncryptionKeyResponseArgs struct {
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
 	// [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
@@ -12455,6 +12484,11 @@ func (o CustomerEncryptionKeyResponseOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+func (o CustomerEncryptionKeyResponseOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
 // [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 func (o CustomerEncryptionKeyResponseOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.Sha256 }).(pulumi.StringOutput)
@@ -12505,6 +12539,16 @@ func (o CustomerEncryptionKeyResponsePtrOutput) RawKey() pulumi.StringPtrOutput 
 			return nil
 		}
 		return &v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
+func (o CustomerEncryptionKeyResponsePtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerEncryptionKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RsaEncryptedKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16275,11 +16319,11 @@ func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRu
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcher struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
 
@@ -16296,11 +16340,11 @@ type FirewallPolicyRuleMatcherInput interface {
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherArgs struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
 
@@ -16382,7 +16426,7 @@ func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherPtrOutputWit
 	}).(FirewallPolicyRuleMatcherPtrOutput)
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -16392,7 +16436,7 @@ func (o FirewallPolicyRuleMatcherOutput) Layer4Configs() FirewallPolicyRuleMatch
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config { return v.Layer4Configs }).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -16415,7 +16459,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Elem() FirewallPolicyRuleMatcherOutp
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) FirewallPolicyRuleMatcher { return *v }).(FirewallPolicyRuleMatcherOutput)
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -16435,7 +16479,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) Layer4Configs() FirewallPolicyRuleMa
 	}).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -16659,11 +16703,11 @@ func (o FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput) Index(i pulumi
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherResponse struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4ConfigResponse `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
 
@@ -16680,11 +16724,11 @@ type FirewallPolicyRuleMatcherResponseInput interface {
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type FirewallPolicyRuleMatcherResponseArgs struct {
-	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigResponseArrayInput `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
 
@@ -16715,7 +16759,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) ToFirewallPolicyRuleMatcherResp
 	return o
 }
 
-// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -16727,7 +16771,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) Layer4Configs() FirewallPolicyR
 	}).(FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput)
 }
 
-// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 func (o FirewallPolicyRuleMatcherResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -24099,7 +24143,7 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *ImageRawDiskContainerType `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source *string `pulumi:"source"`
 }
 
@@ -24118,7 +24162,7 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType ImageRawDiskContainerTypePtrInput `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -24205,7 +24249,7 @@ func (o ImageRawDiskOutput) ContainerType() ImageRawDiskContainerTypePtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *ImageRawDiskContainerType { return v.ContainerType }).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -24238,7 +24282,7 @@ func (o ImageRawDiskPtrOutput) ContainerType() ImageRawDiskContainerTypePtrOutpu
 	}).(ImageRawDiskContainerTypePtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
 		if v == nil {
@@ -24252,7 +24296,7 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source string `pulumi:"source"`
 }
 
@@ -24271,7 +24315,7 @@ type ImageRawDiskResponseInput interface {
 type ImageRawDiskResponseArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType pulumi.StringInput `pulumi:"containerType"`
-	// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringInput `pulumi:"source"`
 }
 
@@ -24358,7 +24402,7 @@ func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -24391,7 +24435,7 @@ func (o ImageRawDiskResponsePtrOutput) ContainerType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
+// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDiskResponse) *string {
 		if v == nil {
@@ -33018,11 +33062,11 @@ type NetworkPeeringResponse struct {
 	ExchangeSubnetRoutes bool `pulumi:"exchangeSubnetRoutes"`
 	// Whether to export the custom routes to peer network.
 	ExportCustomRoutes bool `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp bool `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to import the custom routes from peer network.
 	ImportCustomRoutes bool `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
@@ -33055,11 +33099,11 @@ type NetworkPeeringResponseArgs struct {
 	ExchangeSubnetRoutes pulumi.BoolInput `pulumi:"exchangeSubnetRoutes"`
 	// Whether to export the custom routes to peer network.
 	ExportCustomRoutes pulumi.BoolInput `pulumi:"exportCustomRoutes"`
-	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to import the custom routes from peer network.
 	ImportCustomRoutes pulumi.BoolInput `pulumi:"importCustomRoutes"`
-	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -33140,7 +33184,7 @@ func (o NetworkPeeringResponseOutput) ExportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportCustomRoutes }).(pulumi.BoolOutput)
 }
 
-// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 func (o NetworkPeeringResponseOutput) ExportSubnetRoutesWithPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportSubnetRoutesWithPublicIp }).(pulumi.BoolOutput)
 }
@@ -33150,7 +33194,7 @@ func (o NetworkPeeringResponseOutput) ImportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ImportCustomRoutes }).(pulumi.BoolOutput)
 }
 
-// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 func (o NetworkPeeringResponseOutput) ImportSubnetRoutesWithPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ImportSubnetRoutesWithPublicIp }).(pulumi.BoolOutput)
 }

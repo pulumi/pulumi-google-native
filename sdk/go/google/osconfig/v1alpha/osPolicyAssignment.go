@@ -21,6 +21,8 @@ type OsPolicyAssignment struct {
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilterResponseOutput `pulumi:"instanceFilter"`
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
@@ -94,6 +96,8 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 type osPolicyAssignmentArgs struct {
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
+	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+	Etag *string `pulumi:"etag"`
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilter `pulumi:"instanceFilter"`
 	Location       *string                          `pulumi:"location"`
@@ -111,6 +115,8 @@ type osPolicyAssignmentArgs struct {
 type OsPolicyAssignmentArgs struct {
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
+	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+	Etag pulumi.StringPtrInput
 	// Filter to select VMs.
 	InstanceFilter OSPolicyAssignmentInstanceFilterInput
 	Location       pulumi.StringPtrInput

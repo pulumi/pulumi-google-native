@@ -32,6 +32,8 @@ type Dataset struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
+	// [Optional] Indicates if table names are case insensitive in the dataset.
+	IsCaseInsensitive pulumi.BoolOutput `pulumi:"isCaseInsensitive"`
 	// The resource type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
@@ -98,6 +100,8 @@ type datasetArgs struct {
 	Description *string `pulumi:"description"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName *string `pulumi:"friendlyName"`
+	// [Optional] Indicates if table names are case insensitive in the dataset.
+	IsCaseInsensitive *bool `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
@@ -120,6 +124,8 @@ type DatasetArgs struct {
 	Description pulumi.StringPtrInput
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName pulumi.StringPtrInput
+	// [Optional] Indicates if table names are case insensitive in the dataset.
+	IsCaseInsensitive pulumi.BoolPtrInput
 	// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
 	Labels pulumi.StringMapInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.

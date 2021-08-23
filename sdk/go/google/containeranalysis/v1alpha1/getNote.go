@@ -37,6 +37,8 @@ type LookupNoteResult struct {
 	Deployable DeployableResponse `pulumi:"deployable"`
 	// A note describing a provider/analysis type.
 	Discovery DiscoveryResponse `pulumi:"discovery"`
+	// A note describing a dsse attestation note.
+	DsseAttestation DSSEAttestationNoteResponse `pulumi:"dsseAttestation"`
 	// Time of expiration for this note, null if note does not expire.
 	ExpirationTime string `pulumi:"expirationTime"`
 	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
@@ -49,8 +51,16 @@ type LookupNoteResult struct {
 	Package PackageResponse `pulumi:"package"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
+	// A note describing a software bill of materials.
+	Sbom DocumentNoteResponse `pulumi:"sbom"`
 	// A one sentence description of this `Note`.
 	ShortDescription string `pulumi:"shortDescription"`
+	// A note describing an SPDX File.
+	SpdxFile FileNoteResponse `pulumi:"spdxFile"`
+	// A note describing an SPDX Package.
+	SpdxPackage PackageNoteResponse `pulumi:"spdxPackage"`
+	// A note describing a relationship between SPDX elements.
+	SpdxRelationship RelationshipNoteResponse `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
 	UpdateTime string `pulumi:"updateTime"`
 	// A note describing an upgrade.

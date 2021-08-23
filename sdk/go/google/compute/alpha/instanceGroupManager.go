@@ -22,7 +22,7 @@ type InstanceGroupManager struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponseOutput `pulumi:"currentActions"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyResponseOutput `pulumi:"distributionPolicy"`
@@ -50,6 +50,8 @@ type InstanceGroupManager struct {
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Stanby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyResponseOutput `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyResponseOutput `pulumi:"statefulPolicy"`
 	// The status of this managed instance group.
@@ -113,7 +115,7 @@ type instanceGroupManagerArgs struct {
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName *string `pulumi:"baseInstanceName"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy *DistributionPolicy `pulumi:"distributionPolicy"`
@@ -131,6 +133,8 @@ type instanceGroupManagerArgs struct {
 	RequestId  *string     `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Stanby policy for stopped and suspended instances.
+	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy *StatefulPolicy `pulumi:"statefulPolicy"`
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
@@ -154,7 +158,7 @@ type InstanceGroupManagerArgs struct {
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
 	BaseInstanceName pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyPtrInput
@@ -172,6 +176,8 @@ type InstanceGroupManagerArgs struct {
 	RequestId  pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
 	ServiceAccount pulumi.StringPtrInput
+	// Stanby policy for stopped and suspended instances.
+	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Stateful configuration for this Instanced Group Manager
 	StatefulPolicy StatefulPolicyPtrInput
 	// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.

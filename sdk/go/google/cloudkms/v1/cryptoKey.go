@@ -20,6 +20,10 @@ type CryptoKey struct {
 
 	// The time at which this CryptoKey was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
+	// Immutable. Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -82,7 +86,11 @@ func (CryptoKeyState) ElementType() reflect.Type {
 
 type cryptoKeyArgs struct {
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
-	KeyRingId   string `pulumi:"keyRingId"`
+	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
+	// Immutable. Whether this key may contain imported versions only.
+	ImportOnly *bool  `pulumi:"importOnly"`
+	KeyRingId  string `pulumi:"keyRingId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -101,7 +109,11 @@ type cryptoKeyArgs struct {
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
 	CryptoKeyId pulumi.StringInput
-	KeyRingId   pulumi.StringInput
+	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+	DestroyScheduledDuration pulumi.StringPtrInput
+	// Immutable. Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolPtrInput
+	KeyRingId  pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

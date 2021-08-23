@@ -185,6 +185,344 @@ func (in *dataCollectorTypePtr) ToDataCollectorTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DataCollectorTypePtrOutput)
 }
 
+// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+type EnvironmentApiProxyType string
+
+const (
+	// API proxy type not specified.
+	EnvironmentApiProxyTypeApiProxyTypeUnspecified = EnvironmentApiProxyType("API_PROXY_TYPE_UNSPECIFIED")
+	// Programmable API Proxies enable you to develop APIs with highly flexible behavior using bundled policy configuration and one or more programming languages to describe complex sequential and/or conditional flows of logic.
+	EnvironmentApiProxyTypeProgrammable = EnvironmentApiProxyType("PROGRAMMABLE")
+	// Configurable API Proxies enable you to develop efficient APIs using simple configuration while complex execution control flow logic is handled by Apigee. This type only works with the ARCHIVE deployment type and cannot be combined with the PROXY deployment type.
+	EnvironmentApiProxyTypeConfigurable = EnvironmentApiProxyType("CONFIGURABLE")
+)
+
+func (EnvironmentApiProxyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentApiProxyType)(nil)).Elem()
+}
+
+func (e EnvironmentApiProxyType) ToEnvironmentApiProxyTypeOutput() EnvironmentApiProxyTypeOutput {
+	return pulumi.ToOutput(e).(EnvironmentApiProxyTypeOutput)
+}
+
+func (e EnvironmentApiProxyType) ToEnvironmentApiProxyTypeOutputWithContext(ctx context.Context) EnvironmentApiProxyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentApiProxyTypeOutput)
+}
+
+func (e EnvironmentApiProxyType) ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput {
+	return e.ToEnvironmentApiProxyTypePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentApiProxyType) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
+	return EnvironmentApiProxyType(e).ToEnvironmentApiProxyTypeOutputWithContext(ctx).ToEnvironmentApiProxyTypePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentApiProxyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentApiProxyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentApiProxyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentApiProxyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentApiProxyTypeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentApiProxyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentApiProxyType)(nil)).Elem()
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToEnvironmentApiProxyTypeOutput() EnvironmentApiProxyTypeOutput {
+	return o
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToEnvironmentApiProxyTypeOutputWithContext(ctx context.Context) EnvironmentApiProxyTypeOutput {
+	return o
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput {
+	return o.ToEnvironmentApiProxyTypePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentApiProxyType) *EnvironmentApiProxyType {
+		return &v
+	}).(EnvironmentApiProxyTypePtrOutput)
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentApiProxyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentApiProxyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentApiProxyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentApiProxyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentApiProxyTypePtrOutput) ElementType() reflect.Type {
+	return environmentApiProxyTypePtrType
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentApiProxyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) Elem() EnvironmentApiProxyTypeOutput {
+	return o.ApplyT(func(v *EnvironmentApiProxyType) EnvironmentApiProxyType {
+		var ret EnvironmentApiProxyType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EnvironmentApiProxyTypeOutput)
+}
+
+// EnvironmentApiProxyTypeInput is an input type that accepts EnvironmentApiProxyTypeArgs and EnvironmentApiProxyTypeOutput values.
+// You can construct a concrete instance of `EnvironmentApiProxyTypeInput` via:
+//
+//          EnvironmentApiProxyTypeArgs{...}
+type EnvironmentApiProxyTypeInput interface {
+	pulumi.Input
+
+	ToEnvironmentApiProxyTypeOutput() EnvironmentApiProxyTypeOutput
+	ToEnvironmentApiProxyTypeOutputWithContext(context.Context) EnvironmentApiProxyTypeOutput
+}
+
+var environmentApiProxyTypePtrType = reflect.TypeOf((**EnvironmentApiProxyType)(nil)).Elem()
+
+type EnvironmentApiProxyTypePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput
+	ToEnvironmentApiProxyTypePtrOutputWithContext(context.Context) EnvironmentApiProxyTypePtrOutput
+}
+
+type environmentApiProxyTypePtr string
+
+func EnvironmentApiProxyTypePtr(v string) EnvironmentApiProxyTypePtrInput {
+	return (*environmentApiProxyTypePtr)(&v)
+}
+
+func (*environmentApiProxyTypePtr) ElementType() reflect.Type {
+	return environmentApiProxyTypePtrType
+}
+
+func (in *environmentApiProxyTypePtr) ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentApiProxyTypePtrOutput)
+}
+
+func (in *environmentApiProxyTypePtr) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentApiProxyTypePtrOutput)
+}
+
+// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+type EnvironmentDeploymentType string
+
+const (
+	// Deployment type not specified.
+	EnvironmentDeploymentTypeDeploymentTypeUnspecified = EnvironmentDeploymentType("DEPLOYMENT_TYPE_UNSPECIFIED")
+	// Proxy deployment enables you to develop and deploy API proxies using Apigee on Google Cloud. This cannot currently be combined with the CONFIGURABLE API proxy type.
+	EnvironmentDeploymentTypeProxy = EnvironmentDeploymentType("PROXY")
+	// Archive deployment enables you to develop API proxies locally then deploy an archive of your API proxy configuration to an environment in Apigee on Google Cloud. You will be prevented from performing a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment.
+	EnvironmentDeploymentTypeArchive = EnvironmentDeploymentType("ARCHIVE")
+)
+
+func (EnvironmentDeploymentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentDeploymentType)(nil)).Elem()
+}
+
+func (e EnvironmentDeploymentType) ToEnvironmentDeploymentTypeOutput() EnvironmentDeploymentTypeOutput {
+	return pulumi.ToOutput(e).(EnvironmentDeploymentTypeOutput)
+}
+
+func (e EnvironmentDeploymentType) ToEnvironmentDeploymentTypeOutputWithContext(ctx context.Context) EnvironmentDeploymentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentDeploymentTypeOutput)
+}
+
+func (e EnvironmentDeploymentType) ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput {
+	return e.ToEnvironmentDeploymentTypePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentDeploymentType) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
+	return EnvironmentDeploymentType(e).ToEnvironmentDeploymentTypeOutputWithContext(ctx).ToEnvironmentDeploymentTypePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentDeploymentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentDeploymentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentDeploymentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentDeploymentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentDeploymentTypeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentDeploymentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentDeploymentType)(nil)).Elem()
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToEnvironmentDeploymentTypeOutput() EnvironmentDeploymentTypeOutput {
+	return o
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToEnvironmentDeploymentTypeOutputWithContext(ctx context.Context) EnvironmentDeploymentTypeOutput {
+	return o
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput {
+	return o.ToEnvironmentDeploymentTypePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentDeploymentType) *EnvironmentDeploymentType {
+		return &v
+	}).(EnvironmentDeploymentTypePtrOutput)
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentDeploymentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentDeploymentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentDeploymentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentDeploymentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentDeploymentTypePtrOutput) ElementType() reflect.Type {
+	return environmentDeploymentTypePtrType
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
+	return o
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentDeploymentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) Elem() EnvironmentDeploymentTypeOutput {
+	return o.ApplyT(func(v *EnvironmentDeploymentType) EnvironmentDeploymentType {
+		var ret EnvironmentDeploymentType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EnvironmentDeploymentTypeOutput)
+}
+
+// EnvironmentDeploymentTypeInput is an input type that accepts EnvironmentDeploymentTypeArgs and EnvironmentDeploymentTypeOutput values.
+// You can construct a concrete instance of `EnvironmentDeploymentTypeInput` via:
+//
+//          EnvironmentDeploymentTypeArgs{...}
+type EnvironmentDeploymentTypeInput interface {
+	pulumi.Input
+
+	ToEnvironmentDeploymentTypeOutput() EnvironmentDeploymentTypeOutput
+	ToEnvironmentDeploymentTypeOutputWithContext(context.Context) EnvironmentDeploymentTypeOutput
+}
+
+var environmentDeploymentTypePtrType = reflect.TypeOf((**EnvironmentDeploymentType)(nil)).Elem()
+
+type EnvironmentDeploymentTypePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput
+	ToEnvironmentDeploymentTypePtrOutputWithContext(context.Context) EnvironmentDeploymentTypePtrOutput
+}
+
+type environmentDeploymentTypePtr string
+
+func EnvironmentDeploymentTypePtr(v string) EnvironmentDeploymentTypePtrInput {
+	return (*environmentDeploymentTypePtr)(&v)
+}
+
+func (*environmentDeploymentTypePtr) ElementType() reflect.Type {
+	return environmentDeploymentTypePtrType
+}
+
+func (in *environmentDeploymentTypePtr) ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentDeploymentTypePtrOutput)
+}
+
+func (in *environmentDeploymentTypePtr) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentDeploymentTypePtrOutput)
+}
+
 // Sampler of distributed tracing. OFF is the default value.
 type GoogleCloudApigeeV1TraceSamplingConfigSampler string
 
@@ -2234,6 +2572,10 @@ func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutputWithContext(ct
 func init() {
 	pulumi.RegisterOutputType(DataCollectorTypeOutput{})
 	pulumi.RegisterOutputType(DataCollectorTypePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentApiProxyTypeOutput{})
+	pulumi.RegisterOutputType(EnvironmentApiProxyTypePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentDeploymentTypeOutput{})
+	pulumi.RegisterOutputType(EnvironmentDeploymentTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})

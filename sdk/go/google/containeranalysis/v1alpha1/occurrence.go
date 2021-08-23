@@ -29,6 +29,10 @@ type Occurrence struct {
 	DerivedImage DerivedResponseOutput `pulumi:"derivedImage"`
 	// Describes the initial scan status for this resource.
 	Discovered DiscoveredResponseOutput `pulumi:"discovered"`
+	// This represents a DSSE attestation occurrence
+	DsseAttestation DSSEAttestationOccurrenceResponseOutput `pulumi:"dsseAttestation"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopeResponseOutput `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationResponseOutput `pulumi:"installation"`
 	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
@@ -43,6 +47,14 @@ type Occurrence struct {
 	Resource ResourceResponseOutput `pulumi:"resource"`
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl pulumi.StringOutput `pulumi:"resourceUrl"`
+	// Describes a specific software bill of materials document.
+	Sbom DocumentOccurrenceResponseOutput `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrenceResponseOutput `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrenceResponseOutput `pulumi:"spdxPackage"`
+	// Describes a specific relationship between SPDX elements.
+	SpdxRelationship RelationshipOccurrenceResponseOutput `pulumi:"spdxRelationship"`
 	// The time this `Occurrence` was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Describes an upgrade.
@@ -102,6 +114,10 @@ type occurrenceArgs struct {
 	DerivedImage *Derived `pulumi:"derivedImage"`
 	// Describes the initial scan status for this resource.
 	Discovered *Discovered `pulumi:"discovered"`
+	// This represents a DSSE attestation occurrence
+	DsseAttestation *DSSEAttestationOccurrence `pulumi:"dsseAttestation"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope *Envelope `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation *Installation `pulumi:"installation"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
@@ -113,6 +129,14 @@ type occurrenceArgs struct {
 	Resource *Resource `pulumi:"resource"`
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl *string `pulumi:"resourceUrl"`
+	// Describes a specific software bill of materials document.
+	Sbom *DocumentOccurrence `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile *FileOccurrence `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage *PackageOccurrence `pulumi:"spdxPackage"`
+	// Describes a specific relationship between SPDX elements.
+	SpdxRelationship *RelationshipOccurrence `pulumi:"spdxRelationship"`
 	// Describes an upgrade.
 	Upgrade *UpgradeOccurrence `pulumi:"upgrade"`
 	// Details of a security vulnerability note.
@@ -133,6 +157,10 @@ type OccurrenceArgs struct {
 	DerivedImage DerivedPtrInput
 	// Describes the initial scan status for this resource.
 	Discovered DiscoveredPtrInput
+	// This represents a DSSE attestation occurrence
+	DsseAttestation DSSEAttestationOccurrencePtrInput
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopePtrInput
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
@@ -144,6 +172,14 @@ type OccurrenceArgs struct {
 	Resource ResourcePtrInput
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl pulumi.StringPtrInput
+	// Describes a specific software bill of materials document.
+	Sbom DocumentOccurrencePtrInput
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrencePtrInput
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrencePtrInput
+	// Describes a specific relationship between SPDX elements.
+	SpdxRelationship RelationshipOccurrencePtrInput
 	// Describes an upgrade.
 	Upgrade UpgradeOccurrencePtrInput
 	// Details of a security vulnerability note.

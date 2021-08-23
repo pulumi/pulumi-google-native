@@ -15,8 +15,12 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
+	// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+	ApiProxyType pulumi.StringOutput `pulumi:"apiProxyType"`
 	// Creation time of this environment as milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+	DeploymentType pulumi.StringOutput `pulumi:"deploymentType"`
 	// Optional. Description of the environment.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Display name for this environment.
@@ -73,6 +77,10 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+	ApiProxyType *EnvironmentApiProxyType `pulumi:"apiProxyType"`
+	// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+	DeploymentType *EnvironmentDeploymentType `pulumi:"deploymentType"`
 	// Optional. Description of the environment.
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
@@ -86,6 +94,10 @@ type environmentArgs struct {
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
+	// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+	ApiProxyType EnvironmentApiProxyTypePtrInput
+	// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+	DeploymentType EnvironmentDeploymentTypePtrInput
 	// Optional. Description of the environment.
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.

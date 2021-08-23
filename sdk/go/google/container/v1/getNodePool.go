@@ -43,6 +43,8 @@ type LookupNodePoolResult struct {
 	MaxPodsConstraint MaxPodsConstraintResponse `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name string `pulumi:"name"`
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig NodeNetworkConfigResponse `pulumi:"networkConfig"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.

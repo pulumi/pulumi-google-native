@@ -519,7 +519,7 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+// Optional. The determinism level of the JavaScript UDF, if defined.
 type RoutineDeterminismLevel string
 
 const (

@@ -33,7 +33,7 @@ type Instance struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Resource labels to represent user provided metadata
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
@@ -126,7 +126,7 @@ type instanceArgs struct {
 	InstanceId  string  `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
 	Location *string `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy *MaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -162,7 +162,7 @@ type InstanceArgs struct {
 	InstanceId  pulumi.StringInput
 	// Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput
-	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
 	Location pulumi.StringPtrInput
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyPtrInput

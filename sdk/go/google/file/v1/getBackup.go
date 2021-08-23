@@ -34,13 +34,13 @@ type LookupBackupResult struct {
 	DownloadBytes string `pulumi:"downloadBytes"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
 	Name string `pulumi:"name"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare string `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance string `pulumi:"sourceInstance"`
 	// The service tier of the source Cloud Filestore instance that this backup is created from.
 	SourceInstanceTier string `pulumi:"sourceInstanceTier"`

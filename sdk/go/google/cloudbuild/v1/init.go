@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudbuild/v1:Build":
 		r = &Build{}
+	case "google-native:cloudbuild/v1:GithubEnterpriseConfig":
+		r = &GithubEnterpriseConfig{}
 	case "google-native:cloudbuild/v1:Trigger":
 		r = &Trigger{}
 	case "google-native:cloudbuild/v1:WorkerPool":

@@ -183,7 +183,7 @@ func (in *androidInstrumentationTestOrchestratorOptionPtr) ToAndroidInstrumentat
 type AndroidRoboTestRoboMode string
 
 const (
-	// LINT.IfChange This means that the server should choose the mode. Recommended.
+	// This means that the server should choose the mode. Recommended.
 	AndroidRoboTestRoboModeRoboModeUnspecified = AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED")
 	// Runs Robo in UIAutomator-only mode without app resigning
 	AndroidRoboTestRoboModeRoboVersion1 = AndroidRoboTestRoboMode("ROBO_VERSION_1")

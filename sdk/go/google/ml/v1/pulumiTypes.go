@@ -6460,7 +6460,7 @@ type GoogleCloudMlV1__HyperparameterOutput struct {
 	IsTrialStoppedEarly *bool `pulumi:"isTrialStoppedEarly"`
 	// The trial id for these results.
 	TrialId *string `pulumi:"trialId"`
-	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
@@ -6489,7 +6489,7 @@ type GoogleCloudMlV1__HyperparameterOutputArgs struct {
 	IsTrialStoppedEarly pulumi.BoolPtrInput `pulumi:"isTrialStoppedEarly"`
 	// The trial id for these results.
 	TrialId pulumi.StringPtrInput `pulumi:"trialId"`
-	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
@@ -6581,7 +6581,7 @@ func (o GoogleCloudMlV1__HyperparameterOutputOutput) TrialId() pulumi.StringPtrO
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) *string { return v.TrialId }).(pulumi.StringPtrOutput)
 }
 
-// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 func (o GoogleCloudMlV1__HyperparameterOutputOutput) WebAccessUris() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutput) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
 }
@@ -6626,7 +6626,7 @@ type GoogleCloudMlV1__HyperparameterOutputResponse struct {
 	State string `pulumi:"state"`
 	// The trial id for these results.
 	TrialId string `pulumi:"trialId"`
-	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
@@ -6661,7 +6661,7 @@ type GoogleCloudMlV1__HyperparameterOutputResponseArgs struct {
 	State pulumi.StringInput `pulumi:"state"`
 	// The trial id for these results.
 	TrialId pulumi.StringInput `pulumi:"trialId"`
-	// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
@@ -6768,7 +6768,7 @@ func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) TrialId() pulumi.St
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutputResponse) string { return v.TrialId }).(pulumi.StringOutput)
 }
 
-// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 func (o GoogleCloudMlV1__HyperparameterOutputResponseOutput) WebAccessUris() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterOutputResponse) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
 }
@@ -12014,7 +12014,7 @@ func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) Parameters() GoogleCloudM
 type GoogleCloudMlV1__TrainingInput struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args []string `pulumi:"args"`
-	// Optional. Whether to enable web access for the training job.
+	// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 	EnableWebAccess *bool `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig *GoogleCloudMlV1__EncryptionConfig `pulumi:"encryptionConfig"`
@@ -12081,7 +12081,7 @@ type GoogleCloudMlV1__TrainingInputInput interface {
 type GoogleCloudMlV1__TrainingInputArgs struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Optional. Whether to enable web access for the training job.
+	// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 	EnableWebAccess pulumi.BoolPtrInput `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
@@ -12216,7 +12216,7 @@ func (o GoogleCloudMlV1__TrainingInputOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Whether to enable web access for the training job.
+// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 func (o GoogleCloudMlV1__TrainingInputOutput) EnableWebAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *bool { return v.EnableWebAccess }).(pulumi.BoolPtrOutput)
 }
@@ -12369,7 +12369,7 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) Args() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. Whether to enable web access for the training job.
+// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *bool {
 		if v == nil {
@@ -12623,7 +12623,7 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) WorkerType() pulumi.StringPtrOu
 type GoogleCloudMlV1__TrainingInputResponse struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args []string `pulumi:"args"`
-	// Optional. Whether to enable web access for the training job.
+	// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 	EnableWebAccess bool `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigResponse `pulumi:"encryptionConfig"`
@@ -12690,7 +12690,7 @@ type GoogleCloudMlV1__TrainingInputResponseInput interface {
 type GoogleCloudMlV1__TrainingInputResponseArgs struct {
 	// Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Optional. Whether to enable web access for the training job.
+	// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 	EnableWebAccess pulumi.BoolInput `pulumi:"enableWebAccess"`
 	// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
 	EncryptionConfig GoogleCloudMlV1__EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
@@ -12825,7 +12825,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) Args() pulumi.StringArrayO
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Whether to enable web access for the training job.
+// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) EnableWebAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) bool { return v.EnableWebAccess }).(pulumi.BoolOutput)
 }
@@ -12992,7 +12992,7 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) Args() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. Whether to enable web access for the training job.
+// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) EnableWebAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) *bool {
 		if v == nil {
@@ -13508,7 +13508,7 @@ type GoogleCloudMlV1__TrainingOutputResponse struct {
 	IsHyperparameterTuningJob bool `pulumi:"isHyperparameterTuningJob"`
 	// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
 	Trials []GoogleCloudMlV1__HyperparameterOutputResponse `pulumi:"trials"`
-	// The web URIs for the training job. Currently for debug terminal access to the job.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris map[string]string `pulumi:"webAccessUris"`
 }
 
@@ -13539,7 +13539,7 @@ type GoogleCloudMlV1__TrainingOutputResponseArgs struct {
 	IsHyperparameterTuningJob pulumi.BoolInput `pulumi:"isHyperparameterTuningJob"`
 	// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
 	Trials GoogleCloudMlV1__HyperparameterOutputResponseArrayInput `pulumi:"trials"`
-	// The web URIs for the training job. Currently for debug terminal access to the job.
+	// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 	WebAccessUris pulumi.StringMapInput `pulumi:"webAccessUris"`
 }
 
@@ -13660,7 +13660,7 @@ func (o GoogleCloudMlV1__TrainingOutputResponseOutput) Trials() GoogleCloudMlV1_
 	}).(GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput)
 }
 
-// The web URIs for the training job. Currently for debug terminal access to the job.
+// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 func (o GoogleCloudMlV1__TrainingOutputResponseOutput) WebAccessUris() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingOutputResponse) map[string]string { return v.WebAccessUris }).(pulumi.StringMapOutput)
 }
@@ -13753,7 +13753,7 @@ func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) Trials() GoogleCloudMl
 	}).(GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput)
 }
 
-// The web URIs for the training job. Currently for debug terminal access to the job.
+// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
 func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) WebAccessUris() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutputResponse) map[string]string {
 		if v == nil {

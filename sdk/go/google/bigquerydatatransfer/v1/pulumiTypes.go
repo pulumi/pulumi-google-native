@@ -622,6 +622,140 @@ func (o ScheduleOptionsResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information about a user.
+type UserInfoResponse struct {
+	// E-mail address of the user.
+	Email string `pulumi:"email"`
+}
+
+// UserInfoResponseInput is an input type that accepts UserInfoResponseArgs and UserInfoResponseOutput values.
+// You can construct a concrete instance of `UserInfoResponseInput` via:
+//
+//          UserInfoResponseArgs{...}
+type UserInfoResponseInput interface {
+	pulumi.Input
+
+	ToUserInfoResponseOutput() UserInfoResponseOutput
+	ToUserInfoResponseOutputWithContext(context.Context) UserInfoResponseOutput
+}
+
+// Information about a user.
+type UserInfoResponseArgs struct {
+	// E-mail address of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (UserInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserInfoResponse)(nil)).Elem()
+}
+
+func (i UserInfoResponseArgs) ToUserInfoResponseOutput() UserInfoResponseOutput {
+	return i.ToUserInfoResponseOutputWithContext(context.Background())
+}
+
+func (i UserInfoResponseArgs) ToUserInfoResponseOutputWithContext(ctx context.Context) UserInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserInfoResponseOutput)
+}
+
+func (i UserInfoResponseArgs) ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput {
+	return i.ToUserInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UserInfoResponseArgs) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserInfoResponseOutput).ToUserInfoResponsePtrOutputWithContext(ctx)
+}
+
+// UserInfoResponsePtrInput is an input type that accepts UserInfoResponseArgs, UserInfoResponsePtr and UserInfoResponsePtrOutput values.
+// You can construct a concrete instance of `UserInfoResponsePtrInput` via:
+//
+//          UserInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UserInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput
+	ToUserInfoResponsePtrOutputWithContext(context.Context) UserInfoResponsePtrOutput
+}
+
+type userInfoResponsePtrType UserInfoResponseArgs
+
+func UserInfoResponsePtr(v *UserInfoResponseArgs) UserInfoResponsePtrInput {
+	return (*userInfoResponsePtrType)(v)
+}
+
+func (*userInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserInfoResponse)(nil)).Elem()
+}
+
+func (i *userInfoResponsePtrType) ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput {
+	return i.ToUserInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *userInfoResponsePtrType) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserInfoResponsePtrOutput)
+}
+
+// Information about a user.
+type UserInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UserInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserInfoResponse)(nil)).Elem()
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponseOutput() UserInfoResponseOutput {
+	return o
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.Context) UserInfoResponseOutput {
+	return o
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput {
+	return o.ToUserInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
+	return o.ApplyT(func(v UserInfoResponse) *UserInfoResponse {
+		return &v
+	}).(UserInfoResponsePtrOutput)
+}
+
+// E-mail address of the user.
+func (o UserInfoResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v UserInfoResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type UserInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserInfoResponse)(nil)).Elem()
+}
+
+func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
+	return o.ApplyT(func(v *UserInfoResponse) UserInfoResponse { return *v }).(UserInfoResponseOutput)
+}
+
+// E-mail address of the user.
+func (o UserInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmailPreferencesOutput{})
 	pulumi.RegisterOutputType(EmailPreferencesPtrOutput{})
@@ -631,4 +765,6 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOptionsResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserInfoResponseOutput{})
+	pulumi.RegisterOutputType(UserInfoResponsePtrOutput{})
 }

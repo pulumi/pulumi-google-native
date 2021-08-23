@@ -36,7 +36,7 @@ type LookupExperimentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime string `pulumi:"endTime"`
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
 	ExperimentLength string `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime string `pulumi:"lastUpdateTime"`
@@ -44,6 +44,12 @@ type LookupExperimentResult struct {
 	Name string `pulumi:"name"`
 	// Inference result of the experiment.
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponse `pulumi:"result"`
+	// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+	RolloutConfig GoogleCloudDialogflowCxV3beta1RolloutConfigResponse `pulumi:"rolloutConfig"`
+	// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+	RolloutFailureReason string `pulumi:"rolloutFailureReason"`
+	// State of the auto rollout process.
+	RolloutState GoogleCloudDialogflowCxV3beta1RolloutStateResponse `pulumi:"rolloutState"`
 	// Start time of this experiment.
 	StartTime string `pulumi:"startTime"`
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.

@@ -28,6 +28,8 @@ type Feed struct {
 	FeedOutputConfig FeedOutputConfigResponseOutput `pulumi:"feedOutputConfig"`
 	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+	RelationshipTypes pulumi.StringArrayOutput `pulumi:"relationshipTypes"`
 }
 
 // NewFeed registers a new resource with the given unique name, arguments, and options.
@@ -97,9 +99,11 @@ type feedArgs struct {
 	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-	Name  string `pulumi:"name"`
-	V1Id  string `pulumi:"v1Id"`
-	V1Id1 string `pulumi:"v1Id1"`
+	Name string `pulumi:"name"`
+	// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+	RelationshipTypes []string `pulumi:"relationshipTypes"`
+	V1Id              string   `pulumi:"v1Id"`
+	V1Id1             string   `pulumi:"v1Id1"`
 }
 
 // The set of arguments for constructing a Feed resource.
@@ -117,9 +121,11 @@ type FeedArgs struct {
 	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfigInput
 	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-	Name  pulumi.StringInput
-	V1Id  pulumi.StringInput
-	V1Id1 pulumi.StringInput
+	Name pulumi.StringInput
+	// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+	RelationshipTypes pulumi.StringArrayInput
+	V1Id              pulumi.StringInput
+	V1Id1             pulumi.StringInput
 }
 
 func (FeedArgs) ElementType() reflect.Type {

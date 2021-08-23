@@ -197,6 +197,175 @@ func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
 }
 
+// The type of Job to be used on this execution.
+type ExecutionTemplateJobType string
+
+const (
+	// No type specified.
+	ExecutionTemplateJobTypeJobTypeUnspecified = ExecutionTemplateJobType("JOB_TYPE_UNSPECIFIED")
+	// Custom Job in `aiplatform.googleapis.com`. Default value for an execution.
+	ExecutionTemplateJobTypeVertexAi = ExecutionTemplateJobType("VERTEX_AI")
+	// Run execution on a cluster with Dataproc as a job. https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
+	ExecutionTemplateJobTypeDataproc = ExecutionTemplateJobType("DATAPROC")
+)
+
+func (ExecutionTemplateJobType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateJobType)(nil)).Elem()
+}
+
+func (e ExecutionTemplateJobType) ToExecutionTemplateJobTypeOutput() ExecutionTemplateJobTypeOutput {
+	return pulumi.ToOutput(e).(ExecutionTemplateJobTypeOutput)
+}
+
+func (e ExecutionTemplateJobType) ToExecutionTemplateJobTypeOutputWithContext(ctx context.Context) ExecutionTemplateJobTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExecutionTemplateJobTypeOutput)
+}
+
+func (e ExecutionTemplateJobType) ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput {
+	return e.ToExecutionTemplateJobTypePtrOutputWithContext(context.Background())
+}
+
+func (e ExecutionTemplateJobType) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
+	return ExecutionTemplateJobType(e).ToExecutionTemplateJobTypeOutputWithContext(ctx).ToExecutionTemplateJobTypePtrOutputWithContext(ctx)
+}
+
+func (e ExecutionTemplateJobType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExecutionTemplateJobType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExecutionTemplateJobType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExecutionTemplateJobType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExecutionTemplateJobTypeOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateJobTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateJobType)(nil)).Elem()
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypeOutput() ExecutionTemplateJobTypeOutput {
+	return o
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypeOutputWithContext(ctx context.Context) ExecutionTemplateJobTypeOutput {
+	return o
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput {
+	return o.ToExecutionTemplateJobTypePtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionTemplateJobType) *ExecutionTemplateJobType {
+		return &v
+	}).(ExecutionTemplateJobTypePtrOutput)
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateJobType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateJobTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateJobType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExecutionTemplateJobTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateJobTypePtrOutput) ElementType() reflect.Type {
+	return executionTemplateJobTypePtrType
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExecutionTemplateJobType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) Elem() ExecutionTemplateJobTypeOutput {
+	return o.ApplyT(func(v *ExecutionTemplateJobType) ExecutionTemplateJobType {
+		var ret ExecutionTemplateJobType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ExecutionTemplateJobTypeOutput)
+}
+
+// ExecutionTemplateJobTypeInput is an input type that accepts ExecutionTemplateJobTypeArgs and ExecutionTemplateJobTypeOutput values.
+// You can construct a concrete instance of `ExecutionTemplateJobTypeInput` via:
+//
+//          ExecutionTemplateJobTypeArgs{...}
+type ExecutionTemplateJobTypeInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateJobTypeOutput() ExecutionTemplateJobTypeOutput
+	ToExecutionTemplateJobTypeOutputWithContext(context.Context) ExecutionTemplateJobTypeOutput
+}
+
+var executionTemplateJobTypePtrType = reflect.TypeOf((**ExecutionTemplateJobType)(nil)).Elem()
+
+type ExecutionTemplateJobTypePtrInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput
+	ToExecutionTemplateJobTypePtrOutputWithContext(context.Context) ExecutionTemplateJobTypePtrOutput
+}
+
+type executionTemplateJobTypePtr string
+
+func ExecutionTemplateJobTypePtr(v string) ExecutionTemplateJobTypePtrInput {
+	return (*executionTemplateJobTypePtr)(&v)
+}
+
+func (*executionTemplateJobTypePtr) ElementType() reflect.Type {
+	return executionTemplateJobTypePtrType
+}
+
+func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput {
+	return pulumi.ToOutput(in).(ExecutionTemplateJobTypePtrOutput)
+}
+
+func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateJobTypePtrOutput)
+}
+
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 type InstanceBootDiskType string
 
@@ -2440,6 +2609,8 @@ func (in *virtualMachineConfigNicTypePtr) ToVirtualMachineConfigNicTypePtrOutput
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigTypeOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateJobTypeOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateJobTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypeOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskTypeOutput{})

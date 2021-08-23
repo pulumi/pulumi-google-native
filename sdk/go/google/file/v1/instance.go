@@ -26,7 +26,7 @@ type Instance struct {
 	FileShares FileShareConfigResponseArrayOutput `pulumi:"fileShares"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+	// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
