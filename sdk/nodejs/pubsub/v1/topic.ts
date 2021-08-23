@@ -44,6 +44,10 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+     */
+    public readonly messageRetentionDuration!: pulumi.Output<string>;
+    /**
      * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.v1.MessageStoragePolicyResponse>;
@@ -76,6 +80,7 @@ export class Topic extends pulumi.CustomResource {
             }
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -85,6 +90,7 @@ export class Topic extends pulumi.CustomResource {
         } else {
             inputs["kmsKeyName"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
+            inputs["messageRetentionDuration"] = undefined /*out*/;
             inputs["messageStoragePolicy"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["satisfiesPzs"] = undefined /*out*/;
@@ -109,6 +115,10 @@ export interface TopicArgs {
      * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 7 days or less than 10 minutes.
+     */
+    messageRetentionDuration?: pulumi.Input<string>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */

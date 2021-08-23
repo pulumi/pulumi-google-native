@@ -8,13 +8,11 @@ import * as utilities from "../../utilities";
 export * from "./getHub";
 export * from "./getHubIamPolicy";
 export * from "./getInternalRangeIamPolicy";
-export * from "./getPolicyBasedRouteIamPolicy";
 export * from "./getSpoke";
 export * from "./getSpokeIamPolicy";
 export * from "./hub";
 export * from "./hubIamPolicy";
 export * from "./internalRangeIamPolicy";
-export * from "./policyBasedRouteIamPolicy";
 export * from "./spoke";
 export * from "./spokeIamPolicy";
 
@@ -25,7 +23,6 @@ export * from "../../types/enums/networkconnectivity/v1alpha1";
 import { Hub } from "./hub";
 import { HubIamPolicy } from "./hubIamPolicy";
 import { InternalRangeIamPolicy } from "./internalRangeIamPolicy";
-import { PolicyBasedRouteIamPolicy } from "./policyBasedRouteIamPolicy";
 import { Spoke } from "./spoke";
 import { SpokeIamPolicy } from "./spokeIamPolicy";
 
@@ -39,8 +36,6 @@ const _module = {
                 return new HubIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
                 return new InternalRangeIamPolicy(name, <any>undefined, { urn })
-            case "google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy":
-                return new PolicyBasedRouteIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:Spoke":
                 return new Spoke(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy":

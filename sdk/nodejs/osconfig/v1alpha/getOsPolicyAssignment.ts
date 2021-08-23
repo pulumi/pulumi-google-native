@@ -43,6 +43,10 @@ export interface GetOsPolicyAssignmentResult {
      */
     readonly description: string;
     /**
+     * The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+     */
+    readonly etag: string;
+    /**
      * Filter to select VMs.
      */
     readonly instanceFilter: outputs.osconfig.v1alpha.OSPolicyAssignmentInstanceFilterResponse;

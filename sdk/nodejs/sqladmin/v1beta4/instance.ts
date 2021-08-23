@@ -44,23 +44,27 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionName!: pulumi.Output<string>;
     /**
+     * The time when the instance was created in RFC 3339 format (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
      */
     public readonly currentDiskSize!: pulumi.Output<string>;
     /**
-     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
-     * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption configuration specific to an instance.
      */
     public readonly diskEncryptionConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse>;
     /**
-     * Disk encryption status specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption status specific to an instance.
      */
     public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse>;
     /**
-     * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+     * The name and status of the failover replica.
      */
     public readonly failoverReplica!: pulumi.Output<outputs.sqladmin.v1beta4.InstanceFailoverReplicaResponse>;
     /**
@@ -197,9 +201,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["settings"] = args ? args.settings : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["suspensionReason"] = args ? args.suspensionReason : undefined;
+            inputs["createTime"] = undefined /*out*/;
         } else {
             inputs["backendType"] = undefined /*out*/;
             inputs["connectionName"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
             inputs["currentDiskSize"] = undefined /*out*/;
             inputs["databaseVersion"] = undefined /*out*/;
             inputs["diskEncryptionConfiguration"] = undefined /*out*/;
@@ -253,19 +259,19 @@ export interface InstanceArgs {
      */
     currentDiskSize?: pulumi.Input<string>;
     /**
-     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
      */
     databaseVersion?: pulumi.Input<enums.sqladmin.v1beta4.InstanceDatabaseVersion>;
     /**
-     * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption configuration specific to an instance.
      */
     diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
     /**
-     * Disk encryption status specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption status specific to an instance.
      */
     diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**
-     * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+     * The name and status of the failover replica.
      */
     failoverReplica?: pulumi.Input<inputs.sqladmin.v1beta4.InstanceFailoverReplicaArgs>;
     /**

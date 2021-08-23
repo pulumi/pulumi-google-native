@@ -29,6 +29,10 @@ export interface GetApiArgs {
 
 export interface GetApiResult {
     /**
+     * User labels applied to this API Proxy.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The id of the most recently created revision for this api proxy.
      */
     readonly latestRevisionId: string;

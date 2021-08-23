@@ -47,7 +47,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly currentActions: outputs.compute.v1.InstanceGroupManagerActionsSummaryResponse;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     readonly description: string;
     /**

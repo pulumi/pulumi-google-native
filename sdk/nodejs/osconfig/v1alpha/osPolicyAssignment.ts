@@ -48,6 +48,10 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * Filter to select VMs.
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.v1alpha.OSPolicyAssignmentInstanceFilterResponse>;
@@ -108,6 +112,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'rollout'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["etag"] = args ? args.etag : undefined;
             inputs["instanceFilter"] = args ? args.instanceFilter : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -126,6 +131,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             inputs["baseline"] = undefined /*out*/;
             inputs["deleted"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
             inputs["instanceFilter"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["osPolicies"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface OsPolicyAssignmentArgs {
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * Filter to select VMs.
      */

@@ -59,7 +59,7 @@ export class Intent extends pulumi.CustomResource {
     /**
      * Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
      */
-    public readonly followupIntentInfo!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse[]>;
+    public /*out*/ readonly followupIntentInfo!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse[]>;
     /**
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
@@ -107,7 +107,7 @@ export class Intent extends pulumi.CustomResource {
     /**
      * Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
      */
-    public readonly rootFollowupIntentName!: pulumi.Output<string>;
+    public /*out*/ readonly rootFollowupIntentName!: pulumi.Output<string>;
     /**
      * Optional. The collection of examples that the agent is trained on.
      */
@@ -136,7 +136,6 @@ export class Intent extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["endInteraction"] = args ? args.endInteraction : undefined;
             inputs["events"] = args ? args.events : undefined;
-            inputs["followupIntentInfo"] = args ? args.followupIntentInfo : undefined;
             inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
             inputs["intentView"] = args ? args.intentView : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
@@ -152,9 +151,10 @@ export class Intent extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["resetContexts"] = args ? args.resetContexts : undefined;
-            inputs["rootFollowupIntentName"] = args ? args.rootFollowupIntentName : undefined;
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
             inputs["webhookState"] = args ? args.webhookState : undefined;
+            inputs["followupIntentInfo"] = undefined /*out*/;
+            inputs["rootFollowupIntentName"] = undefined /*out*/;
         } else {
             inputs["action"] = undefined /*out*/;
             inputs["defaultResponsePlatforms"] = undefined /*out*/;
@@ -209,10 +209,6 @@ export interface IntentArgs {
      */
     events?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-     */
-    followupIntentInfo?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs>[]>;
-    /**
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
     inputContextNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -260,10 +256,6 @@ export interface IntentArgs {
      * Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
      */
     resetContexts?: pulumi.Input<boolean>;
-    /**
-     * Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
-     */
-    rootFollowupIntentName?: pulumi.Input<string>;
     /**
      * Optional. The collection of examples that the agent is trained on.
      */

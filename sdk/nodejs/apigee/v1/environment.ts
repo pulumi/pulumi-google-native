@@ -36,9 +36,17 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+     */
+    public readonly apiProxyType!: pulumi.Output<string>;
+    /**
      * Creation time of this environment as milliseconds since epoch.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+     */
+    public readonly deploymentType!: pulumi.Output<string>;
     /**
      * Optional. Description of the environment.
      */
@@ -78,6 +86,8 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            inputs["apiProxyType"] = args ? args.apiProxyType : undefined;
+            inputs["deploymentType"] = args ? args.deploymentType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -87,7 +97,9 @@ export class Environment extends pulumi.CustomResource {
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
+            inputs["apiProxyType"] = undefined /*out*/;
             inputs["createdAt"] = undefined /*out*/;
+            inputs["deploymentType"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
@@ -106,6 +118,14 @@ export class Environment extends pulumi.CustomResource {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
+    /**
+     * Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+     */
+    apiProxyType?: pulumi.Input<enums.apigee.v1.EnvironmentApiProxyType>;
+    /**
+     * Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+     */
+    deploymentType?: pulumi.Input<enums.apigee.v1.EnvironmentDeploymentType>;
     /**
      * Optional. Description of the environment.
      */

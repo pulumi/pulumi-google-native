@@ -57,6 +57,10 @@ export interface GetNoteResult {
      */
     readonly discovery: outputs.containeranalysis.v1alpha1.DiscoveryResponse;
     /**
+     * A note describing a dsse attestation note.
+     */
+    readonly dsseAttestation: outputs.containeranalysis.v1alpha1.DSSEAttestationNoteResponse;
+    /**
      * Time of expiration for this note, null if note does not expire.
      */
     readonly expirationTime: string;
@@ -81,9 +85,25 @@ export interface GetNoteResult {
      */
     readonly relatedUrl: outputs.containeranalysis.v1alpha1.RelatedUrlResponse[];
     /**
+     * A note describing a software bill of materials.
+     */
+    readonly sbom: outputs.containeranalysis.v1alpha1.DocumentNoteResponse;
+    /**
      * A one sentence description of this `Note`.
      */
     readonly shortDescription: string;
+    /**
+     * A note describing an SPDX File.
+     */
+    readonly spdxFile: outputs.containeranalysis.v1alpha1.FileNoteResponse;
+    /**
+     * A note describing an SPDX Package.
+     */
+    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageNoteResponse;
+    /**
+     * A note describing a relationship between SPDX elements.
+     */
+    readonly spdxRelationship: outputs.containeranalysis.v1alpha1.RelationshipNoteResponse;
     /**
      * The time this note was last updated. This field can be used as a filter in list requests.
      */

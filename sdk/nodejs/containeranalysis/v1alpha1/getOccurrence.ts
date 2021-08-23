@@ -57,6 +57,14 @@ export interface GetOccurrenceResult {
      */
     readonly discovered: outputs.containeranalysis.v1alpha1.DiscoveredResponse;
     /**
+     * This represents a DSSE attestation occurrence
+     */
+    readonly dsseAttestation: outputs.containeranalysis.v1alpha1.DSSEAttestationOccurrenceResponse;
+    /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    readonly envelope: outputs.containeranalysis.v1alpha1.EnvelopeResponse;
+    /**
      * Describes the installation of a package on the linked resource.
      */
     readonly installation: outputs.containeranalysis.v1alpha1.InstallationResponse;
@@ -84,6 +92,22 @@ export interface GetOccurrenceResult {
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
     readonly resourceUrl: string;
+    /**
+     * Describes a specific software bill of materials document.
+     */
+    readonly sbom: outputs.containeranalysis.v1alpha1.DocumentOccurrenceResponse;
+    /**
+     * Describes a specific SPDX File.
+     */
+    readonly spdxFile: outputs.containeranalysis.v1alpha1.FileOccurrenceResponse;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    readonly spdxPackage: outputs.containeranalysis.v1alpha1.PackageOccurrenceResponse;
+    /**
+     * Describes a specific relationship between SPDX elements.
+     */
+    readonly spdxRelationship: outputs.containeranalysis.v1alpha1.RelationshipOccurrenceResponse;
     /**
      * The time this `Occurrence` was last updated.
      */

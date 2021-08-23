@@ -59,6 +59,10 @@ export const WorkloadComplianceRegime = {
      * Health Information Trust Alliance controls
      */
     Hitrust: "HITRUST",
+    /**
+     * Assured Workloads For EU Regions and Support controls
+     */
+    EuRegionsAndSupport: "EU_REGIONS_AND_SUPPORT",
 } as const;
 
 /**

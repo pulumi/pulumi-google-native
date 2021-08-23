@@ -10,41 +10,41 @@ import * as utilities from "../../utilities";
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
-export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
+export class EndpointPolicyIamPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing PolicyBasedRouteIamPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing EndpointPolicyIamPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): PolicyBasedRouteIamPolicy {
-        return new PolicyBasedRouteIamPolicy(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): EndpointPolicyIamPolicy {
+        return new EndpointPolicyIamPolicy(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy';
+    public static readonly __pulumiType = 'google-native:networkservices/v1beta1:EndpointPolicyIamPolicy';
 
     /**
-     * Returns true if the given object is an instance of PolicyBasedRouteIamPolicy.  This is designed to work even
+     * Returns true if the given object is an instance of EndpointPolicyIamPolicy.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is PolicyBasedRouteIamPolicy {
+    public static isInstance(obj: any): obj is EndpointPolicyIamPolicy {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === PolicyBasedRouteIamPolicy.__pulumiType;
+        return obj['__pulumiType'] === EndpointPolicyIamPolicy.__pulumiType;
     }
 
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    public readonly auditConfigs!: pulumi.Output<outputs.networkconnectivity.v1alpha1.AuditConfigResponse[]>;
+    public readonly auditConfigs!: pulumi.Output<outputs.networkservices.v1beta1.AuditConfigResponse[]>;
     /**
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
-    public readonly bindings!: pulumi.Output<outputs.networkconnectivity.v1alpha1.BindingResponse[]>;
+    public readonly bindings!: pulumi.Output<outputs.networkservices.v1beta1.BindingResponse[]>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
@@ -55,23 +55,24 @@ export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
     public readonly version!: pulumi.Output<number>;
 
     /**
-     * Create a PolicyBasedRouteIamPolicy resource with the given unique name, arguments, and options.
+     * Create a EndpointPolicyIamPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PolicyBasedRouteIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: EndpointPolicyIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.policyBasedRouteId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'policyBasedRouteId'");
+            if ((!args || args.endpointPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'endpointPolicyId'");
             }
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
+            inputs["endpointPolicyId"] = args ? args.endpointPolicyId : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["policyBasedRouteId"] = args ? args.policyBasedRouteId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["updateMask"] = args ? args.updateMask : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -84,27 +85,28 @@ export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PolicyBasedRouteIamPolicy.__pulumiType, name, inputs, opts);
+        super(EndpointPolicyIamPolicy.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a PolicyBasedRouteIamPolicy resource.
+ * The set of arguments for constructing a EndpointPolicyIamPolicy resource.
  */
-export interface PolicyBasedRouteIamPolicyArgs {
+export interface EndpointPolicyIamPolicyArgs {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    auditConfigs?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.AuditConfigArgs>[]>;
+    auditConfigs?: pulumi.Input<pulumi.Input<inputs.networkservices.v1beta1.AuditConfigArgs>[]>;
     /**
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
-    bindings?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.BindingArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.networkservices.v1beta1.BindingArgs>[]>;
+    endpointPolicyId: pulumi.Input<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     etag?: pulumi.Input<string>;
-    policyBasedRouteId: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

@@ -49,7 +49,7 @@ export class Budget extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -124,7 +124,7 @@ export interface BudgetArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
      */
     etag?: pulumi.Input<string>;
     /**

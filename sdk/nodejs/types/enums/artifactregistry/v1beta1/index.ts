@@ -24,6 +24,14 @@ export const RepositoryFormat = {
      */
     Pypi: "PYPI",
     /**
+     * APT package format.
+     */
+    Apt: "APT",
+    /**
+     * YUM package format.
+     */
+    Yum: "YUM",
+    /**
      * Python package format.
      */
     Python: "PYTHON",

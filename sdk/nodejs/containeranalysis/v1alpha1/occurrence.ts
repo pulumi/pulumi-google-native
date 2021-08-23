@@ -65,6 +65,14 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly discovered!: pulumi.Output<outputs.containeranalysis.v1alpha1.DiscoveredResponse>;
     /**
+     * This represents a DSSE attestation occurrence
+     */
+    public readonly dsseAttestation!: pulumi.Output<outputs.containeranalysis.v1alpha1.DSSEAttestationOccurrenceResponse>;
+    /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    public readonly envelope!: pulumi.Output<outputs.containeranalysis.v1alpha1.EnvelopeResponse>;
+    /**
      * Describes the installation of a package on the linked resource.
      */
     public readonly installation!: pulumi.Output<outputs.containeranalysis.v1alpha1.InstallationResponse>;
@@ -92,6 +100,22 @@ export class Occurrence extends pulumi.CustomResource {
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
     public readonly resourceUrl!: pulumi.Output<string>;
+    /**
+     * Describes a specific software bill of materials document.
+     */
+    public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1alpha1.DocumentOccurrenceResponse>;
+    /**
+     * Describes a specific SPDX File.
+     */
+    public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1alpha1.FileOccurrenceResponse>;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageOccurrenceResponse>;
+    /**
+     * Describes a specific relationship between SPDX elements.
+     */
+    public readonly spdxRelationship!: pulumi.Output<outputs.containeranalysis.v1alpha1.RelationshipOccurrenceResponse>;
     /**
      * The time this `Occurrence` was last updated.
      */
@@ -122,12 +146,18 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["derivedImage"] = args ? args.derivedImage : undefined;
             inputs["discovered"] = args ? args.discovered : undefined;
+            inputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
+            inputs["envelope"] = args ? args.envelope : undefined;
             inputs["installation"] = args ? args.installation : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
             inputs["resourceUrl"] = args ? args.resourceUrl : undefined;
+            inputs["sbom"] = args ? args.sbom : undefined;
+            inputs["spdxFile"] = args ? args.spdxFile : undefined;
+            inputs["spdxPackage"] = args ? args.spdxPackage : undefined;
+            inputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
             inputs["upgrade"] = args ? args.upgrade : undefined;
             inputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -142,6 +172,8 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["deployment"] = undefined /*out*/;
             inputs["derivedImage"] = undefined /*out*/;
             inputs["discovered"] = undefined /*out*/;
+            inputs["dsseAttestation"] = undefined /*out*/;
+            inputs["envelope"] = undefined /*out*/;
             inputs["installation"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -149,6 +181,10 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["remediation"] = undefined /*out*/;
             inputs["resource"] = undefined /*out*/;
             inputs["resourceUrl"] = undefined /*out*/;
+            inputs["sbom"] = undefined /*out*/;
+            inputs["spdxFile"] = undefined /*out*/;
+            inputs["spdxPackage"] = undefined /*out*/;
+            inputs["spdxRelationship"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["upgrade"] = undefined /*out*/;
             inputs["vulnerabilityDetails"] = undefined /*out*/;
@@ -189,6 +225,14 @@ export interface OccurrenceArgs {
      */
     discovered?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveredArgs>;
     /**
+     * This represents a DSSE attestation occurrence
+     */
+    dsseAttestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.DSSEAttestationOccurrenceArgs>;
+    /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    envelope?: pulumi.Input<inputs.containeranalysis.v1alpha1.EnvelopeArgs>;
+    /**
      * Describes the installation of a package on the linked resource.
      */
     installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
@@ -209,6 +253,22 @@ export interface OccurrenceArgs {
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
     resourceUrl?: pulumi.Input<string>;
+    /**
+     * Describes a specific software bill of materials document.
+     */
+    sbom?: pulumi.Input<inputs.containeranalysis.v1alpha1.DocumentOccurrenceArgs>;
+    /**
+     * Describes a specific SPDX File.
+     */
+    spdxFile?: pulumi.Input<inputs.containeranalysis.v1alpha1.FileOccurrenceArgs>;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageOccurrenceArgs>;
+    /**
+     * Describes a specific relationship between SPDX elements.
+     */
+    spdxRelationship?: pulumi.Input<inputs.containeranalysis.v1alpha1.RelationshipOccurrenceArgs>;
     /**
      * Describes an upgrade.
      */

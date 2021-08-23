@@ -47,7 +47,7 @@ export interface GetRuntimeResult {
      */
     readonly metrics: outputs.notebooks.v1.RuntimeMetricsResponse;
     /**
-     * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+     * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
      */
     readonly name: string;
     /**

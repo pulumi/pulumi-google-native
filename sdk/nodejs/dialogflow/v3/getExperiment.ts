@@ -55,7 +55,7 @@ export interface GetExperimentResult {
      */
     readonly endTime: string;
     /**
-     * LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+     * Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
      */
     readonly experimentLength: string;
     /**
@@ -70,6 +70,18 @@ export interface GetExperimentResult {
      * Inference result of the experiment.
      */
     readonly result: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3ExperimentResultResponse;
+    /**
+     * The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+     */
+    readonly rolloutConfig: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3RolloutConfigResponse;
+    /**
+     * The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+     */
+    readonly rolloutFailureReason: string;
+    /**
+     * State of the auto rollout process.
+     */
+    readonly rolloutState: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3RolloutStateResponse;
     /**
      * Start time of this experiment.
      */

@@ -131,6 +131,26 @@ export const BuildOptionsSubstitutionOption = {
  */
 export type BuildOptionsSubstitutionOption = (typeof BuildOptionsSubstitutionOption)[keyof typeof BuildOptionsSubstitutionOption];
 
+export const GitFileSourceRepoType = {
+    /**
+     * The default, unknown repo type.
+     */
+    Unknown: "UNKNOWN",
+    /**
+     * A Google Cloud Source Repositories-hosted repo.
+     */
+    CloudSourceRepositories: "CLOUD_SOURCE_REPOSITORIES",
+    /**
+     * A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
+     */
+    Github: "GITHUB",
+} as const;
+
+/**
+ * See RepoType above.
+ */
+export type GitFileSourceRepoType = (typeof GitFileSourceRepoType)[keyof typeof GitFileSourceRepoType];
+
 export const GitRepoSourceRepoType = {
     /**
      * The default, unknown repo type.

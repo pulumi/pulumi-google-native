@@ -34,6 +34,46 @@ export const DataCollectorType = {
  */
 export type DataCollectorType = (typeof DataCollectorType)[keyof typeof DataCollectorType];
 
+export const EnvironmentApiProxyType = {
+    /**
+     * API proxy type not specified.
+     */
+    ApiProxyTypeUnspecified: "API_PROXY_TYPE_UNSPECIFIED",
+    /**
+     * Programmable API Proxies enable you to develop APIs with highly flexible behavior using bundled policy configuration and one or more programming languages to describe complex sequential and/or conditional flows of logic.
+     */
+    Programmable: "PROGRAMMABLE",
+    /**
+     * Configurable API Proxies enable you to develop efficient APIs using simple configuration while complex execution control flow logic is handled by Apigee. This type only works with the ARCHIVE deployment type and cannot be combined with the PROXY deployment type.
+     */
+    Configurable: "CONFIGURABLE",
+} as const;
+
+/**
+ * Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+ */
+export type EnvironmentApiProxyType = (typeof EnvironmentApiProxyType)[keyof typeof EnvironmentApiProxyType];
+
+export const EnvironmentDeploymentType = {
+    /**
+     * Deployment type not specified.
+     */
+    DeploymentTypeUnspecified: "DEPLOYMENT_TYPE_UNSPECIFIED",
+    /**
+     * Proxy deployment enables you to develop and deploy API proxies using Apigee on Google Cloud. This cannot currently be combined with the CONFIGURABLE API proxy type.
+     */
+    Proxy: "PROXY",
+    /**
+     * Archive deployment enables you to develop API proxies locally then deploy an archive of your API proxy configuration to an environment in Apigee on Google Cloud. You will be prevented from performing a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment.
+     */
+    Archive: "ARCHIVE",
+} as const;
+
+/**
+ * Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+ */
+export type EnvironmentDeploymentType = (typeof EnvironmentDeploymentType)[keyof typeof EnvironmentDeploymentType];
+
 export const GoogleCloudApigeeV1TraceSamplingConfigSampler = {
     /**
      * Sampler unspecified.

@@ -52,7 +52,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+     * If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
      */
     public readonly destinationRanges!: pulumi.Output<string[]>;
     /**
@@ -92,7 +92,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
+     * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Both IPv4 and IPv6 are supported.
      */
     public readonly sourceRanges!: pulumi.Output<string[]>;
     /**
@@ -189,7 +189,7 @@ export interface FirewallArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+     * If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
      */
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -219,7 +219,7 @@ export interface FirewallArgs {
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
+     * If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Both IPv4 and IPv6 are supported.
      */
     sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**

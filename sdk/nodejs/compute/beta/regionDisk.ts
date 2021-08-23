@@ -180,6 +180,10 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
+     * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+     */
+    public readonly userLicenses!: pulumi.Output<string[]>;
+    /**
      * Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
@@ -229,6 +233,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             inputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["userLicenses"] = args ? args.userLicenses : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
@@ -279,6 +284,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["sourceStorageObject"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
+            inputs["userLicenses"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
         }
@@ -392,4 +398,8 @@ export interface RegionDiskArgs {
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */
     type?: pulumi.Input<string>;
+    /**
+     * A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+     */
+    userLicenses?: pulumi.Input<pulumi.Input<string>[]>;
 }

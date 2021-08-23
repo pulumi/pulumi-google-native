@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./channelIamPolicy";
+export * from "./getChannelIamPolicy";
 export * from "./getTrigger";
 export * from "./getTriggerIamPolicy";
 export * from "./trigger";
@@ -14,6 +16,7 @@ export * from "./triggerIamPolicy";
 export * from "../../types/enums/eventarc/v1";
 
 // Import resources to register:
+import { ChannelIamPolicy } from "./channelIamPolicy";
 import { Trigger } from "./trigger";
 import { TriggerIamPolicy } from "./triggerIamPolicy";
 
@@ -21,6 +24,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:eventarc/v1:ChannelIamPolicy":
+                return new ChannelIamPolicy(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:TriggerIamPolicy":

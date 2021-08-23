@@ -69,6 +69,10 @@ export interface GetNodePoolResult {
      */
     readonly name: string;
     /**
+     * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     */
+    readonly networkConfig: outputs.container.v1.NodeNetworkConfigResponse;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize: number;

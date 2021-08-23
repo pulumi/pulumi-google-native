@@ -7,8 +7,10 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./build";
 export * from "./getBuild";
+export * from "./getGithubEnterpriseConfig";
 export * from "./getTrigger";
 export * from "./getWorkerPool";
+export * from "./githubEnterpriseConfig";
 export * from "./trigger";
 export * from "./workerPool";
 
@@ -17,6 +19,7 @@ export * from "../../types/enums/cloudbuild/v1";
 
 // Import resources to register:
 import { Build } from "./build";
+import { GithubEnterpriseConfig } from "./githubEnterpriseConfig";
 import { Trigger } from "./trigger";
 import { WorkerPool } from "./workerPool";
 
@@ -26,6 +29,8 @@ const _module = {
         switch (type) {
             case "google-native:cloudbuild/v1:Build":
                 return new Build(name, <any>undefined, { urn })
+            case "google-native:cloudbuild/v1:GithubEnterpriseConfig":
+                return new GithubEnterpriseConfig(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:WorkerPool":

@@ -37,6 +37,14 @@ export interface GetCryptoKeyResult {
      */
     readonly createTime: string;
     /**
+     * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+     */
+    readonly destroyScheduledDuration: string;
+    /**
+     * Immutable. Whether this key may contain imported versions only.
+     */
+    readonly importOnly: boolean;
+    /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
      */
     readonly labels: {[key: string]: string};

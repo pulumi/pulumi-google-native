@@ -56,7 +56,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly isInternal!: pulumi.Output<boolean>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.v3.MonitoredResourceResponse>;
     /**
@@ -154,7 +154,7 @@ export interface UptimeCheckConfigArgs {
      */
     isInternal?: pulumi.Input<boolean>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.v3.MonitoredResourceArgs>;
     /**

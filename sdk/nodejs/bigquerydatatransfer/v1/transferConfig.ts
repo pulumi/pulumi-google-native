@@ -72,9 +72,13 @@ export class TransferConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly nextRunTime!: pulumi.Output<string>;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
      */
     public readonly notificationPubsubTopic!: pulumi.Output<string>;
+    /**
+     * Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+     */
+    public /*out*/ readonly ownerInfo!: pulumi.Output<outputs.bigquerydatatransfer.v1.UserInfoResponse>;
     /**
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
@@ -125,6 +129,7 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["versionInfo"] = args ? args.versionInfo : undefined;
             inputs["datasetRegion"] = undefined /*out*/;
             inputs["nextRunTime"] = undefined /*out*/;
+            inputs["ownerInfo"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -138,6 +143,7 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["nextRunTime"] = undefined /*out*/;
             inputs["notificationPubsubTopic"] = undefined /*out*/;
+            inputs["ownerInfo"] = undefined /*out*/;
             inputs["params"] = undefined /*out*/;
             inputs["schedule"] = undefined /*out*/;
             inputs["scheduleOptions"] = undefined /*out*/;
@@ -186,7 +192,7 @@ export interface TransferConfigArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**

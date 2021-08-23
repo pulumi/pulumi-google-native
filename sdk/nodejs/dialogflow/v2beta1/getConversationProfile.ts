@@ -51,7 +51,7 @@ export interface GetConversationProfileResult {
      */
     readonly humanAgentHandoffConfig: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse;
     /**
-     * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+     * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
      */
     readonly languageCode: string;
     /**
@@ -71,9 +71,17 @@ export interface GetConversationProfileResult {
      */
     readonly notificationConfig: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1NotificationConfigResponse;
     /**
+     * Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+     */
+    readonly securitySettings: string;
+    /**
      * Settings for speech transcription.
      */
     readonly sttConfig: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse;
+    /**
+     * The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+     */
+    readonly timeZone: string;
     /**
      * Update time of the conversation profile.
      */

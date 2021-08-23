@@ -43,10 +43,6 @@ export interface GetServiceAttachmentResult {
      */
     readonly consumerAcceptLists: outputs.compute.beta.ServiceAttachmentConsumerProjectLimitResponse[];
     /**
-     * An array of forwarding rules for all the consumers connected to this service attachment.
-     */
-    readonly consumerForwardingRules: outputs.compute.beta.ServiceAttachmentConsumerForwardingRuleResponse[];
-    /**
      * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
      */
     readonly consumerRejectLists: string[];

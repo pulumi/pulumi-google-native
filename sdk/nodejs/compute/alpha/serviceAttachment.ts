@@ -48,10 +48,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly consumerAcceptLists!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentConsumerProjectLimitResponse[]>;
     /**
-     * An array of forwarding rules for all the consumers connected to this service attachment.
-     */
-    public /*out*/ readonly consumerForwardingRules!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleResponse[]>;
-    /**
      * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
      */
     public readonly consumerRejectLists!: pulumi.Output<string[]>;
@@ -131,7 +127,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
             inputs["connectedEndpoints"] = undefined /*out*/;
-            inputs["consumerForwardingRules"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -141,7 +136,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
             inputs["consumerAcceptLists"] = undefined /*out*/;
-            inputs["consumerForwardingRules"] = undefined /*out*/;
             inputs["consumerRejectLists"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;

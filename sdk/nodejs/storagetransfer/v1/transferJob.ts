@@ -58,6 +58,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly latestOperationName!: pulumi.Output<string>;
     /**
+     * Logging configuration.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.storagetransfer.v1.LoggingConfigResponse>;
+    /**
      * A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with 'transferJobs/OPI' specifically. For all other transfer types, this name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for PosixFilesystem transfers. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
      */
     public readonly name!: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class TransferJob extends pulumi.CustomResource {
         if (!opts.id) {
             inputs["description"] = args ? args.description : undefined;
             inputs["latestOperationName"] = args ? args.latestOperationName : undefined;
+            inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -110,6 +115,7 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["lastModificationTime"] = undefined /*out*/;
             inputs["latestOperationName"] = undefined /*out*/;
+            inputs["loggingConfig"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
             inputs["project"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface TransferJobArgs {
      * The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
      */
     latestOperationName?: pulumi.Input<string>;
+    /**
+     * Logging configuration.
+     */
+    loggingConfig?: pulumi.Input<inputs.storagetransfer.v1.LoggingConfigArgs>;
     /**
      * A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with 'transferJobs/OPI' specifically. For all other transfer types, this name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for PosixFilesystem transfers. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
      */

@@ -51,7 +51,7 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+     * The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
      */
     readonly name: string;
     /**

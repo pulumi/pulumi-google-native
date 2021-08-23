@@ -89,6 +89,22 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly resource!: pulumi.Output<outputs.containeranalysis.v1beta1.ResourceResponse>;
     /**
+     * Describes a specific SPDX Document.
+     */
+    public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse>;
+    /**
+     * Describes a specific SPDX File.
+     */
+    public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1beta1.FileOccurrenceResponse>;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageOccurrenceResponse>;
+    /**
+     * Describes a specific SPDX Relationship.
+     */
+    public readonly spdxRelationship!: pulumi.Output<outputs.containeranalysis.v1beta1.RelationshipOccurrenceResponse>;
+    /**
      * The time this occurrence was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -125,6 +141,10 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
+            inputs["sbom"] = args ? args.sbom : undefined;
+            inputs["spdxFile"] = args ? args.spdxFile : undefined;
+            inputs["spdxPackage"] = args ? args.spdxPackage : undefined;
+            inputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
             inputs["vulnerability"] = args ? args.vulnerability : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -144,6 +164,10 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["noteName"] = undefined /*out*/;
             inputs["remediation"] = undefined /*out*/;
             inputs["resource"] = undefined /*out*/;
+            inputs["sbom"] = undefined /*out*/;
+            inputs["spdxFile"] = undefined /*out*/;
+            inputs["spdxPackage"] = undefined /*out*/;
+            inputs["spdxRelationship"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["vulnerability"] = undefined /*out*/;
         }
@@ -199,6 +223,22 @@ export interface OccurrenceArgs {
      * Immutable. The resource for which the occurrence applies.
      */
     resource: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
+    /**
+     * Describes a specific SPDX Document.
+     */
+    sbom?: pulumi.Input<inputs.containeranalysis.v1beta1.DocumentOccurrenceArgs>;
+    /**
+     * Describes a specific SPDX File.
+     */
+    spdxFile?: pulumi.Input<inputs.containeranalysis.v1beta1.FileOccurrenceArgs>;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageOccurrenceArgs>;
+    /**
+     * Describes a specific SPDX Relationship.
+     */
+    spdxRelationship?: pulumi.Input<inputs.containeranalysis.v1beta1.RelationshipOccurrenceArgs>;
     /**
      * Describes a security vulnerability.
      */

@@ -9,6 +9,7 @@ export * from "./alias";
 export * from "./api";
 export * from "./apiProduct";
 export * from "./app";
+export * from "./archiveDeployment";
 export * from "./canaryEvaluation";
 export * from "./dataCollector";
 export * from "./datastore";
@@ -23,6 +24,7 @@ export * from "./getApi";
 export * from "./getApiProduct";
 export * from "./getApicategory";
 export * from "./getApp";
+export * from "./getArchiveDeployment";
 export * from "./getCanaryEvaluation";
 export * from "./getDataCollector";
 export * from "./getDatastore";
@@ -74,6 +76,7 @@ import { Alias } from "./alias";
 import { Api } from "./api";
 import { ApiProduct } from "./apiProduct";
 import { App } from "./app";
+import { ArchiveDeployment } from "./archiveDeployment";
 import { CanaryEvaluation } from "./canaryEvaluation";
 import { DataCollector } from "./dataCollector";
 import { Datastore } from "./datastore";
@@ -112,6 +115,8 @@ const _module = {
                 return new ApiProduct(name, <any>undefined, { urn })
             case "google-native:apigee/v1:App":
                 return new App(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:ArchiveDeployment":
+                return new ArchiveDeployment(name, <any>undefined, { urn })
             case "google-native:apigee/v1:CanaryEvaluation":
                 return new CanaryEvaluation(name, <any>undefined, { urn })
             case "google-native:apigee/v1:DataCollector":

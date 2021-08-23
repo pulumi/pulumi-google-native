@@ -93,9 +93,25 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly relatedUrl!: pulumi.Output<outputs.containeranalysis.v1beta1.RelatedUrlResponse[]>;
     /**
+     * A note describing SPDX Document which represents SBOM.
+     */
+    public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1beta1.DocumentNoteResponse>;
+    /**
      * A one sentence description of this note.
      */
     public readonly shortDescription!: pulumi.Output<string>;
+    /**
+     * A note describing SPDX File.
+     */
+    public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1beta1.FileNoteResponse>;
+    /**
+     * A note describing SPDX Package.
+     */
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageNoteResponse>;
+    /**
+     * A note describing SPDX Relationship.
+     */
+    public readonly spdxRelationship!: pulumi.Output<outputs.containeranalysis.v1beta1.RelationshipNoteResponse>;
     /**
      * The time this note was last updated. This field can be used as a filter in list requests.
      */
@@ -132,7 +148,11 @@ export class Note extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
+            inputs["sbom"] = args ? args.sbom : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
+            inputs["spdxFile"] = args ? args.spdxFile : undefined;
+            inputs["spdxPackage"] = args ? args.spdxPackage : undefined;
+            inputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
             inputs["vulnerability"] = args ? args.vulnerability : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -153,7 +173,11 @@ export class Note extends pulumi.CustomResource {
             inputs["package"] = undefined /*out*/;
             inputs["relatedNoteNames"] = undefined /*out*/;
             inputs["relatedUrl"] = undefined /*out*/;
+            inputs["sbom"] = undefined /*out*/;
             inputs["shortDescription"] = undefined /*out*/;
+            inputs["spdxFile"] = undefined /*out*/;
+            inputs["spdxPackage"] = undefined /*out*/;
+            inputs["spdxRelationship"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["vulnerability"] = undefined /*out*/;
         }
@@ -215,9 +239,25 @@ export interface NoteArgs {
      */
     relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.RelatedUrlArgs>[]>;
     /**
+     * A note describing SPDX Document which represents SBOM.
+     */
+    sbom?: pulumi.Input<inputs.containeranalysis.v1beta1.DocumentNoteArgs>;
+    /**
      * A one sentence description of this note.
      */
     shortDescription?: pulumi.Input<string>;
+    /**
+     * A note describing SPDX File.
+     */
+    spdxFile?: pulumi.Input<inputs.containeranalysis.v1beta1.FileNoteArgs>;
+    /**
+     * A note describing SPDX Package.
+     */
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageNoteArgs>;
+    /**
+     * A note describing SPDX Relationship.
+     */
+    spdxRelationship?: pulumi.Input<inputs.containeranalysis.v1beta1.RelationshipNoteArgs>;
     /**
      * A note describing a package vulnerability.
      */

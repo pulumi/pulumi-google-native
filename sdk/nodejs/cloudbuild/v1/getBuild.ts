@@ -35,6 +35,10 @@ export interface GetBuildArgs {
 
 export interface GetBuildResult {
     /**
+     * Describes this build's approval configuration, status, and result.
+     */
+    readonly approval: outputs.cloudbuild.v1.BuildApprovalResponse;
+    /**
      * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      */
     readonly artifacts: outputs.cloudbuild.v1.ArtifactsResponse;
@@ -135,7 +139,7 @@ export interface GetBuildResult {
      */
     readonly timeout: string;
     /**
-     * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+     * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
      */
     readonly timing: {[key: string]: string};
     /**

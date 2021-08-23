@@ -27,6 +27,10 @@ export const FeedContentType = {
      * The runtime OS Inventory information.
      */
     OsInventory: "OS_INVENTORY",
+    /**
+     * The related resources.
+     */
+    Relationship: "RELATIONSHIP",
 } as const;
 
 /**

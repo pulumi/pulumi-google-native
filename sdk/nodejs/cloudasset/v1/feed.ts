@@ -60,6 +60,10 @@ export class Feed extends pulumi.CustomResource {
      * The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+     */
+    public readonly relationshipTypes!: pulumi.Output<string[]>;
 
     /**
      * Create a Feed resource with the given unique name, arguments, and options.
@@ -94,6 +98,7 @@ export class Feed extends pulumi.CustomResource {
             inputs["feedId"] = args ? args.feedId : undefined;
             inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["relationshipTypes"] = args ? args.relationshipTypes : undefined;
             inputs["v1Id"] = args ? args.v1Id : undefined;
             inputs["v1Id1"] = args ? args.v1Id1 : undefined;
         } else {
@@ -103,6 +108,7 @@ export class Feed extends pulumi.CustomResource {
             inputs["contentType"] = undefined /*out*/;
             inputs["feedOutputConfig"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["relationshipTypes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -143,6 +149,10 @@ export interface FeedArgs {
      * The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */
     name: pulumi.Input<string>;
+    /**
+     * A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
+     */
+    relationshipTypes?: pulumi.Input<pulumi.Input<string>[]>;
     v1Id: pulumi.Input<string>;
     v1Id1: pulumi.Input<string>;
 }

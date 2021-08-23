@@ -51,7 +51,7 @@ export interface GetBackupResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+     * The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
      */
     readonly name: string;
     /**
@@ -63,7 +63,7 @@ export interface GetBackupResult {
      */
     readonly sourceFileShare: string;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     readonly sourceInstance: string;
     /**

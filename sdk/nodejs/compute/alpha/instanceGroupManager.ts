@@ -52,7 +52,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentActions!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerActionsSummaryResponse>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -107,6 +107,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Stanby policy for stopped and suspended instances.
+     */
+    public readonly standbyPolicy!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerStandbyPolicyResponse>;
     /**
      * Stateful configuration for this Instanced Group Manager
      */
@@ -167,6 +171,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["standbyPolicy"] = args ? args.standbyPolicy : undefined;
             inputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
             inputs["targetPools"] = args ? args.targetPools : undefined;
             inputs["targetSize"] = args ? args.targetSize : undefined;
@@ -203,6 +208,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["selfLinkWithId"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
+            inputs["standbyPolicy"] = undefined /*out*/;
             inputs["statefulPolicy"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["targetPools"] = undefined /*out*/;
@@ -233,7 +239,7 @@ export interface InstanceGroupManagerArgs {
      */
     baseInstanceName?: pulumi.Input<string>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -266,6 +272,10 @@ export interface InstanceGroupManagerArgs {
      * The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Stanby policy for stopped and suspended instances.
+     */
+    standbyPolicy?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerStandbyPolicyArgs>;
     /**
      * Stateful configuration for this Instanced Group Manager
      */

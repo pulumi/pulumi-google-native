@@ -36,6 +36,10 @@ export class TargetSslProxy extends pulumi.CustomResource {
     }
 
     /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    public readonly certificateMap!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            inputs["certificateMap"] = args ? args.certificateMap : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -95,6 +100,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             inputs["kind"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         } else {
+            inputs["certificateMap"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -116,6 +122,10 @@ export class TargetSslProxy extends pulumi.CustomResource {
  * The set of arguments for constructing a TargetSslProxy resource.
  */
 export interface TargetSslProxyArgs {
+    /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    certificateMap?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

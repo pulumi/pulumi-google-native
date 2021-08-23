@@ -36,6 +36,10 @@ export class Api extends pulumi.CustomResource {
     }
 
     /**
+     * User labels applied to this API Proxy.
+     */
+    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The id of the most recently created revision for this api proxy.
      */
     public /*out*/ readonly latestRevisionId!: pulumi.Output<string>;
@@ -73,10 +77,12 @@ export class Api extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["validate"] = args ? args.validate : undefined;
+            inputs["labels"] = undefined /*out*/;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
             inputs["revision"] = undefined /*out*/;
         } else {
+            inputs["labels"] = undefined /*out*/;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
