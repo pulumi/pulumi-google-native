@@ -47,6 +47,8 @@ type RegionCommitment struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// An optional, human-readable explanation of the status.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewRegionCommitment registers a new resource with the given unique name, arguments, and options.
@@ -108,6 +110,8 @@ type regionCommitmentArgs struct {
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitment `pulumi:"resources"`
+	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+	Type *RegionCommitmentType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RegionCommitment resource.
@@ -129,6 +133,8 @@ type RegionCommitmentArgs struct {
 	Reservations ReservationTypeArrayInput
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentArrayInput
+	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+	Type RegionCommitmentTypePtrInput
 }
 
 func (RegionCommitmentArgs) ElementType() reflect.Type {

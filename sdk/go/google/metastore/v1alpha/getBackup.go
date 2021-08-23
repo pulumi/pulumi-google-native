@@ -33,6 +33,8 @@ type LookupBackupResult struct {
 	EndTime string `pulumi:"endTime"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name string `pulumi:"name"`
+	// Services that are restoring from the backup.
+	RestoringServices []string `pulumi:"restoringServices"`
 	// The revision of the service at the time of backup.
 	ServiceRevision ServiceResponse `pulumi:"serviceRevision"`
 	// The current state of the backup.

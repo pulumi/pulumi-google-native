@@ -52,7 +52,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentActions!: pulumi.Output<outputs.compute.v1.InstanceGroupManagerActionsSummaryResponse>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -200,7 +200,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     baseInstanceName?: pulumi.Input<string>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**

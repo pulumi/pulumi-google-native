@@ -382,6 +382,7 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["approval"] = None
             __props__.__dict__["build_trigger_id"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["failure_info"] = None
@@ -417,6 +418,7 @@ class Build(pulumi.CustomResource):
 
         __props__ = BuildInitArgs.__new__(BuildInitArgs)
 
+        __props__.__dict__["approval"] = None
         __props__.__dict__["artifacts"] = None
         __props__.__dict__["available_secrets"] = None
         __props__.__dict__["build_trigger_id"] = None
@@ -445,6 +447,14 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["timing"] = None
         __props__.__dict__["warnings"] = None
         return Build(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def approval(self) -> pulumi.Output['outputs.BuildApprovalResponse']:
+        """
+        Describes this build's approval configuration, status, and result.
+        """
+        return pulumi.get(self, "approval")
 
     @property
     @pulumi.getter
@@ -650,7 +660,7 @@ class Build(pulumi.CustomResource):
     @pulumi.getter
     def timing(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
 

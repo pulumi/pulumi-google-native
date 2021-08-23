@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+        /// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<string> SourceFileShare { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        /// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.File.V1
         public Input<string>? SourceFileShare { get; set; }
 
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        /// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }

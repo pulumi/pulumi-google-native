@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionCommitmentResult:
-    def __init__(__self__, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, start_timestamp=None, status=None, status_message=None):
+    def __init__(__self__, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, start_timestamp=None, status=None, status_message=None, type=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -63,6 +63,9 @@ class GetRegionCommitmentResult:
         if status_message and not isinstance(status_message, str):
             raise TypeError("Expected argument 'status_message' to be a str")
         pulumi.set(__self__, "status_message", status_message)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -184,6 +187,14 @@ class GetRegionCommitmentResult:
         """
         return pulumi.get(self, "status_message")
 
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
     # pylint: disable=using-constant-test
@@ -205,7 +216,8 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             self_link=self.self_link,
             start_timestamp=self.start_timestamp,
             status=self.status,
-            status_message=self.status_message)
+            status_message=self.status_message,
+            type=self.type)
 
 
 def get_region_commitment(commitment: Optional[str] = None,
@@ -240,4 +252,5 @@ def get_region_commitment(commitment: Optional[str] = None,
         self_link=__ret__.self_link,
         start_timestamp=__ret__.start_timestamp,
         status=__ret__.status,
-        status_message=__ret__.status_message)
+        status_message=__ret__.status_message,
+        type=__ret__.type)

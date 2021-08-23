@@ -21,7 +21,7 @@ type AccessLevel struct {
 	Custom CustomLevelResponseOutput `pulumi:"custom"`
 	// Description of the `AccessLevel` and its use. Does not affect behavior.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -76,7 +76,7 @@ type accessLevelArgs struct {
 	Custom *CustomLevel `pulumi:"custom"`
 	// Description of the `AccessLevel` and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
-	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
 	Name *string `pulumi:"name"`
 	// Human readable title. Must be unique within the Policy.
 	Title *string `pulumi:"title"`
@@ -91,7 +91,7 @@ type AccessLevelArgs struct {
 	Custom CustomLevelPtrInput
 	// Description of the `AccessLevel` and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
-	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
 	Name pulumi.StringPtrInput
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringPtrInput

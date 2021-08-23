@@ -296,7 +296,6 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["target_service"] = target_service
             __props__.__dict__["connected_endpoints"] = None
-            __props__.__dict__["consumer_forwarding_rules"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
@@ -327,7 +326,6 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["connected_endpoints"] = None
         __props__.__dict__["connection_preference"] = None
         __props__.__dict__["consumer_accept_lists"] = None
-        __props__.__dict__["consumer_forwarding_rules"] = None
         __props__.__dict__["consumer_reject_lists"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -366,14 +364,6 @@ class ServiceAttachment(pulumi.CustomResource):
         Projects that are allowed to connect to this service attachment.
         """
         return pulumi.get(self, "consumer_accept_lists")
-
-    @property
-    @pulumi.getter(name="consumerForwardingRules")
-    def consumer_forwarding_rules(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']]:
-        """
-        An array of forwarding rules for all the consumers connected to this service attachment.
-        """
-        return pulumi.get(self, "consumer_forwarding_rules")
 
     @property
     @pulumi.getter(name="consumerRejectLists")

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.InstanceGroupManagerActionsSummaryResponse> CurrentActions { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -122,6 +122,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Stanby policy for stopped and suspended instances.
+        /// </summary>
+        [Output("standbyPolicy")]
+        public Output<Outputs.InstanceGroupManagerStandbyPolicyResponse> StandbyPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Stateful configuration for this Instanced Group Manager
@@ -241,7 +247,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? BaseInstanceName { get; set; }
 
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -302,6 +308,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Stanby policy for stopped and suspended instances.
+        /// </summary>
+        [Input("standbyPolicy")]
+        public Input<Inputs.InstanceGroupManagerStandbyPolicyArgs>? StandbyPolicy { get; set; }
 
         /// <summary>
         /// Stateful configuration for this Instanced Group Manager

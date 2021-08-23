@@ -567,7 +567,7 @@ class CustomResponse(dict):
 @pulumi.output_type
 class DistributionCutResponse(dict):
     """
-    A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+    A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -590,7 +590,7 @@ class DistributionCutResponse(dict):
                  distribution_filter: str,
                  range: 'outputs.GoogleMonitoringV3RangeResponse'):
         """
-        A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+        A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
         :param str distribution_filter: A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
         :param 'GoogleMonitoringV3RangeResponse' range: Range of values considered "good." For a one-sided range, set one bound to an infinite value.
         """
@@ -667,13 +667,13 @@ class DocumentationResponse(dict):
 @pulumi.output_type
 class GoogleMonitoringV3RangeResponse(dict):
     """
-    Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+    Range of numerical values within min and max.
     """
     def __init__(__self__, *,
                  max: float,
                  min: float):
         """
-        Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+        Range of numerical values within min and max.
         :param float max: Range maximum.
         :param float min: Range minimum.
         """
@@ -1316,7 +1316,7 @@ class MetricDescriptorMetadataResponse(dict):
 @pulumi.output_type
 class MetricRangeResponse(dict):
     """
-    A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+    A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1339,7 +1339,7 @@ class MetricRangeResponse(dict):
                  range: 'outputs.GoogleMonitoringV3RangeResponse',
                  time_series: str):
         """
-        A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+        A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
         :param 'GoogleMonitoringV3RangeResponse' range: Range of values considered "good." For a one-sided range, set one bound to an infinite value.
         :param str time_series: A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
         """

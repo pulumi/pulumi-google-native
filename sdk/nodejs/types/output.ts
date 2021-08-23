@@ -721,10 +721,6 @@ export namespace apigee {
              */
             advancedApiOpsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse;
             /**
-             * Configuration for the Integration add-on.
-             */
-            integrationConfig: outputs.apigee.v1.GoogleCloudApigeeV1IntegrationConfigResponse;
-            /**
              * Configuration for the Monetization add-on.
              */
             monetizationConfig: outputs.apigee.v1.GoogleCloudApigeeV1MonetizationConfigResponse;
@@ -1010,16 +1006,6 @@ export namespace apigee {
              * GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
              */
             operationTypes: string[];
-        }
-
-        /**
-         * Configuration for the Integration add-on.
-         */
-        export interface GoogleCloudApigeeV1IntegrationConfigResponse {
-            /**
-             * Flag that specifies whether the Integration add-on is enabled.
-             */
-            enabled: boolean;
         }
 
         /**
@@ -2691,6 +2677,10 @@ export namespace appengine {
              */
             forwardedPorts: string[];
             /**
+             * The IP mode for instances. Only applicable in the App Engine flexible environment.
+             */
+            instanceIpMode: string;
+            /**
              * Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
              */
             instanceTag: string;
@@ -3406,6 +3396,10 @@ export namespace bigquery {
              * [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
              */
             fieldDelimiter: string;
+            /**
+             * [Optional] An custom string that will represent a NULL value in CSV import data.
+             */
+            nullMarker: string;
             /**
              * [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
              */
@@ -4719,6 +4713,10 @@ export namespace bigquery {
              */
             categories: outputs.bigquery.v2.TableFieldSchemaCategoriesResponse;
             /**
+             * Optional. Collation specification of the field. It only can be set on string type field.
+             */
+            collationSpec: string;
+            /**
              * [Optional] The field description. The maximum length is 1,024 characters.
              */
             description: string;
@@ -4971,6 +4969,16 @@ export namespace bigquerydatatransfer {
              * Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
              */
             startTime: string;
+        }
+
+        /**
+         * Information about a user.
+         */
+        export interface UserInfoResponse {
+            /**
+             * E-mail address of the user.
+             */
+            email: string;
         }
 
     }
@@ -5230,7 +5238,7 @@ export namespace billingbudgets {
          */
         export interface GoogleCloudBillingBudgetsV1FilterResponse {
             /**
-             * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
+             * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it tracks usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
              */
             calendarPeriod: string;
             /**
@@ -5246,25 +5254,25 @@ export namespace billingbudgets {
              */
             customPeriod: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1CustomPeriodResponse;
             /**
-             * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
+             * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
              */
             labels: {[key: string]: string};
             /**
-             * Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
+             * Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
              */
             projects: string[];
             /**
-             * Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
+             * Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
              */
             services: string[];
             /**
-             * Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If the field is omitted, the report will include usage from the parent account and all subaccounts, if they exist.
+             * Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account is included. If the field is omitted, the report includes usage from the parent account and all subaccounts, if they exist.
              */
             subaccounts: string[];
         }
 
         /**
-         * Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future configuration options will be described here (for example, configuring a percentage of last period's spend). LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
+         * Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
          */
         export interface GoogleCloudBillingBudgetsV1LastPeriodAmountResponse {
         }
@@ -5278,11 +5286,11 @@ export namespace billingbudgets {
              */
             disableDefaultIamRecipients: boolean;
             /**
-             * Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
+             * Optional. Email targets to send notifications to when a threshold is exceeded. This is in addition to the `DefaultIamRecipients` who receive alert emails based on their billing account IAM role. The value is the full REST resource name of a Cloud Monitoring email notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 email notifications are allowed. To customize budget alert email recipients with monitoring notification channels, you _must create the monitoring notification channels before you link them to a budget_. For guidance on setting up notification channels to use with budgets, see [Customize budget alert email recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients). For Cloud Billing budget alerts, you _must use email notification channels_. The other types of notification channels are _not_ supported, such as Slack, SMS, or PagerDuty. If you want to [send budget notifications to Slack](https://cloud.google.com/billing/docs/how-to/notify#send_notifications_to_slack), use a pubsubTopic and configure [programmatic notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications).
              */
             monitoringNotificationChannels: string[];
             /**
-             * Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub roles and permissions.
+             * Optional. The name of the Pub/Sub topic where budget-related messages are published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent to the topic at regular intervals; the timing of the updates is not dependent on the [threshold rules](#thresholdrule) you've set. Note that if you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) to contain data for `alertThresholdExceeded`, you need at least one [alert threshold rule](#thresholdrule). When you set threshold rules, you must also enable at least one of the email notification options, either using the default IAM recipients or Cloud Monitoring email notification channels. To use Pub/Sub topics with budgets, you must do the following: 1. Create the Pub/Sub topic before connecting it to your budget. For guidance, see [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications). 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For additional details on Pub/Sub roles and permissions, see [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task).
              */
             pubsubTopic: string;
             /**
@@ -5415,7 +5423,7 @@ export namespace billingbudgets {
              */
             customPeriod: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse;
             /**
-             * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
+             * Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
              */
             labels: {[key: string]: string};
             /**
@@ -5802,6 +5810,42 @@ export namespace cloudbilling {
 export namespace cloudbuild {
     export namespace v1 {
         /**
+         * ApprovalConfig describes configuration for manual approval of a build.
+         */
+        export interface ApprovalConfigResponse {
+            /**
+             * Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+             */
+            approvalRequired: boolean;
+        }
+
+        /**
+         * ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+         */
+        export interface ApprovalResultResponse {
+            /**
+             * The time when the approval decision was made.
+             */
+            approvalTime: string;
+            /**
+             * Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+             */
+            approverAccount: string;
+            /**
+             * Optional. An optional comment for this manual approval result.
+             */
+            comment: string;
+            /**
+             * The decision of this manual approval.
+             */
+            decision: string;
+            /**
+             * Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+             */
+            url: string;
+        }
+
+        /**
          * Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
          */
         export interface ArtifactObjectsResponse {
@@ -5831,6 +5875,24 @@ export namespace cloudbuild {
              * A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
              */
             objects: outputs.cloudbuild.v1.ArtifactObjectsResponse;
+        }
+
+        /**
+         * BuildApproval describes a build's approval configuration, state, and result.
+         */
+        export interface BuildApprovalResponse {
+            /**
+             * Configuration for manual approval of this build.
+             */
+            config: outputs.cloudbuild.v1.ApprovalConfigResponse;
+            /**
+             * Result of manual approval for this Build.
+             */
+            result: outputs.cloudbuild.v1.ApprovalResultResponse;
+            /**
+             * The state of this build's approval.
+             */
+            state: string;
         }
 
         /**
@@ -5892,9 +5954,13 @@ export namespace cloudbuild {
         }
 
         /**
-         * A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+         * A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
          */
         export interface BuildResponse {
+            /**
+             * Describes this build's approval configuration, status, and result.
+             */
+            approval: outputs.cloudbuild.v1.BuildApprovalResponse;
             /**
              * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
              */
@@ -5996,7 +6062,7 @@ export namespace cloudbuild {
              */
             timeout: string;
             /**
-             * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+             * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
              */
             timing: {[key: string]: string};
             /**
@@ -6033,6 +6099,10 @@ export namespace cloudbuild {
              * Stores timing information for pulling this build step's builder image only.
              */
             pullTiming: outputs.cloudbuild.v1.TimeSpanResponse;
+            /**
+             * A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+             */
+            script: string;
             /**
              * A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
              */
@@ -6092,9 +6162,73 @@ export namespace cloudbuild {
         }
 
         /**
-         * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+         * GitFileSource describes a file within a (possibly remote) code repository.
+         */
+        export interface GitFileSourceResponse {
+            /**
+             * The path of the file, with the repo root as the root of the path.
+             */
+            path: string;
+            /**
+             * See RepoType above.
+             */
+            repoType: string;
+            /**
+             * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+             */
+            revision: string;
+            /**
+             * The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+             */
+            uri: string;
+        }
+
+        /**
+         * GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+         */
+        export interface GitHubEnterpriseSecretsResponse {
+            /**
+             * The resource name for the OAuth client ID secret in Secret Manager.
+             */
+            oauthClientIdName: string;
+            /**
+             * The resource name for the OAuth client ID secret version in Secret Manager.
+             */
+            oauthClientIdVersionName: string;
+            /**
+             * The resource name for the OAuth secret in Secret Manager.
+             */
+            oauthSecretName: string;
+            /**
+             * The resource name for the OAuth secret secret version in Secret Manager.
+             */
+            oauthSecretVersionName: string;
+            /**
+             * The resource name for the private key secret.
+             */
+            privateKeyName: string;
+            /**
+             * The resource name for the private key secret version.
+             */
+            privateKeyVersionName: string;
+            /**
+             * The resource name for the webhook secret in Secret Manager.
+             */
+            webhookSecretName: string;
+            /**
+             * The resource name for the webhook secret secret version in Secret Manager.
+             */
+            webhookSecretVersionName: string;
+        }
+
+        /**
+         * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
          */
         export interface GitHubEventsConfigResponse {
+            /**
+             * Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+             */
+            enterpriseConfigResourceName: string;
             /**
              * The installationID that emits the GitHub event.
              */
@@ -9601,7 +9735,7 @@ export namespace composer {
          */
         export interface IPAllocationPolicyResponse {
             /**
-             * Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+             * Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             clusterIpv4CidrBlock: string;
             /**
@@ -9609,7 +9743,7 @@ export namespace composer {
              */
             clusterSecondaryRangeName: string;
             /**
-             * Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+             * Optional. The IP address range of the services IP addresses in this GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
              */
             servicesIpv4CidrBlock: string;
             /**
@@ -9771,7 +9905,7 @@ export namespace composer {
         }
 
         /**
-         * The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+         * The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         export interface DatabaseConfigResponse {
             /**
@@ -9781,7 +9915,7 @@ export namespace composer {
         }
 
         /**
-         * The encryption options for the Cloud Composer environment and its dependencies.
+         * The encryption options for the Cloud Composer environment and its dependencies. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         export interface EncryptionConfigResponse {
             /**
@@ -9803,11 +9937,11 @@ export namespace composer {
              */
             dagGcsPrefix: string;
             /**
-             * Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+             * Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             databaseConfig: outputs.composer.v1beta1.DatabaseConfigResponse;
             /**
-             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             encryptionConfig: outputs.composer.v1beta1.EncryptionConfigResponse;
             /**
@@ -9827,7 +9961,7 @@ export namespace composer {
              */
             nodeConfig: outputs.composer.v1beta1.NodeConfigResponse;
             /**
-             * The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+             * The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             nodeCount: number;
             /**
@@ -9839,11 +9973,11 @@ export namespace composer {
              */
             softwareConfig: outputs.composer.v1beta1.SoftwareConfigResponse;
             /**
-             * Optional. The configuration settings for the Airflow web server App Engine instance.
+             * Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             webServerConfig: outputs.composer.v1beta1.WebServerConfigResponse;
             /**
-             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+             * Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             webServerNetworkAccessControl: outputs.composer.v1beta1.WebServerNetworkAccessControlResponse;
             /**
@@ -9857,23 +9991,23 @@ export namespace composer {
          */
         export interface IPAllocationPolicyResponse {
             /**
-             * Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+             * Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
              */
             clusterIpv4CidrBlock: string;
             /**
-             * Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true.
+             * Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
              */
             clusterSecondaryRangeName: string;
             /**
-             * Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+             * Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
              */
             servicesIpv4CidrBlock: string;
             /**
-             * Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true.
+             * Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
              */
             servicesSecondaryRangeName: string;
             /**
-             * Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+             * Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
              */
             useIpAliases: boolean;
         }
@@ -9901,23 +10035,27 @@ export namespace composer {
          */
         export interface NodeConfigResponse {
             /**
-             * Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
+             * Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             diskSizeGb: number;
+            /**
+             * Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+             */
+            enableIpMasqAgent: boolean;
             /**
              * Optional. The IPAllocationPolicy fields for the GKE cluster.
              */
             ipAllocationPolicy: outputs.composer.v1beta1.IPAllocationPolicyResponse;
             /**
-             * Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
+             * Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             location: string;
             /**
-             * Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+             * Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             machineType: string;
             /**
-             * Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be between 8 and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values of this field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and to the default "Maximum Pods per Node" value which is used for newly created node pools if their value is not explicitly set during node pool creation. For more information, see [Optimizing IP address allocation] (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated.
+             * Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be between 8 and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values of this field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and to the default "Maximum Pods per Node" value which is used for newly created node pools if their value is not explicitly set during node pool creation. For more information, see [Optimizing IP address allocation] (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             maxPodsPerNode: number;
             /**
@@ -9925,7 +10063,7 @@ export namespace composer {
              */
             network: string;
             /**
-             * Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+             * Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             oauthScopes: string[];
             /**
@@ -9937,7 +10075,7 @@ export namespace composer {
              */
             subnetwork: string;
             /**
-             * Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+             * Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             tags: string[];
         }
@@ -9977,19 +10115,23 @@ export namespace composer {
              */
             cloudSqlIpv4CidrBlock: string;
             /**
-             * Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
+             * Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             enablePrivateEnvironment: boolean;
+            /**
+             * Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+             */
+            enablePrivatelyUsedPublicIps: boolean;
             /**
              * Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
              */
             privateClusterConfig: outputs.composer.v1beta1.PrivateClusterConfigResponse;
             /**
-             * Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
+             * Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             webServerIpv4CidrBlock: string;
             /**
-             * The IP range reserved for the tenant project's App Engine VMs.
+             * The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
              */
             webServerIpv4ReservedRange: string;
         }
@@ -10037,17 +10179,17 @@ export namespace composer {
              */
             pypiPackages: {[key: string]: string};
             /**
-             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
              */
             pythonVersion: string;
             /**
-             * Optional. The number of schedulers for Airflow.
+             * Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
              */
             schedulerCount: number;
         }
 
         /**
-         * The configuration settings for the Airflow web server App Engine instance.
+         * The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         export interface WebServerConfigResponse {
             /**
@@ -10057,7 +10199,7 @@ export namespace composer {
         }
 
         /**
-         * Network-level access control policy for the Airflow web server.
+         * Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         export interface WebServerNetworkAccessControlResponse {
             /**
@@ -10328,6 +10470,14 @@ export namespace compute {
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
             labels: {[key: string]: string};
+            /**
+             * Integer license codes indicating which licenses are attached to this disk.
+             */
+            licenseCodes: string[];
+            /**
+             * A list of publicly visible licenses. Reserved for Google's use.
+             */
+            licenses: string[];
             /**
              * Indicates whether or not the disk can be read/write attached to more than one instance.
              */
@@ -10716,7 +10866,7 @@ export namespace compute {
          */
         export interface BackendResponse {
             /**
-             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
              */
             balancingMode: string;
             /**
@@ -10759,6 +10909,9 @@ export namespace compute {
              * Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
              */
             maxRatePerInstance: number;
+            /**
+             * Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+             */
             maxUtilization: number;
         }
 
@@ -11404,7 +11557,7 @@ export namespace compute {
          */
         export interface FirewallPolicyRuleMatcherResponse {
             /**
-             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
              */
             destIpRanges: string[];
             /**
@@ -11412,7 +11565,7 @@ export namespace compute {
              */
             layer4Configs: outputs.compute.alpha.FirewallPolicyRuleMatcherLayer4ConfigResponse[];
             /**
-             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
              */
             srcIpRanges: string[];
             /**
@@ -12072,7 +12225,7 @@ export namespace compute {
              */
             containerType: string;
             /**
-             * The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+             * The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
              */
             source: string;
         }
@@ -12181,6 +12334,10 @@ export namespace compute {
              * The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
              */
             metadataBasedReadinessSignal: outputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse;
+        }
+
+        export interface InstanceGroupManagerStandbyPolicyResponse {
+            initialDelaySec: number;
         }
 
         export interface InstanceGroupManagerStatusResponse {
@@ -12877,7 +13034,7 @@ export namespace compute {
              */
             exportCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
              */
             exportSubnetRoutesWithPublicIp: boolean;
             /**
@@ -12885,7 +13042,7 @@ export namespace compute {
              */
             importCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
              */
             importSubnetRoutesWithPublicIp: boolean;
             /**
@@ -13891,11 +14048,11 @@ export namespace compute {
 
         export interface RouterNatRuleActionResponse {
             /**
-             * A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project.
+             * A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
              */
             sourceNatActiveIps: string[];
             /**
-             * A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only.
+             * A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
              */
             sourceNatDrainIps: string[];
         }
@@ -13910,7 +14067,7 @@ export namespace compute {
              */
             description: string;
             /**
-             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
              */
             match: string;
             /**
@@ -14311,9 +14468,13 @@ export namespace compute {
              */
             conformAction: string;
             /**
-             * Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
              */
             enforceOnKey: string;
+            /**
+             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+             */
+            enforceOnKeyName: string;
             /**
              * When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
              */
@@ -14484,24 +14645,6 @@ export namespace compute {
             status: string;
         }
 
-        /**
-         * [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-         */
-        export interface ServiceAttachmentConsumerForwardingRuleResponse {
-            /**
-             * The url of a consumer forwarding rule.
-             */
-            forwardingRule: string;
-            /**
-             * The PSC connection id of the PSC Forwarding Rule.
-             */
-            pscConnectionId: string;
-            /**
-             * The status of the forwarding rule.
-             */
-            status: string;
-        }
-
         export interface ServiceAttachmentConsumerProjectLimitResponse {
             /**
              * The value of the limit to set.
@@ -14517,6 +14660,10 @@ export namespace compute {
          * The share setting for reservations and sole tenancy node groups.
          */
         export interface ShareSettingsResponse {
+            /**
+             * A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+             */
+            folderMap: {[key: string]: string};
             /**
              * A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
              */
@@ -14797,7 +14944,7 @@ export namespace compute {
         export interface SubsettingResponse {
             policy: string;
             /**
-             * The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or 'INTERNAL_SELF_MANAGED'. 'subset_size' is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+             * The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
              */
             subsetSize: number;
         }
@@ -15050,7 +15197,6 @@ export namespace compute {
              */
             weight: number;
         }
-
     }
 
     export namespace beta {
@@ -15605,7 +15751,7 @@ export namespace compute {
          */
         export interface BackendResponse {
             /**
-             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
              */
             balancingMode: string;
             /**
@@ -15648,6 +15794,9 @@ export namespace compute {
              * Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
              */
             maxRatePerInstance: number;
+            /**
+             * Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+             */
             maxUtilization: number;
         }
 
@@ -16246,7 +16395,7 @@ export namespace compute {
          */
         export interface FirewallPolicyRuleMatcherResponse {
             /**
-             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
              */
             destIpRanges: string[];
             /**
@@ -16254,7 +16403,7 @@ export namespace compute {
              */
             layer4Configs: outputs.compute.beta.FirewallPolicyRuleMatcherLayer4ConfigResponse[];
             /**
-             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
              */
             srcIpRanges: string[];
         }
@@ -16823,7 +16972,7 @@ export namespace compute {
              */
             containerType: string;
             /**
-             * The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+             * The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
              */
             source: string;
         }
@@ -17520,7 +17669,7 @@ export namespace compute {
              */
             exportCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
              */
             exportSubnetRoutesWithPublicIp: boolean;
             /**
@@ -17528,7 +17677,7 @@ export namespace compute {
              */
             importCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
              */
             importSubnetRoutesWithPublicIp: boolean;
             /**
@@ -18759,9 +18908,13 @@ export namespace compute {
              */
             conformAction: string;
             /**
-             * Determines the key to enforce the threshold_rps limit on. If key is "IP", each IP has this limit enforced separately, whereas "ALL_IPs" means a single limit is applied to all requests matching this rule.
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: “ALL” -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. “ALL_IPS” -- This definition, equivalent to "ALL", has been depprecated. “IP” -- The source IP address of the request is the key. Each IP has this limit enforced separately. “HTTP_HEADER” -- The value of the HTTP Header whose name is configured under “enforce_on_key_name”. The key value is truncated to the first 128 bytes of the Header value. If no such header is present in the request, the key type defaults to “ALL”. “XFF_IP” -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP Header. If no such header is present or the value is not a valid IP, the key type defaults to “ALL”.
              */
             enforceOnKey: string;
+            /**
+             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP Header whose value is taken as the key value.
+             */
+            enforceOnKeyName: string;
             /**
              * When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
              */
@@ -18906,24 +19059,6 @@ export namespace compute {
             pscConnectionId: string;
             /**
              * The status of a connected endpoint to this service attachment.
-             */
-            status: string;
-        }
-
-        /**
-         * [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
-         */
-        export interface ServiceAttachmentConsumerForwardingRuleResponse {
-            /**
-             * The url of a consumer forwarding rule.
-             */
-            forwardingRule: string;
-            /**
-             * The PSC connection id of the PSC Forwarding Rule.
-             */
-            pscConnectionId: string;
-            /**
-             * The status of the forwarding rule.
              */
             status: string;
         }
@@ -19853,7 +19988,7 @@ export namespace compute {
          */
         export interface BackendResponse {
             /**
-             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+             * Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
              */
             balancingMode: string;
             /**
@@ -19896,6 +20031,9 @@ export namespace compute {
              * Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
              */
             maxRatePerInstance: number;
+            /**
+             * Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+             */
             maxUtilization: number;
         }
 
@@ -20239,6 +20377,10 @@ export namespace compute {
              */
             rawKey: string;
             /**
+             * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+             */
+            rsaEncryptedKey: string;
+            /**
              * [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
              */
             sha256: string;
@@ -20452,7 +20594,7 @@ export namespace compute {
          */
         export interface FirewallPolicyRuleMatcherResponse {
             /**
-             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
              */
             destIpRanges: string[];
             /**
@@ -20460,7 +20602,7 @@ export namespace compute {
              */
             layer4Configs: outputs.compute.v1.FirewallPolicyRuleMatcherLayer4ConfigResponse[];
             /**
-             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+             * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
              */
             srcIpRanges: string[];
         }
@@ -21003,7 +21145,7 @@ export namespace compute {
              */
             containerType: string;
             /**
-             * The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+             * The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
              */
             source: string;
         }
@@ -21657,7 +21799,7 @@ export namespace compute {
              */
             exportCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
              */
             exportSubnetRoutesWithPublicIp: boolean;
             /**
@@ -21665,7 +21807,7 @@ export namespace compute {
              */
             importCustomRoutes: boolean;
             /**
-             * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+             * Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
              */
             importSubnetRoutesWithPublicIp: boolean;
             /**
@@ -23071,6 +23213,655 @@ export namespace compute {
     }
 }
 
+export namespace contactcenterinsights {
+    export namespace v1 {
+        /**
+         * The analysis resource.
+         */
+        export interface GoogleCloudContactcenterinsightsV1AnalysisResponse {
+            /**
+             * The result of the analysis, which is populated when the analysis finishes.
+             */
+            analysisResult: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResultResponse;
+            /**
+             * The time at which the analysis was created, which occurs when the long-running operation completes.
+             */
+            createTime: string;
+            /**
+             * Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
+             */
+            name: string;
+            /**
+             * The time at which the analysis was requested.
+             */
+            requestTime: string;
+        }
+
+        /**
+         * Call-specific metadata created during analysis.
+         */
+        export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse {
+            /**
+             * A list of call annotations that apply to this call.
+             */
+            annotations: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1CallAnnotationResponse[];
+            /**
+             * All the entities in the call.
+             */
+            entities: {[key: string]: string};
+            /**
+             * All the matched intents in the call.
+             */
+            intents: {[key: string]: string};
+            /**
+             * Overall conversation-level issue modeling result.
+             */
+            issueModelResult: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IssueModelResultResponse;
+            /**
+             * All the matched phrase matchers in the call.
+             */
+            phraseMatchers: {[key: string]: string};
+            /**
+             * Overall conversation-level sentiment for each channel of the call.
+             */
+            sentiments: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse[];
+        }
+
+        /**
+         * The result of an analysis.
+         */
+        export interface GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
+            /**
+             * Call-specific metadata created by the analysis.
+             */
+            callAnalysisMetadata: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse;
+            /**
+             * The time at which the analysis ended.
+             */
+            endTime: string;
+        }
+
+        /**
+         * A point in a conversation that marks the start or the end of an annotation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse {
+            /**
+             * The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero.
+             */
+            transcriptIndex: number;
+            /**
+             * The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero.
+             */
+            wordIndex: number;
+        }
+
+        /**
+         * The feedback that the customer has about a certain answer in the conversation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse {
+            /**
+             * Indicates whether an answer or item was clicked by the human agent.
+             */
+            clicked: boolean;
+            /**
+             * The correctness level of an answer.
+             */
+            correctnessLevel: string;
+            /**
+             * Indicates whether an answer or item was displayed to the human agent in the agent desktop UI.
+             */
+            displayed: boolean;
+        }
+
+        /**
+         * Agent Assist Article Suggestion data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse {
+            /**
+             * The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+             */
+            confidenceScore: number;
+            /**
+             * Map that contains metadata about the Article Suggestion and the document that it originates from.
+             */
+            metadata: {[key: string]: string};
+            /**
+             * Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+             */
+            queryRecord: string;
+            /**
+             * The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
+             */
+            source: string;
+            /**
+             * Article title.
+             */
+            title: string;
+            /**
+             * Article URI.
+             */
+            uri: string;
+        }
+
+        /**
+         * A piece of metadata that applies to a window of a call.
+         */
+        export interface GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
+            /**
+             * The boundary in the conversation where the annotation ends, inclusive.
+             */
+            annotationEndBoundary: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse;
+            /**
+             * The boundary in the conversation where the annotation starts, inclusive.
+             */
+            annotationStartBoundary: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse;
+            /**
+             * The channel of the audio where the annotation occurs. For single-channel audio, this field is not populated.
+             */
+            channelTag: number;
+            /**
+             * Data specifying an entity mention.
+             */
+            entityMentionData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1EntityMentionDataResponse;
+            /**
+             * Data specifying a hold.
+             */
+            holdData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1HoldDataResponse;
+            /**
+             * Data specifying an intent match.
+             */
+            intentMatchData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IntentMatchDataResponse;
+            /**
+             * Data specifying an interruption.
+             */
+            interruptionData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1InterruptionDataResponse;
+            /**
+             * Data specifying a phrase match.
+             */
+            phraseMatchData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse;
+            /**
+             * Data specifying sentiment.
+             */
+            sentimentData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SentimentDataResponse;
+            /**
+             * Data specifying silence.
+             */
+            silenceData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SilenceDataResponse;
+        }
+
+        /**
+         * Call-specific metadata.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
+            /**
+             * The audio channel that contains the agent.
+             */
+            agentChannel: number;
+            /**
+             * The audio channel that contains the customer.
+             */
+            customerChannel: number;
+        }
+
+        /**
+         * The conversation source, which is a combination of transcript and audio.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
+            /**
+             * The source when the conversation comes from Dialogflow.
+             */
+            dialogflowSource: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1DialogflowSourceResponse;
+            /**
+             * A Cloud Storage location specification for the audio and transcript.
+             */
+            gcsSource: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1GcsSourceResponse;
+        }
+
+        /**
+         * One channel of conversation-level sentiment data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse {
+            /**
+             * The channel of the audio that the data applies to.
+             */
+            channelTag: number;
+            /**
+             * Data specifying sentiment.
+             */
+            sentimentData: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SentimentDataResponse;
+        }
+
+        /**
+         * The call participant speaking for a given utterance.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
+            /**
+             * The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+             */
+            dialogflowParticipantName: string;
+            /**
+             * The role of the participant.
+             */
+            role: string;
+            /**
+             * A user-specified ID representing the participant.
+             */
+            userId: string;
+        }
+
+        /**
+         * A message representing the transcript of a conversation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
+            /**
+             * A list of sequential transcript segments that comprise the conversation.
+             */
+            transcriptSegments: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse[];
+        }
+
+        /**
+         * A segment of a full transcript.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse {
+            /**
+             * For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono.
+             */
+            channelTag: number;
+            /**
+             * A confidence estimate between 0.0 and 1.0 of the fidelity of this segment. A default value of 0.0 indicates that the value is unset.
+             */
+            confidence: number;
+            /**
+             * The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+             */
+            languageCode: string;
+            /**
+             * The participant of this segment.
+             */
+            segmentParticipant: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationParticipantResponse;
+            /**
+             * The text of this segment.
+             */
+            text: string;
+            /**
+             * A list of the word-specific information for each word in the segment.
+             */
+            words: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse[];
+        }
+
+        /**
+         * Word-level info for words in a transcript.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse {
+            /**
+             * A confidence estimate between 0.0 and 1.0 of the fidelity of this word. A default value of 0.0 indicates that the value is unset.
+             */
+            confidence: number;
+            /**
+             * Time offset of the end of this word relative to the beginning of the total conversation.
+             */
+            endOffset: string;
+            /**
+             * Time offset of the start of this word relative to the beginning of the total conversation.
+             */
+            startOffset: string;
+            /**
+             * The word itself. Includes punctuation marks that surround the word.
+             */
+            word: string;
+        }
+
+        /**
+         * Dialogflow interaction data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
+            /**
+             * The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+             */
+            confidence: number;
+            /**
+             * The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent}
+             */
+            dialogflowIntentId: string;
+        }
+
+        /**
+         * A Dialogflow source of conversation data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
+            /**
+             * Cloud Storage URI that points to a file that contains the conversation audio.
+             */
+            audioUri: string;
+            /**
+             * The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation}
+             */
+            dialogflowConversation: string;
+        }
+
+        /**
+         * The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1EntityMentionDataResponse {
+            /**
+             * The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to.
+             */
+            entityUniqueId: string;
+            /**
+             * Sentiment expressed for this mention of the entity.
+             */
+            sentiment: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SentimentDataResponse;
+            /**
+             * The type of the entity mention.
+             */
+            type: string;
+        }
+
+        /**
+         * Exact match configuration.
+         */
+        export interface GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse {
+            /**
+             * Whether to consider case sensitivity when performing an exact match.
+             */
+            caseSensitive: boolean;
+        }
+
+        /**
+         * Agent Assist frequently-asked-question answer data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse {
+            /**
+             * The piece of text from the `source` knowledge base document.
+             */
+            answer: string;
+            /**
+             * The system's confidence score that this answer is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+             */
+            confidenceScore: number;
+            /**
+             * Map that contains metadata about the FAQ answer and the document that it originates from.
+             */
+            metadata: {[key: string]: string};
+            /**
+             * Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}.
+             */
+            queryRecord: string;
+            /**
+             * The corresponding FAQ question.
+             */
+            question: string;
+            /**
+             * The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}.
+             */
+            source: string;
+        }
+
+        /**
+         * A Cloud Storage source of conversation data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1GcsSourceResponse {
+            /**
+             * Cloud Storage URI that points to a file that contains the conversation audio.
+             */
+            audioUri: string;
+            /**
+             * Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
+             */
+            transcriptUri: string;
+        }
+
+        /**
+         * The data for a hold annotation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1HoldDataResponse {
+        }
+
+        /**
+         * The data for an intent match. Represents an intent match for a text segment in the conversation. A text segment can be part of a sentence, a complete sentence, or an utterance with multiple sentences.
+         */
+        export interface GoogleCloudContactcenterinsightsV1IntentMatchDataResponse {
+            /**
+             * The id of the matched intent. Can be used to retrieve the corresponding intent information.
+             */
+            intentUniqueId: string;
+        }
+
+        /**
+         * The data for an interruption annotation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1InterruptionDataResponse {
+        }
+
+        /**
+         * Information about the issue.
+         */
+        export interface GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
+            /**
+             * Resource name of the assigned issue.
+             */
+            issue: string;
+            /**
+             * Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
+             */
+            score: number;
+        }
+
+        /**
+         * Configs for the input data used to create the issue model.
+         */
+        export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
+            /**
+             * Medium of conversations used in training data.
+             */
+            medium: string;
+            /**
+             * Number of conversations used in training. Output only.
+             */
+            trainingConversationsCount: string;
+        }
+
+        /**
+         * Aggregated statistics about an issue model.
+         */
+        export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
+            /**
+             * Number of conversations the issue model has analyzed at this point in time.
+             */
+            analyzedConversationsCount: string;
+            /**
+             * Statistics on each issue. Key is the issue's resource name.
+             */
+            issueStats: {[key: string]: string};
+            /**
+             * Number of analyzed conversations for which no issue was applicable at this point in time.
+             */
+            unclassifiedConversationsCount: string;
+        }
+
+        /**
+         * Issue Modeling result on a conversation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
+            /**
+             * Issue model that generates the result.
+             */
+            issueModel: string;
+            /**
+             * All the matched issues.
+             */
+            issues: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IssueAssignmentResponse[];
+        }
+
+        /**
+         * The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
+         */
+        export interface GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
+            /**
+             * The human-readable name of the phrase matcher.
+             */
+            displayName: string;
+            /**
+             * The unique identifier (the resource name) of the phrase matcher.
+             */
+            phraseMatcher: string;
+        }
+
+        /**
+         * Configuration information of a phrase match rule.
+         */
+        export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse {
+            /**
+             * The configuration for the exact match rule.
+             */
+            exactMatchConfig: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse;
+        }
+
+        /**
+         * A message representing a rule in the phrase matcher.
+         */
+        export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse {
+            /**
+             * A list of phase match rules that are included in this group.
+             */
+            phraseMatchRules: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse[];
+            /**
+             * The type of this phrase match rule group.
+             */
+            type: string;
+        }
+
+        /**
+         * The data for a phrase match rule.
+         */
+        export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
+            /**
+             * Provides additional information about the rule that specifies how to apply the rule.
+             */
+            config: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse;
+            /**
+             * Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment.
+             */
+            negated: boolean;
+            /**
+             * The phrase to be matched.
+             */
+            query: string;
+        }
+
+        /**
+         * An annotation that was generated during the customer and agent interaction.
+         */
+        export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
+            /**
+             * The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
+             */
+            annotationId: string;
+            /**
+             * The feedback that the customer has about the answer in `data`.
+             */
+            answerFeedback: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse;
+            /**
+             * Agent Assist Article Suggestion data.
+             */
+            articleSuggestion: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse;
+            /**
+             * The time at which this annotation was created.
+             */
+            createTime: string;
+            /**
+             * Dialogflow interaction data.
+             */
+            dialogflowInteraction: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse;
+            /**
+             * The boundary in the conversation where the annotation ends, inclusive.
+             */
+            endBoundary: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse;
+            /**
+             * Agent Assist FAQ answer data.
+             */
+            faqAnswer: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse;
+            /**
+             * Agent Assist Smart Compose suggestion data.
+             */
+            smartComposeSuggestion: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse;
+            /**
+             * Agent Assist Smart Reply data.
+             */
+            smartReply: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SmartReplyDataResponse;
+            /**
+             * The boundary in the conversation where the annotation starts, inclusive.
+             */
+            startBoundary: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse;
+        }
+
+        /**
+         * The data for a sentiment annotation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1SentimentDataResponse {
+            /**
+             * A non-negative number from 0 to infinity which represents the abolute magnitude of sentiment regardless of score.
+             */
+            magnitude: number;
+            /**
+             * The sentiment score between -1.0 (negative) and 1.0 (positive).
+             */
+            score: number;
+        }
+
+        /**
+         * The data for a silence annotation.
+         */
+        export interface GoogleCloudContactcenterinsightsV1SilenceDataResponse {
+        }
+
+        /**
+         * Agent Assist Smart Compose suggestion data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse {
+            /**
+             * The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+             */
+            confidenceScore: number;
+            /**
+             * Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
+             */
+            metadata: {[key: string]: string};
+            /**
+             * Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+             */
+            queryRecord: string;
+            /**
+             * The content of the suggestion.
+             */
+            suggestion: string;
+        }
+
+        /**
+         * Agent Assist Smart Reply data.
+         */
+        export interface GoogleCloudContactcenterinsightsV1SmartReplyDataResponse {
+            /**
+             * The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
+             */
+            confidenceScore: number;
+            /**
+             * Map that contains metadata about the Smart Reply and the document from which it originates.
+             */
+            metadata: {[key: string]: string};
+            /**
+             * Name of the query record. Format: projects/{project}/locations/{location}/queryRecords/{query_record}
+             */
+            queryRecord: string;
+            /**
+             * The content of the reply.
+             */
+            reply: string;
+        }
+
+    }
+}
+
 export namespace container {
     export namespace v1 {
         /**
@@ -23280,6 +24071,10 @@ export namespace container {
              */
             autoprovisioningNodePoolDefaults: outputs.container.v1.AutoprovisioningNodePoolDefaultsResponse;
             /**
+             * Defines autoscaling behaviour.
+             */
+            autoscalingProfile: string;
+            /**
              * Enables automatic node pool creation and deletion.
              */
             enableNodeAutoprovisioning: boolean;
@@ -23474,6 +24269,26 @@ export namespace container {
         }
 
         /**
+         * LoggingComponentConfig is cluster logging component configuration.
+         */
+        export interface LoggingComponentConfigResponse {
+            /**
+             * Select components to collect logs. An empty set would disable all logging.
+             */
+            enableComponents: string[];
+        }
+
+        /**
+         * LoggingConfig is cluster logging configuration.
+         */
+        export interface LoggingConfigResponse {
+            /**
+             * Logging components configuration
+             */
+            componentConfig: outputs.container.v1.LoggingComponentConfigResponse;
+        }
+
+        /**
          * MaintenancePolicy defines the maintenance policy to be used for the cluster.
          */
         export interface MaintenancePolicyResponse {
@@ -23560,6 +24375,26 @@ export namespace container {
         }
 
         /**
+         * MonitoringComponentConfig is cluster monitoring component configuration.
+         */
+        export interface MonitoringComponentConfigResponse {
+            /**
+             * Select components to collect metrics. An empty set would disable all monitoring.
+             */
+            enableComponents: string[];
+        }
+
+        /**
+         * MonitoringConfig is cluster monitoring configuration.
+         */
+        export interface MonitoringConfigResponse {
+            /**
+             * Monitoring components configuration
+             */
+            componentConfig: outputs.container.v1.MonitoringComponentConfigResponse;
+        }
+
+        /**
          * NetworkConfig reports the relative names of network & subnetwork.
          */
         export interface NetworkConfigResponse {
@@ -23637,6 +24472,10 @@ export namespace container {
              * Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
              */
             diskType: string;
+            /**
+             * Enable or disable gvnic in the node pool.
+             */
+            gvnic: outputs.container.v1.VirtualNICResponse;
             /**
              * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
              */
@@ -23748,6 +24587,24 @@ export namespace container {
         }
 
         /**
+         * Parameters for node pool-level network config.
+         */
+        export interface NodeNetworkConfigResponse {
+            /**
+             * Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+             */
+            createPodRange: boolean;
+            /**
+             * The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+             */
+            podIpv4CidrBlock: string;
+            /**
+             * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+             */
+            podRange: string;
+        }
+
+        /**
          * NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
          */
         export interface NodePoolAutoscalingResponse {
@@ -23809,6 +24666,10 @@ export namespace container {
              * The name of the node pool.
              */
             name: string;
+            /**
+             * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+             */
+            networkConfig: outputs.container.v1.NodeNetworkConfigResponse;
             /**
              * [Output only] The pod CIDR block size per node in this node pool.
              */
@@ -24082,6 +24943,16 @@ export namespace container {
         }
 
         /**
+         * Configuration of gVNIC feature.
+         */
+        export interface VirtualNICResponse {
+            /**
+             * Whether gVNIC features are enabled in the node pool.
+             */
+            enabled: boolean;
+        }
+
+        /**
          * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
          */
         export interface WorkloadIdentityConfigResponse {
@@ -24100,6 +24971,7 @@ export namespace container {
              */
             mode: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -24528,6 +25400,16 @@ export namespace container {
         }
 
         /**
+         * IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+         */
+        export interface IdentityServiceConfigResponse {
+            /**
+             * Whether to enable the Identity Service component
+             */
+            enabled: boolean;
+        }
+
+        /**
          * Configuration options for Istio addon.
          */
         export interface IstioConfigResponse {
@@ -24579,6 +25461,26 @@ export namespace container {
              * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
              */
             sysctls: {[key: string]: string};
+        }
+
+        /**
+         * LoggingComponentConfig is cluster logging component configuration.
+         */
+        export interface LoggingComponentConfigResponse {
+            /**
+             * Select components to collect logs. An empty set would disable all logging.
+             */
+            enableComponents: string[];
+        }
+
+        /**
+         * LoggingConfig is cluster logging configuration.
+         */
+        export interface LoggingConfigResponse {
+            /**
+             * Logging components configuration
+             */
+            componentConfig: outputs.container.v1beta1.LoggingComponentConfigResponse;
         }
 
         /**
@@ -24668,6 +25570,26 @@ export namespace container {
              * Constraint enforced on the max num of pods per node.
              */
             maxPodsPerNode: string;
+        }
+
+        /**
+         * MonitoringComponentConfig is cluster monitoring component configuration.
+         */
+        export interface MonitoringComponentConfigResponse {
+            /**
+             * Select components to collect metrics. An empty set would disable all monitoring.
+             */
+            enableComponents: string[];
+        }
+
+        /**
+         * MonitoringConfig is cluster monitoring configuration.
+         */
+        export interface MonitoringConfigResponse {
+            /**
+             * Monitoring components configuration
+             */
+            componentConfig: outputs.container.v1beta1.MonitoringComponentConfigResponse;
         }
 
         /**
@@ -24766,6 +25688,10 @@ export namespace container {
              * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
              */
             ephemeralStorageConfig: outputs.container.v1beta1.EphemeralStorageConfigResponse;
+            /**
+             * Enable or disable gvnic on the node pool.
+             */
+            gvnic: outputs.container.v1beta1.VirtualNICResponse;
             /**
              * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
              */
@@ -24877,19 +25803,19 @@ export namespace container {
         }
 
         /**
-         * Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+         * Parameters for node pool-level network config.
          */
         export interface NodeNetworkConfigResponse {
             /**
-             * Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+             * Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
              */
             createPodRange: boolean;
             /**
-             * The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+             * The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
              */
             podIpv4CidrBlock: string;
             /**
-             * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+             * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
              */
             podRange: string;
         }
@@ -25282,6 +26208,16 @@ export namespace container {
         }
 
         /**
+         * Configuration of gVNIC feature.
+         */
+        export interface VirtualNICResponse {
+            /**
+             * Whether gVNIC features are enabled in the node pool.
+             */
+            enabled: boolean;
+        }
+
+        /**
          * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
          */
         export interface WorkloadCertificatesResponse {
@@ -25402,6 +26338,10 @@ export namespace containeranalysis {
          */
         export interface BuildDetailsResponse {
             /**
+             * In-toto Provenance representation as defined in spec.
+             */
+            intotoProvenance: outputs.containeranalysis.v1alpha1.InTotoProvenanceResponse;
+            /**
              * The actual provenance
              */
             provenance: outputs.containeranalysis.v1alpha1.BuildProvenanceResponse;
@@ -25501,6 +26441,9 @@ export namespace containeranalysis {
             signature: outputs.containeranalysis.v1alpha1.BuildSignatureResponse;
         }
 
+        export interface BuilderConfigResponse {
+        }
+
         /**
          * A compliance check that is a CIS benchmark.
          */
@@ -25539,6 +26482,24 @@ export namespace containeranalysis {
              * The ID(s) of the Command(s) that this Command depends on.
              */
             waitFor: string[];
+        }
+
+        /**
+         * Indicates that the builder claims certain fields in this message to be complete.
+         */
+        export interface CompletenessResponse {
+            /**
+             * If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+             */
+            arguments: boolean;
+            /**
+             * If true, the builder claims that recipe.environment is claimed to be complete.
+             */
+            environment: boolean;
+            /**
+             * If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+             */
+            materials: boolean;
         }
 
         /**
@@ -25601,6 +26562,37 @@ export namespace containeranalysis {
              * The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
              */
             version: string;
+        }
+
+        /**
+         * A note describing an attestation
+         */
+        export interface DSSEAttestationNoteResponse {
+            /**
+             * DSSEHint hints at the purpose of the attestation authority.
+             */
+            hint: outputs.containeranalysis.v1alpha1.DSSEHintResponse;
+        }
+
+        /**
+         * An occurrence describing an attestation on a resource
+         */
+        export interface DSSEAttestationOccurrenceResponse {
+            /**
+             * If doing something security critical, make sure to verify the signatures in this metadata.
+             */
+            envelope: outputs.containeranalysis.v1alpha1.EnvelopeResponse;
+            statement: outputs.containeranalysis.v1alpha1.InTotoStatementResponse;
+        }
+
+        /**
+         * This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
+         */
+        export interface DSSEHintResponse {
+            /**
+             * The human readable name of this attestation authority, for example "cloudbuild-prod".
+             */
+            humanReadableName: string;
         }
 
         /**
@@ -25782,6 +26774,90 @@ export namespace containeranalysis {
         }
 
         /**
+         * DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+         */
+        export interface DocumentNoteResponse {
+            /**
+             * Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
+             */
+            dataLicence: string;
+            /**
+             * Provide a reference number that can be used to understand how to parse and interpret the rest of the file
+             */
+            spdxVersion: string;
+        }
+
+        /**
+         * DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+         */
+        export interface DocumentOccurrenceResponse {
+            /**
+             * Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
+             */
+            createTime: string;
+            /**
+             * A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
+             */
+            creatorComment: string;
+            /**
+             * Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
+             */
+            creators: string[];
+            /**
+             * A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+             */
+            documentComment: string;
+            /**
+             * Identify any external SPDX documents referenced within this SPDX document
+             */
+            externalDocumentRefs: string[];
+            /**
+             * A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
+             */
+            licenseListVersion: string;
+            /**
+             * Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
+             */
+            namespace: string;
+            /**
+             * Identify name of this document as designated by creator
+             */
+            title: string;
+        }
+
+        /**
+         * MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+         */
+        export interface EnvelopeResponse {
+            /**
+             * The bytes being signed
+             */
+            payload: string;
+            /**
+             * The type of payload being signed
+             */
+            payloadType: string;
+            /**
+             * The signatures over the payload
+             */
+            signatures: outputs.containeranalysis.v1alpha1.EnvelopeSignatureResponse[];
+        }
+
+        /**
+         * A DSSE signature
+         */
+        export interface EnvelopeSignatureResponse {
+            /**
+             * A reference id to the key being used for signing
+             */
+            keyid: string;
+            /**
+             * The signature itself
+             */
+            sig: string;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface ExprResponse {
@@ -25801,6 +26877,84 @@ export namespace containeranalysis {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title: string;
+        }
+
+        /**
+         * An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+         */
+        export interface ExternalRefResponse {
+            /**
+             * An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+             */
+            category: string;
+            /**
+             * Human-readable information about the purpose and target of the reference
+             */
+            comment: string;
+            /**
+             * The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location
+             */
+            locator: string;
+            /**
+             * Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+             */
+            type: string;
+        }
+
+        /**
+         * FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+         */
+        export interface FileNoteResponse {
+            /**
+             * Provide a unique identifier to match analysis information on each specific file in a package
+             */
+            checksum: string[];
+            /**
+             * This field provides information about the type of file identified
+             */
+            fileType: string;
+            /**
+             * Identify the full path and filename that corresponds to the file information in this section
+             */
+            title: string;
+        }
+
+        /**
+         * FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+         */
+        export interface FileOccurrenceResponse {
+            /**
+             * This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
+             */
+            attributions: string[];
+            /**
+             * This field provides a place for the SPDX file creator to record any general comments about the file
+             */
+            comment: string;
+            /**
+             * This field provides a place for the SPDX file creator to record file contributors
+             */
+            contributors: string[];
+            /**
+             * Identify the copyright holder of the file, as well as any dates present
+             */
+            copyright: string;
+            /**
+             * This field contains the license information actually found in the file, if any
+             */
+            filesLicenseInfo: string[];
+            /**
+             * This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
+             */
+            licenseComments: string;
+            /**
+             * This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+             */
+            licenseConcluded: string;
+            /**
+             * This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
+             */
+            notice: string;
         }
 
         /**
@@ -25953,6 +27107,38 @@ export namespace containeranalysis {
             value: string;
         }
 
+        export interface InTotoProvenanceResponse {
+            /**
+             * required
+             */
+            builderConfig: outputs.containeranalysis.v1alpha1.BuilderConfigResponse;
+            /**
+             * The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+             */
+            materials: string[];
+            metadata: outputs.containeranalysis.v1alpha1.MetadataResponse;
+            /**
+             * Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
+             */
+            recipe: outputs.containeranalysis.v1alpha1.RecipeResponse;
+        }
+
+        /**
+         * Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
+         */
+        export interface InTotoStatementResponse {
+            /**
+             * "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+             */
+            predicateType: string;
+            provenance: outputs.containeranalysis.v1alpha1.InTotoProvenanceResponse;
+            subject: outputs.containeranalysis.v1alpha1.SubjectResponse[];
+            /**
+             * Always "https://in-toto.io/Statement/v0.1".
+             */
+            type: string;
+        }
+
         /**
          * This represents how a particular software package may be installed on a system.
          */
@@ -26000,6 +27186,32 @@ export namespace containeranalysis {
         }
 
         /**
+         * Other properties of the build.
+         */
+        export interface MetadataResponse {
+            /**
+             * The timestamp of when the build completed.
+             */
+            buildFinishedOn: string;
+            /**
+             * Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+             */
+            buildInvocationId: string;
+            /**
+             * The timestamp of when the build started.
+             */
+            buildStartedOn: string;
+            /**
+             * Indicates that the builder claims certain fields in this message to be complete.
+             */
+            completeness: outputs.containeranalysis.v1alpha1.CompletenessResponse;
+            /**
+             * If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+             */
+            reproducible: boolean;
+        }
+
+        /**
          * Details about files that caused a compliance check to fail.
          */
         export interface NonCompliantFileResponse {
@@ -26030,6 +27242,102 @@ export namespace containeranalysis {
              */
             fixedLocation: outputs.containeranalysis.v1alpha1.VulnerabilityLocationResponse;
             severityName: string;
+        }
+
+        /**
+         * PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         */
+        export interface PackageNoteResponse {
+            /**
+             * Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+             */
+            analyzed: boolean;
+            /**
+             * A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+             */
+            attribution: string;
+            /**
+             * Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+             */
+            checksum: string;
+            /**
+             * Identify the copyright holders of the package, as well as any dates present
+             */
+            copyright: string;
+            /**
+             * A more detailed description of the package
+             */
+            detailedDescription: string;
+            /**
+             * This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+             */
+            downloadLocation: string;
+            /**
+             * ExternalRef
+             */
+            externalRefs: outputs.containeranalysis.v1alpha1.ExternalRefResponse[];
+            /**
+             * Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+             */
+            filesLicenseInfo: string[];
+            /**
+             * Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+             */
+            homePage: string;
+            /**
+             * List the licenses that have been declared by the authors of the package
+             */
+            licenseDeclared: string;
+            /**
+             * If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+             */
+            originator: string;
+            /**
+             * A short description of the package
+             */
+            summaryDescription: string;
+            /**
+             * Identify the actual distribution source for the package/directory identified in the SPDX file
+             */
+            supplier: string;
+            /**
+             * Identify the full name of the package as given by the Package Originator
+             */
+            title: string;
+            /**
+             * This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+             */
+            verificationCode: string;
+            /**
+             * Identify the version of the package
+             */
+            version: string;
+        }
+
+        /**
+         * PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         */
+        export interface PackageOccurrenceResponse {
+            /**
+             * A place for the SPDX file creator to record any general comments about the package being described
+             */
+            comment: string;
+            /**
+             * Provide the actual file name of the package, or path of the directory being treated as a package
+             */
+            filename: string;
+            /**
+             * This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
+             */
+            licenseComments: string;
+            /**
+             * package or alternative values, if the governing license cannot be determined
+             */
+            licenseConcluded: string;
+            /**
+             * Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+             */
+            sourceInfo: string;
         }
 
         /**
@@ -26065,6 +27373,32 @@ export namespace containeranalysis {
         }
 
         /**
+         * Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+         */
+        export interface RecipeResponse {
+            /**
+             * Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
+             */
+            arguments: string[];
+            /**
+             * Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+             */
+            definedInMaterial: string;
+            /**
+             * String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+             */
+            entryPoint: string;
+            /**
+             * Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
+             */
+            environment: {[key: string]: string};
+            /**
+             * URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+             */
+            type: string;
+        }
+
+        /**
          * Metadata for any related URL information
          */
         export interface RelatedUrlResponse {
@@ -26076,6 +27410,34 @@ export namespace containeranalysis {
              * Specific URL to associate with the note
              */
             url: string;
+        }
+
+        /**
+         * RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+         */
+        export interface RelationshipNoteResponse {
+        }
+
+        /**
+         * RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+         */
+        export interface RelationshipOccurrenceResponse {
+            /**
+             * A place for the SPDX file creator to record any general comments about the relationship
+             */
+            comment: string;
+            /**
+             * Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+             */
+            source: string;
+            /**
+             * Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
+             */
+            target: string;
+            /**
+             * The type of relationship between the source and target SPDX elements
+             */
+            type: string;
         }
 
         /**
@@ -26186,6 +27548,14 @@ export namespace containeranalysis {
              * Google Cloud Storage object containing source.
              */
             object: string;
+        }
+
+        export interface SubjectResponse {
+            /**
+             * "": ""
+             */
+            digest: {[key: string]: string};
+            name: string;
         }
 
         /**
@@ -26333,7 +27703,6 @@ export namespace containeranalysis {
              */
             severity: string;
         }
-
     }
 
     export namespace v1beta1 {
@@ -26785,6 +28154,58 @@ export namespace containeranalysis {
         }
 
         /**
+         * DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+         */
+        export interface DocumentNoteResponse {
+            /**
+             * Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
+             */
+            dataLicence: string;
+            /**
+             * Provide a reference number that can be used to understand how to parse and interpret the rest of the file
+             */
+            spdxVersion: string;
+        }
+
+        /**
+         * DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+         */
+        export interface DocumentOccurrenceResponse {
+            /**
+             * Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
+             */
+            createTime: string;
+            /**
+             * A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
+             */
+            creatorComment: string;
+            /**
+             * Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
+             */
+            creators: string[];
+            /**
+             * A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+             */
+            documentComment: string;
+            /**
+             * Identify any external SPDX documents referenced within this SPDX document
+             */
+            externalDocumentRefs: string[];
+            /**
+             * A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
+             */
+            licenseListVersion: string;
+            /**
+             * Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
+             */
+            namespace: string;
+            /**
+             * Identify name of this document as designated by creator
+             */
+            title: string;
+        }
+
+        /**
          * Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
          */
         export interface EnvironmentResponse {
@@ -26811,6 +28232,84 @@ export namespace containeranalysis {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title: string;
+        }
+
+        /**
+         * An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+         */
+        export interface ExternalRefResponse {
+            /**
+             * An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+             */
+            category: string;
+            /**
+             * Human-readable information about the purpose and target of the reference
+             */
+            comment: string;
+            /**
+             * The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location
+             */
+            locator: string;
+            /**
+             * Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+             */
+            type: string;
+        }
+
+        /**
+         * FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+         */
+        export interface FileNoteResponse {
+            /**
+             * Provide a unique identifier to match analysis information on each specific file in a package
+             */
+            checksum: string[];
+            /**
+             * This field provides information about the type of file identified
+             */
+            fileType: string;
+            /**
+             * Identify the full path and filename that corresponds to the file information in this section
+             */
+            title: string;
+        }
+
+        /**
+         * FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+         */
+        export interface FileOccurrenceResponse {
+            /**
+             * This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
+             */
+            attributions: string[];
+            /**
+             * This field provides a place for the SPDX file creator to record any general comments about the file
+             */
+            comment: string;
+            /**
+             * This field provides a place for the SPDX file creator to record file contributors
+             */
+            contributors: string[];
+            /**
+             * Identify the copyright holder of the file, as well as any dates present
+             */
+            copyright: string;
+            /**
+             * This field contains the license information actually found in the file, if any
+             */
+            filesLicenseInfo: string[];
+            /**
+             * This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
+             */
+            licenseComments: string;
+            /**
+             * This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+             */
+            licenseConcluded: string;
+            /**
+             * This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
+             */
+            notice: string;
         }
 
         /**
@@ -26969,7 +28468,7 @@ export namespace containeranalysis {
              */
             cvssScore: number;
             /**
-             * The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+             * The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
              */
             effectiveSeverity: string;
             /**
@@ -27127,9 +28626,113 @@ export namespace containeranalysis {
              */
             affectedLocation: outputs.containeranalysis.v1beta1.VulnerabilityLocationResponse;
             /**
+             * The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
+             */
+            effectiveSeverity: string;
+            /**
              * The location of the available fix for vulnerability.
              */
             fixedLocation: outputs.containeranalysis.v1beta1.VulnerabilityLocationResponse;
+            /**
+             * The type of package (e.g. OS, MAVEN, GO).
+             */
+            packageType: string;
+        }
+
+        /**
+         * PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         */
+        export interface PackageNoteResponse {
+            /**
+             * Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+             */
+            analyzed: boolean;
+            /**
+             * A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+             */
+            attribution: string;
+            /**
+             * Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+             */
+            checksum: string;
+            /**
+             * Identify the copyright holders of the package, as well as any dates present
+             */
+            copyright: string;
+            /**
+             * A more detailed description of the package
+             */
+            detailedDescription: string;
+            /**
+             * This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+             */
+            downloadLocation: string;
+            /**
+             * ExternalRef
+             */
+            externalRefs: outputs.containeranalysis.v1beta1.ExternalRefResponse[];
+            /**
+             * Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+             */
+            filesLicenseInfo: string[];
+            /**
+             * Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+             */
+            homePage: string;
+            /**
+             * List the licenses that have been declared by the authors of the package
+             */
+            licenseDeclared: string;
+            /**
+             * If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+             */
+            originator: string;
+            /**
+             * A short description of the package
+             */
+            summaryDescription: string;
+            /**
+             * Identify the actual distribution source for the package/directory identified in the SPDX file
+             */
+            supplier: string;
+            /**
+             * Identify the full name of the package as given by the Package Originator
+             */
+            title: string;
+            /**
+             * This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+             */
+            verificationCode: string;
+            /**
+             * Identify the version of the package
+             */
+            version: string;
+        }
+
+        /**
+         * PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+         */
+        export interface PackageOccurrenceResponse {
+            /**
+             * A place for the SPDX file creator to record any general comments about the package being described
+             */
+            comment: string;
+            /**
+             * Provide the actual file name of the package, or path of the directory being treated as a package
+             */
+            filename: string;
+            /**
+             * This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
+             */
+            licenseComments: string;
+            /**
+             * package or alternative values, if the governing license cannot be determined
+             */
+            licenseConcluded: string;
+            /**
+             * Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+             */
+            sourceInfo: string;
         }
 
         /**
@@ -27190,6 +28793,34 @@ export namespace containeranalysis {
              * Specific URL associated with the resource.
              */
             url: string;
+        }
+
+        /**
+         * RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+         */
+        export interface RelationshipNoteResponse {
+        }
+
+        /**
+         * RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+         */
+        export interface RelationshipOccurrenceResponse {
+            /**
+             * A place for the SPDX file creator to record any general comments about the relationship
+             */
+            comment: string;
+            /**
+             * Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+             */
+            source: string;
+            /**
+             * Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
+             */
+            target: string;
+            /**
+             * The type of relationship between the source and target SPDX elements
+             */
+            type: string;
         }
 
         /**
@@ -27406,7 +29037,6 @@ export namespace containeranalysis {
              */
             name: string;
         }
-
     }
 }
 
@@ -30125,7 +31755,7 @@ export namespace dataproc {
              */
             autoscalingConfig: outputs.dataproc.v1.AutoscalingConfigResponse;
             /**
-             * Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+             * Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
              */
             configBucket: string;
             /**
@@ -30153,7 +31783,7 @@ export namespace dataproc {
              */
             lifecycleConfig: outputs.dataproc.v1.LifecycleConfigResponse;
             /**
-             * Optional. The Compute Engine config settings for the master instance in a cluster.
+             * Optional. The Compute Engine config settings for the cluster's master instance.
              */
             masterConfig: outputs.dataproc.v1.InstanceGroupConfigResponse;
             /**
@@ -30161,7 +31791,7 @@ export namespace dataproc {
              */
             metastoreConfig: outputs.dataproc.v1.MetastoreConfigResponse;
             /**
-             * Optional. The Compute Engine config settings for additional worker instances in a cluster.
+             * Optional. The Compute Engine config settings for a cluster's secondary worker instances
              */
             secondaryWorkerConfig: outputs.dataproc.v1.InstanceGroupConfigResponse;
             /**
@@ -30169,15 +31799,15 @@ export namespace dataproc {
              */
             securityConfig: outputs.dataproc.v1.SecurityConfigResponse;
             /**
-             * Optional. The config settings for software inside the cluster.
+             * Optional. The config settings for cluster software.
              */
             softwareConfig: outputs.dataproc.v1.SoftwareConfigResponse;
             /**
-             * Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+             * Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
              */
             tempBucket: string;
             /**
-             * Optional. The Compute Engine config settings for worker instances in a cluster.
+             * Optional. The Compute Engine config settings for the cluster's worker instances.
              */
             workerConfig: outputs.dataproc.v1.InstanceGroupConfigResponse;
         }
@@ -30365,7 +31995,7 @@ export namespace dataproc {
         }
 
         /**
-         * The GKE config for this cluster.
+         * The cluster's GKE config.
          */
         export interface GkeClusterConfigResponse {
             /**
@@ -36019,6 +37649,30 @@ export namespace dialogflow {
 
     export namespace v3 {
         /**
+         * Define behaviors on logging.
+         */
+        export interface GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
+            /**
+             * If true, DF Interaction logging is currently enabled.
+             */
+            enableInteractionLogging: boolean;
+            /**
+             * If true, StackDriver logging is currently enabled.
+             */
+            enableStackdriverLogging: boolean;
+        }
+
+        /**
+         * Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+         */
+        export interface GoogleCloudDialogflowCxV3AdvancedSettingsResponse {
+            /**
+             * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+             */
+            loggingSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse;
+        }
+
+        /**
          * Represents the natural speech audio to be processed.
          */
         export interface GoogleCloudDialogflowCxV3AudioInputResponse {
@@ -36769,6 +38423,70 @@ export namespace dialogflow {
         }
 
         /**
+         * The configuration for auto rollout.
+         */
+        export interface GoogleCloudDialogflowCxV3RolloutConfigResponse {
+            /**
+             * The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+             */
+            failureCondition: string;
+            /**
+             * The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+             */
+            rolloutCondition: string;
+            /**
+             * Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+             */
+            rolloutSteps: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse[];
+        }
+
+        /**
+         * A single rollout step with specified traffic allocation.
+         */
+        export interface GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
+            /**
+             * The name of the rollout step;
+             */
+            displayName: string;
+            /**
+             * The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+             */
+            minDuration: string;
+            /**
+             * The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+             */
+            trafficPercent: number;
+        }
+
+        /**
+         * State of the auto-rollout process.
+         */
+        export interface GoogleCloudDialogflowCxV3RolloutStateResponse {
+            /**
+             * Start time of the current step.
+             */
+            startTime: string;
+            /**
+             * Display name of the current auto rollout step.
+             */
+            step: string;
+            /**
+             * Index of the current step in the auto rollout steps list.
+             */
+            stepIndex: number;
+        }
+
+        /**
+         * Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+         */
+        export interface GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse {
+            /**
+             * If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+             */
+            enableInsightsExport: boolean;
+        }
+
+        /**
          * Settings related to speech recognition.
          */
         export interface GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse {
@@ -36971,6 +38689,30 @@ export namespace dialogflow {
     }
 
     export namespace v3beta1 {
+        /**
+         * Define behaviors on logging.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse {
+            /**
+             * If true, DF Interaction logging is currently enabled.
+             */
+            enableInteractionLogging: boolean;
+            /**
+             * If true, StackDriver logging is currently enabled.
+             */
+            enableStackdriverLogging: boolean;
+        }
+
+        /**
+         * Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse {
+            /**
+             * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+             */
+            loggingSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse;
+        }
+
         /**
          * Represents the natural speech audio to be processed.
          */
@@ -37722,6 +39464,70 @@ export namespace dialogflow {
         }
 
         /**
+         * The configuration for auto rollout.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1RolloutConfigResponse {
+            /**
+             * The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+             */
+            failureCondition: string;
+            /**
+             * The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+             */
+            rolloutCondition: string;
+            /**
+             * Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+             */
+            rolloutSteps: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepResponse[];
+        }
+
+        /**
+         * A single rollout step with specified traffic allocation.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepResponse {
+            /**
+             * The name of the rollout step;
+             */
+            displayName: string;
+            /**
+             * The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+             */
+            minDuration: string;
+            /**
+             * The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+             */
+            trafficPercent: number;
+        }
+
+        /**
+         * State of the auto-rollout process.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1RolloutStateResponse {
+            /**
+             * Start time of the current step.
+             */
+            startTime: string;
+            /**
+             * Display name of the current auto rollout step.
+             */
+            step: string;
+            /**
+             * Index of the current step in the auto rollout steps list.
+             */
+            stepIndex: number;
+        }
+
+        /**
+         * Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+         */
+        export interface GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse {
+            /**
+             * If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+             */
+            enableInsightsExport: boolean;
+        }
+
+        /**
          * Settings related to speech recognition.
          */
         export interface GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse {
@@ -38307,11 +40113,11 @@ export namespace dlp {
         }
 
         /**
-         * This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+         * This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
          */
         export interface GooglePrivacyDlpV2CryptoKeyResponse {
             /**
-             * Kms wrapped key
+             * Key wrapped using Cloud KMS
              */
             kmsWrapped: outputs.dlp.v2.GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse;
             /**
@@ -39091,7 +40897,7 @@ export namespace dlp {
         }
 
         /**
-         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+         * Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
          */
         export interface GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse {
             /**
@@ -40325,6 +42131,60 @@ export namespace dns {
             networkUrl: string;
         }
 
+        export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
+            kind: string;
+            /**
+             * The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+             */
+            location: string;
+            rrdatas: string[];
+            /**
+             * DNSSEC generated signatures for the above geo_rrdata.
+             */
+            signatureRrdatas: string[];
+        }
+
+        export interface RRSetRoutingPolicyGeoPolicyResponse {
+            /**
+             * If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
+             */
+            failovers: outputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse[];
+            /**
+             * The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+             */
+            items: outputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse[];
+            kind: string;
+        }
+
+        /**
+         * A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+         */
+        export interface RRSetRoutingPolicyResponse {
+            geo: outputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyResponse;
+            geoPolicy: outputs.dns.v1beta2.RRSetRoutingPolicyGeoPolicyResponse;
+            kind: string;
+            wrr: outputs.dns.v1beta2.RRSetRoutingPolicyWrrPolicyResponse;
+            wrrPolicy: outputs.dns.v1beta2.RRSetRoutingPolicyWrrPolicyResponse;
+        }
+
+        export interface RRSetRoutingPolicyWrrPolicyResponse {
+            items: outputs.dns.v1beta2.RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse[];
+            kind: string;
+        }
+
+        export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse {
+            kind: string;
+            rrdatas: string[];
+            /**
+             * DNSSEC generated signatures for the above wrr_rrdata.
+             */
+            signatureRrdatas: string[];
+            /**
+             * The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+             */
+            weight: number;
+        }
+
         /**
          * A unit of data that is returned by the DNS servers.
          */
@@ -40334,6 +42194,10 @@ export namespace dns {
              * For example, www.example.com.
              */
             name: string;
+            /**
+             * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+             */
+            routingPolicy: outputs.dns.v1beta2.RRSetRoutingPolicyResponse;
             /**
              * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
              */
@@ -41212,7 +43076,7 @@ export namespace file {
              */
             nfsExportOptions: outputs.file.v1.NfsExportOptionsResponse[];
             /**
-             * The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+             * The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
              */
             sourceBackup: string;
         }
@@ -41222,7 +43086,7 @@ export namespace file {
          */
         export interface NetworkConfigResponse {
             /**
-             * IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+             * IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
              */
             ipAddresses: string[];
             /**
@@ -41230,11 +43094,11 @@ export namespace file {
              */
             modes: string[];
             /**
-             * The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+             * The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
              */
             network: string;
             /**
-             * A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+             * A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
              */
             reservedIpRange: string;
         }
@@ -41256,7 +43120,7 @@ export namespace file {
              */
             anonUid: string;
             /**
-             * List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+             * List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
              */
             ipRanges: string[];
             /**
@@ -41277,7 +43141,7 @@ export namespace file {
              */
             capacityGb: string;
             /**
-             * The name of the file share (must be 32 characters or less for High Scale SSD tier, 16 characters or less for all other tiers).
+             * The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
              */
             name: string;
             /**
@@ -41285,7 +43149,7 @@ export namespace file {
              */
             nfsExportOptions: outputs.file.v1beta1.NfsExportOptionsResponse[];
             /**
-             * The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+             * The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
              */
             sourceBackup: string;
         }
@@ -41299,7 +43163,7 @@ export namespace file {
              */
             connectMode: string;
             /**
-             * IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+             * IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
              */
             ipAddresses: string[];
             /**
@@ -41307,11 +43171,11 @@ export namespace file {
              */
             modes: string[];
             /**
-             * The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+             * The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
              */
             network: string;
             /**
-             * A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+             * Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
              */
             reservedIpRange: string;
         }
@@ -41333,7 +43197,7 @@ export namespace file {
              */
             anonUid: string;
             /**
-             * List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+             * List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
              */
             ipRanges: string[];
             /**
@@ -45234,17 +47098,17 @@ export namespace logging {
          */
         export interface BigQueryOptionsResponse {
             /**
-             * Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
+             * Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
              */
             usePartitionedTables: boolean;
             /**
-             * True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
+             * True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
              */
             usesTimestampColumnPartitioning: boolean;
         }
 
         /**
-         * Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+         * Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
          */
         export interface LogExclusionResponse {
             /**
@@ -45260,7 +47124,7 @@ export namespace logging {
              */
             disabled: boolean;
             /**
-             * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+             * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries.For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)
              */
             filter: string;
             /**
@@ -46742,7 +48606,7 @@ export namespace ml {
              */
             trialId: string;
             /**
-             * The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+             * URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
              */
             webAccessUris: {[key: string]: string};
         }
@@ -47068,7 +48932,7 @@ export namespace ml {
              */
             args: string[];
             /**
-             * Optional. Whether to enable web access for the training job.
+             * Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
              */
             enableWebAccess: boolean;
             /**
@@ -47202,7 +49066,7 @@ export namespace ml {
              */
             trials: outputs.ml.v1.GoogleCloudMlV1__HyperparameterOutputResponse[];
             /**
-             * The web URIs for the training job. Currently for debug terminal access to the job.
+             * URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
              */
             webAccessUris: {[key: string]: string};
         }
@@ -47496,6 +49360,10 @@ export namespace monitoring {
              */
             plotType: string;
             /**
+             * Optional. The target axis to use for plotting the metric.
+             */
+            targetAxis: string;
+            /**
              * Fields for querying time series data from the Stackdriver metrics API.
              */
             timeSeriesQuery: outputs.monitoring.v1.TimeSeriesQueryResponse;
@@ -47672,6 +49540,10 @@ export namespace monitoring {
              */
             label: string;
             /**
+             * The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+             */
+            targetAxis: string;
+            /**
              * The value of the threshold. The value should be defined in the native scale of the metric.
              */
             value: number;
@@ -47823,6 +49695,10 @@ export namespace monitoring {
              * The properties applied to the X axis.
              */
             xAxis: outputs.monitoring.v1.AxisResponse;
+            /**
+             * The properties applied to the Y2 axis.
+             */
+            y2Axis: outputs.monitoring.v1.AxisResponse;
             /**
              * The properties applied to the Y axis.
              */
@@ -48003,7 +49879,7 @@ export namespace monitoring {
         }
 
         /**
-         * A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+         * A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
          */
         export interface DistributionCutResponse {
             /**
@@ -48031,7 +49907,7 @@ export namespace monitoring {
         }
 
         /**
-         * Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+         * Range of numerical values within min and max.
          */
         export interface GoogleMonitoringV3RangeResponse {
             /**
@@ -48235,7 +50111,7 @@ export namespace monitoring {
         }
 
         /**
-         * A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+         * A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
          */
         export interface MetricRangeResponse {
             /**
@@ -50229,6 +52105,198 @@ export namespace networksecurity {
     }
 }
 
+export namespace networkservices {
+    export namespace v1 {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigResponse {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs: outputs.networkservices.v1.AuditLogConfigResponse[];
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service: string;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigResponse {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers: string[];
+            /**
+             * The log type that this config enables.
+             */
+            logType: string;
+        }
+
+        /**
+         * Associates `members` with a `role`.
+         */
+        export interface BindingResponse {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition: outputs.networkservices.v1.ExprResponse;
+            /**
+             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members: string[];
+            /**
+             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role: string;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprResponse {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description: string;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression: string;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location: string;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title: string;
+        }
+
+    }
+
+    export namespace v1beta1 {
+        /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigResponse {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs: outputs.networkservices.v1beta1.AuditLogConfigResponse[];
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service: string;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigResponse {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers: string[];
+            /**
+             * The log type that this config enables.
+             */
+            logType: string;
+        }
+
+        /**
+         * Associates `members` with a `role`.
+         */
+        export interface BindingResponse {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition: outputs.networkservices.v1beta1.ExprResponse;
+            /**
+             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members: string[];
+            /**
+             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role: string;
+        }
+
+        /**
+         * A definition of a matcher that selects endpoints to which the policies should be applied.
+         */
+        export interface EndpointMatcherResponse {
+            /**
+             * The matcher is based on node metadata presented by xDS clients.
+             */
+            metadataLabelMatcher: outputs.networkservices.v1beta1.MetadataLabelMatcherResponse;
+        }
+
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+         */
+        export interface ExprResponse {
+            /**
+             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description: string;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax.
+             */
+            expression: string;
+            /**
+             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location: string;
+            /**
+             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title: string;
+        }
+
+        /**
+         * The matcher that is based on node metadata presented by xDS clients.
+         */
+        export interface MetadataLabelMatcherResponse {
+            /**
+             * Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+             */
+            metadataLabelMatchCriteria: string;
+            /**
+             * The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
+             */
+            metadataLabels: outputs.networkservices.v1beta1.MetadataLabelsResponse[];
+        }
+
+        /**
+         * Defines a name-pair value for a single label.
+         */
+        export interface MetadataLabelsResponse {
+            /**
+             * Label name presented as key in xDS Node Metadata.
+             */
+            labelName: string;
+            /**
+             * Label value presented as value corresponding to the above key, in xDS Node Metadata.
+             */
+            labelValue: string;
+        }
+
+        /**
+         * Specification of a port-based selector.
+         */
+        export interface TrafficPortSelectorResponse {
+            /**
+             * Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+             */
+            ports: string[];
+        }
+
+    }
+}
+
 export namespace notebooks {
     export namespace v1 {
         /**
@@ -50275,6 +52343,16 @@ export namespace notebooks {
              * The tag of the container image. If not specified, this defaults to the latest tag.
              */
             tag: string;
+        }
+
+        /**
+         * Parameters used in Dataproc JobType executions.
+         */
+        export interface DataprocParametersResponse {
+            /**
+             * URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+             */
+            cluster: string;
         }
 
         /**
@@ -50396,9 +52474,17 @@ export namespace notebooks {
              */
             containerImageUri: string;
             /**
+             * Parameters used in Dataproc JobType executions.
+             */
+            dataprocParameters: outputs.notebooks.v1.DataprocParametersResponse;
+            /**
              * Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
              */
             inputNotebookFile: string;
+            /**
+             * The type of Job to be used on this execution.
+             */
+            jobType: string;
             /**
              * Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
              */
@@ -50458,7 +52544,7 @@ export namespace notebooks {
         }
 
         /**
-         * [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+         * Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
          */
         export interface LocalDiskInitializeParamsResponse {
             /**
@@ -50488,15 +52574,15 @@ export namespace notebooks {
          */
         export interface LocalDiskResponse {
             /**
-             * Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+             * Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
              */
             autoDelete: boolean;
             /**
-             * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+             * Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
              */
             boot: boolean;
             /**
-             * Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+             * Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
              */
             deviceName: string;
             /**
@@ -50508,7 +52594,7 @@ export namespace notebooks {
              */
             index: number;
             /**
-             * Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+             * Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
              */
             initializeParams: outputs.notebooks.v1.LocalDiskInitializeParamsResponse;
             /**
@@ -50588,11 +52674,11 @@ export namespace notebooks {
         }
 
         /**
-         * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+         * Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
          */
         export interface RuntimeGuestOsFeatureResponse {
             /**
-             * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+             * The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
              */
             type: string;
         }
@@ -50608,7 +52694,7 @@ export namespace notebooks {
         }
 
         /**
-         * A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+         * A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
          */
         export interface RuntimeShieldedInstanceConfigResponse {
             /**
@@ -50626,7 +52712,7 @@ export namespace notebooks {
         }
 
         /**
-         * Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+         * Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
          */
         export interface RuntimeSoftwareConfigResponse {
             /**
@@ -51325,7 +53411,21 @@ export namespace osconfig {
         }
 
         /**
-         * Message to represent the filters to select VMs for an assignment
+         * VM inventory details.
+         */
+        export interface OSPolicyAssignmentInstanceFilterInventoryResponse {
+            /**
+             * The OS short name
+             */
+            osShortName: string;
+            /**
+             * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+             */
+            osVersion: string;
+        }
+
+        /**
+         * Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
          */
         export interface OSPolicyAssignmentInstanceFilterResponse {
             /**
@@ -51333,7 +53433,7 @@ export namespace osconfig {
              */
             all: boolean;
             /**
-             * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM. This filter is applied last in the filtering chain and therefore a VM is guaranteed to be excluded if it satisfies one of the below label sets.
+             * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
              */
             exclusionLabels: outputs.osconfig.v1alpha.OSPolicyAssignmentLabelSetResponse[];
             /**
@@ -51341,7 +53441,11 @@ export namespace osconfig {
              */
             inclusionLabels: outputs.osconfig.v1alpha.OSPolicyAssignmentLabelSetResponse[];
             /**
-             * A VM is included if it's OS short name matches with any of the values provided in this list.
+             * List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+             */
+            inventories: outputs.osconfig.v1alpha.OSPolicyAssignmentInstanceFilterInventoryResponse[];
+            /**
+             * A VM is selected if it's OS short name matches with any of the values provided in this list.
              */
             osShortNames: string[];
         }
@@ -51371,7 +53475,21 @@ export namespace osconfig {
         }
 
         /**
-         * The `OSFilter` is used to specify the OS filtering criteria for the resource group.
+         * Filtering criteria to select VMs based on inventory details.
+         */
+        export interface OSPolicyInventoryFilterResponse {
+            /**
+             * The OS short name
+             */
+            osShortName: string;
+            /**
+             * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+             */
+            osVersion: string;
+        }
+
+        /**
+         * Filtering criteria to select VMs based on OS details.
          */
         export interface OSPolicyOSFilterResponse {
             /**
@@ -51508,6 +53626,10 @@ export namespace osconfig {
          * Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
          */
         export interface OSPolicyResourceGroupResponse {
+            /**
+             * List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+             */
+            inventoryFilters: outputs.osconfig.v1alpha.OSPolicyInventoryFilterResponse[];
             /**
              * Used to specify the OS filter for a resource group
              */
@@ -51779,7 +53901,6 @@ export namespace osconfig {
              */
             resourceGroups: outputs.osconfig.v1alpha.OSPolicyResourceGroupResponse[];
         }
-
     }
 
     export namespace v1beta {
@@ -53258,7 +55379,7 @@ export namespace privateca {
          */
         export interface SubordinateConfigResponse {
             /**
-             * This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
+             * This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
              */
             certificateAuthority: string;
             /**
@@ -53894,7 +56015,7 @@ export namespace privateca {
          */
         export interface SubordinateConfigResponse {
             /**
-             * This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
+             * This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
              */
             certificateAuthority: string;
             /**
@@ -54756,6 +56877,48 @@ export namespace remotebuildexecution {
 export namespace retail {
     export namespace v2 {
         /**
+         * An intended audience of the Product for whom it's sold.
+         */
+        export interface GoogleCloudRetailV2AudienceResponse {
+            /**
+             * The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
+             */
+            ageGroups: string[];
+            /**
+             * The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
+             */
+            genders: string[];
+        }
+
+        /**
+         * The color information of a Product.
+         */
+        export interface GoogleCloudRetailV2ColorInfoResponse {
+            /**
+             * The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorFamilies: string[];
+            /**
+             * The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colors: string[];
+        }
+
+        /**
+         * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
+         */
+        export interface GoogleCloudRetailV2FulfillmentInfoResponse {
+            /**
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            placeIds: string[];
+            /**
+             * The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
+             */
+            type: string;
+        }
+
+        /**
          * Product thumbnail/detail image.
          */
         export interface GoogleCloudRetailV2ImageResponse {
@@ -54774,6 +56937,42 @@ export namespace retail {
         }
 
         /**
+         * A floating point interval.
+         */
+        export interface GoogleCloudRetailV2IntervalResponse {
+            /**
+             * Exclusive upper bound.
+             */
+            exclusiveMaximum: number;
+            /**
+             * Exclusive lower bound.
+             */
+            exclusiveMinimum: number;
+            /**
+             * Inclusive upper bound.
+             */
+            maximum: number;
+            /**
+             * Inclusive lower bound.
+             */
+            minimum: number;
+        }
+
+        /**
+         * The price range of all variant Product having the same Product.primary_product_id.
+         */
+        export interface GoogleCloudRetailV2PriceInfoPriceRangeResponse {
+            /**
+             * The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
+             */
+            originalPrice: outputs.retail.v2.GoogleCloudRetailV2IntervalResponse;
+            /**
+             * The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
+             */
+            price: outputs.retail.v2.GoogleCloudRetailV2IntervalResponse;
+        }
+
+        /**
          * The price information of a Product.
          */
         export interface GoogleCloudRetailV2PriceInfoResponse {
@@ -54782,7 +56981,7 @@ export namespace retail {
              */
             cost: number;
             /**
-             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
              */
             currencyCode: string;
             /**
@@ -54793,11 +56992,227 @@ export namespace retail {
              * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
              */
             price: number;
+            /**
+             * The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceEffectiveTime: string;
+            /**
+             * The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceExpireTime: string;
+            /**
+             * The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            priceRange: outputs.retail.v2.GoogleCloudRetailV2PriceInfoPriceRangeResponse;
+        }
+
+        /**
+         * Product captures all metadata information of items to be recommended or searched.
+         */
+        export interface GoogleCloudRetailV2ProductResponse {
+            /**
+             * Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+             */
+            attributes: {[key: string]: string};
+            /**
+             * The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
+             */
+            audience: outputs.retail.v2.GoogleCloudRetailV2AudienceResponse;
+            /**
+             * The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
+             */
+            availability: string;
+            /**
+             * The available quantity of the item.
+             */
+            availableQuantity: number;
+            /**
+             * The timestamp when this Product becomes available for SearchService.Search.
+             */
+            availableTime: string;
+            /**
+             * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+             */
+            brands: string[];
+            /**
+             * Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+             */
+            categories: string[];
+            /**
+             * The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+             */
+            collectionMemberIds: string[];
+            /**
+             * The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorInfo: outputs.retail.v2.GoogleCloudRetailV2ColorInfoResponse;
+            /**
+             * The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+             */
+            conditions: string[];
+            /**
+             * Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
+             */
+            description: string;
+            /**
+             * The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+             */
+            expireTime: string;
+            /**
+             * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            fulfillmentInfo: outputs.retail.v2.GoogleCloudRetailV2FulfillmentInfoResponse[];
+            /**
+             * The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+             */
+            gtin: string;
+            /**
+             * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             */
+            images: outputs.retail.v2.GoogleCloudRetailV2ImageResponse[];
+            /**
+             * Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+             */
+            languageCode: string;
+            /**
+             * The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
+             */
+            materials: string[];
+            /**
+             * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+             */
+            name: string;
+            /**
+             * The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
+             */
+            patterns: string[];
+            /**
+             * Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+             */
+            priceInfo: outputs.retail.v2.GoogleCloudRetailV2PriceInfoResponse;
+            /**
+             * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+             */
+            primaryProductId: string;
+            /**
+             * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+             */
+            promotions: outputs.retail.v2.GoogleCloudRetailV2PromotionResponse[];
+            /**
+             * The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
+             */
+            publishTime: string;
+            /**
+             * The rating of this product.
+             */
+            rating: outputs.retail.v2.GoogleCloudRetailV2RatingResponse;
+            /**
+             * Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
+             */
+            retrievableFields: string;
+            /**
+             * The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
+             */
+            sizes: string[];
+            /**
+             * Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
+             */
+            tags: string[];
+            /**
+             * Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+             */
+            title: string;
+            /**
+             * Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+             */
+            ttl: string;
+            /**
+             * Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
+             */
+            type: string;
+            /**
+             * Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
+             */
+            uri: string;
+            /**
+             * Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            variants: outputs.retail.v2.GoogleCloudRetailV2ProductResponse[];
+        }
+
+        /**
+         * Promotion information.
+         */
+        export interface GoogleCloudRetailV2PromotionResponse {
+            /**
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             */
+            promotionId: string;
+        }
+
+        /**
+         * The rating of a Product.
+         */
+        export interface GoogleCloudRetailV2RatingResponse {
+            /**
+             * The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            averageRating: number;
+            /**
+             * The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            ratingCount: number;
+            /**
+             * List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
+             */
+            ratingHistogram: number[];
         }
 
     }
 
     export namespace v2alpha {
+        /**
+         * An intended audience of the Product for whom it's sold.
+         */
+        export interface GoogleCloudRetailV2alphaAudienceResponse {
+            /**
+             * The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
+             */
+            ageGroups: string[];
+            /**
+             * The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
+             */
+            genders: string[];
+        }
+
+        /**
+         * The color information of a Product.
+         */
+        export interface GoogleCloudRetailV2alphaColorInfoResponse {
+            /**
+             * The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorFamilies: string[];
+            /**
+             * The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colors: string[];
+        }
+
+        /**
+         * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
+         */
+        export interface GoogleCloudRetailV2alphaFulfillmentInfoResponse {
+            /**
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            placeIds: string[];
+            /**
+             * The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
+             */
+            type: string;
+        }
+
         /**
          * Product thumbnail/detail image.
          */
@@ -54817,6 +57232,42 @@ export namespace retail {
         }
 
         /**
+         * A floating point interval.
+         */
+        export interface GoogleCloudRetailV2alphaIntervalResponse {
+            /**
+             * Exclusive upper bound.
+             */
+            exclusiveMaximum: number;
+            /**
+             * Exclusive lower bound.
+             */
+            exclusiveMinimum: number;
+            /**
+             * Inclusive upper bound.
+             */
+            maximum: number;
+            /**
+             * Inclusive lower bound.
+             */
+            minimum: number;
+        }
+
+        /**
+         * The price range of all variant Product having the same Product.primary_product_id.
+         */
+        export interface GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse {
+            /**
+             * The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
+             */
+            originalPrice: outputs.retail.v2alpha.GoogleCloudRetailV2alphaIntervalResponse;
+            /**
+             * The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
+             */
+            price: outputs.retail.v2alpha.GoogleCloudRetailV2alphaIntervalResponse;
+        }
+
+        /**
          * The price information of a Product.
          */
         export interface GoogleCloudRetailV2alphaPriceInfoResponse {
@@ -54825,7 +57276,7 @@ export namespace retail {
              */
             cost: number;
             /**
-             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
              */
             currencyCode: string;
             /**
@@ -54836,11 +57287,227 @@ export namespace retail {
              * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
              */
             price: number;
+            /**
+             * The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceEffectiveTime: string;
+            /**
+             * The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceExpireTime: string;
+            /**
+             * The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            priceRange: outputs.retail.v2alpha.GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse;
+        }
+
+        /**
+         * Product captures all metadata information of items to be recommended or searched.
+         */
+        export interface GoogleCloudRetailV2alphaProductResponse {
+            /**
+             * Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+             */
+            attributes: {[key: string]: string};
+            /**
+             * The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
+             */
+            audience: outputs.retail.v2alpha.GoogleCloudRetailV2alphaAudienceResponse;
+            /**
+             * The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
+             */
+            availability: string;
+            /**
+             * The available quantity of the item.
+             */
+            availableQuantity: number;
+            /**
+             * The timestamp when this Product becomes available for SearchService.Search.
+             */
+            availableTime: string;
+            /**
+             * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+             */
+            brands: string[];
+            /**
+             * Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+             */
+            categories: string[];
+            /**
+             * The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+             */
+            collectionMemberIds: string[];
+            /**
+             * The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorInfo: outputs.retail.v2alpha.GoogleCloudRetailV2alphaColorInfoResponse;
+            /**
+             * The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+             */
+            conditions: string[];
+            /**
+             * Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
+             */
+            description: string;
+            /**
+             * The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+             */
+            expireTime: string;
+            /**
+             * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            fulfillmentInfo: outputs.retail.v2alpha.GoogleCloudRetailV2alphaFulfillmentInfoResponse[];
+            /**
+             * The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+             */
+            gtin: string;
+            /**
+             * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             */
+            images: outputs.retail.v2alpha.GoogleCloudRetailV2alphaImageResponse[];
+            /**
+             * Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+             */
+            languageCode: string;
+            /**
+             * The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
+             */
+            materials: string[];
+            /**
+             * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+             */
+            name: string;
+            /**
+             * The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
+             */
+            patterns: string[];
+            /**
+             * Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+             */
+            priceInfo: outputs.retail.v2alpha.GoogleCloudRetailV2alphaPriceInfoResponse;
+            /**
+             * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+             */
+            primaryProductId: string;
+            /**
+             * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+             */
+            promotions: outputs.retail.v2alpha.GoogleCloudRetailV2alphaPromotionResponse[];
+            /**
+             * The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
+             */
+            publishTime: string;
+            /**
+             * The rating of this product.
+             */
+            rating: outputs.retail.v2alpha.GoogleCloudRetailV2alphaRatingResponse;
+            /**
+             * Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
+             */
+            retrievableFields: string;
+            /**
+             * The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
+             */
+            sizes: string[];
+            /**
+             * Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
+             */
+            tags: string[];
+            /**
+             * Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+             */
+            title: string;
+            /**
+             * Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+             */
+            ttl: string;
+            /**
+             * Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
+             */
+            type: string;
+            /**
+             * Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
+             */
+            uri: string;
+            /**
+             * Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            variants: outputs.retail.v2alpha.GoogleCloudRetailV2alphaProductResponse[];
+        }
+
+        /**
+         * Promotion information.
+         */
+        export interface GoogleCloudRetailV2alphaPromotionResponse {
+            /**
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             */
+            promotionId: string;
+        }
+
+        /**
+         * The rating of a Product.
+         */
+        export interface GoogleCloudRetailV2alphaRatingResponse {
+            /**
+             * The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            averageRating: number;
+            /**
+             * The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            ratingCount: number;
+            /**
+             * List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
+             */
+            ratingHistogram: number[];
         }
 
     }
 
     export namespace v2beta {
+        /**
+         * An intended audience of the Product for whom it's sold.
+         */
+        export interface GoogleCloudRetailV2betaAudienceResponse {
+            /**
+             * The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
+             */
+            ageGroups: string[];
+            /**
+             * The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
+             */
+            genders: string[];
+        }
+
+        /**
+         * The color information of a Product.
+         */
+        export interface GoogleCloudRetailV2betaColorInfoResponse {
+            /**
+             * The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorFamilies: string[];
+            /**
+             * The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colors: string[];
+        }
+
+        /**
+         * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
+         */
+        export interface GoogleCloudRetailV2betaFulfillmentInfoResponse {
+            /**
+             * The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            placeIds: string[];
+            /**
+             * The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
+             */
+            type: string;
+        }
+
         /**
          * Product thumbnail/detail image.
          */
@@ -54860,6 +57527,42 @@ export namespace retail {
         }
 
         /**
+         * A floating point interval.
+         */
+        export interface GoogleCloudRetailV2betaIntervalResponse {
+            /**
+             * Exclusive upper bound.
+             */
+            exclusiveMaximum: number;
+            /**
+             * Exclusive lower bound.
+             */
+            exclusiveMinimum: number;
+            /**
+             * Inclusive upper bound.
+             */
+            maximum: number;
+            /**
+             * Inclusive lower bound.
+             */
+            minimum: number;
+        }
+
+        /**
+         * The price range of all variant Product having the same Product.primary_product_id.
+         */
+        export interface GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
+            /**
+             * The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
+             */
+            originalPrice: outputs.retail.v2beta.GoogleCloudRetailV2betaIntervalResponse;
+            /**
+             * The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
+             */
+            price: outputs.retail.v2beta.GoogleCloudRetailV2betaIntervalResponse;
+        }
+
+        /**
          * The price information of a Product.
          */
         export interface GoogleCloudRetailV2betaPriceInfoResponse {
@@ -54868,7 +57571,7 @@ export namespace retail {
              */
             cost: number;
             /**
-             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+             * The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
              */
             currencyCode: string;
             /**
@@ -54879,6 +57582,180 @@ export namespace retail {
              * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
              */
             price: number;
+            /**
+             * The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceEffectiveTime: string;
+            /**
+             * The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
+             */
+            priceExpireTime: string;
+            /**
+             * The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            priceRange: outputs.retail.v2beta.GoogleCloudRetailV2betaPriceInfoPriceRangeResponse;
+        }
+
+        /**
+         * Product captures all metadata information of items to be recommended or searched.
+         */
+        export interface GoogleCloudRetailV2betaProductResponse {
+            /**
+             * Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+             */
+            attributes: {[key: string]: string};
+            /**
+             * The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
+             */
+            audience: outputs.retail.v2beta.GoogleCloudRetailV2betaAudienceResponse;
+            /**
+             * The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
+             */
+            availability: string;
+            /**
+             * The available quantity of the item.
+             */
+            availableQuantity: number;
+            /**
+             * The timestamp when this Product becomes available for SearchService.Search.
+             */
+            availableTime: string;
+            /**
+             * The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
+             */
+            brands: string[];
+            /**
+             * Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+             */
+            categories: string[];
+            /**
+             * The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+             */
+            collectionMemberIds: string[];
+            /**
+             * The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+             */
+            colorInfo: outputs.retail.v2beta.GoogleCloudRetailV2betaColorInfoResponse;
+            /**
+             * The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
+             */
+            conditions: string[];
+            /**
+             * Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
+             */
+            description: string;
+            /**
+             * The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+             */
+            expireTime: string;
+            /**
+             * Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            fulfillmentInfo: outputs.retail.v2beta.GoogleCloudRetailV2betaFulfillmentInfoResponse[];
+            /**
+             * The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+             */
+            gtin: string;
+            /**
+             * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             */
+            images: outputs.retail.v2beta.GoogleCloudRetailV2betaImageResponse[];
+            /**
+             * Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+             */
+            languageCode: string;
+            /**
+             * The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
+             */
+            materials: string[];
+            /**
+             * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
+             */
+            name: string;
+            /**
+             * The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
+             */
+            patterns: string[];
+            /**
+             * Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+             */
+            priceInfo: outputs.retail.v2beta.GoogleCloudRetailV2betaPriceInfoResponse;
+            /**
+             * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+             */
+            primaryProductId: string;
+            /**
+             * The promotions applied to the product. A maximum of 10 values are allowed per Product.
+             */
+            promotions: outputs.retail.v2beta.GoogleCloudRetailV2betaPromotionResponse[];
+            /**
+             * The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
+             */
+            publishTime: string;
+            /**
+             * The rating of this product.
+             */
+            rating: outputs.retail.v2beta.GoogleCloudRetailV2betaRatingResponse;
+            /**
+             * Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
+             */
+            retrievableFields: string;
+            /**
+             * The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
+             */
+            sizes: string[];
+            /**
+             * Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
+             */
+            tags: string[];
+            /**
+             * Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+             */
+            title: string;
+            /**
+             * Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+             */
+            ttl: string;
+            /**
+             * Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
+             */
+            type: string;
+            /**
+             * Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
+             */
+            uri: string;
+            /**
+             * Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
+             */
+            variants: outputs.retail.v2beta.GoogleCloudRetailV2betaProductResponse[];
+        }
+
+        /**
+         * Promotion information.
+         */
+        export interface GoogleCloudRetailV2betaPromotionResponse {
+            /**
+             * ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+             */
+            promotionId: string;
+        }
+
+        /**
+         * The rating of a Product.
+         */
+        export interface GoogleCloudRetailV2betaRatingResponse {
+            /**
+             * The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            averageRating: number;
+            /**
+             * The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+             */
+            ratingCount: number;
+            /**
+             * List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
+             */
+            ratingHistogram: number[];
         }
 
     }
@@ -55241,7 +58118,7 @@ export namespace run {
              */
             status: string;
             /**
-             * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+             * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
              */
             type: string;
         }
@@ -55485,7 +58362,7 @@ export namespace run {
              */
             containerConcurrency: number;
             /**
-             * Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+             * Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
              */
             containers: outputs.run.v1.ContainerResponse[];
             /**
@@ -55493,7 +58370,7 @@ export namespace run {
              */
             serviceAccountName: string;
             /**
-             * TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+             * TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
              */
             timeoutSeconds: number;
             volumes: outputs.run.v1.VolumeResponse[];
@@ -55678,7 +58555,7 @@ export namespace run {
         }
 
         /**
-         * Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+         * VolumeMount describes a mounting of a Volume within a container.
          */
         export interface VolumeMountResponse {
             /**
@@ -55686,7 +58563,7 @@ export namespace run {
              */
             mountPath: string;
             /**
-             * This must match the Name of a Volume.
+             * The name of the volume. There must be a corresponding Volume with the same name.
              */
             name: string;
             /**
@@ -55700,12 +58577,12 @@ export namespace run {
         }
 
         /**
-         * Not supported by Cloud Run Volume represents a named volume in a container.
+         * Volume represents a named volume in a container.
          */
         export interface VolumeResponse {
             configMap: outputs.run.v1.ConfigMapVolumeSourceResponse;
             /**
-             * Volume's name.
+             * Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
              */
             name: string;
             secret: outputs.run.v1.SecretVolumeSourceResponse;
@@ -56059,7 +58936,7 @@ export namespace run {
              */
             status: string;
             /**
-             * Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+             * Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
              */
             type: string;
         }
@@ -56399,7 +59276,7 @@ export namespace run {
         }
 
         /**
-         * Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+         * VolumeMount describes a mounting of a Volume within a container.
          */
         export interface VolumeMountResponse {
             /**
@@ -56407,7 +59284,7 @@ export namespace run {
              */
             mountPath: string;
             /**
-             * This must match the Name of a Volume.
+             * The name of the volume. There must be a corresponding Volume with the same name.
              */
             name: string;
             /**
@@ -56421,12 +59298,12 @@ export namespace run {
         }
 
         /**
-         * Not supported by Cloud Run Volume represents a named volume in a container.
+         * Volume represents a named volume in a container.
          */
         export interface VolumeResponse {
             configMap: outputs.run.v1alpha1.ConfigMapVolumeSourceResponse;
             /**
-             * Volume's name.
+             * Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
              */
             name: string;
             secret: outputs.run.v1alpha1.SecretVolumeSourceResponse;
@@ -57445,7 +60322,7 @@ export namespace servicemanagement {
              */
             deprecationDescription: string;
             /**
-             * The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+             * Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
              */
             description: string;
             /**
@@ -57881,7 +60758,7 @@ export namespace servicemanagement {
              */
             name: string;
             /**
-             * The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+             * The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
              */
             type: string;
         }
@@ -58376,6 +61253,617 @@ export namespace spanner {
 }
 
 export namespace sqladmin {
+    export namespace v1 {
+        /**
+         * An entry for an Access Control list.
+         */
+        export interface AclEntryResponse {
+            /**
+             * The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             */
+            expirationTime: string;
+            /**
+             * This is always **sql#aclEntry**.
+             */
+            kind: string;
+            /**
+             * Optional. A label to identify this entry.
+             */
+            name: string;
+            /**
+             * The allowlisted value for the access control list.
+             */
+            value: string;
+        }
+
+        /**
+         * Database instance backup configuration.
+         */
+        export interface BackupConfigurationResponse {
+            /**
+             * Backup retention settings.
+             */
+            backupRetentionSettings: outputs.sqladmin.v1.BackupRetentionSettingsResponse;
+            /**
+             * (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+             */
+            binaryLogEnabled: boolean;
+            /**
+             * Whether this configuration is enabled.
+             */
+            enabled: boolean;
+            /**
+             * This is always **sql#backupConfiguration**.
+             */
+            kind: string;
+            /**
+             * Location of the backup
+             */
+            location: string;
+            /**
+             * (Postgres only) Whether point in time recovery is enabled.
+             */
+            pointInTimeRecoveryEnabled: boolean;
+            /**
+             * Reserved for future use.
+             */
+            replicationLogArchivingEnabled: boolean;
+            /**
+             * Start time for the daily backup configuration in UTC timezone in the 24 hour format - **HH:MM**.
+             */
+            startTime: string;
+            /**
+             * The number of days of transaction logs we retain for point in time restore, from 1-7.
+             */
+            transactionLogRetentionDays: number;
+        }
+
+        /**
+         * We currently only support backup retention by specifying the number of backups we will retain.
+         */
+        export interface BackupRetentionSettingsResponse {
+            /**
+             * Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+             */
+            retainedBackups: number;
+            /**
+             * The unit that 'retained_backups' represents.
+             */
+            retentionUnit: string;
+        }
+
+        /**
+         * Database flags for Cloud SQL instances.
+         */
+        export interface DatabaseFlagsResponse {
+            /**
+             * The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
+             */
+            name: string;
+            /**
+             * The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+             */
+            value: string;
+        }
+
+        /**
+         * Deny maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
+         */
+        export interface DenyMaintenancePeriodResponse {
+            /**
+             * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+             */
+            endDate: string;
+            /**
+             * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+             */
+            startDate: string;
+            /**
+             * Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+             */
+            time: string;
+        }
+
+        /**
+         * Disk encryption configuration for an instance.
+         */
+        export interface DiskEncryptionConfigurationResponse {
+            /**
+             * This is always **sql#diskEncryptionConfiguration**.
+             */
+            kind: string;
+            /**
+             * Resource name of KMS key for disk encryption
+             */
+            kmsKeyName: string;
+        }
+
+        /**
+         * Disk encryption status for an instance.
+         */
+        export interface DiskEncryptionStatusResponse {
+            /**
+             * This is always **sql#diskEncryptionStatus**.
+             */
+            kind: string;
+            /**
+             * KMS key version used to encrypt the Cloud SQL instance resource
+             */
+            kmsKeyVersionName: string;
+        }
+
+        /**
+         * Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
+         */
+        export interface InsightsConfigResponse {
+            /**
+             * Whether Query Insights feature is enabled.
+             */
+            queryInsightsEnabled: boolean;
+            /**
+             * Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
+             */
+            queryPlansPerMinute: number;
+            /**
+             * Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
+             */
+            queryStringLength: number;
+            /**
+             * Whether Query Insights will record application tags from query when enabled.
+             */
+            recordApplicationTags: boolean;
+            /**
+             * Whether Query Insights will record client address when enabled.
+             */
+            recordClientAddress: boolean;
+        }
+
+        /**
+         * The name and status of the failover replica.
+         */
+        export interface InstanceFailoverReplicaResponse {
+            /**
+             * The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+             */
+            available: boolean;
+            /**
+             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
+             */
+            name: string;
+        }
+
+        /**
+         * Reference to another Cloud SQL instance.
+         */
+        export interface InstanceReferenceResponse {
+            /**
+             * The name of the Cloud SQL instance being referenced. This does not include the project ID.
+             */
+            name: string;
+            /**
+             * The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+             */
+            project: string;
+            /**
+             * The region of the Cloud SQL instance being referenced.
+             */
+            region: string;
+        }
+
+        /**
+         * IP Management configuration.
+         */
+        export interface IpConfigurationResponse {
+            /**
+             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+             */
+            allocatedIpRange: string;
+            /**
+             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+             */
+            authorizedNetworks: outputs.sqladmin.v1.AclEntryResponse[];
+            /**
+             * Whether the instance is assigned a public IP address or not.
+             */
+            ipv4Enabled: boolean;
+            /**
+             * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **&#47;projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
+             */
+            privateNetwork: string;
+            /**
+             * Whether SSL connections over IP are enforced or not.
+             */
+            requireSsl: boolean;
+        }
+
+        /**
+         * Database instance IP Mapping.
+         */
+        export interface IpMappingResponse {
+            /**
+             * The IP address assigned.
+             */
+            ipAddress: string;
+            /**
+             * The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is only available when the IP is scheduled to be retired.
+             */
+            timeToRetire: string;
+            /**
+             * The type of this IP address. A **PRIMARY** address is a public address that can accept incoming connections. A **PRIVATE** address is a private address that can accept incoming connections. An **OUTGOING** address is the source address of connections originating from the instance, if supported.
+             */
+            type: string;
+        }
+
+        /**
+         * Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+         */
+        export interface LocationPreferenceResponse {
+            /**
+             * The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+             */
+            followGaeApplication: string;
+            /**
+             * This is always **sql#locationPreference**.
+             */
+            kind: string;
+            /**
+             * The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+             */
+            secondaryZone: string;
+            /**
+             * The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+             */
+            zone: string;
+        }
+
+        /**
+         * Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
+         */
+        export interface MaintenanceWindowResponse {
+            /**
+             * day of week (1-7), starting on Monday.
+             */
+            day: number;
+            /**
+             * hour of day - 0 to 23.
+             */
+            hour: number;
+            /**
+             * This is always **sql#maintenanceWindow**.
+             */
+            kind: string;
+            /**
+             * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+             */
+            updateTrack: string;
+        }
+
+        /**
+         * Read-replica configuration specific to MySQL databases.
+         */
+        export interface MySqlReplicaConfigurationResponse {
+            /**
+             * PEM representation of the trusted CA's x509 certificate.
+             */
+            caCertificate: string;
+            /**
+             * PEM representation of the replica's x509 certificate.
+             */
+            clientCertificate: string;
+            /**
+             * PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+             */
+            clientKey: string;
+            /**
+             * Seconds to wait between connect retries. MySQL's default is 60 seconds.
+             */
+            connectRetryInterval: number;
+            /**
+             * Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
+             */
+            dumpFilePath: string;
+            /**
+             * This is always **sql#mysqlReplicaConfiguration**.
+             */
+            kind: string;
+            /**
+             * Interval in milliseconds between replication heartbeats.
+             */
+            masterHeartbeatPeriod: string;
+            /**
+             * The password for the replication connection.
+             */
+            password: string;
+            /**
+             * A list of permissible ciphers to use for SSL encryption.
+             */
+            sslCipher: string;
+            /**
+             * The username for the replication connection.
+             */
+            username: string;
+            /**
+             * Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
+             */
+            verifyServerCertificate: boolean;
+        }
+
+        /**
+         * On-premises instance configuration.
+         */
+        export interface OnPremisesConfigurationResponse {
+            /**
+             * PEM representation of the trusted CA's x509 certificate.
+             */
+            caCertificate: string;
+            /**
+             * PEM representation of the replica's x509 certificate.
+             */
+            clientCertificate: string;
+            /**
+             * PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+             */
+            clientKey: string;
+            /**
+             * The dump file to create the Cloud SQL replica.
+             */
+            dumpFilePath: string;
+            /**
+             * The host and port of the on-premises instance in host:port format
+             */
+            hostPort: string;
+            /**
+             * This is always *sql#onPremisesConfiguration*.
+             */
+            kind: string;
+            /**
+             * The password for connecting to on-premises instance.
+             */
+            password: string;
+            /**
+             * The reference to Cloud SQL instance if the source is Cloud SQL.
+             */
+            sourceInstance: outputs.sqladmin.v1.InstanceReferenceResponse;
+            /**
+             * The username for connecting to on-premises instance.
+             */
+            username: string;
+        }
+
+        /**
+         * Database instance operation error.
+         */
+        export interface OperationErrorResponse {
+            /**
+             * Identifies the specific error that occurred.
+             */
+            code: string;
+            /**
+             * This is always **sql#operationError**.
+             */
+            kind: string;
+            /**
+             * Additional information about the error encountered.
+             */
+            message: string;
+        }
+
+        /**
+         * Read-replica configuration for connecting to the primary instance.
+         */
+        export interface ReplicaConfigurationResponse {
+            /**
+             * Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+             */
+            failoverTarget: boolean;
+            /**
+             * This is always *sql#replicaConfiguration*.
+             */
+            kind: string;
+            /**
+             * MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata.The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+             */
+            mysqlReplicaConfiguration: outputs.sqladmin.v1.MySqlReplicaConfigurationResponse;
+        }
+
+        /**
+         * Database instance settings.
+         */
+        export interface SettingsResponse {
+            /**
+             * The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
+             */
+            activationPolicy: string;
+            /**
+             * Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+             */
+            activeDirectoryConfig: outputs.sqladmin.v1.SqlActiveDirectoryConfigResponse;
+            /**
+             * Availability type. Potential values: **ZONAL**: The instance serves data from only one zone. Outages in that zone affect data accessibility. **REGIONAL**: The instance can serve data from more than one zone in a region (it is highly available). For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+             */
+            availabilityType: string;
+            /**
+             * The daily backup configuration for the instance.
+             */
+            backupConfiguration: outputs.sqladmin.v1.BackupConfigurationResponse;
+            /**
+             * The name of server Instance collation.
+             */
+            collation: string;
+            /**
+             * Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+             */
+            crashSafeReplicationEnabled: boolean;
+            /**
+             * The size of data disk, in GB. The data disk size minimum is 10GB.
+             */
+            dataDiskSizeGb: string;
+            /**
+             * The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+             */
+            dataDiskType: string;
+            /**
+             * The database flags passed to the instance at startup.
+             */
+            databaseFlags: outputs.sqladmin.v1.DatabaseFlagsResponse[];
+            /**
+             * Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+             */
+            databaseReplicationEnabled: boolean;
+            /**
+             * Deny maintenance periods
+             */
+            denyMaintenancePeriods: outputs.sqladmin.v1.DenyMaintenancePeriodResponse[];
+            /**
+             * Insights configuration, for now relevant only for Postgres.
+             */
+            insightsConfig: outputs.sqladmin.v1.InsightsConfigResponse;
+            /**
+             * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+             */
+            ipConfiguration: outputs.sqladmin.v1.IpConfigurationResponse;
+            /**
+             * This is always **sql#settings**.
+             */
+            kind: string;
+            /**
+             * The location preference settings. This allows the instance to be located as near as possible to Compute Engine zone for better performance.
+             */
+            locationPreference: outputs.sqladmin.v1.LocationPreferenceResponse;
+            /**
+             * The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+             */
+            maintenanceWindow: outputs.sqladmin.v1.MaintenanceWindowResponse;
+            /**
+             * The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+             */
+            pricingPlan: string;
+            /**
+             * The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+             */
+            settingsVersion: string;
+            /**
+             * Configuration to increase storage size automatically. The default value is true.
+             */
+            storageAutoResize: boolean;
+            /**
+             * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+             */
+            storageAutoResizeLimit: string;
+            /**
+             * The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+             */
+            tier: string;
+            /**
+             * User-provided labels, represented as a dictionary where each label is a single key value pair.
+             */
+            userLabels: {[key: string]: string};
+        }
+
+        /**
+         * Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+         */
+        export interface SqlActiveDirectoryConfigResponse {
+            /**
+             * The name of the domain (e.g., mydomain.com).
+             */
+            domain: string;
+            /**
+             * This is always sql#activeDirectoryConfig.
+             */
+            kind: string;
+        }
+
+        /**
+         * This message wraps up the information written by out-of-disk detection job.
+         */
+        export interface SqlOutOfDiskReportResponse {
+            /**
+             * The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+             */
+            sqlMinRecommendedIncreaseSizeGb: number;
+            /**
+             * This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+             */
+            sqlOutOfDiskState: string;
+        }
+
+        /**
+         * Any scheduled maintenancce for this instance.
+         */
+        export interface SqlScheduledMaintenanceResponse {
+            canDefer: boolean;
+            /**
+             * If the scheduled maintenance can be rescheduled.
+             */
+            canReschedule: boolean;
+            /**
+             * Maintenance cannot be rescheduled to start beyond this deadline.
+             */
+            scheduleDeadlineTime: string;
+            /**
+             * The start time of any upcoming scheduled maintenance for this instance.
+             */
+            startTime: string;
+        }
+
+        /**
+         * Represents a Sql Server database on the Cloud SQL instance.
+         */
+        export interface SqlServerDatabaseDetailsResponse {
+            /**
+             * The version of SQL Server with which the database is to be made compatible
+             */
+            compatibilityLevel: number;
+            /**
+             * The recovery model of a SQL Server database
+             */
+            recoveryModel: string;
+        }
+
+        /**
+         * SslCerts Resource
+         */
+        export interface SslCertResponse {
+            /**
+             * PEM representation.
+             */
+            cert: string;
+            /**
+             * Serial number, as extracted from the certificate.
+             */
+            certSerialNumber: string;
+            /**
+             * User supplied name. Constrained to [a-zA-Z.-_ ]+.
+             */
+            commonName: string;
+            /**
+             * The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+             */
+            createTime: string;
+            /**
+             * The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+             */
+            expirationTime: string;
+            /**
+             * Name of the database instance.
+             */
+            instance: string;
+            /**
+             * This is always sql#sslCert.
+             */
+            kind: string;
+            /**
+             * The URI of this resource.
+             */
+            selfLink: string;
+            /**
+             * Sha1 Fingerprint.
+             */
+            sha1Fingerprint: string;
+        }
+    }
+
     export namespace v1beta4 {
         /**
          * An entry for an Access Control list.
@@ -58460,7 +61948,7 @@ export namespace sqladmin {
          */
         export interface DatabaseFlagsResponse {
             /**
-             * The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+             * The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
              */
             name: string;
             /**
@@ -58524,7 +62012,7 @@ export namespace sqladmin {
              */
             queryInsightsEnabled: boolean;
             /**
-             * Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the database.
+             * Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
              */
             queryPlansPerMinute: number;
             /**
@@ -58542,7 +62030,7 @@ export namespace sqladmin {
         }
 
         /**
-         * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+         * The name and status of the failover replica.
          */
         export interface InstanceFailoverReplicaResponse {
             /**
@@ -58550,15 +62038,37 @@ export namespace sqladmin {
              */
             available: boolean;
             /**
-             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
              */
             name: string;
+        }
+
+        /**
+         * Reference to another Cloud SQL instance.
+         */
+        export interface InstanceReferenceResponse {
+            /**
+             * The name of the Cloud SQL instance being referenced. This does not include the project ID.
+             */
+            name: string;
+            /**
+             * The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
+             */
+            project: string;
+            /**
+             * The region of the Cloud SQL instance being referenced.
+             */
+            region: string;
         }
 
         /**
          * IP Management configuration.
          */
         export interface IpConfigurationResponse {
+            /**
+             * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+             */
+            allocatedIpRange: string;
             /**
              * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
              */
@@ -58722,6 +62232,10 @@ export namespace sqladmin {
              */
             password: string;
             /**
+             * The reference to Cloud SQL instance if the source is Cloud SQL.
+             */
+            sourceInstance: outputs.sqladmin.v1beta4.InstanceReferenceResponse;
+            /**
              * The username for connecting to on-premises instance.
              */
             username: string;
@@ -58816,7 +62330,7 @@ export namespace sqladmin {
              */
             insightsConfig: outputs.sqladmin.v1beta4.InsightsConfigResponse;
             /**
-             * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+             * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
              */
             ipConfiguration: outputs.sqladmin.v1beta4.IpConfigurationResponse;
             /**
@@ -59518,7 +63032,7 @@ export namespace storagetransfer {
              */
             path: string;
             /**
-             * Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+             * The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
              */
             roleArn: string;
         }
@@ -59598,6 +63112,16 @@ export namespace storagetransfer {
         }
 
         /**
+         * Logging configure.
+         */
+        export interface LoggingConfigResponse {
+            /**
+             * Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+             */
+            enableOnpremGcsTransferLogs: boolean;
+        }
+
+        /**
          * Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
          */
         export interface NotificationConfigResponse {
@@ -59643,6 +63167,16 @@ export namespace storagetransfer {
              * If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
              */
             minTimeElapsedSinceLastModification: string;
+        }
+
+        /**
+         * A POSIX filesystem data source or sink.
+         */
+        export interface PosixFilesystemResponse {
+            /**
+             * Root directory path to the filesystem.
+             */
+            rootDirectory: string;
         }
 
         /**
@@ -59740,11 +63274,14 @@ export namespace storagetransfer {
              */
             objectConditions: outputs.storagetransfer.v1.ObjectConditionsResponse;
             /**
+             * A POSIX Filesystem data source.
+             */
+            posixDataSource: outputs.storagetransfer.v1.PosixFilesystemResponse;
+            /**
              * If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
              */
             transferOptions: outputs.storagetransfer.v1.TransferOptionsResponse;
         }
-
     }
 }
 
@@ -59857,7 +63394,7 @@ export namespace testing {
         }
 
         /**
-         * A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+         * A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
          */
         export interface AndroidRoboTestResponse {
             /**
@@ -60147,7 +63684,7 @@ export namespace testing {
              */
             networkProfile: string;
             /**
-             * List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+             * List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
              */
             pullDirectories: outputs.testing.v1.IosDeviceFileResponse[];
             /**
@@ -61994,7 +65531,7 @@ export namespace transcoder {
              */
             bPyramid: boolean;
             /**
-             * The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+             * The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
              */
             bitrateBps: number;
             /**

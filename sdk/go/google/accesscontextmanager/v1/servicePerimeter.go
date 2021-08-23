@@ -17,7 +17,7 @@ type ServicePerimeter struct {
 
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType pulumi.StringOutput `pulumi:"perimeterType"`
@@ -76,7 +76,7 @@ type servicePerimeterArgs struct {
 	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
-	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
 	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType *ServicePerimeterPerimeterType `pulumi:"perimeterType"`
@@ -95,7 +95,7 @@ type ServicePerimeterArgs struct {
 	AccessPolicyId pulumi.StringInput
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
-	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
 	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType ServicePerimeterPerimeterTypePtrInput

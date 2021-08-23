@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_forwarding_rules=None, consumer_reject_lists=None, creation_timestamp=None, description=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -27,9 +27,6 @@ class GetServiceAttachmentResult:
         if consumer_accept_lists and not isinstance(consumer_accept_lists, list):
             raise TypeError("Expected argument 'consumer_accept_lists' to be a list")
         pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
-        if consumer_forwarding_rules and not isinstance(consumer_forwarding_rules, list):
-            raise TypeError("Expected argument 'consumer_forwarding_rules' to be a list")
-        pulumi.set(__self__, "consumer_forwarding_rules", consumer_forwarding_rules)
         if consumer_reject_lists and not isinstance(consumer_reject_lists, list):
             raise TypeError("Expected argument 'consumer_reject_lists' to be a list")
         pulumi.set(__self__, "consumer_reject_lists", consumer_reject_lists)
@@ -93,14 +90,6 @@ class GetServiceAttachmentResult:
         Projects that are allowed to connect to this service attachment.
         """
         return pulumi.get(self, "consumer_accept_lists")
-
-    @property
-    @pulumi.getter(name="consumerForwardingRules")
-    def consumer_forwarding_rules(self) -> Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']:
-        """
-        An array of forwarding rules for all the consumers connected to this service attachment.
-        """
-        return pulumi.get(self, "consumer_forwarding_rules")
 
     @property
     @pulumi.getter(name="consumerRejectLists")
@@ -216,7 +205,6 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             connected_endpoints=self.connected_endpoints,
             connection_preference=self.connection_preference,
             consumer_accept_lists=self.consumer_accept_lists,
-            consumer_forwarding_rules=self.consumer_forwarding_rules,
             consumer_reject_lists=self.consumer_reject_lists,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
@@ -253,7 +241,6 @@ def get_service_attachment(project: Optional[str] = None,
         connected_endpoints=__ret__.connected_endpoints,
         connection_preference=__ret__.connection_preference,
         consumer_accept_lists=__ret__.consumer_accept_lists,
-        consumer_forwarding_rules=__ret__.consumer_forwarding_rules,
         consumer_reject_lists=__ret__.consumer_reject_lists,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,

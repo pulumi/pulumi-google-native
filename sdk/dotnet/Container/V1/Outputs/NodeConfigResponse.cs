@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Enable or disable gvnic in the node pool.
+        /// </summary>
+        public readonly Outputs.VirtualNICResponse Gvnic;
+        /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         /// </summary>
         public readonly string ImageType;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string diskType,
 
+            Outputs.VirtualNICResponse gvnic,
+
             string imageType,
 
             Outputs.NodeKubeletConfigResponse kubeletConfig,
@@ -152,6 +158,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;

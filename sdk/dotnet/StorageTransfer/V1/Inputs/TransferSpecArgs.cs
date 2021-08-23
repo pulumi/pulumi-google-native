@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Inputs.ObjectConditionsArgs>? ObjectConditions { get; set; }
 
         /// <summary>
+        /// A POSIX Filesystem data source.
+        /// </summary>
+        [Input("posixDataSource")]
+        public Input<Inputs.PosixFilesystemArgs>? PosixDataSource { get; set; }
+
+        /// <summary>
         /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         /// </summary>
         [Input("transferOptions")]

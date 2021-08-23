@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly Outputs.RuntimeMetricsResponse Metrics;
         /// <summary>
-        /// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+        /// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         /// </summary>
         public readonly string Name;
         /// <summary>

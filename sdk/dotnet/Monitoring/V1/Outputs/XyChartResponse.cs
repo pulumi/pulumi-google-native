@@ -34,6 +34,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.AxisResponse XAxis;
         /// <summary>
+        /// The properties applied to the Y2 axis.
+        /// </summary>
+        public readonly Outputs.AxisResponse Y2Axis;
+        /// <summary>
         /// The properties applied to the Y axis.
         /// </summary>
         public readonly Outputs.AxisResponse YAxis;
@@ -50,6 +54,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.AxisResponse xAxis,
 
+            Outputs.AxisResponse y2Axis,
+
             Outputs.AxisResponse yAxis)
         {
             ChartOptions = chartOptions;
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
             Thresholds = thresholds;
             TimeshiftDuration = timeshiftDuration;
             XAxis = xAxis;
+            Y2Axis = y2Axis;
             YAxis = yAxis;
         }
     }

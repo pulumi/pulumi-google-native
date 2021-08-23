@@ -47,6 +47,14 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        /// </summary>
+        public readonly string DestroyScheduledDuration;
+        /// <summary>
+        /// Immutable. Whether this key may contain imported versions only.
+        /// </summary>
+        public readonly bool ImportOnly;
+        /// <summary>
         /// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -79,6 +87,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         private GetCryptoKeyResult(
             string createTime,
 
+            string destroyScheduledDuration,
+
+            bool importOnly,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -94,6 +106,8 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
             Outputs.CryptoKeyVersionTemplateResponse versionTemplate)
         {
             CreateTime = createTime;
+            DestroyScheduledDuration = destroyScheduledDuration;
+            ImportOnly = importOnly;
             Labels = labels;
             Name = name;
             NextRotationTime = nextRotationTime;

@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// </summary>
+        [Output("topicMessageRetentionDuration")]
+        public Output<string> TopicMessageRetentionDuration { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Subscription resource with the given unique name, arguments, and options.

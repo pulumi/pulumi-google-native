@@ -58,6 +58,26 @@ export const AcceleratorConfigType = {
  */
 export type AcceleratorConfigType = (typeof AcceleratorConfigType)[keyof typeof AcceleratorConfigType];
 
+export const ExecutionTemplateJobType = {
+    /**
+     * No type specified.
+     */
+    JobTypeUnspecified: "JOB_TYPE_UNSPECIFIED",
+    /**
+     * Custom Job in `aiplatform.googleapis.com`. Default value for an execution.
+     */
+    VertexAi: "VERTEX_AI",
+    /**
+     * Run execution on a cluster with Dataproc as a job. https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
+     */
+    Dataproc: "DATAPROC",
+} as const;
+
+/**
+ * The type of Job to be used on this execution.
+ */
+export type ExecutionTemplateJobType = (typeof ExecutionTemplateJobType)[keyof typeof ExecutionTemplateJobType];
+
 export const InstanceBootDiskType = {
     /**
      * Disk type not set.

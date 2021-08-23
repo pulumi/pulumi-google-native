@@ -42,6 +42,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Integer license codes indicating which licenses are attached to this disk.
+        /// </summary>
+        public readonly ImmutableArray<string> LicenseCodes;
+        /// <summary>
+        /// A list of publicly visible licenses. Reserved for Google's use.
+        /// </summary>
+        public readonly ImmutableArray<string> Licenses;
+        /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
         public readonly bool MultiWriter;
@@ -94,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableDictionary<string, string> labels,
 
+            ImmutableArray<string> licenseCodes,
+
+            ImmutableArray<string> licenses,
+
             bool multiWriter,
 
             string onUpdateAction,
@@ -119,6 +131,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             GuestOsFeatures = guestOsFeatures;
             Interface = @interface;
             Labels = labels;
+            LicenseCodes = licenseCodes;
+            Licenses = licenses;
             MultiWriter = multiWriter;
             OnUpdateAction = onUpdateAction;
             ProvisionedIops = provisionedIops;

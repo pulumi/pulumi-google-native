@@ -1151,7 +1151,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
         :param str reason: Optional. One-word CamelCase reason for the condition's last transition.
         :param str severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
         :param str status: Status of the condition, one of True, False, Unknown.
-        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -1204,7 +1204,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -1925,9 +1925,9 @@ class RevisionSpecResponse(dict):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
         :param int container_concurrency: Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
-        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         :param str service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         """
         pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
@@ -1947,7 +1947,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter
     def containers(self) -> Sequence['outputs.ContainerResponse']:
         """
-        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         """
         return pulumi.get(self, "containers")
 
@@ -1963,7 +1963,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
         """
-        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2528,7 +2528,7 @@ class TrafficTargetResponse(dict):
 @pulumi.output_type
 class VolumeMountResponse(dict):
     """
-    Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+    VolumeMount describes a mounting of a Volume within a container.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2557,9 +2557,9 @@ class VolumeMountResponse(dict):
                  read_only: bool,
                  sub_path: str):
         """
-        Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+        VolumeMount describes a mounting of a Volume within a container.
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param str name: This must match the Name of a Volume.
+        :param str name: The name of the volume. There must be a corresponding Volume with the same name.
         :param bool read_only: (Optional) Only true is accepted. Defaults to true.
         :param str sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
@@ -2580,7 +2580,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        This must match the Name of a Volume.
+        The name of the volume. There must be a corresponding Volume with the same name.
         """
         return pulumi.get(self, "name")
 
@@ -2604,7 +2604,7 @@ class VolumeMountResponse(dict):
 @pulumi.output_type
 class VolumeResponse(dict):
     """
-    Not supported by Cloud Run Volume represents a named volume in a container.
+    Volume represents a named volume in a container.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2628,8 +2628,8 @@ class VolumeResponse(dict):
                  name: str,
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
-        Not supported by Cloud Run Volume represents a named volume in a container.
-        :param str name: Volume's name.
+        Volume represents a named volume in a container.
+        :param str name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         pulumi.set(__self__, "config_map", config_map)
         pulumi.set(__self__, "name", name)
@@ -2644,7 +2644,7 @@ class VolumeResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Volume's name.
+        Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         return pulumi.get(self, "name")
 

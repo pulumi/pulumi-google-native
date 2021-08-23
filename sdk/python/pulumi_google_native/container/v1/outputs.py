@@ -37,17 +37,22 @@ __all__ = [
     'KubernetesDashboardResponse',
     'LegacyAbacResponse',
     'LinuxNodeConfigResponse',
+    'LoggingComponentConfigResponse',
+    'LoggingConfigResponse',
     'MaintenancePolicyResponse',
     'MaintenanceWindowResponse',
     'MasterAuthResponse',
     'MasterAuthorizedNetworksConfigResponse',
     'MaxPodsConstraintResponse',
+    'MonitoringComponentConfigResponse',
+    'MonitoringConfigResponse',
     'NetworkConfigResponse',
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
     'NodeConfigResponse',
     'NodeKubeletConfigResponse',
     'NodeManagementResponse',
+    'NodeNetworkConfigResponse',
     'NodePoolAutoscalingResponse',
     'NodePoolResponse',
     'NodeTaintResponse',
@@ -67,6 +72,7 @@ __all__ = [
     'TimeWindowResponse',
     'UpgradeSettingsResponse',
     'VerticalPodAutoscalingResponse',
+    'VirtualNICResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
 ]
@@ -743,6 +749,8 @@ class ClusterAutoscalingResponse(dict):
             suggest = "autoprovisioning_locations"
         elif key == "autoprovisioningNodePoolDefaults":
             suggest = "autoprovisioning_node_pool_defaults"
+        elif key == "autoscalingProfile":
+            suggest = "autoscaling_profile"
         elif key == "enableNodeAutoprovisioning":
             suggest = "enable_node_autoprovisioning"
         elif key == "resourceLimits":
@@ -762,17 +770,20 @@ class ClusterAutoscalingResponse(dict):
     def __init__(__self__, *,
                  autoprovisioning_locations: Sequence[str],
                  autoprovisioning_node_pool_defaults: 'outputs.AutoprovisioningNodePoolDefaultsResponse',
+                 autoscaling_profile: str,
                  enable_node_autoprovisioning: bool,
                  resource_limits: Sequence['outputs.ResourceLimitResponse']):
         """
         ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs.
         :param Sequence[str] autoprovisioning_locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
         :param 'AutoprovisioningNodePoolDefaultsResponse' autoprovisioning_node_pool_defaults: AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
+        :param str autoscaling_profile: Defines autoscaling behaviour.
         :param bool enable_node_autoprovisioning: Enables automatic node pool creation and deletion.
         :param Sequence['ResourceLimitResponse'] resource_limits: Contains global constraints regarding minimum and maximum amount of resources in the cluster.
         """
         pulumi.set(__self__, "autoprovisioning_locations", autoprovisioning_locations)
         pulumi.set(__self__, "autoprovisioning_node_pool_defaults", autoprovisioning_node_pool_defaults)
+        pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
         pulumi.set(__self__, "enable_node_autoprovisioning", enable_node_autoprovisioning)
         pulumi.set(__self__, "resource_limits", resource_limits)
 
@@ -791,6 +802,14 @@ class ClusterAutoscalingResponse(dict):
         AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
         """
         return pulumi.get(self, "autoprovisioning_node_pool_defaults")
+
+    @property
+    @pulumi.getter(name="autoscalingProfile")
+    def autoscaling_profile(self) -> str:
+        """
+        Defines autoscaling behaviour.
+        """
+        return pulumi.get(self, "autoscaling_profile")
 
     @property
     @pulumi.getter(name="enableNodeAutoprovisioning")
@@ -1308,6 +1327,84 @@ class LinuxNodeConfigResponse(dict):
 
 
 @pulumi.output_type
+class LoggingComponentConfigResponse(dict):
+    """
+    LoggingComponentConfig is cluster logging component configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoggingComponentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoggingComponentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoggingComponentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        """
+        LoggingComponentConfig is cluster logging component configuration.
+        :param Sequence[str] enable_components: Select components to collect logs. An empty set would disable all logging.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        """
+        Select components to collect logs. An empty set would disable all logging.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
+class LoggingConfigResponse(dict):
+    """
+    LoggingConfig is cluster logging configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentConfig":
+            suggest = "component_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_config: 'outputs.LoggingComponentConfigResponse'):
+        """
+        LoggingConfig is cluster logging configuration.
+        :param 'LoggingComponentConfigResponse' component_config: Logging components configuration
+        """
+        pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> 'outputs.LoggingComponentConfigResponse':
+        """
+        Logging components configuration
+        """
+        return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
 class MaintenancePolicyResponse(dict):
     """
     MaintenancePolicy defines the maintenance policy to be used for the cluster.
@@ -1612,6 +1709,84 @@ class MaxPodsConstraintResponse(dict):
 
 
 @pulumi.output_type
+class MonitoringComponentConfigResponse(dict):
+    """
+    MonitoringComponentConfig is cluster monitoring component configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableComponents":
+            suggest = "enable_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringComponentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringComponentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringComponentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_components: Sequence[str]):
+        """
+        MonitoringComponentConfig is cluster monitoring component configuration.
+        :param Sequence[str] enable_components: Select components to collect metrics. An empty set would disable all monitoring.
+        """
+        pulumi.set(__self__, "enable_components", enable_components)
+
+    @property
+    @pulumi.getter(name="enableComponents")
+    def enable_components(self) -> Sequence[str]:
+        """
+        Select components to collect metrics. An empty set would disable all monitoring.
+        """
+        return pulumi.get(self, "enable_components")
+
+
+@pulumi.output_type
+class MonitoringConfigResponse(dict):
+    """
+    MonitoringConfig is cluster monitoring configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentConfig":
+            suggest = "component_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_config: 'outputs.MonitoringComponentConfigResponse'):
+        """
+        MonitoringConfig is cluster monitoring configuration.
+        :param 'MonitoringComponentConfigResponse' component_config: Monitoring components configuration
+        """
+        pulumi.set(__self__, "component_config", component_config)
+
+    @property
+    @pulumi.getter(name="componentConfig")
+    def component_config(self) -> 'outputs.MonitoringComponentConfigResponse':
+        """
+        Monitoring components configuration
+        """
+        return pulumi.get(self, "component_config")
+
+
+@pulumi.output_type
 class NetworkConfigResponse(dict):
     """
     NetworkConfig reports the relative names of network & subnetwork.
@@ -1836,6 +2011,7 @@ class NodeConfigResponse(dict):
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
+                 gvnic: 'outputs.VirtualNICResponse',
                  image_type: str,
                  kubelet_config: 'outputs.NodeKubeletConfigResponse',
                  labels: Mapping[str, str],
@@ -1860,6 +2036,7 @@ class NodeConfigResponse(dict):
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param 'VirtualNICResponse' gvnic: Enable or disable gvnic in the node pool.
         :param str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param 'NodeKubeletConfigResponse' kubelet_config: Node kubelet configs.
         :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -1883,6 +2060,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "gvnic", gvnic)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_config", kubelet_config)
         pulumi.set(__self__, "labels", labels)
@@ -1933,6 +2111,14 @@ class NodeConfigResponse(dict):
         Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def gvnic(self) -> 'outputs.VirtualNICResponse':
+        """
+        Enable or disable gvnic in the node pool.
+        """
+        return pulumi.get(self, "gvnic")
 
     @property
     @pulumi.getter(name="imageType")
@@ -2210,6 +2396,71 @@ class NodeManagementResponse(dict):
 
 
 @pulumi.output_type
+class NodeNetworkConfigResponse(dict):
+    """
+    Parameters for node pool-level network config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createPodRange":
+            suggest = "create_pod_range"
+        elif key == "podIpv4CidrBlock":
+            suggest = "pod_ipv4_cidr_block"
+        elif key == "podRange":
+            suggest = "pod_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeNetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeNetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeNetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_pod_range: bool,
+                 pod_ipv4_cidr_block: str,
+                 pod_range: str):
+        """
+        Parameters for node pool-level network config.
+        :param bool create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        pulumi.set(__self__, "create_pod_range", create_pod_range)
+        pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+        pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> bool:
+        """
+        Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> str:
+        """
+        The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> str:
+        """
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        """
+        return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
 class NodePoolAutoscalingResponse(dict):
     """
     NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -2297,6 +2548,8 @@ class NodePoolResponse(dict):
             suggest = "instance_group_urls"
         elif key == "maxPodsConstraint":
             suggest = "max_pods_constraint"
+        elif key == "networkConfig":
+            suggest = "network_config"
         elif key == "podIpv4CidrSize":
             suggest = "pod_ipv4_cidr_size"
         elif key == "selfLink":
@@ -2325,6 +2578,7 @@ class NodePoolResponse(dict):
                  management: 'outputs.NodeManagementResponse',
                  max_pods_constraint: 'outputs.MaxPodsConstraintResponse',
                  name: str,
+                 network_config: 'outputs.NodeNetworkConfigResponse',
                  pod_ipv4_cidr_size: int,
                  self_link: str,
                  status: str,
@@ -2341,6 +2595,7 @@ class NodePoolResponse(dict):
         :param 'NodeManagementResponse' management: NodeManagement configuration for this NodePool.
         :param 'MaxPodsConstraintResponse' max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param str name: The name of the node pool.
+        :param 'NodeNetworkConfigResponse' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
@@ -2356,6 +2611,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "management", management)
         pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
@@ -2433,6 +2689,14 @@ class NodePoolResponse(dict):
         The name of the node pool.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NodeNetworkConfigResponse':
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter(name="podIpv4CidrSize")
@@ -3223,6 +3487,28 @@ class VerticalPodAutoscalingResponse(dict):
     def enabled(self) -> bool:
         """
         Enables vertical pod autoscaling.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class VirtualNICResponse(dict):
+    """
+    Configuration of gVNIC feature.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration of gVNIC feature.
+        :param bool enabled: Whether gVNIC features are enabled in the node pool.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether gVNIC features are enabled in the node pool.
         """
         return pulumi.get(self, "enabled")
 

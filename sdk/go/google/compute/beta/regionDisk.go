@@ -87,6 +87,8 @@ type RegionDisk struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses pulumi.StringArrayOutput `pulumi:"userLicenses"`
 	// Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 	// URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -186,6 +188,8 @@ type regionDiskArgs struct {
 	SourceStorageObject *string `pulumi:"sourceStorageObject"`
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type *string `pulumi:"type"`
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses []string `pulumi:"userLicenses"`
 }
 
 // The set of arguments for constructing a RegionDisk resource.
@@ -241,6 +245,8 @@ type RegionDiskArgs struct {
 	SourceStorageObject pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
 	Type pulumi.StringPtrInput
+	// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+	UserLicenses pulumi.StringArrayInput
 }
 
 func (RegionDiskArgs) ElementType() reflect.Type {

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstanceGroupManagerResult:
-    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
         if auto_healing_policies and not isinstance(auto_healing_policies, list):
             raise TypeError("Expected argument 'auto_healing_policies' to be a list")
         pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
@@ -72,6 +72,9 @@ class GetRegionInstanceGroupManagerResult:
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
+        if standby_policy and not isinstance(standby_policy, dict):
+            raise TypeError("Expected argument 'standby_policy' to be a dict")
+        pulumi.set(__self__, "standby_policy", standby_policy)
         if stateful_policy and not isinstance(stateful_policy, dict):
             raise TypeError("Expected argument 'stateful_policy' to be a dict")
         pulumi.set(__self__, "stateful_policy", stateful_policy)
@@ -136,7 +139,7 @@ class GetRegionInstanceGroupManagerResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        An optional description of this resource. Provide this property when you create the resource.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -245,6 +248,14 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="standbyPolicy")
+    def standby_policy(self) -> 'outputs.InstanceGroupManagerStandbyPolicyResponse':
+        """
+        Stanby policy for stopped and suspended instances.
+        """
+        return pulumi.get(self, "standby_policy")
+
+    @property
     @pulumi.getter(name="statefulPolicy")
     def stateful_policy(self) -> 'outputs.StatefulPolicyResponse':
         """
@@ -341,6 +352,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             service_account=self.service_account,
+            standby_policy=self.standby_policy,
             stateful_policy=self.stateful_policy,
             status=self.status,
             target_pools=self.target_pools,
@@ -388,6 +400,7 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         service_account=__ret__.service_account,
+        standby_policy=__ret__.standby_policy,
         stateful_policy=__ret__.stateful_policy,
         status=__ret__.status,
         target_pools=__ret__.target_pools,

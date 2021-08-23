@@ -1391,7 +1391,7 @@ class GooglePrivacyDlpV2CryptoHashConfigResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2CryptoKeyResponse(dict):
     """
-    This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
+    This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1415,8 +1415,8 @@ class GooglePrivacyDlpV2CryptoKeyResponse(dict):
                  transient: 'outputs.GooglePrivacyDlpV2TransientCryptoKeyResponse',
                  unwrapped: 'outputs.GooglePrivacyDlpV2UnwrappedCryptoKeyResponse'):
         """
-        This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
-        :param 'GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse' kms_wrapped: Kms wrapped key
+        This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
+        :param 'GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse' kms_wrapped: Key wrapped using Cloud KMS
         :param 'GooglePrivacyDlpV2TransientCryptoKeyResponse' transient: Transient crypto key
         :param 'GooglePrivacyDlpV2UnwrappedCryptoKeyResponse' unwrapped: Unwrapped crypto key
         """
@@ -1428,7 +1428,7 @@ class GooglePrivacyDlpV2CryptoKeyResponse(dict):
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> 'outputs.GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse':
         """
-        Kms wrapped key
+        Key wrapped using Cloud KMS
         """
         return pulumi.get(self, "kms_wrapped")
 
@@ -4070,7 +4070,7 @@ class GooglePrivacyDlpV2KindExpressionResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
     """
-    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -4095,7 +4095,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
                  crypto_key_name: str,
                  wrapped_key: str):
         """
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
         :param str crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
         :param str wrapped_key: The wrapped data crypto key.
         """

@@ -54,4 +54,6 @@ type LookupRegionCommitmentResult struct {
 	Status string `pulumi:"status"`
 	// An optional, human-readable explanation of the status.
 	StatusMessage string `pulumi:"statusMessage"`
+	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+	Type string `pulumi:"type"`
 }

@@ -11,6 +11,7 @@ from ... import _utilities
 __all__ = [
     'EmailPreferencesResponse',
     'ScheduleOptionsResponse',
+    'UserInfoResponse',
 ]
 
 @pulumi.output_type
@@ -115,5 +116,27 @@ class ScheduleOptionsResponse(dict):
         Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class UserInfoResponse(dict):
+    """
+    Information about a user.
+    """
+    def __init__(__self__, *,
+                 email: str):
+        """
+        Information about a user.
+        :param str email: E-mail address of the user.
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        E-mail address of the user.
+        """
+        return pulumi.get(self, "email")
 
 

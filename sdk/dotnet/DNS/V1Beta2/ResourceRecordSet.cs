@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        /// </summary>
+        [Output("routingPolicy")]
+        public Output<Outputs.RRSetRoutingPolicyResponse> RoutingPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         /// </summary>
         [Output("rrdatas")]
@@ -110,6 +116,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        /// </summary>
+        [Input("routingPolicy")]
+        public Input<Inputs.RRSetRoutingPolicyArgs>? RoutingPolicy { get; set; }
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;

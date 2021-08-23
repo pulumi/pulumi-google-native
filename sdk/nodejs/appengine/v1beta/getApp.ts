@@ -72,6 +72,10 @@ export interface GetAppResult {
      */
     readonly name: string;
     /**
+     * The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+     */
+    readonly serviceAccount: string;
+    /**
      * Serving status of this application.
      */
     readonly servingStatus: string;

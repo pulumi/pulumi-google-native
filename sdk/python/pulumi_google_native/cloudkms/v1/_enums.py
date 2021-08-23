@@ -41,6 +41,8 @@ class CryptoKeyPurpose(str, Enum):
     """CryptoKeys with this purpose may be used with AsymmetricSign and GetPublicKey."""
     ASYMMETRIC_DECRYPT = "ASYMMETRIC_DECRYPT"
     """CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey."""
+    MAC = "MAC"
+    """CryptoKeys with this purpose may be used with MacSign."""
 
 
 class CryptoKeyVersionState(str, Enum):
@@ -103,6 +105,8 @@ class CryptoKeyVersionTemplateAlgorithm(str, Enum):
     """ECDSA on the NIST P-384 curve with a SHA384 digest."""
     EC_SIGN_SECP256K1_SHA256 = "EC_SIGN_SECP256K1_SHA256"
     """ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level."""
+    HMAC_SHA256 = "HMAC_SHA256"
+    """HMAC-SHA256 signing with a 256 bit key."""
     EXTERNAL_SYMMETRIC_ENCRYPTION = "EXTERNAL_SYMMETRIC_ENCRYPTION"
     """Algorithm representing symmetric encryption by an external key manager."""
 

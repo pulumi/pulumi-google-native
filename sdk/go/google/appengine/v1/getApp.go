@@ -45,6 +45,8 @@ type LookupAppResult struct {
 	Location string `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name string `pulumi:"name"`
+	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+	ServiceAccount string `pulumi:"serviceAccount"`
 	// Serving status of this application.
 	ServingStatus string `pulumi:"servingStatus"`
 }

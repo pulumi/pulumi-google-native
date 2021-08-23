@@ -21,7 +21,6 @@ class IntentArgs:
                  default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 followup_intent_info: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  intent_view: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
@@ -37,7 +36,6 @@ class IntentArgs:
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
-                 root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None):
         """
@@ -47,7 +45,6 @@ class IntentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IntentDefaultResponsePlatformsItem']]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]] followup_intent_info: Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
         :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
@@ -59,7 +56,6 @@ class IntentArgs:
         :param pulumi.Input[str] parent_followup_intent_name: Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
         :param pulumi.Input[int] priority: Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[str] root_followup_intent_name: Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
@@ -72,8 +68,6 @@ class IntentArgs:
             pulumi.set(__self__, "end_interaction", end_interaction)
         if events is not None:
             pulumi.set(__self__, "events", events)
-        if followup_intent_info is not None:
-            pulumi.set(__self__, "followup_intent_info", followup_intent_info)
         if input_context_names is not None:
             pulumi.set(__self__, "input_context_names", input_context_names)
         if intent_view is not None:
@@ -104,8 +98,6 @@ class IntentArgs:
             pulumi.set(__self__, "project", project)
         if reset_contexts is not None:
             pulumi.set(__self__, "reset_contexts", reset_contexts)
-        if root_followup_intent_name is not None:
-            pulumi.set(__self__, "root_followup_intent_name", root_followup_intent_name)
         if training_phrases is not None:
             pulumi.set(__self__, "training_phrases", training_phrases)
         if webhook_state is not None:
@@ -170,18 +162,6 @@ class IntentArgs:
     @events.setter
     def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "events", value)
-
-    @property
-    @pulumi.getter(name="followupIntentInfo")
-    def followup_intent_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]:
-        """
-        Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-        """
-        return pulumi.get(self, "followup_intent_info")
-
-    @followup_intent_info.setter
-    def followup_intent_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]):
-        pulumi.set(self, "followup_intent_info", value)
 
     @property
     @pulumi.getter(name="inputContextNames")
@@ -352,18 +332,6 @@ class IntentArgs:
         pulumi.set(self, "reset_contexts", value)
 
     @property
-    @pulumi.getter(name="rootFollowupIntentName")
-    def root_followup_intent_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
-        """
-        return pulumi.get(self, "root_followup_intent_name")
-
-    @root_followup_intent_name.setter
-    def root_followup_intent_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "root_followup_intent_name", value)
-
-    @property
     @pulumi.getter(name="trainingPhrases")
     def training_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]:
         """
@@ -398,7 +366,6 @@ class Intent(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 followup_intent_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  intent_view: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
@@ -414,7 +381,6 @@ class Intent(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
-                 root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
@@ -429,7 +395,6 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name of this intent.
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]] followup_intent_info: Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
         :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
@@ -441,7 +406,6 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[str] parent_followup_intent_name: Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
         :param pulumi.Input[int] priority: Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[str] root_followup_intent_name: Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
@@ -475,7 +439,6 @@ class Intent(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_interaction: Optional[pulumi.Input[bool]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 followup_intent_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs']]]]] = None,
                  input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  intent_view: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
@@ -491,7 +454,6 @@ class Intent(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
-                 root_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
@@ -513,7 +475,6 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_interaction"] = end_interaction
             __props__.__dict__["events"] = events
-            __props__.__dict__["followup_intent_info"] = followup_intent_info
             __props__.__dict__["input_context_names"] = input_context_names
             __props__.__dict__["intent_view"] = intent_view
             __props__.__dict__["is_fallback"] = is_fallback
@@ -529,9 +490,10 @@ class Intent(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["reset_contexts"] = reset_contexts
-            __props__.__dict__["root_followup_intent_name"] = root_followup_intent_name
             __props__.__dict__["training_phrases"] = training_phrases
             __props__.__dict__["webhook_state"] = webhook_state
+            __props__.__dict__["followup_intent_info"] = None
+            __props__.__dict__["root_followup_intent_name"] = None
         super(Intent, __self__).__init__(
             'google-native:dialogflow/v2:Intent',
             resource_name,

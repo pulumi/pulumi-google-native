@@ -44,8 +44,16 @@ type Note struct {
 	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl RelatedUrlResponseArrayOutput `pulumi:"relatedUrl"`
+	// A note describing SPDX Document which represents SBOM.
+	Sbom DocumentNoteResponseOutput `pulumi:"sbom"`
 	// A one sentence description of this note.
 	ShortDescription pulumi.StringOutput `pulumi:"shortDescription"`
+	// A note describing SPDX File.
+	SpdxFile FileNoteResponseOutput `pulumi:"spdxFile"`
+	// A note describing SPDX Package.
+	SpdxPackage PackageNoteResponseOutput `pulumi:"spdxPackage"`
+	// A note describing SPDX Relationship.
+	SpdxRelationship RelationshipNoteResponseOutput `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A note describing a package vulnerability.
@@ -118,8 +126,16 @@ type noteArgs struct {
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
+	// A note describing SPDX Document which represents SBOM.
+	Sbom *DocumentNote `pulumi:"sbom"`
 	// A one sentence description of this note.
 	ShortDescription *string `pulumi:"shortDescription"`
+	// A note describing SPDX File.
+	SpdxFile *FileNote `pulumi:"spdxFile"`
+	// A note describing SPDX Package.
+	SpdxPackage *PackageNote `pulumi:"spdxPackage"`
+	// A note describing SPDX Relationship.
+	SpdxRelationship *RelationshipNote `pulumi:"spdxRelationship"`
 	// A note describing a package vulnerability.
 	Vulnerability *Vulnerability `pulumi:"vulnerability"`
 }
@@ -150,8 +166,16 @@ type NoteArgs struct {
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note.
 	RelatedUrl RelatedUrlArrayInput
+	// A note describing SPDX Document which represents SBOM.
+	Sbom DocumentNotePtrInput
 	// A one sentence description of this note.
 	ShortDescription pulumi.StringPtrInput
+	// A note describing SPDX File.
+	SpdxFile FileNotePtrInput
+	// A note describing SPDX Package.
+	SpdxPackage PackageNotePtrInput
+	// A note describing SPDX Relationship.
+	SpdxRelationship RelationshipNotePtrInput
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityPtrInput
 }

@@ -186,6 +186,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
+            __props__.__dict__["restoring_services"] = None
             __props__.__dict__["service_revision"] = None
             __props__.__dict__["state"] = None
         super(Backup, __self__).__init__(
@@ -214,6 +215,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["restoring_services"] = None
         __props__.__dict__["service_revision"] = None
         __props__.__dict__["state"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
@@ -249,6 +251,14 @@ class Backup(pulumi.CustomResource):
         Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restoringServices")
+    def restoring_services(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Services that are restoring from the backup.
+        """
+        return pulumi.get(self, "restoring_services")
 
     @property
     @pulumi.getter(name="serviceRevision")

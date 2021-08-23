@@ -29,7 +29,7 @@ type LookupBudgetResult struct {
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponse `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName string `pulumi:"displayName"`
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
 	Etag string `pulumi:"etag"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
 	Name string `pulumi:"name"`

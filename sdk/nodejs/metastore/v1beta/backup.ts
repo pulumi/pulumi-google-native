@@ -52,6 +52,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Services that are restoring from the backup.
+     */
+    public /*out*/ readonly restoringServices!: pulumi.Output<string[]>;
+    /**
      * The revision of the service at the time of backup.
      */
     public /*out*/ readonly serviceRevision!: pulumi.Output<outputs.metastore.v1beta.ServiceResponse>;
@@ -86,6 +90,7 @@ export class Backup extends pulumi.CustomResource {
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
+            inputs["restoringServices"] = undefined /*out*/;
             inputs["serviceRevision"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -93,6 +98,7 @@ export class Backup extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["restoringServices"] = undefined /*out*/;
             inputs["serviceRevision"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }

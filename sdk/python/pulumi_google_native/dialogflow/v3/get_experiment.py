@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetExperimentResult:
-    def __init__(__self__, create_time=None, definition=None, description=None, display_name=None, end_time=None, experiment_length=None, last_update_time=None, name=None, result=None, start_time=None, state=None, variants_history=None):
+    def __init__(__self__, create_time=None, definition=None, description=None, display_name=None, end_time=None, experiment_length=None, last_update_time=None, name=None, result=None, rollout_config=None, rollout_failure_reason=None, rollout_state=None, start_time=None, state=None, variants_history=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -45,6 +45,15 @@ class GetExperimentResult:
         if result and not isinstance(result, dict):
             raise TypeError("Expected argument 'result' to be a dict")
         pulumi.set(__self__, "result", result)
+        if rollout_config and not isinstance(rollout_config, dict):
+            raise TypeError("Expected argument 'rollout_config' to be a dict")
+        pulumi.set(__self__, "rollout_config", rollout_config)
+        if rollout_failure_reason and not isinstance(rollout_failure_reason, str):
+            raise TypeError("Expected argument 'rollout_failure_reason' to be a str")
+        pulumi.set(__self__, "rollout_failure_reason", rollout_failure_reason)
+        if rollout_state and not isinstance(rollout_state, dict):
+            raise TypeError("Expected argument 'rollout_state' to be a dict")
+        pulumi.set(__self__, "rollout_state", rollout_state)
         if start_time and not isinstance(start_time, str):
             raise TypeError("Expected argument 'start_time' to be a str")
         pulumi.set(__self__, "start_time", start_time)
@@ -99,7 +108,7 @@ class GetExperimentResult:
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> str:
         """
-        LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         """
         return pulumi.get(self, "experiment_length")
 
@@ -126,6 +135,30 @@ class GetExperimentResult:
         Inference result of the experiment.
         """
         return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="rolloutConfig")
+    def rollout_config(self) -> 'outputs.GoogleCloudDialogflowCxV3RolloutConfigResponse':
+        """
+        The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        """
+        return pulumi.get(self, "rollout_config")
+
+    @property
+    @pulumi.getter(name="rolloutFailureReason")
+    def rollout_failure_reason(self) -> str:
+        """
+        The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        """
+        return pulumi.get(self, "rollout_failure_reason")
+
+    @property
+    @pulumi.getter(name="rolloutState")
+    def rollout_state(self) -> 'outputs.GoogleCloudDialogflowCxV3RolloutStateResponse':
+        """
+        State of the auto rollout process.
+        """
+        return pulumi.get(self, "rollout_state")
 
     @property
     @pulumi.getter(name="startTime")
@@ -167,6 +200,9 @@ class AwaitableGetExperimentResult(GetExperimentResult):
             last_update_time=self.last_update_time,
             name=self.name,
             result=self.result,
+            rollout_config=self.rollout_config,
+            rollout_failure_reason=self.rollout_failure_reason,
+            rollout_state=self.rollout_state,
             start_time=self.start_time,
             state=self.state,
             variants_history=self.variants_history)
@@ -203,6 +239,9 @@ def get_experiment(agent_id: Optional[str] = None,
         last_update_time=__ret__.last_update_time,
         name=__ret__.name,
         result=__ret__.result,
+        rollout_config=__ret__.rollout_config,
+        rollout_failure_reason=__ret__.rollout_failure_reason,
+        rollout_state=__ret__.rollout_state,
         start_time=__ret__.start_time,
         state=__ret__.state,
         variants_history=__ret__.variants_history)

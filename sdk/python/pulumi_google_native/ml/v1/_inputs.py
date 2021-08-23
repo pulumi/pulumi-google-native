@@ -1149,7 +1149,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hyperparameters: The hyperparameters given to this trial.
         :param pulumi.Input[bool] is_trial_stopped_early: True if the trial is stopped early.
         :param pulumi.Input[str] trial_id: The trial id for these results.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] web_access_uris: URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         if all_metrics is not None:
             pulumi.set(__self__, "all_metrics", all_metrics)
@@ -1242,7 +1242,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
     @pulumi.getter(name="webAccessUris")
     def web_access_uris(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         """
         return pulumi.get(self, "web_access_uris")
 
@@ -2285,7 +2285,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
         :param pulumi.Input[str] region: The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier'] scale_tier: Specifies the machine types, the number of replicas for workers and parameter servers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
-        :param pulumi.Input[bool] enable_web_access: Optional. Whether to enable web access for the training job.
+        :param pulumi.Input[bool] enable_web_access: Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
         :param pulumi.Input['GoogleCloudMlV1__EncryptionConfigArgs'] encryption_config: Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         :param pulumi.Input['GoogleCloudMlV1__ReplicaConfigArgs'] evaluator_config: Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param pulumi.Input[str] evaluator_count: Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster will be of the type specified in `evaluator_type`. This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `evaluator_type`. The default value is zero.
@@ -2420,7 +2420,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
     @pulumi.getter(name="enableWebAccess")
     def enable_web_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to enable web access for the training job.
+        Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
         """
         return pulumi.get(self, "enable_web_access")
 

@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.
         /// </summary>
         public static CryptoKeyPurpose AsymmetricDecrypt { get; } = new CryptoKeyPurpose("ASYMMETRIC_DECRYPT");
+        /// <summary>
+        /// CryptoKeys with this purpose may be used with MacSign.
+        /// </summary>
+        public static CryptoKeyPurpose Mac { get; } = new CryptoKeyPurpose("MAC");
 
         public static bool operator ==(CryptoKeyPurpose left, CryptoKeyPurpose right) => left.Equals(right);
         public static bool operator !=(CryptoKeyPurpose left, CryptoKeyPurpose right) => !left.Equals(right);
@@ -239,6 +243,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm EcSignSecp256k1Sha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256");
+        /// <summary>
+        /// HMAC-SHA256 signing with a 256 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm HmacSha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA256");
         /// <summary>
         /// Algorithm representing symmetric encryption by an external key manager.
         /// </summary>

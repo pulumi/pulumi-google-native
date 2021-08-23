@@ -222,6 +222,26 @@ export const DataSetPlotType = {
  */
 export type DataSetPlotType = (typeof DataSetPlotType)[keyof typeof DataSetPlotType];
 
+export const DataSetTargetAxis = {
+    /**
+     * The target axis was not specified. Defaults to Y1.
+     */
+    TargetAxisUnspecified: "TARGET_AXIS_UNSPECIFIED",
+    /**
+     * The y_axis (the right axis of chart).
+     */
+    Y1: "Y1",
+    /**
+     * The y2_axis (the left axis of chart).
+     */
+    Y2: "Y2",
+} as const;
+
+/**
+ * Optional. The target axis to use for plotting the metric.
+ */
+export type DataSetTargetAxis = (typeof DataSetTargetAxis)[keyof typeof DataSetTargetAxis];
+
 export const PickTimeSeriesFilterDirection = {
     /**
      * Not allowed. You must specify a different Direction if you specify a PickTimeSeriesFilter.
@@ -353,3 +373,23 @@ export const ThresholdDirection = {
  * The direction for the current threshold. Direction is not allowed in a XyChart.
  */
 export type ThresholdDirection = (typeof ThresholdDirection)[keyof typeof ThresholdDirection];
+
+export const ThresholdTargetAxis = {
+    /**
+     * The target axis was not specified. Defaults to Y1.
+     */
+    TargetAxisUnspecified: "TARGET_AXIS_UNSPECIFIED",
+    /**
+     * The y_axis (the right axis of chart).
+     */
+    Y1: "Y1",
+    /**
+     * The y2_axis (the left axis of chart).
+     */
+    Y2: "Y2",
+} as const;
+
+/**
+ * The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+ */
+export type ThresholdTargetAxis = (typeof ThresholdTargetAxis)[keyof typeof ThresholdTargetAxis];

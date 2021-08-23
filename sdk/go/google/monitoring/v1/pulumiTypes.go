@@ -1372,6 +1372,8 @@ type DataSet struct {
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType *DataSetPlotType `pulumi:"plotType"`
+	// Optional. The target axis to use for plotting the metric.
+	TargetAxis *DataSetTargetAxis `pulumi:"targetAxis"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
 }
@@ -1395,6 +1397,8 @@ type DataSetArgs struct {
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType DataSetPlotTypePtrInput `pulumi:"plotType"`
+	// Optional. The target axis to use for plotting the metric.
+	TargetAxis DataSetTargetAxisPtrInput `pulumi:"targetAxis"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
 }
@@ -1466,6 +1470,11 @@ func (o DataSetOutput) PlotType() DataSetPlotTypePtrOutput {
 	return o.ApplyT(func(v DataSet) *DataSetPlotType { return v.PlotType }).(DataSetPlotTypePtrOutput)
 }
 
+// Optional. The target axis to use for plotting the metric.
+func (o DataSetOutput) TargetAxis() DataSetTargetAxisPtrOutput {
+	return o.ApplyT(func(v DataSet) *DataSetTargetAxis { return v.TargetAxis }).(DataSetTargetAxisPtrOutput)
+}
+
 // Fields for querying time series data from the Stackdriver metrics API.
 func (o DataSetOutput) TimeSeriesQuery() TimeSeriesQueryOutput {
 	return o.ApplyT(func(v DataSet) TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryOutput)
@@ -1499,6 +1508,8 @@ type DataSetResponse struct {
 	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType string `pulumi:"plotType"`
+	// Optional. The target axis to use for plotting the metric.
+	TargetAxis string `pulumi:"targetAxis"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
 }
@@ -1522,6 +1533,8 @@ type DataSetResponseArgs struct {
 	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType pulumi.StringInput `pulumi:"plotType"`
+	// Optional. The target axis to use for plotting the metric.
+	TargetAxis pulumi.StringInput `pulumi:"targetAxis"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
 }
@@ -1591,6 +1604,11 @@ func (o DataSetResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
 // How this data should be plotted on the chart.
 func (o DataSetResponseOutput) PlotType() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSetResponse) string { return v.PlotType }).(pulumi.StringOutput)
+}
+
+// Optional. The target axis to use for plotting the metric.
+func (o DataSetResponseOutput) TargetAxis() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSetResponse) string { return v.TargetAxis }).(pulumi.StringOutput)
 }
 
 // Fields for querying time series data from the Stackdriver metrics API.
@@ -4271,6 +4289,8 @@ type Threshold struct {
 	Direction *ThresholdDirection `pulumi:"direction"`
 	// A label for the threshold.
 	Label *string `pulumi:"label"`
+	// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+	TargetAxis *ThresholdTargetAxis `pulumi:"targetAxis"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
 	Value *float64 `pulumi:"value"`
 }
@@ -4294,6 +4314,8 @@ type ThresholdArgs struct {
 	Direction ThresholdDirectionPtrInput `pulumi:"direction"`
 	// A label for the threshold.
 	Label pulumi.StringPtrInput `pulumi:"label"`
+	// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+	TargetAxis ThresholdTargetAxisPtrInput `pulumi:"targetAxis"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
 	Value pulumi.Float64PtrInput `pulumi:"value"`
 }
@@ -4365,6 +4387,11 @@ func (o ThresholdOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Threshold) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
+// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+func (o ThresholdOutput) TargetAxis() ThresholdTargetAxisPtrOutput {
+	return o.ApplyT(func(v Threshold) *ThresholdTargetAxis { return v.TargetAxis }).(ThresholdTargetAxisPtrOutput)
+}
+
 // The value of the threshold. The value should be defined in the native scale of the metric.
 func (o ThresholdOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Threshold) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
@@ -4398,6 +4425,8 @@ type ThresholdResponse struct {
 	Direction string `pulumi:"direction"`
 	// A label for the threshold.
 	Label string `pulumi:"label"`
+	// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+	TargetAxis string `pulumi:"targetAxis"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
 	Value float64 `pulumi:"value"`
 }
@@ -4421,6 +4450,8 @@ type ThresholdResponseArgs struct {
 	Direction pulumi.StringInput `pulumi:"direction"`
 	// A label for the threshold.
 	Label pulumi.StringInput `pulumi:"label"`
+	// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+	TargetAxis pulumi.StringInput `pulumi:"targetAxis"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
 	Value pulumi.Float64Input `pulumi:"value"`
 }
@@ -4490,6 +4521,11 @@ func (o ThresholdResponseOutput) Direction() pulumi.StringOutput {
 // A label for the threshold.
 func (o ThresholdResponseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ThresholdResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+func (o ThresholdResponseOutput) TargetAxis() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdResponse) string { return v.TargetAxis }).(pulumi.StringOutput)
 }
 
 // The value of the threshold. The value should be defined in the native scale of the metric.
@@ -6039,6 +6075,8 @@ type XyChart struct {
 	TimeshiftDuration *string `pulumi:"timeshiftDuration"`
 	// The properties applied to the X axis.
 	XAxis *Axis `pulumi:"xAxis"`
+	// The properties applied to the Y2 axis.
+	Y2Axis *Axis `pulumi:"y2Axis"`
 	// The properties applied to the Y axis.
 	YAxis *Axis `pulumi:"yAxis"`
 }
@@ -6066,6 +6104,8 @@ type XyChartArgs struct {
 	TimeshiftDuration pulumi.StringPtrInput `pulumi:"timeshiftDuration"`
 	// The properties applied to the X axis.
 	XAxis AxisPtrInput `pulumi:"xAxis"`
+	// The properties applied to the Y2 axis.
+	Y2Axis AxisPtrInput `pulumi:"y2Axis"`
 	// The properties applied to the Y axis.
 	YAxis AxisPtrInput `pulumi:"yAxis"`
 }
@@ -6173,6 +6213,11 @@ func (o XyChartOutput) XAxis() AxisPtrOutput {
 	return o.ApplyT(func(v XyChart) *Axis { return v.XAxis }).(AxisPtrOutput)
 }
 
+// The properties applied to the Y2 axis.
+func (o XyChartOutput) Y2Axis() AxisPtrOutput {
+	return o.ApplyT(func(v XyChart) *Axis { return v.Y2Axis }).(AxisPtrOutput)
+}
+
 // The properties applied to the Y axis.
 func (o XyChartOutput) YAxis() AxisPtrOutput {
 	return o.ApplyT(func(v XyChart) *Axis { return v.YAxis }).(AxisPtrOutput)
@@ -6246,6 +6291,16 @@ func (o XyChartPtrOutput) XAxis() AxisPtrOutput {
 	}).(AxisPtrOutput)
 }
 
+// The properties applied to the Y2 axis.
+func (o XyChartPtrOutput) Y2Axis() AxisPtrOutput {
+	return o.ApplyT(func(v *XyChart) *Axis {
+		if v == nil {
+			return nil
+		}
+		return v.Y2Axis
+	}).(AxisPtrOutput)
+}
+
 // The properties applied to the Y axis.
 func (o XyChartPtrOutput) YAxis() AxisPtrOutput {
 	return o.ApplyT(func(v *XyChart) *Axis {
@@ -6268,6 +6323,8 @@ type XyChartResponse struct {
 	TimeshiftDuration string `pulumi:"timeshiftDuration"`
 	// The properties applied to the X axis.
 	XAxis AxisResponse `pulumi:"xAxis"`
+	// The properties applied to the Y2 axis.
+	Y2Axis AxisResponse `pulumi:"y2Axis"`
 	// The properties applied to the Y axis.
 	YAxis AxisResponse `pulumi:"yAxis"`
 }
@@ -6295,6 +6352,8 @@ type XyChartResponseArgs struct {
 	TimeshiftDuration pulumi.StringInput `pulumi:"timeshiftDuration"`
 	// The properties applied to the X axis.
 	XAxis AxisResponseInput `pulumi:"xAxis"`
+	// The properties applied to the Y2 axis.
+	Y2Axis AxisResponseInput `pulumi:"y2Axis"`
 	// The properties applied to the Y axis.
 	YAxis AxisResponseInput `pulumi:"yAxis"`
 }
@@ -6349,6 +6408,11 @@ func (o XyChartResponseOutput) TimeshiftDuration() pulumi.StringOutput {
 // The properties applied to the X axis.
 func (o XyChartResponseOutput) XAxis() AxisResponseOutput {
 	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.XAxis }).(AxisResponseOutput)
+}
+
+// The properties applied to the Y2 axis.
+func (o XyChartResponseOutput) Y2Axis() AxisResponseOutput {
+	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.Y2Axis }).(AxisResponseOutput)
 }
 
 // The properties applied to the Y axis.

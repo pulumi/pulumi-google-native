@@ -10,11 +10,14 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'ApprovalConfigArgs',
     'ArtifactObjectsArgs',
     'ArtifactsArgs',
     'BuildOptionsArgs',
     'BuildStepArgs',
     'BuildArgs',
+    'GitFileSourceArgs',
+    'GitHubEnterpriseSecretsArgs',
     'GitHubEventsConfigArgs',
     'GitRepoSourceArgs',
     'InlineSecretArgs',
@@ -35,6 +38,30 @@ __all__ = [
     'WebhookConfigArgs',
     'WorkerConfigArgs',
 ]
+
+@pulumi.input_type
+class ApprovalConfigArgs:
+    def __init__(__self__, *,
+                 approval_required: Optional[pulumi.Input[bool]] = None):
+        """
+        ApprovalConfig describes configuration for manual approval of a build.
+        :param pulumi.Input[bool] approval_required: Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+        """
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+        """
+        return pulumi.get(self, "approval_required")
+
+    @approval_required.setter
+    def approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required", value)
+
 
 @pulumi.input_type
 class ArtifactObjectsArgs:
@@ -341,6 +368,7 @@ class BuildStepArgs:
                  entrypoint: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
                  secret_env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None,
@@ -353,6 +381,7 @@ class BuildStepArgs:
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        :param pulumi.Input[str] script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_env: A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
         :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
@@ -369,6 +398,8 @@ class BuildStepArgs:
             pulumi.set(__self__, "env", env)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
         if secret_env is not None:
             pulumi.set(__self__, "secret_env", secret_env)
         if timeout is not None:
@@ -451,6 +482,18 @@ class BuildStepArgs:
         pulumi.set(self, "id", value)
 
     @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
+
+    @property
     @pulumi.getter(name="secretEnv")
     def secret_env(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -516,7 +559,7 @@ class BuildArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
-        A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+        A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
         :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: The operations to be performed on the workspace.
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
@@ -715,21 +758,233 @@ class BuildArgs:
 
 
 @pulumi.input_type
+class GitFileSourceArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None,
+                 repo_type: Optional[pulumi.Input['GitFileSourceRepoType']] = None,
+                 revision: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        GitFileSource describes a file within a (possibly remote) code repository.
+        :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
+        :param pulumi.Input['GitFileSourceRepoType'] repo_type: See RepoType above.
+        :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        :param pulumi.Input[str] uri: The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if repo_type is not None:
+            pulumi.set(__self__, "repo_type", repo_type)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the file, with the repo root as the root of the path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> Optional[pulumi.Input['GitFileSourceRepoType']]:
+        """
+        See RepoType above.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @repo_type.setter
+    def repo_type(self, value: Optional[pulumi.Input['GitFileSourceRepoType']]):
+        pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GitHubEnterpriseSecretsArgs:
+    def __init__(__self__, *,
+                 oauth_client_id_name: Optional[pulumi.Input[str]] = None,
+                 oauth_client_id_version_name: Optional[pulumi.Input[str]] = None,
+                 oauth_secret_name: Optional[pulumi.Input[str]] = None,
+                 oauth_secret_version_name: Optional[pulumi.Input[str]] = None,
+                 private_key_name: Optional[pulumi.Input[str]] = None,
+                 private_key_version_name: Optional[pulumi.Input[str]] = None,
+                 webhook_secret_name: Optional[pulumi.Input[str]] = None,
+                 webhook_secret_version_name: Optional[pulumi.Input[str]] = None):
+        """
+        GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+        :param pulumi.Input[str] oauth_client_id_name: The resource name for the OAuth client ID secret in Secret Manager.
+        :param pulumi.Input[str] oauth_client_id_version_name: The resource name for the OAuth client ID secret version in Secret Manager.
+        :param pulumi.Input[str] oauth_secret_name: The resource name for the OAuth secret in Secret Manager.
+        :param pulumi.Input[str] oauth_secret_version_name: The resource name for the OAuth secret secret version in Secret Manager.
+        :param pulumi.Input[str] private_key_name: The resource name for the private key secret.
+        :param pulumi.Input[str] private_key_version_name: The resource name for the private key secret version.
+        :param pulumi.Input[str] webhook_secret_name: The resource name for the webhook secret in Secret Manager.
+        :param pulumi.Input[str] webhook_secret_version_name: The resource name for the webhook secret secret version in Secret Manager.
+        """
+        if oauth_client_id_name is not None:
+            pulumi.set(__self__, "oauth_client_id_name", oauth_client_id_name)
+        if oauth_client_id_version_name is not None:
+            pulumi.set(__self__, "oauth_client_id_version_name", oauth_client_id_version_name)
+        if oauth_secret_name is not None:
+            pulumi.set(__self__, "oauth_secret_name", oauth_secret_name)
+        if oauth_secret_version_name is not None:
+            pulumi.set(__self__, "oauth_secret_version_name", oauth_secret_version_name)
+        if private_key_name is not None:
+            pulumi.set(__self__, "private_key_name", private_key_name)
+        if private_key_version_name is not None:
+            pulumi.set(__self__, "private_key_version_name", private_key_version_name)
+        if webhook_secret_name is not None:
+            pulumi.set(__self__, "webhook_secret_name", webhook_secret_name)
+        if webhook_secret_version_name is not None:
+            pulumi.set(__self__, "webhook_secret_version_name", webhook_secret_version_name)
+
+    @property
+    @pulumi.getter(name="oauthClientIdName")
+    def oauth_client_id_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the OAuth client ID secret in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_client_id_name")
+
+    @oauth_client_id_name.setter
+    def oauth_client_id_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_client_id_name", value)
+
+    @property
+    @pulumi.getter(name="oauthClientIdVersionName")
+    def oauth_client_id_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the OAuth client ID secret version in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_client_id_version_name")
+
+    @oauth_client_id_version_name.setter
+    def oauth_client_id_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_client_id_version_name", value)
+
+    @property
+    @pulumi.getter(name="oauthSecretName")
+    def oauth_secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the OAuth secret in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_secret_name")
+
+    @oauth_secret_name.setter
+    def oauth_secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_secret_name", value)
+
+    @property
+    @pulumi.getter(name="oauthSecretVersionName")
+    def oauth_secret_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the OAuth secret secret version in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_secret_version_name")
+
+    @oauth_secret_version_name.setter
+    def oauth_secret_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_secret_version_name", value)
+
+    @property
+    @pulumi.getter(name="privateKeyName")
+    def private_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the private key secret.
+        """
+        return pulumi.get(self, "private_key_name")
+
+    @private_key_name.setter
+    def private_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_name", value)
+
+    @property
+    @pulumi.getter(name="privateKeyVersionName")
+    def private_key_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the private key secret version.
+        """
+        return pulumi.get(self, "private_key_version_name")
+
+    @private_key_version_name.setter
+    def private_key_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_version_name", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretName")
+    def webhook_secret_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the webhook secret in Secret Manager.
+        """
+        return pulumi.get(self, "webhook_secret_name")
+
+    @webhook_secret_name.setter
+    def webhook_secret_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_secret_name", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretVersionName")
+    def webhook_secret_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the webhook secret secret version in Secret Manager.
+        """
+        return pulumi.get(self, "webhook_secret_version_name")
+
+    @webhook_secret_version_name.setter
+    def webhook_secret_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_secret_version_name", value)
+
+
+@pulumi.input_type
 class GitHubEventsConfigArgs:
     def __init__(__self__, *,
+                 enterprise_config_resource_name: Optional[pulumi.Input[str]] = None,
                  installation_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  pull_request: Optional[pulumi.Input['PullRequestFilterArgs']] = None,
                  push: Optional[pulumi.Input['PushFilterArgs']] = None):
         """
-        GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+        GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param pulumi.Input[str] enterprise_config_resource_name: Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         :param pulumi.Input[str] installation_id: The installationID that emits the GitHub event.
         :param pulumi.Input[str] name: Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         :param pulumi.Input[str] owner: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
         :param pulumi.Input['PullRequestFilterArgs'] pull_request: filter to match changes in pull requests.
         :param pulumi.Input['PushFilterArgs'] push: filter to match changes in refs like branches, tags.
         """
+        if enterprise_config_resource_name is not None:
+            pulumi.set(__self__, "enterprise_config_resource_name", enterprise_config_resource_name)
         if installation_id is not None:
             pulumi.set(__self__, "installation_id", installation_id)
         if name is not None:
@@ -740,6 +995,18 @@ class GitHubEventsConfigArgs:
             pulumi.set(__self__, "pull_request", pull_request)
         if push is not None:
             pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="enterpriseConfigResourceName")
+    def enterprise_config_resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        """
+        return pulumi.get(self, "enterprise_config_resource_name")
+
+    @enterprise_config_resource_name.setter
+    def enterprise_config_resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enterprise_config_resource_name", value)
 
     @property
     @pulumi.getter(name="installationId")

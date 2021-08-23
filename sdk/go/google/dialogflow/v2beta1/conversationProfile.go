@@ -25,7 +25,7 @@ type ConversationProfile struct {
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponseOutput `pulumi:"humanAgentAssistantConfig"`
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponseOutput `pulumi:"humanAgentHandoffConfig"`
-	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig GoogleCloudDialogflowV2beta1LoggingConfigResponseOutput `pulumi:"loggingConfig"`
@@ -35,8 +35,12 @@ type ConversationProfile struct {
 	NewMessageEventNotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponseOutput `pulumi:"newMessageEventNotificationConfig"`
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings pulumi.StringOutput `pulumi:"securitySettings"`
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigResponseOutput `pulumi:"sttConfig"`
+	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// Update time of the conversation profile.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -91,7 +95,7 @@ type conversationProfileArgs struct {
 	HumanAgentAssistantConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig `pulumi:"humanAgentAssistantConfig"`
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
 	HumanAgentHandoffConfig *GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
-	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     *string `pulumi:"location"`
 	// Configuration for logging conversation lifecycle events.
@@ -103,8 +107,12 @@ type conversationProfileArgs struct {
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"notificationConfig"`
 	Project            *string                                         `pulumi:"project"`
+	// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings *string `pulumi:"securitySettings"`
 	// Settings for speech transcription.
 	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfig `pulumi:"sttConfig"`
+	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a ConversationProfile resource.
@@ -117,7 +125,7 @@ type ConversationProfileArgs struct {
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput
-	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	// Configuration for logging conversation lifecycle events.
@@ -129,8 +137,12 @@ type ConversationProfileArgs struct {
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput
 	Project            pulumi.StringPtrInput
+	// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings pulumi.StringPtrInput
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput
+	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (ConversationProfileArgs) ElementType() reflect.Type {

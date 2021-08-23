@@ -15,6 +15,8 @@ import (
 type Api struct {
 	pulumi.CustomResourceState
 
+	// User labels applied to this API Proxy.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The id of the most recently created revision for this api proxy.
 	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
 	// Metadata describing the API proxy.

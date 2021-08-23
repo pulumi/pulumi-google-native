@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

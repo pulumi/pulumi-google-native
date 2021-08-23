@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class TargetSslProxy : Pulumi.CustomResource
     {
         /// <summary>
+        /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        /// </summary>
+        [Output("certificateMap")]
+        public Output<string> CertificateMap { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -114,6 +120,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class TargetSslProxyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        /// </summary>
+        [Input("certificateMap")]
+        public Input<string>? CertificateMap { get; set; }
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>

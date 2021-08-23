@@ -22,6 +22,7 @@ class DatasetArgs:
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -33,6 +34,7 @@ class DatasetArgs:
         :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
+        :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         """
@@ -50,6 +52,8 @@ class DatasetArgs:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if is_case_insensitive is not None:
+            pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -139,6 +143,18 @@ class DatasetArgs:
         pulumi.set(self, "friendly_name", value)
 
     @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] Indicates if table names are case insensitive in the dataset.
+        """
+        return pulumi.get(self, "is_case_insensitive")
+
+    @is_case_insensitive.setter
+    def is_case_insensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_case_insensitive", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -184,6 +200,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -200,6 +217,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
+        :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         """
@@ -235,6 +253,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -257,6 +276,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
@@ -297,6 +317,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["friendly_name"] = None
+        __props__.__dict__["is_case_insensitive"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["last_modified_time"] = None
@@ -373,6 +394,14 @@ class Dataset(pulumi.CustomResource):
         [Optional] A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> pulumi.Output[bool]:
+        """
+        [Optional] Indicates if table names are case insensitive in the dataset.
+        """
+        return pulumi.get(self, "is_case_insensitive")
 
     @property
     @pulumi.getter

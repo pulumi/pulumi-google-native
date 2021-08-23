@@ -72,6 +72,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.container.v1.NodeNetworkConfigResponse>;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
@@ -116,6 +120,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["management"] = args ? args.management : undefined;
             inputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
@@ -134,6 +139,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["management"] = undefined /*out*/;
             inputs["maxPodsConstraint"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
             inputs["podIpv4CidrSize"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -185,6 +191,10 @@ export interface NodePoolArgs {
      * The name of the node pool.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     */
+    networkConfig?: pulumi.Input<inputs.container.v1.NodeNetworkConfigArgs>;
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */

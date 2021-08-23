@@ -18,6 +18,7 @@ class AgentArgs:
                  default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  time_zone: pulumi.Input[str],
+                 advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
@@ -34,10 +35,11 @@ class AgentArgs:
         :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent.
+        :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs'] speech_to_text_settings: Speech recognition related settings.
@@ -47,6 +49,8 @@ class AgentArgs:
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "time_zone", time_zone)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
         if description is not None:
@@ -107,6 +111,18 @@ class AgentArgs:
         pulumi.set(self, "time_zone", value)
 
     @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
+
+    @property
     @pulumi.getter(name="avatarUri")
     def avatar_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -146,7 +162,7 @@ class AgentArgs:
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if stackdriver logging is enabled for the agent.
+        Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -238,6 +254,7 @@ class Agent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -258,12 +275,13 @@ class Agent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent.
+        :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
@@ -295,6 +313,7 @@ class Agent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -321,6 +340,7 @@ class Agent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentArgs.__new__(AgentArgs)
 
+            __props__.__dict__["advanced_settings"] = advanced_settings
             __props__.__dict__["avatar_uri"] = avatar_uri
             if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
@@ -363,6 +383,7 @@ class Agent(pulumi.CustomResource):
 
         __props__ = AgentArgs.__new__(AgentArgs)
 
+        __props__.__dict__["advanced_settings"] = None
         __props__.__dict__["avatar_uri"] = None
         __props__.__dict__["default_language_code"] = None
         __props__.__dict__["description"] = None
@@ -376,6 +397,14 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["supported_language_codes"] = None
         __props__.__dict__["time_zone"] = None
         return Agent(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse']:
+        """
+        Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -421,7 +450,7 @@ class Agent(pulumi.CustomResource):
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> pulumi.Output[bool]:
         """
-        Indicates if stackdriver logging is enabled for the agent.
+        Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 

@@ -361,6 +361,47 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     }
 
     /// <summary>
+    /// The IP mode for instances. Only applicable in the App Engine flexible environment.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkInstanceIpMode : IEquatable<NetworkInstanceIpMode>
+    {
+        private readonly string _value;
+
+        private NetworkInstanceIpMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified should be treated as EXTERNAL
+        /// </summary>
+        public static NetworkInstanceIpMode InstanceIpModeUnspecified { get; } = new NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED");
+        /// <summary>
+        /// VMs should be created with external and internal IPs
+        /// </summary>
+        public static NetworkInstanceIpMode External { get; } = new NetworkInstanceIpMode("EXTERNAL");
+        /// <summary>
+        /// VMs should be created with internal IPs only
+        /// </summary>
+        public static NetworkInstanceIpMode Internal { get; } = new NetworkInstanceIpMode("INTERNAL");
+
+        public static bool operator ==(NetworkInstanceIpMode left, NetworkInstanceIpMode right) => left.Equals(right);
+        public static bool operator !=(NetworkInstanceIpMode left, NetworkInstanceIpMode right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkInstanceIpMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkInstanceIpMode other && Equals(other);
+        public bool Equals(NetworkInstanceIpMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
     /// </summary>
     [EnumType]

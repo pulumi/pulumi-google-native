@@ -55,7 +55,7 @@ class AuditLogConfigLogType(str, Enum):
 
 class RoutineDeterminismLevel(str, Enum):
     """
-    Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+    Optional. The determinism level of the JavaScript UDF, if defined.
     """
     DETERMINISM_LEVEL_UNSPECIFIED = "DETERMINISM_LEVEL_UNSPECIFIED"
     """The determinism of the UDF is unspecified."""

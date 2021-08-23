@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:eventarc/v1:ChannelIamPolicy":
+		r = &ChannelIamPolicy{}
 	case "google-native:eventarc/v1:Trigger":
 		r = &Trigger{}
 	case "google-native:eventarc/v1:TriggerIamPolicy":

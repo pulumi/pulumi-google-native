@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<Inputs.AutoscalingConfigArgs>? AutoscalingConfig { get; set; }
 
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Input("configBucket")]
         public Input<string>? ConfigBucket { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<Inputs.LifecycleConfigArgs>? LifecycleConfig { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine config settings for the master instance in a cluster.
+        /// Optional. The Compute Engine config settings for the cluster's master instance.
         /// </summary>
         [Input("masterConfig")]
         public Input<Inputs.InstanceGroupConfigArgs>? MasterConfig { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<Inputs.MetastoreConfigArgs>? MetastoreConfig { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// Optional. The Compute Engine config settings for a cluster's secondary worker instances
         /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.InstanceGroupConfigArgs>? SecondaryWorkerConfig { get; set; }
@@ -94,19 +94,19 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<Inputs.SecurityConfigArgs>? SecurityConfig { get; set; }
 
         /// <summary>
-        /// Optional. The config settings for software inside the cluster.
+        /// Optional. The config settings for cluster software.
         /// </summary>
         [Input("softwareConfig")]
         public Input<Inputs.SoftwareConfigArgs>? SoftwareConfig { get; set; }
 
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         [Input("tempBucket")]
         public Input<string>? TempBucket { get; set; }
 
         /// <summary>
-        /// Optional. The Compute Engine config settings for worker instances in a cluster.
+        /// Optional. The Compute Engine config settings for the cluster's worker instances.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.InstanceGroupConfigArgs>? WorkerConfig { get; set; }

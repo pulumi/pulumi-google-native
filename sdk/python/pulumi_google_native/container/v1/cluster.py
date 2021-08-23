@@ -34,10 +34,12 @@ class ClusterArgs:
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
                  master_auth: Optional[pulumi.Input['MasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['MonitoringConfigArgs']] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -74,10 +76,12 @@ class ClusterArgs:
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+        :param pulumi.Input['LoggingConfigArgs'] logging_config: Logging configuration for the cluster.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Configure the maintenance policy for this cluster.
         :param pulumi.Input['MasterAuthArgs'] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input['MonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
@@ -131,6 +135,8 @@ class ClusterArgs:
             pulumi.set(__self__, "location", location)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if logging_service is not None:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
@@ -139,6 +145,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
             pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if monitoring_config is not None:
+            pulumi.set(__self__, "monitoring_config", monitoring_config)
         if monitoring_service is not None:
             pulumi.set(__self__, "monitoring_service", monitoring_service)
         if name is not None:
@@ -388,6 +396,18 @@ class ClusterArgs:
         pulumi.set(self, "locations", value)
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['LoggingConfigArgs']]:
+        """
+        Logging configuration for the cluster.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['LoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -434,6 +454,18 @@ class ClusterArgs:
     @master_authorized_networks_config.setter
     def master_authorized_networks_config(self, value: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']]):
         pulumi.set(self, "master_authorized_networks_config", value)
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> Optional[pulumi.Input['MonitoringConfigArgs']]:
+        """
+        Monitoring configuration for the cluster.
+        """
+        return pulumi.get(self, "monitoring_config")
+
+    @monitoring_config.setter
+    def monitoring_config(self, value: Optional[pulumi.Input['MonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring_config", value)
 
     @property
     @pulumi.getter(name="monitoringService")
@@ -660,10 +692,12 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -704,10 +738,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+        :param pulumi.Input[pulumi.InputType['LoggingConfigArgs']] logging_config: Logging configuration for the cluster.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Configure the maintenance policy for this cluster.
         :param pulumi.Input[pulumi.InputType['MasterAuthArgs']] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
         :param pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input[pulumi.InputType['MonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
         :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
@@ -767,10 +803,12 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  monitoring_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -818,10 +856,12 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["legacy_abac"] = legacy_abac
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
+            __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
+            __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["monitoring_service"] = monitoring_service
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -896,10 +936,12 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["legacy_abac"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["locations"] = None
+        __props__.__dict__["logging_config"] = None
         __props__.__dict__["logging_service"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["master_auth"] = None
         __props__.__dict__["master_authorized_networks_config"] = None
+        __props__.__dict__["monitoring_config"] = None
         __props__.__dict__["monitoring_service"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -1115,6 +1157,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "locations")
 
     @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.LoggingConfigResponse']:
+        """
+        Logging configuration for the cluster.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
     @pulumi.getter(name="loggingService")
     def logging_service(self) -> pulumi.Output[str]:
         """
@@ -1145,6 +1195,14 @@ class Cluster(pulumi.CustomResource):
         The configuration options for master authorized networks feature.
         """
         return pulumi.get(self, "master_authorized_networks_config")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> pulumi.Output['outputs.MonitoringConfigResponse']:
+        """
+        Monitoring configuration for the cluster.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter(name="monitoringService")

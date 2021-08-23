@@ -26,6 +26,8 @@ const (
 	FeedContentTypeAccessPolicy = FeedContentType("ACCESS_POLICY")
 	// The runtime OS Inventory information.
 	FeedContentTypeOsInventory = FeedContentType("OS_INVENTORY")
+	// The related resources.
+	FeedContentTypeRelationship = FeedContentType("RELATIONSHIP")
 )
 
 func (FeedContentType) ElementType() reflect.Type {

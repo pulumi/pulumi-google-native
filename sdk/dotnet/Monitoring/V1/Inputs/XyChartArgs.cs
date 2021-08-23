@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.AxisArgs>? XAxis { get; set; }
 
         /// <summary>
+        /// The properties applied to the Y2 axis.
+        /// </summary>
+        [Input("y2Axis")]
+        public Input<Inputs.AxisArgs>? Y2Axis { get; set; }
+
+        /// <summary>
         /// The properties applied to the Y axis.
         /// </summary>
         [Input("yAxis")]

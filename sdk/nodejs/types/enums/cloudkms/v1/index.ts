@@ -43,6 +43,10 @@ export const CryptoKeyPurpose = {
      * CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.
      */
     AsymmetricDecrypt: "ASYMMETRIC_DECRYPT",
+    /**
+     * CryptoKeys with this purpose may be used with MacSign.
+     */
+    Mac: "MAC",
 } as const;
 
 /**
@@ -159,6 +163,10 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      * ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
      */
     EcSignSecp256k1Sha256: "EC_SIGN_SECP256K1_SHA256",
+    /**
+     * HMAC-SHA256 signing with a 256 bit key.
+     */
+    HmacSha256: "HMAC_SHA256",
     /**
      * Algorithm representing symmetric encryption by an external key manager.
      */

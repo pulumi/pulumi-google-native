@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferConfigResult:
-    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, name=None, next_run_time=None, notification_pubsub_topic=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None):
+    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, name=None, next_run_time=None, notification_pubsub_topic=None, owner_info=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None):
         if data_refresh_window_days and not isinstance(data_refresh_window_days, int):
             raise TypeError("Expected argument 'data_refresh_window_days' to be a int")
         pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
@@ -48,6 +48,9 @@ class GetTransferConfigResult:
         if notification_pubsub_topic and not isinstance(notification_pubsub_topic, str):
             raise TypeError("Expected argument 'notification_pubsub_topic' to be a str")
         pulumi.set(__self__, "notification_pubsub_topic", notification_pubsub_topic)
+        if owner_info and not isinstance(owner_info, dict):
+            raise TypeError("Expected argument 'owner_info' to be a dict")
+        pulumi.set(__self__, "owner_info", owner_info)
         if params and not isinstance(params, dict):
             raise TypeError("Expected argument 'params' to be a dict")
         pulumi.set(__self__, "params", params)
@@ -140,9 +143,17 @@ class GetTransferConfigResult:
     @pulumi.getter(name="notificationPubsubTopic")
     def notification_pubsub_topic(self) -> str:
         """
-        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         """
         return pulumi.get(self, "notification_pubsub_topic")
+
+    @property
+    @pulumi.getter(name="ownerInfo")
+    def owner_info(self) -> 'outputs.UserInfoResponse':
+        """
+        Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+        """
+        return pulumi.get(self, "owner_info")
 
     @property
     @pulumi.getter
@@ -201,6 +212,7 @@ class AwaitableGetTransferConfigResult(GetTransferConfigResult):
             name=self.name,
             next_run_time=self.next_run_time,
             notification_pubsub_topic=self.notification_pubsub_topic,
+            owner_info=self.owner_info,
             params=self.params,
             schedule=self.schedule,
             schedule_options=self.schedule_options,
@@ -236,6 +248,7 @@ def get_transfer_config(location: Optional[str] = None,
         name=__ret__.name,
         next_run_time=__ret__.next_run_time,
         notification_pubsub_topic=__ret__.notification_pubsub_topic,
+        owner_info=__ret__.owner_info,
         params=__ret__.params,
         schedule=__ret__.schedule,
         schedule_options=__ret__.schedule_options,

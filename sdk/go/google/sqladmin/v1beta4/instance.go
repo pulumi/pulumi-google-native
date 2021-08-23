@@ -18,15 +18,17 @@ type Instance struct {
 	BackendType pulumi.StringOutput `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
+	// The time when the instance was created in RFC 3339 format (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
 	CurrentDiskSize pulumi.StringOutput `pulumi:"currentDiskSize"`
-	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
-	// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption configuration specific to an instance.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponseOutput `pulumi:"diskEncryptionConfiguration"`
-	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption status specific to an instance.
 	DiskEncryptionStatus DiskEncryptionStatusResponseOutput `pulumi:"diskEncryptionStatus"`
-	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaResponseOutput `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone pulumi.StringOutput `pulumi:"gceZone"`
@@ -121,13 +123,13 @@ type instanceArgs struct {
 	ConnectionName *string `pulumi:"connectionName"`
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
 	CurrentDiskSize *string `pulumi:"currentDiskSize"`
-	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
 	DatabaseVersion *InstanceDatabaseVersion `pulumi:"databaseVersion"`
-	// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption configuration specific to an instance.
 	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
-	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption status specific to an instance.
 	DiskEncryptionStatus *DiskEncryptionStatus `pulumi:"diskEncryptionStatus"`
-	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+	// The name and status of the failover replica.
 	FailoverReplica *InstanceFailoverReplica `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone *string `pulumi:"gceZone"`
@@ -185,13 +187,13 @@ type InstanceArgs struct {
 	ConnectionName pulumi.StringPtrInput
 	// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
 	CurrentDiskSize pulumi.StringPtrInput
-	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+	// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
 	DatabaseVersion InstanceDatabaseVersionPtrInput
-	// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption configuration specific to an instance.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
-	// Disk encryption status specific to an instance. Applies only to Second Generation instances.
+	// Disk encryption status specific to an instance.
 	DiskEncryptionStatus DiskEncryptionStatusPtrInput
-	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaPtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone pulumi.StringPtrInput

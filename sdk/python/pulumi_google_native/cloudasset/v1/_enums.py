@@ -25,3 +25,5 @@ class FeedContentType(str, Enum):
     """The Cloud Access context manager Policy set on an asset."""
     OS_INVENTORY = "OS_INVENTORY"
     """The runtime OS Inventory information."""
+    RELATIONSHIP = "RELATIONSHIP"
+    """The related resources."""

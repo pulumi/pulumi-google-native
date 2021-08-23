@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class BackendArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        /// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         /// </summary>
         [Input("balancingMode")]
         public Input<Pulumi.GoogleNative.Compute.Beta.BackendBalancingMode>? BalancingMode { get; set; }
@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("maxRatePerInstance")]
         public Input<double>? MaxRatePerInstance { get; set; }
 
+        /// <summary>
+        /// Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        /// </summary>
         [Input("maxUtilization")]
         public Input<double>? MaxUtilization { get; set; }
 

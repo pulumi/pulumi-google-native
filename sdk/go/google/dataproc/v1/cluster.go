@@ -20,7 +20,7 @@ type Cluster struct {
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid pulumi.StringOutput `pulumi:"clusterUuid"`
-	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
 	Config ClusterConfigResponseOutput `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -43,9 +43,6 @@ func NewCluster(ctx *pulumi.Context,
 
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
-	}
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
@@ -84,8 +81,8 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName string `pulumi:"clusterName"`
-	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-	Config ClusterConfig `pulumi:"config"`
+	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+	Config *ClusterConfig `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud Platform project ID that the cluster belongs to.
@@ -98,8 +95,8 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName pulumi.StringInput
-	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-	Config ClusterConfigInput
+	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+	Config ClusterConfigPtrInput
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
 	// The Google Cloud Platform project ID that the cluster belongs to.

@@ -1756,7 +1756,7 @@ func (o AndroidMatrixResponsePtrOutput) Orientations() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTest struct {
 	// The APK for the application under test.
 	AppApk *FileReference `pulumi:"appApk"`
@@ -1791,7 +1791,7 @@ type AndroidRoboTestInput interface {
 	ToAndroidRoboTestOutputWithContext(context.Context) AndroidRoboTestOutput
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestArgs struct {
 	// The APK for the application under test.
 	AppApk FileReferencePtrInput `pulumi:"appApk"`
@@ -1868,7 +1868,7 @@ func (i *androidRoboTestPtrType) ToAndroidRoboTestPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestPtrOutput)
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestOutput struct{ *pulumi.OutputState }
 
 func (AndroidRoboTestOutput) ElementType() reflect.Type {
@@ -2061,7 +2061,7 @@ func (o AndroidRoboTestPtrOutput) StartingIntents() RoboStartingIntentArrayOutpu
 	}).(RoboStartingIntentArrayOutput)
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestResponse struct {
 	// The APK for the application under test.
 	AppApk FileReferenceResponse `pulumi:"appApk"`
@@ -2096,7 +2096,7 @@ type AndroidRoboTestResponseInput interface {
 	ToAndroidRoboTestResponseOutputWithContext(context.Context) AndroidRoboTestResponseOutput
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestResponseArgs struct {
 	// The APK for the application under test.
 	AppApk FileReferenceResponseInput `pulumi:"appApk"`
@@ -2173,7 +2173,7 @@ func (i *androidRoboTestResponsePtrType) ToAndroidRoboTestResponsePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponsePtrOutput)
 }
 
-// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
 type AndroidRoboTestResponseOutput struct{ *pulumi.OutputState }
 
 func (AndroidRoboTestResponseOutput) ElementType() reflect.Type {
@@ -6585,7 +6585,7 @@ type IosTestSetup struct {
 	AdditionalIpas []FileReference `pulumi:"additionalIpas"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile *string `pulumi:"networkProfile"`
-	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 	PullDirectories []IosDeviceFile `pulumi:"pullDirectories"`
 	// List of files to push to the device before starting the test.
 	PushFiles []IosDeviceFile `pulumi:"pushFiles"`
@@ -6608,7 +6608,7 @@ type IosTestSetupArgs struct {
 	AdditionalIpas FileReferenceArrayInput `pulumi:"additionalIpas"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
-	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 	PullDirectories IosDeviceFileArrayInput `pulumi:"pullDirectories"`
 	// List of files to push to the device before starting the test.
 	PushFiles IosDeviceFileArrayInput `pulumi:"pushFiles"`
@@ -6702,7 +6702,7 @@ func (o IosTestSetupOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IosTestSetup) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
-// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 func (o IosTestSetupOutput) PullDirectories() IosDeviceFileArrayOutput {
 	return o.ApplyT(func(v IosTestSetup) []IosDeviceFile { return v.PullDirectories }).(IosDeviceFileArrayOutput)
 }
@@ -6750,7 +6750,7 @@ func (o IosTestSetupPtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 func (o IosTestSetupPtrOutput) PullDirectories() IosDeviceFileArrayOutput {
 	return o.ApplyT(func(v *IosTestSetup) []IosDeviceFile {
 		if v == nil {
@@ -6776,7 +6776,7 @@ type IosTestSetupResponse struct {
 	AdditionalIpas []FileReferenceResponse `pulumi:"additionalIpas"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile string `pulumi:"networkProfile"`
-	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 	PullDirectories []IosDeviceFileResponse `pulumi:"pullDirectories"`
 	// List of files to push to the device before starting the test.
 	PushFiles []IosDeviceFileResponse `pulumi:"pushFiles"`
@@ -6799,7 +6799,7 @@ type IosTestSetupResponseArgs struct {
 	AdditionalIpas FileReferenceResponseArrayInput `pulumi:"additionalIpas"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringInput `pulumi:"networkProfile"`
-	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+	// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 	PullDirectories IosDeviceFileResponseArrayInput `pulumi:"pullDirectories"`
 	// List of files to push to the device before starting the test.
 	PushFiles IosDeviceFileResponseArrayInput `pulumi:"pushFiles"`
@@ -6893,7 +6893,7 @@ func (o IosTestSetupResponseOutput) NetworkProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v IosTestSetupResponse) string { return v.NetworkProfile }).(pulumi.StringOutput)
 }
 
-// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 func (o IosTestSetupResponseOutput) PullDirectories() IosDeviceFileResponseArrayOutput {
 	return o.ApplyT(func(v IosTestSetupResponse) []IosDeviceFileResponse { return v.PullDirectories }).(IosDeviceFileResponseArrayOutput)
 }
@@ -6941,7 +6941,7 @@ func (o IosTestSetupResponsePtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id.
+// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
 func (o IosTestSetupResponsePtrOutput) PullDirectories() IosDeviceFileResponseArrayOutput {
 	return o.ApplyT(func(v *IosTestSetupResponse) []IosDeviceFileResponse {
 		if v == nil {

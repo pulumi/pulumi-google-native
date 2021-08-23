@@ -56,7 +56,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+     * The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -68,7 +68,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly sourceFileShare!: pulumi.Output<string>;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface BackupArgs {
      */
     sourceFileShare?: pulumi.Input<string>;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     sourceInstance?: pulumi.Input<string>;
 }

@@ -110,8 +110,6 @@ type intentArgs struct {
 	EndInteraction *bool `pulumi:"endInteraction"`
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
 	Events []string `pulumi:"events"`
-	// Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-	FollowupIntentInfo []GoogleCloudDialogflowV2IntentFollowupIntentInfo `pulumi:"followupIntentInfo"`
 	// Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
 	InputContextNames []string `pulumi:"inputContextNames"`
 	IntentView        *string  `pulumi:"intentView"`
@@ -138,8 +136,6 @@ type intentArgs struct {
 	Project  *string `pulumi:"project"`
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts *bool `pulumi:"resetContexts"`
-	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
-	RootFollowupIntentName *string `pulumi:"rootFollowupIntentName"`
 	// Optional. The collection of examples that the agent is trained on.
 	TrainingPhrases []GoogleCloudDialogflowV2IntentTrainingPhrase `pulumi:"trainingPhrases"`
 	// Optional. Indicates whether webhooks are enabled for the intent.
@@ -158,8 +154,6 @@ type IntentArgs struct {
 	EndInteraction pulumi.BoolPtrInput
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
 	Events pulumi.StringArrayInput
-	// Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-	FollowupIntentInfo GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayInput
 	// Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
 	InputContextNames pulumi.StringArrayInput
 	IntentView        pulumi.StringPtrInput
@@ -186,8 +180,6 @@ type IntentArgs struct {
 	Project  pulumi.StringPtrInput
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolPtrInput
-	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
-	RootFollowupIntentName pulumi.StringPtrInput
 	// Optional. The collection of examples that the agent is trained on.
 	TrainingPhrases GoogleCloudDialogflowV2IntentTrainingPhraseArrayInput
 	// Optional. Indicates whether webhooks are enabled for the intent.

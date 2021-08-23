@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, topic=None):
+    def __init__(__self__, ack_deadline_seconds=None, dead_letter_policy=None, detached=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, topic=None, topic_message_retention_duration=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -57,6 +57,9 @@ class GetSubscriptionResult:
         if topic and not isinstance(topic, str):
             raise TypeError("Expected argument 'topic' to be a str")
         pulumi.set(__self__, "topic", topic)
+        if topic_message_retention_duration and not isinstance(topic_message_retention_duration, str):
+            raise TypeError("Expected argument 'topic_message_retention_duration' to be a str")
+        pulumi.set(__self__, "topic_message_retention_duration", topic_message_retention_duration)
 
     @property
     @pulumi.getter(name="ackDeadlineSeconds")
@@ -162,6 +165,14 @@ class GetSubscriptionResult:
         """
         return pulumi.get(self, "topic")
 
+    @property
+    @pulumi.getter(name="topicMessageRetentionDuration")
+    def topic_message_retention_duration(self) -> str:
+        """
+        Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        """
+        return pulumi.get(self, "topic_message_retention_duration")
+
 
 class AwaitableGetSubscriptionResult(GetSubscriptionResult):
     # pylint: disable=using-constant-test
@@ -181,7 +192,8 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             push_config=self.push_config,
             retain_acked_messages=self.retain_acked_messages,
             retry_policy=self.retry_policy,
-            topic=self.topic)
+            topic=self.topic,
+            topic_message_retention_duration=self.topic_message_retention_duration)
 
 
 def get_subscription(project: Optional[str] = None,
@@ -212,4 +224,5 @@ def get_subscription(project: Optional[str] = None,
         push_config=__ret__.push_config,
         retain_acked_messages=__ret__.retain_acked_messages,
         retry_policy=__ret__.retry_policy,
-        topic=__ret__.topic)
+        topic=__ret__.topic,
+        topic_message_retention_duration=__ret__.topic_message_retention_duration)

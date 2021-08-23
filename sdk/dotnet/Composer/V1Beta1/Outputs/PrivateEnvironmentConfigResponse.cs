@@ -26,19 +26,23 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly string CloudSqlIpv4CidrBlock;
         /// <summary>
-        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
+        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly bool EnablePrivateEnvironment;
+        /// <summary>
+        /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        /// </summary>
+        public readonly bool EnablePrivatelyUsedPublicIps;
         /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
         /// <summary>
-        /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
+        /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly string WebServerIpv4CidrBlock;
         /// <summary>
-        /// The IP range reserved for the tenant project's App Engine VMs.
+        /// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly string WebServerIpv4ReservedRange;
 
@@ -52,6 +56,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             bool enablePrivateEnvironment,
 
+            bool enablePrivatelyUsedPublicIps,
+
             Outputs.PrivateClusterConfigResponse privateClusterConfig,
 
             string webServerIpv4CidrBlock,
@@ -62,6 +68,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             CloudComposerNetworkIpv4ReservedRange = cloudComposerNetworkIpv4ReservedRange;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEnvironment = enablePrivateEnvironment;
+            EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             PrivateClusterConfig = privateClusterConfig;
             WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
             WebServerIpv4ReservedRange = webServerIpv4ReservedRange;

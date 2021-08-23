@@ -10,6 +10,600 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettings struct {
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+	LoggingSettings *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsArgs and GoogleCloudDialogflowCxV3AdvancedSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
+type GoogleCloudDialogflowCxV3AdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsOutput
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettingsArgs struct {
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+	LoggingSettings GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
+}
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsOutput).ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsArgs, GoogleCloudDialogflowCxV3AdvancedSettingsPtr and GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput
+}
+
+type googleCloudDialogflowCxV3AdvancedSettingsPtrType GoogleCloudDialogflowCxV3AdvancedSettingsArgs
+
+func GoogleCloudDialogflowCxV3AdvancedSettingsPtr(v *GoogleCloudDialogflowCxV3AdvancedSettingsArgs) GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput {
+	return (*googleCloudDialogflowCxV3AdvancedSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3AdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsPtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsPtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3AdvancedSettings {
+		return &v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+		return v.LoggingSettings
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) Elem() GoogleCloudDialogflowCxV3AdvancedSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettings) GoogleCloudDialogflowCxV3AdvancedSettings {
+		return *v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingSettings
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings struct {
+	// If true, DF Interaction logging is currently enabled.
+	EnableInteractionLogging *bool `pulumi:"enableInteractionLogging"`
+	// If true, StackDriver logging is currently enabled.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs struct {
+	// If true, DF Interaction logging is currently enabled.
+	EnableInteractionLogging pulumi.BoolPtrInput `pulumi:"enableInteractionLogging"`
+	// If true, StackDriver logging is currently enabled.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput).ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs, GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtr and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput
+}
+
+type googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrType GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs
+
+func GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtr(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput {
+	return (*googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+		return &v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// If true, DF Interaction logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) *bool {
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, StackDriver logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) *bool {
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) Elem() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
+		return *v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput)
+}
+
+// If true, DF Interaction logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, StackDriver logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse struct {
+	// If true, DF Interaction logging is currently enabled.
+	EnableInteractionLogging bool `pulumi:"enableInteractionLogging"`
+	// If true, StackDriver logging is currently enabled.
+	EnableStackdriverLogging bool `pulumi:"enableStackdriverLogging"`
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs{...}
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs struct {
+	// If true, DF Interaction logging is currently enabled.
+	EnableInteractionLogging pulumi.BoolInput `pulumi:"enableInteractionLogging"`
+	// If true, StackDriver logging is currently enabled.
+	EnableStackdriverLogging pulumi.BoolInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput).ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs, GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtr and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrType GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs
+
+func GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtr(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseArgs) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrInput {
+	return (*googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput)
+}
+
+// Define behaviors on logging.
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput)
+}
+
+// If true, DF Interaction logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) EnableInteractionLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) bool {
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolOutput)
+}
+
+// If true, StackDriver logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) EnableStackdriverLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) bool {
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolOutput)
+}
+
+type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput)
+}
+
+// If true, DF Interaction logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, StackDriver logging is currently enabled.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponse struct {
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+	LoggingSettings GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse `pulumi:"loggingSettings"`
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsResponseInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs and GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs{...}
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs struct {
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+	LoggingSettings GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseInput `pulumi:"loggingSettings"`
+}
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput).ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs, GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtr and GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3AdvancedSettingsResponsePtrType GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs
+
+func GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtr(v *GoogleCloudDialogflowCxV3AdvancedSettingsResponseArgs) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrInput {
+	return (*googleCloudDialogflowCxV3AdvancedSettingsResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3AdvancedSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3AdvancedSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3AdvancedSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsResponse) *GoogleCloudDialogflowCxV3AdvancedSettingsResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsResponse) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
+		return v.LoggingSettings
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput)
+}
+
+type GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3AdvancedSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsResponse) GoogleCloudDialogflowCxV3AdvancedSettingsResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettingsResponse) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingSettings
+	}).(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput)
+}
+
 // Represents the natural speech audio to be processed.
 type GoogleCloudDialogflowCxV3AudioInput struct {
 	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
@@ -10443,6 +11037,1214 @@ func (o GoogleCloudDialogflowCxV3ResponseMessageTextResponseArrayOutput) Index(i
 	}).(GoogleCloudDialogflowCxV3ResponseMessageTextResponseOutput)
 }
 
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfig struct {
+	// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	FailureCondition *string `pulumi:"failureCondition"`
+	// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	RolloutCondition *string `pulumi:"rolloutCondition"`
+	// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+	RolloutSteps []GoogleCloudDialogflowCxV3RolloutConfigRolloutStep `pulumi:"rolloutSteps"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigArgs and GoogleCloudDialogflowCxV3RolloutConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
+type GoogleCloudDialogflowCxV3RolloutConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigOutput() GoogleCloudDialogflowCxV3RolloutConfigOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigOutput
+}
+
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfigArgs struct {
+	// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	FailureCondition pulumi.StringPtrInput `pulumi:"failureCondition"`
+	// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	RolloutCondition pulumi.StringPtrInput `pulumi:"rolloutCondition"`
+	// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+	RolloutSteps GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput `pulumi:"rolloutSteps"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigArgs) ToGoogleCloudDialogflowCxV3RolloutConfigOutput() GoogleCloudDialogflowCxV3RolloutConfigOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigArgs) ToGoogleCloudDialogflowCxV3RolloutConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigArgs) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutput() GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigArgs) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigOutput).ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigArgs, GoogleCloudDialogflowCxV3RolloutConfigPtr and GoogleCloudDialogflowCxV3RolloutConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3RolloutConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutput() GoogleCloudDialogflowCxV3RolloutConfigPtrOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigPtrOutput
+}
+
+type googleCloudDialogflowCxV3RolloutConfigPtrType GoogleCloudDialogflowCxV3RolloutConfigArgs
+
+func GoogleCloudDialogflowCxV3RolloutConfigPtr(v *GoogleCloudDialogflowCxV3RolloutConfigArgs) GoogleCloudDialogflowCxV3RolloutConfigPtrInput {
+	return (*googleCloudDialogflowCxV3RolloutConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3RolloutConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3RolloutConfigPtrType) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutput() GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3RolloutConfigPtrType) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigPtrOutput)
+}
+
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) ToGoogleCloudDialogflowCxV3RolloutConfigOutput() GoogleCloudDialogflowCxV3RolloutConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) ToGoogleCloudDialogflowCxV3RolloutConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutput() GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfig) *GoogleCloudDialogflowCxV3RolloutConfig {
+		return &v
+	}).(GoogleCloudDialogflowCxV3RolloutConfigPtrOutput)
+}
+
+// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) FailureCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfig) *string { return v.FailureCondition }).(pulumi.StringPtrOutput)
+}
+
+// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) RolloutCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfig) *string { return v.RolloutCondition }).(pulumi.StringPtrOutput)
+}
+
+// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+func (o GoogleCloudDialogflowCxV3RolloutConfigOutput) RolloutSteps() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfig) []GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
+		return v.RolloutSteps
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutput() GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) ToGoogleCloudDialogflowCxV3RolloutConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) Elem() GoogleCloudDialogflowCxV3RolloutConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfig) GoogleCloudDialogflowCxV3RolloutConfig { return *v }).(GoogleCloudDialogflowCxV3RolloutConfigOutput)
+}
+
+// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) FailureCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureCondition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) RolloutCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutCondition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+func (o GoogleCloudDialogflowCxV3RolloutConfigPtrOutput) RolloutSteps() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfig) []GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutSteps
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput)
+}
+
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfigResponse struct {
+	// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	FailureCondition string `pulumi:"failureCondition"`
+	// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	RolloutCondition string `pulumi:"rolloutCondition"`
+	// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+	RolloutSteps []GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse `pulumi:"rolloutSteps"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigResponseInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigResponseArgs and GoogleCloudDialogflowCxV3RolloutConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigResponseArgs{...}
+type GoogleCloudDialogflowCxV3RolloutConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponseOutput
+}
+
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfigResponseArgs struct {
+	// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	FailureCondition pulumi.StringInput `pulumi:"failureCondition"`
+	// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	RolloutCondition pulumi.StringInput `pulumi:"rolloutCondition"`
+	// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+	RolloutSteps GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayInput `pulumi:"rolloutSteps"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput).ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigResponseArgs, GoogleCloudDialogflowCxV3RolloutConfigResponsePtr and GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3RolloutConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3RolloutConfigResponsePtrType GoogleCloudDialogflowCxV3RolloutConfigResponseArgs
+
+func GoogleCloudDialogflowCxV3RolloutConfigResponsePtr(v *GoogleCloudDialogflowCxV3RolloutConfigResponseArgs) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrInput {
+	return (*googleCloudDialogflowCxV3RolloutConfigResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3RolloutConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3RolloutConfigResponsePtrType) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3RolloutConfigResponsePtrType) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput)
+}
+
+// The configuration for auto rollout.
+type GoogleCloudDialogflowCxV3RolloutConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigResponse) *GoogleCloudDialogflowCxV3RolloutConfigResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput)
+}
+
+// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) FailureCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigResponse) string { return v.FailureCondition }).(pulumi.StringOutput)
+}
+
+// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) RolloutCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigResponse) string { return v.RolloutCondition }).(pulumi.StringOutput)
+}
+
+// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponseOutput) RolloutSteps() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigResponse) []GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
+		return v.RolloutSteps
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfigResponse) GoogleCloudDialogflowCxV3RolloutConfigResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput)
+}
+
+// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) FailureCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FailureCondition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) RolloutCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RolloutCondition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+func (o GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput) RolloutSteps() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutConfigResponse) []GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutSteps
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput)
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStep struct {
+	// The name of the rollout step;
+	DisplayName *string `pulumi:"displayName"`
+	// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+	MinDuration *string `pulumi:"minDuration"`
+	// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+	TrafficPercent *int `pulumi:"trafficPercent"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...}
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs struct {
+	// The name of the rollout step;
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+	MinDuration pulumi.StringPtrInput `pulumi:"minDuration"`
+	// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+	TrafficPercent pulumi.IntPtrInput `pulumi:"trafficPercent"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStep)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput)
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray{ GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...} }
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray []GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3RolloutConfigRolloutStep)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput)
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStep)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput {
+	return o
+}
+
+// The name of the rollout step;
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStep) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) MinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStep) *string { return v.MinDuration }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput) TrafficPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStep) *int { return v.TrafficPercent }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3RolloutConfigRolloutStep)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
+		return vs[0].([]GoogleCloudDialogflowCxV3RolloutConfigRolloutStep)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput)
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse struct {
+	// The name of the rollout step;
+	DisplayName string `pulumi:"displayName"`
+	// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+	MinDuration string `pulumi:"minDuration"`
+	// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+	TrafficPercent int `pulumi:"trafficPercent"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs{...}
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs struct {
+	// The name of the rollout step;
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+	MinDuration pulumi.StringInput `pulumi:"minDuration"`
+	// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+	TrafficPercent pulumi.IntInput `pulumi:"trafficPercent"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput)
+}
+
+// GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray{ GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArgs{...} }
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput
+	ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray []GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseInput
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArray) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput)
+}
+
+// A single rollout step with specified traffic allocation.
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput {
+	return o
+}
+
+// The name of the rollout step;
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) MinDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse) string { return v.MinDuration }).(pulumi.StringOutput)
+}
+
+// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput) TrafficPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse) int { return v.TrafficPercent }).(pulumi.IntOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput() GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput) ToGoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
+		return vs[0].([]GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput)
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutState struct {
+	// Start time of the current step.
+	StartTime *string `pulumi:"startTime"`
+	// Display name of the current auto rollout step.
+	Step *string `pulumi:"step"`
+	// Index of the current step in the auto rollout steps list.
+	StepIndex *int `pulumi:"stepIndex"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutStateInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateArgs and GoogleCloudDialogflowCxV3RolloutStateOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStateInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutStateArgs{...}
+type GoogleCloudDialogflowCxV3RolloutStateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutStateOutput() GoogleCloudDialogflowCxV3RolloutStateOutput
+	ToGoogleCloudDialogflowCxV3RolloutStateOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutStateOutput
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutStateArgs struct {
+	// Start time of the current step.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Display name of the current auto rollout step.
+	Step pulumi.StringPtrInput `pulumi:"step"`
+	// Index of the current step in the auto rollout steps list.
+	StepIndex pulumi.IntPtrInput `pulumi:"stepIndex"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutState)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateArgs) ToGoogleCloudDialogflowCxV3RolloutStateOutput() GoogleCloudDialogflowCxV3RolloutStateOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateArgs) ToGoogleCloudDialogflowCxV3RolloutStateOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStateOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateArgs) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutput() GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateArgs) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStateOutput).ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3RolloutStatePtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateArgs, GoogleCloudDialogflowCxV3RolloutStatePtr and GoogleCloudDialogflowCxV3RolloutStatePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStatePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutStateArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3RolloutStatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutStatePtrOutput() GoogleCloudDialogflowCxV3RolloutStatePtrOutput
+	ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutStatePtrOutput
+}
+
+type googleCloudDialogflowCxV3RolloutStatePtrType GoogleCloudDialogflowCxV3RolloutStateArgs
+
+func GoogleCloudDialogflowCxV3RolloutStatePtr(v *GoogleCloudDialogflowCxV3RolloutStateArgs) GoogleCloudDialogflowCxV3RolloutStatePtrInput {
+	return (*googleCloudDialogflowCxV3RolloutStatePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3RolloutStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutState)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3RolloutStatePtrType) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutput() GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3RolloutStatePtrType) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStatePtrOutput)
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutStateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutState)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) ToGoogleCloudDialogflowCxV3RolloutStateOutput() GoogleCloudDialogflowCxV3RolloutStateOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) ToGoogleCloudDialogflowCxV3RolloutStateOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutput() GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutState) *GoogleCloudDialogflowCxV3RolloutState {
+		return &v
+	}).(GoogleCloudDialogflowCxV3RolloutStatePtrOutput)
+}
+
+// Start time of the current step.
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutState) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the current auto rollout step.
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) Step() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutState) *string { return v.Step }).(pulumi.StringPtrOutput)
+}
+
+// Index of the current step in the auto rollout steps list.
+func (o GoogleCloudDialogflowCxV3RolloutStateOutput) StepIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutState) *int { return v.StepIndex }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutStatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutState)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutput() GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) ToGoogleCloudDialogflowCxV3RolloutStatePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) Elem() GoogleCloudDialogflowCxV3RolloutStateOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutState) GoogleCloudDialogflowCxV3RolloutState { return *v }).(GoogleCloudDialogflowCxV3RolloutStateOutput)
+}
+
+// Start time of the current step.
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name of the current auto rollout step.
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) Step() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the current step in the auto rollout steps list.
+func (o GoogleCloudDialogflowCxV3RolloutStatePtrOutput) StepIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StepIndex
+	}).(pulumi.IntPtrOutput)
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutStateResponse struct {
+	// Start time of the current step.
+	StartTime string `pulumi:"startTime"`
+	// Display name of the current auto rollout step.
+	Step string `pulumi:"step"`
+	// Index of the current step in the auto rollout steps list.
+	StepIndex int `pulumi:"stepIndex"`
+}
+
+// GoogleCloudDialogflowCxV3RolloutStateResponseInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateResponseArgs and GoogleCloudDialogflowCxV3RolloutStateResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStateResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutStateResponseArgs{...}
+type GoogleCloudDialogflowCxV3RolloutStateResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutStateResponseOutput() GoogleCloudDialogflowCxV3RolloutStateResponseOutput
+	ToGoogleCloudDialogflowCxV3RolloutStateResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutStateResponseOutput
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutStateResponseArgs struct {
+	// Start time of the current step.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Display name of the current auto rollout step.
+	Step pulumi.StringInput `pulumi:"step"`
+	// Index of the current step in the auto rollout steps list.
+	StepIndex pulumi.IntInput `pulumi:"stepIndex"`
+}
+
+func (GoogleCloudDialogflowCxV3RolloutStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateResponseArgs) ToGoogleCloudDialogflowCxV3RolloutStateResponseOutput() GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStateResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateResponseArgs) ToGoogleCloudDialogflowCxV3RolloutStateResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStateResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateResponseArgs) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3RolloutStateResponseArgs) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStateResponseOutput).ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3RolloutStateResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateResponseArgs, GoogleCloudDialogflowCxV3RolloutStateResponsePtr and GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStateResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3RolloutStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3RolloutStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3RolloutStateResponsePtrType GoogleCloudDialogflowCxV3RolloutStateResponseArgs
+
+func GoogleCloudDialogflowCxV3RolloutStateResponsePtr(v *GoogleCloudDialogflowCxV3RolloutStateResponseArgs) GoogleCloudDialogflowCxV3RolloutStateResponsePtrInput {
+	return (*googleCloudDialogflowCxV3RolloutStateResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3RolloutStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutStateResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3RolloutStateResponsePtrType) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3RolloutStateResponsePtrType) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput)
+}
+
+// State of the auto-rollout process.
+type GoogleCloudDialogflowCxV3RolloutStateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponseOutput() GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) *GoogleCloudDialogflowCxV3RolloutStateResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput)
+}
+
+// Start time of the current step.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Display name of the current auto rollout step.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) Step() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) string { return v.Step }).(pulumi.StringOutput)
+}
+
+// Index of the current step in the auto rollout steps list.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) StepIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) int { return v.StepIndex }).(pulumi.IntOutput)
+}
+
+type GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3RolloutStateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput() GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) ToGoogleCloudDialogflowCxV3RolloutStateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutStateResponse) GoogleCloudDialogflowCxV3RolloutStateResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3RolloutStateResponseOutput)
+}
+
+// Start time of the current step.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display name of the current auto rollout step.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) Step() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Step
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index of the current step in the auto rollout steps list.
+func (o GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput) StepIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3RolloutStateResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.StepIndex
+	}).(pulumi.IntPtrOutput)
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport *bool `pulumi:"enableInsightsExport"`
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport pulumi.BoolPtrInput `pulumi:"enableInsightsExport"`
+}
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput).ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs, GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtr and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput
+}
+
+type googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs
+
+func GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtr(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput {
+	return (*googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput)
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings) *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
+		return &v
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput)
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput) EnableInsightsExport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings) *bool {
+		return v.EnableInsightsExport
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput) Elem() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
+		return *v
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput)
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput) EnableInsightsExport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInsightsExport
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport bool `pulumi:"enableInsightsExport"`
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs{...}
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport pulumi.BoolInput `pulumi:"enableInsightsExport"`
+}
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput).ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs, GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtr and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrType GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs
+
+func GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtr(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseArgs) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrInput {
+	return (*googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput)
+}
+
+// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse) *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput)
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput) EnableInsightsExport() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse) bool {
+		return v.EnableInsightsExport
+	}).(pulumi.BoolOutput)
+}
+
+type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput)
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput) EnableInsightsExport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableInsightsExport
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Settings related to speech recognition.
 type GoogleCloudDialogflowCxV3SpeechToTextSettings struct {
 	// Whether to use speech adaptation for speech recognition.
@@ -13714,6 +15516,14 @@ func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AdvancedSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AudioInputOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AudioInputPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3AudioInputResponseOutput{})
@@ -13856,6 +15666,22 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ResponseMessageTextResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SpeechToTextSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput{})

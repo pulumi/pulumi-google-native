@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+// Creates a new backup run on demand.
 // Auto-naming is currently not supported for this resource.
 type BackupRun struct {
 	pulumi.CustomResourceState
@@ -20,9 +20,9 @@ type BackupRun struct {
 	BackupKind pulumi.StringOutput `pulumi:"backupKind"`
 	// The description of this run, only applicable to on-demand backups.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+	// Encryption configuration specific to a backup.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponseOutput `pulumi:"diskEncryptionConfiguration"`
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
+	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusResponseOutput `pulumi:"diskEncryptionStatus"`
 	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
@@ -94,9 +94,9 @@ type backupRunArgs struct {
 	BackupKind *BackupRunBackupKind `pulumi:"backupKind"`
 	// The description of this run, only applicable to on-demand backups.
 	Description *string `pulumi:"description"`
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+	// Encryption configuration specific to a backup.
 	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
+	// Encryption status specific to a backup.
 	DiskEncryptionStatus *DiskEncryptionStatus `pulumi:"diskEncryptionStatus"`
 	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	EndTime *string `pulumi:"endTime"`
@@ -131,9 +131,9 @@ type BackupRunArgs struct {
 	BackupKind BackupRunBackupKindPtrInput
 	// The description of this run, only applicable to on-demand backups.
 	Description pulumi.StringPtrInput
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+	// Encryption configuration specific to a backup.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
+	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusPtrInput
 	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	EndTime pulumi.StringPtrInput

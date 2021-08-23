@@ -193,6 +193,8 @@ const (
 	CryptoKeyPurposeAsymmetricSign = CryptoKeyPurpose("ASYMMETRIC_SIGN")
 	// CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey.
 	CryptoKeyPurposeAsymmetricDecrypt = CryptoKeyPurpose("ASYMMETRIC_DECRYPT")
+	// CryptoKeys with this purpose may be used with MacSign.
+	CryptoKeyPurposeMac = CryptoKeyPurpose("MAC")
 )
 
 func (CryptoKeyPurpose) ElementType() reflect.Type {
@@ -569,6 +571,8 @@ const (
 	CryptoKeyVersionTemplateAlgorithmEcSignP384Sha384 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P384_SHA384")
 	// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
 	CryptoKeyVersionTemplateAlgorithmEcSignSecp256k1Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256")
+	// HMAC-SHA256 signing with a 256 bit key.
+	CryptoKeyVersionTemplateAlgorithmHmacSha256 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA256")
 	// Algorithm representing symmetric encryption by an external key manager.
 	CryptoKeyVersionTemplateAlgorithmExternalSymmetricEncryption = CryptoKeyVersionTemplateAlgorithm("EXTERNAL_SYMMETRIC_ENCRYPTION")
 )

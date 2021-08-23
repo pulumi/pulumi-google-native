@@ -24,7 +24,7 @@ export type AndroidInstrumentationTestOrchestratorOption = (typeof AndroidInstru
 
 export const AndroidRoboTestRoboMode = {
     /**
-     * LINT.IfChange This means that the server should choose the mode. Recommended.
+     * This means that the server should choose the mode. Recommended.
      */
     RoboModeUnspecified: "ROBO_MODE_UNSPECIFIED",
     /**

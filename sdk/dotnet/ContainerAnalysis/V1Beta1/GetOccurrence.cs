@@ -89,6 +89,22 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly Outputs.ResourceResponse Resource;
         /// <summary>
+        /// Describes a specific SPDX Document.
+        /// </summary>
+        public readonly Outputs.DocumentOccurrenceResponse Sbom;
+        /// <summary>
+        /// Describes a specific SPDX File.
+        /// </summary>
+        public readonly Outputs.FileOccurrenceResponse SpdxFile;
+        /// <summary>
+        /// Describes a specific SPDX Package.
+        /// </summary>
+        public readonly Outputs.PackageOccurrenceResponse SpdxPackage;
+        /// <summary>
+        /// Describes a specific SPDX Relationship.
+        /// </summary>
+        public readonly Outputs.RelationshipOccurrenceResponse SpdxRelationship;
+        /// <summary>
         /// The time this occurrence was last updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -125,6 +141,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             Outputs.ResourceResponse resource,
 
+            Outputs.DocumentOccurrenceResponse sbom,
+
+            Outputs.FileOccurrenceResponse spdxFile,
+
+            Outputs.PackageOccurrenceResponse spdxPackage,
+
+            Outputs.RelationshipOccurrenceResponse spdxRelationship,
+
             string updateTime,
 
             Outputs.GrafeasV1beta1VulnerabilityDetailsResponse vulnerability)
@@ -142,6 +166,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
             NoteName = noteName;
             Remediation = remediation;
             Resource = resource;
+            Sbom = sbom;
+            SpdxFile = spdxFile;
+            SpdxPackage = spdxPackage;
+            SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Vulnerability = vulnerability;
         }

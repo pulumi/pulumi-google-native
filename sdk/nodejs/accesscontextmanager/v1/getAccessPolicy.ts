@@ -31,7 +31,7 @@ export interface GetAccessPolicyResult {
      */
     readonly etag: string;
     /**
-     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
      */
     readonly name: string;
     /**

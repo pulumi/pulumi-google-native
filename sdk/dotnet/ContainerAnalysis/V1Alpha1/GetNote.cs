@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.DiscoveryResponse Discovery;
         /// <summary>
+        /// A note describing a dsse attestation note.
+        /// </summary>
+        public readonly Outputs.DSSEAttestationNoteResponse DsseAttestation;
+        /// <summary>
         /// Time of expiration for this note, null if note does not expire.
         /// </summary>
         public readonly string ExpirationTime;
@@ -89,9 +93,25 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly ImmutableArray<Outputs.RelatedUrlResponse> RelatedUrl;
         /// <summary>
+        /// A note describing a software bill of materials.
+        /// </summary>
+        public readonly Outputs.DocumentNoteResponse Sbom;
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         public readonly string ShortDescription;
+        /// <summary>
+        /// A note describing an SPDX File.
+        /// </summary>
+        public readonly Outputs.FileNoteResponse SpdxFile;
+        /// <summary>
+        /// A note describing an SPDX Package.
+        /// </summary>
+        public readonly Outputs.PackageNoteResponse SpdxPackage;
+        /// <summary>
+        /// A note describing a relationship between SPDX elements.
+        /// </summary>
+        public readonly Outputs.RelationshipNoteResponse SpdxRelationship;
         /// <summary>
         /// The time this note was last updated. This field can be used as a filter in list requests.
         /// </summary>
@@ -121,6 +141,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.DiscoveryResponse discovery,
 
+            Outputs.DSSEAttestationNoteResponse dsseAttestation,
+
             string expirationTime,
 
             string kind,
@@ -133,7 +155,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             ImmutableArray<Outputs.RelatedUrlResponse> relatedUrl,
 
+            Outputs.DocumentNoteResponse sbom,
+
             string shortDescription,
+
+            Outputs.FileNoteResponse spdxFile,
+
+            Outputs.PackageNoteResponse spdxPackage,
+
+            Outputs.RelationshipNoteResponse spdxRelationship,
 
             string updateTime,
 
@@ -148,13 +178,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             CreateTime = createTime;
             Deployable = deployable;
             Discovery = discovery;
+            DsseAttestation = dsseAttestation;
             ExpirationTime = expirationTime;
             Kind = kind;
             LongDescription = longDescription;
             Name = name;
             Package = package;
             RelatedUrl = relatedUrl;
+            Sbom = sbom;
             ShortDescription = shortDescription;
+            SpdxFile = spdxFile;
+            SpdxPackage = spdxPackage;
+            SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Upgrade = upgrade;
             VulnerabilityType = vulnerabilityType;

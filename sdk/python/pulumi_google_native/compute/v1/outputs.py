@@ -1931,7 +1931,7 @@ class BackendResponse(dict):
                  max_utilization: float):
         """
         Message containing information of one individual backend.
-        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         :param float capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param bool failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
@@ -1942,6 +1942,7 @@ class BackendResponse(dict):
         :param int max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
+        :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         pulumi.set(__self__, "balancing_mode", balancing_mode)
         pulumi.set(__self__, "capacity_scaler", capacity_scaler)
@@ -1960,7 +1961,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> str:
         """
-        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2047,6 +2048,9 @@ class BackendResponse(dict):
     @property
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> float:
+        """
+        Optional parameter to define a target capacity for the UTILIZATIONbalancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        """
         return pulumi.get(self, "max_utilization")
 
 
@@ -3141,6 +3145,8 @@ class CustomerEncryptionKeyResponse(dict):
             suggest = "kms_key_service_account"
         elif key == "rawKey":
             suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CustomerEncryptionKeyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3157,16 +3163,19 @@ class CustomerEncryptionKeyResponse(dict):
                  kms_key_name: str,
                  kms_key_service_account: str,
                  raw_key: str,
+                 rsa_encrypted_key: str,
                  sha256: str):
         """
         :param str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
         :param str sha256: [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
         pulumi.set(__self__, "sha256", sha256)
 
     @property
@@ -3192,6 +3201,14 @@ class CustomerEncryptionKeyResponse(dict):
         Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
         """
         return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. The key must meet the following requirements before you can provide it to Compute Engine: 1. The key is wrapped using a RSA public key certificate provided by Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the RSA public key certificate provided by Google at: https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem 
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
     @property
     @pulumi.getter
@@ -3910,9 +3927,9 @@ class FirewallPolicyRuleMatcherResponse(dict):
                  src_ip_ranges: Sequence[str]):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatcherLayer4ConfigResponse'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
         pulumi.set(__self__, "layer4_configs", layer4_configs)
@@ -3922,7 +3939,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Sequence[str]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -3938,7 +3955,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Sequence[str]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -5730,7 +5747,7 @@ class ImageRawDiskResponse(dict):
         """
         The parameters of the raw disk image.
         :param str container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
-        :param str source: The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        :param str source: The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         pulumi.set(__self__, "container_type", container_type)
         pulumi.set(__self__, "source", source)
@@ -5747,7 +5764,7 @@ class ImageRawDiskResponse(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        The full Google Cloud Storage URL where the disk image is stored. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
+        The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source")
 
@@ -7925,9 +7942,9 @@ class NetworkPeeringResponse(dict):
         :param bool auto_create_routes: This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
         :param bool exchange_subnet_routes: Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
         :param bool export_custom_routes: Whether to export the custom routes to peer network.
-        :param bool export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param bool export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
         :param bool import_custom_routes: Whether to import the custom routes from peer network.
-        :param bool import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param bool import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
         :param str name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param str network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
         :param int peer_mtu: Maximum Transmission Unit in bytes.
@@ -7974,7 +7991,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
     def export_subnet_routes_with_public_ip(self) -> bool:
         """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
         """
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
@@ -7990,7 +8007,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
     def import_subnet_routes_with_public_ip(self) -> bool:
         """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
         """
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 

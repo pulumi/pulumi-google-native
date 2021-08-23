@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
     public sealed class LocalDiskResponse
     {
         /// <summary>
-        /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+        /// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         /// </summary>
         public readonly bool AutoDelete;
         /// <summary>
-        /// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+        /// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         /// </summary>
         public readonly bool Boot;
         /// <summary>
-        /// Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        /// Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly int Index;
         /// <summary>
-        /// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        /// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         /// </summary>
         public readonly Outputs.LocalDiskInitializeParamsResponse InitializeParams;
         /// <summary>

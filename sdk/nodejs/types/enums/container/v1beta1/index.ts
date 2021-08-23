@@ -186,6 +186,36 @@ export const IstioConfigAuth = {
  */
 export type IstioConfigAuth = (typeof IstioConfigAuth)[keyof typeof IstioConfigAuth];
 
+export const LoggingComponentConfigEnableComponentsItem = {
+    /**
+     * Default value. This shouldn't be used.
+     */
+    ComponentUnspecified: "COMPONENT_UNSPECIFIED",
+    /**
+     * system components
+     */
+    SystemComponents: "SYSTEM_COMPONENTS",
+    /**
+     * workloads
+     */
+    Workloads: "WORKLOADS",
+} as const;
+
+export type LoggingComponentConfigEnableComponentsItem = (typeof LoggingComponentConfigEnableComponentsItem)[keyof typeof LoggingComponentConfigEnableComponentsItem];
+
+export const MonitoringComponentConfigEnableComponentsItem = {
+    /**
+     * Default value. This shouldn't be used.
+     */
+    ComponentUnspecified: "COMPONENT_UNSPECIFIED",
+    /**
+     * system components
+     */
+    SystemComponents: "SYSTEM_COMPONENTS",
+} as const;
+
+export type MonitoringComponentConfigEnableComponentsItem = (typeof MonitoringComponentConfigEnableComponentsItem)[keyof typeof MonitoringComponentConfigEnableComponentsItem];
+
 export const NetworkConfigDatapathProvider = {
     /**
      * Default value.

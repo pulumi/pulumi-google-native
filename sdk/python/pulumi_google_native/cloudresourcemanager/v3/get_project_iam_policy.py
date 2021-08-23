@@ -79,7 +79,7 @@ class AwaitableGetProjectIamPolicyResult(GetProjectIamPolicyResult):
 def get_project_iam_policy(project: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectIamPolicyResult:
     """
-    Returns the IAM access control policy for the specified project. Permission is denied if the policy or the resource do not exist.
+    Returns the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not exist.
     """
     __args__ = dict()
     __args__['project'] = project

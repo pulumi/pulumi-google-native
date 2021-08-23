@@ -97,6 +97,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      * An optional, human-readable explanation of the status.
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a RegionCommitment resource with the given unique name, arguments, and options.
@@ -122,6 +126,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservations"] = args ? args.reservations : undefined;
             inputs["resources"] = args ? args.resources : undefined;
+            inputs["type"] = args ? args.type : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["endTimestamp"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
@@ -145,6 +150,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["startTimestamp"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["statusMessage"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -188,4 +194,8 @@ export interface RegionCommitmentArgs {
      * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitmentArgs>[]>;
+    /**
+     * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+     */
+    type?: pulumi.Input<enums.compute.v1.RegionCommitmentType>;
 }

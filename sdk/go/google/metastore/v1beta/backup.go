@@ -23,6 +23,8 @@ type Backup struct {
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Services that are restoring from the backup.
+	RestoringServices pulumi.StringArrayOutput `pulumi:"restoringServices"`
 	// The revision of the service at the time of backup.
 	ServiceRevision ServiceResponseOutput `pulumi:"serviceRevision"`
 	// The current state of the backup.

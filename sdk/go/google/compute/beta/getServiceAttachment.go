@@ -30,8 +30,6 @@ type LookupServiceAttachmentResult struct {
 	ConnectionPreference string `pulumi:"connectionPreference"`
 	// Projects that are allowed to connect to this service attachment.
 	ConsumerAcceptLists []ServiceAttachmentConsumerProjectLimitResponse `pulumi:"consumerAcceptLists"`
-	// An array of forwarding rules for all the consumers connected to this service attachment.
-	ConsumerForwardingRules []ServiceAttachmentConsumerForwardingRuleResponse `pulumi:"consumerForwardingRules"`
 	// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
 	ConsumerRejectLists []string `pulumi:"consumerRejectLists"`
 	// Creation timestamp in RFC3339 text format.

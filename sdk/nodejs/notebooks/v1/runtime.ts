@@ -53,7 +53,7 @@ export class Runtime extends pulumi.CustomResource {
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.notebooks.v1.RuntimeMetricsResponse>;
     /**
-     * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtime}`
+     * The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

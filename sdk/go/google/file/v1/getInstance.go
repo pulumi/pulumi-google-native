@@ -34,7 +34,7 @@ type LookupInstanceResult struct {
 	FileShares []FileShareConfigResponse `pulumi:"fileShares"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+	// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
 	Name string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfigResponse `pulumi:"networks"`

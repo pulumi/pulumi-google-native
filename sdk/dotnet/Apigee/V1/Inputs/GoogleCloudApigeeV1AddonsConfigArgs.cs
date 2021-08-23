@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<Inputs.GoogleCloudApigeeV1AdvancedApiOpsConfigArgs>? AdvancedApiOpsConfig { get; set; }
 
         /// <summary>
-        /// Configuration for the Integration add-on.
-        /// </summary>
-        [Input("integrationConfig")]
-        public Input<Inputs.GoogleCloudApigeeV1IntegrationConfigArgs>? IntegrationConfig { get; set; }
-
-        /// <summary>
         /// Configuration for the Monetization add-on.
         /// </summary>
         [Input("monetizationConfig")]

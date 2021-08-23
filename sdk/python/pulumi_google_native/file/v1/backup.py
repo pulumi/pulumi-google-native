@@ -25,7 +25,7 @@ class BackupArgs:
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
-        :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         if description is not None:
@@ -108,7 +108,7 @@ class BackupArgs:
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         return pulumi.get(self, "source_instance")
 
@@ -139,7 +139,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
-        :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         ...
     @overload
@@ -282,7 +282,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+        The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -306,7 +306,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> pulumi.Output[str]:
         """
-        The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         return pulumi.get(self, "source_instance")
 

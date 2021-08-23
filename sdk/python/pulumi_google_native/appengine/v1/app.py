@@ -25,6 +25,7 @@ class AppArgs:
                  iap: Optional[pulumi.Input['IdentityAwareProxyArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None):
         """
         The set of arguments for constructing a App resource.
@@ -36,6 +37,7 @@ class AppArgs:
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        :param pulumi.Input[str] service_account: The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         if auth_domain is not None:
@@ -56,6 +58,8 @@ class AppArgs:
             pulumi.set(__self__, "id", id)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
 
@@ -165,6 +169,18 @@ class AppArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="servingStatus")
     def serving_status(self) -> Optional[pulumi.Input['AppServingStatus']]:
         """
@@ -191,6 +207,7 @@ class App(pulumi.CustomResource):
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         """
@@ -209,6 +226,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] gcr_domain: The Google Container Registry domain used for storing managed build docker images for this application.
         :param pulumi.Input[str] id: Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
         :param pulumi.Input[str] location: Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        :param pulumi.Input[str] service_account: The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
         :param pulumi.Input['AppServingStatus'] serving_status: Serving status of this application.
         """
         ...
@@ -247,6 +265,7 @@ class App(pulumi.CustomResource):
                  iap: Optional[pulumi.Input[pulumi.InputType['IdentityAwareProxyArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['AppServingStatus']] = None,
                  __props__=None):
         if opts is None:
@@ -269,6 +288,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["iap"] = iap
             __props__.__dict__["id"] = id
             __props__.__dict__["location"] = location
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["code_bucket"] = None
             __props__.__dict__["default_bucket"] = None
@@ -308,6 +328,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["iap"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["service_account"] = None
         __props__.__dict__["serving_status"] = None
         return App(resource_name, opts=opts, __props__=__props__)
 
@@ -403,6 +424,14 @@ class App(pulumi.CustomResource):
         Full path to the Application resource in the API. Example: apps/myapp.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="servingStatus")

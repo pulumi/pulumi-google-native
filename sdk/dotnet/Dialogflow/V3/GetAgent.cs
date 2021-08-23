@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public sealed class GetAgentResult
     {
         /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse AdvancedSettings;
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         public readonly string AvatarUri;
@@ -60,7 +64,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly bool EnableSpellCorrection;
         /// <summary>
-        /// Indicates if stackdriver logging is enabled for the agent.
+        /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         /// </summary>
         public readonly bool EnableStackdriverLogging;
         /// <summary>
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
         [OutputConstructor]
         private GetAgentResult(
+            Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse advancedSettings,
+
             string avatarUri,
 
             string defaultLanguageCode,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             string timeZone)
         {
+            AdvancedSettings = advancedSettings;
             AvatarUri = avatarUri;
             DefaultLanguageCode = defaultLanguageCode;
             Description = description;

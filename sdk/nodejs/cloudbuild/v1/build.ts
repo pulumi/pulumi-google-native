@@ -39,6 +39,10 @@ export class Build extends pulumi.CustomResource {
     }
 
     /**
+     * Describes this build's approval configuration, status, and result.
+     */
+    public /*out*/ readonly approval!: pulumi.Output<outputs.cloudbuild.v1.BuildApprovalResponse>;
+    /**
      * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      */
     public readonly artifacts!: pulumi.Output<outputs.cloudbuild.v1.ArtifactsResponse>;
@@ -139,7 +143,7 @@ export class Build extends pulumi.CustomResource {
      */
     public readonly timeout!: pulumi.Output<string>;
     /**
-     * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+     * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
      */
     public /*out*/ readonly timing!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -180,6 +184,7 @@ export class Build extends pulumi.CustomResource {
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
+            inputs["approval"] = undefined /*out*/;
             inputs["buildTriggerId"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["failureInfo"] = undefined /*out*/;
@@ -194,6 +199,7 @@ export class Build extends pulumi.CustomResource {
             inputs["timing"] = undefined /*out*/;
             inputs["warnings"] = undefined /*out*/;
         } else {
+            inputs["approval"] = undefined /*out*/;
             inputs["artifacts"] = undefined /*out*/;
             inputs["availableSecrets"] = undefined /*out*/;
             inputs["buildTriggerId"] = undefined /*out*/;

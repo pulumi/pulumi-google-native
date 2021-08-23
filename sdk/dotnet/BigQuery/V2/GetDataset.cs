@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
+        /// [Optional] Indicates if table names are case insensitive in the dataset.
+        /// </summary>
+        public readonly bool IsCaseInsensitive;
+        /// <summary>
         /// The resource type.
         /// </summary>
         public readonly string Kind;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string friendlyName,
 
+            bool isCaseInsensitive,
+
             string kind,
 
             ImmutableDictionary<string, string> labels,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Description = description;
             Etag = etag;
             FriendlyName = friendlyName;
+            IsCaseInsensitive = isCaseInsensitive;
             Kind = kind;
             Labels = labels;
             LastModifiedTime = lastModifiedTime;

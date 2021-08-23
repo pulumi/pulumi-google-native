@@ -25,7 +25,8 @@ class RegionCommitmentArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None,
+                 type: Optional[pulumi.Input['RegionCommitmentType']] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
@@ -35,6 +36,7 @@ class RegionCommitmentArgs:
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
         pulumi.set(__self__, "region", region)
         if category is not None:
@@ -55,6 +57,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "reservations", reservations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -167,6 +171,18 @@ class RegionCommitmentArgs:
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]]):
         pulumi.set(self, "resources", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['RegionCommitmentType']]:
+        """
+        The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['RegionCommitmentType']]):
+        pulumi.set(self, "type", value)
+
 
 class RegionCommitment(pulumi.CustomResource):
     @overload
@@ -183,6 +199,7 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):
         """
         Creates a commitment in the specified project using the data included in the request.
@@ -198,6 +215,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
         ...
     @overload
@@ -235,6 +253,7 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -259,6 +278,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservations"] = reservations
             __props__.__dict__["resources"] = resources
+            __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["end_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -303,6 +323,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["start_timestamp"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
+        __props__.__dict__["type"] = None
         return RegionCommitment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -424,4 +445,12 @@ class RegionCommitment(pulumi.CustomResource):
         An optional, human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        """
+        return pulumi.get(self, "type")
 

@@ -263,6 +263,47 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
     /// <summary>
+    /// See RepoType above.
+    /// </summary>
+    [EnumType]
+    public readonly struct GitFileSourceRepoType : IEquatable<GitFileSourceRepoType>
+    {
+        private readonly string _value;
+
+        private GitFileSourceRepoType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default, unknown repo type.
+        /// </summary>
+        public static GitFileSourceRepoType Unknown { get; } = new GitFileSourceRepoType("UNKNOWN");
+        /// <summary>
+        /// A Google Cloud Source Repositories-hosted repo.
+        /// </summary>
+        public static GitFileSourceRepoType CloudSourceRepositories { get; } = new GitFileSourceRepoType("CLOUD_SOURCE_REPOSITORIES");
+        /// <summary>
+        /// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
+        /// </summary>
+        public static GitFileSourceRepoType Github { get; } = new GitFileSourceRepoType("GITHUB");
+
+        public static bool operator ==(GitFileSourceRepoType left, GitFileSourceRepoType right) => left.Equals(right);
+        public static bool operator !=(GitFileSourceRepoType left, GitFileSourceRepoType right) => !left.Equals(right);
+
+        public static explicit operator string(GitFileSourceRepoType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GitFileSourceRepoType other && Equals(other);
+        public bool Equals(GitFileSourceRepoType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// See RepoType below.
     /// </summary>
     [EnumType]

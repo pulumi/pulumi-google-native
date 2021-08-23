@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.AutoprovisioningNodePoolDefaultsArgs>? AutoprovisioningNodePoolDefaults { get; set; }
 
         /// <summary>
+        /// Defines autoscaling behaviour.
+        /// </summary>
+        [Input("autoscalingProfile")]
+        public Input<Pulumi.GoogleNative.Container.V1.ClusterAutoscalingAutoscalingProfile>? AutoscalingProfile { get; set; }
+
+        /// <summary>
         /// Enables automatic node pool creation and deletion.
         /// </summary>
         [Input("enableNodeAutoprovisioning")]

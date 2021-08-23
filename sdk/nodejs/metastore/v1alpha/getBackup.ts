@@ -49,6 +49,10 @@ export interface GetBackupResult {
      */
     readonly name: string;
     /**
+     * Services that are restoring from the backup.
+     */
+    readonly restoringServices: string[];
+    /**
      * The revision of the service at the time of backup.
      */
     readonly serviceRevision: outputs.metastore.v1alpha.ServiceResponse;

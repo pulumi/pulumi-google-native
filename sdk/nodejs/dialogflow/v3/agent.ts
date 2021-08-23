@@ -36,6 +36,10 @@ export class Agent extends pulumi.CustomResource {
     }
 
     /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsResponse>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     public readonly avatarUri!: pulumi.Output<string>;
@@ -56,7 +60,7 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly enableSpellCorrection!: pulumi.Output<boolean>;
     /**
-     * Indicates if stackdriver logging is enabled for the agent.
+     * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean>;
     /**
@@ -104,6 +108,7 @@ export class Agent extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
+            inputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             inputs["avatarUri"] = args ? args.avatarUri : undefined;
             inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -119,6 +124,7 @@ export class Agent extends pulumi.CustomResource {
             inputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
+            inputs["advancedSettings"] = undefined /*out*/;
             inputs["avatarUri"] = undefined /*out*/;
             inputs["defaultLanguageCode"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -144,6 +150,10 @@ export class Agent extends pulumi.CustomResource {
  */
 export interface AgentArgs {
     /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    advancedSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3AdvancedSettingsArgs>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     avatarUri?: pulumi.Input<string>;
@@ -164,7 +174,7 @@ export interface AgentArgs {
      */
     enableSpellCorrection?: pulumi.Input<boolean>;
     /**
-     * Indicates if stackdriver logging is enabled for the agent.
+     * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;

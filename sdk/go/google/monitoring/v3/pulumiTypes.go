@@ -3146,7 +3146,7 @@ func (o CustomResponsePtrOutput) Elem() CustomResponseOutput {
 	return o.ApplyT(func(v *CustomResponse) CustomResponse { return *v }).(CustomResponseOutput)
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCut struct {
 	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 	DistributionFilter *string `pulumi:"distributionFilter"`
@@ -3165,7 +3165,7 @@ type DistributionCutInput interface {
 	ToDistributionCutOutputWithContext(context.Context) DistributionCutOutput
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutArgs struct {
 	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 	DistributionFilter pulumi.StringPtrInput `pulumi:"distributionFilter"`
@@ -3226,7 +3226,7 @@ func (i *distributionCutPtrType) ToDistributionCutPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutPtrOutput)
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutOutput struct{ *pulumi.OutputState }
 
 func (DistributionCutOutput) ElementType() reflect.Type {
@@ -3299,7 +3299,7 @@ func (o DistributionCutPtrOutput) Range() GoogleMonitoringV3RangePtrOutput {
 	}).(GoogleMonitoringV3RangePtrOutput)
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutResponse struct {
 	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 	DistributionFilter string `pulumi:"distributionFilter"`
@@ -3318,7 +3318,7 @@ type DistributionCutResponseInput interface {
 	ToDistributionCutResponseOutputWithContext(context.Context) DistributionCutResponseOutput
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutResponseArgs struct {
 	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
 	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
@@ -3379,7 +3379,7 @@ func (i *distributionCutResponsePtrType) ToDistributionCutResponsePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutResponsePtrOutput)
 }
 
-// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 type DistributionCutResponseOutput struct{ *pulumi.OutputState }
 
 func (DistributionCutResponseOutput) ElementType() reflect.Type {
@@ -3758,7 +3758,7 @@ func (o DocumentationResponsePtrOutput) MimeType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3Range struct {
 	// Range maximum.
 	Max *float64 `pulumi:"max"`
@@ -3777,7 +3777,7 @@ type GoogleMonitoringV3RangeInput interface {
 	ToGoogleMonitoringV3RangeOutputWithContext(context.Context) GoogleMonitoringV3RangeOutput
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3RangeArgs struct {
 	// Range maximum.
 	Max pulumi.Float64PtrInput `pulumi:"max"`
@@ -3838,7 +3838,7 @@ func (i *googleMonitoringV3RangePtrType) ToGoogleMonitoringV3RangePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangePtrOutput)
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3RangeOutput struct{ *pulumi.OutputState }
 
 func (GoogleMonitoringV3RangeOutput) ElementType() reflect.Type {
@@ -3911,7 +3911,7 @@ func (o GoogleMonitoringV3RangePtrOutput) Min() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3RangeResponse struct {
 	// Range maximum.
 	Max float64 `pulumi:"max"`
@@ -3930,7 +3930,7 @@ type GoogleMonitoringV3RangeResponseInput interface {
 	ToGoogleMonitoringV3RangeResponseOutputWithContext(context.Context) GoogleMonitoringV3RangeResponseOutput
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3RangeResponseArgs struct {
 	// Range maximum.
 	Max pulumi.Float64Input `pulumi:"max"`
@@ -3991,7 +3991,7 @@ func (i *googleMonitoringV3RangeResponsePtrType) ToGoogleMonitoringV3RangeRespon
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangeResponsePtrOutput)
 }
 
-// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+// Range of numerical values within min and max.
 type GoogleMonitoringV3RangeResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleMonitoringV3RangeResponseOutput) ElementType() reflect.Type {
@@ -6952,7 +6952,7 @@ func (o MetricDescriptorMetadataResponsePtrOutput) SamplePeriod() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRange struct {
 	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 	Range *GoogleMonitoringV3Range `pulumi:"range"`
@@ -6971,7 +6971,7 @@ type MetricRangeInput interface {
 	ToMetricRangeOutputWithContext(context.Context) MetricRangeOutput
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeArgs struct {
 	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 	Range GoogleMonitoringV3RangePtrInput `pulumi:"range"`
@@ -7032,7 +7032,7 @@ func (i *metricRangePtrType) ToMetricRangePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRangePtrOutput)
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeOutput struct{ *pulumi.OutputState }
 
 func (MetricRangeOutput) ElementType() reflect.Type {
@@ -7105,7 +7105,7 @@ func (o MetricRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeResponse struct {
 	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 	Range GoogleMonitoringV3RangeResponse `pulumi:"range"`
@@ -7124,7 +7124,7 @@ type MetricRangeResponseInput interface {
 	ToMetricRangeResponseOutputWithContext(context.Context) MetricRangeResponseOutput
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeResponseArgs struct {
 	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 	Range GoogleMonitoringV3RangeResponseInput `pulumi:"range"`
@@ -7185,7 +7185,7 @@ func (i *metricRangeResponsePtrType) ToMetricRangeResponsePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRangeResponsePtrOutput)
 }
 
-// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 type MetricRangeResponseOutput struct{ *pulumi.OutputState }
 
 func (MetricRangeResponseOutput) ElementType() reflect.Type {

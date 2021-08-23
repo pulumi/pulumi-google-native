@@ -28,7 +28,7 @@ class BudgetArgs:
         :param pulumi.Input['GoogleCloudBillingBudgetsV1BudgetAmountArgs'] amount: Budgeted amount.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
-        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs'] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
@@ -94,7 +94,7 @@ class BudgetArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         """
         return pulumi.get(self, "etag")
 
@@ -149,7 +149,7 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1BudgetAmountArgs']] amount: Budgeted amount.
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1FilterArgs']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
-        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
@@ -268,7 +268,7 @@ class Budget(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         """
         return pulumi.get(self, "etag")
 

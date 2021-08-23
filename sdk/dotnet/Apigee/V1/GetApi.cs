@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetApiResult
     {
         /// <summary>
+        /// User labels applied to this API Proxy.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The id of the most recently created revision for this api proxy.
         /// </summary>
         public readonly string LatestRevisionId;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [OutputConstructor]
         private GetApiResult(
+            ImmutableDictionary<string, string> labels,
+
             string latestRevisionId,
 
             Outputs.GoogleCloudApigeeV1EntityMetadataResponse metaData,
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             ImmutableArray<string> revision)
         {
+            Labels = labels;
             LatestRevisionId = latestRevisionId;
             MetaData = metaData;
             Name = name;

@@ -676,7 +676,7 @@ func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpVersionPtrOutput)
 }
 
-// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
+// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
 type AddressNetworkTier string
 
 const (
@@ -843,7 +843,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -2702,7 +2702,7 @@ func (in *autoscalingPolicyModePtr) ToAutoscalingPolicyModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscalingPolicyModePtrOutput)
 }
 
-// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Restrictions and guidelines. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and will be ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 type BackendBalancingMode string
 
 const (
@@ -7129,7 +7129,7 @@ func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpVersionPtrOutput)
 }
 
-// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
+// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
 type GlobalAddressNetworkTier string
 
 const (
@@ -7296,7 +7296,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -15760,6 +15760,177 @@ func (in *regionCommitmentPlanPtr) ToRegionCommitmentPlanPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentPlanPtrOutput)
 }
 
+// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+type RegionCommitmentType string
+
+const (
+	RegionCommitmentTypeAcceleratorOptimized = RegionCommitmentType("ACCELERATOR_OPTIMIZED")
+	RegionCommitmentTypeComputeOptimized     = RegionCommitmentType("COMPUTE_OPTIMIZED")
+	RegionCommitmentTypeGeneralPurpose       = RegionCommitmentType("GENERAL_PURPOSE")
+	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
+	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
+	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
+	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
+	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
+)
+
+func (RegionCommitmentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionCommitmentType)(nil)).Elem()
+}
+
+func (e RegionCommitmentType) ToRegionCommitmentTypeOutput() RegionCommitmentTypeOutput {
+	return pulumi.ToOutput(e).(RegionCommitmentTypeOutput)
+}
+
+func (e RegionCommitmentType) ToRegionCommitmentTypeOutputWithContext(ctx context.Context) RegionCommitmentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionCommitmentTypeOutput)
+}
+
+func (e RegionCommitmentType) ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput {
+	return e.ToRegionCommitmentTypePtrOutputWithContext(context.Background())
+}
+
+func (e RegionCommitmentType) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
+	return RegionCommitmentType(e).ToRegionCommitmentTypeOutputWithContext(ctx).ToRegionCommitmentTypePtrOutputWithContext(ctx)
+}
+
+func (e RegionCommitmentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionCommitmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionCommitmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionCommitmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionCommitmentTypeOutput struct{ *pulumi.OutputState }
+
+func (RegionCommitmentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionCommitmentType)(nil)).Elem()
+}
+
+func (o RegionCommitmentTypeOutput) ToRegionCommitmentTypeOutput() RegionCommitmentTypeOutput {
+	return o
+}
+
+func (o RegionCommitmentTypeOutput) ToRegionCommitmentTypeOutputWithContext(ctx context.Context) RegionCommitmentTypeOutput {
+	return o
+}
+
+func (o RegionCommitmentTypeOutput) ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput {
+	return o.ToRegionCommitmentTypePtrOutputWithContext(context.Background())
+}
+
+func (o RegionCommitmentTypeOutput) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionCommitmentType) *RegionCommitmentType {
+		return &v
+	}).(RegionCommitmentTypePtrOutput)
+}
+
+func (o RegionCommitmentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionCommitmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionCommitmentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionCommitmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionCommitmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionCommitmentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionCommitmentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionCommitmentTypePtrOutput) ElementType() reflect.Type {
+	return regionCommitmentTypePtrType
+}
+
+func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput {
+	return o
+}
+
+func (o RegionCommitmentTypePtrOutput) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
+	return o
+}
+
+func (o RegionCommitmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionCommitmentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionCommitmentTypePtrOutput) Elem() RegionCommitmentTypeOutput {
+	return o.ApplyT(func(v *RegionCommitmentType) RegionCommitmentType {
+		var ret RegionCommitmentType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RegionCommitmentTypeOutput)
+}
+
+// RegionCommitmentTypeInput is an input type that accepts RegionCommitmentTypeArgs and RegionCommitmentTypeOutput values.
+// You can construct a concrete instance of `RegionCommitmentTypeInput` via:
+//
+//          RegionCommitmentTypeArgs{...}
+type RegionCommitmentTypeInput interface {
+	pulumi.Input
+
+	ToRegionCommitmentTypeOutput() RegionCommitmentTypeOutput
+	ToRegionCommitmentTypeOutputWithContext(context.Context) RegionCommitmentTypeOutput
+}
+
+var regionCommitmentTypePtrType = reflect.TypeOf((**RegionCommitmentType)(nil)).Elem()
+
+type RegionCommitmentTypePtrInput interface {
+	pulumi.Input
+
+	ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput
+	ToRegionCommitmentTypePtrOutputWithContext(context.Context) RegionCommitmentTypePtrOutput
+}
+
+type regionCommitmentTypePtr string
+
+func RegionCommitmentTypePtr(v string) RegionCommitmentTypePtrInput {
+	return (*regionCommitmentTypePtr)(&v)
+}
+
+func (*regionCommitmentTypePtr) ElementType() reflect.Type {
+	return regionCommitmentTypePtrType
+}
+
+func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutput() RegionCommitmentTypePtrOutput {
+	return pulumi.ToOutput(in).(RegionCommitmentTypePtrOutput)
+}
+
+func (in *regionCommitmentTypePtr) ToRegionCommitmentTypePtrOutputWithContext(ctx context.Context) RegionCommitmentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionCommitmentTypePtrOutput)
+}
+
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
 type RegionHealthCheckServiceHealthStatusAggregationPolicy string
 
@@ -23964,6 +24135,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionCommitmentCategoryPtrOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentPlanOutput{})
 	pulumi.RegisterOutputType(RegionCommitmentPlanPtrOutput{})
+	pulumi.RegisterOutputType(RegionCommitmentTypeOutput{})
+	pulumi.RegisterOutputType(RegionCommitmentTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckTypeOutput{})

@@ -1072,7 +1072,7 @@ class DocumentationRuleArgs:
         """
         A documentation rule provides information about individual API elements.
         :param pulumi.Input[str] deprecation_description: Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
-        :param pulumi.Input[str] description: The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+        :param pulumi.Input[str] description: Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
         :param pulumi.Input[str] selector: The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
         """
         if deprecation_description is not None:
@@ -1098,7 +1098,7 @@ class DocumentationRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+        Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
         """
         return pulumi.get(self, "description")
 
@@ -2571,7 +2571,7 @@ class MonitoredResourceDescriptorArgs:
         """
         An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. 
         :param pulumi.Input[Sequence[pulumi.Input['LabelDescriptorArgs']]] labels: A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
-        :param pulumi.Input[str] type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        :param pulumi.Input[str] type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         :param pulumi.Input[str] description: Optional. A detailed description of the monitored resource type that might be used in documentation.
         :param pulumi.Input[str] display_name: Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
         :param pulumi.Input['MonitoredResourceDescriptorLaunchStage'] launch_stage: Optional. The launch stage of the monitored resource definition.
@@ -2604,7 +2604,7 @@ class MonitoredResourceDescriptorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         """
         return pulumi.get(self, "type")
 

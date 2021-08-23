@@ -19,7 +19,7 @@ export const GoogleCloudBillingBudgetsV1FilterCalendarPeriod = {
 } as const;
 
 /**
- * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
+ * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it tracks usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
  */
 export type GoogleCloudBillingBudgetsV1FilterCalendarPeriod = (typeof GoogleCloudBillingBudgetsV1FilterCalendarPeriod)[keyof typeof GoogleCloudBillingBudgetsV1FilterCalendarPeriod];
 

@@ -37,23 +37,27 @@ export interface GetInstanceResult {
      */
     readonly connectionName: string;
     /**
+     * The time when the instance was created in RFC 3339 format (https://tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+     */
+    readonly createTime: string;
+    /**
      * The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
      */
     readonly currentDiskSize: string;
     /**
-     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
      */
     readonly databaseVersion: string;
     /**
-     * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption configuration specific to an instance.
      */
     readonly diskEncryptionConfiguration: outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse;
     /**
-     * Disk encryption status specific to an instance. Applies only to Second Generation instances.
+     * Disk encryption status specific to an instance.
      */
     readonly diskEncryptionStatus: outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse;
     /**
-     * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+     * The name and status of the failover replica.
      */
     readonly failoverReplica: outputs.sqladmin.v1beta4.InstanceFailoverReplicaResponse;
     /**

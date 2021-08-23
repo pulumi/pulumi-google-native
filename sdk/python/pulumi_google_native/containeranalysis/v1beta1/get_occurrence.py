@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, intoto=None, kind=None, name=None, note_name=None, remediation=None, resource=None, update_time=None, vulnerability=None):
+    def __init__(__self__, attestation=None, build=None, create_time=None, deployment=None, derived_image=None, discovered=None, installation=None, intoto=None, kind=None, name=None, note_name=None, remediation=None, resource=None, sbom=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, vulnerability=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -57,6 +57,18 @@ class GetOccurrenceResult:
         if resource and not isinstance(resource, dict):
             raise TypeError("Expected argument 'resource' to be a dict")
         pulumi.set(__self__, "resource", resource)
+        if sbom and not isinstance(sbom, dict):
+            raise TypeError("Expected argument 'sbom' to be a dict")
+        pulumi.set(__self__, "sbom", sbom)
+        if spdx_file and not isinstance(spdx_file, dict):
+            raise TypeError("Expected argument 'spdx_file' to be a dict")
+        pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package and not isinstance(spdx_package, dict):
+            raise TypeError("Expected argument 'spdx_package' to be a dict")
+        pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship and not isinstance(spdx_relationship, dict):
+            raise TypeError("Expected argument 'spdx_relationship' to be a dict")
+        pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -169,6 +181,38 @@ class GetOccurrenceResult:
         return pulumi.get(self, "resource")
 
     @property
+    @pulumi.getter
+    def sbom(self) -> 'outputs.DocumentOccurrenceResponse':
+        """
+        Describes a specific SPDX Document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> 'outputs.FileOccurrenceResponse':
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> 'outputs.PackageOccurrenceResponse':
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> 'outputs.RelationshipOccurrenceResponse':
+        """
+        Describes a specific SPDX Relationship.
+        """
+        return pulumi.get(self, "spdx_relationship")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -204,6 +248,10 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             note_name=self.note_name,
             remediation=self.remediation,
             resource=self.resource,
+            sbom=self.sbom,
+            spdx_file=self.spdx_file,
+            spdx_package=self.spdx_package,
+            spdx_relationship=self.spdx_relationship,
             update_time=self.update_time,
             vulnerability=self.vulnerability)
 
@@ -237,5 +285,9 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         note_name=__ret__.note_name,
         remediation=__ret__.remediation,
         resource=__ret__.resource,
+        sbom=__ret__.sbom,
+        spdx_file=__ret__.spdx_file,
+        spdx_package=__ret__.spdx_package,
+        spdx_relationship=__ret__.spdx_relationship,
         update_time=__ret__.update_time,
         vulnerability=__ret__.vulnerability)

@@ -37,6 +37,10 @@ type LookupOccurrenceResult struct {
 	DerivedImage DerivedResponse `pulumi:"derivedImage"`
 	// Describes the initial scan status for this resource.
 	Discovered DiscoveredResponse `pulumi:"discovered"`
+	// This represents a DSSE attestation occurrence
+	DsseAttestation DSSEAttestationOccurrenceResponse `pulumi:"dsseAttestation"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopeResponse `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationResponse `pulumi:"installation"`
 	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
@@ -51,6 +55,14 @@ type LookupOccurrenceResult struct {
 	Resource ResourceResponse `pulumi:"resource"`
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl string `pulumi:"resourceUrl"`
+	// Describes a specific software bill of materials document.
+	Sbom DocumentOccurrenceResponse `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrenceResponse `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrenceResponse `pulumi:"spdxPackage"`
+	// Describes a specific relationship between SPDX elements.
+	SpdxRelationship RelationshipOccurrenceResponse `pulumi:"spdxRelationship"`
 	// The time this `Occurrence` was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 	// Describes an upgrade.

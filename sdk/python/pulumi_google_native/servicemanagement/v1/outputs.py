@@ -1172,7 +1172,7 @@ class DocumentationRuleResponse(dict):
         """
         A documentation rule provides information about individual API elements.
         :param str deprecation_description: Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
-        :param str description: The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+        :param str description: Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
         :param str selector: The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
         """
         pulumi.set(__self__, "deprecation_description", deprecation_description)
@@ -1191,7 +1191,7 @@ class DocumentationRuleResponse(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+        Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
         """
         return pulumi.get(self, "description")
 
@@ -2518,7 +2518,7 @@ class MonitoredResourceDescriptorResponse(dict):
         :param Sequence['LabelDescriptorResponse'] labels: A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         :param str launch_stage: Optional. The launch stage of the monitored resource definition.
         :param str name: Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
-        :param str type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        :param str type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -2571,7 +2571,7 @@ class MonitoredResourceDescriptorResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         """
         return pulumi.get(self, "type")
 

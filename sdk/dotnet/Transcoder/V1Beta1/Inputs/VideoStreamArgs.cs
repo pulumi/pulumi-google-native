@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<bool>? BPyramid { get; set; }
 
         /// <summary>
-        /// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        /// The video bitrate in bits per second. The minimum value is 1,000. The maximum value for H264/H265 is 800,000,000. The maximum value for VP9 is 480,000,000.
         /// </summary>
         [Input("bitrateBps", required: true)]
         public Input<int> BitrateBps { get; set; } = null!;

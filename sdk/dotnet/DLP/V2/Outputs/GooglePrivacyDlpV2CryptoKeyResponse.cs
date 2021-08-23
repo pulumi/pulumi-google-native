@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2CryptoKeyResponse
     {
         /// <summary>
-        /// Kms wrapped key
+        /// Key wrapped using Cloud KMS
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse KmsWrapped;
         /// <summary>

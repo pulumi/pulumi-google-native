@@ -132,6 +132,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly locations!: pulumi.Output<string[]>;
     /**
+     * Logging configuration for the cluster.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.container.v1.LoggingConfigResponse>;
+    /**
      * The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
      */
     public readonly loggingService!: pulumi.Output<string>;
@@ -147,6 +151,10 @@ export class Cluster extends pulumi.CustomResource {
      * The configuration options for master authorized networks feature.
      */
     public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.v1.MasterAuthorizedNetworksConfigResponse>;
+    /**
+     * Monitoring configuration for the cluster.
+     */
+    public readonly monitoringConfig!: pulumi.Output<outputs.container.v1.MonitoringConfigResponse>;
     /**
      * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
      */
@@ -257,10 +265,12 @@ export class Cluster extends pulumi.CustomResource {
             inputs["legacyAbac"] = args ? args.legacyAbac : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["locations"] = args ? args.locations : undefined;
+            inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             inputs["loggingService"] = args ? args.loggingService : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["masterAuth"] = args ? args.masterAuth : undefined;
             inputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
+            inputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
             inputs["monitoringService"] = args ? args.monitoringService : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -314,10 +324,12 @@ export class Cluster extends pulumi.CustomResource {
             inputs["legacyAbac"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
             inputs["locations"] = undefined /*out*/;
+            inputs["loggingConfig"] = undefined /*out*/;
             inputs["loggingService"] = undefined /*out*/;
             inputs["maintenancePolicy"] = undefined /*out*/;
             inputs["masterAuth"] = undefined /*out*/;
             inputs["masterAuthorizedNetworksConfig"] = undefined /*out*/;
+            inputs["monitoringConfig"] = undefined /*out*/;
             inputs["monitoringService"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
@@ -420,6 +432,10 @@ export interface ClusterArgs {
      */
     locations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Logging configuration for the cluster.
+     */
+    loggingConfig?: pulumi.Input<inputs.container.v1.LoggingConfigArgs>;
+    /**
      * The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
      */
     loggingService?: pulumi.Input<string>;
@@ -435,6 +451,10 @@ export interface ClusterArgs {
      * The configuration options for master authorized networks feature.
      */
     masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.v1.MasterAuthorizedNetworksConfigArgs>;
+    /**
+     * Monitoring configuration for the cluster.
+     */
+    monitoringConfig?: pulumi.Input<inputs.container.v1.MonitoringConfigArgs>;
     /**
      * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
      */

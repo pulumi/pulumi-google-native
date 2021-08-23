@@ -21,6 +21,7 @@ class OsPolicyAssignmentArgs:
                  os_policy_assignment_id: pulumi.Input[str],
                  rollout: pulumi.Input['OSPolicyAssignmentRolloutArgs'],
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -30,6 +31,7 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyArgs']]] os_policies: List of OS policies to be applied to the VMs.
         :param pulumi.Input['OSPolicyAssignmentRolloutArgs'] rollout: Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[str] name: Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
         """
         pulumi.set(__self__, "instance_filter", instance_filter)
@@ -38,6 +40,8 @@ class OsPolicyAssignmentArgs:
         pulumi.set(__self__, "rollout", rollout)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -104,6 +108,18 @@ class OsPolicyAssignmentArgs:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
@@ -139,6 +155,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  instance_filter: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -153,6 +170,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs.
         :param pulumi.Input[str] name: Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OSPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
@@ -183,6 +201,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  instance_filter: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -203,6 +222,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             __props__ = OsPolicyAssignmentArgs.__new__(OsPolicyAssignmentArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
             if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
@@ -250,6 +270,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         __props__.__dict__["baseline"] = None
         __props__.__dict__["deleted"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["instance_filter"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["os_policies"] = None
@@ -284,6 +305,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="instanceFilter")

@@ -136,6 +136,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly ImmutableArray<string> Locations;
         /// <summary>
+        /// Logging configuration for the cluster.
+        /// </summary>
+        public readonly Outputs.LoggingConfigResponse LoggingConfig;
+        /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </summary>
         public readonly string LoggingService;
@@ -151,6 +155,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// The configuration options for master authorized networks feature.
         /// </summary>
         public readonly Outputs.MasterAuthorizedNetworksConfigResponse MasterAuthorizedNetworksConfig;
+        /// <summary>
+        /// Monitoring configuration for the cluster.
+        /// </summary>
+        public readonly Outputs.MonitoringConfigResponse MonitoringConfig;
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </summary>
@@ -282,6 +290,8 @@ namespace Pulumi.GoogleNative.Container.V1
 
             ImmutableArray<string> locations,
 
+            Outputs.LoggingConfigResponse loggingConfig,
+
             string loggingService,
 
             Outputs.MaintenancePolicyResponse maintenancePolicy,
@@ -289,6 +299,8 @@ namespace Pulumi.GoogleNative.Container.V1
             Outputs.MasterAuthResponse masterAuth,
 
             Outputs.MasterAuthorizedNetworksConfigResponse masterAuthorizedNetworksConfig,
+
+            Outputs.MonitoringConfigResponse monitoringConfig,
 
             string monitoringService,
 
@@ -354,10 +366,12 @@ namespace Pulumi.GoogleNative.Container.V1
             LegacyAbac = legacyAbac;
             Location = location;
             Locations = locations;
+            LoggingConfig = loggingConfig;
             LoggingService = loggingService;
             MaintenancePolicy = maintenancePolicy;
             MasterAuth = masterAuth;
             MasterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            MonitoringConfig = monitoringConfig;
             MonitoringService = monitoringService;
             Name = name;
             Network = network;

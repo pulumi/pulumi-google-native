@@ -40,6 +40,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly authorizationPolicy!: pulumi.Output<string>;
     /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    public readonly certificateMap!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
+            inputs["certificateMap"] = args ? args.certificateMap : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpFilters"] = args ? args.httpFilters : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -126,6 +131,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["authorizationPolicy"] = undefined /*out*/;
+            inputs["certificateMap"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
@@ -156,6 +162,10 @@ export interface TargetHttpsProxyArgs {
      * Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
      */
     authorizationPolicy?: pulumi.Input<string>;
+    /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    certificateMap?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

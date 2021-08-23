@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -45,6 +45,9 @@ class GetDatasetResult:
         if friendly_name and not isinstance(friendly_name, str):
             raise TypeError("Expected argument 'friendly_name' to be a str")
         pulumi.set(__self__, "friendly_name", friendly_name)
+        if is_case_insensitive and not isinstance(is_case_insensitive, bool):
+            raise TypeError("Expected argument 'is_case_insensitive' to be a bool")
+        pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -134,6 +137,14 @@ class GetDatasetResult:
         return pulumi.get(self, "friendly_name")
 
     @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> bool:
+        """
+        [Optional] Indicates if table names are case insensitive in the dataset.
+        """
+        return pulumi.get(self, "is_case_insensitive")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -197,6 +208,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             description=self.description,
             etag=self.etag,
             friendly_name=self.friendly_name,
+            is_case_insensitive=self.is_case_insensitive,
             kind=self.kind,
             labels=self.labels,
             last_modified_time=self.last_modified_time,
@@ -230,6 +242,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         description=__ret__.description,
         etag=__ret__.etag,
         friendly_name=__ret__.friendly_name,
+        is_case_insensitive=__ret__.is_case_insensitive,
         kind=__ret__.kind,
         labels=__ret__.labels,
         last_modified_time=__ret__.last_modified_time,

@@ -103,6 +103,10 @@ export interface GetClusterResult {
      */
     readonly expireTime: string;
     /**
+     * Configuration for Identity Service component.
+     */
+    readonly identityServiceConfig: outputs.container.v1beta1.IdentityServiceConfigResponse;
+    /**
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */
     readonly initialClusterVersion: string;
@@ -127,6 +131,10 @@ export interface GetClusterResult {
      */
     readonly locations: string[];
     /**
+     * Logging configuration for the cluster.
+     */
+    readonly loggingConfig: outputs.container.v1beta1.LoggingConfigResponse;
+    /**
      * The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
      */
     readonly loggingService: string;
@@ -146,6 +154,10 @@ export interface GetClusterResult {
      * The configuration options for master authorized networks feature.
      */
     readonly masterAuthorizedNetworksConfig: outputs.container.v1beta1.MasterAuthorizedNetworksConfigResponse;
+    /**
+     * Monitoring configuration for the cluster.
+     */
+    readonly monitoringConfig: outputs.container.v1beta1.MonitoringConfigResponse;
     /**
      * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
      */

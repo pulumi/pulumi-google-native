@@ -31,6 +31,10 @@ export interface GetAgentArgs {
 
 export interface GetAgentResult {
     /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     */
+    readonly advancedSettings: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
     readonly avatarUri: string;
@@ -51,7 +55,7 @@ export interface GetAgentResult {
      */
     readonly enableSpellCorrection: boolean;
     /**
-     * Indicates if stackdriver logging is enabled for the agent.
+     * Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
      */
     readonly enableStackdriverLogging: boolean;
     /**

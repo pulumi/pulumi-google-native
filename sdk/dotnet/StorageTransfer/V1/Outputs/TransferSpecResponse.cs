@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly Outputs.ObjectConditionsResponse ObjectConditions;
         /// <summary>
+        /// A POSIX Filesystem data source.
+        /// </summary>
+        public readonly Outputs.PosixFilesystemResponse PosixDataSource;
+        /// <summary>
         /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         /// </summary>
         public readonly Outputs.TransferOptionsResponse TransferOptions;
@@ -56,6 +60,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             Outputs.ObjectConditionsResponse objectConditions,
 
+            Outputs.PosixFilesystemResponse posixDataSource,
+
             Outputs.TransferOptionsResponse transferOptions)
         {
             AwsS3DataSource = awsS3DataSource;
@@ -64,6 +70,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
             GcsDataSource = gcsDataSource;
             HttpDataSource = httpDataSource;
             ObjectConditions = objectConditions;
+            PosixDataSource = posixDataSource;
             TransferOptions = transferOptions;
         }
     }

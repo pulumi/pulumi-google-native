@@ -915,6 +915,175 @@ func (in *dataSetPlotTypePtr) ToDataSetPlotTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DataSetPlotTypePtrOutput)
 }
 
+// Optional. The target axis to use for plotting the metric.
+type DataSetTargetAxis string
+
+const (
+	// The target axis was not specified. Defaults to Y1.
+	DataSetTargetAxisTargetAxisUnspecified = DataSetTargetAxis("TARGET_AXIS_UNSPECIFIED")
+	// The y_axis (the right axis of chart).
+	DataSetTargetAxisY1 = DataSetTargetAxis("Y1")
+	// The y2_axis (the left axis of chart).
+	DataSetTargetAxisY2 = DataSetTargetAxis("Y2")
+)
+
+func (DataSetTargetAxis) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetTargetAxis)(nil)).Elem()
+}
+
+func (e DataSetTargetAxis) ToDataSetTargetAxisOutput() DataSetTargetAxisOutput {
+	return pulumi.ToOutput(e).(DataSetTargetAxisOutput)
+}
+
+func (e DataSetTargetAxis) ToDataSetTargetAxisOutputWithContext(ctx context.Context) DataSetTargetAxisOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataSetTargetAxisOutput)
+}
+
+func (e DataSetTargetAxis) ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput {
+	return e.ToDataSetTargetAxisPtrOutputWithContext(context.Background())
+}
+
+func (e DataSetTargetAxis) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
+	return DataSetTargetAxis(e).ToDataSetTargetAxisOutputWithContext(ctx).ToDataSetTargetAxisPtrOutputWithContext(ctx)
+}
+
+func (e DataSetTargetAxis) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataSetTargetAxis) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataSetTargetAxis) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataSetTargetAxis) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataSetTargetAxisOutput struct{ *pulumi.OutputState }
+
+func (DataSetTargetAxisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetTargetAxis)(nil)).Elem()
+}
+
+func (o DataSetTargetAxisOutput) ToDataSetTargetAxisOutput() DataSetTargetAxisOutput {
+	return o
+}
+
+func (o DataSetTargetAxisOutput) ToDataSetTargetAxisOutputWithContext(ctx context.Context) DataSetTargetAxisOutput {
+	return o
+}
+
+func (o DataSetTargetAxisOutput) ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput {
+	return o.ToDataSetTargetAxisPtrOutputWithContext(context.Background())
+}
+
+func (o DataSetTargetAxisOutput) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataSetTargetAxis) *DataSetTargetAxis {
+		return &v
+	}).(DataSetTargetAxisPtrOutput)
+}
+
+func (o DataSetTargetAxisOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataSetTargetAxisOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSetTargetAxis) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataSetTargetAxisOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSetTargetAxisOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSetTargetAxis) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataSetTargetAxisPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSetTargetAxisPtrOutput) ElementType() reflect.Type {
+	return dataSetTargetAxisPtrType
+}
+
+func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput {
+	return o
+}
+
+func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
+	return o
+}
+
+func (o DataSetTargetAxisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSetTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataSetTargetAxis) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataSetTargetAxisPtrOutput) Elem() DataSetTargetAxisOutput {
+	return o.ApplyT(func(v *DataSetTargetAxis) DataSetTargetAxis {
+		var ret DataSetTargetAxis
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DataSetTargetAxisOutput)
+}
+
+// DataSetTargetAxisInput is an input type that accepts DataSetTargetAxisArgs and DataSetTargetAxisOutput values.
+// You can construct a concrete instance of `DataSetTargetAxisInput` via:
+//
+//          DataSetTargetAxisArgs{...}
+type DataSetTargetAxisInput interface {
+	pulumi.Input
+
+	ToDataSetTargetAxisOutput() DataSetTargetAxisOutput
+	ToDataSetTargetAxisOutputWithContext(context.Context) DataSetTargetAxisOutput
+}
+
+var dataSetTargetAxisPtrType = reflect.TypeOf((**DataSetTargetAxis)(nil)).Elem()
+
+type DataSetTargetAxisPtrInput interface {
+	pulumi.Input
+
+	ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput
+	ToDataSetTargetAxisPtrOutputWithContext(context.Context) DataSetTargetAxisPtrOutput
+}
+
+type dataSetTargetAxisPtr string
+
+func DataSetTargetAxisPtr(v string) DataSetTargetAxisPtrInput {
+	return (*dataSetTargetAxisPtr)(&v)
+}
+
+func (*dataSetTargetAxisPtr) ElementType() reflect.Type {
+	return dataSetTargetAxisPtrType
+}
+
+func (in *dataSetTargetAxisPtr) ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput {
+	return pulumi.ToOutput(in).(DataSetTargetAxisPtrOutput)
+}
+
+func (in *dataSetTargetAxisPtr) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataSetTargetAxisPtrOutput)
+}
+
 // How to use the ranking to select time series that pass through the filter.
 type PickTimeSeriesFilterDirection string
 
@@ -1935,6 +2104,175 @@ func (in *thresholdDirectionPtr) ToThresholdDirectionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdDirectionPtrOutput)
 }
 
+// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+type ThresholdTargetAxis string
+
+const (
+	// The target axis was not specified. Defaults to Y1.
+	ThresholdTargetAxisTargetAxisUnspecified = ThresholdTargetAxis("TARGET_AXIS_UNSPECIFIED")
+	// The y_axis (the right axis of chart).
+	ThresholdTargetAxisY1 = ThresholdTargetAxis("Y1")
+	// The y2_axis (the left axis of chart).
+	ThresholdTargetAxisY2 = ThresholdTargetAxis("Y2")
+)
+
+func (ThresholdTargetAxis) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdTargetAxis)(nil)).Elem()
+}
+
+func (e ThresholdTargetAxis) ToThresholdTargetAxisOutput() ThresholdTargetAxisOutput {
+	return pulumi.ToOutput(e).(ThresholdTargetAxisOutput)
+}
+
+func (e ThresholdTargetAxis) ToThresholdTargetAxisOutputWithContext(ctx context.Context) ThresholdTargetAxisOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ThresholdTargetAxisOutput)
+}
+
+func (e ThresholdTargetAxis) ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput {
+	return e.ToThresholdTargetAxisPtrOutputWithContext(context.Background())
+}
+
+func (e ThresholdTargetAxis) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
+	return ThresholdTargetAxis(e).ToThresholdTargetAxisOutputWithContext(ctx).ToThresholdTargetAxisPtrOutputWithContext(ctx)
+}
+
+func (e ThresholdTargetAxis) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ThresholdTargetAxis) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ThresholdTargetAxis) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ThresholdTargetAxis) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ThresholdTargetAxisOutput struct{ *pulumi.OutputState }
+
+func (ThresholdTargetAxisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdTargetAxis)(nil)).Elem()
+}
+
+func (o ThresholdTargetAxisOutput) ToThresholdTargetAxisOutput() ThresholdTargetAxisOutput {
+	return o
+}
+
+func (o ThresholdTargetAxisOutput) ToThresholdTargetAxisOutputWithContext(ctx context.Context) ThresholdTargetAxisOutput {
+	return o
+}
+
+func (o ThresholdTargetAxisOutput) ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput {
+	return o.ToThresholdTargetAxisPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdTargetAxisOutput) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThresholdTargetAxis) *ThresholdTargetAxis {
+		return &v
+	}).(ThresholdTargetAxisPtrOutput)
+}
+
+func (o ThresholdTargetAxisOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ThresholdTargetAxisOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdTargetAxis) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ThresholdTargetAxisOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdTargetAxisOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdTargetAxis) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ThresholdTargetAxisPtrOutput struct{ *pulumi.OutputState }
+
+func (ThresholdTargetAxisPtrOutput) ElementType() reflect.Type {
+	return thresholdTargetAxisPtrType
+}
+
+func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput {
+	return o
+}
+
+func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
+	return o
+}
+
+func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ThresholdTargetAxis) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ThresholdTargetAxisPtrOutput) Elem() ThresholdTargetAxisOutput {
+	return o.ApplyT(func(v *ThresholdTargetAxis) ThresholdTargetAxis {
+		var ret ThresholdTargetAxis
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ThresholdTargetAxisOutput)
+}
+
+// ThresholdTargetAxisInput is an input type that accepts ThresholdTargetAxisArgs and ThresholdTargetAxisOutput values.
+// You can construct a concrete instance of `ThresholdTargetAxisInput` via:
+//
+//          ThresholdTargetAxisArgs{...}
+type ThresholdTargetAxisInput interface {
+	pulumi.Input
+
+	ToThresholdTargetAxisOutput() ThresholdTargetAxisOutput
+	ToThresholdTargetAxisOutputWithContext(context.Context) ThresholdTargetAxisOutput
+}
+
+var thresholdTargetAxisPtrType = reflect.TypeOf((**ThresholdTargetAxis)(nil)).Elem()
+
+type ThresholdTargetAxisPtrInput interface {
+	pulumi.Input
+
+	ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput
+	ToThresholdTargetAxisPtrOutputWithContext(context.Context) ThresholdTargetAxisPtrOutput
+}
+
+type thresholdTargetAxisPtr string
+
+func ThresholdTargetAxisPtr(v string) ThresholdTargetAxisPtrInput {
+	return (*thresholdTargetAxisPtr)(&v)
+}
+
+func (*thresholdTargetAxisPtr) ElementType() reflect.Type {
+	return thresholdTargetAxisPtrType
+}
+
+func (in *thresholdTargetAxisPtr) ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput {
+	return pulumi.ToOutput(in).(ThresholdTargetAxisPtrOutput)
+}
+
+func (in *thresholdTargetAxisPtr) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ThresholdTargetAxisPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AggregationCrossSeriesReducerOutput{})
 	pulumi.RegisterOutputType(AggregationCrossSeriesReducerPtrOutput{})
@@ -1946,6 +2284,8 @@ func init() {
 	pulumi.RegisterOutputType(ChartOptionsModePtrOutput{})
 	pulumi.RegisterOutputType(DataSetPlotTypeOutput{})
 	pulumi.RegisterOutputType(DataSetPlotTypePtrOutput{})
+	pulumi.RegisterOutputType(DataSetTargetAxisOutput{})
+	pulumi.RegisterOutputType(DataSetTargetAxisPtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionPtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodOutput{})
@@ -1958,4 +2298,6 @@ func init() {
 	pulumi.RegisterOutputType(ThresholdColorPtrOutput{})
 	pulumi.RegisterOutputType(ThresholdDirectionOutput{})
 	pulumi.RegisterOutputType(ThresholdDirectionPtrOutput{})
+	pulumi.RegisterOutputType(ThresholdTargetAxisOutput{})
+	pulumi.RegisterOutputType(ThresholdTargetAxisPtrOutput{})
 }

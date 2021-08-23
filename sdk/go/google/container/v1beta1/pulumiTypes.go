@@ -4354,6 +4354,8 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// The desired Identity Service component configuration.
+	DesiredIdentityServiceConfig *IdentityServiceConfig `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4362,6 +4364,8 @@ type ClusterUpdate struct {
 	DesiredL4ilbSubsettingConfig *ILBSubsettingConfig `pulumi:"desiredL4ilbSubsettingConfig"`
 	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
 	DesiredLocations []string `pulumi:"desiredLocations"`
+	// The desired logging configuration.
+	DesiredLoggingConfig *LoggingConfig `pulumi:"desiredLoggingConfig"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	DesiredLoggingService *string `pulumi:"desiredLoggingService"`
 	// Configuration for master components.
@@ -4370,6 +4374,8 @@ type ClusterUpdate struct {
 	DesiredMasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"desiredMasterAuthorizedNetworksConfig"`
 	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 	DesiredMasterVersion *string `pulumi:"desiredMasterVersion"`
+	// The desired monitoring configuration.
+	DesiredMonitoringConfig *MonitoringConfig `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	DesiredMonitoringService *string `pulumi:"desiredMonitoringService"`
 	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
@@ -4437,6 +4443,8 @@ type ClusterUpdateArgs struct {
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig DNSConfigPtrInput `pulumi:"desiredDnsConfig"`
+	// The desired Identity Service component configuration.
+	DesiredIdentityServiceConfig IdentityServiceConfigPtrInput `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType pulumi.StringPtrInput `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4445,6 +4453,8 @@ type ClusterUpdateArgs struct {
 	DesiredL4ilbSubsettingConfig ILBSubsettingConfigPtrInput `pulumi:"desiredL4ilbSubsettingConfig"`
 	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
 	DesiredLocations pulumi.StringArrayInput `pulumi:"desiredLocations"`
+	// The desired logging configuration.
+	DesiredLoggingConfig LoggingConfigPtrInput `pulumi:"desiredLoggingConfig"`
 	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 	DesiredLoggingService pulumi.StringPtrInput `pulumi:"desiredLoggingService"`
 	// Configuration for master components.
@@ -4453,6 +4463,8 @@ type ClusterUpdateArgs struct {
 	DesiredMasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"desiredMasterAuthorizedNetworksConfig"`
 	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 	DesiredMasterVersion pulumi.StringPtrInput `pulumi:"desiredMasterVersion"`
+	// The desired monitoring configuration.
+	DesiredMonitoringConfig MonitoringConfigPtrInput `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	DesiredMonitoringService pulumi.StringPtrInput `pulumi:"desiredMonitoringService"`
 	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
@@ -4564,6 +4576,11 @@ func (o ClusterUpdateOutput) DesiredDnsConfig() DNSConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DNSConfig { return v.DesiredDnsConfig }).(DNSConfigPtrOutput)
 }
 
+// The desired Identity Service component configuration.
+func (o ClusterUpdateOutput) DesiredIdentityServiceConfig() IdentityServiceConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *IdentityServiceConfig { return v.DesiredIdentityServiceConfig }).(IdentityServiceConfigPtrOutput)
+}
+
 // The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 func (o ClusterUpdateOutput) DesiredImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredImageType }).(pulumi.StringPtrOutput)
@@ -4584,6 +4601,11 @@ func (o ClusterUpdateOutput) DesiredLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterUpdate) []string { return v.DesiredLocations }).(pulumi.StringArrayOutput)
 }
 
+// The desired logging configuration.
+func (o ClusterUpdateOutput) DesiredLoggingConfig() LoggingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *LoggingConfig { return v.DesiredLoggingConfig }).(LoggingConfigPtrOutput)
+}
+
 // The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
 func (o ClusterUpdateOutput) DesiredLoggingService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredLoggingService }).(pulumi.StringPtrOutput)
@@ -4602,6 +4624,11 @@ func (o ClusterUpdateOutput) DesiredMasterAuthorizedNetworksConfig() MasterAutho
 // The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
 func (o ClusterUpdateOutput) DesiredMasterVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredMasterVersion }).(pulumi.StringPtrOutput)
+}
+
+// The desired monitoring configuration.
+func (o ClusterUpdateOutput) DesiredMonitoringConfig() MonitoringConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *MonitoringConfig { return v.DesiredMonitoringConfig }).(MonitoringConfigPtrOutput)
 }
 
 // The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
@@ -8779,6 +8806,274 @@ func (o IPAllocationPolicyResponsePtrOutput) UseRoutes() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfig struct {
+	// Whether to enable the Identity Service component
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// IdentityServiceConfigInput is an input type that accepts IdentityServiceConfigArgs and IdentityServiceConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigInput` via:
+//
+//          IdentityServiceConfigArgs{...}
+type IdentityServiceConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigOutput() IdentityServiceConfigOutput
+	ToIdentityServiceConfigOutputWithContext(context.Context) IdentityServiceConfigOutput
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigArgs struct {
+	// Whether to enable the Identity Service component
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (IdentityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigOutput() IdentityServiceConfigOutput {
+	return i.ToIdentityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigOutputWithContext(ctx context.Context) IdentityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigOutput)
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return i.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigArgs) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigOutput).ToIdentityServiceConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceConfigPtrInput is an input type that accepts IdentityServiceConfigArgs, IdentityServiceConfigPtr and IdentityServiceConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigPtrInput` via:
+//
+//          IdentityServiceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type IdentityServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput
+	ToIdentityServiceConfigPtrOutputWithContext(context.Context) IdentityServiceConfigPtrOutput
+}
+
+type identityServiceConfigPtrType IdentityServiceConfigArgs
+
+func IdentityServiceConfigPtr(v *IdentityServiceConfigArgs) IdentityServiceConfigPtrInput {
+	return (*identityServiceConfigPtrType)(v)
+}
+
+func (*identityServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfig)(nil)).Elem()
+}
+
+func (i *identityServiceConfigPtrType) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return i.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceConfigPtrType) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigPtrOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigOutput() IdentityServiceConfigOutput {
+	return o
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigOutputWithContext(ctx context.Context) IdentityServiceConfigOutput {
+	return o
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return o.ToIdentityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceConfigOutput) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceConfig) *IdentityServiceConfig {
+		return &v
+	}).(IdentityServiceConfigPtrOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityServiceConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type IdentityServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigPtrOutput) ToIdentityServiceConfigPtrOutput() IdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigPtrOutput) ToIdentityServiceConfigPtrOutputWithContext(ctx context.Context) IdentityServiceConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigPtrOutput) Elem() IdentityServiceConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceConfig) IdentityServiceConfig { return *v }).(IdentityServiceConfigOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigResponse struct {
+	// Whether to enable the Identity Service component
+	Enabled bool `pulumi:"enabled"`
+}
+
+// IdentityServiceConfigResponseInput is an input type that accepts IdentityServiceConfigResponseArgs and IdentityServiceConfigResponseOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigResponseInput` via:
+//
+//          IdentityServiceConfigResponseArgs{...}
+type IdentityServiceConfigResponseInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigResponseOutput() IdentityServiceConfigResponseOutput
+	ToIdentityServiceConfigResponseOutputWithContext(context.Context) IdentityServiceConfigResponseOutput
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigResponseArgs struct {
+	// Whether to enable the Identity Service component
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (IdentityServiceConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfigResponse)(nil)).Elem()
+}
+
+func (i IdentityServiceConfigResponseArgs) ToIdentityServiceConfigResponseOutput() IdentityServiceConfigResponseOutput {
+	return i.ToIdentityServiceConfigResponseOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigResponseArgs) ToIdentityServiceConfigResponseOutputWithContext(ctx context.Context) IdentityServiceConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigResponseOutput)
+}
+
+func (i IdentityServiceConfigResponseArgs) ToIdentityServiceConfigResponsePtrOutput() IdentityServiceConfigResponsePtrOutput {
+	return i.ToIdentityServiceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceConfigResponseArgs) ToIdentityServiceConfigResponsePtrOutputWithContext(ctx context.Context) IdentityServiceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigResponseOutput).ToIdentityServiceConfigResponsePtrOutputWithContext(ctx)
+}
+
+// IdentityServiceConfigResponsePtrInput is an input type that accepts IdentityServiceConfigResponseArgs, IdentityServiceConfigResponsePtr and IdentityServiceConfigResponsePtrOutput values.
+// You can construct a concrete instance of `IdentityServiceConfigResponsePtrInput` via:
+//
+//          IdentityServiceConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IdentityServiceConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceConfigResponsePtrOutput() IdentityServiceConfigResponsePtrOutput
+	ToIdentityServiceConfigResponsePtrOutputWithContext(context.Context) IdentityServiceConfigResponsePtrOutput
+}
+
+type identityServiceConfigResponsePtrType IdentityServiceConfigResponseArgs
+
+func IdentityServiceConfigResponsePtr(v *IdentityServiceConfigResponseArgs) IdentityServiceConfigResponsePtrInput {
+	return (*identityServiceConfigResponsePtrType)(v)
+}
+
+func (*identityServiceConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfigResponse)(nil)).Elem()
+}
+
+func (i *identityServiceConfigResponsePtrType) ToIdentityServiceConfigResponsePtrOutput() IdentityServiceConfigResponsePtrOutput {
+	return i.ToIdentityServiceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceConfigResponsePtrType) ToIdentityServiceConfigResponsePtrOutputWithContext(ctx context.Context) IdentityServiceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceConfigResponsePtrOutput)
+}
+
+// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+type IdentityServiceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponseOutput() IdentityServiceConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponseOutputWithContext(ctx context.Context) IdentityServiceConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponsePtrOutput() IdentityServiceConfigResponsePtrOutput {
+	return o.ToIdentityServiceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceConfigResponseOutput) ToIdentityServiceConfigResponsePtrOutputWithContext(ctx context.Context) IdentityServiceConfigResponsePtrOutput {
+	return o.ApplyT(func(v IdentityServiceConfigResponse) *IdentityServiceConfigResponse {
+		return &v
+	}).(IdentityServiceConfigResponsePtrOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityServiceConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type IdentityServiceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceConfigResponsePtrOutput) ToIdentityServiceConfigResponsePtrOutput() IdentityServiceConfigResponsePtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigResponsePtrOutput) ToIdentityServiceConfigResponsePtrOutputWithContext(ctx context.Context) IdentityServiceConfigResponsePtrOutput {
+	return o
+}
+
+func (o IdentityServiceConfigResponsePtrOutput) Elem() IdentityServiceConfigResponseOutput {
+	return o.ApplyT(func(v *IdentityServiceConfigResponse) IdentityServiceConfigResponse { return *v }).(IdentityServiceConfigResponseOutput)
+}
+
+// Whether to enable the Identity Service component
+func (o IdentityServiceConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
 type IntraNodeVisibilityConfig struct {
 	// Enables intra node visibility for this cluster.
@@ -10289,6 +10584,542 @@ func (o LinuxNodeConfigResponsePtrOutput) Sysctls() pulumi.StringMapOutput {
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfig struct {
+	// Select components to collect logs. An empty set would disable all logging.
+	EnableComponents []LoggingComponentConfigEnableComponentsItem `pulumi:"enableComponents"`
+}
+
+// LoggingComponentConfigInput is an input type that accepts LoggingComponentConfigArgs and LoggingComponentConfigOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigInput` via:
+//
+//          LoggingComponentConfigArgs{...}
+type LoggingComponentConfigInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigOutput() LoggingComponentConfigOutput
+	ToLoggingComponentConfigOutputWithContext(context.Context) LoggingComponentConfigOutput
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfigArgs struct {
+	// Select components to collect logs. An empty set would disable all logging.
+	EnableComponents LoggingComponentConfigEnableComponentsItemArrayInput `pulumi:"enableComponents"`
+}
+
+func (LoggingComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfig)(nil)).Elem()
+}
+
+func (i LoggingComponentConfigArgs) ToLoggingComponentConfigOutput() LoggingComponentConfigOutput {
+	return i.ToLoggingComponentConfigOutputWithContext(context.Background())
+}
+
+func (i LoggingComponentConfigArgs) ToLoggingComponentConfigOutputWithContext(ctx context.Context) LoggingComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigOutput)
+}
+
+func (i LoggingComponentConfigArgs) ToLoggingComponentConfigPtrOutput() LoggingComponentConfigPtrOutput {
+	return i.ToLoggingComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingComponentConfigArgs) ToLoggingComponentConfigPtrOutputWithContext(ctx context.Context) LoggingComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigOutput).ToLoggingComponentConfigPtrOutputWithContext(ctx)
+}
+
+// LoggingComponentConfigPtrInput is an input type that accepts LoggingComponentConfigArgs, LoggingComponentConfigPtr and LoggingComponentConfigPtrOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigPtrInput` via:
+//
+//          LoggingComponentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigPtrOutput() LoggingComponentConfigPtrOutput
+	ToLoggingComponentConfigPtrOutputWithContext(context.Context) LoggingComponentConfigPtrOutput
+}
+
+type loggingComponentConfigPtrType LoggingComponentConfigArgs
+
+func LoggingComponentConfigPtr(v *LoggingComponentConfigArgs) LoggingComponentConfigPtrInput {
+	return (*loggingComponentConfigPtrType)(v)
+}
+
+func (*loggingComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingComponentConfig)(nil)).Elem()
+}
+
+func (i *loggingComponentConfigPtrType) ToLoggingComponentConfigPtrOutput() LoggingComponentConfigPtrOutput {
+	return i.ToLoggingComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingComponentConfigPtrType) ToLoggingComponentConfigPtrOutputWithContext(ctx context.Context) LoggingComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigPtrOutput)
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfig)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigOutput) ToLoggingComponentConfigOutput() LoggingComponentConfigOutput {
+	return o
+}
+
+func (o LoggingComponentConfigOutput) ToLoggingComponentConfigOutputWithContext(ctx context.Context) LoggingComponentConfigOutput {
+	return o
+}
+
+func (o LoggingComponentConfigOutput) ToLoggingComponentConfigPtrOutput() LoggingComponentConfigPtrOutput {
+	return o.ToLoggingComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigOutput) ToLoggingComponentConfigPtrOutputWithContext(ctx context.Context) LoggingComponentConfigPtrOutput {
+	return o.ApplyT(func(v LoggingComponentConfig) *LoggingComponentConfig {
+		return &v
+	}).(LoggingComponentConfigPtrOutput)
+}
+
+// Select components to collect logs. An empty set would disable all logging.
+func (o LoggingComponentConfigOutput) EnableComponents() LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return o.ApplyT(func(v LoggingComponentConfig) []LoggingComponentConfigEnableComponentsItem { return v.EnableComponents }).(LoggingComponentConfigEnableComponentsItemArrayOutput)
+}
+
+type LoggingComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingComponentConfig)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigPtrOutput) ToLoggingComponentConfigPtrOutput() LoggingComponentConfigPtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigPtrOutput) ToLoggingComponentConfigPtrOutputWithContext(ctx context.Context) LoggingComponentConfigPtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigPtrOutput) Elem() LoggingComponentConfigOutput {
+	return o.ApplyT(func(v *LoggingComponentConfig) LoggingComponentConfig { return *v }).(LoggingComponentConfigOutput)
+}
+
+// Select components to collect logs. An empty set would disable all logging.
+func (o LoggingComponentConfigPtrOutput) EnableComponents() LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return o.ApplyT(func(v *LoggingComponentConfig) []LoggingComponentConfigEnableComponentsItem {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(LoggingComponentConfigEnableComponentsItemArrayOutput)
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfigResponse struct {
+	// Select components to collect logs. An empty set would disable all logging.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// LoggingComponentConfigResponseInput is an input type that accepts LoggingComponentConfigResponseArgs and LoggingComponentConfigResponseOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigResponseInput` via:
+//
+//          LoggingComponentConfigResponseArgs{...}
+type LoggingComponentConfigResponseInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigResponseOutput() LoggingComponentConfigResponseOutput
+	ToLoggingComponentConfigResponseOutputWithContext(context.Context) LoggingComponentConfigResponseOutput
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfigResponseArgs struct {
+	// Select components to collect logs. An empty set would disable all logging.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (LoggingComponentConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfigResponse)(nil)).Elem()
+}
+
+func (i LoggingComponentConfigResponseArgs) ToLoggingComponentConfigResponseOutput() LoggingComponentConfigResponseOutput {
+	return i.ToLoggingComponentConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingComponentConfigResponseArgs) ToLoggingComponentConfigResponseOutputWithContext(ctx context.Context) LoggingComponentConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigResponseOutput)
+}
+
+func (i LoggingComponentConfigResponseArgs) ToLoggingComponentConfigResponsePtrOutput() LoggingComponentConfigResponsePtrOutput {
+	return i.ToLoggingComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoggingComponentConfigResponseArgs) ToLoggingComponentConfigResponsePtrOutputWithContext(ctx context.Context) LoggingComponentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigResponseOutput).ToLoggingComponentConfigResponsePtrOutputWithContext(ctx)
+}
+
+// LoggingComponentConfigResponsePtrInput is an input type that accepts LoggingComponentConfigResponseArgs, LoggingComponentConfigResponsePtr and LoggingComponentConfigResponsePtrOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigResponsePtrInput` via:
+//
+//          LoggingComponentConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingComponentConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigResponsePtrOutput() LoggingComponentConfigResponsePtrOutput
+	ToLoggingComponentConfigResponsePtrOutputWithContext(context.Context) LoggingComponentConfigResponsePtrOutput
+}
+
+type loggingComponentConfigResponsePtrType LoggingComponentConfigResponseArgs
+
+func LoggingComponentConfigResponsePtr(v *LoggingComponentConfigResponseArgs) LoggingComponentConfigResponsePtrInput {
+	return (*loggingComponentConfigResponsePtrType)(v)
+}
+
+func (*loggingComponentConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingComponentConfigResponse)(nil)).Elem()
+}
+
+func (i *loggingComponentConfigResponsePtrType) ToLoggingComponentConfigResponsePtrOutput() LoggingComponentConfigResponsePtrOutput {
+	return i.ToLoggingComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loggingComponentConfigResponsePtrType) ToLoggingComponentConfigResponsePtrOutputWithContext(ctx context.Context) LoggingComponentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigResponsePtrOutput)
+}
+
+// LoggingComponentConfig is cluster logging component configuration.
+type LoggingComponentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponseOutput() LoggingComponentConfigResponseOutput {
+	return o
+}
+
+func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponseOutputWithContext(ctx context.Context) LoggingComponentConfigResponseOutput {
+	return o
+}
+
+func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponsePtrOutput() LoggingComponentConfigResponsePtrOutput {
+	return o.ToLoggingComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponsePtrOutputWithContext(ctx context.Context) LoggingComponentConfigResponsePtrOutput {
+	return o.ApplyT(func(v LoggingComponentConfigResponse) *LoggingComponentConfigResponse {
+		return &v
+	}).(LoggingComponentConfigResponsePtrOutput)
+}
+
+// Select components to collect logs. An empty set would disable all logging.
+func (o LoggingComponentConfigResponseOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoggingComponentConfigResponse) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type LoggingComponentConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingComponentConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigResponsePtrOutput) ToLoggingComponentConfigResponsePtrOutput() LoggingComponentConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigResponsePtrOutput) ToLoggingComponentConfigResponsePtrOutputWithContext(ctx context.Context) LoggingComponentConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigResponsePtrOutput) Elem() LoggingComponentConfigResponseOutput {
+	return o.ApplyT(func(v *LoggingComponentConfigResponse) LoggingComponentConfigResponse { return *v }).(LoggingComponentConfigResponseOutput)
+}
+
+// Select components to collect logs. An empty set would disable all logging.
+func (o LoggingComponentConfigResponsePtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoggingComponentConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfig struct {
+	// Logging components configuration
+	ComponentConfig *LoggingComponentConfig `pulumi:"componentConfig"`
+}
+
+// LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
+// You can construct a concrete instance of `LoggingConfigInput` via:
+//
+//          LoggingConfigArgs{...}
+type LoggingConfigInput interface {
+	pulumi.Input
+
+	ToLoggingConfigOutput() LoggingConfigOutput
+	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfigArgs struct {
+	// Logging components configuration
+	ComponentConfig LoggingComponentConfigPtrInput `pulumi:"componentConfig"`
+}
+
+func (LoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutput() LoggingConfigOutput {
+	return i.ToLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput)
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput).ToLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// LoggingConfigPtrInput is an input type that accepts LoggingConfigArgs, LoggingConfigPtr and LoggingConfigPtrOutput values.
+// You can construct a concrete instance of `LoggingConfigPtrInput` via:
+//
+//          LoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigPtrOutput() LoggingConfigPtrOutput
+	ToLoggingConfigPtrOutputWithContext(context.Context) LoggingConfigPtrOutput
+}
+
+type loggingConfigPtrType LoggingConfigArgs
+
+func LoggingConfigPtr(v *LoggingConfigArgs) LoggingConfigPtrInput {
+	return (*loggingConfigPtrType)(v)
+}
+
+func (*loggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutput() LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *LoggingConfig {
+		return &v
+	}).(LoggingConfigPtrOutput)
+}
+
+// Logging components configuration
+func (o LoggingConfigOutput) ComponentConfig() LoggingComponentConfigPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *LoggingComponentConfig { return v.ComponentConfig }).(LoggingComponentConfigPtrOutput)
+}
+
+type LoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig { return *v }).(LoggingConfigOutput)
+}
+
+// Logging components configuration
+func (o LoggingConfigPtrOutput) ComponentConfig() LoggingComponentConfigPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *LoggingComponentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentConfig
+	}).(LoggingComponentConfigPtrOutput)
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfigResponse struct {
+	// Logging components configuration
+	ComponentConfig LoggingComponentConfigResponse `pulumi:"componentConfig"`
+}
+
+// LoggingConfigResponseInput is an input type that accepts LoggingConfigResponseArgs and LoggingConfigResponseOutput values.
+// You can construct a concrete instance of `LoggingConfigResponseInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+type LoggingConfigResponseInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponseOutput() LoggingConfigResponseOutput
+	ToLoggingConfigResponseOutputWithContext(context.Context) LoggingConfigResponseOutput
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfigResponseArgs struct {
+	// Logging components configuration
+	ComponentConfig LoggingComponentConfigResponseInput `pulumi:"componentConfig"`
+}
+
+func (LoggingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return i.ToLoggingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput)
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput).ToLoggingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// LoggingConfigResponsePtrInput is an input type that accepts LoggingConfigResponseArgs, LoggingConfigResponsePtr and LoggingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `LoggingConfigResponsePtrInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput
+	ToLoggingConfigResponsePtrOutputWithContext(context.Context) LoggingConfigResponsePtrOutput
+}
+
+type loggingConfigResponsePtrType LoggingConfigResponseArgs
+
+func LoggingConfigResponsePtr(v *LoggingConfigResponseArgs) LoggingConfigResponsePtrInput {
+	return (*loggingConfigResponsePtrType)(v)
+}
+
+func (*loggingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponsePtrOutput)
+}
+
+// LoggingConfig is cluster logging configuration.
+type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+		return &v
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Logging components configuration
+func (o LoggingConfigResponseOutput) ComponentConfig() LoggingComponentConfigResponseOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) LoggingComponentConfigResponse { return v.ComponentConfig }).(LoggingComponentConfigResponseOutput)
+}
+
+type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+}
+
+// Logging components configuration
+func (o LoggingConfigResponsePtrOutput) ComponentConfig() LoggingComponentConfigResponsePtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *LoggingComponentConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentConfig
+	}).(LoggingComponentConfigResponsePtrOutput)
 }
 
 // MaintenancePolicy defines the maintenance policy to be used for the cluster.
@@ -12157,6 +12988,544 @@ func (o MaxPodsConstraintResponsePtrOutput) MaxPodsPerNode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfig struct {
+	// Select components to collect metrics. An empty set would disable all monitoring.
+	EnableComponents []MonitoringComponentConfigEnableComponentsItem `pulumi:"enableComponents"`
+}
+
+// MonitoringComponentConfigInput is an input type that accepts MonitoringComponentConfigArgs and MonitoringComponentConfigOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigInput` via:
+//
+//          MonitoringComponentConfigArgs{...}
+type MonitoringComponentConfigInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigOutput() MonitoringComponentConfigOutput
+	ToMonitoringComponentConfigOutputWithContext(context.Context) MonitoringComponentConfigOutput
+}
+
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfigArgs struct {
+	// Select components to collect metrics. An empty set would disable all monitoring.
+	EnableComponents MonitoringComponentConfigEnableComponentsItemArrayInput `pulumi:"enableComponents"`
+}
+
+func (MonitoringComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfig)(nil)).Elem()
+}
+
+func (i MonitoringComponentConfigArgs) ToMonitoringComponentConfigOutput() MonitoringComponentConfigOutput {
+	return i.ToMonitoringComponentConfigOutputWithContext(context.Background())
+}
+
+func (i MonitoringComponentConfigArgs) ToMonitoringComponentConfigOutputWithContext(ctx context.Context) MonitoringComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigOutput)
+}
+
+func (i MonitoringComponentConfigArgs) ToMonitoringComponentConfigPtrOutput() MonitoringComponentConfigPtrOutput {
+	return i.ToMonitoringComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringComponentConfigArgs) ToMonitoringComponentConfigPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigOutput).ToMonitoringComponentConfigPtrOutputWithContext(ctx)
+}
+
+// MonitoringComponentConfigPtrInput is an input type that accepts MonitoringComponentConfigArgs, MonitoringComponentConfigPtr and MonitoringComponentConfigPtrOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigPtrInput` via:
+//
+//          MonitoringComponentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoringComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigPtrOutput() MonitoringComponentConfigPtrOutput
+	ToMonitoringComponentConfigPtrOutputWithContext(context.Context) MonitoringComponentConfigPtrOutput
+}
+
+type monitoringComponentConfigPtrType MonitoringComponentConfigArgs
+
+func MonitoringComponentConfigPtr(v *MonitoringComponentConfigArgs) MonitoringComponentConfigPtrInput {
+	return (*monitoringComponentConfigPtrType)(v)
+}
+
+func (*monitoringComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringComponentConfig)(nil)).Elem()
+}
+
+func (i *monitoringComponentConfigPtrType) ToMonitoringComponentConfigPtrOutput() MonitoringComponentConfigPtrOutput {
+	return i.ToMonitoringComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringComponentConfigPtrType) ToMonitoringComponentConfigPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigPtrOutput)
+}
+
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfig)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigOutput() MonitoringComponentConfigOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigOutputWithContext(ctx context.Context) MonitoringComponentConfigOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigPtrOutput() MonitoringComponentConfigPtrOutput {
+	return o.ToMonitoringComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringComponentConfig) *MonitoringComponentConfig {
+		return &v
+	}).(MonitoringComponentConfigPtrOutput)
+}
+
+// Select components to collect metrics. An empty set would disable all monitoring.
+func (o MonitoringComponentConfigOutput) EnableComponents() MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return o.ApplyT(func(v MonitoringComponentConfig) []MonitoringComponentConfigEnableComponentsItem {
+		return v.EnableComponents
+	}).(MonitoringComponentConfigEnableComponentsItemArrayOutput)
+}
+
+type MonitoringComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringComponentConfig)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigPtrOutput) ToMonitoringComponentConfigPtrOutput() MonitoringComponentConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigPtrOutput) ToMonitoringComponentConfigPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigPtrOutput) Elem() MonitoringComponentConfigOutput {
+	return o.ApplyT(func(v *MonitoringComponentConfig) MonitoringComponentConfig { return *v }).(MonitoringComponentConfigOutput)
+}
+
+// Select components to collect metrics. An empty set would disable all monitoring.
+func (o MonitoringComponentConfigPtrOutput) EnableComponents() MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return o.ApplyT(func(v *MonitoringComponentConfig) []MonitoringComponentConfigEnableComponentsItem {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(MonitoringComponentConfigEnableComponentsItemArrayOutput)
+}
+
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfigResponse struct {
+	// Select components to collect metrics. An empty set would disable all monitoring.
+	EnableComponents []string `pulumi:"enableComponents"`
+}
+
+// MonitoringComponentConfigResponseInput is an input type that accepts MonitoringComponentConfigResponseArgs and MonitoringComponentConfigResponseOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigResponseInput` via:
+//
+//          MonitoringComponentConfigResponseArgs{...}
+type MonitoringComponentConfigResponseInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigResponseOutput() MonitoringComponentConfigResponseOutput
+	ToMonitoringComponentConfigResponseOutputWithContext(context.Context) MonitoringComponentConfigResponseOutput
+}
+
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfigResponseArgs struct {
+	// Select components to collect metrics. An empty set would disable all monitoring.
+	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
+}
+
+func (MonitoringComponentConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfigResponse)(nil)).Elem()
+}
+
+func (i MonitoringComponentConfigResponseArgs) ToMonitoringComponentConfigResponseOutput() MonitoringComponentConfigResponseOutput {
+	return i.ToMonitoringComponentConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoringComponentConfigResponseArgs) ToMonitoringComponentConfigResponseOutputWithContext(ctx context.Context) MonitoringComponentConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigResponseOutput)
+}
+
+func (i MonitoringComponentConfigResponseArgs) ToMonitoringComponentConfigResponsePtrOutput() MonitoringComponentConfigResponsePtrOutput {
+	return i.ToMonitoringComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringComponentConfigResponseArgs) ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringComponentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigResponseOutput).ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MonitoringComponentConfigResponsePtrInput is an input type that accepts MonitoringComponentConfigResponseArgs, MonitoringComponentConfigResponsePtr and MonitoringComponentConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigResponsePtrInput` via:
+//
+//          MonitoringComponentConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoringComponentConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigResponsePtrOutput() MonitoringComponentConfigResponsePtrOutput
+	ToMonitoringComponentConfigResponsePtrOutputWithContext(context.Context) MonitoringComponentConfigResponsePtrOutput
+}
+
+type monitoringComponentConfigResponsePtrType MonitoringComponentConfigResponseArgs
+
+func MonitoringComponentConfigResponsePtr(v *MonitoringComponentConfigResponseArgs) MonitoringComponentConfigResponsePtrInput {
+	return (*monitoringComponentConfigResponsePtrType)(v)
+}
+
+func (*monitoringComponentConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringComponentConfigResponse)(nil)).Elem()
+}
+
+func (i *monitoringComponentConfigResponsePtrType) ToMonitoringComponentConfigResponsePtrOutput() MonitoringComponentConfigResponsePtrOutput {
+	return i.ToMonitoringComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringComponentConfigResponsePtrType) ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringComponentConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigResponsePtrOutput)
+}
+
+// MonitoringComponentConfig is cluster monitoring component configuration.
+type MonitoringComponentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfigResponse)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResponseOutput() MonitoringComponentConfigResponseOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResponseOutputWithContext(ctx context.Context) MonitoringComponentConfigResponseOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResponsePtrOutput() MonitoringComponentConfigResponsePtrOutput {
+	return o.ToMonitoringComponentConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringComponentConfigResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringComponentConfigResponse) *MonitoringComponentConfigResponse {
+		return &v
+	}).(MonitoringComponentConfigResponsePtrOutput)
+}
+
+// Select components to collect metrics. An empty set would disable all monitoring.
+func (o MonitoringComponentConfigResponseOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitoringComponentConfigResponse) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
+}
+
+type MonitoringComponentConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringComponentConfigResponse)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigResponsePtrOutput) ToMonitoringComponentConfigResponsePtrOutput() MonitoringComponentConfigResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigResponsePtrOutput) ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringComponentConfigResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigResponsePtrOutput) Elem() MonitoringComponentConfigResponseOutput {
+	return o.ApplyT(func(v *MonitoringComponentConfigResponse) MonitoringComponentConfigResponse { return *v }).(MonitoringComponentConfigResponseOutput)
+}
+
+// Select components to collect metrics. An empty set would disable all monitoring.
+func (o MonitoringComponentConfigResponsePtrOutput) EnableComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MonitoringComponentConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableComponents
+	}).(pulumi.StringArrayOutput)
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfig struct {
+	// Monitoring components configuration
+	ComponentConfig *MonitoringComponentConfig `pulumi:"componentConfig"`
+}
+
+// MonitoringConfigInput is an input type that accepts MonitoringConfigArgs and MonitoringConfigOutput values.
+// You can construct a concrete instance of `MonitoringConfigInput` via:
+//
+//          MonitoringConfigArgs{...}
+type MonitoringConfigInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigOutput() MonitoringConfigOutput
+	ToMonitoringConfigOutputWithContext(context.Context) MonitoringConfigOutput
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfigArgs struct {
+	// Monitoring components configuration
+	ComponentConfig MonitoringComponentConfigPtrInput `pulumi:"componentConfig"`
+}
+
+func (MonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfig)(nil)).Elem()
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigOutput() MonitoringConfigOutput {
+	return i.ToMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigOutputWithContext(ctx context.Context) MonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput)
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return i.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput).ToMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// MonitoringConfigPtrInput is an input type that accepts MonitoringConfigArgs, MonitoringConfigPtr and MonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `MonitoringConfigPtrInput` via:
+//
+//          MonitoringConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput
+	ToMonitoringConfigPtrOutputWithContext(context.Context) MonitoringConfigPtrOutput
+}
+
+type monitoringConfigPtrType MonitoringConfigArgs
+
+func MonitoringConfigPtr(v *MonitoringConfigArgs) MonitoringConfigPtrInput {
+	return (*monitoringConfigPtrType)(v)
+}
+
+func (*monitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfig)(nil)).Elem()
+}
+
+func (i *monitoringConfigPtrType) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return i.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringConfigPtrType) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigPtrOutput)
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfig)(nil)).Elem()
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigOutput() MonitoringConfigOutput {
+	return o
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigOutputWithContext(ctx context.Context) MonitoringConfigOutput {
+	return o
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return o.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *MonitoringConfig {
+		return &v
+	}).(MonitoringConfigPtrOutput)
+}
+
+// Monitoring components configuration
+func (o MonitoringConfigOutput) ComponentConfig() MonitoringComponentConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *MonitoringComponentConfig { return v.ComponentConfig }).(MonitoringComponentConfigPtrOutput)
+}
+
+type MonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfig)(nil)).Elem()
+}
+
+func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringConfigPtrOutput) Elem() MonitoringConfigOutput {
+	return o.ApplyT(func(v *MonitoringConfig) MonitoringConfig { return *v }).(MonitoringConfigOutput)
+}
+
+// Monitoring components configuration
+func (o MonitoringConfigPtrOutput) ComponentConfig() MonitoringComponentConfigPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *MonitoringComponentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentConfig
+	}).(MonitoringComponentConfigPtrOutput)
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfigResponse struct {
+	// Monitoring components configuration
+	ComponentConfig MonitoringComponentConfigResponse `pulumi:"componentConfig"`
+}
+
+// MonitoringConfigResponseInput is an input type that accepts MonitoringConfigResponseArgs and MonitoringConfigResponseOutput values.
+// You can construct a concrete instance of `MonitoringConfigResponseInput` via:
+//
+//          MonitoringConfigResponseArgs{...}
+type MonitoringConfigResponseInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigResponseOutput() MonitoringConfigResponseOutput
+	ToMonitoringConfigResponseOutputWithContext(context.Context) MonitoringConfigResponseOutput
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfigResponseArgs struct {
+	// Monitoring components configuration
+	ComponentConfig MonitoringComponentConfigResponseInput `pulumi:"componentConfig"`
+}
+
+func (MonitoringConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (i MonitoringConfigResponseArgs) ToMonitoringConfigResponseOutput() MonitoringConfigResponseOutput {
+	return i.ToMonitoringConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigResponseArgs) ToMonitoringConfigResponseOutputWithContext(ctx context.Context) MonitoringConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigResponseOutput)
+}
+
+func (i MonitoringConfigResponseArgs) ToMonitoringConfigResponsePtrOutput() MonitoringConfigResponsePtrOutput {
+	return i.ToMonitoringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigResponseArgs) ToMonitoringConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigResponseOutput).ToMonitoringConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MonitoringConfigResponsePtrInput is an input type that accepts MonitoringConfigResponseArgs, MonitoringConfigResponsePtr and MonitoringConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MonitoringConfigResponsePtrInput` via:
+//
+//          MonitoringConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoringConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigResponsePtrOutput() MonitoringConfigResponsePtrOutput
+	ToMonitoringConfigResponsePtrOutputWithContext(context.Context) MonitoringConfigResponsePtrOutput
+}
+
+type monitoringConfigResponsePtrType MonitoringConfigResponseArgs
+
+func MonitoringConfigResponsePtr(v *MonitoringConfigResponseArgs) MonitoringConfigResponsePtrInput {
+	return (*monitoringConfigResponsePtrType)(v)
+}
+
+func (*monitoringConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (i *monitoringConfigResponsePtrType) ToMonitoringConfigResponsePtrOutput() MonitoringConfigResponsePtrOutput {
+	return i.ToMonitoringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringConfigResponsePtrType) ToMonitoringConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigResponsePtrOutput)
+}
+
+// MonitoringConfig is cluster monitoring configuration.
+type MonitoringConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutput() MonitoringConfigResponseOutput {
+	return o
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutputWithContext(ctx context.Context) MonitoringConfigResponseOutput {
+	return o
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponsePtrOutput() MonitoringConfigResponsePtrOutput {
+	return o.ToMonitoringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringConfigResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) *MonitoringConfigResponse {
+		return &v
+	}).(MonitoringConfigResponsePtrOutput)
+}
+
+// Monitoring components configuration
+func (o MonitoringConfigResponseOutput) ComponentConfig() MonitoringComponentConfigResponseOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) MonitoringComponentConfigResponse { return v.ComponentConfig }).(MonitoringComponentConfigResponseOutput)
+}
+
+type MonitoringConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (o MonitoringConfigResponsePtrOutput) ToMonitoringConfigResponsePtrOutput() MonitoringConfigResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringConfigResponsePtrOutput) ToMonitoringConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringConfigResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringConfigResponsePtrOutput) Elem() MonitoringConfigResponseOutput {
+	return o.ApplyT(func(v *MonitoringConfigResponse) MonitoringConfigResponse { return *v }).(MonitoringConfigResponseOutput)
+}
+
+// Monitoring components configuration
+func (o MonitoringConfigResponsePtrOutput) ComponentConfig() MonitoringComponentConfigResponsePtrOutput {
+	return o.ApplyT(func(v *MonitoringConfigResponse) *MonitoringComponentConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ComponentConfig
+	}).(MonitoringComponentConfigResponsePtrOutput)
+}
+
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfig struct {
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -13332,6 +14701,8 @@ type NodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig *EphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	// Enable or disable gvnic on the node pool.
+	Gvnic *VirtualNIC `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType *string `pulumi:"imageType"`
 	// Node kubelet configs.
@@ -13393,6 +14764,8 @@ type NodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	// Enable or disable gvnic on the node pool.
+	Gvnic VirtualNICPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Node kubelet configs.
@@ -13532,6 +14905,11 @@ func (o NodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 func (o NodeConfigOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *EphemeralStorageConfig { return v.EphemeralStorageConfig }).(EphemeralStorageConfigPtrOutput)
+}
+
+// Enable or disable gvnic on the node pool.
+func (o NodeConfigOutput) Gvnic() VirtualNICPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *VirtualNIC { return v.Gvnic }).(VirtualNICPtrOutput)
 }
 
 // The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -13690,6 +15068,16 @@ func (o NodeConfigPtrOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrO
 		}
 		return v.EphemeralStorageConfig
 	}).(EphemeralStorageConfigPtrOutput)
+}
+
+// Enable or disable gvnic on the node pool.
+func (o NodeConfigPtrOutput) Gvnic() VirtualNICPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *VirtualNIC {
+		if v == nil {
+			return nil
+		}
+		return v.Gvnic
+	}).(VirtualNICPtrOutput)
 }
 
 // The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -14114,6 +15502,8 @@ type NodeConfigResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigResponse `pulumi:"ephemeralStorageConfig"`
+	// Enable or disable gvnic on the node pool.
+	Gvnic VirtualNICResponse `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType string `pulumi:"imageType"`
 	// Node kubelet configs.
@@ -14175,6 +15565,8 @@ type NodeConfigResponseArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigResponseInput `pulumi:"ephemeralStorageConfig"`
+	// Enable or disable gvnic on the node pool.
+	Gvnic VirtualNICResponseInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
 	// Node kubelet configs.
@@ -14314,6 +15706,11 @@ func (o NodeConfigResponseOutput) DiskType() pulumi.StringOutput {
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 func (o NodeConfigResponseOutput) EphemeralStorageConfig() EphemeralStorageConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) EphemeralStorageConfigResponse { return v.EphemeralStorageConfig }).(EphemeralStorageConfigResponseOutput)
+}
+
+// Enable or disable gvnic on the node pool.
+func (o NodeConfigResponseOutput) Gvnic() VirtualNICResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) VirtualNICResponse { return v.Gvnic }).(VirtualNICResponseOutput)
 }
 
 // The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -14472,6 +15869,16 @@ func (o NodeConfigResponsePtrOutput) EphemeralStorageConfig() EphemeralStorageCo
 		}
 		return &v.EphemeralStorageConfig
 	}).(EphemeralStorageConfigResponsePtrOutput)
+}
+
+// Enable or disable gvnic on the node pool.
+func (o NodeConfigResponsePtrOutput) Gvnic() VirtualNICResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *VirtualNICResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Gvnic
+	}).(VirtualNICResponsePtrOutput)
 }
 
 // The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -15397,13 +16804,13 @@ func (o NodeManagementResponsePtrOutput) UpgradeOptions() AutoUpgradeOptionsResp
 	}).(AutoUpgradeOptionsResponsePtrOutput)
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfig struct {
-	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
-	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodRange *string `pulumi:"podRange"`
 }
 
@@ -15418,13 +16825,13 @@ type NodeNetworkConfigInput interface {
 	ToNodeNetworkConfigOutputWithContext(context.Context) NodeNetworkConfigOutput
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfigArgs struct {
-	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
-	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
 }
 
@@ -15481,7 +16888,7 @@ func (i *nodeNetworkConfigPtrType) ToNodeNetworkConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkConfigPtrOutput)
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkConfigOutput) ElementType() reflect.Type {
@@ -15506,17 +16913,17 @@ func (o NodeNetworkConfigOutput) ToNodeNetworkConfigPtrOutputWithContext(ctx con
 	}).(NodeNetworkConfigPtrOutput)
 }
 
-// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
@@ -15539,7 +16946,7 @@ func (o NodeNetworkConfigPtrOutput) Elem() NodeNetworkConfigOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) NodeNetworkConfig { return *v }).(NodeNetworkConfigOutput)
 }
 
-// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *bool {
 		if v == nil {
@@ -15549,7 +16956,7 @@ func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *string {
 		if v == nil {
@@ -15559,7 +16966,7 @@ func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *string {
 		if v == nil {
@@ -15569,13 +16976,13 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfigResponse struct {
-	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
-	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodRange string `pulumi:"podRange"`
 }
 
@@ -15590,13 +16997,13 @@ type NodeNetworkConfigResponseInput interface {
 	ToNodeNetworkConfigResponseOutputWithContext(context.Context) NodeNetworkConfigResponseOutput
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfigResponseArgs struct {
-	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolInput `pulumi:"createPodRange"`
-	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
-	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodRange pulumi.StringInput `pulumi:"podRange"`
 }
 
@@ -15653,7 +17060,7 @@ func (i *nodeNetworkConfigResponsePtrType) ToNodeNetworkConfigResponsePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkConfigResponsePtrOutput)
 }
 
-// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+// Parameters for node pool-level network config.
 type NodeNetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkConfigResponseOutput) ElementType() reflect.Type {
@@ -15678,17 +17085,17 @@ func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponsePtrOutputWit
 	}).(NodeNetworkConfigResponsePtrOutput)
 }
 
-// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) PodIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) PodRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) string { return v.PodRange }).(pulumi.StringOutput)
 }
@@ -15711,7 +17118,7 @@ func (o NodeNetworkConfigResponsePtrOutput) Elem() NodeNetworkConfigResponseOutp
 	return o.ApplyT(func(v *NodeNetworkConfigResponse) NodeNetworkConfigResponse { return *v }).(NodeNetworkConfigResponseOutput)
 }
 
-// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponsePtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfigResponse) *bool {
 		if v == nil {
@@ -15721,7 +17128,7 @@ func (o NodeNetworkConfigResponsePtrOutput) CreatePodRange() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponsePtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfigResponse) *string {
 		if v == nil {
@@ -15731,7 +17138,7 @@ func (o NodeNetworkConfigResponsePtrOutput) PodIpv4CidrBlock() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponsePtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfigResponse) *string {
 		if v == nil {
@@ -22739,6 +24146,274 @@ func (o VerticalPodAutoscalingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration of gVNIC feature.
+type VirtualNIC struct {
+	// Whether gVNIC features are enabled in the node pool.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// VirtualNICInput is an input type that accepts VirtualNICArgs and VirtualNICOutput values.
+// You can construct a concrete instance of `VirtualNICInput` via:
+//
+//          VirtualNICArgs{...}
+type VirtualNICInput interface {
+	pulumi.Input
+
+	ToVirtualNICOutput() VirtualNICOutput
+	ToVirtualNICOutputWithContext(context.Context) VirtualNICOutput
+}
+
+// Configuration of gVNIC feature.
+type VirtualNICArgs struct {
+	// Whether gVNIC features are enabled in the node pool.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (VirtualNICArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNIC)(nil)).Elem()
+}
+
+func (i VirtualNICArgs) ToVirtualNICOutput() VirtualNICOutput {
+	return i.ToVirtualNICOutputWithContext(context.Background())
+}
+
+func (i VirtualNICArgs) ToVirtualNICOutputWithContext(ctx context.Context) VirtualNICOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICOutput)
+}
+
+func (i VirtualNICArgs) ToVirtualNICPtrOutput() VirtualNICPtrOutput {
+	return i.ToVirtualNICPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNICArgs) ToVirtualNICPtrOutputWithContext(ctx context.Context) VirtualNICPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICOutput).ToVirtualNICPtrOutputWithContext(ctx)
+}
+
+// VirtualNICPtrInput is an input type that accepts VirtualNICArgs, VirtualNICPtr and VirtualNICPtrOutput values.
+// You can construct a concrete instance of `VirtualNICPtrInput` via:
+//
+//          VirtualNICArgs{...}
+//
+//  or:
+//
+//          nil
+type VirtualNICPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNICPtrOutput() VirtualNICPtrOutput
+	ToVirtualNICPtrOutputWithContext(context.Context) VirtualNICPtrOutput
+}
+
+type virtualNICPtrType VirtualNICArgs
+
+func VirtualNICPtr(v *VirtualNICArgs) VirtualNICPtrInput {
+	return (*virtualNICPtrType)(v)
+}
+
+func (*virtualNICPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNIC)(nil)).Elem()
+}
+
+func (i *virtualNICPtrType) ToVirtualNICPtrOutput() VirtualNICPtrOutput {
+	return i.ToVirtualNICPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNICPtrType) ToVirtualNICPtrOutputWithContext(ctx context.Context) VirtualNICPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICPtrOutput)
+}
+
+// Configuration of gVNIC feature.
+type VirtualNICOutput struct{ *pulumi.OutputState }
+
+func (VirtualNICOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNIC)(nil)).Elem()
+}
+
+func (o VirtualNICOutput) ToVirtualNICOutput() VirtualNICOutput {
+	return o
+}
+
+func (o VirtualNICOutput) ToVirtualNICOutputWithContext(ctx context.Context) VirtualNICOutput {
+	return o
+}
+
+func (o VirtualNICOutput) ToVirtualNICPtrOutput() VirtualNICPtrOutput {
+	return o.ToVirtualNICPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNICOutput) ToVirtualNICPtrOutputWithContext(ctx context.Context) VirtualNICPtrOutput {
+	return o.ApplyT(func(v VirtualNIC) *VirtualNIC {
+		return &v
+	}).(VirtualNICPtrOutput)
+}
+
+// Whether gVNIC features are enabled in the node pool.
+func (o VirtualNICOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNIC) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualNICPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNICPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNIC)(nil)).Elem()
+}
+
+func (o VirtualNICPtrOutput) ToVirtualNICPtrOutput() VirtualNICPtrOutput {
+	return o
+}
+
+func (o VirtualNICPtrOutput) ToVirtualNICPtrOutputWithContext(ctx context.Context) VirtualNICPtrOutput {
+	return o
+}
+
+func (o VirtualNICPtrOutput) Elem() VirtualNICOutput {
+	return o.ApplyT(func(v *VirtualNIC) VirtualNIC { return *v }).(VirtualNICOutput)
+}
+
+// Whether gVNIC features are enabled in the node pool.
+func (o VirtualNICPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNIC) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of gVNIC feature.
+type VirtualNICResponse struct {
+	// Whether gVNIC features are enabled in the node pool.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// VirtualNICResponseInput is an input type that accepts VirtualNICResponseArgs and VirtualNICResponseOutput values.
+// You can construct a concrete instance of `VirtualNICResponseInput` via:
+//
+//          VirtualNICResponseArgs{...}
+type VirtualNICResponseInput interface {
+	pulumi.Input
+
+	ToVirtualNICResponseOutput() VirtualNICResponseOutput
+	ToVirtualNICResponseOutputWithContext(context.Context) VirtualNICResponseOutput
+}
+
+// Configuration of gVNIC feature.
+type VirtualNICResponseArgs struct {
+	// Whether gVNIC features are enabled in the node pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (VirtualNICResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNICResponse)(nil)).Elem()
+}
+
+func (i VirtualNICResponseArgs) ToVirtualNICResponseOutput() VirtualNICResponseOutput {
+	return i.ToVirtualNICResponseOutputWithContext(context.Background())
+}
+
+func (i VirtualNICResponseArgs) ToVirtualNICResponseOutputWithContext(ctx context.Context) VirtualNICResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICResponseOutput)
+}
+
+func (i VirtualNICResponseArgs) ToVirtualNICResponsePtrOutput() VirtualNICResponsePtrOutput {
+	return i.ToVirtualNICResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNICResponseArgs) ToVirtualNICResponsePtrOutputWithContext(ctx context.Context) VirtualNICResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICResponseOutput).ToVirtualNICResponsePtrOutputWithContext(ctx)
+}
+
+// VirtualNICResponsePtrInput is an input type that accepts VirtualNICResponseArgs, VirtualNICResponsePtr and VirtualNICResponsePtrOutput values.
+// You can construct a concrete instance of `VirtualNICResponsePtrInput` via:
+//
+//          VirtualNICResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VirtualNICResponsePtrInput interface {
+	pulumi.Input
+
+	ToVirtualNICResponsePtrOutput() VirtualNICResponsePtrOutput
+	ToVirtualNICResponsePtrOutputWithContext(context.Context) VirtualNICResponsePtrOutput
+}
+
+type virtualNICResponsePtrType VirtualNICResponseArgs
+
+func VirtualNICResponsePtr(v *VirtualNICResponseArgs) VirtualNICResponsePtrInput {
+	return (*virtualNICResponsePtrType)(v)
+}
+
+func (*virtualNICResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNICResponse)(nil)).Elem()
+}
+
+func (i *virtualNICResponsePtrType) ToVirtualNICResponsePtrOutput() VirtualNICResponsePtrOutput {
+	return i.ToVirtualNICResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNICResponsePtrType) ToVirtualNICResponsePtrOutputWithContext(ctx context.Context) VirtualNICResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNICResponsePtrOutput)
+}
+
+// Configuration of gVNIC feature.
+type VirtualNICResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNICResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNICResponse)(nil)).Elem()
+}
+
+func (o VirtualNICResponseOutput) ToVirtualNICResponseOutput() VirtualNICResponseOutput {
+	return o
+}
+
+func (o VirtualNICResponseOutput) ToVirtualNICResponseOutputWithContext(ctx context.Context) VirtualNICResponseOutput {
+	return o
+}
+
+func (o VirtualNICResponseOutput) ToVirtualNICResponsePtrOutput() VirtualNICResponsePtrOutput {
+	return o.ToVirtualNICResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNICResponseOutput) ToVirtualNICResponsePtrOutputWithContext(ctx context.Context) VirtualNICResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNICResponse) *VirtualNICResponse {
+		return &v
+	}).(VirtualNICResponsePtrOutput)
+}
+
+// Whether gVNIC features are enabled in the node pool.
+func (o VirtualNICResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualNICResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type VirtualNICResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNICResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNICResponse)(nil)).Elem()
+}
+
+func (o VirtualNICResponsePtrOutput) ToVirtualNICResponsePtrOutput() VirtualNICResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNICResponsePtrOutput) ToVirtualNICResponsePtrOutputWithContext(ctx context.Context) VirtualNICResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNICResponsePtrOutput) Elem() VirtualNICResponseOutput {
+	return o.ApplyT(func(v *VirtualNICResponse) VirtualNICResponse { return *v }).(VirtualNICResponseOutput)
+}
+
+// Whether gVNIC features are enabled in the node pool.
+func (o VirtualNICResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNICResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type WorkloadCertificates struct {
 	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
@@ -23765,6 +25440,10 @@ func init() {
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(IntraNodeVisibilityConfigOutput{})
 	pulumi.RegisterOutputType(IntraNodeVisibilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(IstioConfigOutput{})
@@ -23787,6 +25466,14 @@ func init() {
 	pulumi.RegisterOutputType(LinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(LinuxNodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(LinuxNodeConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigOutput{})
+	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})
@@ -23811,6 +25498,14 @@ func init() {
 	pulumi.RegisterOutputType(MaxPodsConstraintPtrOutput{})
 	pulumi.RegisterOutputType(MaxPodsConstraintResponseOutput{})
 	pulumi.RegisterOutputType(MaxPodsConstraintResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
@@ -23938,6 +25633,10 @@ func init() {
 	pulumi.RegisterOutputType(VerticalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(VerticalPodAutoscalingResponseOutput{})
 	pulumi.RegisterOutputType(VerticalPodAutoscalingResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualNICOutput{})
+	pulumi.RegisterOutputType(VirtualNICPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNICResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNICResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesResponseOutput{})

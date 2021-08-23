@@ -81,6 +81,22 @@ export interface GetOccurrenceResult {
      */
     readonly resource: outputs.containeranalysis.v1beta1.ResourceResponse;
     /**
+     * Describes a specific SPDX Document.
+     */
+    readonly sbom: outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse;
+    /**
+     * Describes a specific SPDX File.
+     */
+    readonly spdxFile: outputs.containeranalysis.v1beta1.FileOccurrenceResponse;
+    /**
+     * Describes a specific SPDX Package.
+     */
+    readonly spdxPackage: outputs.containeranalysis.v1beta1.PackageOccurrenceResponse;
+    /**
+     * Describes a specific SPDX Relationship.
+     */
+    readonly spdxRelationship: outputs.containeranalysis.v1beta1.RelationshipOccurrenceResponse;
+    /**
      * The time this occurrence was last updated.
      */
     readonly updateTime: string;

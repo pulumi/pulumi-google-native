@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
+        /// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         /// </summary>
         public InputMap<string> Labels
         {

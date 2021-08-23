@@ -38,8 +38,8 @@ class BackupRunArgs:
         :param pulumi.Input[str] instance: Name of the database instance.
         :param pulumi.Input['BackupRunBackupKind'] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
-        :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Encryption configuration specific to a backup. Applies only to Second Generation instances.
-        :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Encryption status specific to a backup. Applies only to Second Generation instances.
+        :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Encryption configuration specific to a backup.
+        :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Encryption status specific to a backup.
         :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input['OperationErrorArgs'] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
@@ -126,7 +126,7 @@ class BackupRunArgs:
     @pulumi.getter(name="diskEncryptionConfiguration")
     def disk_encryption_configuration(self) -> Optional[pulumi.Input['DiskEncryptionConfigurationArgs']]:
         """
-        Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        Encryption configuration specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_configuration")
 
@@ -138,7 +138,7 @@ class BackupRunArgs:
     @pulumi.getter(name="diskEncryptionStatus")
     def disk_encryption_status(self) -> Optional[pulumi.Input['DiskEncryptionStatusArgs']]:
         """
-        Encryption status specific to a backup. Applies only to Second Generation instances.
+        Encryption status specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_status")
 
@@ -312,15 +312,15 @@ class BackupRun(pulumi.CustomResource):
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+        Creates a new backup run on demand.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['BackupRunBackupKind'] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Encryption configuration specific to a backup. Applies only to Second Generation instances.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Encryption status specific to a backup. Applies only to Second Generation instances.
+        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Encryption configuration specific to a backup.
+        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Encryption status specific to a backup.
         :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[pulumi.InputType['OperationErrorArgs']] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
@@ -341,7 +341,7 @@ class BackupRun(pulumi.CustomResource):
                  args: BackupRunArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+        Creates a new backup run on demand.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -466,7 +466,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="diskEncryptionConfiguration")
     def disk_encryption_configuration(self) -> pulumi.Output['outputs.DiskEncryptionConfigurationResponse']:
         """
-        Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        Encryption configuration specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_configuration")
 
@@ -474,7 +474,7 @@ class BackupRun(pulumi.CustomResource):
     @pulumi.getter(name="diskEncryptionStatus")
     def disk_encryption_status(self) -> pulumi.Output['outputs.DiskEncryptionStatusResponse']:
         """
-        Encryption status specific to a backup. Applies only to Second Generation instances.
+        Encryption status specific to a backup.
         """
         return pulumi.get(self, "disk_encryption_status")
 

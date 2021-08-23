@@ -79,6 +79,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// Serving status of this application.
         /// </summary>
         public readonly string ServingStatus;
@@ -109,6 +113,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
             string name,
 
+            string serviceAccount,
+
             string servingStatus)
         {
             AuthDomain = authDomain;
@@ -123,6 +129,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
             Iap = iap;
             Location = location;
             Name = name;
+            ServiceAccount = serviceAccount;
             ServingStatus = servingStatus;
         }
     }

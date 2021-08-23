@@ -1146,7 +1146,7 @@ class GoogleCloudRunV1ConditionArgs:
         :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
         :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
         :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         if last_transition_time is not None:
             pulumi.set(__self__, "last_transition_time", last_transition_time)
@@ -1225,7 +1225,7 @@ class GoogleCloudRunV1ConditionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -2021,9 +2021,9 @@ class RevisionSpecArgs:
         """
         RevisionSpec holds the desired state of the Revision (from the client).
         :param pulumi.Input[int] container_concurrency: Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         :param pulumi.Input[str] service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param pulumi.Input[int] timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        :param pulumi.Input[int] timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         """
         if container_concurrency is not None:
             pulumi.set(__self__, "container_concurrency", container_concurrency)
@@ -2052,7 +2052,7 @@ class RevisionSpecArgs:
     @pulumi.getter
     def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]]:
         """
-        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
         """
         return pulumi.get(self, "containers")
 
@@ -2076,7 +2076,7 @@ class RevisionSpecArgs:
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2654,9 +2654,9 @@ class VolumeMountArgs:
                  read_only: Optional[pulumi.Input[bool]] = None,
                  sub_path: Optional[pulumi.Input[str]] = None):
         """
-        Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+        VolumeMount describes a mounting of a Volume within a container.
         :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param pulumi.Input[str] name: This must match the Name of a Volume.
+        :param pulumi.Input[str] name: The name of the volume. There must be a corresponding Volume with the same name.
         :param pulumi.Input[bool] read_only: (Optional) Only true is accepted. Defaults to true.
         :param pulumi.Input[str] sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
@@ -2685,7 +2685,7 @@ class VolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        This must match the Name of a Volume.
+        The name of the volume. There must be a corresponding Volume with the same name.
         """
         return pulumi.get(self, "name")
 
@@ -2725,8 +2725,8 @@ class VolumeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
         """
-        Not supported by Cloud Run Volume represents a named volume in a container.
-        :param pulumi.Input[str] name: Volume's name.
+        Volume represents a named volume in a container.
+        :param pulumi.Input[str] name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         if config_map is not None:
             pulumi.set(__self__, "config_map", config_map)
@@ -2748,7 +2748,7 @@ class VolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         return pulumi.get(self, "name")
 

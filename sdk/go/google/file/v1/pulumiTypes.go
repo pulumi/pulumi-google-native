@@ -18,7 +18,7 @@ type FileShareConfig struct {
 	Name *string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptions `pulumi:"nfsExportOptions"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 	SourceBackup *string `pulumi:"sourceBackup"`
 }
 
@@ -41,7 +41,7 @@ type FileShareConfigArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsArrayInput `pulumi:"nfsExportOptions"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 	SourceBackup pulumi.StringPtrInput `pulumi:"sourceBackup"`
 }
 
@@ -112,7 +112,7 @@ func (o FileShareConfigOutput) NfsExportOptions() NfsExportOptionsArrayOutput {
 	return o.ApplyT(func(v FileShareConfig) []NfsExportOptions { return v.NfsExportOptions }).(NfsExportOptionsArrayOutput)
 }
 
-// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 func (o FileShareConfigOutput) SourceBackup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileShareConfig) *string { return v.SourceBackup }).(pulumi.StringPtrOutput)
 }
@@ -145,7 +145,7 @@ type FileShareConfigResponse struct {
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptionsResponse `pulumi:"nfsExportOptions"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 	SourceBackup string `pulumi:"sourceBackup"`
 }
 
@@ -168,7 +168,7 @@ type FileShareConfigResponseArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsResponseArrayInput `pulumi:"nfsExportOptions"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 	SourceBackup pulumi.StringInput `pulumi:"sourceBackup"`
 }
 
@@ -239,7 +239,7 @@ func (o FileShareConfigResponseOutput) NfsExportOptions() NfsExportOptionsRespon
 	return o.ApplyT(func(v FileShareConfigResponse) []NfsExportOptionsResponse { return v.NfsExportOptions }).(NfsExportOptionsResponseArrayOutput)
 }
 
-// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been restored from.
+// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
 func (o FileShareConfigResponseOutput) SourceBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.SourceBackup }).(pulumi.StringOutput)
 }
@@ -268,9 +268,9 @@ func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareCo
 type NetworkConfig struct {
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes []NetworkConfigModesItem `pulumi:"modes"`
-	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network *string `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 }
 
@@ -289,9 +289,9 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes NetworkConfigModesItemArrayInput `pulumi:"modes"`
-	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
 }
 
@@ -352,12 +352,12 @@ func (o NetworkConfigOutput) Modes() NetworkConfigModesItemArrayOutput {
 	return o.ApplyT(func(v NetworkConfig) []NetworkConfigModesItem { return v.Modes }).(NetworkConfigModesItemArrayOutput)
 }
 
-// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 func (o NetworkConfigOutput) ReservedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -384,13 +384,13 @@ func (o NetworkConfigArrayOutput) Index(i pulumi.IntInput) NetworkConfigOutput {
 
 // Network configuration for the instance.
 type NetworkConfigResponse struct {
-	// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+	// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes []string `pulumi:"modes"`
-	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network string `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
 
@@ -407,13 +407,13 @@ type NetworkConfigResponseInput interface {
 
 // Network configuration for the instance.
 type NetworkConfigResponseArgs struct {
-	// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+	// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes pulumi.StringArrayInput `pulumi:"modes"`
-	// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network pulumi.StringInput `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange pulumi.StringInput `pulumi:"reservedIpRange"`
 }
 
@@ -469,7 +469,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
+// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 func (o NetworkConfigResponseOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -479,12 +479,12 @@ func (o NetworkConfigResponseOutput) Modes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }
 
-// The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
+// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 func (o NetworkConfigResponseOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.ReservedIpRange }).(pulumi.StringOutput)
 }
@@ -517,7 +517,7 @@ type NfsExportOptions struct {
 	AnonGid *string `pulumi:"anonGid"`
 	// An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
 	AnonUid *string `pulumi:"anonUid"`
-	// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode *NfsExportOptionsSquashMode `pulumi:"squashMode"`
@@ -542,7 +542,7 @@ type NfsExportOptionsArgs struct {
 	AnonGid pulumi.StringPtrInput `pulumi:"anonGid"`
 	// An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
 	AnonUid pulumi.StringPtrInput `pulumi:"anonUid"`
-	// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode NfsExportOptionsSquashModePtrInput `pulumi:"squashMode"`
@@ -615,7 +615,7 @@ func (o NfsExportOptionsOutput) AnonUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NfsExportOptions) *string { return v.AnonUid }).(pulumi.StringPtrOutput)
 }
 
-// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 func (o NfsExportOptionsOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NfsExportOptions) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -653,7 +653,7 @@ type NfsExportOptionsResponse struct {
 	AnonGid string `pulumi:"anonGid"`
 	// An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
 	AnonUid string `pulumi:"anonUid"`
-	// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode string `pulumi:"squashMode"`
@@ -678,7 +678,7 @@ type NfsExportOptionsResponseArgs struct {
 	AnonGid pulumi.StringInput `pulumi:"anonGid"`
 	// An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
 	AnonUid pulumi.StringInput `pulumi:"anonUid"`
-	// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode pulumi.StringInput `pulumi:"squashMode"`
@@ -751,7 +751,7 @@ func (o NfsExportOptionsResponseOutput) AnonUid() pulumi.StringOutput {
 	return o.ApplyT(func(v NfsExportOptionsResponse) string { return v.AnonUid }).(pulumi.StringOutput)
 }
 
-// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 func (o NfsExportOptionsResponseOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NfsExportOptionsResponse) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }

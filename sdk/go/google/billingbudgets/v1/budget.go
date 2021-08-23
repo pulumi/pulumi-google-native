@@ -22,7 +22,7 @@ type Budget struct {
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponseOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -84,7 +84,7 @@ type budgetArgs struct {
 	BudgetFilter *GoogleCloudBillingBudgetsV1Filter `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
 	Etag *string `pulumi:"etag"`
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule *GoogleCloudBillingBudgetsV1NotificationsRule `pulumi:"notificationsRule"`
@@ -101,7 +101,7 @@ type BudgetArgs struct {
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterPtrInput
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName pulumi.StringPtrInput
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
 	Etag pulumi.StringPtrInput
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRulePtrInput

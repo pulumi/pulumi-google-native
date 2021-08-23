@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly string PlotType;
         /// <summary>
+        /// Optional. The target axis to use for plotting the metric.
+        /// </summary>
+        public readonly string TargetAxis;
+        /// <summary>
         /// Fields for querying time series data from the Stackdriver metrics API.
         /// </summary>
         public readonly Outputs.TimeSeriesQueryResponse TimeSeriesQuery;
@@ -38,11 +42,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             string plotType,
 
+            string targetAxis,
+
             Outputs.TimeSeriesQueryResponse timeSeriesQuery)
         {
             LegendTemplate = legendTemplate;
             MinAlignmentPeriod = minAlignmentPeriod;
             PlotType = plotType;
+            TargetAxis = targetAxis;
             TimeSeriesQuery = timeSeriesQuery;
         }
     }

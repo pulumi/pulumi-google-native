@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
 {
 
     /// <summary>
-    /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+    /// The name and status of the failover replica.
     /// </summary>
     public sealed class InstanceFailoverReplicaArgs : Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<bool>? Available { get; set; }
 
         /// <summary>
-        /// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        /// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

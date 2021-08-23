@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Defines autoscaling behaviour.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterAutoscalingAutoscalingProfile : IEquatable<ClusterAutoscalingAutoscalingProfile>
+    {
+        private readonly string _value;
+
+        private ClusterAutoscalingAutoscalingProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No change to autoscaling configuration.
+        /// </summary>
+        public static ClusterAutoscalingAutoscalingProfile ProfileUnspecified { get; } = new ClusterAutoscalingAutoscalingProfile("PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Prioritize optimizing utilization of resources.
+        /// </summary>
+        public static ClusterAutoscalingAutoscalingProfile OptimizeUtilization { get; } = new ClusterAutoscalingAutoscalingProfile("OPTIMIZE_UTILIZATION");
+        /// <summary>
+        /// Use default (balanced) autoscaling configuration.
+        /// </summary>
+        public static ClusterAutoscalingAutoscalingProfile Balanced { get; } = new ClusterAutoscalingAutoscalingProfile("BALANCED");
+
+        public static bool operator ==(ClusterAutoscalingAutoscalingProfile left, ClusterAutoscalingAutoscalingProfile right) => left.Equals(right);
+        public static bool operator !=(ClusterAutoscalingAutoscalingProfile left, ClusterAutoscalingAutoscalingProfile right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterAutoscalingAutoscalingProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterAutoscalingAutoscalingProfile other && Equals(other);
+        public bool Equals(ClusterAutoscalingAutoscalingProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The desired datapath provider for the cluster.
     /// </summary>
     [EnumType]
@@ -168,6 +209,78 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DatabaseEncryptionState other && Equals(other);
         public bool Equals(DatabaseEncryptionState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct LoggingComponentConfigEnableComponentsItem : IEquatable<LoggingComponentConfigEnableComponentsItem>
+    {
+        private readonly string _value;
+
+        private LoggingComponentConfigEnableComponentsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem ComponentUnspecified { get; } = new LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED");
+        /// <summary>
+        /// system components
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem SystemComponents { get; } = new LoggingComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+        /// <summary>
+        /// workloads
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Workloads { get; } = new LoggingComponentConfigEnableComponentsItem("WORKLOADS");
+
+        public static bool operator ==(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => left.Equals(right);
+        public static bool operator !=(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => !left.Equals(right);
+
+        public static explicit operator string(LoggingComponentConfigEnableComponentsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LoggingComponentConfigEnableComponentsItem other && Equals(other);
+        public bool Equals(LoggingComponentConfigEnableComponentsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct MonitoringComponentConfigEnableComponentsItem : IEquatable<MonitoringComponentConfigEnableComponentsItem>
+    {
+        private readonly string _value;
+
+        private MonitoringComponentConfigEnableComponentsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem ComponentUnspecified { get; } = new MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED");
+        /// <summary>
+        /// system components
+        /// </summary>
+        public static MonitoringComponentConfigEnableComponentsItem SystemComponents { get; } = new MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
+
+        public static bool operator ==(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => left.Equals(right);
+        public static bool operator !=(MonitoringComponentConfigEnableComponentsItem left, MonitoringComponentConfigEnableComponentsItem right) => !left.Equals(right);
+
+        public static explicit operator string(MonitoringComponentConfigEnableComponentsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MonitoringComponentConfigEnableComponentsItem other && Equals(other);
+        public bool Equals(MonitoringComponentConfigEnableComponentsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -80,7 +80,7 @@ export const RoutineDeterminismLevel = {
 } as const;
 
 /**
- * Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+ * Optional. The determinism level of the JavaScript UDF, if defined.
  */
 export type RoutineDeterminismLevel = (typeof RoutineDeterminismLevel)[keyof typeof RoutineDeterminismLevel];
 

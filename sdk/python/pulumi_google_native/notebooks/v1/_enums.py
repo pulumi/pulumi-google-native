@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AcceleratorConfigType',
+    'ExecutionTemplateJobType',
     'InstanceBootDiskType',
     'InstanceDataDiskType',
     'InstanceDiskEncryption',
@@ -50,6 +51,18 @@ class AcceleratorConfigType(str, Enum):
     """(Coming soon) Accelerator type is TPU V2."""
     TPU_V3 = "TPU_V3"
     """(Coming soon) Accelerator type is TPU V3."""
+
+
+class ExecutionTemplateJobType(str, Enum):
+    """
+    The type of Job to be used on this execution.
+    """
+    JOB_TYPE_UNSPECIFIED = "JOB_TYPE_UNSPECIFIED"
+    """No type specified."""
+    VERTEX_AI = "VERTEX_AI"
+    """Custom Job in `aiplatform.googleapis.com`. Default value for an execution."""
+    DATAPROC = "DATAPROC"
+    """Run execution on a cluster with Dataproc as a job. https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs"""
 
 
 class InstanceBootDiskType(str, Enum):

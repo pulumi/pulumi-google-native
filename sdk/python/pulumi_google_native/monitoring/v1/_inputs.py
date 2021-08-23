@@ -266,13 +266,15 @@ class DataSetArgs:
                  time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
                  legend_template: Optional[pulumi.Input[str]] = None,
                  min_alignment_period: Optional[pulumi.Input[str]] = None,
-                 plot_type: Optional[pulumi.Input['DataSetPlotType']] = None):
+                 plot_type: Optional[pulumi.Input['DataSetPlotType']] = None,
+                 target_axis: Optional[pulumi.Input['DataSetTargetAxis']] = None):
         """
         Groups a time series query definition with charting options.
         :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         :param pulumi.Input[str] legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         :param pulumi.Input[str] min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param pulumi.Input['DataSetPlotType'] plot_type: How this data should be plotted on the chart.
+        :param pulumi.Input['DataSetTargetAxis'] target_axis: Optional. The target axis to use for plotting the metric.
         """
         pulumi.set(__self__, "time_series_query", time_series_query)
         if legend_template is not None:
@@ -281,6 +283,8 @@ class DataSetArgs:
             pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         if plot_type is not None:
             pulumi.set(__self__, "plot_type", plot_type)
+        if target_axis is not None:
+            pulumi.set(__self__, "target_axis", target_axis)
 
     @property
     @pulumi.getter(name="timeSeriesQuery")
@@ -329,6 +333,18 @@ class DataSetArgs:
     @plot_type.setter
     def plot_type(self, value: Optional[pulumi.Input['DataSetPlotType']]):
         pulumi.set(self, "plot_type", value)
+
+    @property
+    @pulumi.getter(name="targetAxis")
+    def target_axis(self) -> Optional[pulumi.Input['DataSetTargetAxis']]:
+        """
+        Optional. The target axis to use for plotting the metric.
+        """
+        return pulumi.get(self, "target_axis")
+
+    @target_axis.setter
+    def target_axis(self, value: Optional[pulumi.Input['DataSetTargetAxis']]):
+        pulumi.set(self, "target_axis", value)
 
 
 @pulumi.input_type
@@ -775,12 +791,14 @@ class ThresholdArgs:
                  color: Optional[pulumi.Input['ThresholdColor']] = None,
                  direction: Optional[pulumi.Input['ThresholdDirection']] = None,
                  label: Optional[pulumi.Input[str]] = None,
+                 target_axis: Optional[pulumi.Input['ThresholdTargetAxis']] = None,
                  value: Optional[pulumi.Input[float]] = None):
         """
         Defines a threshold for categorizing time series values.
         :param pulumi.Input['ThresholdColor'] color: The state color for this threshold. Color is not allowed in a XyChart.
         :param pulumi.Input['ThresholdDirection'] direction: The direction for the current threshold. Direction is not allowed in a XyChart.
         :param pulumi.Input[str] label: A label for the threshold.
+        :param pulumi.Input['ThresholdTargetAxis'] target_axis: The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
         :param pulumi.Input[float] value: The value of the threshold. The value should be defined in the native scale of the metric.
         """
         if color is not None:
@@ -789,6 +807,8 @@ class ThresholdArgs:
             pulumi.set(__self__, "direction", direction)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if target_axis is not None:
+            pulumi.set(__self__, "target_axis", target_axis)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -827,6 +847,18 @@ class ThresholdArgs:
     @label.setter
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="targetAxis")
+    def target_axis(self) -> Optional[pulumi.Input['ThresholdTargetAxis']]:
+        """
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+        """
+        return pulumi.get(self, "target_axis")
+
+    @target_axis.setter
+    def target_axis(self, value: Optional[pulumi.Input['ThresholdTargetAxis']]):
+        pulumi.set(self, "target_axis", value)
 
     @property
     @pulumi.getter
@@ -1256,6 +1288,7 @@ class XyChartArgs:
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]] = None,
                  timeshift_duration: Optional[pulumi.Input[str]] = None,
                  x_axis: Optional[pulumi.Input['AxisArgs']] = None,
+                 y2_axis: Optional[pulumi.Input['AxisArgs']] = None,
                  y_axis: Optional[pulumi.Input['AxisArgs']] = None):
         """
         A chart that displays data on a 2D (X and Y axes) plane.
@@ -1264,6 +1297,7 @@ class XyChartArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]] thresholds: Threshold lines drawn horizontally across the chart.
         :param pulumi.Input[str] timeshift_duration: The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
         :param pulumi.Input['AxisArgs'] x_axis: The properties applied to the X axis.
+        :param pulumi.Input['AxisArgs'] y2_axis: The properties applied to the Y2 axis.
         :param pulumi.Input['AxisArgs'] y_axis: The properties applied to the Y axis.
         """
         pulumi.set(__self__, "data_sets", data_sets)
@@ -1275,6 +1309,8 @@ class XyChartArgs:
             pulumi.set(__self__, "timeshift_duration", timeshift_duration)
         if x_axis is not None:
             pulumi.set(__self__, "x_axis", x_axis)
+        if y2_axis is not None:
+            pulumi.set(__self__, "y2_axis", y2_axis)
         if y_axis is not None:
             pulumi.set(__self__, "y_axis", y_axis)
 
@@ -1337,6 +1373,18 @@ class XyChartArgs:
     @x_axis.setter
     def x_axis(self, value: Optional[pulumi.Input['AxisArgs']]):
         pulumi.set(self, "x_axis", value)
+
+    @property
+    @pulumi.getter(name="y2Axis")
+    def y2_axis(self) -> Optional[pulumi.Input['AxisArgs']]:
+        """
+        The properties applied to the Y2 axis.
+        """
+        return pulumi.get(self, "y2_axis")
+
+    @y2_axis.setter
+    def y2_axis(self, value: Optional[pulumi.Input['AxisArgs']]):
+        pulumi.set(self, "y2_axis", value)
 
     @property
     @pulumi.getter(name="yAxis")

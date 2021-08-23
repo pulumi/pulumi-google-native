@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// Filter to select VMs.
         /// </summary>
         public readonly Outputs.OSPolicyAssignmentInstanceFilterResponse InstanceFilter;
@@ -96,6 +100,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
 
             string description,
 
+            string etag,
+
             Outputs.OSPolicyAssignmentInstanceFilterResponse instanceFilter,
 
             string name,
@@ -117,6 +123,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
             Baseline = baseline;
             Deleted = deleted;
             Description = description;
+            Etag = etag;
             InstanceFilter = instanceFilter;
             Name = name;
             OsPolicies = osPolicies;

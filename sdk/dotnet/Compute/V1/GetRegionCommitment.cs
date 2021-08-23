@@ -99,6 +99,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// An optional, human-readable explanation of the status.
         /// </summary>
         public readonly string StatusMessage;
+        /// <summary>
+        /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetRegionCommitmentResult(
@@ -130,7 +134,9 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string status,
 
-            string statusMessage)
+            string statusMessage,
+
+            string type)
         {
             Category = category;
             CreationTimestamp = creationTimestamp;
@@ -147,6 +153,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             StartTimestamp = startTimestamp;
             Status = status;
             StatusMessage = statusMessage;
+            Type = type;
         }
     }
 }

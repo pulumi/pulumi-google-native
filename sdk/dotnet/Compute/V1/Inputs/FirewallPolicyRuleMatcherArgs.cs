@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _destIpRanges;
 
         /// <summary>
-        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public InputList<string> DestIpRanges
         {
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _srcIpRanges;
 
         /// <summary>
-        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
         public InputList<string> SrcIpRanges
         {

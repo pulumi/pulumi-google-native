@@ -26,13 +26,13 @@ type Backup struct {
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
 	// The service tier of the source Cloud Filestore instance that this backup is created from.
 	SourceInstanceTier pulumi.StringOutput `pulumi:"sourceInstanceTier"`
@@ -93,7 +93,7 @@ type backupArgs struct {
 	Project  *string           `pulumi:"project"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance *string `pulumi:"sourceInstance"`
 }
 
@@ -108,7 +108,7 @@ type BackupArgs struct {
 	Project  pulumi.StringPtrInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
-	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance pulumi.StringPtrInput
 }
 

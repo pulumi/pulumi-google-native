@@ -14,8 +14,6 @@ import (
 type GoogleCloudApigeeV1AddonsConfig struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig *GoogleCloudApigeeV1AdvancedApiOpsConfig `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Integration add-on.
-	IntegrationConfig *GoogleCloudApigeeV1IntegrationConfig `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
 	MonetizationConfig *GoogleCloudApigeeV1MonetizationConfig `pulumi:"monetizationConfig"`
 }
@@ -35,8 +33,6 @@ type GoogleCloudApigeeV1AddonsConfigInput interface {
 type GoogleCloudApigeeV1AddonsConfigArgs struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Integration add-on.
-	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigPtrInput `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
 	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigPtrInput `pulumi:"monetizationConfig"`
 }
@@ -126,13 +122,6 @@ func (o GoogleCloudApigeeV1AddonsConfigOutput) AdvancedApiOpsConfig() GoogleClou
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
-// Configuration for the Integration add-on.
-func (o GoogleCloudApigeeV1AddonsConfigOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1IntegrationConfig {
-		return v.IntegrationConfig
-	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
-}
-
 // Configuration for the Monetization add-on.
 func (o GoogleCloudApigeeV1AddonsConfigOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1MonetizationConfig {
@@ -168,16 +157,6 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) AdvancedApiOpsConfig() GoogleC
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
 }
 
-// Configuration for the Integration add-on.
-func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1IntegrationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.IntegrationConfig
-	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
-}
-
 // Configuration for the Monetization add-on.
 func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1MonetizationConfig {
@@ -192,8 +171,6 @@ func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) MonetizationConfig() GoogleClo
 type GoogleCloudApigeeV1AddonsConfigResponse struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigResponse `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Integration add-on.
-	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigResponse `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
 	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigResponse `pulumi:"monetizationConfig"`
 }
@@ -213,8 +190,6 @@ type GoogleCloudApigeeV1AddonsConfigResponseInput interface {
 type GoogleCloudApigeeV1AddonsConfigResponseArgs struct {
 	// Configuration for the Advanced API Ops add-on.
 	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigResponseInput `pulumi:"advancedApiOpsConfig"`
-	// Configuration for the Integration add-on.
-	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigResponseInput `pulumi:"integrationConfig"`
 	// Configuration for the Monetization add-on.
 	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigResponseInput `pulumi:"monetizationConfig"`
 }
@@ -304,13 +279,6 @@ func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) AdvancedApiOpsConfig() Go
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
 }
 
-// Configuration for the Integration add-on.
-func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1IntegrationConfigResponse {
-		return v.IntegrationConfig
-	}).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
-}
-
 // Configuration for the Monetization add-on.
 func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1MonetizationConfigResponse {
@@ -344,16 +312,6 @@ func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) AdvancedApiOpsConfig()
 		}
 		return &v.AdvancedApiOpsConfig
 	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput)
-}
-
-// Configuration for the Integration add-on.
-func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1IntegrationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IntegrationConfig
-	}).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
 }
 
 // Configuration for the Monetization add-on.
@@ -3777,276 +3735,6 @@ func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperationResponse {
 		return vs[0].([]GoogleCloudApigeeV1GraphQLOperationResponse)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1GraphQLOperationResponseOutput)
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfig struct {
-	// Flag that specifies whether the Integration add-on is enabled.
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// GoogleCloudApigeeV1IntegrationConfigInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs and GoogleCloudApigeeV1IntegrationConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigInput` via:
-//
-//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
-type GoogleCloudApigeeV1IntegrationConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput
-	ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigOutput
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfigArgs struct {
-	// Flag that specifies whether the Integration add-on is enabled.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (GoogleCloudApigeeV1IntegrationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigOutput)
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigOutput).ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudApigeeV1IntegrationConfigPtrInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs, GoogleCloudApigeeV1IntegrationConfigPtr and GoogleCloudApigeeV1IntegrationConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigPtrInput` via:
-//
-//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudApigeeV1IntegrationConfigPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput
-	ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput
-}
-
-type googleCloudApigeeV1IntegrationConfigPtrType GoogleCloudApigeeV1IntegrationConfigArgs
-
-func GoogleCloudApigeeV1IntegrationConfigPtr(v *GoogleCloudApigeeV1IntegrationConfigArgs) GoogleCloudApigeeV1IntegrationConfigPtrInput {
-	return (*googleCloudApigeeV1IntegrationConfigPtrType)(v)
-}
-
-func (*googleCloudApigeeV1IntegrationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
-}
-
-func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1IntegrationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfig) *GoogleCloudApigeeV1IntegrationConfig {
-		return &v
-	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
-}
-
-// Flag that specifies whether the Integration add-on is enabled.
-func (o GoogleCloudApigeeV1IntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type GoogleCloudApigeeV1IntegrationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1IntegrationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) Elem() GoogleCloudApigeeV1IntegrationConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfig) GoogleCloudApigeeV1IntegrationConfig { return *v }).(GoogleCloudApigeeV1IntegrationConfigOutput)
-}
-
-// Flag that specifies whether the Integration add-on is enabled.
-func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfigResponse struct {
-	// Flag that specifies whether the Integration add-on is enabled.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GoogleCloudApigeeV1IntegrationConfigResponseInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigResponseArgs and GoogleCloudApigeeV1IntegrationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigResponseInput` via:
-//
-//          GoogleCloudApigeeV1IntegrationConfigResponseArgs{...}
-type GoogleCloudApigeeV1IntegrationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput
-	ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfigResponseArgs struct {
-	// Flag that specifies whether the Integration add-on is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GoogleCloudApigeeV1IntegrationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponseOutput).ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudApigeeV1IntegrationConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigResponseArgs, GoogleCloudApigeeV1IntegrationConfigResponsePtr and GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigResponsePtrInput` via:
-//
-//          GoogleCloudApigeeV1IntegrationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudApigeeV1IntegrationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput
-	ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput
-}
-
-type googleCloudApigeeV1IntegrationConfigResponsePtrType GoogleCloudApigeeV1IntegrationConfigResponseArgs
-
-func GoogleCloudApigeeV1IntegrationConfigResponsePtr(v *GoogleCloudApigeeV1IntegrationConfigResponseArgs) GoogleCloudApigeeV1IntegrationConfigResponsePtrInput {
-	return (*googleCloudApigeeV1IntegrationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudApigeeV1IntegrationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudApigeeV1IntegrationConfigResponsePtrType) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return i.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudApigeeV1IntegrationConfigResponsePtrType) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
-}
-
-// Configuration for the Integration add-on.
-type GoogleCloudApigeeV1IntegrationConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1IntegrationConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return o.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfigResponse) *GoogleCloudApigeeV1IntegrationConfigResponse {
-		return &v
-	}).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
-}
-
-// Flag that specifies whether the Integration add-on is enabled.
-func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfigResponse) GoogleCloudApigeeV1IntegrationConfigResponse {
-		return *v
-	}).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
-}
-
-// Flag that specifies whether the Integration add-on is enabled.
-func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for the Monetization add-on.
@@ -9413,10 +9101,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigResponseOutput{})

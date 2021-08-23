@@ -28,9 +28,9 @@ type LookupBackupRunResult struct {
 	BackupKind string `pulumi:"backupKind"`
 	// The description of this run, only applicable to on-demand backups.
 	Description string `pulumi:"description"`
-	// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+	// Encryption configuration specific to a backup.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
-	// Encryption status specific to a backup. Applies only to Second Generation instances.
+	// Encryption status specific to a backup.
 	DiskEncryptionStatus DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
 	// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	EndTime string `pulumi:"endTime"`

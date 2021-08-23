@@ -321,7 +321,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+        The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
         """
         return pulumi.get(self, "name")
 

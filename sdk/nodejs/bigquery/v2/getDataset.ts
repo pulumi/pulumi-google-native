@@ -62,6 +62,10 @@ export interface GetDatasetResult {
      */
     readonly friendlyName: string;
     /**
+     * [Optional] Indicates if table names are case insensitive in the dataset.
+     */
+    readonly isCaseInsensitive: boolean;
+    /**
      * The resource type.
      */
     readonly kind: string;

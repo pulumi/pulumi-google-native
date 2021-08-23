@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+ * Creates a new backup run on demand.
  * Auto-naming is currently not supported for this resource.
  */
 export class BackupRun extends pulumi.CustomResource {
@@ -45,11 +45,11 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Encryption configuration specific to a backup. Applies only to Second Generation instances.
+     * Encryption configuration specific to a backup.
      */
     public readonly diskEncryptionConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse>;
     /**
-     * Encryption status specific to a backup. Applies only to Second Generation instances.
+     * Encryption status specific to a backup.
      */
     public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse>;
     /**
@@ -165,11 +165,11 @@ export interface BackupRunArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Encryption configuration specific to a backup. Applies only to Second Generation instances.
+     * Encryption configuration specific to a backup.
      */
     diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
     /**
-     * Encryption status specific to a backup. Applies only to Second Generation instances.
+     * Encryption status specific to a backup.
      */
     diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**

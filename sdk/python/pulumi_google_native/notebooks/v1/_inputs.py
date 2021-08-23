@@ -13,6 +13,7 @@ __all__ = [
     'AcceleratorConfigArgs',
     'BindingArgs',
     'ContainerImageArgs',
+    'DataprocParametersArgs',
     'EncryptionConfigArgs',
     'ExecutionTemplateArgs',
     'ExprArgs',
@@ -167,6 +168,30 @@ class ContainerImageArgs:
 
 
 @pulumi.input_type
+class DataprocParametersArgs:
+    def __init__(__self__, *,
+                 cluster: Optional[pulumi.Input[str]] = None):
+        """
+        Parameters used in Dataproc JobType executions.
+        :param pulumi.Input[str] cluster: URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key: Optional[pulumi.Input[str]] = None):
@@ -195,7 +220,9 @@ class ExecutionTemplateArgs:
     def __init__(__self__, *,
                  accelerator_config: Optional[pulumi.Input['SchedulerAcceleratorConfigArgs']] = None,
                  container_image_uri: Optional[pulumi.Input[str]] = None,
+                 dataproc_parameters: Optional[pulumi.Input['DataprocParametersArgs']] = None,
                  input_notebook_file: Optional[pulumi.Input[str]] = None,
+                 job_type: Optional[pulumi.Input['ExecutionTemplateJobType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_type: Optional[pulumi.Input[str]] = None,
                  output_notebook_folder: Optional[pulumi.Input[str]] = None,
@@ -206,7 +233,9 @@ class ExecutionTemplateArgs:
         The description a notebook execution workload.
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+        :param pulumi.Input['DataprocParametersArgs'] dataproc_parameters: Parameters used in Dataproc JobType executions.
         :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        :param pulumi.Input['ExecutionTemplateJobType'] job_type: The type of Job to be used on this execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         :param pulumi.Input[str] master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
         :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
@@ -218,8 +247,12 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_image_uri is not None:
             pulumi.set(__self__, "container_image_uri", container_image_uri)
+        if dataproc_parameters is not None:
+            pulumi.set(__self__, "dataproc_parameters", dataproc_parameters)
         if input_notebook_file is not None:
             pulumi.set(__self__, "input_notebook_file", input_notebook_file)
+        if job_type is not None:
+            pulumi.set(__self__, "job_type", job_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if master_type is not None:
@@ -258,6 +291,18 @@ class ExecutionTemplateArgs:
         pulumi.set(self, "container_image_uri", value)
 
     @property
+    @pulumi.getter(name="dataprocParameters")
+    def dataproc_parameters(self) -> Optional[pulumi.Input['DataprocParametersArgs']]:
+        """
+        Parameters used in Dataproc JobType executions.
+        """
+        return pulumi.get(self, "dataproc_parameters")
+
+    @dataproc_parameters.setter
+    def dataproc_parameters(self, value: Optional[pulumi.Input['DataprocParametersArgs']]):
+        pulumi.set(self, "dataproc_parameters", value)
+
+    @property
     @pulumi.getter(name="inputNotebookFile")
     def input_notebook_file(self) -> Optional[pulumi.Input[str]]:
         """
@@ -268,6 +313,18 @@ class ExecutionTemplateArgs:
     @input_notebook_file.setter
     def input_notebook_file(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input_notebook_file", value)
+
+    @property
+    @pulumi.getter(name="jobType")
+    def job_type(self) -> Optional[pulumi.Input['ExecutionTemplateJobType']]:
+        """
+        The type of Job to be used on this execution.
+        """
+        return pulumi.get(self, "job_type")
+
+    @job_type.setter
+    def job_type(self, value: Optional[pulumi.Input['ExecutionTemplateJobType']]):
+        pulumi.set(self, "job_type", value)
 
     @property
     @pulumi.getter
@@ -423,7 +480,7 @@ class LocalDiskInitializeParamsArgs:
                  disk_type: Optional[pulumi.Input['LocalDiskInitializeParamsDiskType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param pulumi.Input[str] description: Optional. Provide this property when creating the disk.
         :param pulumi.Input[str] disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
         :param pulumi.Input[str] disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
@@ -512,7 +569,7 @@ class LocalDiskArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         An Local attached disk resource.
-        :param pulumi.Input['LocalDiskInitializeParamsArgs'] initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param pulumi.Input['LocalDiskInitializeParamsArgs'] initialize_params: Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
@@ -533,7 +590,7 @@ class LocalDiskArgs:
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsArgs']]:
         """
-        Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         """
         return pulumi.get(self, "initialize_params")
 
@@ -733,7 +790,7 @@ class RuntimeShieldedInstanceConfigArgs:
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param pulumi.Input[bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param pulumi.Input[bool] enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
@@ -793,7 +850,7 @@ class RuntimeSoftwareConfigArgs:
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[bool] enable_health_monitoring: Verifies core internal services are running. Default: True
         :param pulumi.Input[bool] idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True

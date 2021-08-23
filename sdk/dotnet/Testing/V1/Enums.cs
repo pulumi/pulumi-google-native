@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         }
 
         /// <summary>
-        /// LINT.IfChange This means that the server should choose the mode. Recommended.
+        /// This means that the server should choose the mode. Recommended.
         /// </summary>
         public static AndroidRoboTestRoboMode RoboModeUnspecified { get; } = new AndroidRoboTestRoboMode("ROBO_MODE_UNSPECIFIED");
         /// <summary>

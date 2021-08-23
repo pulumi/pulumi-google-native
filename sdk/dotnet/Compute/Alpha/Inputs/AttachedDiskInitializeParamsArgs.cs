@@ -69,6 +69,30 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _labels = value;
         }
 
+        [Input("licenseCodes")]
+        private InputList<string>? _licenseCodes;
+
+        /// <summary>
+        /// Integer license codes indicating which licenses are attached to this disk.
+        /// </summary>
+        public InputList<string> LicenseCodes
+        {
+            get => _licenseCodes ?? (_licenseCodes = new InputList<string>());
+            set => _licenseCodes = value;
+        }
+
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// A list of publicly visible licenses. Reserved for Google's use.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
+        }
+
         /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>

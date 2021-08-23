@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ResourceRecordSetInitArgs', 'ResourceRecordSet']
 
@@ -18,6 +20,7 @@ class ResourceRecordSetInitArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input['RRSetRoutingPolicyArgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -25,6 +28,7 @@ class ResourceRecordSetInitArgs:
         """
         The set of arguments for constructing a ResourceRecordSet resource.
         :param pulumi.Input[str] name: For example, www.example.com.
+        :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -39,6 +43,8 @@ class ResourceRecordSetInitArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if routing_policy is not None:
+            pulumi.set(__self__, "routing_policy", routing_policy)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if signature_rrdatas is not None:
@@ -95,6 +101,18 @@ class ResourceRecordSetInitArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyArgs']]:
+        """
+        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        """
+        return pulumi.get(self, "routing_policy")
+
+    @routing_policy.setter
+    def routing_policy(self, value: Optional[pulumi.Input['RRSetRoutingPolicyArgs']]):
+        pulumi.set(self, "routing_policy", value)
 
     @property
     @pulumi.getter
@@ -155,6 +173,7 @@ class ResourceRecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -166,6 +185,7 @@ class ResourceRecordSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: For example, www.example.com.
+        :param pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -200,6 +220,7 @@ class ResourceRecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -223,6 +244,7 @@ class ResourceRecordSet(pulumi.CustomResource):
             __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["routing_policy"] = routing_policy
             __props__.__dict__["rrdatas"] = rrdatas
             __props__.__dict__["signature_rrdatas"] = signature_rrdatas
             __props__.__dict__["ttl"] = ttl
@@ -251,6 +273,7 @@ class ResourceRecordSet(pulumi.CustomResource):
 
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["routing_policy"] = None
         __props__.__dict__["rrdatas"] = None
         __props__.__dict__["signature_rrdatas"] = None
         __props__.__dict__["ttl"] = None
@@ -269,6 +292,14 @@ class ResourceRecordSet(pulumi.CustomResource):
         For example, www.example.com.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> pulumi.Output['outputs.RRSetRoutingPolicyResponse']:
+        """
+        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        """
+        return pulumi.get(self, "routing_policy")
 
     @property
     @pulumi.getter

@@ -27,6 +27,10 @@ class OccurrenceArgs:
                  intoto: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
+                 sbom: Optional[pulumi.Input['DocumentOccurrenceArgs']] = None,
+                 spdx_file: Optional[pulumi.Input['FileOccurrenceArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageOccurrenceArgs']] = None,
+                 spdx_relationship: Optional[pulumi.Input['RelationshipOccurrenceArgs']] = None,
                  vulnerability: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs']] = None):
         """
         The set of arguments for constructing a Occurrence resource.
@@ -40,6 +44,10 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1PackageDetailsArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
+        :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific SPDX Document.
+        :param pulumi.Input['FileOccurrenceArgs'] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input['PackageOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input['RelationshipOccurrenceArgs'] spdx_relationship: Describes a specific SPDX Relationship.
         :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs'] vulnerability: Describes a security vulnerability.
         """
         pulumi.set(__self__, "note_name", note_name)
@@ -62,6 +70,14 @@ class OccurrenceArgs:
             pulumi.set(__self__, "project", project)
         if remediation is not None:
             pulumi.set(__self__, "remediation", remediation)
+        if sbom is not None:
+            pulumi.set(__self__, "sbom", sbom)
+        if spdx_file is not None:
+            pulumi.set(__self__, "spdx_file", spdx_file)
+        if spdx_package is not None:
+            pulumi.set(__self__, "spdx_package", spdx_package)
+        if spdx_relationship is not None:
+            pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if vulnerability is not None:
             pulumi.set(__self__, "vulnerability", vulnerability)
 
@@ -196,6 +212,54 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter
+    def sbom(self) -> Optional[pulumi.Input['DocumentOccurrenceArgs']]:
+        """
+        Describes a specific SPDX Document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @sbom.setter
+    def sbom(self, value: Optional[pulumi.Input['DocumentOccurrenceArgs']]):
+        pulumi.set(self, "sbom", value)
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> Optional[pulumi.Input['FileOccurrenceArgs']]:
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @spdx_file.setter
+    def spdx_file(self, value: Optional[pulumi.Input['FileOccurrenceArgs']]):
+        pulumi.set(self, "spdx_file", value)
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> Optional[pulumi.Input['PackageOccurrenceArgs']]:
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @spdx_package.setter
+    def spdx_package(self, value: Optional[pulumi.Input['PackageOccurrenceArgs']]):
+        pulumi.set(self, "spdx_package", value)
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> Optional[pulumi.Input['RelationshipOccurrenceArgs']]:
+        """
+        Describes a specific SPDX Relationship.
+        """
+        return pulumi.get(self, "spdx_relationship")
+
+    @spdx_relationship.setter
+    def spdx_relationship(self, value: Optional[pulumi.Input['RelationshipOccurrenceArgs']]):
+        pulumi.set(self, "spdx_relationship", value)
+
+    @property
+    @pulumi.getter
     def vulnerability(self) -> Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs']]:
         """
         Describes a security vulnerability.
@@ -223,6 +287,10 @@ class Occurrence(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
         """
@@ -241,6 +309,10 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Immutable. The resource for which the occurrence applies.
+        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific SPDX Document.
+        :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific SPDX Relationship.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']] vulnerability: Describes a security vulnerability.
         """
         ...
@@ -279,6 +351,10 @@ class Occurrence(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
+                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -307,6 +383,10 @@ class Occurrence(pulumi.CustomResource):
             if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
+            __props__.__dict__["sbom"] = sbom
+            __props__.__dict__["spdx_file"] = spdx_file
+            __props__.__dict__["spdx_package"] = spdx_package
+            __props__.__dict__["spdx_relationship"] = spdx_relationship
             __props__.__dict__["vulnerability"] = vulnerability
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kind"] = None
@@ -347,6 +427,10 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["note_name"] = None
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource"] = None
+        __props__.__dict__["sbom"] = None
+        __props__.__dict__["spdx_file"] = None
+        __props__.__dict__["spdx_package"] = None
+        __props__.__dict__["spdx_relationship"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["vulnerability"] = None
         return Occurrence(resource_name, opts=opts, __props__=__props__)
@@ -454,6 +538,38 @@ class Occurrence(pulumi.CustomResource):
         Immutable. The resource for which the occurrence applies.
         """
         return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter
+    def sbom(self) -> pulumi.Output['outputs.DocumentOccurrenceResponse']:
+        """
+        Describes a specific SPDX Document.
+        """
+        return pulumi.get(self, "sbom")
+
+    @property
+    @pulumi.getter(name="spdxFile")
+    def spdx_file(self) -> pulumi.Output['outputs.FileOccurrenceResponse']:
+        """
+        Describes a specific SPDX File.
+        """
+        return pulumi.get(self, "spdx_file")
+
+    @property
+    @pulumi.getter(name="spdxPackage")
+    def spdx_package(self) -> pulumi.Output['outputs.PackageOccurrenceResponse']:
+        """
+        Describes a specific SPDX Package.
+        """
+        return pulumi.get(self, "spdx_package")
+
+    @property
+    @pulumi.getter(name="spdxRelationship")
+    def spdx_relationship(self) -> pulumi.Output['outputs.RelationshipOccurrenceResponse']:
+        """
+        Describes a specific SPDX Relationship.
+        """
+        return pulumi.get(self, "spdx_relationship")
 
     @property
     @pulumi.getter(name="updateTime")

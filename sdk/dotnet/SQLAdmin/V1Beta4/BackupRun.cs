@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
-    /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+    /// Creates a new backup run on demand.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
@@ -29,13 +29,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        /// Encryption configuration specific to a backup.
         /// </summary>
         [Output("diskEncryptionConfiguration")]
         public Output<Outputs.DiskEncryptionConfigurationResponse> DiskEncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Encryption status specific to a backup. Applies only to Second Generation instances.
+        /// Encryption status specific to a backup.
         /// </summary>
         [Output("diskEncryptionStatus")]
         public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
@@ -164,13 +164,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        /// Encryption configuration specific to a backup.
         /// </summary>
         [Input("diskEncryptionConfiguration")]
         public Input<Inputs.DiskEncryptionConfigurationArgs>? DiskEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// Encryption status specific to a backup. Applies only to Second Generation instances.
+        /// Encryption status specific to a backup.
         /// </summary>
         [Input("diskEncryptionStatus")]
         public Input<Inputs.DiskEncryptionStatusArgs>? DiskEncryptionStatus { get; set; }

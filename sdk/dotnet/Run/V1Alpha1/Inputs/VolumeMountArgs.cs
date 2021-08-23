@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+    /// VolumeMount describes a mounting of a Volume within a container.
     /// </summary>
     public sealed class VolumeMountArgs : Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// This must match the Name of a Volume.
+        /// The name of the volume. There must be a corresponding Volume with the same name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

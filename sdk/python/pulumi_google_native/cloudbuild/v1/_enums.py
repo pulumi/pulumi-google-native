@@ -11,6 +11,7 @@ __all__ = [
     'BuildOptionsRequestedVerifyOption',
     'BuildOptionsSourceProvenanceHashItem',
     'BuildOptionsSubstitutionOption',
+    'GitFileSourceRepoType',
     'GitRepoSourceRepoType',
     'NetworkConfigEgressOption',
     'PubsubConfigState',
@@ -92,6 +93,18 @@ class BuildOptionsSubstitutionOption(str, Enum):
     """Fails the build if error in substitutions checks, like missing a substitution in the template or in the map."""
     ALLOW_LOOSE = "ALLOW_LOOSE"
     """Do not fail the build if error in substitutions checks."""
+
+
+class GitFileSourceRepoType(str, Enum):
+    """
+    See RepoType above.
+    """
+    UNKNOWN = "UNKNOWN"
+    """The default, unknown repo type."""
+    CLOUD_SOURCE_REPOSITORIES = "CLOUD_SOURCE_REPOSITORIES"
+    """A Google Cloud Source Repositories-hosted repo."""
+    GITHUB = "GITHUB"
+    """A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise)."""
 
 
 class GitRepoSourceRepoType(str, Enum):

@@ -33,6 +33,8 @@ type NodePool struct {
 	MaxPodsConstraint MaxPodsConstraintResponseOutput `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig NodeNetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntOutput `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -105,6 +107,8 @@ type nodePoolArgs struct {
 	MaxPodsConstraint *MaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name *string `pulumi:"name"`
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  *string `pulumi:"parent"`
 	Project *string `pulumi:"project"`
@@ -134,6 +138,8 @@ type NodePoolArgs struct {
 	MaxPodsConstraint MaxPodsConstraintPtrInput
 	// The name of the node pool.
 	Name pulumi.StringPtrInput
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig NodeNetworkConfigPtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent  pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

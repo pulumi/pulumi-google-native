@@ -42,6 +42,14 @@ type Occurrence struct {
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponseOutput `pulumi:"resource"`
+	// Describes a specific SPDX Document.
+	Sbom DocumentOccurrenceResponseOutput `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrenceResponseOutput `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrenceResponseOutput `pulumi:"spdxPackage"`
+	// Describes a specific SPDX Relationship.
+	SpdxRelationship RelationshipOccurrenceResponseOutput `pulumi:"spdxRelationship"`
 	// The time this occurrence was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Describes a security vulnerability.
@@ -114,6 +122,14 @@ type occurrenceArgs struct {
 	Remediation *string `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource Resource `pulumi:"resource"`
+	// Describes a specific SPDX Document.
+	Sbom *DocumentOccurrence `pulumi:"sbom"`
+	// Describes a specific SPDX File.
+	SpdxFile *FileOccurrence `pulumi:"spdxFile"`
+	// Describes a specific SPDX Package.
+	SpdxPackage *PackageOccurrence `pulumi:"spdxPackage"`
+	// Describes a specific SPDX Relationship.
+	SpdxRelationship *RelationshipOccurrence `pulumi:"spdxRelationship"`
 	// Describes a security vulnerability.
 	Vulnerability *GrafeasV1beta1VulnerabilityDetails `pulumi:"vulnerability"`
 }
@@ -141,6 +157,14 @@ type OccurrenceArgs struct {
 	Remediation pulumi.StringPtrInput
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceInput
+	// Describes a specific SPDX Document.
+	Sbom DocumentOccurrencePtrInput
+	// Describes a specific SPDX File.
+	SpdxFile FileOccurrencePtrInput
+	// Describes a specific SPDX Package.
+	SpdxPackage PackageOccurrencePtrInput
+	// Describes a specific SPDX Relationship.
+	SpdxRelationship RelationshipOccurrencePtrInput
 	// Describes a security vulnerability.
 	Vulnerability GrafeasV1beta1VulnerabilityDetailsPtrInput
 }

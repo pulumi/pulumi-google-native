@@ -67,9 +67,13 @@ export interface GetTransferConfigResult {
      */
     readonly nextRunTime: string;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
      */
     readonly notificationPubsubTopic: string;
+    /**
+     * Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+     */
+    readonly ownerInfo: outputs.bigquerydatatransfer.v1.UserInfoResponse;
     /**
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */

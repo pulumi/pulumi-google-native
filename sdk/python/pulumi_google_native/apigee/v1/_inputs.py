@@ -20,7 +20,6 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationConfigArgs',
     'GoogleCloudApigeeV1GraphQLOperationGroupArgs',
     'GoogleCloudApigeeV1GraphQLOperationArgs',
-    'GoogleCloudApigeeV1IntegrationConfigArgs',
     'GoogleCloudApigeeV1MonetizationConfigArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
@@ -46,18 +45,14 @@ __all__ = [
 class GoogleCloudApigeeV1AddonsConfigArgs:
     def __init__(__self__, *,
                  advanced_api_ops_config: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']] = None,
-                 integration_config: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']] = None,
                  monetization_config: Optional[pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs']] = None):
         """
         Add-on configurations for the Apigee organization.
         :param pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
-        :param pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs'] integration_config: Configuration for the Integration add-on.
         :param pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
         """
         if advanced_api_ops_config is not None:
             pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
-        if integration_config is not None:
-            pulumi.set(__self__, "integration_config", integration_config)
         if monetization_config is not None:
             pulumi.set(__self__, "monetization_config", monetization_config)
 
@@ -72,18 +67,6 @@ class GoogleCloudApigeeV1AddonsConfigArgs:
     @advanced_api_ops_config.setter
     def advanced_api_ops_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']]):
         pulumi.set(self, "advanced_api_ops_config", value)
-
-    @property
-    @pulumi.getter(name="integrationConfig")
-    def integration_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']]:
-        """
-        Configuration for the Integration add-on.
-        """
-        return pulumi.get(self, "integration_config")
-
-    @integration_config.setter
-    def integration_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']]):
-        pulumi.set(self, "integration_config", value)
 
     @property
     @pulumi.getter(name="monetizationConfig")
@@ -527,30 +510,6 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
     @operation.setter
     def operation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operation", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1IntegrationConfigArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[bool]] = None):
-        """
-        Configuration for the Integration add-on.
-        :param pulumi.Input[bool] enabled: Flag that specifies whether the Integration add-on is enabled.
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Flag that specifies whether the Integration add-on is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

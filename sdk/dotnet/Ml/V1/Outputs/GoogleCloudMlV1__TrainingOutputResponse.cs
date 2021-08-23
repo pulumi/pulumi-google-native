@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudMlV1__HyperparameterOutputResponse> Trials;
         /// <summary>
-        /// The web URIs for the training job. Currently for debug terminal access to the job.
+        /// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
         /// </summary>
         public readonly ImmutableDictionary<string, string> WebAccessUris;
 

@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<Outputs.DiscoveryResponse> Discovery { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing a dsse attestation note.
+        /// </summary>
+        [Output("dsseAttestation")]
+        public Output<Outputs.DSSEAttestationNoteResponse> DsseAttestation { get; private set; } = null!;
+
+        /// <summary>
         /// Time of expiration for this note, null if note does not expire.
         /// </summary>
         [Output("expirationTime")]
@@ -94,10 +100,34 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<ImmutableArray<Outputs.RelatedUrlResponse>> RelatedUrl { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing a software bill of materials.
+        /// </summary>
+        [Output("sbom")]
+        public Output<Outputs.DocumentNoteResponse> Sbom { get; private set; } = null!;
+
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         [Output("shortDescription")]
         public Output<string> ShortDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing an SPDX File.
+        /// </summary>
+        [Output("spdxFile")]
+        public Output<Outputs.FileNoteResponse> SpdxFile { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing an SPDX Package.
+        /// </summary>
+        [Output("spdxPackage")]
+        public Output<Outputs.PackageNoteResponse> SpdxPackage { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a relationship between SPDX elements.
+        /// </summary>
+        [Output("spdxRelationship")]
+        public Output<Outputs.RelationshipNoteResponse> SpdxRelationship { get; private set; } = null!;
 
         /// <summary>
         /// The time this note was last updated. This field can be used as a filter in list requests.
@@ -199,6 +229,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Input<Inputs.DiscoveryArgs>? Discovery { get; set; }
 
         /// <summary>
+        /// A note describing a dsse attestation note.
+        /// </summary>
+        [Input("dsseAttestation")]
+        public Input<Inputs.DSSEAttestationNoteArgs>? DsseAttestation { get; set; }
+
+        /// <summary>
         /// Time of expiration for this note, null if note does not expire.
         /// </summary>
         [Input("expirationTime")]
@@ -241,10 +277,34 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         }
 
         /// <summary>
+        /// A note describing a software bill of materials.
+        /// </summary>
+        [Input("sbom")]
+        public Input<Inputs.DocumentNoteArgs>? Sbom { get; set; }
+
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         [Input("shortDescription")]
         public Input<string>? ShortDescription { get; set; }
+
+        /// <summary>
+        /// A note describing an SPDX File.
+        /// </summary>
+        [Input("spdxFile")]
+        public Input<Inputs.FileNoteArgs>? SpdxFile { get; set; }
+
+        /// <summary>
+        /// A note describing an SPDX Package.
+        /// </summary>
+        [Input("spdxPackage")]
+        public Input<Inputs.PackageNoteArgs>? SpdxPackage { get; set; }
+
+        /// <summary>
+        /// A note describing a relationship between SPDX elements.
+        /// </summary>
+        [Input("spdxRelationship")]
+        public Input<Inputs.RelationshipNoteArgs>? SpdxRelationship { get; set; }
 
         /// <summary>
         /// A note describing an upgrade.

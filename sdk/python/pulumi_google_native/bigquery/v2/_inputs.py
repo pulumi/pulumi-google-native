@@ -857,6 +857,7 @@ class CsvOptionsArgs:
                  allow_quoted_newlines: Optional[pulumi.Input[bool]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
+                 null_marker: Optional[pulumi.Input[str]] = None,
                  quote: Optional[pulumi.Input[str]] = None,
                  skip_leading_rows: Optional[pulumi.Input[str]] = None):
         """
@@ -864,6 +865,7 @@ class CsvOptionsArgs:
         :param pulumi.Input[bool] allow_quoted_newlines: [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
         :param pulumi.Input[str] encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
         :param pulumi.Input[str] field_delimiter: [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
+        :param pulumi.Input[str] null_marker: [Optional] An custom string that will represent a NULL value in CSV import data.
         :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param pulumi.Input[str] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
@@ -875,6 +877,8 @@ class CsvOptionsArgs:
             pulumi.set(__self__, "encoding", encoding)
         if field_delimiter is not None:
             pulumi.set(__self__, "field_delimiter", field_delimiter)
+        if null_marker is not None:
+            pulumi.set(__self__, "null_marker", null_marker)
         if quote is not None:
             pulumi.set(__self__, "quote", quote)
         if skip_leading_rows is not None:
@@ -927,6 +931,18 @@ class CsvOptionsArgs:
     @field_delimiter.setter
     def field_delimiter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "field_delimiter", value)
+
+    @property
+    @pulumi.getter(name="nullMarker")
+    def null_marker(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] An custom string that will represent a NULL value in CSV import data.
+        """
+        return pulumi.get(self, "null_marker")
+
+    @null_marker.setter
+    def null_marker(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "null_marker", value)
 
     @property
     @pulumi.getter
@@ -3755,6 +3771,7 @@ class TableFieldSchemaPolicyTagsArgs:
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
                  categories: Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']] = None,
+                 collation_spec: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
                  max_length: Optional[pulumi.Input[str]] = None,
@@ -3766,6 +3783,7 @@ class TableFieldSchemaArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['TableFieldSchemaCategoriesArgs'] categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param pulumi.Input[str] collation_spec: Optional. Collation specification of the field. It only can be set on string type field.
         :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -3777,6 +3795,8 @@ class TableFieldSchemaArgs:
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
+        if collation_spec is not None:
+            pulumi.set(__self__, "collation_spec", collation_spec)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fields is not None:
@@ -3807,6 +3827,18 @@ class TableFieldSchemaArgs:
     @categories.setter
     def categories(self, value: Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']]):
         pulumi.set(self, "categories", value)
+
+    @property
+    @pulumi.getter(name="collationSpec")
+    def collation_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Collation specification of the field. It only can be set on string type field.
+        """
+        return pulumi.get(self, "collation_spec")
+
+    @collation_spec.setter
+    def collation_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation_spec", value)
 
     @property
     @pulumi.getter

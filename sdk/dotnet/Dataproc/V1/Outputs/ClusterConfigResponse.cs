@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.AutoscalingConfigResponse AutoscalingConfig;
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         public readonly string ConfigBucket;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.LifecycleConfigResponse LifecycleConfig;
         /// <summary>
-        /// Optional. The Compute Engine config settings for the master instance in a cluster.
+        /// Optional. The Compute Engine config settings for the cluster's master instance.
         /// </summary>
         public readonly Outputs.InstanceGroupConfigResponse MasterConfig;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.MetastoreConfigResponse MetastoreConfig;
         /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// Optional. The Compute Engine config settings for a cluster's secondary worker instances
         /// </summary>
         public readonly Outputs.InstanceGroupConfigResponse SecondaryWorkerConfig;
         /// <summary>
@@ -62,15 +62,15 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.SecurityConfigResponse SecurityConfig;
         /// <summary>
-        /// Optional. The config settings for software inside the cluster.
+        /// Optional. The config settings for cluster software.
         /// </summary>
         public readonly Outputs.SoftwareConfigResponse SoftwareConfig;
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         /// </summary>
         public readonly string TempBucket;
         /// <summary>
-        /// Optional. The Compute Engine config settings for worker instances in a cluster.
+        /// Optional. The Compute Engine config settings for the cluster's worker instances.
         /// </summary>
         public readonly Outputs.InstanceGroupConfigResponse WorkerConfig;
 

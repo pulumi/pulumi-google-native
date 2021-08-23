@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        /// Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>
         public readonly string ExperimentLength;
         /// <summary>
@@ -81,6 +81,18 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Inference result of the experiment.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3ExperimentResultResponse Result;
+        /// <summary>
+        /// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3RolloutConfigResponse RolloutConfig;
+        /// <summary>
+        /// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        /// </summary>
+        public readonly string RolloutFailureReason;
+        /// <summary>
+        /// State of the auto rollout process.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3RolloutStateResponse RolloutState;
         /// <summary>
         /// Start time of this experiment.
         /// </summary>
@@ -114,6 +126,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             Outputs.GoogleCloudDialogflowCxV3ExperimentResultResponse result,
 
+            Outputs.GoogleCloudDialogflowCxV3RolloutConfigResponse rolloutConfig,
+
+            string rolloutFailureReason,
+
+            Outputs.GoogleCloudDialogflowCxV3RolloutStateResponse rolloutState,
+
             string startTime,
 
             string state,
@@ -129,6 +147,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             LastUpdateTime = lastUpdateTime;
             Name = name;
             Result = result;
+            RolloutConfig = rolloutConfig;
+            RolloutFailureReason = rolloutFailureReason;
+            RolloutState = rolloutState;
             StartTime = startTime;
             State = state;
             VariantsHistory = variantsHistory;

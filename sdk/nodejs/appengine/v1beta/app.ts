@@ -84,6 +84,10 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
      * Serving status of this application.
      */
     public readonly servingStatus!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class App extends pulumi.CustomResource {
             inputs["iap"] = args ? args.iap : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["location"] = args ? args.location : undefined;
+            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
             inputs["codeBucket"] = undefined /*out*/;
             inputs["defaultBucket"] = undefined /*out*/;
@@ -126,6 +131,7 @@ export class App extends pulumi.CustomResource {
             inputs["iap"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
             inputs["servingStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -172,6 +178,10 @@ export interface AppArgs {
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
     location?: pulumi.Input<string>;
+    /**
+     * The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Serving status of this application.
      */

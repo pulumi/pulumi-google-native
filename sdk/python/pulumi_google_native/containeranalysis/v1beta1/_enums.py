@@ -20,10 +20,13 @@ __all__ = [
     'DiscoveredContinuousAnalysis',
     'DiscoveryAnalysisKind',
     'DistributionArchitecture',
+    'ExternalRefCategory',
+    'FileNoteFileType',
     'GenericSignedAttestationContentType',
     'GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity',
     'LayerDirective',
     'PgpSignedAttestationContentType',
+    'RelationshipOccurrenceType',
     'VersionKind',
     'VulnerabilitySeverity',
 ]
@@ -178,6 +181,12 @@ class DiscoveryAnalysisKind(str, Enum):
     """This represents a logical "role" that can attest to artifacts."""
     INTOTO = "INTOTO"
     """This represents an in-toto link."""
+    SBOM = "SBOM"
+    """This represents a software bill of materials."""
+    SPDX_PACKAGE = "SPDX_PACKAGE"
+    """This represents an SPDX Package."""
+    SPDX_FILE = "SPDX_FILE"
+    """This represents an SPDX File."""
 
 
 class DistributionArchitecture(str, Enum):
@@ -192,6 +201,52 @@ class DistributionArchitecture(str, Enum):
     """X64 architecture."""
 
 
+class ExternalRefCategory(str, Enum):
+    """
+    An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+    """
+    CATEGORY_UNSPECIFIED = "CATEGORY_UNSPECIFIED"
+    """Unspecified"""
+    SECURITY = "SECURITY"
+    """Security (e.g. cpe22Type, cpe23Type)"""
+    PACKAGE_MANAGER = "PACKAGE_MANAGER"
+    """Package Manager (e.g. maven-central, npm, nuget, bower, purl)"""
+    PERSISTENT_ID = "PERSISTENT_ID"
+    """Persistent-Id (e.g. swh)"""
+    OTHER = "OTHER"
+    """Other"""
+
+
+class FileNoteFileType(str, Enum):
+    """
+    This field provides information about the type of file identified
+    """
+    FILE_TYPE_UNSPECIFIED = "FILE_TYPE_UNSPECIFIED"
+    """Unspecified"""
+    SOURCE = "SOURCE"
+    """The file is human readable source code (.c, .html, etc.)"""
+    BINARY = "BINARY"
+    """The file is a compiled object, target image or binary executable (.o, .a, etc.)"""
+    ARCHIVE = "ARCHIVE"
+    """The file represents an archive (.tar, .jar, etc.)"""
+    APPLICATION = "APPLICATION"
+    """The file is associated with a specific application type (MIME type of application/*)"""
+    AUDIO = "AUDIO"
+    """The file is associated with an audio file (MIME type of audio/* , e.g. .mp3)"""
+    IMAGE = "IMAGE"
+    """The file is associated with an picture image file (MIME type of image/*, e.g., .jpg, .gif)"""
+    TEXT = "TEXT"
+    """The file is human readable text file (MIME type of text/*)"""
+    VIDEO = "VIDEO"
+    """The file is associated with a video file type (MIME type of video/*)"""
+    DOCUMENTATION = "DOCUMENTATION"
+    """The file serves as documentation"""
+    SPDX = "SPDX"
+    """The file is an SPDX document"""
+    OTHER = "OTHER"
+    """The file doesn't fit into the above categories (generated artifacts, data files, etc.)"""
+
+
 class GenericSignedAttestationContentType(str, Enum):
     """
     Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -204,7 +259,7 @@ class GenericSignedAttestationContentType(str, Enum):
 
 class GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity(str, Enum):
     """
-    The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+    The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
     """
     SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
     """Unknown."""
@@ -270,6 +325,100 @@ class PgpSignedAttestationContentType(str, Enum):
     """`ContentType` is not set."""
     SIMPLE_SIGNING_JSON = "SIMPLE_SIGNING_JSON"
     """Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted from `signature` is a JSON blob conforming to the linked schema."""
+
+
+class RelationshipOccurrenceType(str, Enum):
+    """
+    The type of relationship between the source and target SPDX elements
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """Unspecified"""
+    DESCRIBES = "DESCRIBES"
+    """Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A"""
+    DESCRIBED_BY = "DESCRIBED_BY"
+    """Is to be used when SPDXRef-A is described by SPDXREF-Document"""
+    CONTAINS = "CONTAINS"
+    """Is to be used when SPDXRef-A contains SPDXRef-B"""
+    CONTAINED_BY = "CONTAINED_BY"
+    """Is to be used when SPDXRef-A is contained by SPDXRef-B"""
+    DEPENDS_ON = "DEPENDS_ON"
+    """Is to be used when SPDXRef-A depends on SPDXRef-B"""
+    DEPENDENCY_OF = "DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is dependency of SPDXRef-B"""
+    DEPENDENCY_MANIFEST_OF = "DEPENDENCY_MANIFEST_OF"
+    """Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B"""
+    BUILD_DEPENDENCY_OF = "BUILD_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is a build dependency of SPDXRef-B"""
+    DEV_DEPENDENCY_OF = "DEV_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is a development dependency of SPDXRef-B"""
+    OPTIONAL_DEPENDENCY_OF = "OPTIONAL_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B"""
+    PROVIDED_DEPENDENCY_OF = "PROVIDED_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B"""
+    TEST_DEPENDENCY_OF = "TEST_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is a test dependency of SPDXRef-B"""
+    RUNTIME_DEPENDENCY_OF = "RUNTIME_DEPENDENCY_OF"
+    """Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B"""
+    EXAMPLE_OF = "EXAMPLE_OF"
+    """Is to be used when SPDXRef-A is an example of SPDXRef-B"""
+    GENERATES = "GENERATES"
+    """Is to be used when SPDXRef-A generates SPDXRef-B"""
+    GENERATED_FROM = "GENERATED_FROM"
+    """Is to be used when SPDXRef-A was generated from SPDXRef-B"""
+    ANCESTOR_OF = "ANCESTOR_OF"
+    """Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B"""
+    DESCENDANT_OF = "DESCENDANT_OF"
+    """Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B"""
+    VARIANT_OF = "VARIANT_OF"
+    """Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B"""
+    DISTRIBUTION_ARTIFACT = "DISTRIBUTION_ARTIFACT"
+    """Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed"""
+    PATCH_FOR = "PATCH_FOR"
+    """Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B"""
+    PATCH_APPLIED = "PATCH_APPLIED"
+    """Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B"""
+    COPY_OF = "COPY_OF"
+    """Is to be used when SPDXRef-A is an exact copy of SPDXRef-B"""
+    FILE_ADDED = "FILE_ADDED"
+    """Is to be used when SPDXRef-A is a file that was added to SPDXRef-B"""
+    FILE_DELETED = "FILE_DELETED"
+    """Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B"""
+    FILE_MODIFIED = "FILE_MODIFIED"
+    """Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B"""
+    EXPANDED_FROM_ARCHIVE = "EXPANDED_FROM_ARCHIVE"
+    """Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B"""
+    DYNAMIC_LINK = "DYNAMIC_LINK"
+    """Is to be used when SPDXRef-A dynamically links to SPDXRef-B"""
+    STATIC_LINK = "STATIC_LINK"
+    """Is to be used when SPDXRef-A statically links to SPDXRef-B"""
+    DATA_FILE_OF = "DATA_FILE_OF"
+    """Is to be used when SPDXRef-A is a data file used in SPDXRef-B"""
+    TEST_CASE_OF = "TEST_CASE_OF"
+    """Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B"""
+    BUILD_TOOL_OF = "BUILD_TOOL_OF"
+    """Is to be used when SPDXRef-A is used to build SPDXRef-B"""
+    DEV_TOOL_OF = "DEV_TOOL_OF"
+    """Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B"""
+    TEST_OF = "TEST_OF"
+    """Is to be used when SPDXRef-A is used for testing SPDXRef-B"""
+    TEST_TOOL_OF = "TEST_TOOL_OF"
+    """Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B"""
+    DOCUMENTATION_OF = "DOCUMENTATION_OF"
+    """Is to be used when SPDXRef-A provides documentation of SPDXRef-B"""
+    OPTIONAL_COMPONENT_OF = "OPTIONAL_COMPONENT_OF"
+    """Is to be used when SPDXRef-A is an optional component of SPDXRef-B"""
+    METAFILE_OF = "METAFILE_OF"
+    """Is to be used when SPDXRef-A is a metafile of SPDXRef-B"""
+    PACKAGE_OF = "PACKAGE_OF"
+    """Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B"""
+    AMENDS = "AMENDS"
+    """Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B"""
+    PREREQUISITE_FOR = "PREREQUISITE_FOR"
+    """Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B"""
+    HAS_PREREQUISITE = "HAS_PREREQUISITE"
+    """Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B"""
+    OTHER = "OTHER"
+    """Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field"""
 
 
 class VersionKind(str, Enum):

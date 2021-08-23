@@ -187,6 +187,26 @@ export const IngressRuleAction = {
  */
 export type IngressRuleAction = (typeof IngressRuleAction)[keyof typeof IngressRuleAction];
 
+export const NetworkInstanceIpMode = {
+    /**
+     * Unspecified should be treated as EXTERNAL
+     */
+    InstanceIpModeUnspecified: "INSTANCE_IP_MODE_UNSPECIFIED",
+    /**
+     * VMs should be created with external and internal IPs
+     */
+    External: "EXTERNAL",
+    /**
+     * VMs should be created with internal IPs only
+     */
+    Internal: "INTERNAL",
+} as const;
+
+/**
+ * The IP mode for instances. Only applicable in the App Engine flexible environment.
+ */
+export type NetworkInstanceIpMode = (typeof NetworkInstanceIpMode)[keyof typeof NetworkInstanceIpMode];
+
 export const SslSettingsSslManagementType = {
     /**
      * SSL support for this domain is configured automatically. The mapped SSL certificate will be automatically renewed.

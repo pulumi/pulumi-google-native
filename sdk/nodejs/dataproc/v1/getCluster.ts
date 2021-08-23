@@ -39,7 +39,7 @@ export interface GetClusterResult {
      */
     readonly clusterUuid: string;
     /**
-     * The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
     readonly config: outputs.dataproc.v1.ClusterConfigResponse;
     /**

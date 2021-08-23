@@ -1107,7 +1107,7 @@ class JobConditionResponse(dict):
         :param str reason: Optional. One-word CamelCase reason for the condition's last transition.
         :param str severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
         :param str status: Status of the condition, one of True, False, Unknown.
-        :param str type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        :param str type: Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -1160,7 +1160,7 @@ class JobConditionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         """
         return pulumi.get(self, "type")
 
@@ -2210,7 +2210,7 @@ class TCPSocketActionResponse(dict):
 @pulumi.output_type
 class VolumeMountResponse(dict):
     """
-    Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+    VolumeMount describes a mounting of a Volume within a container.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2239,9 +2239,9 @@ class VolumeMountResponse(dict):
                  read_only: bool,
                  sub_path: str):
         """
-        Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+        VolumeMount describes a mounting of a Volume within a container.
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param str name: This must match the Name of a Volume.
+        :param str name: The name of the volume. There must be a corresponding Volume with the same name.
         :param bool read_only: (Optional) Only true is accepted. Defaults to true.
         :param str sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
@@ -2262,7 +2262,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        This must match the Name of a Volume.
+        The name of the volume. There must be a corresponding Volume with the same name.
         """
         return pulumi.get(self, "name")
 
@@ -2286,7 +2286,7 @@ class VolumeMountResponse(dict):
 @pulumi.output_type
 class VolumeResponse(dict):
     """
-    Not supported by Cloud Run Volume represents a named volume in a container.
+    Volume represents a named volume in a container.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2310,8 +2310,8 @@ class VolumeResponse(dict):
                  name: str,
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
-        Not supported by Cloud Run Volume represents a named volume in a container.
-        :param str name: Volume's name.
+        Volume represents a named volume in a container.
+        :param str name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         pulumi.set(__self__, "config_map", config_map)
         pulumi.set(__self__, "name", name)
@@ -2326,7 +2326,7 @@ class VolumeResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Volume's name.
+        Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         """
         return pulumi.get(self, "name")
 

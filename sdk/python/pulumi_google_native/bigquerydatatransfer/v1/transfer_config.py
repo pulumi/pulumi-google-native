@@ -40,7 +40,7 @@ class TransferConfigArgs:
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
         :param pulumi.Input['EmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
-        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
@@ -184,7 +184,7 @@ class TransferConfigArgs:
     @pulumi.getter(name="notificationPubsubTopic")
     def notification_pubsub_topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         """
         return pulumi.get(self, "notification_pubsub_topic")
 
@@ -290,7 +290,7 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
         :param pulumi.Input[pulumi.InputType['EmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
-        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
@@ -365,6 +365,7 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["version_info"] = version_info
             __props__.__dict__["dataset_region"] = None
             __props__.__dict__["next_run_time"] = None
+            __props__.__dict__["owner_info"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         super(TransferConfig, __self__).__init__(
@@ -399,6 +400,7 @@ class TransferConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["next_run_time"] = None
         __props__.__dict__["notification_pubsub_topic"] = None
+        __props__.__dict__["owner_info"] = None
         __props__.__dict__["params"] = None
         __props__.__dict__["schedule"] = None
         __props__.__dict__["schedule_options"] = None
@@ -482,9 +484,17 @@ class TransferConfig(pulumi.CustomResource):
     @pulumi.getter(name="notificationPubsubTopic")
     def notification_pubsub_topic(self) -> pulumi.Output[str]:
         """
-        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         """
         return pulumi.get(self, "notification_pubsub_topic")
+
+    @property
+    @pulumi.getter(name="ownerInfo")
+    def owner_info(self) -> pulumi.Output['outputs.UserInfoResponse']:
+        """
+        Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+        """
+        return pulumi.get(self, "owner_info")
 
     @property
     @pulumi.getter

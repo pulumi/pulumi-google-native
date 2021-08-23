@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// Optional. Whether to enable web access for the training job.
+        /// Optional. Whether you want AI Platform Training to enable [interactive shell access](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by TrainingOutput.web_access_uris or HyperparameterOutput.web_access_uris (within TrainingOutput.trials).
         /// </summary>
         public readonly bool EnableWebAccess;
         /// <summary>

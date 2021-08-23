@@ -29,6 +29,9 @@ class ExperimentArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] = None,
+                 rollout_config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']] = None,
+                 rollout_failure_reason: Optional[pulumi.Input[str]] = None,
+                 rollout_state: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] = None):
@@ -39,10 +42,13 @@ class ExperimentArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs'] definition: The definition of the experiment.
         :param pulumi.Input[str] description: The human-readable description of the experiment.
         :param pulumi.Input[str] end_time: End time of this experiment.
-        :param pulumi.Input[str] experiment_length: LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs'] result: Inference result of the experiment.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs'] rollout_config: The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        :param pulumi.Input[str] rollout_failure_reason: The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutStateArgs'] rollout_state: State of the auto rollout process.
         :param pulumi.Input[str] start_time: Start time of this experiment.
         :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]] variants_history: The history of updates to the experiment variants.
@@ -70,6 +76,12 @@ class ExperimentArgs:
             pulumi.set(__self__, "project", project)
         if result is not None:
             pulumi.set(__self__, "result", result)
+        if rollout_config is not None:
+            pulumi.set(__self__, "rollout_config", rollout_config)
+        if rollout_failure_reason is not None:
+            pulumi.set(__self__, "rollout_failure_reason", rollout_failure_reason)
+        if rollout_state is not None:
+            pulumi.set(__self__, "rollout_state", rollout_state)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if state is not None:
@@ -159,7 +171,7 @@ class ExperimentArgs:
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> Optional[pulumi.Input[str]]:
         """
-        LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         """
         return pulumi.get(self, "experiment_length")
 
@@ -222,6 +234,42 @@ class ExperimentArgs:
         pulumi.set(self, "result", value)
 
     @property
+    @pulumi.getter(name="rolloutConfig")
+    def rollout_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]:
+        """
+        The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        """
+        return pulumi.get(self, "rollout_config")
+
+    @rollout_config.setter
+    def rollout_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]):
+        pulumi.set(self, "rollout_config", value)
+
+    @property
+    @pulumi.getter(name="rolloutFailureReason")
+    def rollout_failure_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        """
+        return pulumi.get(self, "rollout_failure_reason")
+
+    @rollout_failure_reason.setter
+    def rollout_failure_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollout_failure_reason", value)
+
+    @property
+    @pulumi.getter(name="rolloutState")
+    def rollout_state(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]:
+        """
+        State of the auto rollout process.
+        """
+        return pulumi.get(self, "rollout_state")
+
+    @rollout_state.setter
+    def rollout_state(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]):
+        pulumi.set(self, "rollout_state", value)
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -276,6 +324,9 @@ class Experiment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
+                 rollout_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]] = None,
+                 rollout_failure_reason: Optional[pulumi.Input[str]] = None,
+                 rollout_state: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
@@ -290,10 +341,13 @@ class Experiment(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description of the experiment.
         :param pulumi.Input[str] display_name: The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] end_time: End time of this experiment.
-        :param pulumi.Input[str] experiment_length: LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] result: Inference result of the experiment.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']] rollout_config: The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        :param pulumi.Input[str] rollout_failure_reason: The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']] rollout_state: State of the auto rollout process.
         :param pulumi.Input[str] start_time: Start time of this experiment.
         :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] variants_history: The history of updates to the experiment variants.
@@ -335,6 +389,9 @@ class Experiment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
+                 rollout_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]] = None,
+                 rollout_failure_reason: Optional[pulumi.Input[str]] = None,
+                 rollout_state: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ExperimentState']] = None,
                  variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
@@ -369,6 +426,9 @@ class Experiment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["result"] = result
+            __props__.__dict__["rollout_config"] = rollout_config
+            __props__.__dict__["rollout_failure_reason"] = rollout_failure_reason
+            __props__.__dict__["rollout_state"] = rollout_state
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["state"] = state
             __props__.__dict__["variants_history"] = variants_history
@@ -403,6 +463,9 @@ class Experiment(pulumi.CustomResource):
         __props__.__dict__["last_update_time"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["result"] = None
+        __props__.__dict__["rollout_config"] = None
+        __props__.__dict__["rollout_failure_reason"] = None
+        __props__.__dict__["rollout_state"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["variants_history"] = None
@@ -452,7 +515,7 @@ class Experiment(pulumi.CustomResource):
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> pulumi.Output[str]:
         """
-        LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         """
         return pulumi.get(self, "experiment_length")
 
@@ -479,6 +542,30 @@ class Experiment(pulumi.CustomResource):
         Inference result of the experiment.
         """
         return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="rolloutConfig")
+    def rollout_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1RolloutConfigResponse']:
+        """
+        The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        """
+        return pulumi.get(self, "rollout_config")
+
+    @property
+    @pulumi.getter(name="rolloutFailureReason")
+    def rollout_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+        """
+        return pulumi.get(self, "rollout_failure_reason")
+
+    @property
+    @pulumi.getter(name="rolloutState")
+    def rollout_state(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1RolloutStateResponse']:
+        """
+        State of the auto rollout process.
+        """
+        return pulumi.get(self, "rollout_state")
 
     @property
     @pulumi.getter(name="startTime")

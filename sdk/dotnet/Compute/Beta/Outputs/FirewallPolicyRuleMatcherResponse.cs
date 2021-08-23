@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class FirewallPolicyRuleMatcherResponse
     {
         /// <summary>
-        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> Layer4Configs;
         /// <summary>
-        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
 

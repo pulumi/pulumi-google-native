@@ -41,6 +41,14 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// </summary>
         public static RepositoryFormat Pypi { get; } = new RepositoryFormat("PYPI");
         /// <summary>
+        /// APT package format.
+        /// </summary>
+        public static RepositoryFormat Apt { get; } = new RepositoryFormat("APT");
+        /// <summary>
+        /// YUM package format.
+        /// </summary>
+        public static RepositoryFormat Yum { get; } = new RepositoryFormat("YUM");
+        /// <summary>
         /// Python package format.
         /// </summary>
         public static RepositoryFormat Python { get; } = new RepositoryFormat("PYTHON");

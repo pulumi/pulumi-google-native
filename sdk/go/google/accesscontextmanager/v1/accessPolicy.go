@@ -18,7 +18,7 @@ type AccessPolicy struct {
 
 	// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent pulumi.StringOutput `pulumi:"parent"`

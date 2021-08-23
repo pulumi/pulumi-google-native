@@ -10,6 +10,8 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs',
+    'GoogleCloudDialogflowCxV3AdvancedSettingsArgs',
     'GoogleCloudDialogflowCxV3AudioInputArgs',
     'GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs',
     'GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs',
@@ -48,6 +50,10 @@ __all__ = [
     'GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageTextArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageArgs',
+    'GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs',
+    'GoogleCloudDialogflowCxV3RolloutConfigArgs',
+    'GoogleCloudDialogflowCxV3RolloutStateArgs',
+    'GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs',
     'GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs',
     'GoogleCloudDialogflowCxV3TestCaseResultArgs',
     'GoogleCloudDialogflowCxV3TestConfigArgs',
@@ -60,6 +66,70 @@ __all__ = [
     'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs',
     'GoogleRpcStatusArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs:
+    def __init__(__self__, *,
+                 enable_interaction_logging: Optional[pulumi.Input[bool]] = None,
+                 enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None):
+        """
+        Define behaviors on logging.
+        :param pulumi.Input[bool] enable_interaction_logging: If true, DF Interaction logging is currently enabled.
+        :param pulumi.Input[bool] enable_stackdriver_logging: If true, StackDriver logging is currently enabled.
+        """
+        if enable_interaction_logging is not None:
+            pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, DF Interaction logging is currently enabled.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @enable_interaction_logging.setter
+    def enable_interaction_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_interaction_logging", value)
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, StackDriver logging is currently enabled.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+    @enable_stackdriver_logging.setter
+    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_stackdriver_logging", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3AdvancedSettingsArgs:
+    def __init__(__self__, *,
+                 logging_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs']] = None):
+        """
+        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs'] logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+        """
+        if logging_settings is not None:
+            pulumi.set(__self__, "logging_settings", logging_settings)
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs']]:
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+        """
+        return pulumi.get(self, "logging_settings")
+
+    @logging_settings.setter
+    def logging_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs']]):
+        pulumi.set(self, "logging_settings", value)
+
 
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3AudioInputArgs:
@@ -2197,6 +2267,198 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 min_duration: Optional[pulumi.Input[str]] = None,
+                 traffic_percent: Optional[pulumi.Input[int]] = None):
+        """
+        A single rollout step with specified traffic allocation.
+        :param pulumi.Input[str] display_name: The name of the rollout step;
+        :param pulumi.Input[str] min_duration: The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+        :param pulumi.Input[int] traffic_percent: The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if min_duration is not None:
+            pulumi.set(__self__, "min_duration", min_duration)
+        if traffic_percent is not None:
+            pulumi.set(__self__, "traffic_percent", traffic_percent)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rollout step;
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="minDuration")
+    def min_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
+        """
+        return pulumi.get(self, "min_duration")
+
+    @min_duration.setter
+    def min_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_duration", value)
+
+    @property
+    @pulumi.getter(name="trafficPercent")
+    def traffic_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
+        """
+        return pulumi.get(self, "traffic_percent")
+
+    @traffic_percent.setter
+    def traffic_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "traffic_percent", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3RolloutConfigArgs:
+    def __init__(__self__, *,
+                 failure_condition: Optional[pulumi.Input[str]] = None,
+                 rollout_condition: Optional[pulumi.Input[str]] = None,
+                 rollout_steps: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs']]]] = None):
+        """
+        The configuration for auto rollout.
+        :param pulumi.Input[str] failure_condition: The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        :param pulumi.Input[str] rollout_condition: The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs']]] rollout_steps: Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+        """
+        if failure_condition is not None:
+            pulumi.set(__self__, "failure_condition", failure_condition)
+        if rollout_condition is not None:
+            pulumi.set(__self__, "rollout_condition", rollout_condition)
+        if rollout_steps is not None:
+            pulumi.set(__self__, "rollout_steps", rollout_steps)
+
+    @property
+    @pulumi.getter(name="failureCondition")
+    def failure_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate < 10% OR average_turn_count < 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        """
+        return pulumi.get(self, "failure_condition")
+
+    @failure_condition.setter
+    def failure_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failure_condition", value)
+
+    @property
+    @pulumi.getter(name="rolloutCondition")
+    def rollout_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        """
+        return pulumi.get(self, "rollout_condition")
+
+    @rollout_condition.setter
+    def rollout_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollout_condition", value)
+
+    @property
+    @pulumi.getter(name="rolloutSteps")
+    def rollout_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs']]]]:
+        """
+        Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+        """
+        return pulumi.get(self, "rollout_steps")
+
+    @rollout_steps.setter
+    def rollout_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs']]]]):
+        pulumi.set(self, "rollout_steps", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3RolloutStateArgs:
+    def __init__(__self__, *,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 step: Optional[pulumi.Input[str]] = None,
+                 step_index: Optional[pulumi.Input[int]] = None):
+        """
+        State of the auto-rollout process.
+        :param pulumi.Input[str] start_time: Start time of the current step.
+        :param pulumi.Input[str] step: Display name of the current auto rollout step.
+        :param pulumi.Input[int] step_index: Index of the current step in the auto rollout steps list.
+        """
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if step is not None:
+            pulumi.set(__self__, "step", step)
+        if step_index is not None:
+            pulumi.set(__self__, "step_index", step_index)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start time of the current step.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def step(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the current auto rollout step.
+        """
+        return pulumi.get(self, "step")
+
+    @step.setter
+    def step(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "step", value)
+
+    @property
+    @pulumi.getter(name="stepIndex")
+    def step_index(self) -> Optional[pulumi.Input[int]]:
+        """
+        Index of the current step in the auto rollout steps list.
+        """
+        return pulumi.get(self, "step_index")
+
+    @step_index.setter
+    def step_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "step_index", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs:
+    def __init__(__self__, *,
+                 enable_insights_export: Optional[pulumi.Input[bool]] = None):
+        """
+        Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+        :param pulumi.Input[bool] enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        if enable_insights_export is not None:
+            pulumi.set(__self__, "enable_insights_export", enable_insights_export)
+
+    @property
+    @pulumi.getter(name="enableInsightsExport")
+    def enable_insights_export(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        return pulumi.get(self, "enable_insights_export")
+
+    @enable_insights_export.setter
+    def enable_insights_export(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_insights_export", value)
 
 
 @pulumi.input_type

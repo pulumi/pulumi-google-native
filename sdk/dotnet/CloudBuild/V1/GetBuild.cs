@@ -46,6 +46,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     public sealed class GetBuildResult
     {
         /// <summary>
+        /// Describes this build's approval configuration, status, and result.
+        /// </summary>
+        public readonly Outputs.BuildApprovalResponse Approval;
+        /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         /// </summary>
         public readonly Outputs.ArtifactsResponse Artifacts;
@@ -146,7 +150,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string Timeout;
         /// <summary>
-        /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Timing;
         /// <summary>
@@ -156,6 +160,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
         [OutputConstructor]
         private GetBuildResult(
+            Outputs.BuildApprovalResponse approval,
+
             Outputs.ArtifactsResponse artifacts,
 
             Outputs.SecretsResponse availableSecrets,
@@ -210,6 +216,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             ImmutableArray<Outputs.WarningResponse> warnings)
         {
+            Approval = approval;
             Artifacts = artifacts;
             AvailableSecrets = availableSecrets;
             BuildTriggerId = buildTriggerId;

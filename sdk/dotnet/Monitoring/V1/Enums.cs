@@ -333,6 +333,47 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
     /// <summary>
+    /// Optional. The target axis to use for plotting the metric.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataSetTargetAxis : IEquatable<DataSetTargetAxis>
+    {
+        private readonly string _value;
+
+        private DataSetTargetAxis(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The target axis was not specified. Defaults to Y1.
+        /// </summary>
+        public static DataSetTargetAxis TargetAxisUnspecified { get; } = new DataSetTargetAxis("TARGET_AXIS_UNSPECIFIED");
+        /// <summary>
+        /// The y_axis (the right axis of chart).
+        /// </summary>
+        public static DataSetTargetAxis Y1 { get; } = new DataSetTargetAxis("Y1");
+        /// <summary>
+        /// The y2_axis (the left axis of chart).
+        /// </summary>
+        public static DataSetTargetAxis Y2 { get; } = new DataSetTargetAxis("Y2");
+
+        public static bool operator ==(DataSetTargetAxis left, DataSetTargetAxis right) => left.Equals(right);
+        public static bool operator !=(DataSetTargetAxis left, DataSetTargetAxis right) => !left.Equals(right);
+
+        public static explicit operator string(DataSetTargetAxis value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataSetTargetAxis other && Equals(other);
+        public bool Equals(DataSetTargetAxis other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// How to use the ranking to select time series that pass through the filter.
     /// </summary>
     [EnumType]
@@ -583,6 +624,47 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ThresholdDirection other && Equals(other);
         public bool Equals(ThresholdDirection other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
+    /// </summary>
+    [EnumType]
+    public readonly struct ThresholdTargetAxis : IEquatable<ThresholdTargetAxis>
+    {
+        private readonly string _value;
+
+        private ThresholdTargetAxis(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The target axis was not specified. Defaults to Y1.
+        /// </summary>
+        public static ThresholdTargetAxis TargetAxisUnspecified { get; } = new ThresholdTargetAxis("TARGET_AXIS_UNSPECIFIED");
+        /// <summary>
+        /// The y_axis (the right axis of chart).
+        /// </summary>
+        public static ThresholdTargetAxis Y1 { get; } = new ThresholdTargetAxis("Y1");
+        /// <summary>
+        /// The y2_axis (the left axis of chart).
+        /// </summary>
+        public static ThresholdTargetAxis Y2 { get; } = new ThresholdTargetAxis("Y2");
+
+        public static bool operator ==(ThresholdTargetAxis left, ThresholdTargetAxis right) => left.Equals(right);
+        public static bool operator !=(ThresholdTargetAxis left, ThresholdTargetAxis right) => !left.Equals(right);
+
+        public static explicit operator string(ThresholdTargetAxis value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ThresholdTargetAxis other && Equals(other);
+        public bool Equals(ThresholdTargetAxis other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -14,6 +14,7 @@ __all__ = [
     'AcceleratorConfigResponse',
     'BindingResponse',
     'ContainerImageResponse',
+    'DataprocParametersResponse',
     'DiskResponse',
     'EncryptionConfigResponse',
     'ExecutionResponse',
@@ -162,6 +163,28 @@ class ContainerImageResponse(dict):
         The tag of the container image. If not specified, this defaults to the latest tag.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class DataprocParametersResponse(dict):
+    """
+    Parameters used in Dataproc JobType executions.
+    """
+    def __init__(__self__, *,
+                 cluster: str):
+        """
+        Parameters used in Dataproc JobType executions.
+        :param str cluster: URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        """
+        pulumi.set(__self__, "cluster", cluster)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        """
+        return pulumi.get(self, "cluster")
 
 
 @pulumi.output_type
@@ -518,8 +541,12 @@ class ExecutionTemplateResponse(dict):
             suggest = "accelerator_config"
         elif key == "containerImageUri":
             suggest = "container_image_uri"
+        elif key == "dataprocParameters":
+            suggest = "dataproc_parameters"
         elif key == "inputNotebookFile":
             suggest = "input_notebook_file"
+        elif key == "jobType":
+            suggest = "job_type"
         elif key == "masterType":
             suggest = "master_type"
         elif key == "outputNotebookFolder":
@@ -543,7 +570,9 @@ class ExecutionTemplateResponse(dict):
     def __init__(__self__, *,
                  accelerator_config: 'outputs.SchedulerAcceleratorConfigResponse',
                  container_image_uri: str,
+                 dataproc_parameters: 'outputs.DataprocParametersResponse',
                  input_notebook_file: str,
+                 job_type: str,
                  labels: Mapping[str, str],
                  master_type: str,
                  output_notebook_folder: str,
@@ -554,7 +583,9 @@ class ExecutionTemplateResponse(dict):
         The description a notebook execution workload.
         :param 'SchedulerAcceleratorConfigResponse' accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param str container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+        :param 'DataprocParametersResponse' dataproc_parameters: Parameters used in Dataproc JobType executions.
         :param str input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        :param str job_type: The type of Job to be used on this execution.
         :param Mapping[str, str] labels: Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
         :param str master_type: Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
         :param str output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
@@ -564,7 +595,9 @@ class ExecutionTemplateResponse(dict):
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
         pulumi.set(__self__, "container_image_uri", container_image_uri)
+        pulumi.set(__self__, "dataproc_parameters", dataproc_parameters)
         pulumi.set(__self__, "input_notebook_file", input_notebook_file)
+        pulumi.set(__self__, "job_type", job_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "master_type", master_type)
         pulumi.set(__self__, "output_notebook_folder", output_notebook_folder)
@@ -589,12 +622,28 @@ class ExecutionTemplateResponse(dict):
         return pulumi.get(self, "container_image_uri")
 
     @property
+    @pulumi.getter(name="dataprocParameters")
+    def dataproc_parameters(self) -> 'outputs.DataprocParametersResponse':
+        """
+        Parameters used in Dataproc JobType executions.
+        """
+        return pulumi.get(self, "dataproc_parameters")
+
+    @property
     @pulumi.getter(name="inputNotebookFile")
     def input_notebook_file(self) -> str:
         """
         Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         """
         return pulumi.get(self, "input_notebook_file")
+
+    @property
+    @pulumi.getter(name="jobType")
+    def job_type(self) -> str:
+        """
+        The type of Job to be used on this execution.
+        """
+        return pulumi.get(self, "job_type")
 
     @property
     @pulumi.getter
@@ -725,7 +774,7 @@ class GuestOsFeatureResponse(dict):
 @pulumi.output_type
 class LocalDiskInitializeParamsResponse(dict):
     """
-    [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+    Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -755,7 +804,7 @@ class LocalDiskInitializeParamsResponse(dict):
                  disk_type: str,
                  labels: Mapping[str, str]):
         """
-        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str description: Optional. Provide this property when creating the disk.
         :param str disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
         :param str disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
@@ -852,12 +901,12 @@ class LocalDiskResponse(dict):
                  type: str):
         """
         An Local attached disk resource.
-        :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
-        :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-        :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        :param bool auto_delete: Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+        :param bool boot: Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+        :param str device_name: Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         :param Sequence['RuntimeGuestOsFeatureResponse'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param int index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-        :param 'LocalDiskInitializeParamsResponse' initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param 'LocalDiskInitializeParamsResponse' initialize_params: Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
         :param Sequence[str] licenses: Any valid publicly visible licenses.
@@ -882,7 +931,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> bool:
         """
-        Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+        Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         """
         return pulumi.get(self, "auto_delete")
 
@@ -890,7 +939,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def boot(self) -> bool:
         """
-        Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+        Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         """
         return pulumi.get(self, "boot")
 
@@ -898,7 +947,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
         """
-        Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        Optional. Output only. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         """
         return pulumi.get(self, "device_name")
 
@@ -922,7 +971,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> 'outputs.LocalDiskInitializeParamsResponse':
         """
-        Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         """
         return pulumi.get(self, "initialize_params")
 
@@ -1154,13 +1203,13 @@ class RuntimeAccessConfigResponse(dict):
 @pulumi.output_type
 class RuntimeGuestOsFeatureResponse(dict):
     """
-    A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+    Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
     """
     def __init__(__self__, *,
                  type: str):
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
-        :param str type: The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Guest OS features for boot disk.
+        :param str type: The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         """
         pulumi.set(__self__, "type", type)
 
@@ -1168,7 +1217,7 @@ class RuntimeGuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         """
         return pulumi.get(self, "type")
 
@@ -1215,7 +1264,7 @@ class RuntimeMetricsResponse(dict):
 @pulumi.output_type
 class RuntimeShieldedInstanceConfigResponse(dict):
     """
-    A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+    A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1243,7 +1292,7 @@ class RuntimeShieldedInstanceConfigResponse(dict):
                  enable_secure_boot: bool,
                  enable_vtpm: bool):
         """
-        A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+        A set of Shielded Instance options. Check [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.
         :param bool enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
         :param bool enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
         :param bool enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
@@ -1280,7 +1329,7 @@ class RuntimeShieldedInstanceConfigResponse(dict):
 @pulumi.output_type
 class RuntimeSoftwareConfigResponse(dict):
     """
-    Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+    Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1320,7 +1369,7 @@ class RuntimeSoftwareConfigResponse(dict):
                  notebook_upgrade_schedule: str,
                  post_startup_script: str):
         """
-        Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+        Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `report-system-health: true`
         :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
         :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True

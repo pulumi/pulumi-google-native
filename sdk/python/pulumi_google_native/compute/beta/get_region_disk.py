@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, users=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, user_licenses=None, users=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -126,6 +126,9 @@ class GetRegionDiskResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if user_licenses and not isinstance(user_licenses, list):
+            raise TypeError("Expected argument 'user_licenses' to be a list")
+        pulumi.set(__self__, "user_licenses", user_licenses)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
@@ -422,6 +425,14 @@ class GetRegionDiskResult:
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> Sequence[str]:
+        """
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
+        """
+        return pulumi.get(self, "user_licenses")
+
+    @property
     @pulumi.getter
     def users(self) -> Sequence[str]:
         """
@@ -480,6 +491,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             source_storage_object=self.source_storage_object,
             status=self.status,
             type=self.type,
+            user_licenses=self.user_licenses,
             users=self.users,
             zone=self.zone)
 
@@ -538,5 +550,6 @@ def get_region_disk(disk: Optional[str] = None,
         source_storage_object=__ret__.source_storage_object,
         status=__ret__.status,
         type=__ret__.type,
+        user_licenses=__ret__.user_licenses,
         users=__ret__.users,
         zone=__ret__.zone)

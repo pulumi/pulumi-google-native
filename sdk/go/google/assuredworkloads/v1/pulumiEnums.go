@@ -201,6 +201,8 @@ const (
 	WorkloadComplianceRegimeHipaa = WorkloadComplianceRegime("HIPAA")
 	// Health Information Trust Alliance controls
 	WorkloadComplianceRegimeHitrust = WorkloadComplianceRegime("HITRUST")
+	// Assured Workloads For EU Regions and Support controls
+	WorkloadComplianceRegimeEuRegionsAndSupport = WorkloadComplianceRegime("EU_REGIONS_AND_SUPPORT")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {

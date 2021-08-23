@@ -96,7 +96,7 @@ class GetInstanceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+        The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
         """
         return pulumi.get(self, "name")
 

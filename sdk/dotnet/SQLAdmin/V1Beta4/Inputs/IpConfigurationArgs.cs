@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// </summary>
     public sealed class IpConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        /// </summary>
+        [Input("allocatedIpRange")]
+        public Input<string>? AllocatedIpRange { get; set; }
+
         [Input("authorizedNetworks")]
         private InputList<Inputs.AclEntryArgs>? _authorizedNetworks;
 

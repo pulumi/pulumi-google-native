@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
+    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
+        if advanced_settings and not isinstance(advanced_settings, dict):
+            raise TypeError("Expected argument 'advanced_settings' to be a dict")
+        pulumi.set(__self__, "advanced_settings", advanced_settings)
         if avatar_uri and not isinstance(avatar_uri, str):
             raise TypeError("Expected argument 'avatar_uri' to be a str")
         pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -54,6 +57,14 @@ class GetAgentResult:
         if time_zone and not isinstance(time_zone, str):
             raise TypeError("Expected argument 'time_zone' to be a str")
         pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse':
+        """
+        Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="avatarUri")
@@ -99,7 +110,7 @@ class GetAgentResult:
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> bool:
         """
-        Indicates if stackdriver logging is enabled for the agent.
+        Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -158,6 +169,7 @@ class AwaitableGetAgentResult(GetAgentResult):
         if False:
             yield self
         return GetAgentResult(
+            advanced_settings=self.advanced_settings,
             avatar_uri=self.avatar_uri,
             default_language_code=self.default_language_code,
             description=self.description,
@@ -190,6 +202,7 @@ def get_agent(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getAgent', __args__, opts=opts, typ=GetAgentResult).value
 
     return AwaitableGetAgentResult(
+        advanced_settings=__ret__.advanced_settings,
         avatar_uri=__ret__.avatar_uri,
         default_language_code=__ret__.default_language_code,
         description=__ret__.description,

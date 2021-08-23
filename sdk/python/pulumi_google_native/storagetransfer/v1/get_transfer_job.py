@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferJobResult:
-    def __init__(__self__, creation_time=None, deletion_time=None, description=None, last_modification_time=None, latest_operation_name=None, name=None, notification_config=None, project=None, schedule=None, status=None, transfer_spec=None):
+    def __init__(__self__, creation_time=None, deletion_time=None, description=None, last_modification_time=None, latest_operation_name=None, logging_config=None, name=None, notification_config=None, project=None, schedule=None, status=None, transfer_spec=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -33,6 +33,9 @@ class GetTransferJobResult:
         if latest_operation_name and not isinstance(latest_operation_name, str):
             raise TypeError("Expected argument 'latest_operation_name' to be a str")
         pulumi.set(__self__, "latest_operation_name", latest_operation_name)
+        if logging_config and not isinstance(logging_config, dict):
+            raise TypeError("Expected argument 'logging_config' to be a dict")
+        pulumi.set(__self__, "logging_config", logging_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -91,6 +94,14 @@ class GetTransferJobResult:
         The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         """
         return pulumi.get(self, "latest_operation_name")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> 'outputs.LoggingConfigResponse':
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
 
     @property
     @pulumi.getter
@@ -152,6 +163,7 @@ class AwaitableGetTransferJobResult(GetTransferJobResult):
             description=self.description,
             last_modification_time=self.last_modification_time,
             latest_operation_name=self.latest_operation_name,
+            logging_config=self.logging_config,
             name=self.name,
             notification_config=self.notification_config,
             project=self.project,
@@ -181,6 +193,7 @@ def get_transfer_job(project_id: Optional[str] = None,
         description=__ret__.description,
         last_modification_time=__ret__.last_modification_time,
         latest_operation_name=__ret__.latest_operation_name,
+        logging_config=__ret__.logging_config,
         name=__ret__.name,
         notification_config=__ret__.notification_config,
         project=__ret__.project,

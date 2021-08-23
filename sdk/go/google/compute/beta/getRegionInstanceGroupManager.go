@@ -32,7 +32,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 	CurrentActions InstanceGroupManagerActionsSummaryResponse `pulumi:"currentActions"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource.
 	Description string `pulumi:"description"`
 	// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 	DistributionPolicy DistributionPolicyResponse `pulumi:"distributionPolicy"`

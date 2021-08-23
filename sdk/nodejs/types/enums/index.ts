@@ -28,6 +28,7 @@ import * as cloudsearch from "./cloudsearch";
 import * as cloudtasks from "./cloudtasks";
 import * as composer from "./composer";
 import * as compute from "./compute";
+import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
 import * as datacatalog from "./datacatalog";
@@ -61,6 +62,7 @@ import * as monitoring from "./monitoring";
 import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
+import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
 import * as osconfig from "./osconfig";
 import * as policysimulator from "./policysimulator";
@@ -112,6 +114,7 @@ export {
     cloudtasks,
     composer,
     compute,
+    contactcenterinsights,
     container,
     containeranalysis,
     datacatalog,
@@ -145,6 +148,7 @@ export {
     networkconnectivity,
     networkmanagement,
     networksecurity,
+    networkservices,
     notebooks,
     osconfig,
     policysimulator,

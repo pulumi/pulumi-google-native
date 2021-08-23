@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Pulumi.GoogleNative.Monitoring.V1.DataSetPlotType>? PlotType { get; set; }
 
         /// <summary>
+        /// Optional. The target axis to use for plotting the metric.
+        /// </summary>
+        [Input("targetAxis")]
+        public Input<Pulumi.GoogleNative.Monitoring.V1.DataSetTargetAxis>? TargetAxis { get; set; }
+
+        /// <summary>
         /// Fields for querying time series data from the Stackdriver metrics API.
         /// </summary>
         [Input("timeSeriesQuery", required: true)]

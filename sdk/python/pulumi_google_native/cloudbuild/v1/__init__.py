@@ -8,8 +8,10 @@ import typing
 from ._enums import *
 from .build import *
 from .get_build import *
+from .get_github_enterprise_config import *
 from .get_trigger import *
 from .get_worker_pool import *
+from .github_enterprise_config import *
 from .trigger import *
 from .worker_pool import *
 from ._inputs import *

@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
         /// </summary>
         public readonly string Name;
         /// <summary>

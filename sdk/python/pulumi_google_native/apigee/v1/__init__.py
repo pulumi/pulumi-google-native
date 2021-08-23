@@ -10,6 +10,7 @@ from .alias import *
 from .api import *
 from .api_product import *
 from .app import *
+from .archive_deployment import *
 from .canary_evaluation import *
 from .data_collector import *
 from .datastore import *
@@ -24,6 +25,7 @@ from .get_api import *
 from .get_api_product import *
 from .get_apicategory import *
 from .get_app import *
+from .get_archive_deployment import *
 from .get_canary_evaluation import *
 from .get_data_collector import *
 from .get_datastore import *

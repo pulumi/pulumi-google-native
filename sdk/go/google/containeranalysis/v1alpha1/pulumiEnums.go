@@ -893,6 +893,16 @@ const (
 	DiscoveryAnalysisKindUpgrade = DiscoveryAnalysisKind("UPGRADE")
 	// This represents a compliance check that can be applied to a resource.
 	DiscoveryAnalysisKindCompliance = DiscoveryAnalysisKind("COMPLIANCE")
+	// This represents a software bill of materials.
+	DiscoveryAnalysisKindSbom = DiscoveryAnalysisKind("SBOM")
+	// This represents an SPDX Package.
+	DiscoveryAnalysisKindSpdxPackage = DiscoveryAnalysisKind("SPDX_PACKAGE")
+	// This represents an SPDX File.
+	DiscoveryAnalysisKindSpdxFile = DiscoveryAnalysisKind("SPDX_FILE")
+	// This represents an SPDX Relationship.
+	DiscoveryAnalysisKindSpdxRelationship = DiscoveryAnalysisKind("SPDX_RELATIONSHIP")
+	// This represents a DSSE attestation Note
+	DiscoveryAnalysisKindDsseAttestation = DiscoveryAnalysisKind("DSSE_ATTESTATION")
 )
 
 func (DiscoveryAnalysisKind) ElementType() reflect.Type {
@@ -1219,6 +1229,366 @@ func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutput() Dis
 
 func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutputWithContext(ctx context.Context) DistributionArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionArchitecturePtrOutput)
+}
+
+// An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+type ExternalRefCategory string
+
+const (
+	// Unspecified
+	ExternalRefCategoryCategoryUnspecified = ExternalRefCategory("CATEGORY_UNSPECIFIED")
+	// Security (e.g. cpe22Type, cpe23Type)
+	ExternalRefCategorySecurity = ExternalRefCategory("SECURITY")
+	// Package Manager (e.g. maven-central, npm, nuget, bower, purl)
+	ExternalRefCategoryPackageManager = ExternalRefCategory("PACKAGE_MANAGER")
+	// Persistent-Id (e.g. swh)
+	ExternalRefCategoryPersistentId = ExternalRefCategory("PERSISTENT_ID")
+	// Other
+	ExternalRefCategoryOther = ExternalRefCategory("OTHER")
+)
+
+func (ExternalRefCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalRefCategory)(nil)).Elem()
+}
+
+func (e ExternalRefCategory) ToExternalRefCategoryOutput() ExternalRefCategoryOutput {
+	return pulumi.ToOutput(e).(ExternalRefCategoryOutput)
+}
+
+func (e ExternalRefCategory) ToExternalRefCategoryOutputWithContext(ctx context.Context) ExternalRefCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalRefCategoryOutput)
+}
+
+func (e ExternalRefCategory) ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput {
+	return e.ToExternalRefCategoryPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalRefCategory) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
+	return ExternalRefCategory(e).ToExternalRefCategoryOutputWithContext(ctx).ToExternalRefCategoryPtrOutputWithContext(ctx)
+}
+
+func (e ExternalRefCategory) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalRefCategory) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalRefCategory) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalRefCategory) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalRefCategoryOutput struct{ *pulumi.OutputState }
+
+func (ExternalRefCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalRefCategory)(nil)).Elem()
+}
+
+func (o ExternalRefCategoryOutput) ToExternalRefCategoryOutput() ExternalRefCategoryOutput {
+	return o
+}
+
+func (o ExternalRefCategoryOutput) ToExternalRefCategoryOutputWithContext(ctx context.Context) ExternalRefCategoryOutput {
+	return o
+}
+
+func (o ExternalRefCategoryOutput) ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput {
+	return o.ToExternalRefCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalRefCategoryOutput) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalRefCategory) *ExternalRefCategory {
+		return &v
+	}).(ExternalRefCategoryPtrOutput)
+}
+
+func (o ExternalRefCategoryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalRefCategoryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalRefCategory) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalRefCategoryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalRefCategoryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalRefCategory) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalRefCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalRefCategoryPtrOutput) ElementType() reflect.Type {
+	return externalRefCategoryPtrType
+}
+
+func (o ExternalRefCategoryPtrOutput) ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput {
+	return o
+}
+
+func (o ExternalRefCategoryPtrOutput) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
+	return o
+}
+
+func (o ExternalRefCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalRefCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalRefCategory) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalRefCategoryPtrOutput) Elem() ExternalRefCategoryOutput {
+	return o.ApplyT(func(v *ExternalRefCategory) ExternalRefCategory {
+		var ret ExternalRefCategory
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ExternalRefCategoryOutput)
+}
+
+// ExternalRefCategoryInput is an input type that accepts ExternalRefCategoryArgs and ExternalRefCategoryOutput values.
+// You can construct a concrete instance of `ExternalRefCategoryInput` via:
+//
+//          ExternalRefCategoryArgs{...}
+type ExternalRefCategoryInput interface {
+	pulumi.Input
+
+	ToExternalRefCategoryOutput() ExternalRefCategoryOutput
+	ToExternalRefCategoryOutputWithContext(context.Context) ExternalRefCategoryOutput
+}
+
+var externalRefCategoryPtrType = reflect.TypeOf((**ExternalRefCategory)(nil)).Elem()
+
+type ExternalRefCategoryPtrInput interface {
+	pulumi.Input
+
+	ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput
+	ToExternalRefCategoryPtrOutputWithContext(context.Context) ExternalRefCategoryPtrOutput
+}
+
+type externalRefCategoryPtr string
+
+func ExternalRefCategoryPtr(v string) ExternalRefCategoryPtrInput {
+	return (*externalRefCategoryPtr)(&v)
+}
+
+func (*externalRefCategoryPtr) ElementType() reflect.Type {
+	return externalRefCategoryPtrType
+}
+
+func (in *externalRefCategoryPtr) ToExternalRefCategoryPtrOutput() ExternalRefCategoryPtrOutput {
+	return pulumi.ToOutput(in).(ExternalRefCategoryPtrOutput)
+}
+
+func (in *externalRefCategoryPtr) ToExternalRefCategoryPtrOutputWithContext(ctx context.Context) ExternalRefCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalRefCategoryPtrOutput)
+}
+
+// This field provides information about the type of file identified
+type FileNoteFileType string
+
+const (
+	// Unspecified
+	FileNoteFileTypeFileTypeUnspecified = FileNoteFileType("FILE_TYPE_UNSPECIFIED")
+	// The file is human readable source code (.c, .html, etc.)
+	FileNoteFileTypeSource = FileNoteFileType("SOURCE")
+	// The file is a compiled object, target image or binary executable (.o, .a, etc.)
+	FileNoteFileTypeBinary = FileNoteFileType("BINARY")
+	// The file represents an archive (.tar, .jar, etc.)
+	FileNoteFileTypeArchive = FileNoteFileType("ARCHIVE")
+	// The file is associated with a specific application type (MIME type of application/*)
+	FileNoteFileTypeApplication = FileNoteFileType("APPLICATION")
+	// The file is associated with an audio file (MIME type of audio/* , e.g. .mp3)
+	FileNoteFileTypeAudio = FileNoteFileType("AUDIO")
+	// The file is associated with an picture image file (MIME type of image/*, e.g., .jpg, .gif)
+	FileNoteFileTypeImage = FileNoteFileType("IMAGE")
+	// The file is human readable text file (MIME type of text/*)
+	FileNoteFileTypeText = FileNoteFileType("TEXT")
+	// The file is associated with a video file type (MIME type of video/*)
+	FileNoteFileTypeVideo = FileNoteFileType("VIDEO")
+	// The file serves as documentation
+	FileNoteFileTypeDocumentation = FileNoteFileType("DOCUMENTATION")
+	// The file is an SPDX document
+	FileNoteFileTypeSpdx = FileNoteFileType("SPDX")
+	// The file doesn't fit into the above categories (generated artifacts, data files, etc.)
+	FileNoteFileTypeOther = FileNoteFileType("OTHER")
+)
+
+func (FileNoteFileType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileNoteFileType)(nil)).Elem()
+}
+
+func (e FileNoteFileType) ToFileNoteFileTypeOutput() FileNoteFileTypeOutput {
+	return pulumi.ToOutput(e).(FileNoteFileTypeOutput)
+}
+
+func (e FileNoteFileType) ToFileNoteFileTypeOutputWithContext(ctx context.Context) FileNoteFileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FileNoteFileTypeOutput)
+}
+
+func (e FileNoteFileType) ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput {
+	return e.ToFileNoteFileTypePtrOutputWithContext(context.Background())
+}
+
+func (e FileNoteFileType) ToFileNoteFileTypePtrOutputWithContext(ctx context.Context) FileNoteFileTypePtrOutput {
+	return FileNoteFileType(e).ToFileNoteFileTypeOutputWithContext(ctx).ToFileNoteFileTypePtrOutputWithContext(ctx)
+}
+
+func (e FileNoteFileType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileNoteFileType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileNoteFileType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FileNoteFileType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FileNoteFileTypeOutput struct{ *pulumi.OutputState }
+
+func (FileNoteFileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileNoteFileType)(nil)).Elem()
+}
+
+func (o FileNoteFileTypeOutput) ToFileNoteFileTypeOutput() FileNoteFileTypeOutput {
+	return o
+}
+
+func (o FileNoteFileTypeOutput) ToFileNoteFileTypeOutputWithContext(ctx context.Context) FileNoteFileTypeOutput {
+	return o
+}
+
+func (o FileNoteFileTypeOutput) ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput {
+	return o.ToFileNoteFileTypePtrOutputWithContext(context.Background())
+}
+
+func (o FileNoteFileTypeOutput) ToFileNoteFileTypePtrOutputWithContext(ctx context.Context) FileNoteFileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileNoteFileType) *FileNoteFileType {
+		return &v
+	}).(FileNoteFileTypePtrOutput)
+}
+
+func (o FileNoteFileTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FileNoteFileTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileNoteFileType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FileNoteFileTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileNoteFileTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileNoteFileType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FileNoteFileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FileNoteFileTypePtrOutput) ElementType() reflect.Type {
+	return fileNoteFileTypePtrType
+}
+
+func (o FileNoteFileTypePtrOutput) ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput {
+	return o
+}
+
+func (o FileNoteFileTypePtrOutput) ToFileNoteFileTypePtrOutputWithContext(ctx context.Context) FileNoteFileTypePtrOutput {
+	return o
+}
+
+func (o FileNoteFileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileNoteFileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FileNoteFileType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FileNoteFileTypePtrOutput) Elem() FileNoteFileTypeOutput {
+	return o.ApplyT(func(v *FileNoteFileType) FileNoteFileType {
+		var ret FileNoteFileType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(FileNoteFileTypeOutput)
+}
+
+// FileNoteFileTypeInput is an input type that accepts FileNoteFileTypeArgs and FileNoteFileTypeOutput values.
+// You can construct a concrete instance of `FileNoteFileTypeInput` via:
+//
+//          FileNoteFileTypeArgs{...}
+type FileNoteFileTypeInput interface {
+	pulumi.Input
+
+	ToFileNoteFileTypeOutput() FileNoteFileTypeOutput
+	ToFileNoteFileTypeOutputWithContext(context.Context) FileNoteFileTypeOutput
+}
+
+var fileNoteFileTypePtrType = reflect.TypeOf((**FileNoteFileType)(nil)).Elem()
+
+type FileNoteFileTypePtrInput interface {
+	pulumi.Input
+
+	ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput
+	ToFileNoteFileTypePtrOutputWithContext(context.Context) FileNoteFileTypePtrOutput
+}
+
+type fileNoteFileTypePtr string
+
+func FileNoteFileTypePtr(v string) FileNoteFileTypePtrInput {
+	return (*fileNoteFileTypePtr)(&v)
+}
+
+func (*fileNoteFileTypePtr) ElementType() reflect.Type {
+	return fileNoteFileTypePtrType
+}
+
+func (in *fileNoteFileTypePtr) ToFileNoteFileTypePtrOutput() FileNoteFileTypePtrOutput {
+	return pulumi.ToOutput(in).(FileNoteFileTypePtrOutput)
+}
+
+func (in *fileNoteFileTypePtr) ToFileNoteFileTypePtrOutputWithContext(ctx context.Context) FileNoteFileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FileNoteFileTypePtrOutput)
 }
 
 // The alias kind.
@@ -1925,6 +2295,257 @@ func (in *pgpSignedAttestationContentTypePtr) ToPgpSignedAttestationContentTypeP
 	return pulumi.ToOutputWithContext(ctx, in).(PgpSignedAttestationContentTypePtrOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+type RelationshipOccurrenceType string
+
+const (
+	// Unspecified
+	RelationshipOccurrenceTypeTypeUnspecified = RelationshipOccurrenceType("TYPE_UNSPECIFIED")
+	// Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
+	RelationshipOccurrenceTypeDescribes = RelationshipOccurrenceType("DESCRIBES")
+	// Is to be used when SPDXRef-A is described by SPDXREF-Document
+	RelationshipOccurrenceTypeDescribedBy = RelationshipOccurrenceType("DESCRIBED_BY")
+	// Is to be used when SPDXRef-A contains SPDXRef-B
+	RelationshipOccurrenceTypeContains = RelationshipOccurrenceType("CONTAINS")
+	// Is to be used when SPDXRef-A is contained by SPDXRef-B
+	RelationshipOccurrenceTypeContainedBy = RelationshipOccurrenceType("CONTAINED_BY")
+	// Is to be used when SPDXRef-A depends on SPDXRef-B
+	RelationshipOccurrenceTypeDependsOn = RelationshipOccurrenceType("DEPENDS_ON")
+	// Is to be used when SPDXRef-A is dependency of SPDXRef-B
+	RelationshipOccurrenceTypeDependencyOf = RelationshipOccurrenceType("DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B
+	RelationshipOccurrenceTypeDependencyManifestOf = RelationshipOccurrenceType("DEPENDENCY_MANIFEST_OF")
+	// Is to be used when SPDXRef-A is a build dependency of SPDXRef-B
+	RelationshipOccurrenceTypeBuildDependencyOf = RelationshipOccurrenceType("BUILD_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is a development dependency of SPDXRef-B
+	RelationshipOccurrenceTypeDevDependencyOf = RelationshipOccurrenceType("DEV_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B
+	RelationshipOccurrenceTypeOptionalDependencyOf = RelationshipOccurrenceType("OPTIONAL_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B
+	RelationshipOccurrenceTypeProvidedDependencyOf = RelationshipOccurrenceType("PROVIDED_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is a test dependency of SPDXRef-B
+	RelationshipOccurrenceTypeTestDependencyOf = RelationshipOccurrenceType("TEST_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B
+	RelationshipOccurrenceTypeRuntimeDependencyOf = RelationshipOccurrenceType("RUNTIME_DEPENDENCY_OF")
+	// Is to be used when SPDXRef-A is an example of SPDXRef-B
+	RelationshipOccurrenceTypeExampleOf = RelationshipOccurrenceType("EXAMPLE_OF")
+	// Is to be used when SPDXRef-A generates SPDXRef-B
+	RelationshipOccurrenceTypeGenerates = RelationshipOccurrenceType("GENERATES")
+	// Is to be used when SPDXRef-A was generated from SPDXRef-B
+	RelationshipOccurrenceTypeGeneratedFrom = RelationshipOccurrenceType("GENERATED_FROM")
+	// Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B
+	RelationshipOccurrenceTypeAncestorOf = RelationshipOccurrenceType("ANCESTOR_OF")
+	// Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B
+	RelationshipOccurrenceTypeDescendantOf = RelationshipOccurrenceType("DESCENDANT_OF")
+	// Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B
+	RelationshipOccurrenceTypeVariantOf = RelationshipOccurrenceType("VARIANT_OF")
+	// Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed
+	RelationshipOccurrenceTypeDistributionArtifact = RelationshipOccurrenceType("DISTRIBUTION_ARTIFACT")
+	// Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B
+	RelationshipOccurrenceTypePatchFor = RelationshipOccurrenceType("PATCH_FOR")
+	// Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B
+	RelationshipOccurrenceTypePatchApplied = RelationshipOccurrenceType("PATCH_APPLIED")
+	// Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
+	RelationshipOccurrenceTypeCopyOf = RelationshipOccurrenceType("COPY_OF")
+	// Is to be used when SPDXRef-A is a file that was added to SPDXRef-B
+	RelationshipOccurrenceTypeFileAdded = RelationshipOccurrenceType("FILE_ADDED")
+	// Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B
+	RelationshipOccurrenceTypeFileDeleted = RelationshipOccurrenceType("FILE_DELETED")
+	// Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B
+	RelationshipOccurrenceTypeFileModified = RelationshipOccurrenceType("FILE_MODIFIED")
+	// Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B
+	RelationshipOccurrenceTypeExpandedFromArchive = RelationshipOccurrenceType("EXPANDED_FROM_ARCHIVE")
+	// Is to be used when SPDXRef-A dynamically links to SPDXRef-B
+	RelationshipOccurrenceTypeDynamicLink = RelationshipOccurrenceType("DYNAMIC_LINK")
+	// Is to be used when SPDXRef-A statically links to SPDXRef-B
+	RelationshipOccurrenceTypeStaticLink = RelationshipOccurrenceType("STATIC_LINK")
+	// Is to be used when SPDXRef-A is a data file used in SPDXRef-B
+	RelationshipOccurrenceTypeDataFileOf = RelationshipOccurrenceType("DATA_FILE_OF")
+	// Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B
+	RelationshipOccurrenceTypeTestCaseOf = RelationshipOccurrenceType("TEST_CASE_OF")
+	// Is to be used when SPDXRef-A is used to build SPDXRef-B
+	RelationshipOccurrenceTypeBuildToolOf = RelationshipOccurrenceType("BUILD_TOOL_OF")
+	// Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B
+	RelationshipOccurrenceTypeDevToolOf = RelationshipOccurrenceType("DEV_TOOL_OF")
+	// Is to be used when SPDXRef-A is used for testing SPDXRef-B
+	RelationshipOccurrenceTypeTestOf = RelationshipOccurrenceType("TEST_OF")
+	// Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B
+	RelationshipOccurrenceTypeTestToolOf = RelationshipOccurrenceType("TEST_TOOL_OF")
+	// Is to be used when SPDXRef-A provides documentation of SPDXRef-B
+	RelationshipOccurrenceTypeDocumentationOf = RelationshipOccurrenceType("DOCUMENTATION_OF")
+	// Is to be used when SPDXRef-A is an optional component of SPDXRef-B
+	RelationshipOccurrenceTypeOptionalComponentOf = RelationshipOccurrenceType("OPTIONAL_COMPONENT_OF")
+	// Is to be used when SPDXRef-A is a metafile of SPDXRef-B
+	RelationshipOccurrenceTypeMetafileOf = RelationshipOccurrenceType("METAFILE_OF")
+	// Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B
+	RelationshipOccurrenceTypePackageOf = RelationshipOccurrenceType("PACKAGE_OF")
+	// Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B
+	RelationshipOccurrenceTypeAmends = RelationshipOccurrenceType("AMENDS")
+	// Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B
+	RelationshipOccurrenceTypePrerequisiteFor = RelationshipOccurrenceType("PREREQUISITE_FOR")
+	// Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B
+	RelationshipOccurrenceTypeHasPrerequisite = RelationshipOccurrenceType("HAS_PREREQUISITE")
+	// Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field
+	RelationshipOccurrenceTypeOther = RelationshipOccurrenceType("OTHER")
+)
+
+func (RelationshipOccurrenceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipOccurrenceType)(nil)).Elem()
+}
+
+func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput {
+	return pulumi.ToOutput(e).(RelationshipOccurrenceTypeOutput)
+}
+
+func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypeOutputWithContext(ctx context.Context) RelationshipOccurrenceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RelationshipOccurrenceTypeOutput)
+}
+
+func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
+	return e.ToRelationshipOccurrenceTypePtrOutputWithContext(context.Background())
+}
+
+func (e RelationshipOccurrenceType) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
+	return RelationshipOccurrenceType(e).ToRelationshipOccurrenceTypeOutputWithContext(ctx).ToRelationshipOccurrenceTypePtrOutputWithContext(ctx)
+}
+
+func (e RelationshipOccurrenceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RelationshipOccurrenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RelationshipOccurrenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RelationshipOccurrenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RelationshipOccurrenceTypeOutput struct{ *pulumi.OutputState }
+
+func (RelationshipOccurrenceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelationshipOccurrenceType)(nil)).Elem()
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput {
+	return o
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypeOutputWithContext(ctx context.Context) RelationshipOccurrenceTypeOutput {
+	return o
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
+	return o.ToRelationshipOccurrenceTypePtrOutputWithContext(context.Background())
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrenceType) *RelationshipOccurrenceType {
+		return &v
+	}).(RelationshipOccurrenceTypePtrOutput)
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipOccurrenceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RelationshipOccurrenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RelationshipOccurrenceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RelationshipOccurrenceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RelationshipOccurrenceTypePtrOutput) ElementType() reflect.Type {
+	return relationshipOccurrenceTypePtrType
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
+	return o
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
+	return o
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RelationshipOccurrenceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RelationshipOccurrenceTypePtrOutput) Elem() RelationshipOccurrenceTypeOutput {
+	return o.ApplyT(func(v *RelationshipOccurrenceType) RelationshipOccurrenceType {
+		var ret RelationshipOccurrenceType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RelationshipOccurrenceTypeOutput)
+}
+
+// RelationshipOccurrenceTypeInput is an input type that accepts RelationshipOccurrenceTypeArgs and RelationshipOccurrenceTypeOutput values.
+// You can construct a concrete instance of `RelationshipOccurrenceTypeInput` via:
+//
+//          RelationshipOccurrenceTypeArgs{...}
+type RelationshipOccurrenceTypeInput interface {
+	pulumi.Input
+
+	ToRelationshipOccurrenceTypeOutput() RelationshipOccurrenceTypeOutput
+	ToRelationshipOccurrenceTypeOutputWithContext(context.Context) RelationshipOccurrenceTypeOutput
+}
+
+var relationshipOccurrenceTypePtrType = reflect.TypeOf((**RelationshipOccurrenceType)(nil)).Elem()
+
+type RelationshipOccurrenceTypePtrInput interface {
+	pulumi.Input
+
+	ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput
+	ToRelationshipOccurrenceTypePtrOutputWithContext(context.Context) RelationshipOccurrenceTypePtrOutput
+}
+
+type relationshipOccurrenceTypePtr string
+
+func RelationshipOccurrenceTypePtr(v string) RelationshipOccurrenceTypePtrInput {
+	return (*relationshipOccurrenceTypePtr)(&v)
+}
+
+func (*relationshipOccurrenceTypePtr) ElementType() reflect.Type {
+	return relationshipOccurrenceTypePtrType
+}
+
+func (in *relationshipOccurrenceTypePtr) ToRelationshipOccurrenceTypePtrOutput() RelationshipOccurrenceTypePtrOutput {
+	return pulumi.ToOutput(in).(RelationshipOccurrenceTypePtrOutput)
+}
+
+func (in *relationshipOccurrenceTypePtr) ToRelationshipOccurrenceTypePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RelationshipOccurrenceTypePtrOutput)
+}
+
 // Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
 type VersionKind string
 
@@ -2459,6 +3080,10 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryAnalysisKindPtrOutput{})
 	pulumi.RegisterOutputType(DistributionArchitectureOutput{})
 	pulumi.RegisterOutputType(DistributionArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(ExternalRefCategoryOutput{})
+	pulumi.RegisterOutputType(ExternalRefCategoryPtrOutput{})
+	pulumi.RegisterOutputType(FileNoteFileTypeOutput{})
+	pulumi.RegisterOutputType(FileNoteFileTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput{})
 	pulumi.RegisterOutputType(HashTypeOutput{})
@@ -2467,6 +3092,8 @@ func init() {
 	pulumi.RegisterOutputType(LayerDirectivePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypeOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypePtrOutput{})
+	pulumi.RegisterOutputType(RelationshipOccurrenceTypeOutput{})
+	pulumi.RegisterOutputType(RelationshipOccurrenceTypePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityDetailsEffectiveSeverityOutput{})

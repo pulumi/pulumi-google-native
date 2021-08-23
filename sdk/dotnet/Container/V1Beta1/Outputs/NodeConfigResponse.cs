@@ -34,6 +34,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.EphemeralStorageConfigResponse EphemeralStorageConfig;
         /// <summary>
+        /// Enable or disable gvnic on the node pool.
+        /// </summary>
+        public readonly Outputs.VirtualNICResponse Gvnic;
+        /// <summary>
         /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         /// </summary>
         public readonly string ImageType;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.EphemeralStorageConfigResponse ephemeralStorageConfig,
 
+            Outputs.VirtualNICResponse gvnic,
+
             string imageType,
 
             Outputs.NodeKubeletConfigResponse kubeletConfig,
@@ -159,6 +165,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EphemeralStorageConfig = ephemeralStorageConfig;
+            Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;

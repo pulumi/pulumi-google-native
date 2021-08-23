@@ -40,7 +40,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

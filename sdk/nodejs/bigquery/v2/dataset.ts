@@ -70,6 +70,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly friendlyName!: pulumi.Output<string>;
     /**
+     * [Optional] Indicates if table names are case insensitive in the dataset.
+     */
+    public readonly isCaseInsensitive!: pulumi.Output<boolean>;
+    /**
      * The resource type.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
+            inputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -131,6 +136,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["friendlyName"] = undefined /*out*/;
+            inputs["isCaseInsensitive"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
@@ -174,6 +180,10 @@ export interface DatasetArgs {
      * [Optional] A descriptive name for the dataset.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * [Optional] Indicates if table names are case insensitive in the dataset.
+     */
+    isCaseInsensitive?: pulumi.Input<boolean>;
     /**
      * The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
      */

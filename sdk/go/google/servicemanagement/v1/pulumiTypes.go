@@ -5364,7 +5364,7 @@ func (o DocumentationResponsePtrOutput) Summary() pulumi.StringPtrOutput {
 type DocumentationRule struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription *string `pulumi:"deprecationDescription"`
-	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description *string `pulumi:"description"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector *string `pulumi:"selector"`
@@ -5385,7 +5385,7 @@ type DocumentationRuleInput interface {
 type DocumentationRuleArgs struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription pulumi.StringPtrInput `pulumi:"deprecationDescription"`
-	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
@@ -5448,7 +5448,7 @@ func (o DocumentationRuleOutput) DeprecationDescription() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DocumentationRule) *string { return v.DeprecationDescription }).(pulumi.StringPtrOutput)
 }
 
-// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 func (o DocumentationRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -5482,7 +5482,7 @@ func (o DocumentationRuleArrayOutput) Index(i pulumi.IntInput) DocumentationRule
 type DocumentationRuleResponse struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription string `pulumi:"deprecationDescription"`
-	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description string `pulumi:"description"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector string `pulumi:"selector"`
@@ -5503,7 +5503,7 @@ type DocumentationRuleResponseInput interface {
 type DocumentationRuleResponseArgs struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
 	DeprecationDescription pulumi.StringInput `pulumi:"deprecationDescription"`
-	// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector pulumi.StringInput `pulumi:"selector"`
@@ -5566,7 +5566,7 @@ func (o DocumentationRuleResponseOutput) DeprecationDescription() pulumi.StringO
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.DeprecationDescription }).(pulumi.StringOutput)
 }
 
-// The description is the comment in front of the selected proto element, such as a message, a method, a 'service' definition, or a field.
+// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 func (o DocumentationRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -10246,7 +10246,7 @@ type MonitoredResourceDescriptor struct {
 	LaunchStage *MonitoredResourceDescriptorLaunchStage `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name *string `pulumi:"name"`
-	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type string `pulumi:"type"`
 }
 
@@ -10273,7 +10273,7 @@ type MonitoredResourceDescriptorArgs struct {
 	LaunchStage MonitoredResourceDescriptorLaunchStagePtrInput `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10354,7 +10354,7 @@ func (o MonitoredResourceDescriptorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptor) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourceDescriptorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptor) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -10391,7 +10391,7 @@ type MonitoredResourceDescriptorResponse struct {
 	LaunchStage string `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name string `pulumi:"name"`
-	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type string `pulumi:"type"`
 }
 
@@ -10418,7 +10418,7 @@ type MonitoredResourceDescriptorResponseArgs struct {
 	LaunchStage pulumi.StringInput `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10499,7 +10499,7 @@ func (o MonitoredResourceDescriptorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o MonitoredResourceDescriptorResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -87,6 +87,10 @@ export class Subscription extends pulumi.CustomResource {
      * The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
     public readonly topic!: pulumi.Output<string>;
+    /**
+     * Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
+     */
+    public /*out*/ readonly topicMessageRetentionDuration!: pulumi.Output<string>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -120,6 +124,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
+            inputs["topicMessageRetentionDuration"] = undefined /*out*/;
         } else {
             inputs["ackDeadlineSeconds"] = undefined /*out*/;
             inputs["deadLetterPolicy"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["retainAckedMessages"] = undefined /*out*/;
             inputs["retryPolicy"] = undefined /*out*/;
             inputs["topic"] = undefined /*out*/;
+            inputs["topicMessageRetentionDuration"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

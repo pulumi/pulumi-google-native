@@ -26,6 +26,7 @@ class NodePoolInitArgs:
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
@@ -40,6 +41,7 @@ class NodePoolInitArgs:
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
+        :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
@@ -63,6 +65,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if project is not None:
@@ -187,6 +191,18 @@ class NodePoolInitArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NodeNetworkConfigArgs']]:
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NodeNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
@@ -247,6 +263,7 @@ class NodePool(pulumi.CustomResource):
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -265,6 +282,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeManagementArgs']] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
+        :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
@@ -303,6 +321,7 @@ class NodePool(pulumi.CustomResource):
                  management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
@@ -331,6 +350,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["management"] = management
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
@@ -370,6 +390,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["management"] = None
         __props__.__dict__["max_pods_constraint"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_config"] = None
         __props__.__dict__["pod_ipv4_cidr_size"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
@@ -448,6 +469,14 @@ class NodePool(pulumi.CustomResource):
         The name of the node pool.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.NodeNetworkConfigResponse']:
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter(name="podIpv4CidrSize")

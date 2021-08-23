@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Api : Pulumi.CustomResource
     {
         /// <summary>
+        /// User labels applied to this API Proxy.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the most recently created revision for this api proxy.
         /// </summary>
         [Output("latestRevisionId")]

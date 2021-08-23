@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

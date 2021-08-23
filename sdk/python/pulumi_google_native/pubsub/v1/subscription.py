@@ -360,6 +360,7 @@ class Subscription(pulumi.CustomResource):
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
+            __props__.__dict__["topic_message_retention_duration"] = None
         super(Subscription, __self__).__init__(
             'google-native:pubsub/v1:Subscription',
             resource_name,
@@ -395,6 +396,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["retain_acked_messages"] = None
         __props__.__dict__["retry_policy"] = None
         __props__.__dict__["topic"] = None
+        __props__.__dict__["topic_message_retention_duration"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -500,4 +502,12 @@ class Subscription(pulumi.CustomResource):
         The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         """
         return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="topicMessageRetentionDuration")
+    def topic_message_retention_duration(self) -> pulumi.Output[str]:
+        """
+        Indicates the minimum duration for which a message is retained after it is published to the subscription's topic. If this field is set, messages published to the subscription's topic in the last `topic_message_retention_duration` are always available to subscribers. See the `message_retention_duration` field in `Topic`. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        """
+        return pulumi.get(self, "topic_message_retention_duration")
 

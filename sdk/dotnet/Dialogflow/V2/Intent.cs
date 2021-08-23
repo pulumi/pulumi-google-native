@@ -223,18 +223,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             set => _events = value;
         }
 
-        [Input("followupIntentInfo")]
-        private InputList<Inputs.GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs>? _followupIntentInfo;
-
-        /// <summary>
-        /// Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs> FollowupIntentInfo
-        {
-            get => _followupIntentInfo ?? (_followupIntentInfo = new InputList<Inputs.GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs>());
-            set => _followupIntentInfo = value;
-        }
-
         [Input("inputContextNames")]
         private InputList<string>? _inputContextNames;
 
@@ -336,12 +324,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         [Input("resetContexts")]
         public Input<bool>? ResetContexts { get; set; }
-
-        /// <summary>
-        /// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
-        /// </summary>
-        [Input("rootFollowupIntentName")]
-        public Input<string>? RootFollowupIntentName { get; set; }
 
         [Input("trainingPhrases")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentTrainingPhraseArgs>? _trainingPhrases;

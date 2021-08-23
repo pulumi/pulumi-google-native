@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string FieldDelimiter;
         /// <summary>
+        /// [Optional] An custom string that will represent a NULL value in CSV import data.
+        /// </summary>
+        public readonly string NullMarker;
+        /// <summary>
         /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         /// </summary>
         public readonly string Quote;
@@ -48,6 +52,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string fieldDelimiter,
 
+            string nullMarker,
+
             string quote,
 
             string skipLeadingRows)
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             AllowQuotedNewlines = allowQuotedNewlines;
             Encoding = encoding;
             FieldDelimiter = fieldDelimiter;
+            NullMarker = nullMarker;
             Quote = quote;
             SkipLeadingRows = skipLeadingRows;
         }

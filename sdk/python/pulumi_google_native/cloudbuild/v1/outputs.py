@@ -11,13 +11,18 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'ApprovalConfigResponse',
+    'ApprovalResultResponse',
     'ArtifactObjectsResponse',
     'ArtifactsResponse',
+    'BuildApprovalResponse',
     'BuildOptionsResponse',
     'BuildResponse',
     'BuildStepResponse',
     'BuiltImageResponse',
     'FailureInfoResponse',
+    'GitFileSourceResponse',
+    'GitHubEnterpriseSecretsResponse',
     'GitHubEventsConfigResponse',
     'GitRepoSourceResponse',
     'InlineSecretResponse',
@@ -42,6 +47,130 @@ __all__ = [
     'WebhookConfigResponse',
     'WorkerConfigResponse',
 ]
+
+@pulumi.output_type
+class ApprovalConfigResponse(dict):
+    """
+    ApprovalConfig describes configuration for manual approval of a build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalRequired":
+            suggest = "approval_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApprovalConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApprovalConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApprovalConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_required: bool):
+        """
+        ApprovalConfig describes configuration for manual approval of a build.
+        :param bool approval_required: Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+        """
+        pulumi.set(__self__, "approval_required", approval_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> bool:
+        """
+        Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
+        """
+        return pulumi.get(self, "approval_required")
+
+
+@pulumi.output_type
+class ApprovalResultResponse(dict):
+    """
+    ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalTime":
+            suggest = "approval_time"
+        elif key == "approverAccount":
+            suggest = "approver_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApprovalResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApprovalResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApprovalResultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_time: str,
+                 approver_account: str,
+                 comment: str,
+                 decision: str,
+                 url: str):
+        """
+        ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+        :param str approval_time: The time when the approval decision was made.
+        :param str approver_account: Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+        :param str comment: Optional. An optional comment for this manual approval result.
+        :param str decision: The decision of this manual approval.
+        :param str url: Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+        """
+        pulumi.set(__self__, "approval_time", approval_time)
+        pulumi.set(__self__, "approver_account", approver_account)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "decision", decision)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="approvalTime")
+    def approval_time(self) -> str:
+        """
+        The time when the approval decision was made.
+        """
+        return pulumi.get(self, "approval_time")
+
+    @property
+    @pulumi.getter(name="approverAccount")
+    def approver_account(self) -> str:
+        """
+        Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
+        """
+        return pulumi.get(self, "approver_account")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        """
+        Optional. An optional comment for this manual approval result.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def decision(self) -> str:
+        """
+        The decision of this manual approval.
+        """
+        return pulumi.get(self, "decision")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
+        """
+        return pulumi.get(self, "url")
+
 
 @pulumi.output_type
 class ArtifactObjectsResponse(dict):
@@ -118,6 +247,50 @@ class ArtifactsResponse(dict):
         A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         """
         return pulumi.get(self, "objects")
+
+
+@pulumi.output_type
+class BuildApprovalResponse(dict):
+    """
+    BuildApproval describes a build's approval configuration, state, and result.
+    """
+    def __init__(__self__, *,
+                 config: 'outputs.ApprovalConfigResponse',
+                 result: 'outputs.ApprovalResultResponse',
+                 state: str):
+        """
+        BuildApproval describes a build's approval configuration, state, and result.
+        :param 'ApprovalConfigResponse' config: Configuration for manual approval of this build.
+        :param 'ApprovalResultResponse' result: Result of manual approval for this Build.
+        :param str state: The state of this build's approval.
+        """
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "result", result)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def config(self) -> 'outputs.ApprovalConfigResponse':
+        """
+        Configuration for manual approval of this build.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def result(self) -> 'outputs.ApprovalResultResponse':
+        """
+        Result of manual approval for this Build.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of this build's approval.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -310,7 +483,7 @@ class BuildOptionsResponse(dict):
 @pulumi.output_type
 class BuildResponse(dict):
     """
-    A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+    A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -352,6 +525,7 @@ class BuildResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 approval: 'outputs.BuildApprovalResponse',
                  artifacts: 'outputs.ArtifactsResponse',
                  available_secrets: 'outputs.SecretsResponse',
                  build_trigger_id: str,
@@ -380,7 +554,8 @@ class BuildResponse(dict):
                  timing: Mapping[str, str],
                  warnings: Sequence['outputs.WarningResponse']):
         """
-        A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+        A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+        :param 'BuildApprovalResponse' approval: Describes this build's approval configuration, status, and result.
         :param 'ArtifactsResponse' artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param 'SecretsResponse' available_secrets: Secrets and secret environment variables.
         :param str build_trigger_id: The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
@@ -406,9 +581,10 @@ class BuildResponse(dict):
         :param Mapping[str, str] substitutions: Substitutions data for `Build` resource.
         :param Sequence[str] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param str timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
-        :param Mapping[str, str] timing: Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        :param Mapping[str, str] timing: Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         :param Sequence['WarningResponse'] warnings: Non-fatal problems encountered during the execution of the build.
         """
+        pulumi.set(__self__, "approval", approval)
         pulumi.set(__self__, "artifacts", artifacts)
         pulumi.set(__self__, "available_secrets", available_secrets)
         pulumi.set(__self__, "build_trigger_id", build_trigger_id)
@@ -436,6 +612,14 @@ class BuildResponse(dict):
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "timing", timing)
         pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter
+    def approval(self) -> 'outputs.BuildApprovalResponse':
+        """
+        Describes this build's approval configuration, status, and result.
+        """
+        return pulumi.get(self, "approval")
 
     @property
     @pulumi.getter
@@ -641,7 +825,7 @@ class BuildResponse(dict):
     @pulumi.getter
     def timing(self) -> Mapping[str, str]:
         """
-        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
 
@@ -687,6 +871,7 @@ class BuildStepResponse(dict):
                  env: Sequence[str],
                  name: str,
                  pull_timing: 'outputs.TimeSpanResponse',
+                 script: str,
                  secret_env: Sequence[str],
                  status: str,
                  timeout: str,
@@ -701,6 +886,7 @@ class BuildStepResponse(dict):
         :param Sequence[str] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param str name: The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         :param 'TimeSpanResponse' pull_timing: Stores timing information for pulling this build step's builder image only.
+        :param str script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         :param Sequence[str] secret_env: A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
         :param str status: Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
         :param str timeout: Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -714,6 +900,7 @@ class BuildStepResponse(dict):
         pulumi.set(__self__, "env", env)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pull_timing", pull_timing)
+        pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "secret_env", secret_env)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "timeout", timeout)
@@ -768,6 +955,14 @@ class BuildStepResponse(dict):
         Stores timing information for pulling this build step's builder image only.
         """
         return pulumi.get(self, "pull_timing")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        """
+        A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+        """
+        return pulumi.get(self, "script")
 
     @property
     @pulumi.getter(name="secretEnv")
@@ -913,14 +1108,218 @@ class FailureInfoResponse(dict):
 
 
 @pulumi.output_type
-class GitHubEventsConfigResponse(dict):
+class GitFileSourceResponse(dict):
     """
-    GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+    GitFileSource describes a file within a (possibly remote) code repository.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "installationId":
+        if key == "repoType":
+            suggest = "repo_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitFileSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitFileSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitFileSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 repo_type: str,
+                 revision: str,
+                 uri: str):
+        """
+        GitFileSource describes a file within a (possibly remote) code repository.
+        :param str path: The path of the file, with the repo root as the root of the path.
+        :param str repo_type: See RepoType above.
+        :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        :param str uri: The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of the file, with the repo root as the root of the path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        """
+        See RepoType above.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        """
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        """
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GitHubEnterpriseSecretsResponse(dict):
+    """
+    GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauthClientIdName":
+            suggest = "oauth_client_id_name"
+        elif key == "oauthClientIdVersionName":
+            suggest = "oauth_client_id_version_name"
+        elif key == "oauthSecretName":
+            suggest = "oauth_secret_name"
+        elif key == "oauthSecretVersionName":
+            suggest = "oauth_secret_version_name"
+        elif key == "privateKeyName":
+            suggest = "private_key_name"
+        elif key == "privateKeyVersionName":
+            suggest = "private_key_version_name"
+        elif key == "webhookSecretName":
+            suggest = "webhook_secret_name"
+        elif key == "webhookSecretVersionName":
+            suggest = "webhook_secret_version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitHubEnterpriseSecretsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitHubEnterpriseSecretsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitHubEnterpriseSecretsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth_client_id_name: str,
+                 oauth_client_id_version_name: str,
+                 oauth_secret_name: str,
+                 oauth_secret_version_name: str,
+                 private_key_name: str,
+                 private_key_version_name: str,
+                 webhook_secret_name: str,
+                 webhook_secret_version_name: str):
+        """
+        GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+        :param str oauth_client_id_name: The resource name for the OAuth client ID secret in Secret Manager.
+        :param str oauth_client_id_version_name: The resource name for the OAuth client ID secret version in Secret Manager.
+        :param str oauth_secret_name: The resource name for the OAuth secret in Secret Manager.
+        :param str oauth_secret_version_name: The resource name for the OAuth secret secret version in Secret Manager.
+        :param str private_key_name: The resource name for the private key secret.
+        :param str private_key_version_name: The resource name for the private key secret version.
+        :param str webhook_secret_name: The resource name for the webhook secret in Secret Manager.
+        :param str webhook_secret_version_name: The resource name for the webhook secret secret version in Secret Manager.
+        """
+        pulumi.set(__self__, "oauth_client_id_name", oauth_client_id_name)
+        pulumi.set(__self__, "oauth_client_id_version_name", oauth_client_id_version_name)
+        pulumi.set(__self__, "oauth_secret_name", oauth_secret_name)
+        pulumi.set(__self__, "oauth_secret_version_name", oauth_secret_version_name)
+        pulumi.set(__self__, "private_key_name", private_key_name)
+        pulumi.set(__self__, "private_key_version_name", private_key_version_name)
+        pulumi.set(__self__, "webhook_secret_name", webhook_secret_name)
+        pulumi.set(__self__, "webhook_secret_version_name", webhook_secret_version_name)
+
+    @property
+    @pulumi.getter(name="oauthClientIdName")
+    def oauth_client_id_name(self) -> str:
+        """
+        The resource name for the OAuth client ID secret in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_client_id_name")
+
+    @property
+    @pulumi.getter(name="oauthClientIdVersionName")
+    def oauth_client_id_version_name(self) -> str:
+        """
+        The resource name for the OAuth client ID secret version in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_client_id_version_name")
+
+    @property
+    @pulumi.getter(name="oauthSecretName")
+    def oauth_secret_name(self) -> str:
+        """
+        The resource name for the OAuth secret in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_secret_name")
+
+    @property
+    @pulumi.getter(name="oauthSecretVersionName")
+    def oauth_secret_version_name(self) -> str:
+        """
+        The resource name for the OAuth secret secret version in Secret Manager.
+        """
+        return pulumi.get(self, "oauth_secret_version_name")
+
+    @property
+    @pulumi.getter(name="privateKeyName")
+    def private_key_name(self) -> str:
+        """
+        The resource name for the private key secret.
+        """
+        return pulumi.get(self, "private_key_name")
+
+    @property
+    @pulumi.getter(name="privateKeyVersionName")
+    def private_key_version_name(self) -> str:
+        """
+        The resource name for the private key secret version.
+        """
+        return pulumi.get(self, "private_key_version_name")
+
+    @property
+    @pulumi.getter(name="webhookSecretName")
+    def webhook_secret_name(self) -> str:
+        """
+        The resource name for the webhook secret in Secret Manager.
+        """
+        return pulumi.get(self, "webhook_secret_name")
+
+    @property
+    @pulumi.getter(name="webhookSecretVersionName")
+    def webhook_secret_version_name(self) -> str:
+        """
+        The resource name for the webhook secret secret version in Secret Manager.
+        """
+        return pulumi.get(self, "webhook_secret_version_name")
+
+
+@pulumi.output_type
+class GitHubEventsConfigResponse(dict):
+    """
+    GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enterpriseConfigResourceName":
+            suggest = "enterprise_config_resource_name"
+        elif key == "installationId":
             suggest = "installation_id"
         elif key == "pullRequest":
             suggest = "pull_request"
@@ -937,24 +1336,35 @@ class GitHubEventsConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enterprise_config_resource_name: str,
                  installation_id: str,
                  name: str,
                  owner: str,
                  pull_request: 'outputs.PullRequestFilterResponse',
                  push: 'outputs.PushFilterResponse'):
         """
-        GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+        GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param str enterprise_config_resource_name: Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         :param str installation_id: The installationID that emits the GitHub event.
         :param str name: Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         :param str owner: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
         :param 'PullRequestFilterResponse' pull_request: filter to match changes in pull requests.
         :param 'PushFilterResponse' push: filter to match changes in refs like branches, tags.
         """
+        pulumi.set(__self__, "enterprise_config_resource_name", enterprise_config_resource_name)
         pulumi.set(__self__, "installation_id", installation_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "pull_request", pull_request)
         pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="enterpriseConfigResourceName")
+    def enterprise_config_resource_name(self) -> str:
+        """
+        Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        """
+        return pulumi.get(self, "enterprise_config_resource_name")
 
     @property
     @pulumi.getter(name="installationId")

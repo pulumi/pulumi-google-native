@@ -3934,7 +3934,7 @@ type JobCondition struct {
 	Severity *string `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status string `pulumi:"status"`
-	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type string `pulumi:"type"`
 }
 
@@ -3961,7 +3961,7 @@ type JobConditionArgs struct {
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4042,7 +4042,7 @@ func (o JobConditionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v JobCondition) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 func (o JobConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v JobCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4079,7 +4079,7 @@ type JobConditionResponse struct {
 	Severity string `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status string `pulumi:"status"`
-	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type string `pulumi:"type"`
 }
 
@@ -4106,7 +4106,7 @@ type JobConditionResponseArgs struct {
 	Severity pulumi.StringInput `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4187,7 +4187,7 @@ func (o JobConditionResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConditionResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 func (o JobConditionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConditionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8556,10 +8556,10 @@ func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type Volume struct {
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
-	// Volume's name.
+	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name   *string             `pulumi:"name"`
 	Secret *SecretVolumeSource `pulumi:"secret"`
 }
@@ -8575,10 +8575,10 @@ type VolumeInput interface {
 	ToVolumeOutputWithContext(context.Context) VolumeOutput
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type VolumeArgs struct {
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
-	// Volume's name.
+	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name   pulumi.StringPtrInput      `pulumi:"name"`
 	Secret SecretVolumeSourcePtrInput `pulumi:"secret"`
 }
@@ -8620,7 +8620,7 @@ func (i VolumeArray) ToVolumeArrayOutputWithContext(ctx context.Context) VolumeA
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeArrayOutput)
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type VolumeOutput struct{ *pulumi.OutputState }
 
 func (VolumeOutput) ElementType() reflect.Type {
@@ -8639,7 +8639,7 @@ func (o VolumeOutput) ConfigMap() ConfigMapVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *ConfigMapVolumeSource { return v.ConfigMap }).(ConfigMapVolumeSourcePtrOutput)
 }
 
-// Volume's name.
+// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 func (o VolumeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -8668,11 +8668,11 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 	}).(VolumeOutput)
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMount struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath *string `pulumi:"mountPath"`
-	// This must match the Name of a Volume.
+	// The name of the volume. There must be a corresponding Volume with the same name.
 	Name *string `pulumi:"name"`
 	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -8691,11 +8691,11 @@ type VolumeMountInput interface {
 	ToVolumeMountOutputWithContext(context.Context) VolumeMountOutput
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// This must match the Name of a Volume.
+	// The name of the volume. There must be a corresponding Volume with the same name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -8740,7 +8740,7 @@ func (i VolumeMountArray) ToVolumeMountArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountArrayOutput)
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountOutput) ElementType() reflect.Type {
@@ -8760,7 +8760,7 @@ func (o VolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// This must match the Name of a Volume.
+// The name of the volume. There must be a corresponding Volume with the same name.
 func (o VolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -8795,11 +8795,11 @@ func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
 	}).(VolumeMountOutput)
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponse struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath string `pulumi:"mountPath"`
-	// This must match the Name of a Volume.
+	// The name of the volume. There must be a corresponding Volume with the same name.
 	Name string `pulumi:"name"`
 	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -8818,11 +8818,11 @@ type VolumeMountResponseInput interface {
 	ToVolumeMountResponseOutputWithContext(context.Context) VolumeMountResponseOutput
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// This must match the Name of a Volume.
+	// The name of the volume. There must be a corresponding Volume with the same name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// (Optional) Only true is accepted. Defaults to true.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -8867,7 +8867,7 @@ func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseArrayOutput)
 }
 
-// Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.
+// VolumeMount describes a mounting of a Volume within a container.
 type VolumeMountResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeMountResponseOutput) ElementType() reflect.Type {
@@ -8887,7 +8887,7 @@ func (o VolumeMountResponseOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// This must match the Name of a Volume.
+// The name of the volume. There must be a corresponding Volume with the same name.
 func (o VolumeMountResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeMountResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8922,10 +8922,10 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 	}).(VolumeMountResponseOutput)
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type VolumeResponse struct {
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
-	// Volume's name.
+	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name   string                     `pulumi:"name"`
 	Secret SecretVolumeSourceResponse `pulumi:"secret"`
 }
@@ -8941,10 +8941,10 @@ type VolumeResponseInput interface {
 	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type VolumeResponseArgs struct {
 	ConfigMap ConfigMapVolumeSourceResponseInput `pulumi:"configMap"`
-	// Volume's name.
+	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name   pulumi.StringInput              `pulumi:"name"`
 	Secret SecretVolumeSourceResponseInput `pulumi:"secret"`
 }
@@ -8986,7 +8986,7 @@ func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
 }
 
-// Not supported by Cloud Run Volume represents a named volume in a container.
+// Volume represents a named volume in a container.
 type VolumeResponseOutput struct{ *pulumi.OutputState }
 
 func (VolumeResponseOutput) ElementType() reflect.Type {
@@ -9005,7 +9005,7 @@ func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
 }
 
-// Volume's name.
+// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
 }

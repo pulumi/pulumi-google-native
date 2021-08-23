@@ -179,6 +179,175 @@ func (in *cloudRunConfigLoadBalancerTypePtr) ToCloudRunConfigLoadBalancerTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(CloudRunConfigLoadBalancerTypePtrOutput)
 }
 
+// Defines autoscaling behaviour.
+type ClusterAutoscalingAutoscalingProfile string
+
+const (
+	// No change to autoscaling configuration.
+	ClusterAutoscalingAutoscalingProfileProfileUnspecified = ClusterAutoscalingAutoscalingProfile("PROFILE_UNSPECIFIED")
+	// Prioritize optimizing utilization of resources.
+	ClusterAutoscalingAutoscalingProfileOptimizeUtilization = ClusterAutoscalingAutoscalingProfile("OPTIMIZE_UTILIZATION")
+	// Use default (balanced) autoscaling configuration.
+	ClusterAutoscalingAutoscalingProfileBalanced = ClusterAutoscalingAutoscalingProfile("BALANCED")
+)
+
+func (ClusterAutoscalingAutoscalingProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingAutoscalingProfile)(nil)).Elem()
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToClusterAutoscalingAutoscalingProfileOutput() ClusterAutoscalingAutoscalingProfileOutput {
+	return pulumi.ToOutput(e).(ClusterAutoscalingAutoscalingProfileOutput)
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToClusterAutoscalingAutoscalingProfileOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterAutoscalingAutoscalingProfileOutput)
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToClusterAutoscalingAutoscalingProfilePtrOutput() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return e.ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(context.Background())
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return ClusterAutoscalingAutoscalingProfile(e).ToClusterAutoscalingAutoscalingProfileOutputWithContext(ctx).ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx)
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterAutoscalingAutoscalingProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterAutoscalingAutoscalingProfileOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingAutoscalingProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingAutoscalingProfile)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToClusterAutoscalingAutoscalingProfileOutput() ClusterAutoscalingAutoscalingProfileOutput {
+	return o
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToClusterAutoscalingAutoscalingProfileOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfileOutput {
+	return o
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToClusterAutoscalingAutoscalingProfilePtrOutput() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o.ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingAutoscalingProfile) *ClusterAutoscalingAutoscalingProfile {
+		return &v
+	}).(ClusterAutoscalingAutoscalingProfilePtrOutput)
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterAutoscalingAutoscalingProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingAutoscalingProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterAutoscalingAutoscalingProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterAutoscalingAutoscalingProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingAutoscalingProfilePtrOutput) ElementType() reflect.Type {
+	return clusterAutoscalingAutoscalingProfilePtrType
+}
+
+func (o ClusterAutoscalingAutoscalingProfilePtrOutput) ToClusterAutoscalingAutoscalingProfilePtrOutput() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingAutoscalingProfilePtrOutput) ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingAutoscalingProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingAutoscalingProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterAutoscalingAutoscalingProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterAutoscalingAutoscalingProfilePtrOutput) Elem() ClusterAutoscalingAutoscalingProfileOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingAutoscalingProfile) ClusterAutoscalingAutoscalingProfile {
+		var ret ClusterAutoscalingAutoscalingProfile
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ClusterAutoscalingAutoscalingProfileOutput)
+}
+
+// ClusterAutoscalingAutoscalingProfileInput is an input type that accepts ClusterAutoscalingAutoscalingProfileArgs and ClusterAutoscalingAutoscalingProfileOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingAutoscalingProfileInput` via:
+//
+//          ClusterAutoscalingAutoscalingProfileArgs{...}
+type ClusterAutoscalingAutoscalingProfileInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingAutoscalingProfileOutput() ClusterAutoscalingAutoscalingProfileOutput
+	ToClusterAutoscalingAutoscalingProfileOutputWithContext(context.Context) ClusterAutoscalingAutoscalingProfileOutput
+}
+
+var clusterAutoscalingAutoscalingProfilePtrType = reflect.TypeOf((**ClusterAutoscalingAutoscalingProfile)(nil)).Elem()
+
+type ClusterAutoscalingAutoscalingProfilePtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingAutoscalingProfilePtrOutput() ClusterAutoscalingAutoscalingProfilePtrOutput
+	ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(context.Context) ClusterAutoscalingAutoscalingProfilePtrOutput
+}
+
+type clusterAutoscalingAutoscalingProfilePtr string
+
+func ClusterAutoscalingAutoscalingProfilePtr(v string) ClusterAutoscalingAutoscalingProfilePtrInput {
+	return (*clusterAutoscalingAutoscalingProfilePtr)(&v)
+}
+
+func (*clusterAutoscalingAutoscalingProfilePtr) ElementType() reflect.Type {
+	return clusterAutoscalingAutoscalingProfilePtrType
+}
+
+func (in *clusterAutoscalingAutoscalingProfilePtr) ToClusterAutoscalingAutoscalingProfilePtrOutput() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return pulumi.ToOutput(in).(ClusterAutoscalingAutoscalingProfilePtrOutput)
+}
+
+func (in *clusterAutoscalingAutoscalingProfilePtr) ToClusterAutoscalingAutoscalingProfilePtrOutputWithContext(ctx context.Context) ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterAutoscalingAutoscalingProfilePtrOutput)
+}
+
 // The desired datapath provider for the cluster.
 type ClusterUpdateDesiredDatapathProvider string
 
@@ -686,6 +855,430 @@ func (in *databaseEncryptionStatePtr) ToDatabaseEncryptionStatePtrOutput() Datab
 
 func (in *databaseEncryptionStatePtr) ToDatabaseEncryptionStatePtrOutputWithContext(ctx context.Context) DatabaseEncryptionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEncryptionStatePtrOutput)
+}
+
+type LoggingComponentConfigEnableComponentsItem string
+
+const (
+	// Default value. This shouldn't be used.
+	LoggingComponentConfigEnableComponentsItemComponentUnspecified = LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED")
+	// system components
+	LoggingComponentConfigEnableComponentsItemSystemComponents = LoggingComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
+	// workloads
+	LoggingComponentConfigEnableComponentsItemWorkloads = LoggingComponentConfigEnableComponentsItem("WORKLOADS")
+)
+
+func (LoggingComponentConfigEnableComponentsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToLoggingComponentConfigEnableComponentsItemOutput() LoggingComponentConfigEnableComponentsItemOutput {
+	return pulumi.ToOutput(e).(LoggingComponentConfigEnableComponentsItemOutput)
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToLoggingComponentConfigEnableComponentsItemOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LoggingComponentConfigEnableComponentsItemOutput)
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToLoggingComponentConfigEnableComponentsItemPtrOutput() LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return e.ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return LoggingComponentConfigEnableComponentsItem(e).ToLoggingComponentConfigEnableComponentsItemOutputWithContext(ctx).ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx)
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingComponentConfigEnableComponentsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LoggingComponentConfigEnableComponentsItemOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigEnableComponentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToLoggingComponentConfigEnableComponentsItemOutput() LoggingComponentConfigEnableComponentsItemOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToLoggingComponentConfigEnableComponentsItemOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToLoggingComponentConfigEnableComponentsItemPtrOutput() LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return o.ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingComponentConfigEnableComponentsItem) *LoggingComponentConfigEnableComponentsItem {
+		return &v
+	}).(LoggingComponentConfigEnableComponentsItemPtrOutput)
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingComponentConfigEnableComponentsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigEnableComponentsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingComponentConfigEnableComponentsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingComponentConfigEnableComponentsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigEnableComponentsItemPtrOutput) ElementType() reflect.Type {
+	return loggingComponentConfigEnableComponentsItemPtrType
+}
+
+func (o LoggingComponentConfigEnableComponentsItemPtrOutput) ToLoggingComponentConfigEnableComponentsItemPtrOutput() LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemPtrOutput) ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LoggingComponentConfigEnableComponentsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LoggingComponentConfigEnableComponentsItemPtrOutput) Elem() LoggingComponentConfigEnableComponentsItemOutput {
+	return o.ApplyT(func(v *LoggingComponentConfigEnableComponentsItem) LoggingComponentConfigEnableComponentsItem {
+		var ret LoggingComponentConfigEnableComponentsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(LoggingComponentConfigEnableComponentsItemOutput)
+}
+
+// LoggingComponentConfigEnableComponentsItemInput is an input type that accepts LoggingComponentConfigEnableComponentsItemArgs and LoggingComponentConfigEnableComponentsItemOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigEnableComponentsItemInput` via:
+//
+//          LoggingComponentConfigEnableComponentsItemArgs{...}
+type LoggingComponentConfigEnableComponentsItemInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigEnableComponentsItemOutput() LoggingComponentConfigEnableComponentsItemOutput
+	ToLoggingComponentConfigEnableComponentsItemOutputWithContext(context.Context) LoggingComponentConfigEnableComponentsItemOutput
+}
+
+var loggingComponentConfigEnableComponentsItemPtrType = reflect.TypeOf((**LoggingComponentConfigEnableComponentsItem)(nil)).Elem()
+
+type LoggingComponentConfigEnableComponentsItemPtrInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigEnableComponentsItemPtrOutput() LoggingComponentConfigEnableComponentsItemPtrOutput
+	ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput
+}
+
+type loggingComponentConfigEnableComponentsItemPtr string
+
+func LoggingComponentConfigEnableComponentsItemPtr(v string) LoggingComponentConfigEnableComponentsItemPtrInput {
+	return (*loggingComponentConfigEnableComponentsItemPtr)(&v)
+}
+
+func (*loggingComponentConfigEnableComponentsItemPtr) ElementType() reflect.Type {
+	return loggingComponentConfigEnableComponentsItemPtrType
+}
+
+func (in *loggingComponentConfigEnableComponentsItemPtr) ToLoggingComponentConfigEnableComponentsItemPtrOutput() LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return pulumi.ToOutput(in).(LoggingComponentConfigEnableComponentsItemPtrOutput)
+}
+
+func (in *loggingComponentConfigEnableComponentsItemPtr) ToLoggingComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LoggingComponentConfigEnableComponentsItemPtrOutput)
+}
+
+// LoggingComponentConfigEnableComponentsItemArrayInput is an input type that accepts LoggingComponentConfigEnableComponentsItemArray and LoggingComponentConfigEnableComponentsItemArrayOutput values.
+// You can construct a concrete instance of `LoggingComponentConfigEnableComponentsItemArrayInput` via:
+//
+//          LoggingComponentConfigEnableComponentsItemArray{ LoggingComponentConfigEnableComponentsItemArgs{...} }
+type LoggingComponentConfigEnableComponentsItemArrayInput interface {
+	pulumi.Input
+
+	ToLoggingComponentConfigEnableComponentsItemArrayOutput() LoggingComponentConfigEnableComponentsItemArrayOutput
+	ToLoggingComponentConfigEnableComponentsItemArrayOutputWithContext(context.Context) LoggingComponentConfigEnableComponentsItemArrayOutput
+}
+
+type LoggingComponentConfigEnableComponentsItemArray []LoggingComponentConfigEnableComponentsItem
+
+func (LoggingComponentConfigEnableComponentsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (i LoggingComponentConfigEnableComponentsItemArray) ToLoggingComponentConfigEnableComponentsItemArrayOutput() LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return i.ToLoggingComponentConfigEnableComponentsItemArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingComponentConfigEnableComponentsItemArray) ToLoggingComponentConfigEnableComponentsItemArrayOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingComponentConfigEnableComponentsItemArrayOutput)
+}
+
+type LoggingComponentConfigEnableComponentsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingComponentConfigEnableComponentsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (o LoggingComponentConfigEnableComponentsItemArrayOutput) ToLoggingComponentConfigEnableComponentsItemArrayOutput() LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemArrayOutput) ToLoggingComponentConfigEnableComponentsItemArrayOutputWithContext(ctx context.Context) LoggingComponentConfigEnableComponentsItemArrayOutput {
+	return o
+}
+
+func (o LoggingComponentConfigEnableComponentsItemArrayOutput) Index(i pulumi.IntInput) LoggingComponentConfigEnableComponentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingComponentConfigEnableComponentsItemOutput {
+		return vs[0].([]LoggingComponentConfigEnableComponentsItem)[vs[1].(int)].ToLoggingComponentConfigEnableComponentsItemOutput()
+	}).(LoggingComponentConfigEnableComponentsItemOutput)
+}
+
+type MonitoringComponentConfigEnableComponentsItem string
+
+const (
+	// Default value. This shouldn't be used.
+	MonitoringComponentConfigEnableComponentsItemComponentUnspecified = MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED")
+	// system components
+	MonitoringComponentConfigEnableComponentsItemSystemComponents = MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
+)
+
+func (MonitoringComponentConfigEnableComponentsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToMonitoringComponentConfigEnableComponentsItemOutput() MonitoringComponentConfigEnableComponentsItemOutput {
+	return pulumi.ToOutput(e).(MonitoringComponentConfigEnableComponentsItemOutput)
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToMonitoringComponentConfigEnableComponentsItemOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MonitoringComponentConfigEnableComponentsItemOutput)
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToMonitoringComponentConfigEnableComponentsItemPtrOutput() MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return e.ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return MonitoringComponentConfigEnableComponentsItem(e).ToMonitoringComponentConfigEnableComponentsItemOutputWithContext(ctx).ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx)
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MonitoringComponentConfigEnableComponentsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MonitoringComponentConfigEnableComponentsItemOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigEnableComponentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToMonitoringComponentConfigEnableComponentsItemOutput() MonitoringComponentConfigEnableComponentsItemOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToMonitoringComponentConfigEnableComponentsItemOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToMonitoringComponentConfigEnableComponentsItemPtrOutput() MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return o.ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringComponentConfigEnableComponentsItem) *MonitoringComponentConfigEnableComponentsItem {
+		return &v
+	}).(MonitoringComponentConfigEnableComponentsItemPtrOutput)
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitoringComponentConfigEnableComponentsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MonitoringComponentConfigEnableComponentsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitoringComponentConfigEnableComponentsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigEnableComponentsItemPtrOutput) ElementType() reflect.Type {
+	return monitoringComponentConfigEnableComponentsItemPtrType
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) ToMonitoringComponentConfigEnableComponentsItemPtrOutput() MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MonitoringComponentConfigEnableComponentsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemPtrOutput) Elem() MonitoringComponentConfigEnableComponentsItemOutput {
+	return o.ApplyT(func(v *MonitoringComponentConfigEnableComponentsItem) MonitoringComponentConfigEnableComponentsItem {
+		var ret MonitoringComponentConfigEnableComponentsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MonitoringComponentConfigEnableComponentsItemOutput)
+}
+
+// MonitoringComponentConfigEnableComponentsItemInput is an input type that accepts MonitoringComponentConfigEnableComponentsItemArgs and MonitoringComponentConfigEnableComponentsItemOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigEnableComponentsItemInput` via:
+//
+//          MonitoringComponentConfigEnableComponentsItemArgs{...}
+type MonitoringComponentConfigEnableComponentsItemInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigEnableComponentsItemOutput() MonitoringComponentConfigEnableComponentsItemOutput
+	ToMonitoringComponentConfigEnableComponentsItemOutputWithContext(context.Context) MonitoringComponentConfigEnableComponentsItemOutput
+}
+
+var monitoringComponentConfigEnableComponentsItemPtrType = reflect.TypeOf((**MonitoringComponentConfigEnableComponentsItem)(nil)).Elem()
+
+type MonitoringComponentConfigEnableComponentsItemPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigEnableComponentsItemPtrOutput() MonitoringComponentConfigEnableComponentsItemPtrOutput
+	ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput
+}
+
+type monitoringComponentConfigEnableComponentsItemPtr string
+
+func MonitoringComponentConfigEnableComponentsItemPtr(v string) MonitoringComponentConfigEnableComponentsItemPtrInput {
+	return (*monitoringComponentConfigEnableComponentsItemPtr)(&v)
+}
+
+func (*monitoringComponentConfigEnableComponentsItemPtr) ElementType() reflect.Type {
+	return monitoringComponentConfigEnableComponentsItemPtrType
+}
+
+func (in *monitoringComponentConfigEnableComponentsItemPtr) ToMonitoringComponentConfigEnableComponentsItemPtrOutput() MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return pulumi.ToOutput(in).(MonitoringComponentConfigEnableComponentsItemPtrOutput)
+}
+
+func (in *monitoringComponentConfigEnableComponentsItemPtr) ToMonitoringComponentConfigEnableComponentsItemPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MonitoringComponentConfigEnableComponentsItemPtrOutput)
+}
+
+// MonitoringComponentConfigEnableComponentsItemArrayInput is an input type that accepts MonitoringComponentConfigEnableComponentsItemArray and MonitoringComponentConfigEnableComponentsItemArrayOutput values.
+// You can construct a concrete instance of `MonitoringComponentConfigEnableComponentsItemArrayInput` via:
+//
+//          MonitoringComponentConfigEnableComponentsItemArray{ MonitoringComponentConfigEnableComponentsItemArgs{...} }
+type MonitoringComponentConfigEnableComponentsItemArrayInput interface {
+	pulumi.Input
+
+	ToMonitoringComponentConfigEnableComponentsItemArrayOutput() MonitoringComponentConfigEnableComponentsItemArrayOutput
+	ToMonitoringComponentConfigEnableComponentsItemArrayOutputWithContext(context.Context) MonitoringComponentConfigEnableComponentsItemArrayOutput
+}
+
+type MonitoringComponentConfigEnableComponentsItemArray []MonitoringComponentConfigEnableComponentsItem
+
+func (MonitoringComponentConfigEnableComponentsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoringComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (i MonitoringComponentConfigEnableComponentsItemArray) ToMonitoringComponentConfigEnableComponentsItemArrayOutput() MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return i.ToMonitoringComponentConfigEnableComponentsItemArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoringComponentConfigEnableComponentsItemArray) ToMonitoringComponentConfigEnableComponentsItemArrayOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringComponentConfigEnableComponentsItemArrayOutput)
+}
+
+type MonitoringComponentConfigEnableComponentsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoringComponentConfigEnableComponentsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoringComponentConfigEnableComponentsItem)(nil)).Elem()
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemArrayOutput) ToMonitoringComponentConfigEnableComponentsItemArrayOutput() MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemArrayOutput) ToMonitoringComponentConfigEnableComponentsItemArrayOutputWithContext(ctx context.Context) MonitoringComponentConfigEnableComponentsItemArrayOutput {
+	return o
+}
+
+func (o MonitoringComponentConfigEnableComponentsItemArrayOutput) Index(i pulumi.IntInput) MonitoringComponentConfigEnableComponentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoringComponentConfigEnableComponentsItemOutput {
+		return vs[0].([]MonitoringComponentConfigEnableComponentsItem)[vs[1].(int)].ToMonitoringComponentConfigEnableComponentsItemOutput()
+	}).(MonitoringComponentConfigEnableComponentsItemOutput)
 }
 
 // The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -2244,12 +2837,20 @@ func (in *workloadMetadataConfigModePtr) ToWorkloadMetadataConfigModePtrOutputWi
 func init() {
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypePtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingAutoscalingProfileOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingAutoscalingProfilePtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredDatapathProviderOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredDatapathProviderPtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStateOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStatePtrOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
+	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderOutput{})
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPrivateIpv6GoogleAccessOutput{})

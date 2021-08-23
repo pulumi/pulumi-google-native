@@ -64,6 +64,10 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly discovery!: pulumi.Output<outputs.containeranalysis.v1alpha1.DiscoveryResponse>;
     /**
+     * A note describing a dsse attestation note.
+     */
+    public readonly dsseAttestation!: pulumi.Output<outputs.containeranalysis.v1alpha1.DSSEAttestationNoteResponse>;
+    /**
      * Time of expiration for this note, null if note does not expire.
      */
     public readonly expirationTime!: pulumi.Output<string>;
@@ -88,9 +92,25 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly relatedUrl!: pulumi.Output<outputs.containeranalysis.v1alpha1.RelatedUrlResponse[]>;
     /**
+     * A note describing a software bill of materials.
+     */
+    public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1alpha1.DocumentNoteResponse>;
+    /**
      * A one sentence description of this `Note`.
      */
     public readonly shortDescription!: pulumi.Output<string>;
+    /**
+     * A note describing an SPDX File.
+     */
+    public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1alpha1.FileNoteResponse>;
+    /**
+     * A note describing an SPDX Package.
+     */
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageNoteResponse>;
+    /**
+     * A note describing a relationship between SPDX elements.
+     */
+    public readonly spdxRelationship!: pulumi.Output<outputs.containeranalysis.v1alpha1.RelationshipNoteResponse>;
     /**
      * The time this note was last updated. This field can be used as a filter in list requests.
      */
@@ -121,6 +141,7 @@ export class Note extends pulumi.CustomResource {
             inputs["compliance"] = args ? args.compliance : undefined;
             inputs["deployable"] = args ? args.deployable : undefined;
             inputs["discovery"] = args ? args.discovery : undefined;
+            inputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
             inputs["expirationTime"] = args ? args.expirationTime : undefined;
             inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -128,7 +149,11 @@ export class Note extends pulumi.CustomResource {
             inputs["package"] = args ? args.package : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
+            inputs["sbom"] = args ? args.sbom : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
+            inputs["spdxFile"] = args ? args.spdxFile : undefined;
+            inputs["spdxPackage"] = args ? args.spdxPackage : undefined;
+            inputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
             inputs["upgrade"] = args ? args.upgrade : undefined;
             inputs["vulnerabilityType"] = args ? args.vulnerabilityType : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -142,13 +167,18 @@ export class Note extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["deployable"] = undefined /*out*/;
             inputs["discovery"] = undefined /*out*/;
+            inputs["dsseAttestation"] = undefined /*out*/;
             inputs["expirationTime"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["longDescription"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["package"] = undefined /*out*/;
             inputs["relatedUrl"] = undefined /*out*/;
+            inputs["sbom"] = undefined /*out*/;
             inputs["shortDescription"] = undefined /*out*/;
+            inputs["spdxFile"] = undefined /*out*/;
+            inputs["spdxPackage"] = undefined /*out*/;
+            inputs["spdxRelationship"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["upgrade"] = undefined /*out*/;
             inputs["vulnerabilityType"] = undefined /*out*/;
@@ -189,6 +219,10 @@ export interface NoteArgs {
      */
     discovery?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveryArgs>;
     /**
+     * A note describing a dsse attestation note.
+     */
+    dsseAttestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.DSSEAttestationNoteArgs>;
+    /**
      * Time of expiration for this note, null if note does not expire.
      */
     expirationTime?: pulumi.Input<string>;
@@ -211,9 +245,25 @@ export interface NoteArgs {
      */
     relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1alpha1.RelatedUrlArgs>[]>;
     /**
+     * A note describing a software bill of materials.
+     */
+    sbom?: pulumi.Input<inputs.containeranalysis.v1alpha1.DocumentNoteArgs>;
+    /**
      * A one sentence description of this `Note`.
      */
     shortDescription?: pulumi.Input<string>;
+    /**
+     * A note describing an SPDX File.
+     */
+    spdxFile?: pulumi.Input<inputs.containeranalysis.v1alpha1.FileNoteArgs>;
+    /**
+     * A note describing an SPDX Package.
+     */
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageNoteArgs>;
+    /**
+     * A note describing a relationship between SPDX elements.
+     */
+    spdxRelationship?: pulumi.Input<inputs.containeranalysis.v1alpha1.RelationshipNoteArgs>;
     /**
      * A note describing an upgrade.
      */

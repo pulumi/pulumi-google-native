@@ -43,6 +43,14 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+     */
+    public readonly destroyScheduledDuration!: pulumi.Output<string>;
+    /**
+     * Immutable. Whether this key may contain imported versions only.
+     */
+    public readonly importOnly!: pulumi.Output<boolean>;
+    /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -89,6 +97,8 @@ export class CryptoKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyRingId'");
             }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            inputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
+            inputs["importOnly"] = args ? args.importOnly : undefined;
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -103,6 +113,8 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["primary"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
+            inputs["destroyScheduledDuration"] = undefined /*out*/;
+            inputs["importOnly"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["nextRotationTime"] = undefined /*out*/;
@@ -123,6 +135,14 @@ export class CryptoKey extends pulumi.CustomResource {
  */
 export interface CryptoKeyArgs {
     cryptoKeyId: pulumi.Input<string>;
+    /**
+     * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+     */
+    destroyScheduledDuration?: pulumi.Input<string>;
+    /**
+     * Immutable. Whether this key may contain imported versions only.
+     */
+    importOnly?: pulumi.Input<boolean>;
     keyRingId: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).

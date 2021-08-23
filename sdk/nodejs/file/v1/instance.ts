@@ -57,7 +57,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+     * The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

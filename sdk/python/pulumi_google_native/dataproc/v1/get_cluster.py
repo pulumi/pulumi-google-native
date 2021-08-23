@@ -63,7 +63,7 @@ class GetClusterResult:
     @pulumi.getter
     def config(self) -> 'outputs.ClusterConfigResponse':
         """
-        The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         """
         return pulumi.get(self, "config")
 

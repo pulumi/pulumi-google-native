@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Input("upgradeSettings")]

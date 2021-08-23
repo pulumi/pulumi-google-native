@@ -39,11 +39,11 @@ export interface GetBackupRunResult {
      */
     readonly description: string;
     /**
-     * Encryption configuration specific to a backup. Applies only to Second Generation instances.
+     * Encryption configuration specific to a backup.
      */
     readonly diskEncryptionConfiguration: outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse;
     /**
-     * Encryption status specific to a backup. Applies only to Second Generation instances.
+     * Encryption status specific to a backup.
      */
     readonly diskEncryptionStatus: outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse;
     /**

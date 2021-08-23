@@ -47,7 +47,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly currentActions: outputs.compute.alpha.InstanceGroupManagerActionsSummaryResponse;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource.
      */
     readonly description: string;
     /**
@@ -102,6 +102,10 @@ export interface GetInstanceGroupManagerResult {
      * The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
      */
     readonly serviceAccount: string;
+    /**
+     * Stanby policy for stopped and suspended instances.
+     */
+    readonly standbyPolicy: outputs.compute.alpha.InstanceGroupManagerStandbyPolicyResponse;
     /**
      * Stateful configuration for this Instanced Group Manager
      */

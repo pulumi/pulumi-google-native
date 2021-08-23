@@ -26,6 +26,11 @@ __all__ = [
     'PolicyAlternativeNameServerConfigResponse',
     'PolicyAlternativeNameServerConfigTargetNameServerResponse',
     'PolicyNetworkResponse',
+    'RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse',
+    'RRSetRoutingPolicyGeoPolicyResponse',
+    'RRSetRoutingPolicyResponse',
+    'RRSetRoutingPolicyWrrPolicyResponse',
+    'RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse',
     'ResourceRecordSetResponse',
     'ResponsePolicyGKEClusterResponse',
     'ResponsePolicyNetworkResponse',
@@ -761,6 +766,246 @@ class PolicyNetworkResponse(dict):
 
 
 @pulumi.output_type
+class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "signatureRrdatas":
+            suggest = "signature_rrdatas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kind: str,
+                 location: str,
+                 rrdatas: Sequence[str],
+                 signature_rrdatas: Sequence[str]):
+        """
+        :param str location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+        :param Sequence[str] signature_rrdatas: DNSSEC generated signatures for the above geo_rrdata.
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "rrdatas", rrdatas)
+        pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Sequence[str]:
+        return pulumi.get(self, "rrdatas")
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> Sequence[str]:
+        """
+        DNSSEC generated signatures for the above geo_rrdata.
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyGeoPolicyResponse(dict):
+    def __init__(__self__, *,
+                 failovers: Sequence['outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'],
+                 items: Sequence['outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'],
+                 kind: str):
+        """
+        :param Sequence['RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'] failovers: If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
+        :param Sequence['RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+        """
+        pulumi.set(__self__, "failovers", failovers)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def failovers(self) -> Sequence['outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse']:
+        """
+        If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
+        """
+        return pulumi.get(self, "failovers")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse']:
+        """
+        The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyResponse(dict):
+    """
+    A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "geoPolicy":
+            suggest = "geo_policy"
+        elif key == "wrrPolicy":
+            suggest = "wrr_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 geo: 'outputs.RRSetRoutingPolicyGeoPolicyResponse',
+                 geo_policy: 'outputs.RRSetRoutingPolicyGeoPolicyResponse',
+                 kind: str,
+                 wrr: 'outputs.RRSetRoutingPolicyWrrPolicyResponse',
+                 wrr_policy: 'outputs.RRSetRoutingPolicyWrrPolicyResponse'):
+        """
+        A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
+        """
+        pulumi.set(__self__, "geo", geo)
+        pulumi.set(__self__, "geo_policy", geo_policy)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "wrr", wrr)
+        pulumi.set(__self__, "wrr_policy", wrr_policy)
+
+    @property
+    @pulumi.getter
+    def geo(self) -> 'outputs.RRSetRoutingPolicyGeoPolicyResponse':
+        return pulumi.get(self, "geo")
+
+    @property
+    @pulumi.getter(name="geoPolicy")
+    def geo_policy(self) -> 'outputs.RRSetRoutingPolicyGeoPolicyResponse':
+        return pulumi.get(self, "geo_policy")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def wrr(self) -> 'outputs.RRSetRoutingPolicyWrrPolicyResponse':
+        return pulumi.get(self, "wrr")
+
+    @property
+    @pulumi.getter(name="wrrPolicy")
+    def wrr_policy(self) -> 'outputs.RRSetRoutingPolicyWrrPolicyResponse':
+        return pulumi.get(self, "wrr_policy")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyWrrPolicyResponse(dict):
+    def __init__(__self__, *,
+                 items: Sequence['outputs.RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse'],
+                 kind: str):
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse']:
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "signatureRrdatas":
+            suggest = "signature_rrdatas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kind: str,
+                 rrdatas: Sequence[str],
+                 signature_rrdatas: Sequence[str],
+                 weight: float):
+        """
+        :param Sequence[str] signature_rrdatas: DNSSEC generated signatures for the above wrr_rrdata.
+        :param float weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "rrdatas", rrdatas)
+        pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Sequence[str]:
+        return pulumi.get(self, "rrdatas")
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> Sequence[str]:
+        """
+        DNSSEC generated signatures for the above wrr_rrdata.
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        """
+        The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
 class ResourceRecordSetResponse(dict):
     """
     A unit of data that is returned by the DNS servers.
@@ -768,7 +1013,9 @@ class ResourceRecordSetResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "signatureRrdatas":
+        if key == "routingPolicy":
+            suggest = "routing_policy"
+        elif key == "signatureRrdatas":
             suggest = "signature_rrdatas"
 
         if suggest:
@@ -785,6 +1032,7 @@ class ResourceRecordSetResponse(dict):
     def __init__(__self__, *,
                  kind: str,
                  name: str,
+                 routing_policy: 'outputs.RRSetRoutingPolicyResponse',
                  rrdatas: Sequence[str],
                  signature_rrdatas: Sequence[str],
                  ttl: int,
@@ -792,6 +1040,7 @@ class ResourceRecordSetResponse(dict):
         """
         A unit of data that is returned by the DNS servers.
         :param str name: For example, www.example.com.
+        :param 'RRSetRoutingPolicyResponse' routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param Sequence[str] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param Sequence[str] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param int ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -799,6 +1048,7 @@ class ResourceRecordSetResponse(dict):
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "routing_policy", routing_policy)
         pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
         pulumi.set(__self__, "ttl", ttl)
@@ -816,6 +1066,14 @@ class ResourceRecordSetResponse(dict):
         For example, www.example.com.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="routingPolicy")
+    def routing_policy(self) -> 'outputs.RRSetRoutingPolicyResponse':
+        """
+        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+        """
+        return pulumi.get(self, "routing_policy")
 
     @property
     @pulumi.getter

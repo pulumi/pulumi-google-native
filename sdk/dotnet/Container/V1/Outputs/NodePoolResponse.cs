@@ -50,6 +50,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        public readonly Outputs.NodeNetworkConfigResponse NetworkConfig;
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         public readonly int PodIpv4CidrSize;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string name,
 
+            Outputs.NodeNetworkConfigResponse networkConfig,
+
             int podIpv4CidrSize,
 
             string selfLink,
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             Management = management;
             MaxPodsConstraint = maxPodsConstraint;
             Name = name;
+            NetworkConfig = networkConfig;
             PodIpv4CidrSize = podIpv4CidrSize;
             SelfLink = selfLink;
             Status = status;

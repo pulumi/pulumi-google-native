@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetBuildResult:
-    def __init__(__self__, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, failure_info=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
+    def __init__(__self__, approval=None, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, failure_info=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
+        if approval and not isinstance(approval, dict):
+            raise TypeError("Expected argument 'approval' to be a dict")
+        pulumi.set(__self__, "approval", approval)
         if artifacts and not isinstance(artifacts, dict):
             raise TypeError("Expected argument 'artifacts' to be a dict")
         pulumi.set(__self__, "artifacts", artifacts)
@@ -99,6 +102,14 @@ class GetBuildResult:
         if warnings and not isinstance(warnings, list):
             raise TypeError("Expected argument 'warnings' to be a list")
         pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter
+    def approval(self) -> 'outputs.BuildApprovalResponse':
+        """
+        Describes this build's approval configuration, status, and result.
+        """
+        return pulumi.get(self, "approval")
 
     @property
     @pulumi.getter
@@ -304,7 +315,7 @@ class GetBuildResult:
     @pulumi.getter
     def timing(self) -> Mapping[str, str]:
         """
-        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
 
@@ -323,6 +334,7 @@ class AwaitableGetBuildResult(GetBuildResult):
         if False:
             yield self
         return GetBuildResult(
+            approval=self.approval,
             artifacts=self.artifacts,
             available_secrets=self.available_secrets,
             build_trigger_id=self.build_trigger_id,
@@ -374,6 +386,7 @@ def get_build(build_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1:getBuild', __args__, opts=opts, typ=GetBuildResult).value
 
     return AwaitableGetBuildResult(
+        approval=__ret__.approval,
         artifacts=__ret__.artifacts,
         available_secrets=__ret__.available_secrets,
         build_trigger_id=__ret__.build_trigger_id,

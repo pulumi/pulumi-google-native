@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly Outputs.TimeSpanResponse PullTiming;
         /// <summary>
+        /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
+        /// </summary>
+        public readonly string Script;
+        /// <summary>
         /// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
         /// </summary>
         public readonly ImmutableArray<string> SecretEnv;
@@ -76,6 +80,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             Outputs.TimeSpanResponse pullTiming,
 
+            string script,
+
             ImmutableArray<string> secretEnv,
 
             string status,
@@ -94,6 +100,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Env = env;
             Name = name;
             PullTiming = pullTiming;
+            Script = script;
             SecretEnv = secretEnv;
             Status = status;
             Timeout = timeout;

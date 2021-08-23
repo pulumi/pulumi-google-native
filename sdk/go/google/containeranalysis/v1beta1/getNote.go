@@ -51,8 +51,16 @@ type LookupNoteResult struct {
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
+	// A note describing SPDX Document which represents SBOM.
+	Sbom DocumentNoteResponse `pulumi:"sbom"`
 	// A one sentence description of this note.
 	ShortDescription string `pulumi:"shortDescription"`
+	// A note describing SPDX File.
+	SpdxFile FileNoteResponse `pulumi:"spdxFile"`
+	// A note describing SPDX Package.
+	SpdxPackage PackageNoteResponse `pulumi:"spdxPackage"`
+	// A note describing SPDX Relationship.
+	SpdxRelationship RelationshipNoteResponse `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
 	UpdateTime string `pulumi:"updateTime"`
 	// A note describing a package vulnerability.

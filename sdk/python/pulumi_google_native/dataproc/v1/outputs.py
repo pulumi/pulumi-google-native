@@ -413,20 +413,20 @@ class ClusterConfigResponse(dict):
         """
         The cluster config.
         :param 'AutoscalingConfigResponse' autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        :param str config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        :param str config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for the cluster.
         :param 'EndpointConfigResponse' endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param 'GceClusterConfigResponse' gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
         :param 'GkeClusterConfigResponse' gke_cluster_config: Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
         :param Sequence['NodeInitializationActionResponse'] initialization_actions: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi 
         :param 'LifecycleConfigResponse' lifecycle_config: Optional. Lifecycle setting for the cluster.
-        :param 'InstanceGroupConfigResponse' master_config: Optional. The Compute Engine config settings for the master instance in a cluster.
+        :param 'InstanceGroupConfigResponse' master_config: Optional. The Compute Engine config settings for the cluster's master instance.
         :param 'MetastoreConfigResponse' metastore_config: Optional. Metastore configuration.
-        :param 'InstanceGroupConfigResponse' secondary_worker_config: Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'InstanceGroupConfigResponse' secondary_worker_config: Optional. The Compute Engine config settings for a cluster's secondary worker instances
         :param 'SecurityConfigResponse' security_config: Optional. Security settings for the cluster.
-        :param 'SoftwareConfigResponse' software_config: Optional. The config settings for software inside the cluster.
-        :param str temp_bucket: Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
-        :param 'InstanceGroupConfigResponse' worker_config: Optional. The Compute Engine config settings for worker instances in a cluster.
+        :param 'SoftwareConfigResponse' software_config: Optional. The config settings for cluster software.
+        :param str temp_bucket: Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param 'InstanceGroupConfigResponse' worker_config: Optional. The Compute Engine config settings for the cluster's worker instances.
         """
         pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         pulumi.set(__self__, "config_bucket", config_bucket)
@@ -456,7 +456,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="configBucket")
     def config_bucket(self) -> str:
         """
-        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "config_bucket")
 
@@ -512,7 +512,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="masterConfig")
     def master_config(self) -> 'outputs.InstanceGroupConfigResponse':
         """
-        Optional. The Compute Engine config settings for the master instance in a cluster.
+        Optional. The Compute Engine config settings for the cluster's master instance.
         """
         return pulumi.get(self, "master_config")
 
@@ -528,7 +528,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="secondaryWorkerConfig")
     def secondary_worker_config(self) -> 'outputs.InstanceGroupConfigResponse':
         """
-        Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        Optional. The Compute Engine config settings for a cluster's secondary worker instances
         """
         return pulumi.get(self, "secondary_worker_config")
 
@@ -544,7 +544,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="softwareConfig")
     def software_config(self) -> 'outputs.SoftwareConfigResponse':
         """
-        Optional. The config settings for software inside the cluster.
+        Optional. The config settings for cluster software.
         """
         return pulumi.get(self, "software_config")
 
@@ -552,7 +552,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="tempBucket")
     def temp_bucket(self) -> str:
         """
-        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "temp_bucket")
 
@@ -560,7 +560,7 @@ class ClusterConfigResponse(dict):
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> 'outputs.InstanceGroupConfigResponse':
         """
-        Optional. The Compute Engine config settings for worker instances in a cluster.
+        Optional. The Compute Engine config settings for the cluster's worker instances.
         """
         return pulumi.get(self, "worker_config")
 
@@ -1183,7 +1183,7 @@ class GceClusterConfigResponse(dict):
 @pulumi.output_type
 class GkeClusterConfigResponse(dict):
     """
-    The GKE config for this cluster.
+    The cluster's GKE config.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1205,7 +1205,7 @@ class GkeClusterConfigResponse(dict):
     def __init__(__self__, *,
                  namespaced_gke_deployment_target: 'outputs.NamespacedGkeDeploymentTargetResponse'):
         """
-        The GKE config for this cluster.
+        The cluster's GKE config.
         :param 'NamespacedGkeDeploymentTargetResponse' namespaced_gke_deployment_target: Optional. A target for the deployment.
         """
         pulumi.set(__self__, "namespaced_gke_deployment_target", namespaced_gke_deployment_target)

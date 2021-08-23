@@ -8925,7 +8925,7 @@ func (o SubjectResponseArrayOutput) Index(i pulumi.IntInput) SubjectResponseOutp
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfig struct {
-	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChain `pulumi:"pemIssuerChain"`
@@ -8944,7 +8944,7 @@ type SubordinateConfigInput interface {
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigArgs struct {
-	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
 	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainInput `pulumi:"pemIssuerChain"`
@@ -9028,7 +9028,7 @@ func (o SubordinateConfigOutput) ToSubordinateConfigPtrOutputWithContext(ctx con
 	}).(SubordinateConfigPtrOutput)
 }
 
-// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v SubordinateConfig) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
@@ -9056,7 +9056,7 @@ func (o SubordinateConfigPtrOutput) Elem() SubordinateConfigOutput {
 	return o.ApplyT(func(v *SubordinateConfig) SubordinateConfig { return *v }).(SubordinateConfigOutput)
 }
 
-// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigPtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubordinateConfig) *string {
 		if v == nil {
@@ -9346,7 +9346,7 @@ func (o SubordinateConfigChainResponsePtrOutput) PemCertificates() pulumi.String
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigResponse struct {
-	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainResponse `pulumi:"pemIssuerChain"`
@@ -9365,7 +9365,7 @@ type SubordinateConfigResponseInput interface {
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigResponseArgs struct {
-	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
 	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainResponseInput `pulumi:"pemIssuerChain"`
@@ -9449,7 +9449,7 @@ func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutputWit
 	}).(SubordinateConfigResponsePtrOutput)
 }
 
-// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigResponseOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v SubordinateConfigResponse) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
@@ -9477,7 +9477,7 @@ func (o SubordinateConfigResponsePtrOutput) Elem() SubordinateConfigResponseOutp
 	return o.ApplyT(func(v *SubordinateConfigResponse) SubordinateConfigResponse { return *v }).(SubordinateConfigResponseOutput)
 }
 
-// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigResponsePtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubordinateConfigResponse) *string {
 		if v == nil {

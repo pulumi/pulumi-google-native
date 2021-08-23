@@ -48,11 +48,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        /// Encryption configuration specific to a backup.
         /// </summary>
         public readonly Outputs.DiskEncryptionConfigurationResponse DiskEncryptionConfiguration;
         /// <summary>
-        /// Encryption status specific to a backup. Applies only to Second Generation instances.
+        /// Encryption status specific to a backup.
         /// </summary>
         public readonly Outputs.DiskEncryptionStatusResponse DiskEncryptionStatus;
         /// <summary>

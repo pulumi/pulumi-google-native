@@ -293,6 +293,26 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// This represents a compliance check that can be applied to a resource.
         /// </summary>
         public static DiscoveryAnalysisKind Compliance { get; } = new DiscoveryAnalysisKind("COMPLIANCE");
+        /// <summary>
+        /// This represents a software bill of materials.
+        /// </summary>
+        public static DiscoveryAnalysisKind Sbom { get; } = new DiscoveryAnalysisKind("SBOM");
+        /// <summary>
+        /// This represents an SPDX Package.
+        /// </summary>
+        public static DiscoveryAnalysisKind SpdxPackage { get; } = new DiscoveryAnalysisKind("SPDX_PACKAGE");
+        /// <summary>
+        /// This represents an SPDX File.
+        /// </summary>
+        public static DiscoveryAnalysisKind SpdxFile { get; } = new DiscoveryAnalysisKind("SPDX_FILE");
+        /// <summary>
+        /// This represents an SPDX Relationship.
+        /// </summary>
+        public static DiscoveryAnalysisKind SpdxRelationship { get; } = new DiscoveryAnalysisKind("SPDX_RELATIONSHIP");
+        /// <summary>
+        /// This represents a DSSE attestation Note
+        /// </summary>
+        public static DiscoveryAnalysisKind DsseAttestation { get; } = new DiscoveryAnalysisKind("DSSE_ATTESTATION");
 
         public static bool operator ==(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => left.Equals(right);
         public static bool operator !=(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => !left.Equals(right);
@@ -343,6 +363,132 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DistributionArchitecture other && Equals(other);
         public bool Equals(DistributionArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+    /// </summary>
+    [EnumType]
+    public readonly struct ExternalRefCategory : IEquatable<ExternalRefCategory>
+    {
+        private readonly string _value;
+
+        private ExternalRefCategory(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        public static ExternalRefCategory CategoryUnspecified { get; } = new ExternalRefCategory("CATEGORY_UNSPECIFIED");
+        /// <summary>
+        /// Security (e.g. cpe22Type, cpe23Type)
+        /// </summary>
+        public static ExternalRefCategory Security { get; } = new ExternalRefCategory("SECURITY");
+        /// <summary>
+        /// Package Manager (e.g. maven-central, npm, nuget, bower, purl)
+        /// </summary>
+        public static ExternalRefCategory PackageManager { get; } = new ExternalRefCategory("PACKAGE_MANAGER");
+        /// <summary>
+        /// Persistent-Id (e.g. swh)
+        /// </summary>
+        public static ExternalRefCategory PersistentId { get; } = new ExternalRefCategory("PERSISTENT_ID");
+        /// <summary>
+        /// Other
+        /// </summary>
+        public static ExternalRefCategory Other { get; } = new ExternalRefCategory("OTHER");
+
+        public static bool operator ==(ExternalRefCategory left, ExternalRefCategory right) => left.Equals(right);
+        public static bool operator !=(ExternalRefCategory left, ExternalRefCategory right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalRefCategory value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalRefCategory other && Equals(other);
+        public bool Equals(ExternalRefCategory other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// This field provides information about the type of file identified
+    /// </summary>
+    [EnumType]
+    public readonly struct FileNoteFileType : IEquatable<FileNoteFileType>
+    {
+        private readonly string _value;
+
+        private FileNoteFileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        public static FileNoteFileType FileTypeUnspecified { get; } = new FileNoteFileType("FILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The file is human readable source code (.c, .html, etc.)
+        /// </summary>
+        public static FileNoteFileType Source { get; } = new FileNoteFileType("SOURCE");
+        /// <summary>
+        /// The file is a compiled object, target image or binary executable (.o, .a, etc.)
+        /// </summary>
+        public static FileNoteFileType Binary { get; } = new FileNoteFileType("BINARY");
+        /// <summary>
+        /// The file represents an archive (.tar, .jar, etc.)
+        /// </summary>
+        public static FileNoteFileType Archive { get; } = new FileNoteFileType("ARCHIVE");
+        /// <summary>
+        /// The file is associated with a specific application type (MIME type of application/*)
+        /// </summary>
+        public static FileNoteFileType Application { get; } = new FileNoteFileType("APPLICATION");
+        /// <summary>
+        /// The file is associated with an audio file (MIME type of audio/* , e.g. .mp3)
+        /// </summary>
+        public static FileNoteFileType Audio { get; } = new FileNoteFileType("AUDIO");
+        /// <summary>
+        /// The file is associated with an picture image file (MIME type of image/*, e.g., .jpg, .gif)
+        /// </summary>
+        public static FileNoteFileType Image { get; } = new FileNoteFileType("IMAGE");
+        /// <summary>
+        /// The file is human readable text file (MIME type of text/*)
+        /// </summary>
+        public static FileNoteFileType Text { get; } = new FileNoteFileType("TEXT");
+        /// <summary>
+        /// The file is associated with a video file type (MIME type of video/*)
+        /// </summary>
+        public static FileNoteFileType Video { get; } = new FileNoteFileType("VIDEO");
+        /// <summary>
+        /// The file serves as documentation
+        /// </summary>
+        public static FileNoteFileType Documentation { get; } = new FileNoteFileType("DOCUMENTATION");
+        /// <summary>
+        /// The file is an SPDX document
+        /// </summary>
+        public static FileNoteFileType Spdx { get; } = new FileNoteFileType("SPDX");
+        /// <summary>
+        /// The file doesn't fit into the above categories (generated artifacts, data files, etc.)
+        /// </summary>
+        public static FileNoteFileType Other { get; } = new FileNoteFileType("OTHER");
+
+        public static bool operator ==(FileNoteFileType left, FileNoteFileType right) => left.Equals(right);
+        public static bool operator !=(FileNoteFileType left, FileNoteFileType right) => !left.Equals(right);
+
+        public static explicit operator string(FileNoteFileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FileNoteFileType other && Equals(other);
+        public bool Equals(FileNoteFileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -563,6 +709,211 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PgpSignedAttestationContentType other && Equals(other);
         public bool Equals(PgpSignedAttestationContentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of relationship between the source and target SPDX elements
+    /// </summary>
+    [EnumType]
+    public readonly struct RelationshipOccurrenceType : IEquatable<RelationshipOccurrenceType>
+    {
+        private readonly string _value;
+
+        private RelationshipOccurrenceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        public static RelationshipOccurrenceType TypeUnspecified { get; } = new RelationshipOccurrenceType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
+        /// </summary>
+        public static RelationshipOccurrenceType Describes { get; } = new RelationshipOccurrenceType("DESCRIBES");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is described by SPDXREF-Document
+        /// </summary>
+        public static RelationshipOccurrenceType DescribedBy { get; } = new RelationshipOccurrenceType("DESCRIBED_BY");
+        /// <summary>
+        /// Is to be used when SPDXRef-A contains SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType Contains { get; } = new RelationshipOccurrenceType("CONTAINS");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is contained by SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType ContainedBy { get; } = new RelationshipOccurrenceType("CONTAINED_BY");
+        /// <summary>
+        /// Is to be used when SPDXRef-A depends on SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DependsOn { get; } = new RelationshipOccurrenceType("DEPENDS_ON");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DependencyOf { get; } = new RelationshipOccurrenceType("DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DependencyManifestOf { get; } = new RelationshipOccurrenceType("DEPENDENCY_MANIFEST_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a build dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType BuildDependencyOf { get; } = new RelationshipOccurrenceType("BUILD_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a development dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DevDependencyOf { get; } = new RelationshipOccurrenceType("DEV_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType OptionalDependencyOf { get; } = new RelationshipOccurrenceType("OPTIONAL_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType ProvidedDependencyOf { get; } = new RelationshipOccurrenceType("PROVIDED_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a test dependency of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType TestDependencyOf { get; } = new RelationshipOccurrenceType("TEST_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType RuntimeDependencyOf { get; } = new RelationshipOccurrenceType("RUNTIME_DEPENDENCY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is an example of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType ExampleOf { get; } = new RelationshipOccurrenceType("EXAMPLE_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A generates SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType Generates { get; } = new RelationshipOccurrenceType("GENERATES");
+        /// <summary>
+        /// Is to be used when SPDXRef-A was generated from SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType GeneratedFrom { get; } = new RelationshipOccurrenceType("GENERATED_FROM");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType AncestorOf { get; } = new RelationshipOccurrenceType("ANCESTOR_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DescendantOf { get; } = new RelationshipOccurrenceType("DESCENDANT_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType VariantOf { get; } = new RelationshipOccurrenceType("VARIANT_OF");
+        /// <summary>
+        /// Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed
+        /// </summary>
+        public static RelationshipOccurrenceType DistributionArtifact { get; } = new RelationshipOccurrenceType("DISTRIBUTION_ARTIFACT");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType PatchFor { get; } = new RelationshipOccurrenceType("PATCH_FOR");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType PatchApplied { get; } = new RelationshipOccurrenceType("PATCH_APPLIED");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType CopyOf { get; } = new RelationshipOccurrenceType("COPY_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a file that was added to SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType FileAdded { get; } = new RelationshipOccurrenceType("FILE_ADDED");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType FileDeleted { get; } = new RelationshipOccurrenceType("FILE_DELETED");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType FileModified { get; } = new RelationshipOccurrenceType("FILE_MODIFIED");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType ExpandedFromArchive { get; } = new RelationshipOccurrenceType("EXPANDED_FROM_ARCHIVE");
+        /// <summary>
+        /// Is to be used when SPDXRef-A dynamically links to SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DynamicLink { get; } = new RelationshipOccurrenceType("DYNAMIC_LINK");
+        /// <summary>
+        /// Is to be used when SPDXRef-A statically links to SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType StaticLink { get; } = new RelationshipOccurrenceType("STATIC_LINK");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a data file used in SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DataFileOf { get; } = new RelationshipOccurrenceType("DATA_FILE_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType TestCaseOf { get; } = new RelationshipOccurrenceType("TEST_CASE_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is used to build SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType BuildToolOf { get; } = new RelationshipOccurrenceType("BUILD_TOOL_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DevToolOf { get; } = new RelationshipOccurrenceType("DEV_TOOL_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is used for testing SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType TestOf { get; } = new RelationshipOccurrenceType("TEST_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType TestToolOf { get; } = new RelationshipOccurrenceType("TEST_TOOL_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A provides documentation of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType DocumentationOf { get; } = new RelationshipOccurrenceType("DOCUMENTATION_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is an optional component of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType OptionalComponentOf { get; } = new RelationshipOccurrenceType("OPTIONAL_COMPONENT_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a metafile of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType MetafileOf { get; } = new RelationshipOccurrenceType("METAFILE_OF");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType PackageOf { get; } = new RelationshipOccurrenceType("PACKAGE_OF");
+        /// <summary>
+        /// Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType Amends { get; } = new RelationshipOccurrenceType("AMENDS");
+        /// <summary>
+        /// Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType PrerequisiteFor { get; } = new RelationshipOccurrenceType("PREREQUISITE_FOR");
+        /// <summary>
+        /// Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B
+        /// </summary>
+        public static RelationshipOccurrenceType HasPrerequisite { get; } = new RelationshipOccurrenceType("HAS_PREREQUISITE");
+        /// <summary>
+        /// Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field
+        /// </summary>
+        public static RelationshipOccurrenceType Other { get; } = new RelationshipOccurrenceType("OTHER");
+
+        public static bool operator ==(RelationshipOccurrenceType left, RelationshipOccurrenceType right) => left.Equals(right);
+        public static bool operator !=(RelationshipOccurrenceType left, RelationshipOccurrenceType right) => !left.Equals(right);
+
+        public static explicit operator string(RelationshipOccurrenceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RelationshipOccurrenceType other && Equals(other);
+        public bool Equals(RelationshipOccurrenceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

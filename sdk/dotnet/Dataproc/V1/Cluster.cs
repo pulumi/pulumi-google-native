@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> ClusterUuid { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         [Output("config")]
         public Output<Outputs.ClusterConfigResponse> Config { get; private set; } = null!;
@@ -116,10 +116,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
-        [Input("config", required: true)]
-        public Input<Inputs.ClusterConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<Inputs.ClusterConfigArgs>? Config { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse> AdvancedSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         [Output("avatarUri")]
@@ -46,7 +52,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<bool> EnableSpellCorrection { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if stackdriver logging is enabled for the agent.
+        /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool> EnableStackdriverLogging { get; private set; } = null!;
@@ -133,6 +139,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class AgentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         /// </summary>
         [Input("avatarUri")]
@@ -163,7 +175,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<bool>? EnableSpellCorrection { get; set; }
 
         /// <summary>
-        /// Indicates if stackdriver logging is enabled for the agent.
+        /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }

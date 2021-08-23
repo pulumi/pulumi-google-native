@@ -70,10 +70,16 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public Output<string> NextRunTime { get; private set; } = null!;
 
         /// <summary>
-        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         /// </summary>
         [Output("notificationPubsubTopic")]
         public Output<string> NotificationPubsubTopic { get; private set; } = null!;
+
+        /// <summary>
+        /// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+        /// </summary>
+        [Output("ownerInfo")]
+        public Output<Outputs.UserInfoResponse> OwnerInfo { get; private set; } = null!;
 
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
@@ -199,7 +205,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         /// </summary>
         [Input("notificationPubsubTopic")]
         public Input<string>? NotificationPubsubTopic { get; set; }

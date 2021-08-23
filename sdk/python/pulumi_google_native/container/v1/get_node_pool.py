@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, pod_ipv4_cidr_size=None, self_link=None, status=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, pod_ipv4_cidr_size=None, self_link=None, status=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
@@ -45,6 +45,9 @@ class GetNodePoolResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_config and not isinstance(network_config, dict):
+            raise TypeError("Expected argument 'network_config' to be a dict")
+        pulumi.set(__self__, "network_config", network_config)
         if pod_ipv4_cidr_size and not isinstance(pod_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'pod_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
@@ -134,6 +137,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NodeNetworkConfigResponse':
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter(name="podIpv4CidrSize")
     def pod_ipv4_cidr_size(self) -> int:
         """
@@ -189,6 +200,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             management=self.management,
             max_pods_constraint=self.max_pods_constraint,
             name=self.name,
+            network_config=self.network_config,
             pod_ipv4_cidr_size=self.pod_ipv4_cidr_size,
             self_link=self.self_link,
             status=self.status,
@@ -225,6 +237,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         management=__ret__.management,
         max_pods_constraint=__ret__.max_pods_constraint,
         name=__ret__.name,
+        network_config=__ret__.network_config,
         pod_ipv4_cidr_size=__ret__.pod_ipv4_cidr_size,
         self_link=__ret__.self_link,
         status=__ret__.status,

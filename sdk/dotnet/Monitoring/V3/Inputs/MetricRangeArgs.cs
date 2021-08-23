@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
 {
 
     /// <summary>
-    /// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min &lt;= x &lt; range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+    /// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min &lt;= x &lt;= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
     /// </summary>
     public sealed class MetricRangeArgs : Pulumi.ResourceArgs
     {
