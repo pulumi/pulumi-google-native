@@ -1,0 +1,3 @@
+[submodule "declarative-resource-client-library"]
+	path = declarative-resource-client-library
+	url = git@github.com:GoogleCloudPlatform/declarative-resource-client-library.git
