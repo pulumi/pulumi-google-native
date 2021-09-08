@@ -12,7 +12,21 @@ WORKING_DIR     := $(shell pwd)
 
 VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}"
 
-ensure::
+init_submodules::
+	@for submodule in $$(git submodule status | awk {'print $$2'}); do \
+		if [ ! -f "$$submodule/.git" ]; then \
+			echo "Initializing submodule $$submodule" ; \
+			(cd $$submodule && git submodule update --init); \
+		fi; \
+	done
+
+update_submodules:: init_submodules
+	@for submodule in $$(git submodule status | awk {'print $$2'}); do \
+		echo "Updating submodule $$submodule" ; \
+		(cd $$submodule && git checkout main && git pull origin main); \
+	done
+
+ensure:: init_submodules
 	@echo "go mod download"; cd provider; go mod download
 
 local_generate::
