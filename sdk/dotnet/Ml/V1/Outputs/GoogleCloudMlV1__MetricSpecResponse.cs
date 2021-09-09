@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1__MetricSpecResponse
     {

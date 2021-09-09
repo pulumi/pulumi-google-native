@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// The content of an HL7v2 message in a structured format as specified by a schema.
+    /// </summary>
     [OutputType]
     public sealed class SchematizedDataResponse
     {

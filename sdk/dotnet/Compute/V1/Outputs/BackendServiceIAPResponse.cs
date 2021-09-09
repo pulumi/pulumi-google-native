@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Identity-Aware Proxy
+    /// </summary>
     [OutputType]
     public sealed class BackendServiceIAPResponse
     {

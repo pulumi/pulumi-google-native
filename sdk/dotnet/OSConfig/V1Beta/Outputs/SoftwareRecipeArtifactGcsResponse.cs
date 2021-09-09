@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies an artifact available as a Google Cloud Storage object.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeArtifactGcsResponse
     {

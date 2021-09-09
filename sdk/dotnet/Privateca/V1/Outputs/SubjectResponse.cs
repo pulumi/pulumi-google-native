@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
+    /// </summary>
     [OutputType]
     public sealed class SubjectResponse
     {

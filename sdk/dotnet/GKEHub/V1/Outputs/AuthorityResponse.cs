@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 {
 
+    /// <summary>
+    /// Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    /// </summary>
     [OutputType]
     public sealed class AuthorityResponse
     {

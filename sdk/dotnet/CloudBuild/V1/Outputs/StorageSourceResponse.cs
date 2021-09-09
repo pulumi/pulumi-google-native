@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Location of the source in an archive file in Google Cloud Storage.
+    /// </summary>
     [OutputType]
     public sealed class StorageSourceResponse
     {

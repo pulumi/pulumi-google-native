@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The set of all usage signals that we store in Data Catalog.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1beta1UsageSignalResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// matchRule criteria for request header matches.
+    /// </summary>
     [OutputType]
     public sealed class HttpHeaderMatchResponse
     {

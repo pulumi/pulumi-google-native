@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Specified snapshot properties for scheduled snapshots created by this policy.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse
     {

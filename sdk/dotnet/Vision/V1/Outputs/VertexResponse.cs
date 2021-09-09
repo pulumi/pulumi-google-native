@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Vision.V1.Outputs
 {
 
+    /// <summary>
+    /// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
+    /// </summary>
     [OutputType]
     public sealed class VertexResponse
     {

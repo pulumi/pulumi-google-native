@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Specifies the selection and config of software inside the cluster.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareConfigResponse
     {

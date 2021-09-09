@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Data type and value of a parameter.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1ValueResponse
     {

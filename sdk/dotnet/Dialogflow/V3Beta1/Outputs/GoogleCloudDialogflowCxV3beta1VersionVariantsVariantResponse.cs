@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// A single flow version with specified traffic allocation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse
     {

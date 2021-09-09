@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// Represents a Sql Server database on the Cloud SQL instance.
+    /// </summary>
     [OutputType]
     public sealed class SqlServerDatabaseDetailsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A custom error rule.
+    /// </summary>
     [OutputType]
     public sealed class CustomErrorRuleResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Encapsulates the metadata for basic sample series represented by a line chart
+    /// </summary>
     [OutputType]
     public sealed class BasicPerfSampleSeriesResponse
     {

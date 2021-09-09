@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
+    /// </summary>
     [OutputType]
     public sealed class IngressFromResponse
     {

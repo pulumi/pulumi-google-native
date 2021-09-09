@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the Kubernetes Dashboard.
+    /// </summary>
     [OutputType]
     public sealed class KubernetesDashboardResponse
     {

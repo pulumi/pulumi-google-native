@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// [Optional] The categories attached to this field, used for field-level access control.
+    /// </summary>
     [OutputType]
     public sealed class TableFieldSchemaCategoriesResponse
     {

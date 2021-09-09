@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Jobs.V4.Outputs
 {
 
+    /// <summary>
+    /// Options for job processing.
+    /// </summary>
     [OutputType]
     public sealed class ProcessingOptionsResponse
     {

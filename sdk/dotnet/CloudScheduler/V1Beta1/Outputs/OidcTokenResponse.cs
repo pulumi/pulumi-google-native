@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+    /// </summary>
     [OutputType]
     public sealed class OidcTokenResponse
     {

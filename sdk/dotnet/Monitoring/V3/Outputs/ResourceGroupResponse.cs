@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
+    /// </summary>
     [OutputType]
     public sealed class ResourceGroupResponse
     {

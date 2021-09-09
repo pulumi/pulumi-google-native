@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
+    /// </summary>
     [OutputType]
     public sealed class JobMetadataResponse
     {

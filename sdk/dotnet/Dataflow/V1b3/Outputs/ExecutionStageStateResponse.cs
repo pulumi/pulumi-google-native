@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// A message describing the state of a particular execution stage.
+    /// </summary>
     [OutputType]
     public sealed class ExecutionStageStateResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+    /// </summary>
     [OutputType]
     public sealed class MembershipEndpointResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1beta1SchemaResponse
     {

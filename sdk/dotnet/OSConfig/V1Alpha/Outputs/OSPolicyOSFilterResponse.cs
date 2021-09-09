@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Filtering criteria to select VMs based on OS details.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyOSFilterResponse
     {

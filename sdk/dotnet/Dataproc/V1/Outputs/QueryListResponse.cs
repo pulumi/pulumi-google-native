@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// A list of queries to run on a cluster.
+    /// </summary>
     [OutputType]
     public sealed class QueryListResponse
     {

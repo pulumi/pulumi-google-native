@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
+    /// </summary>
     [OutputType]
     public sealed class AutoprovisioningNodePoolDefaultsResponse
     {

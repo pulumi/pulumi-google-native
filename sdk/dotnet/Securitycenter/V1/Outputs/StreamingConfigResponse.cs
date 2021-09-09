@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Securitycenter.V1.Outputs
 {
 
+    /// <summary>
+    /// The config for streaming-based notifications, which send each event as soon as it is detected.
+    /// </summary>
     [OutputType]
     public sealed class StreamingConfigResponse
     {

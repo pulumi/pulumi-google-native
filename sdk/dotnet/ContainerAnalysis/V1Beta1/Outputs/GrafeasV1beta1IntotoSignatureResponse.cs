@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A signature object consists of the KeyID used and the signature itself.
+    /// </summary>
     [OutputType]
     public sealed class GrafeasV1beta1IntotoSignatureResponse
     {

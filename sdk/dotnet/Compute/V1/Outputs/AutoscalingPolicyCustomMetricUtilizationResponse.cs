@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Custom utilization metric policy.
+    /// </summary>
     [OutputType]
     public sealed class AutoscalingPolicyCustomMetricUtilizationResponse
     {

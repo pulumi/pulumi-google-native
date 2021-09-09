@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
+    /// </summary>
     [OutputType]
     public sealed class FailurePolicyResponse
     {

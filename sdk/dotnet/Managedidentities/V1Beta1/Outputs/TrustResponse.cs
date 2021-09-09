@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Managedidentities.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain.
+    /// </summary>
     [OutputType]
     public sealed class TrustResponse
     {

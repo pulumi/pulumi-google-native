@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.File.V1.Outputs
 {
 
+    /// <summary>
+    /// NFS export options specifications.
+    /// </summary>
     [OutputType]
     public sealed class NfsExportOptionsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Contains metadata about the user who performed an action, such as creating a release or finalizing a version.
+    /// </summary>
     [OutputType]
     public sealed class ActingUserResponse
     {

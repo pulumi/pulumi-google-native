@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
+    /// </summary>
     [OutputType]
     public sealed class RatioPartResponse
     {

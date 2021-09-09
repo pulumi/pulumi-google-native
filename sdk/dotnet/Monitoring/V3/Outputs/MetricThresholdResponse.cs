@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// A condition type that compares a collection of time series against a threshold.
+    /// </summary>
     [OutputType]
     public sealed class MetricThresholdResponse
     {

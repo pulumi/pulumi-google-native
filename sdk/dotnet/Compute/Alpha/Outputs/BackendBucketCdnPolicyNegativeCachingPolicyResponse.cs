@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Specify CDN TTLs for response error codes.
+    /// </summary>
     [OutputType]
     public sealed class BackendBucketCdnPolicyNegativeCachingPolicyResponse
     {

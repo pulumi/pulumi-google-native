@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Control over how the notification channels in notification_channels are notified when this alert fires.
+    /// </summary>
     [OutputType]
     public sealed class AlertStrategyResponse
     {

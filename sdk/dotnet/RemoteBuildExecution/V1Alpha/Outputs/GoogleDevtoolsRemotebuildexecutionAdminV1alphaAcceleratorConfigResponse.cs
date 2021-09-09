@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// AcceleratorConfig defines the accelerator cards to attach to the VM.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse
     {

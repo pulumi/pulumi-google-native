@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Options for enabling sharding.
+    /// </summary>
     [OutputType]
     public sealed class ShardingOptionResponse
     {

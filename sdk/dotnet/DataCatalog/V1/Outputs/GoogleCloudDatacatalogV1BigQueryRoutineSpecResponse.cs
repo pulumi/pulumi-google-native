@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Fields specific for BigQuery routines.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse
     {

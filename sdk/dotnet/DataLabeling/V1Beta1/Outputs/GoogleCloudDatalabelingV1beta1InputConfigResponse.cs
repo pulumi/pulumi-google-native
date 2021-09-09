@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The configuration of input data, including data type, location, etc.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1InputConfigResponse
     {

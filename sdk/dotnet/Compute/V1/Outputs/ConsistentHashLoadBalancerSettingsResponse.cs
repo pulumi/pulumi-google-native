@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// This message defines settings for a consistent hash style load balancer.
+    /// </summary>
     [OutputType]
     public sealed class ConsistentHashLoadBalancerSettingsResponse
     {

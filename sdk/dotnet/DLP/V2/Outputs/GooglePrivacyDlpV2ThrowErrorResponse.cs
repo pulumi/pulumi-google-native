@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Throw an error and fail the request when a transformation error occurs.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ThrowErrorResponse
     {

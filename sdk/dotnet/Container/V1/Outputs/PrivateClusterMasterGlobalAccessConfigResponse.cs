@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for controlling master global access settings.
+    /// </summary>
     [OutputType]
     public sealed class PrivateClusterMasterGlobalAccessConfigResponse
     {

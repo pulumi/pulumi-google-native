@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// A specification of the type and number of accelerator cards attached to the instance.
+    /// </summary>
     [OutputType]
     public sealed class AcceleratorConfigResponse
     {

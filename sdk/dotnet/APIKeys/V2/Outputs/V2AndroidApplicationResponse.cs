@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIKeys.V2.Outputs
 {
 
+    /// <summary>
+    /// Identifier of an Android application for key use.
+    /// </summary>
     [OutputType]
     public sealed class V2AndroidApplicationResponse
     {

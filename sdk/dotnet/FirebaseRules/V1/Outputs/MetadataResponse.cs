@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseRules.V1.Outputs
 {
 
+    /// <summary>
+    /// Metadata for a Ruleset.
+    /// </summary>
     [OutputType]
     public sealed class MetadataResponse
     {

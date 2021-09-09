@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// A type definition for some HL7v2 type (incl. Segments and Datatypes).
+    /// </summary>
     [OutputType]
     public sealed class TypeResponse
     {

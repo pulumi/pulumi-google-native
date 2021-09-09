@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+    /// </summary>
     [OutputType]
     public sealed class WorkloadCertificatesResponse
     {

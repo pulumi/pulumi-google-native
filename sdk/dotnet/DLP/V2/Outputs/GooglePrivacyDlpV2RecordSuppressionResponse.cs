@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Configuration to suppress records whose suppression conditions evaluate to true.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2RecordSuppressionResponse
     {

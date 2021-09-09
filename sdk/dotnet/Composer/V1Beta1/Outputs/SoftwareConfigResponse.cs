@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specifies the selection and configuration of software inside the environment.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareConfigResponse
     {

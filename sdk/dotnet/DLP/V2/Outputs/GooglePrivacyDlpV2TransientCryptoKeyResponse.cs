@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Use this to have a random data crypto key generated. It will be discarded after the request finishes.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2TransientCryptoKeyResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A iOS mobile test specification
+    /// </summary>
     [OutputType]
     public sealed class IosTestResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be selected and evaluated recursively.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseResponse
     {

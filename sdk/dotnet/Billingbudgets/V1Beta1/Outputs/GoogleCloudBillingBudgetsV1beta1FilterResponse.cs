@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A filter for a budget, limiting the scope of the cost to calculate.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudBillingBudgetsV1beta1FilterResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Details about files that caused a compliance check to fail.
+    /// </summary>
     [OutputType]
     public sealed class NonCompliantFileResponse
     {

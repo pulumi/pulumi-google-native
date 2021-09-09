@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A tuple of values for the quasi-identifier columns.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse
     {

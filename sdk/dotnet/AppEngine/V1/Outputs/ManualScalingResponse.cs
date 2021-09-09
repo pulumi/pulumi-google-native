@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+    /// </summary>
     [OutputType]
     public sealed class ManualScalingResponse
     {

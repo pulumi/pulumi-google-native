@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// InstanceTemplateSpec describes the data an instance should have when created from a template.
+    /// </summary>
     [OutputType]
     public sealed class InstanceTemplateSpecResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Define behaviors on logging.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse
     {

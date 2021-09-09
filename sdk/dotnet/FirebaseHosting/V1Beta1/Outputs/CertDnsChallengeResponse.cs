@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a DNS certificate challenge.
+    /// </summary>
     [OutputType]
     public sealed class CertDnsChallengeResponse
     {

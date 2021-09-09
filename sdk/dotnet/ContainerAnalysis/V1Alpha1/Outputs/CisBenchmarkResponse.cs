@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A compliance check that is a CIS benchmark.
+    /// </summary>
     [OutputType]
     public sealed class CisBenchmarkResponse
     {

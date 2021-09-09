@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2HotwordRuleResponse
     {

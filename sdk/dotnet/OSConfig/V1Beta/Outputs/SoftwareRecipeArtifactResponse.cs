@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies a resource to be used in the recipe.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeArtifactResponse
     {

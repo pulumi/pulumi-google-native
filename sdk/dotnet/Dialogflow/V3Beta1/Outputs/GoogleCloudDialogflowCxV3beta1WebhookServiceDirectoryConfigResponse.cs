@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
+    /// </summary>
     [OutputType]
     public sealed class CertificateConfigResponse
     {

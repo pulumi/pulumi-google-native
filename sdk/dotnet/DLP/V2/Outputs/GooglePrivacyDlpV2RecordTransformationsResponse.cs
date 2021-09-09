@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A type of transformation that is applied over structured data such as a table.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2RecordTransformationsResponse
     {

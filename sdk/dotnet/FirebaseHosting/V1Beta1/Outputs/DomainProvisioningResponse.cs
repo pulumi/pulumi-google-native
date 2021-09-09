@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The current certificate provisioning status information for a domain.
+    /// </summary>
     [OutputType]
     public sealed class DomainProvisioningResponse
     {

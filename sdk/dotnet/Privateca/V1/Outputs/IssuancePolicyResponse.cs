@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines controls over all certificate issuance within a CaPool.
+    /// </summary>
     [OutputType]
     public sealed class IssuancePolicyResponse
     {

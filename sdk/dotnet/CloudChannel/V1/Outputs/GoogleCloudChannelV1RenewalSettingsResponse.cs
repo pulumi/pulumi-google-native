@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Renewal settings for renewable Offers.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1RenewalSettingsResponse
     {

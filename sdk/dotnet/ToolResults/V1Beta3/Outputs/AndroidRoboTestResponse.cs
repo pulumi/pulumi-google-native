@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
+    /// </summary>
     [OutputType]
     public sealed class AndroidRoboTestResponse
     {

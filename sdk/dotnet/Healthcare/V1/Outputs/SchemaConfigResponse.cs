@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
+    /// </summary>
     [OutputType]
     public sealed class SchemaConfigResponse
     {

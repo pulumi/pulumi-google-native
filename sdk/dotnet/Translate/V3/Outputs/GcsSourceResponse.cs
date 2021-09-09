@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Translate.V3.Outputs
 {
 
+    /// <summary>
+    /// The Google Cloud Storage location for the input content.
+    /// </summary>
     [OutputType]
     public sealed class GcsSourceResponse
     {

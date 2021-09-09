@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Outputs
 {
 
+    /// <summary>
+    /// Scan schedule configuration.
+    /// </summary>
     [OutputType]
     public sealed class ScheduleResponse
     {

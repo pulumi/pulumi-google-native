@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Configuration of logging on a NAT.
+    /// </summary>
     [OutputType]
     public sealed class RouterNatLogConfigResponse
     {

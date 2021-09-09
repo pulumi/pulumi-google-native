@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies configuration information specific to running Hive metastore software as the metastore service.
+    /// </summary>
     [OutputType]
     public sealed class HiveMetastoreConfigResponse
     {

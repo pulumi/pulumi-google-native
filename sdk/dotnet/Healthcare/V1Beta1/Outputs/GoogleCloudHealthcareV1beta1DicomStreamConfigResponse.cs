@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// StreamConfig specifies configuration for a streaming DICOM export.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudHealthcareV1beta1DicomStreamConfigResponse
     {

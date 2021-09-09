@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A chart axis.
+    /// </summary>
     [OutputType]
     public sealed class AxisResponse
     {

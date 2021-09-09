@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+    /// </summary>
     [OutputType]
     public sealed class IapTestServiceAccountInfoResponse
     {

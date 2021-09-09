@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2CharsToIgnoreResponse
     {

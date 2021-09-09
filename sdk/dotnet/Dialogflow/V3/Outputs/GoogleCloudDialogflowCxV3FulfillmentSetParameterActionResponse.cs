@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Setting a parameter value.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse
     {

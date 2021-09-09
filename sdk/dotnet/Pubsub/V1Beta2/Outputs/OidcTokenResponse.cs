@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
+    /// </summary>
     [OutputType]
     public sealed class OidcTokenResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The bucket's uniform bucket-level access configuration.
+    /// </summary>
     [OutputType]
     public sealed class BucketIamConfigurationUniformBucketLevelAccessResponse
     {

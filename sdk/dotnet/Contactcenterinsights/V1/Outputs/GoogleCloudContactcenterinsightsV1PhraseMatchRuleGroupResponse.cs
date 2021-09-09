@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// A message representing a rule in the phrase matcher.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse
     {

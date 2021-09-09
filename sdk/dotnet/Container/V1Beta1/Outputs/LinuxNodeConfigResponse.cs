@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Parameters that can be configured on Linux nodes.
+    /// </summary>
     [OutputType]
     public sealed class LinuxNodeConfigResponse
     {

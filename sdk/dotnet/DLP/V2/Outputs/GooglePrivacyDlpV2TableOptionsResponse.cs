@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Instructions regarding the table content being inspected.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2TableOptionsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Sets the time for recurring patch deployments.
+    /// </summary>
     [OutputType]
     public sealed class RecurringScheduleResponse
     {

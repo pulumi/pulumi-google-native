@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// SecretKeySelector selects a key of a Secret.
+    /// </summary>
     [OutputType]
     public sealed class SecretKeySelectorResponse
     {

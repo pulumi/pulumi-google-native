@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
     [OutputType]
     public sealed class TimeOfDayResponse
     {

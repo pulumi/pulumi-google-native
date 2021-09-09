@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// A file or script to execute.
+    /// </summary>
     [OutputType]
     public sealed class OSPolicyResourceExecResourceExecResponse
     {

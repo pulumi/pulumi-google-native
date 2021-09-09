@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a tool results history resource.
+    /// </summary>
     [OutputType]
     public sealed class ToolResultsHistoryResponse
     {

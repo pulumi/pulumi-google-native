@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// A reference to a Compute Engine instance.
+    /// </summary>
     [OutputType]
     public sealed class InstanceReferenceResponse
     {

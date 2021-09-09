@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// [Output Only] A connection connected to this service attachment.
+    /// </summary>
     [OutputType]
     public sealed class ServiceAttachmentConnectedEndpointResponse
     {

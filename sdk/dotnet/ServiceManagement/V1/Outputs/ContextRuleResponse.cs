@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A context rule provides information about the context for an individual API element.
+    /// </summary>
     [OutputType]
     public sealed class ContextRuleResponse
     {

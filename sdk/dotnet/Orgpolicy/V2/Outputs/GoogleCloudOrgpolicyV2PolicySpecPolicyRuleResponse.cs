@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
 {
 
+    /// <summary>
+    /// A rule used to express this policy.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse
     {

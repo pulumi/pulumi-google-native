@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Allowed IP range with user-provided description.
+    /// </summary>
     [OutputType]
     public sealed class AllowedIpRangeResponse
     {

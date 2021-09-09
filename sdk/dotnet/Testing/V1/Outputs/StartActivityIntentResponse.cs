@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A starting intent specified by an action, uri, and categories.
+    /// </summary>
     [OutputType]
     public sealed class StartActivityIntentResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Initial State for shielded instance, these are public keys which are safe to store in public
+    /// </summary>
     [OutputType]
     public sealed class InitialStateConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Uses Google Cloud Endpoints to handle requests.
+    /// </summary>
     [OutputType]
     public sealed class ApiEndpointHandlerResponse
     {

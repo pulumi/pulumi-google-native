@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
     {

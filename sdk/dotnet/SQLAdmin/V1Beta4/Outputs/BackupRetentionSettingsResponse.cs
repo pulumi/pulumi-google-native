@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// We currently only support backup retention by specifying the number of backups we will retain.
+    /// </summary>
     [OutputType]
     public sealed class BackupRetentionSettingsResponse
     {

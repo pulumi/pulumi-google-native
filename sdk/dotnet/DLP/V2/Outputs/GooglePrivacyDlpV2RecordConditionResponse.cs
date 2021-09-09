@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A condition for determining whether a transformation should be applied to a field.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2RecordConditionResponse
     {

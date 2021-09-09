@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes a set of X.509 extensions that may be part of some certificate issuance controls.
+    /// </summary>
     [OutputType]
     public sealed class CertificateExtensionConstraintsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines the network configuration for the pool.
+    /// </summary>
     [OutputType]
     public sealed class NetworkConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A policy that defines the replication configuration of data.
+    /// </summary>
     [OutputType]
     public sealed class ReplicationResponse
     {

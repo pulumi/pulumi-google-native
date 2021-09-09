@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
+    /// </summary>
     [OutputType]
     public sealed class VpcPeeringConnectivityResponse
     {

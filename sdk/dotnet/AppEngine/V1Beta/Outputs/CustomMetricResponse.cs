@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Allows autoscaling based on Stackdriver metrics.
+    /// </summary>
     [OutputType]
     public sealed class CustomMetricResponse
     {

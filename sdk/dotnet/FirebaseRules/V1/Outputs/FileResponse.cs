@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseRules.V1.Outputs
 {
 
+    /// <summary>
+    /// `File` containing source content.
+    /// </summary>
     [OutputType]
     public sealed class FileResponse
     {

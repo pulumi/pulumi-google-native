@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Represents one week day in a month. An example is "the 4th Sunday".
+    /// </summary>
     [OutputType]
     public sealed class WeekDayOfMonthResponse
     {

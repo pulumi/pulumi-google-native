@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
+    /// <summary>
+    /// Input or output argument of a function or stored procedure.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes constraints on a Certificate's Subject and SubjectAltNames.
+    /// </summary>
     [OutputType]
     public sealed class CertificateIdentityConstraintsResponse
     {

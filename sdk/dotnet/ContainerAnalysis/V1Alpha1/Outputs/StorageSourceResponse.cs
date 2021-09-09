@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// StorageSource describes the location of the source in an archive file in Google Cloud Storage.
+    /// </summary>
     [OutputType]
     public sealed class StorageSourceResponse
     {

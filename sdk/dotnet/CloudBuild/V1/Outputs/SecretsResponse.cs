@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Secrets and secret environment variables.
+    /// </summary>
     [OutputType]
     public sealed class SecretsResponse
     {

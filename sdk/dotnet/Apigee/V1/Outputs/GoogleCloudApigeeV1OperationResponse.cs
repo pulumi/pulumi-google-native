@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1OperationResponse
     {

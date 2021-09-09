@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Time window specified for hourly operations.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicyHourlyCycleResponse
     {

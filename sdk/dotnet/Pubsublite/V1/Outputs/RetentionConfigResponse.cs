@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsublite.V1.Outputs
 {
 
+    /// <summary>
+    /// The settings for a topic's message retention.
+    /// </summary>
     [OutputType]
     public sealed class RetentionConfigResponse
     {

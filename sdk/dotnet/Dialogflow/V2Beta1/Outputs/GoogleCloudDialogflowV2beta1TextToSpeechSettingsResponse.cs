@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// Instructs the speech synthesizer on how to generate the output audio content.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse
     {

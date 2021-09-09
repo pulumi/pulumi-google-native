@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// What event needs to occur for a new job to be started.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2TriggerResponse
     {

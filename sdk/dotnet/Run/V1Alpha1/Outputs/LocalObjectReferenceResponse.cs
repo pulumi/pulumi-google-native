@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    /// </summary>
     [OutputType]
     public sealed class LocalObjectReferenceResponse
     {

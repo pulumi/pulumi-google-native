@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Instructs the speech recognizer on how to process the audio content.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3InputAudioConfigResponse
     {

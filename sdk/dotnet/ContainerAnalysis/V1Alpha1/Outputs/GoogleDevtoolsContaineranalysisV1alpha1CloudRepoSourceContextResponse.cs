@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse
     {

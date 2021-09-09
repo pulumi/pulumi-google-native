@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// NodeManagement defines the set of node management services turned on for the node pool.
+    /// </summary>
     [OutputType]
     public sealed class NodeManagementResponse
     {

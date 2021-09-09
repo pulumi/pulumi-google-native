@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Identifies an account and how to log into it.
+    /// </summary>
     [OutputType]
     public sealed class AccountResponse
     {

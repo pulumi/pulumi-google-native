@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration for forwarding telemetry events.
+    /// </summary>
     [OutputType]
     public sealed class EventNotificationConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SecretManager.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a Replica for this Secret.
+    /// </summary>
     [OutputType]
     public sealed class ReplicaResponse
     {

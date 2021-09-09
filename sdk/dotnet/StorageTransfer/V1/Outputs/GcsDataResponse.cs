@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
+    /// </summary>
     [OutputType]
     public sealed class GcsDataResponse
     {

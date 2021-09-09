@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// The price information of a Product.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2betaPriceInfoResponse
     {

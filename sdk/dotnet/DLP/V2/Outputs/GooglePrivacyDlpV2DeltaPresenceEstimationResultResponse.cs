@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Result of the δ-presence computation. Note that these results are an estimation, not exact values.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 {
 
+    /// <summary>
+    /// On-premises instance configuration.
+    /// </summary>
     [OutputType]
     public sealed class OnPremisesConfigurationResponse
     {

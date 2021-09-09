@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// An issue detected occurring during a test execution.
+    /// </summary>
     [OutputType]
     public sealed class TestIssueResponse
     {

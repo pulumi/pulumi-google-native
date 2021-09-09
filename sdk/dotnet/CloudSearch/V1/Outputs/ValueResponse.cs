@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Definition of a single value with generic type.
+    /// </summary>
     [OutputType]
     public sealed class ValueResponse
     {

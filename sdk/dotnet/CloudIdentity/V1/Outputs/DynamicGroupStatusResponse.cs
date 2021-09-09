@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1.Outputs
 {
 
+    /// <summary>
+    /// The current status of a dynamic group along with timestamp.
+    /// </summary>
     [OutputType]
     public sealed class DynamicGroupStatusResponse
     {

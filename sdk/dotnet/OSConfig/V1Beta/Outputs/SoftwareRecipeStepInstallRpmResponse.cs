@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Installs an rpm file via the rpm utility.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepInstallRpmResponse
     {

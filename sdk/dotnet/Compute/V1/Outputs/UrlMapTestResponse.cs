@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Message for the expected URL mappings.
+    /// </summary>
     [OutputType]
     public sealed class UrlMapTestResponse
     {

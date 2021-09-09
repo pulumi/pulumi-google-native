@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIoT.V1.Outputs
 {
 
+    /// <summary>
+    /// Details of an X.509 certificate. For informational purposes only.
+    /// </summary>
     [OutputType]
     public sealed class X509CertificateDetailsResponse
     {

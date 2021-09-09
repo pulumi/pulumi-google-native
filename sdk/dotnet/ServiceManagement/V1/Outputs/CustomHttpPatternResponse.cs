@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A custom pattern is used for defining custom HTTP verb.
+    /// </summary>
     [OutputType]
     public sealed class CustomHttpPatternResponse
     {

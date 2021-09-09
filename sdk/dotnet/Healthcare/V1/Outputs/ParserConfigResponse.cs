@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration for the parser. It determines how the server parses the messages.
+    /// </summary>
     [OutputType]
     public sealed class ParserConfigResponse
     {

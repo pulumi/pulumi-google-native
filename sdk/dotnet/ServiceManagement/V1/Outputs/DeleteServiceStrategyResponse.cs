@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
+    /// </summary>
     [OutputType]
     public sealed class DeleteServiceStrategyResponse
     {

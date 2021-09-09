@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// An excluded entity phrase that should not be matched.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A protocol buffer option, which can be attached to a message, field, enumeration, etc.
+    /// </summary>
     [OutputType]
     public sealed class OptionResponse
     {

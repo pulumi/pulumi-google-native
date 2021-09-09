@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Translate.V3.Outputs
 {
 
+    /// <summary>
+    /// Used with equivalent term set glossaries.
+    /// </summary>
     [OutputType]
     public sealed class LanguageCodesSetResponse
     {

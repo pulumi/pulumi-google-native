@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+    /// </summary>
     [OutputType]
     public sealed class AutomaticScalingResponse
     {

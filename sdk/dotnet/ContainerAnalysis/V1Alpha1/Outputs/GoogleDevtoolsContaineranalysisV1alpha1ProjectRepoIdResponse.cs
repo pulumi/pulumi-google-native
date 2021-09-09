@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse
     {

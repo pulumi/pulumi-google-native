@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// An SSL certificate obtained from a certificate authority.
+    /// </summary>
     [OutputType]
     public sealed class CertificateRawDataResponse
     {

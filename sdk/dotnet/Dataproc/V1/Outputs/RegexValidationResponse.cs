@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Validation based on regular expressions.
+    /// </summary>
     [OutputType]
     public sealed class RegexValidationResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// A reference to a file.
+    /// </summary>
     [OutputType]
     public sealed class FileReferenceResponse
     {

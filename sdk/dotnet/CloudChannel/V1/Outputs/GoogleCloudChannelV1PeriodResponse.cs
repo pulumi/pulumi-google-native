@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents period in days/months/years.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1PeriodResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
+    /// </summary>
     [OutputType]
     public sealed class GKEMasterInfoResponse
     {

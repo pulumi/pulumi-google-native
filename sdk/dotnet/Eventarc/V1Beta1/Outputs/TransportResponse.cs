@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents the transport intermediaries created for the trigger in order to deliver events.
+    /// </summary>
     [OutputType]
     public sealed class TransportResponse
     {

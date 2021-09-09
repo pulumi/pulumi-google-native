@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
+    /// <summary>
+    /// Add-on configurations for the Apigee organization.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1AddonsConfigResponse
     {

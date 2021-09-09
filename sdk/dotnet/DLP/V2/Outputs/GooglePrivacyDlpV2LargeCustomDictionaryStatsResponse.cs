@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Summary statistics of a custom dictionary.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A reference to a StoredInfoType to use with scanning.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2StoredTypeResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration of Shielded Nodes feature.
+    /// </summary>
     [OutputType]
     public sealed class ShieldedNodesResponse
     {

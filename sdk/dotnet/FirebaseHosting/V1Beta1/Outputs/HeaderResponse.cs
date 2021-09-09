@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+    /// </summary>
     [OutputType]
     public sealed class HeaderResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a weekly schedule.
+    /// </summary>
     [OutputType]
     public sealed class WeeklyScheduleResponse
     {

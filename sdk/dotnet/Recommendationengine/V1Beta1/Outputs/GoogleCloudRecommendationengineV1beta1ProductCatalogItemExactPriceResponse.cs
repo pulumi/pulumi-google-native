@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Exact product price.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
     {

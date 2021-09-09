@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Summary statistics about the replayed log entries.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse
     {

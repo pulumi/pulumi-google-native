@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Job scheduling options.
+    /// </summary>
     [OutputType]
     public sealed class JobSchedulingResponse
     {

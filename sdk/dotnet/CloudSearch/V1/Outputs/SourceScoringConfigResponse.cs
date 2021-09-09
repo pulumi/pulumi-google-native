@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Set the scoring configuration. This allows modifying the ranking of results for a source.
+    /// </summary>
     [OutputType]
     public sealed class SourceScoringConfigResponse
     {

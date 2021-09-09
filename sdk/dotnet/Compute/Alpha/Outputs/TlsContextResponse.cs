@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// [Deprecated] The TLS settings for the client or server. The TLS settings for the client or server.
+    /// </summary>
     [OutputType]
     public sealed class TlsContextResponse
     {

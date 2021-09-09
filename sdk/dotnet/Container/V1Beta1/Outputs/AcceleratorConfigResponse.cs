@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// AcceleratorConfig represents a Hardware Accelerator request.
+    /// </summary>
     [OutputType]
     public sealed class AcceleratorConfigResponse
     {

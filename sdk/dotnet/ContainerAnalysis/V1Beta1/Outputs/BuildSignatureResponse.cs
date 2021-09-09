@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Message encapsulating the signature of the verified build.
+    /// </summary>
     [OutputType]
     public sealed class BuildSignatureResponse
     {

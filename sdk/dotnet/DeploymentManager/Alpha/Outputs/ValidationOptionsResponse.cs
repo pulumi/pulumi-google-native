@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Options for how to validate and process properties on a resource.
+    /// </summary>
     [OutputType]
     public sealed class ValidationOptionsResponse
     {

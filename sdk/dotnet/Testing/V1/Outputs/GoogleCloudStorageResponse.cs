@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// A storage location within Google cloud storage (GCS).
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudStorageResponse
     {

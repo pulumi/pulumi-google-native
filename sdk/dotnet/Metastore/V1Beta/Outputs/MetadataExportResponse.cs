@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// The details of a metadata export operation.
+    /// </summary>
     [OutputType]
     public sealed class MetadataExportResponse
     {

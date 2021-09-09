@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// An alias to a repo revision.
+    /// </summary>
     [OutputType]
     public sealed class AliasContextResponse
     {

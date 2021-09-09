@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration options for the Cloud Run feature.
+    /// </summary>
     [OutputType]
     public sealed class CloudRunConfigResponse
     {

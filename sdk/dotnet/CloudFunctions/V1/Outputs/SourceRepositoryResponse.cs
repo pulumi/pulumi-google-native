@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
+    /// <summary>
+    /// Describes SourceRepository, used to represent parameters related to source repository where a function is hosted.
+    /// </summary>
     [OutputType]
     public sealed class SourceRepositoryResponse
     {

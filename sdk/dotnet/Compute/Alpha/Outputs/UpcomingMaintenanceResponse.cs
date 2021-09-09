@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Upcoming Maintenance notification information.
+    /// </summary>
     [OutputType]
     public sealed class UpcomingMaintenanceResponse
     {

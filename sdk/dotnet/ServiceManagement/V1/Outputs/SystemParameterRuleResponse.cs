@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Define a system parameter rule mapping system parameter definitions to methods.
+    /// </summary>
     [OutputType]
     public sealed class SystemParameterRuleResponse
     {

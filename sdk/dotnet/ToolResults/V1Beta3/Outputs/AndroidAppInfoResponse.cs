@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Android app information.
+    /// </summary>
     [OutputType]
     public sealed class AndroidAppInfoResponse
     {

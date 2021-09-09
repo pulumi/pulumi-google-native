@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// This message wraps up the information written by out-of-disk detection job.
+    /// </summary>
     [OutputType]
     public sealed class SqlOutOfDiskReportResponse
     {

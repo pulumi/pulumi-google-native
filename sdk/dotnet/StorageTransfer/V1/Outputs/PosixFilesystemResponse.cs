@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
+    /// <summary>
+    /// A POSIX filesystem data source or sink.
+    /// </summary>
     [OutputType]
     public sealed class PosixFilesystemResponse
     {

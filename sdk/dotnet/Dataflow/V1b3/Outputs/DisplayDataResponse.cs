@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Data provided with a pipeline or transform to provide descriptive info.
+    /// </summary>
     [OutputType]
     public sealed class DisplayDataResponse
     {

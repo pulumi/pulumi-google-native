@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Specifies what kind of log the caller must write
+    /// </summary>
     [OutputType]
     public sealed class LogConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Version variant and associated metrics.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsResponse
     {

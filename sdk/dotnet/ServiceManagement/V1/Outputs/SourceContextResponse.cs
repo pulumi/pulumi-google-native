@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
+    /// </summary>
     [OutputType]
     public sealed class SourceContextResponse
     {

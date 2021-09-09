@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse
     {

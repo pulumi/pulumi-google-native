@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// A specification of the parameters to use when creating the instance template from a source instance.
+    /// </summary>
     [OutputType]
     public sealed class SourceInstanceParamsResponse
     {

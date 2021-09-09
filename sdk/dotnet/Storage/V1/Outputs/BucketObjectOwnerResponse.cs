@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// The owner of the object. This will always be the uploader of the object.
+    /// </summary>
     [OutputType]
     public sealed class BucketObjectOwnerResponse
     {

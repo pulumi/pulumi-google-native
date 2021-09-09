@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// The Docker execuctor specification.
+    /// </summary>
     [OutputType]
     public sealed class DockerExecutorResponse
     {

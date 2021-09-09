@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
+    /// <summary>
+    /// Encryption configuration for a bucket.
+    /// </summary>
     [OutputType]
     public sealed class BucketEncryptionResponse
     {

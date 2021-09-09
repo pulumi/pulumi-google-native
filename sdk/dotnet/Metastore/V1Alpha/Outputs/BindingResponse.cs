@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// Associates members with a role.
+    /// </summary>
     [OutputType]
     public sealed class BindingResponse
     {

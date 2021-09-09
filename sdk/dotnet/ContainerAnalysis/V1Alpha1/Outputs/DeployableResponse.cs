@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// An artifact that can be deployed in some runtime.
+    /// </summary>
     [OutputType]
     public sealed class DeployableResponse
     {

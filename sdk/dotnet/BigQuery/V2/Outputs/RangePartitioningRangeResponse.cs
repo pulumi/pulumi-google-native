@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+    /// </summary>
     [OutputType]
     public sealed class RangePartitioningRangeResponse
     {

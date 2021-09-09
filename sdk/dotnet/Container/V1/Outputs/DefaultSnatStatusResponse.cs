@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
+    /// </summary>
     [OutputType]
     public sealed class DefaultSnatStatusResponse
     {

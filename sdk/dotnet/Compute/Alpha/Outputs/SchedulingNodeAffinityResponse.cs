@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
+    /// </summary>
     [OutputType]
     public sealed class SchedulingNodeAffinityResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2TimePartConfigResponse
     {

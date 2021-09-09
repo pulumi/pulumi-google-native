@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
+    /// <summary>
+    /// The feature specific settings to be used in the application. These define behaviors that are user configurable.
+    /// </summary>
     [OutputType]
     public sealed class FeatureSettingsResponse
     {

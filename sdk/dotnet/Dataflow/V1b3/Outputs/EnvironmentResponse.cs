@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Describes the environment in which a Dataflow Job runs.
+    /// </summary>
     [OutputType]
     public sealed class EnvironmentResponse
     {

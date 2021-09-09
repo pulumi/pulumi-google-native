@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Security related configuration, including encryption, Kerberos, etc.
+    /// </summary>
     [OutputType]
     public sealed class SecurityConfigResponse
     {

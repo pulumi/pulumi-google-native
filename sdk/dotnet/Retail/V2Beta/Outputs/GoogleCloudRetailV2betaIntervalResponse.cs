@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// A floating point interval.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2betaIntervalResponse
     {

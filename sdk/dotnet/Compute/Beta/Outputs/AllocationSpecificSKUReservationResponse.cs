@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// This reservation type allows to pre allocate specific instance configuration.
+    /// </summary>
     [OutputType]
     public sealed class AllocationSpecificSKUReservationResponse
     {

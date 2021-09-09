@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for controlling how IPs are allocated in the GKE cluster.
+    /// </summary>
     [OutputType]
     public sealed class IPAllocationPolicyResponse
     {

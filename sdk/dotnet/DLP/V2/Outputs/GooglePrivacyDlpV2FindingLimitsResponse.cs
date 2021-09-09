@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2FindingLimitsResponse
     {

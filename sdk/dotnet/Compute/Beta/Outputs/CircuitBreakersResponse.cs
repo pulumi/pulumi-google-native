@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Settings controlling the volume of requests, connections and retries to this backend service.
+    /// </summary>
     [OutputType]
     public sealed class CircuitBreakersResponse
     {

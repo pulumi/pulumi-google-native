@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines notification behavior.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1NotificationConfigResponse
     {

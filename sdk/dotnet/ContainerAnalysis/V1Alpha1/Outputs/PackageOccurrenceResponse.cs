@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+    /// </summary>
     [OutputType]
     public sealed class PackageOccurrenceResponse
     {

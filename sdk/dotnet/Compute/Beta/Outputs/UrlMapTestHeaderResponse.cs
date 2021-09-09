@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// HTTP headers used in UrlMapTests.
+    /// </summary>
     [OutputType]
     public sealed class UrlMapTestHeaderResponse
     {

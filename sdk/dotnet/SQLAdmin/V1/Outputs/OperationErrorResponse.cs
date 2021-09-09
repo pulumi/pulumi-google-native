@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Database instance operation error.
+    /// </summary>
     [OutputType]
     public sealed class OperationErrorResponse
     {

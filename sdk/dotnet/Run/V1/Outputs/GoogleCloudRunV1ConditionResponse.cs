@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// Condition defines a generic condition for a Resource
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRunV1ConditionResponse
     {

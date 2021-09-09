@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// SSL configuration information.
+    /// </summary>
     [OutputType]
     public sealed class SslConfigResponse
     {

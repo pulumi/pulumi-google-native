@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+    /// </summary>
     [OutputType]
     public sealed class FirewallPolicyRuleResponse
     {

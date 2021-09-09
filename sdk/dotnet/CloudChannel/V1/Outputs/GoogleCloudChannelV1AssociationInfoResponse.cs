@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Association links that an entitlement has to other entitlements.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1AssociationInfoResponse
     {

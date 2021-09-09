@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Identity-Aware Proxy
+    /// </summary>
     [OutputType]
     public sealed class IdentityAwareProxyResponse
     {

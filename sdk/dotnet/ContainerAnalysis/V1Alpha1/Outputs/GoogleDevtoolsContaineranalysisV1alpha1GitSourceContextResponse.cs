@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+    /// </summary>
     [OutputType]
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse
     {

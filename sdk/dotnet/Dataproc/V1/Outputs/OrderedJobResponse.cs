@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// A job executed by the workflow.
+    /// </summary>
     [OutputType]
     public sealed class OrderedJobResponse
     {

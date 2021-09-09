@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies a Metastore configuration.
+    /// </summary>
     [OutputType]
     public sealed class MetastoreConfigResponse
     {

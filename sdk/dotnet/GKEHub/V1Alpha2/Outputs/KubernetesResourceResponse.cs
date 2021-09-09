@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+    /// </summary>
     [OutputType]
     public sealed class KubernetesResourceResponse
     {

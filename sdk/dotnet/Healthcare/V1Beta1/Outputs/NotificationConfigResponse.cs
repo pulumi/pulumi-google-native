@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Specifies where to send notifications upon changes to a data store.
+    /// </summary>
     [OutputType]
     public sealed class NotificationConfigResponse
     {

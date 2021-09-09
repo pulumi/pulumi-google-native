@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
+    /// </summary>
     [OutputType]
     public sealed class PatchConfigResponse
     {

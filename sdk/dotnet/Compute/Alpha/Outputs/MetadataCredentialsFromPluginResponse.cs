@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// [Deprecated] Custom authenticator credentials. Custom authenticator credentials.
+    /// </summary>
     [OutputType]
     public sealed class MetadataCredentialsFromPluginResponse
     {

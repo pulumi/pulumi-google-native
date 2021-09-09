@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// The share setting for reservations and sole tenancy node groups.
+    /// </summary>
     [OutputType]
     public sealed class ShareSettingsResponse
     {

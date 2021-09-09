@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// JobSpec describes how the job execution will look like.
+    /// </summary>
     [OutputType]
     public sealed class JobSpecResponse
     {

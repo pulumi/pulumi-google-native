@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Read-replica configuration for connecting to the primary instance.
+    /// </summary>
     [OutputType]
     public sealed class ReplicaConfigurationResponse
     {

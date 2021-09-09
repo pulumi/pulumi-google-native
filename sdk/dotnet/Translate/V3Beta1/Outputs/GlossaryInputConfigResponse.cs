@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Translate.V3Beta1.Outputs
 {
 
+    /// <summary>
+    /// Input configuration for glossaries.
+    /// </summary>
     [OutputType]
     public sealed class GlossaryInputConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The configuration used for a Replay.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse
     {

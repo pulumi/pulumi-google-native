@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Database flags for Cloud SQL instances.
+    /// </summary>
     [OutputType]
     public sealed class DatabaseFlagsResponse
     {

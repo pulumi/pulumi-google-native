@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Maps a string key to a path within a volume.
+    /// </summary>
     [OutputType]
     public sealed class KeyToPathResponse
     {

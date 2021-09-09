@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse
     {

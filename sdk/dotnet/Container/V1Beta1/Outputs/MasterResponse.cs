@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Master is the configuration for components on master.
+    /// </summary>
     [OutputType]
     public sealed class MasterResponse
     {

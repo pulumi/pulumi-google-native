@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Contains information about amount of some resource in the cluster. For memory, value should be in GB.
+    /// </summary>
     [OutputType]
     public sealed class ResourceLimitResponse
     {

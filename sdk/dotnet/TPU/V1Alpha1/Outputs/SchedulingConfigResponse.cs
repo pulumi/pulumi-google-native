@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.TPU.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Sets the scheduling options for this node.
+    /// </summary>
     [OutputType]
     public sealed class SchedulingConfigResponse
     {

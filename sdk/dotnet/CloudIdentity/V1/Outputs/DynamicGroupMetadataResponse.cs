@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1.Outputs
 {
 
+    /// <summary>
+    /// Dynamic group metadata like queries and status.
+    /// </summary>
     [OutputType]
     public sealed class DynamicGroupMetadataResponse
     {

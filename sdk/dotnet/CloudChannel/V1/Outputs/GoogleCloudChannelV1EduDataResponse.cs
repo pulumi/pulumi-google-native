@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 {
 
+    /// <summary>
+    /// Required Edu Attributes
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudChannelV1EduDataResponse
     {

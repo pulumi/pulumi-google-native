@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 {
 
+    /// <summary>
+    /// Defines logging behavior for conversation lifecycle events.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowV2beta1LoggingConfigResponse
     {

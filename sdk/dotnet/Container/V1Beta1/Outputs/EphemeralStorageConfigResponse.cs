@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// EphemeralStorageConfig contains configuration for the ephemeral storage filesystem.
+    /// </summary>
     [OutputType]
     public sealed class EphemeralStorageConfigResponse
     {

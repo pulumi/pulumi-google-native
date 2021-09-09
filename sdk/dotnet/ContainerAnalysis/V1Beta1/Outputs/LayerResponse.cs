@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Layer holds metadata specific to a layer of a Docker image.
+    /// </summary>
     [OutputType]
     public sealed class LayerResponse
     {

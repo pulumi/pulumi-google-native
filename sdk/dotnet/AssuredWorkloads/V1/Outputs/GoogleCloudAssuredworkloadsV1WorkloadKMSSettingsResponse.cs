@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
 {
 
+    /// <summary>
+    /// Settings specific to the Key Management Service.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse
     {

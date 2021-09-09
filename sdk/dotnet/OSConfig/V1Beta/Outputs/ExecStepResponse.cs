@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// A step that runs an executable for a PatchJob.
+    /// </summary>
     [OutputType]
     public sealed class ExecStepResponse
     {

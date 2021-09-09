@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
+    /// </summary>
     [OutputType]
     public sealed class IndividualOutcomeResponse
     {

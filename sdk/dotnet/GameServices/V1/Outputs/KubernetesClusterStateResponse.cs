@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GameServices.V1.Outputs
 {
 
+    /// <summary>
+    /// The state of the Kubernetes cluster.
+    /// </summary>
     [OutputType]
     public sealed class KubernetesClusterStateResponse
     {

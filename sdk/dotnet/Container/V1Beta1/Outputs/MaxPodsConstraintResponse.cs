@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Constraints applied to pods.
+    /// </summary>
     [OutputType]
     public sealed class MaxPodsConstraintResponse
     {

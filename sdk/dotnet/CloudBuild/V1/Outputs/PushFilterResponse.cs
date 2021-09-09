@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Push contains filter properties for matching GitHub git pushes.
+    /// </summary>
     [OutputType]
     public sealed class PushFilterResponse
     {

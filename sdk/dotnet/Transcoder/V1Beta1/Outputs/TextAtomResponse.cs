@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+    /// </summary>
     [OutputType]
     public sealed class TextAtomResponse
     {

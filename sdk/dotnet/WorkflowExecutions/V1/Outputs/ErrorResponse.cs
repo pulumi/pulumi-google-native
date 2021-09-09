@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WorkflowExecutions.V1.Outputs
 {
 
+    /// <summary>
+    /// Error describes why the execution was abnormally terminated.
+    /// </summary>
     [OutputType]
     public sealed class ErrorResponse
     {

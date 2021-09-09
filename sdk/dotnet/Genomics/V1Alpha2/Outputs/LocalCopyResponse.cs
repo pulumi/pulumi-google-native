@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// LocalCopy defines how a remote file should be copied to and from the VM.
+    /// </summary>
     [OutputType]
     public sealed class LocalCopyResponse
     {

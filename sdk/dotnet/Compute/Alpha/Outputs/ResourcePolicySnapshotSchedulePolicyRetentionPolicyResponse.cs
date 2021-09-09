@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Policy for retention of scheduled snapshots.
+    /// </summary>
     [OutputType]
     public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse
     {

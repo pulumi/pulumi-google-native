@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// One channel of conversation-level sentiment data.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse
     {

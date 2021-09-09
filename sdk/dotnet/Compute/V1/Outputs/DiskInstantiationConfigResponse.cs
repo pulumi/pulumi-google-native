@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
+    /// </summary>
     [OutputType]
     public sealed class DiskInstantiationConfigResponse
     {

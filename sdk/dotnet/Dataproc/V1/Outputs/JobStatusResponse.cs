@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Dataproc job status.
+    /// </summary>
     [OutputType]
     public sealed class JobStatusResponse
     {

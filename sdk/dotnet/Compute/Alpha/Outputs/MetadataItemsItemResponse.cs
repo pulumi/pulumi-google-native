@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Metadata
+    /// </summary>
     [OutputType]
     public sealed class MetadataItemsItemResponse
     {

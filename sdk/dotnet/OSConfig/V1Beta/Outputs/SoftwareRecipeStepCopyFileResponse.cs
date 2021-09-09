@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Copies the artifact to the specified path on the instance.
+    /// </summary>
     [OutputType]
     public sealed class SoftwareRecipeStepCopyFileResponse
     {

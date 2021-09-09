@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+    /// </summary>
     [OutputType]
     public sealed class GceClusterConfigResponse
     {

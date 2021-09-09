@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Metadata for any related URL information
+    /// </summary>
     [OutputType]
     public sealed class RelatedUrlResponse
     {

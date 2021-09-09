@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 {
 
+    /// <summary>
+    /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+    /// </summary>
     [OutputType]
     public sealed class MultiClusterIngressFeatureSpecResponse
     {

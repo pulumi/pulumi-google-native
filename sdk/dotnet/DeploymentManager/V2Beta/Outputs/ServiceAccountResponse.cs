@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// Service Account used as a credential.
+    /// </summary>
     [OutputType]
     public sealed class ServiceAccountResponse
     {

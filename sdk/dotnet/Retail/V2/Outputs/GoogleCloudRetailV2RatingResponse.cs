@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Retail.V2.Outputs
 {
 
+    /// <summary>
+    /// The rating of a Product.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2RatingResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 {
 
+    /// <summary>
+    /// The definition of a single executed notebook.
+    /// </summary>
     [OutputType]
     public sealed class ExecutionResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
+    /// </summary>
     [OutputType]
     public sealed class PubsubTargetResponse
     {

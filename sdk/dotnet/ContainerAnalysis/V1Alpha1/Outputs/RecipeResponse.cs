@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+    /// </summary>
     [OutputType]
     public sealed class RecipeResponse
     {

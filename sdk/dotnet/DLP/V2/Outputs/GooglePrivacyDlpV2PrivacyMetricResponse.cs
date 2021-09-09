@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Privacy metric to compute for reidentification risk analysis.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2PrivacyMetricResponse
     {

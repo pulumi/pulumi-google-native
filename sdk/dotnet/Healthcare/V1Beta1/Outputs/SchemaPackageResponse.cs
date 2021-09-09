@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A schema package contains a set of schemas and type definitions.
+    /// </summary>
     [OutputType]
     public sealed class SchemaPackageResponse
     {

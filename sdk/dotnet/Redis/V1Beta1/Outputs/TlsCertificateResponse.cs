@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Redis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// TlsCertificate Resource
+    /// </summary>
     [OutputType]
     public sealed class TlsCertificateResponse
     {

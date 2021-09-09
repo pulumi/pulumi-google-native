@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+    /// </summary>
     [OutputType]
     public sealed class ScorecardResponse
     {

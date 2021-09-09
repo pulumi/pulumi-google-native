@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Restriction on Datasource.
+    /// </summary>
     [OutputType]
     public sealed class DataSourceRestrictionResponse
     {

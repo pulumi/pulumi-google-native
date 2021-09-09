@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
+    /// </summary>
     [OutputType]
     public sealed class InlineSecretResponse
     {

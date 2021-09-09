@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.
+    /// </summary>
     [OutputType]
     public sealed class ServiceMeshAnalysisMessageResponse
     {

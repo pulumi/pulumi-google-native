@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// MaintenanceWindow defines the maintenance window to be used for the cluster.
+    /// </summary>
     [OutputType]
     public sealed class MaintenanceWindowResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Guest OS features.
+    /// </summary>
     [OutputType]
     public sealed class GuestOsFeatureResponse
     {

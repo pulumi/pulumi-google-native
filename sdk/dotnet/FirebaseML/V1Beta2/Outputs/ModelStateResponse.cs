@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// State common to all model types. Includes publishing and validation information.
+    /// </summary>
     [OutputType]
     public sealed class ModelStateResponse
     {

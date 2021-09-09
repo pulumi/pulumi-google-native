@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// An opaque binary blob file to install on the device before the test starts.
+    /// </summary>
     [OutputType]
     public sealed class ObbFileResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Message defining a field of a BigQuery table.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2BigQueryFieldResponse
     {

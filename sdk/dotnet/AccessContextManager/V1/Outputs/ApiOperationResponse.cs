@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
 {
 
+    /// <summary>
+    /// Identification for an API Operation.
+    /// </summary>
     [OutputType]
     public sealed class ApiOperationResponse
     {

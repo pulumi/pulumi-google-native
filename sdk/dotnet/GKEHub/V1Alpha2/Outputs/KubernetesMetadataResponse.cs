@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Outputs
 {
 
+    /// <summary>
+    /// KubernetesMetadata provides informational metadata for Memberships that are created from Kubernetes Endpoints (currently, these are equivalent to Kubernetes clusters).
+    /// </summary>
     [OutputType]
     public sealed class KubernetesMetadataResponse
     {

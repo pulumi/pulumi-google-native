@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// The desired state of the Domain Mapping.
+    /// </summary>
     [OutputType]
     public sealed class DomainMappingSpecResponse
     {

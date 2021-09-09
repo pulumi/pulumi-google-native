@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+    /// </summary>
     [OutputType]
     public sealed class CryptoKeyConfigResponse
     {

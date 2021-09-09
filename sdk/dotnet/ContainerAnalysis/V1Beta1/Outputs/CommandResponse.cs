@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Command describes a step performed as part of the build pipeline.
+    /// </summary>
     [OutputType]
     public sealed class CommandResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Controls what and how to inspect for findings.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2InspectJobConfigResponse
     {

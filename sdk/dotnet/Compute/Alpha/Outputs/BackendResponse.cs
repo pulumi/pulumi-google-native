@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Message containing information of one individual backend.
+    /// </summary>
     [OutputType]
     public sealed class BackendResponse
     {

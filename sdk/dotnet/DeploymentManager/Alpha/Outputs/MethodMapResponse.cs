@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Deployment Manager will call these methods during the events of creation/deletion/update/get/setIamPolicy
+    /// </summary>
     [OutputType]
     public sealed class MethodMapResponse
     {

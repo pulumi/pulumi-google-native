@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsublite.V1.Outputs
 {
 
+    /// <summary>
+    /// The throughput capacity configuration for each partition.
+    /// </summary>
     [OutputType]
     public sealed class CapacityResponse
     {

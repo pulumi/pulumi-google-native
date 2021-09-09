@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
+    /// </summary>
     [OutputType]
     public sealed class FacetOptionsResponse
     {

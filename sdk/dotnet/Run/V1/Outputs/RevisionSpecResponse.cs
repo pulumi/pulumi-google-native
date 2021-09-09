@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
+    /// <summary>
+    /// RevisionSpec holds the desired state of the Revision (from the client).
+    /// </summary>
     [OutputType]
     public sealed class RevisionSpecResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Network configuration for the instance.
+    /// </summary>
     [OutputType]
     public sealed class NetworkConfigResponse
     {

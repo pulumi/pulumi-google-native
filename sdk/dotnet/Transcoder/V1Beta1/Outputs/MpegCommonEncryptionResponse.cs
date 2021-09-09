@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for MPEG Common Encryption (MPEG-CENC).
+    /// </summary>
     [OutputType]
     public sealed class MpegCommonEncryptionResponse
     {

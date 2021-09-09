@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Telemetry integration for the cluster.
+    /// </summary>
     [OutputType]
     public sealed class ClusterTelemetryResponse
     {

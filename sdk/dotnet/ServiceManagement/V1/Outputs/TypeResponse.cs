@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// A protocol buffer message type.
+    /// </summary>
     [OutputType]
     public sealed class TypeResponse
     {

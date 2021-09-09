@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
+    /// </summary>
     [OutputType]
     public sealed class OutlierDetectionResponse
     {

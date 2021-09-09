@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ErrorResponse
     {

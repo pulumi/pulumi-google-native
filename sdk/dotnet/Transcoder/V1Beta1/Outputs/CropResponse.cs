@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
+    /// </summary>
     [OutputType]
     public sealed class CropResponse
     {

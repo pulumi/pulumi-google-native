@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Parameters for a latency threshold SLI.
+    /// </summary>
     [OutputType]
     public sealed class LatencyCriteriaResponse
     {

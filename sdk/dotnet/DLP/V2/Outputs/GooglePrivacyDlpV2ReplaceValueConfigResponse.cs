@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Replace each input value with a given `Value`.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ReplaceValueConfigResponse
     {

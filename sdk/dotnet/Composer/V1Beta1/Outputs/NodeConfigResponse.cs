@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
+    /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse
     {

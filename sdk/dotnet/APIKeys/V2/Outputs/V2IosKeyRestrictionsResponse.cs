@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.APIKeys.V2.Outputs
 {
 
+    /// <summary>
+    /// The iOS apps that are allowed to use the key.
+    /// </summary>
     [OutputType]
     public sealed class V2IosKeyRestrictionsResponse
     {

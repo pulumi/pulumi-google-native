@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+    /// </summary>
     [OutputType]
     public sealed class WidgetResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// The origin URI.
+    /// </summary>
     [OutputType]
     public sealed class OriginUriResponse
     {

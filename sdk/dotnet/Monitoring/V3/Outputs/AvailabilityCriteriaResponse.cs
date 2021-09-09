@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Future parameters for the availability SLI.
+    /// </summary>
     [OutputType]
     public sealed class AvailabilityCriteriaResponse
     {

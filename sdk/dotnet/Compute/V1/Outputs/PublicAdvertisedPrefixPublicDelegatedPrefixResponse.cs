@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a CIDR range which can be used to assign addresses.
+    /// </summary>
     [OutputType]
     public sealed class PublicAdvertisedPrefixPublicDelegatedPrefixResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Estimated fractional progress for each step, from `0` to `1`.
+    /// </summary>
     [OutputType]
     public sealed class ProgressResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines the configuration to be used for creating workers in the pool.
+    /// </summary>
     [OutputType]
     public sealed class WorkerConfigResponse
     {

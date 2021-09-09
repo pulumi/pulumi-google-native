@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AppEngine.V1Alpha.Outputs
 {
 
+    /// <summary>
+    /// SSL configuration for a DomainMapping resource.
+    /// </summary>
     [OutputType]
     public sealed class SslSettingsResponse
     {

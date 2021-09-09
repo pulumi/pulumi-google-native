@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
+    /// <summary>
+    /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
+    /// </summary>
     [OutputType]
     public sealed class Hl7TypesConfigResponse
     {

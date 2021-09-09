@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Details required for a contact associated with a `Registration`.
+    /// </summary>
     [OutputType]
     public sealed class ContactResponse
     {

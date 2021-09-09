@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
+    /// <summary>
+    /// Description of the type, names/ids, and input/outputs for a transform.
+    /// </summary>
     [OutputType]
     public sealed class TransformSummaryResponse
     {

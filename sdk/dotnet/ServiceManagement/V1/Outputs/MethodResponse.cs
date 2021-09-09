@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 {
 
+    /// <summary>
+    /// Method represents a method of an API interface.
+    /// </summary>
     [OutputType]
     public sealed class MethodResponse
     {

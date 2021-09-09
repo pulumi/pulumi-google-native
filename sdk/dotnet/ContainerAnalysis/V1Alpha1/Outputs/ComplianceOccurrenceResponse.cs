@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+    /// </summary>
     [OutputType]
     public sealed class ComplianceOccurrenceResponse
     {

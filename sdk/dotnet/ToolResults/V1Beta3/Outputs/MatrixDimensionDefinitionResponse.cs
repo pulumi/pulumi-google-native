@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 {
 
+    /// <summary>
+    /// One dimension of the matrix of different runs of a step.
+    /// </summary>
     [OutputType]
     public sealed class MatrixDimensionDefinitionResponse
     {

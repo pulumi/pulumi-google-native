@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 {
 
+    /// <summary>
+    /// Database instance IP Mapping.
+    /// </summary>
     [OutputType]
     public sealed class IpMappingResponse
     {

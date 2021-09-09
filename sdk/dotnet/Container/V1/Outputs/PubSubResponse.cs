@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Pub/Sub specific notification config.
+    /// </summary>
     [OutputType]
     public sealed class PubSubResponse
     {

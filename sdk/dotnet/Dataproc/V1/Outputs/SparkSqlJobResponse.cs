@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+    /// </summary>
     [OutputType]
     public sealed class SparkSqlJobResponse
     {

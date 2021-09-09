@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Outputs
 {
 
+    /// <summary>
+    /// An observed value of a metric.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse
     {

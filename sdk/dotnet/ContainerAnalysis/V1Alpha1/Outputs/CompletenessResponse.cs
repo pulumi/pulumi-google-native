@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 {
 
+    /// <summary>
+    /// Indicates that the builder claims certain fields in this message to be complete.
+    /// </summary>
     [OutputType]
     public sealed class CompletenessResponse
     {

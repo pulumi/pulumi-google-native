@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Represents a target of an invocation over HTTP.
+    /// </summary>
     [OutputType]
     public sealed class DestinationResponse
     {

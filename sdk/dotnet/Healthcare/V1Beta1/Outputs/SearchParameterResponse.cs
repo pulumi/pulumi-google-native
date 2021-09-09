@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Contains the versioned name and the URL for one SearchParameter.
+    /// </summary>
     [OutputType]
     public sealed class SearchParameterResponse
     {

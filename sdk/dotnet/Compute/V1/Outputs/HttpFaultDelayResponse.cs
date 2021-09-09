@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+    /// </summary>
     [OutputType]
     public sealed class HttpFaultDelayResponse
     {

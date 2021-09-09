@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 {
 
+    /// <summary>
+    /// The feedback that the customer has about a certain answer in the conversation.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse
     {

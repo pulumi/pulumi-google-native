@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
+    /// </summary>
     [OutputType]
     public sealed class PatchInstanceFilterGroupLabelResponse
     {

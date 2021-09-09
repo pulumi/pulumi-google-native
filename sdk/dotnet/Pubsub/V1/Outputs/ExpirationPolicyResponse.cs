@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 {
 
+    /// <summary>
+    /// A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
+    /// </summary>
     [OutputType]
     public sealed class ExpirationPolicyResponse
     {

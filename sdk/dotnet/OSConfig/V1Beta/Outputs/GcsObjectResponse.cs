@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// Google Cloud Storage object representation.
+    /// </summary>
     [OutputType]
     public sealed class GcsObjectResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// A widget that displays textual content.
+    /// </summary>
     [OutputType]
     public sealed class TextResponse
     {

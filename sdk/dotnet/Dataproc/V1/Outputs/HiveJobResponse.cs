@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
+    /// <summary>
+    /// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
+    /// </summary>
     [OutputType]
     public sealed class HiveJobResponse
     {

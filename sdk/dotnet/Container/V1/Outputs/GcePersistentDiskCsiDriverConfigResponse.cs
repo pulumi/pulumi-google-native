@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for the Compute Engine PD CSI driver.
+    /// </summary>
     [OutputType]
     public sealed class GcePersistentDiskCsiDriverConfigResponse
     {

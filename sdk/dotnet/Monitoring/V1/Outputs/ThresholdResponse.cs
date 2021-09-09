@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines a threshold for categorizing time series values.
+    /// </summary>
     [OutputType]
     public sealed class ThresholdResponse
     {

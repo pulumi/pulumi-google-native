@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Cloud Healthcare API resource.
+    /// </summary>
     [OutputType]
     public sealed class CloudHealthcareSourceResponse
     {

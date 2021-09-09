@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// GitFileSource describes a file within a (possibly remote) code repository.
+    /// </summary>
     [OutputType]
     public sealed class GitFileSourceResponse
     {

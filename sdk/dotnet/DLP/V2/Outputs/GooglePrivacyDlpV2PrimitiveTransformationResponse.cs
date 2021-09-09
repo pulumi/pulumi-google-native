@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A rule for transforming a value.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2PrimitiveTransformationResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Properties of the SKU instances being reserved. Next ID: 9
+    /// </summary>
     [OutputType]
     public sealed class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse
     {

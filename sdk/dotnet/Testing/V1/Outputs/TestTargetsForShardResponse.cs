@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Outputs
 {
 
+    /// <summary>
+    /// Test targets for a shard.
+    /// </summary>
     [OutputType]
     public sealed class TestTargetsForShardResponse
     {

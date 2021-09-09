@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED.
+    /// </summary>
     [OutputType]
     public sealed class InterconnectAttachmentPrivateInfoResponse
     {

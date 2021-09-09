@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Options defining a data set within Google Cloud Datastore.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DatastoreOptionsResponse
     {

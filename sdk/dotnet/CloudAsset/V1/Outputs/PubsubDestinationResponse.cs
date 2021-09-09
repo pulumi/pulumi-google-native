@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
 {
 
+    /// <summary>
+    /// A Pub/Sub destination.
+    /// </summary>
     [OutputType]
     public sealed class PubsubDestinationResponse
     {

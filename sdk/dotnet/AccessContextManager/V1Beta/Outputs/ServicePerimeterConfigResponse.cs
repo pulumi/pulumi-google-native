@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Outputs
 {
 
+    /// <summary>
+    /// `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
+    /// </summary>
     [OutputType]
     public sealed class ServicePerimeterConfigResponse
     {

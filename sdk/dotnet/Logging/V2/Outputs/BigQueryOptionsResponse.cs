@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Logging.V2.Outputs
 {
 
+    /// <summary>
+    /// Options that change functionality of a sink exporting data to BigQuery.
+    /// </summary>
     [OutputType]
     public sealed class BigQueryOptionsResponse
     {

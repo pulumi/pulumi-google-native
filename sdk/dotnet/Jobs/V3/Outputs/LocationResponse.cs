@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Jobs.V3.Outputs
 {
 
+    /// <summary>
+    /// Output only. A resource that represents a location with full geographic information.
+    /// </summary>
     [OutputType]
     public sealed class LocationResponse
     {

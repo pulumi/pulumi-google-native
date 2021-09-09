@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// Configuration parameters of autoscaling based on load balancing.
+    /// </summary>
     [OutputType]
     public sealed class AutoscalingPolicyLoadBalancingUtilizationResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
 {
 
+    /// <summary>
+    /// Output configuration for asset feed destination.
+    /// </summary>
     [OutputType]
     public sealed class FeedOutputConfigResponse
     {

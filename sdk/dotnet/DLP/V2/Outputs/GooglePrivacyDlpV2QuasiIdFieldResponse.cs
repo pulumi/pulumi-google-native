@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2QuasiIdFieldResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 {
 
+    /// <summary>
+    /// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
+    /// </summary>
     [OutputType]
     public sealed class DnsKeySpecResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudRecommendationengineV1beta1FeatureMapResponse
     {

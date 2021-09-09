@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Location of output file(s) in a Cloud Storage bucket.
+    /// </summary>
     [OutputType]
     public sealed class OutputResponse
     {

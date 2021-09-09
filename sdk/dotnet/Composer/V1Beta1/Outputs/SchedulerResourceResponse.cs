@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for resources used by Airflow schedulers.
+    /// </summary>
     [OutputType]
     public sealed class SchedulerResourceResponse
     {

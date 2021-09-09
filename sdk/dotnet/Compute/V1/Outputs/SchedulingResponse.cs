@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Sets the scheduling options for an Instance. NextID: 21
+    /// </summary>
     [OutputType]
     public sealed class SchedulingResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Spanner.V1.Outputs
 {
 
+    /// <summary>
+    /// Encryption configuration for a Cloud Spanner database.
+    /// </summary>
     [OutputType]
     public sealed class EncryptionConfigResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A message defining the database engine and provider.
+    /// </summary>
     [OutputType]
     public sealed class DatabaseTypeResponse
     {

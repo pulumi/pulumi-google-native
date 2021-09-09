@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 {
 
+    /// <summary>
+    /// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
+    /// </summary>
     [OutputType]
     public sealed class PkixPublicKeyResponse
     {

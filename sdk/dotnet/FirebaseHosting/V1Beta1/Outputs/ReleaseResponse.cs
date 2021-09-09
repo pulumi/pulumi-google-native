@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
 {
 
+    /// <summary>
+    ///  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
+    /// </summary>
     [OutputType]
     public sealed class ReleaseResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Source of the Cloud Storage file to be imported.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatalabelingV1beta1GcsSourceResponse
     {

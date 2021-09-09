@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Redis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+    /// </summary>
     [OutputType]
     public sealed class MaintenanceScheduleResponse
     {

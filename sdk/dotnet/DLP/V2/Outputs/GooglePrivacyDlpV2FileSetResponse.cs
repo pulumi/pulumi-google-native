@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// Set of files to scan.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2FileSetResponse
     {

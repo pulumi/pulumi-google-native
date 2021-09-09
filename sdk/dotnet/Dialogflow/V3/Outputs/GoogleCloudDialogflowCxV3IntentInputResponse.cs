@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 {
 
+    /// <summary>
+    /// Represents the intent to trigger programmatically rather than as a result of natural language processing.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3IntentInputResponse
     {

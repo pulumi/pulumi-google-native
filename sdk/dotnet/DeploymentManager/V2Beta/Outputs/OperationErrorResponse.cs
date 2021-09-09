@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
 {
 
+    /// <summary>
+    /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+    /// </summary>
     [OutputType]
     public sealed class OperationErrorResponse
     {

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
 {
 
+    /// <summary>
+    /// Custom view of service telemetry. Currently a place-holder pending final design.
+    /// </summary>
     [OutputType]
     public sealed class CustomResponse
     {

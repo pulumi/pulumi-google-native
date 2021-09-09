@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Provides information about the analysis status of a discovered resource.
+    /// </summary>
     [OutputType]
     public sealed class DiscoveredResponse
     {

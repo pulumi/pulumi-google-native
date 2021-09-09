@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudIdentity.V1.Outputs
 {
 
+    /// <summary>
+    /// Defines a query on a resource.
+    /// </summary>
     [OutputType]
     public sealed class DynamicGroupQueryResponse
     {

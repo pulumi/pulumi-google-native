@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 {
 
+    /// <summary>
+    /// A fatal problem encountered during the execution of the build.
+    /// </summary>
     [OutputType]
     public sealed class FailureInfoResponse
     {

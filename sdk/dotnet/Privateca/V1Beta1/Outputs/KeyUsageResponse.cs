@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// A KeyUsage describes key usage values that may appear in an X.509 certificate.
+    /// </summary>
     [OutputType]
     public sealed class KeyUsageResponse
     {

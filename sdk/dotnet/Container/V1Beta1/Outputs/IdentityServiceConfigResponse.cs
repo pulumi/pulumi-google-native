@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
+    /// </summary>
     [OutputType]
     public sealed class IdentityServiceConfigResponse
     {

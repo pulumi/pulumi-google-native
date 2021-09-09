@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
 {
 
+    /// <summary>
+    /// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
+    /// </summary>
     [OutputType]
     public sealed class TimeZoneResponse
     {

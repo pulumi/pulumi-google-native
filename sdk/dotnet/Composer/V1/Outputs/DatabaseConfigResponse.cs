@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Composer.V1.Outputs
 {
 
+    /// <summary>
+    /// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+    /// </summary>
     [OutputType]
     public sealed class DatabaseConfigResponse
     {

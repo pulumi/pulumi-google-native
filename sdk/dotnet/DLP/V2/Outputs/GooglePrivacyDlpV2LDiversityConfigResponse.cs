@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
+    /// <summary>
+    /// l-diversity metric, used for analysis of reidentification risk.
+    /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2LDiversityConfigResponse
     {

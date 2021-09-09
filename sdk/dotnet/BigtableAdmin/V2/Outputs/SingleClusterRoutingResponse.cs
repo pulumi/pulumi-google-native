@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
 {
 
+    /// <summary>
+    /// Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
+    /// </summary>
     [OutputType]
     public sealed class SingleClusterRoutingResponse
     {
