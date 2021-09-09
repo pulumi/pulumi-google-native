@@ -147,9 +147,7 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
-type NotificationOutput struct {
-	*pulumi.OutputState
-}
+type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Notification)(nil))

@@ -122,9 +122,7 @@ func (i *Reference) ToReferenceOutputWithContext(ctx context.Context) ReferenceO
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceOutput)
 }
 
-type ReferenceOutput struct {
-	*pulumi.OutputState
-}
+type ReferenceOutput struct{ *pulumi.OutputState }
 
 func (ReferenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Reference)(nil))

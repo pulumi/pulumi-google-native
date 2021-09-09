@@ -133,9 +133,7 @@ func (i *ResourceRecordSet) ToResourceRecordSetOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetOutput)
 }
 
-type ResourceRecordSetOutput struct {
-	*pulumi.OutputState
-}
+type ResourceRecordSetOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceRecordSet)(nil))

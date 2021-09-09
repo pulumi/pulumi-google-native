@@ -153,9 +153,7 @@ func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOutput)
 }
 
-type OsPolicyAssignmentOutput struct {
-	*pulumi.OutputState
-}
+type OsPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OsPolicyAssignment)(nil))

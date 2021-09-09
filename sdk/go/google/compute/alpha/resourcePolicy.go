@@ -140,9 +140,7 @@ func (i *ResourcePolicy) ToResourcePolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyOutput)
 }
 
-type ResourcePolicyOutput struct {
-	*pulumi.OutputState
-}
+type ResourcePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResourcePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcePolicy)(nil))

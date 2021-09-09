@@ -124,9 +124,7 @@ func (i *InternalRangeIamPolicy) ToInternalRangeIamPolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeIamPolicyOutput)
 }
 
-type InternalRangeIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InternalRangeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InternalRangeIamPolicy)(nil))

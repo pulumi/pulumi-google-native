@@ -331,10 +331,11 @@ func (o AttestationOutput) ToAttestationPtrOutput() AttestationPtrOutput {
 }
 
 func (o AttestationOutput) ToAttestationPtrOutputWithContext(ctx context.Context) AttestationPtrOutput {
-	return o.ApplyT(func(v Attestation) *Attestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Attestation) *Attestation {
 		return &v
 	}).(AttestationPtrOutput)
 }
+
 func (o AttestationOutput) PgpSignedAttestation() PgpSignedAttestationPtrOutput {
 	return o.ApplyT(func(v Attestation) *PgpSignedAttestation { return v.PgpSignedAttestation }).(PgpSignedAttestationPtrOutput)
 }
@@ -354,7 +355,13 @@ func (o AttestationPtrOutput) ToAttestationPtrOutputWithContext(ctx context.Cont
 }
 
 func (o AttestationPtrOutput) Elem() AttestationOutput {
-	return o.ApplyT(func(v *Attestation) Attestation { return *v }).(AttestationOutput)
+	return o.ApplyT(func(v *Attestation) Attestation {
+		if v != nil {
+			return *v
+		}
+		var ret Attestation
+		return ret
+	}).(AttestationOutput)
 }
 
 func (o AttestationPtrOutput) PgpSignedAttestation() PgpSignedAttestationPtrOutput {
@@ -460,10 +467,11 @@ func (o AttestationAuthorityOutput) ToAttestationAuthorityPtrOutput() Attestatio
 }
 
 func (o AttestationAuthorityOutput) ToAttestationAuthorityPtrOutputWithContext(ctx context.Context) AttestationAuthorityPtrOutput {
-	return o.ApplyT(func(v AttestationAuthority) *AttestationAuthority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationAuthority) *AttestationAuthority {
 		return &v
 	}).(AttestationAuthorityPtrOutput)
 }
+
 func (o AttestationAuthorityOutput) Hint() AttestationAuthorityHintPtrOutput {
 	return o.ApplyT(func(v AttestationAuthority) *AttestationAuthorityHint { return v.Hint }).(AttestationAuthorityHintPtrOutput)
 }
@@ -483,7 +491,13 @@ func (o AttestationAuthorityPtrOutput) ToAttestationAuthorityPtrOutputWithContex
 }
 
 func (o AttestationAuthorityPtrOutput) Elem() AttestationAuthorityOutput {
-	return o.ApplyT(func(v *AttestationAuthority) AttestationAuthority { return *v }).(AttestationAuthorityOutput)
+	return o.ApplyT(func(v *AttestationAuthority) AttestationAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationAuthority
+		return ret
+	}).(AttestationAuthorityOutput)
 }
 
 func (o AttestationAuthorityPtrOutput) Hint() AttestationAuthorityHintPtrOutput {
@@ -591,7 +605,7 @@ func (o AttestationAuthorityHintOutput) ToAttestationAuthorityHintPtrOutput() At
 }
 
 func (o AttestationAuthorityHintOutput) ToAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) AttestationAuthorityHintPtrOutput {
-	return o.ApplyT(func(v AttestationAuthorityHint) *AttestationAuthorityHint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationAuthorityHint) *AttestationAuthorityHint {
 		return &v
 	}).(AttestationAuthorityHintPtrOutput)
 }
@@ -616,7 +630,13 @@ func (o AttestationAuthorityHintPtrOutput) ToAttestationAuthorityHintPtrOutputWi
 }
 
 func (o AttestationAuthorityHintPtrOutput) Elem() AttestationAuthorityHintOutput {
-	return o.ApplyT(func(v *AttestationAuthorityHint) AttestationAuthorityHint { return *v }).(AttestationAuthorityHintOutput)
+	return o.ApplyT(func(v *AttestationAuthorityHint) AttestationAuthorityHint {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationAuthorityHint
+		return ret
+	}).(AttestationAuthorityHintOutput)
 }
 
 // The human readable name of this Attestation Authority, for example "qa".
@@ -725,7 +745,7 @@ func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintRespon
 }
 
 func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityHintResponsePtrOutput {
-	return o.ApplyT(func(v AttestationAuthorityHintResponse) *AttestationAuthorityHintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationAuthorityHintResponse) *AttestationAuthorityHintResponse {
 		return &v
 	}).(AttestationAuthorityHintResponsePtrOutput)
 }
@@ -750,7 +770,13 @@ func (o AttestationAuthorityHintResponsePtrOutput) ToAttestationAuthorityHintRes
 }
 
 func (o AttestationAuthorityHintResponsePtrOutput) Elem() AttestationAuthorityHintResponseOutput {
-	return o.ApplyT(func(v *AttestationAuthorityHintResponse) AttestationAuthorityHintResponse { return *v }).(AttestationAuthorityHintResponseOutput)
+	return o.ApplyT(func(v *AttestationAuthorityHintResponse) AttestationAuthorityHintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationAuthorityHintResponse
+		return ret
+	}).(AttestationAuthorityHintResponseOutput)
 }
 
 // The human readable name of this Attestation Authority, for example "qa".
@@ -857,10 +883,11 @@ func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponsePtrOut
 }
 
 func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityResponsePtrOutput {
-	return o.ApplyT(func(v AttestationAuthorityResponse) *AttestationAuthorityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationAuthorityResponse) *AttestationAuthorityResponse {
 		return &v
 	}).(AttestationAuthorityResponsePtrOutput)
 }
+
 func (o AttestationAuthorityResponseOutput) Hint() AttestationAuthorityHintResponseOutput {
 	return o.ApplyT(func(v AttestationAuthorityResponse) AttestationAuthorityHintResponse { return v.Hint }).(AttestationAuthorityHintResponseOutput)
 }
@@ -880,7 +907,13 @@ func (o AttestationAuthorityResponsePtrOutput) ToAttestationAuthorityResponsePtr
 }
 
 func (o AttestationAuthorityResponsePtrOutput) Elem() AttestationAuthorityResponseOutput {
-	return o.ApplyT(func(v *AttestationAuthorityResponse) AttestationAuthorityResponse { return *v }).(AttestationAuthorityResponseOutput)
+	return o.ApplyT(func(v *AttestationAuthorityResponse) AttestationAuthorityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationAuthorityResponse
+		return ret
+	}).(AttestationAuthorityResponseOutput)
 }
 
 func (o AttestationAuthorityResponsePtrOutput) Hint() AttestationAuthorityHintResponsePtrOutput {
@@ -986,10 +1019,11 @@ func (o AttestationResponseOutput) ToAttestationResponsePtrOutput() AttestationR
 }
 
 func (o AttestationResponseOutput) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
-	return o.ApplyT(func(v AttestationResponse) *AttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestationResponse) *AttestationResponse {
 		return &v
 	}).(AttestationResponsePtrOutput)
 }
+
 func (o AttestationResponseOutput) PgpSignedAttestation() PgpSignedAttestationResponseOutput {
 	return o.ApplyT(func(v AttestationResponse) PgpSignedAttestationResponse { return v.PgpSignedAttestation }).(PgpSignedAttestationResponseOutput)
 }
@@ -1009,7 +1043,13 @@ func (o AttestationResponsePtrOutput) ToAttestationResponsePtrOutputWithContext(
 }
 
 func (o AttestationResponsePtrOutput) Elem() AttestationResponseOutput {
-	return o.ApplyT(func(v *AttestationResponse) AttestationResponse { return *v }).(AttestationResponseOutput)
+	return o.ApplyT(func(v *AttestationResponse) AttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AttestationResponse
+		return ret
+	}).(AttestationResponseOutput)
 }
 
 func (o AttestationResponsePtrOutput) PgpSignedAttestation() PgpSignedAttestationResponsePtrOutput {
@@ -1121,7 +1161,7 @@ func (o BasisOutput) ToBasisPtrOutput() BasisPtrOutput {
 }
 
 func (o BasisOutput) ToBasisPtrOutputWithContext(ctx context.Context) BasisPtrOutput {
-	return o.ApplyT(func(v Basis) *Basis {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Basis) *Basis {
 		return &v
 	}).(BasisPtrOutput)
 }
@@ -1151,7 +1191,13 @@ func (o BasisPtrOutput) ToBasisPtrOutputWithContext(ctx context.Context) BasisPt
 }
 
 func (o BasisPtrOutput) Elem() BasisOutput {
-	return o.ApplyT(func(v *Basis) Basis { return *v }).(BasisOutput)
+	return o.ApplyT(func(v *Basis) Basis {
+		if v != nil {
+			return *v
+		}
+		var ret Basis
+		return ret
+	}).(BasisOutput)
 }
 
 // The fingerprint of the base image.
@@ -1274,7 +1320,7 @@ func (o BasisResponseOutput) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
 }
 
 func (o BasisResponseOutput) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
-	return o.ApplyT(func(v BasisResponse) *BasisResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasisResponse) *BasisResponse {
 		return &v
 	}).(BasisResponsePtrOutput)
 }
@@ -1304,7 +1350,13 @@ func (o BasisResponsePtrOutput) ToBasisResponsePtrOutputWithContext(ctx context.
 }
 
 func (o BasisResponsePtrOutput) Elem() BasisResponseOutput {
-	return o.ApplyT(func(v *BasisResponse) BasisResponse { return *v }).(BasisResponseOutput)
+	return o.ApplyT(func(v *BasisResponse) BasisResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasisResponse
+		return ret
+	}).(BasisResponseOutput)
 }
 
 // The fingerprint of the base image.
@@ -1667,7 +1719,7 @@ func (o BuildDetailsOutput) ToBuildDetailsPtrOutput() BuildDetailsPtrOutput {
 }
 
 func (o BuildDetailsOutput) ToBuildDetailsPtrOutputWithContext(ctx context.Context) BuildDetailsPtrOutput {
-	return o.ApplyT(func(v BuildDetails) *BuildDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildDetails) *BuildDetails {
 		return &v
 	}).(BuildDetailsPtrOutput)
 }
@@ -1702,7 +1754,13 @@ func (o BuildDetailsPtrOutput) ToBuildDetailsPtrOutputWithContext(ctx context.Co
 }
 
 func (o BuildDetailsPtrOutput) Elem() BuildDetailsOutput {
-	return o.ApplyT(func(v *BuildDetails) BuildDetails { return *v }).(BuildDetailsOutput)
+	return o.ApplyT(func(v *BuildDetails) BuildDetails {
+		if v != nil {
+			return *v
+		}
+		var ret BuildDetails
+		return ret
+	}).(BuildDetailsOutput)
 }
 
 // In-toto Provenance representation as defined in spec.
@@ -1839,7 +1897,7 @@ func (o BuildDetailsResponseOutput) ToBuildDetailsResponsePtrOutput() BuildDetai
 }
 
 func (o BuildDetailsResponseOutput) ToBuildDetailsResponsePtrOutputWithContext(ctx context.Context) BuildDetailsResponsePtrOutput {
-	return o.ApplyT(func(v BuildDetailsResponse) *BuildDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildDetailsResponse) *BuildDetailsResponse {
 		return &v
 	}).(BuildDetailsResponsePtrOutput)
 }
@@ -1874,7 +1932,13 @@ func (o BuildDetailsResponsePtrOutput) ToBuildDetailsResponsePtrOutputWithContex
 }
 
 func (o BuildDetailsResponsePtrOutput) Elem() BuildDetailsResponseOutput {
-	return o.ApplyT(func(v *BuildDetailsResponse) BuildDetailsResponse { return *v }).(BuildDetailsResponseOutput)
+	return o.ApplyT(func(v *BuildDetailsResponse) BuildDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildDetailsResponse
+		return ret
+	}).(BuildDetailsResponseOutput)
 }
 
 // In-toto Provenance representation as defined in spec.
@@ -2051,7 +2115,7 @@ func (o BuildProvenanceOutput) ToBuildProvenancePtrOutput() BuildProvenancePtrOu
 }
 
 func (o BuildProvenanceOutput) ToBuildProvenancePtrOutputWithContext(ctx context.Context) BuildProvenancePtrOutput {
-	return o.ApplyT(func(v BuildProvenance) *BuildProvenance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildProvenance) *BuildProvenance {
 		return &v
 	}).(BuildProvenancePtrOutput)
 }
@@ -2136,7 +2200,13 @@ func (o BuildProvenancePtrOutput) ToBuildProvenancePtrOutputWithContext(ctx cont
 }
 
 func (o BuildProvenancePtrOutput) Elem() BuildProvenanceOutput {
-	return o.ApplyT(func(v *BuildProvenance) BuildProvenance { return *v }).(BuildProvenanceOutput)
+	return o.ApplyT(func(v *BuildProvenance) BuildProvenance {
+		if v != nil {
+			return *v
+		}
+		var ret BuildProvenance
+		return ret
+	}).(BuildProvenanceOutput)
 }
 
 // Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -2409,7 +2479,7 @@ func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutput() Buil
 }
 
 func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v BuildProvenanceResponse) *BuildProvenanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildProvenanceResponse) *BuildProvenanceResponse {
 		return &v
 	}).(BuildProvenanceResponsePtrOutput)
 }
@@ -2489,7 +2559,13 @@ func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutputWith
 }
 
 func (o BuildProvenanceResponsePtrOutput) Elem() BuildProvenanceResponseOutput {
-	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse { return *v }).(BuildProvenanceResponseOutput)
+	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildProvenanceResponse
+		return ret
+	}).(BuildProvenanceResponseOutput)
 }
 
 // Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
@@ -2720,7 +2796,7 @@ func (o BuildSignatureOutput) ToBuildSignaturePtrOutput() BuildSignaturePtrOutpu
 }
 
 func (o BuildSignatureOutput) ToBuildSignaturePtrOutputWithContext(ctx context.Context) BuildSignaturePtrOutput {
-	return o.ApplyT(func(v BuildSignature) *BuildSignature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildSignature) *BuildSignature {
 		return &v
 	}).(BuildSignaturePtrOutput)
 }
@@ -2760,7 +2836,13 @@ func (o BuildSignaturePtrOutput) ToBuildSignaturePtrOutputWithContext(ctx contex
 }
 
 func (o BuildSignaturePtrOutput) Elem() BuildSignatureOutput {
-	return o.ApplyT(func(v *BuildSignature) BuildSignature { return *v }).(BuildSignatureOutput)
+	return o.ApplyT(func(v *BuildSignature) BuildSignature {
+		if v != nil {
+			return *v
+		}
+		var ret BuildSignature
+		return ret
+	}).(BuildSignatureOutput)
 }
 
 // An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -2911,7 +2993,7 @@ func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutput() BuildS
 }
 
 func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
-	return o.ApplyT(func(v BuildSignatureResponse) *BuildSignatureResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildSignatureResponse) *BuildSignatureResponse {
 		return &v
 	}).(BuildSignatureResponsePtrOutput)
 }
@@ -2951,7 +3033,13 @@ func (o BuildSignatureResponsePtrOutput) ToBuildSignatureResponsePtrOutputWithCo
 }
 
 func (o BuildSignatureResponsePtrOutput) Elem() BuildSignatureResponseOutput {
-	return o.ApplyT(func(v *BuildSignatureResponse) BuildSignatureResponse { return *v }).(BuildSignatureResponseOutput)
+	return o.ApplyT(func(v *BuildSignatureResponse) BuildSignatureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildSignatureResponse
+		return ret
+	}).(BuildSignatureResponseOutput)
 }
 
 // An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -3094,7 +3182,7 @@ func (o BuildTypeOutput) ToBuildTypePtrOutput() BuildTypePtrOutput {
 }
 
 func (o BuildTypeOutput) ToBuildTypePtrOutputWithContext(ctx context.Context) BuildTypePtrOutput {
-	return o.ApplyT(func(v BuildType) *BuildType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildType) *BuildType {
 		return &v
 	}).(BuildTypePtrOutput)
 }
@@ -3124,7 +3212,13 @@ func (o BuildTypePtrOutput) ToBuildTypePtrOutputWithContext(ctx context.Context)
 }
 
 func (o BuildTypePtrOutput) Elem() BuildTypeOutput {
-	return o.ApplyT(func(v *BuildType) BuildType { return *v }).(BuildTypeOutput)
+	return o.ApplyT(func(v *BuildType) BuildType {
+		if v != nil {
+			return *v
+		}
+		var ret BuildType
+		return ret
+	}).(BuildTypeOutput)
 }
 
 // Version of the builder which produced this Note.
@@ -3247,7 +3341,7 @@ func (o BuildTypeResponseOutput) ToBuildTypeResponsePtrOutput() BuildTypeRespons
 }
 
 func (o BuildTypeResponseOutput) ToBuildTypeResponsePtrOutputWithContext(ctx context.Context) BuildTypeResponsePtrOutput {
-	return o.ApplyT(func(v BuildTypeResponse) *BuildTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildTypeResponse) *BuildTypeResponse {
 		return &v
 	}).(BuildTypeResponsePtrOutput)
 }
@@ -3277,7 +3371,13 @@ func (o BuildTypeResponsePtrOutput) ToBuildTypeResponsePtrOutputWithContext(ctx 
 }
 
 func (o BuildTypeResponsePtrOutput) Elem() BuildTypeResponseOutput {
-	return o.ApplyT(func(v *BuildTypeResponse) BuildTypeResponse { return *v }).(BuildTypeResponseOutput)
+	return o.ApplyT(func(v *BuildTypeResponse) BuildTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildTypeResponse
+		return ret
+	}).(BuildTypeResponseOutput)
 }
 
 // Version of the builder which produced this Note.
@@ -3391,10 +3491,11 @@ func (o BuilderConfigOutput) ToBuilderConfigPtrOutput() BuilderConfigPtrOutput {
 }
 
 func (o BuilderConfigOutput) ToBuilderConfigPtrOutputWithContext(ctx context.Context) BuilderConfigPtrOutput {
-	return o.ApplyT(func(v BuilderConfig) *BuilderConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuilderConfig) *BuilderConfig {
 		return &v
 	}).(BuilderConfigPtrOutput)
 }
+
 func (o BuilderConfigOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuilderConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3414,7 +3515,13 @@ func (o BuilderConfigPtrOutput) ToBuilderConfigPtrOutputWithContext(ctx context.
 }
 
 func (o BuilderConfigPtrOutput) Elem() BuilderConfigOutput {
-	return o.ApplyT(func(v *BuilderConfig) BuilderConfig { return *v }).(BuilderConfigOutput)
+	return o.ApplyT(func(v *BuilderConfig) BuilderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BuilderConfig
+		return ret
+	}).(BuilderConfigOutput)
 }
 
 func (o BuilderConfigPtrOutput) Id() pulumi.StringPtrOutput {
@@ -3515,7 +3622,7 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponsePtrOutput() BuilderC
 }
 
 func (o BuilderConfigResponseOutput) ToBuilderConfigResponsePtrOutputWithContext(ctx context.Context) BuilderConfigResponsePtrOutput {
-	return o.ApplyT(func(v BuilderConfigResponse) *BuilderConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuilderConfigResponse) *BuilderConfigResponse {
 		return &v
 	}).(BuilderConfigResponsePtrOutput)
 }
@@ -3535,7 +3642,13 @@ func (o BuilderConfigResponsePtrOutput) ToBuilderConfigResponsePtrOutputWithCont
 }
 
 func (o BuilderConfigResponsePtrOutput) Elem() BuilderConfigResponseOutput {
-	return o.ApplyT(func(v *BuilderConfigResponse) BuilderConfigResponse { return *v }).(BuilderConfigResponseOutput)
+	return o.ApplyT(func(v *BuilderConfigResponse) BuilderConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuilderConfigResponse
+		return ret
+	}).(BuilderConfigResponseOutput)
 }
 
 // A compliance check that is a CIS benchmark.
@@ -3638,7 +3751,7 @@ func (o CisBenchmarkOutput) ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput {
 }
 
 func (o CisBenchmarkOutput) ToCisBenchmarkPtrOutputWithContext(ctx context.Context) CisBenchmarkPtrOutput {
-	return o.ApplyT(func(v CisBenchmark) *CisBenchmark {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CisBenchmark) *CisBenchmark {
 		return &v
 	}).(CisBenchmarkPtrOutput)
 }
@@ -3668,7 +3781,13 @@ func (o CisBenchmarkPtrOutput) ToCisBenchmarkPtrOutputWithContext(ctx context.Co
 }
 
 func (o CisBenchmarkPtrOutput) Elem() CisBenchmarkOutput {
-	return o.ApplyT(func(v *CisBenchmark) CisBenchmark { return *v }).(CisBenchmarkOutput)
+	return o.ApplyT(func(v *CisBenchmark) CisBenchmark {
+		if v != nil {
+			return *v
+		}
+		var ret CisBenchmark
+		return ret
+	}).(CisBenchmarkOutput)
 }
 
 // The profile level of this CIS benchmark check.
@@ -3791,7 +3910,7 @@ func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutput() CisBenchma
 }
 
 func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
-	return o.ApplyT(func(v CisBenchmarkResponse) *CisBenchmarkResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CisBenchmarkResponse) *CisBenchmarkResponse {
 		return &v
 	}).(CisBenchmarkResponsePtrOutput)
 }
@@ -3821,7 +3940,13 @@ func (o CisBenchmarkResponsePtrOutput) ToCisBenchmarkResponsePtrOutputWithContex
 }
 
 func (o CisBenchmarkResponsePtrOutput) Elem() CisBenchmarkResponseOutput {
-	return o.ApplyT(func(v *CisBenchmarkResponse) CisBenchmarkResponse { return *v }).(CisBenchmarkResponseOutput)
+	return o.ApplyT(func(v *CisBenchmarkResponse) CisBenchmarkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CisBenchmarkResponse
+		return ret
+	}).(CisBenchmarkResponseOutput)
 }
 
 // The profile level of this CIS benchmark check.
@@ -4229,7 +4354,7 @@ func (o CompletenessOutput) ToCompletenessPtrOutput() CompletenessPtrOutput {
 }
 
 func (o CompletenessOutput) ToCompletenessPtrOutputWithContext(ctx context.Context) CompletenessPtrOutput {
-	return o.ApplyT(func(v Completeness) *Completeness {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Completeness) *Completeness {
 		return &v
 	}).(CompletenessPtrOutput)
 }
@@ -4264,7 +4389,13 @@ func (o CompletenessPtrOutput) ToCompletenessPtrOutputWithContext(ctx context.Co
 }
 
 func (o CompletenessPtrOutput) Elem() CompletenessOutput {
-	return o.ApplyT(func(v *Completeness) Completeness { return *v }).(CompletenessOutput)
+	return o.ApplyT(func(v *Completeness) Completeness {
+		if v != nil {
+			return *v
+		}
+		var ret Completeness
+		return ret
+	}).(CompletenessOutput)
 }
 
 // If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
@@ -4401,7 +4532,7 @@ func (o CompletenessResponseOutput) ToCompletenessResponsePtrOutput() Completene
 }
 
 func (o CompletenessResponseOutput) ToCompletenessResponsePtrOutputWithContext(ctx context.Context) CompletenessResponsePtrOutput {
-	return o.ApplyT(func(v CompletenessResponse) *CompletenessResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompletenessResponse) *CompletenessResponse {
 		return &v
 	}).(CompletenessResponsePtrOutput)
 }
@@ -4436,7 +4567,13 @@ func (o CompletenessResponsePtrOutput) ToCompletenessResponsePtrOutputWithContex
 }
 
 func (o CompletenessResponsePtrOutput) Elem() CompletenessResponseOutput {
-	return o.ApplyT(func(v *CompletenessResponse) CompletenessResponse { return *v }).(CompletenessResponseOutput)
+	return o.ApplyT(func(v *CompletenessResponse) CompletenessResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CompletenessResponse
+		return ret
+	}).(CompletenessResponseOutput)
 }
 
 // If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
@@ -4589,7 +4726,7 @@ func (o ComplianceNoteOutput) ToComplianceNotePtrOutput() ComplianceNotePtrOutpu
 }
 
 func (o ComplianceNoteOutput) ToComplianceNotePtrOutputWithContext(ctx context.Context) ComplianceNotePtrOutput {
-	return o.ApplyT(func(v ComplianceNote) *ComplianceNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceNote) *ComplianceNote {
 		return &v
 	}).(ComplianceNotePtrOutput)
 }
@@ -4644,7 +4781,13 @@ func (o ComplianceNotePtrOutput) ToComplianceNotePtrOutputWithContext(ctx contex
 }
 
 func (o ComplianceNotePtrOutput) Elem() ComplianceNoteOutput {
-	return o.ApplyT(func(v *ComplianceNote) ComplianceNote { return *v }).(ComplianceNoteOutput)
+	return o.ApplyT(func(v *ComplianceNote) ComplianceNote {
+		if v != nil {
+			return *v
+		}
+		var ret ComplianceNote
+		return ret
+	}).(ComplianceNoteOutput)
 }
 
 // Right now we only have one compliance type, but we may add additional types in the future.
@@ -4837,7 +4980,7 @@ func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutput() Compli
 }
 
 func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
-	return o.ApplyT(func(v ComplianceNoteResponse) *ComplianceNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceNoteResponse) *ComplianceNoteResponse {
 		return &v
 	}).(ComplianceNoteResponsePtrOutput)
 }
@@ -4892,7 +5035,13 @@ func (o ComplianceNoteResponsePtrOutput) ToComplianceNoteResponsePtrOutputWithCo
 }
 
 func (o ComplianceNoteResponsePtrOutput) Elem() ComplianceNoteResponseOutput {
-	return o.ApplyT(func(v *ComplianceNoteResponse) ComplianceNoteResponse { return *v }).(ComplianceNoteResponseOutput)
+	return o.ApplyT(func(v *ComplianceNoteResponse) ComplianceNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ComplianceNoteResponse
+		return ret
+	}).(ComplianceNoteResponseOutput)
 }
 
 // Right now we only have one compliance type, but we may add additional types in the future.
@@ -5065,7 +5214,7 @@ func (o ComplianceOccurrenceOutput) ToComplianceOccurrencePtrOutput() Compliance
 }
 
 func (o ComplianceOccurrenceOutput) ToComplianceOccurrencePtrOutputWithContext(ctx context.Context) ComplianceOccurrencePtrOutput {
-	return o.ApplyT(func(v ComplianceOccurrence) *ComplianceOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceOccurrence) *ComplianceOccurrence {
 		return &v
 	}).(ComplianceOccurrencePtrOutput)
 }
@@ -5095,7 +5244,13 @@ func (o ComplianceOccurrencePtrOutput) ToComplianceOccurrencePtrOutputWithContex
 }
 
 func (o ComplianceOccurrencePtrOutput) Elem() ComplianceOccurrenceOutput {
-	return o.ApplyT(func(v *ComplianceOccurrence) ComplianceOccurrence { return *v }).(ComplianceOccurrenceOutput)
+	return o.ApplyT(func(v *ComplianceOccurrence) ComplianceOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret ComplianceOccurrence
+		return ret
+	}).(ComplianceOccurrenceOutput)
 }
 
 // The reason for non compliance of these files.
@@ -5218,7 +5373,7 @@ func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOut
 }
 
 func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v ComplianceOccurrenceResponse) *ComplianceOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComplianceOccurrenceResponse) *ComplianceOccurrenceResponse {
 		return &v
 	}).(ComplianceOccurrenceResponsePtrOutput)
 }
@@ -5248,7 +5403,13 @@ func (o ComplianceOccurrenceResponsePtrOutput) ToComplianceOccurrenceResponsePtr
 }
 
 func (o ComplianceOccurrenceResponsePtrOutput) Elem() ComplianceOccurrenceResponseOutput {
-	return o.ApplyT(func(v *ComplianceOccurrenceResponse) ComplianceOccurrenceResponse { return *v }).(ComplianceOccurrenceResponseOutput)
+	return o.ApplyT(func(v *ComplianceOccurrenceResponse) ComplianceOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ComplianceOccurrenceResponse
+		return ret
+	}).(ComplianceOccurrenceResponseOutput)
 }
 
 // The reason for non compliance of these files.
@@ -5585,7 +5746,7 @@ func (o DSSEAttestationNoteOutput) ToDSSEAttestationNotePtrOutput() DSSEAttestat
 }
 
 func (o DSSEAttestationNoteOutput) ToDSSEAttestationNotePtrOutputWithContext(ctx context.Context) DSSEAttestationNotePtrOutput {
-	return o.ApplyT(func(v DSSEAttestationNote) *DSSEAttestationNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationNote) *DSSEAttestationNote {
 		return &v
 	}).(DSSEAttestationNotePtrOutput)
 }
@@ -5610,7 +5771,13 @@ func (o DSSEAttestationNotePtrOutput) ToDSSEAttestationNotePtrOutputWithContext(
 }
 
 func (o DSSEAttestationNotePtrOutput) Elem() DSSEAttestationNoteOutput {
-	return o.ApplyT(func(v *DSSEAttestationNote) DSSEAttestationNote { return *v }).(DSSEAttestationNoteOutput)
+	return o.ApplyT(func(v *DSSEAttestationNote) DSSEAttestationNote {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEAttestationNote
+		return ret
+	}).(DSSEAttestationNoteOutput)
 }
 
 // DSSEHint hints at the purpose of the attestation authority.
@@ -5719,7 +5886,7 @@ func (o DSSEAttestationNoteResponseOutput) ToDSSEAttestationNoteResponsePtrOutpu
 }
 
 func (o DSSEAttestationNoteResponseOutput) ToDSSEAttestationNoteResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationNoteResponsePtrOutput {
-	return o.ApplyT(func(v DSSEAttestationNoteResponse) *DSSEAttestationNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationNoteResponse) *DSSEAttestationNoteResponse {
 		return &v
 	}).(DSSEAttestationNoteResponsePtrOutput)
 }
@@ -5744,7 +5911,13 @@ func (o DSSEAttestationNoteResponsePtrOutput) ToDSSEAttestationNoteResponsePtrOu
 }
 
 func (o DSSEAttestationNoteResponsePtrOutput) Elem() DSSEAttestationNoteResponseOutput {
-	return o.ApplyT(func(v *DSSEAttestationNoteResponse) DSSEAttestationNoteResponse { return *v }).(DSSEAttestationNoteResponseOutput)
+	return o.ApplyT(func(v *DSSEAttestationNoteResponse) DSSEAttestationNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEAttestationNoteResponse
+		return ret
+	}).(DSSEAttestationNoteResponseOutput)
 }
 
 // DSSEHint hints at the purpose of the attestation authority.
@@ -5855,7 +6028,7 @@ func (o DSSEAttestationOccurrenceOutput) ToDSSEAttestationOccurrencePtrOutput() 
 }
 
 func (o DSSEAttestationOccurrenceOutput) ToDSSEAttestationOccurrencePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrencePtrOutput {
-	return o.ApplyT(func(v DSSEAttestationOccurrence) *DSSEAttestationOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationOccurrence) *DSSEAttestationOccurrence {
 		return &v
 	}).(DSSEAttestationOccurrencePtrOutput)
 }
@@ -5884,7 +6057,13 @@ func (o DSSEAttestationOccurrencePtrOutput) ToDSSEAttestationOccurrencePtrOutput
 }
 
 func (o DSSEAttestationOccurrencePtrOutput) Elem() DSSEAttestationOccurrenceOutput {
-	return o.ApplyT(func(v *DSSEAttestationOccurrence) DSSEAttestationOccurrence { return *v }).(DSSEAttestationOccurrenceOutput)
+	return o.ApplyT(func(v *DSSEAttestationOccurrence) DSSEAttestationOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEAttestationOccurrence
+		return ret
+	}).(DSSEAttestationOccurrenceOutput)
 }
 
 // If doing something security critical, make sure to verify the signatures in this metadata.
@@ -6004,7 +6183,7 @@ func (o DSSEAttestationOccurrenceResponseOutput) ToDSSEAttestationOccurrenceResp
 }
 
 func (o DSSEAttestationOccurrenceResponseOutput) ToDSSEAttestationOccurrenceResponsePtrOutputWithContext(ctx context.Context) DSSEAttestationOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v DSSEAttestationOccurrenceResponse) *DSSEAttestationOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEAttestationOccurrenceResponse) *DSSEAttestationOccurrenceResponse {
 		return &v
 	}).(DSSEAttestationOccurrenceResponsePtrOutput)
 }
@@ -6033,7 +6212,13 @@ func (o DSSEAttestationOccurrenceResponsePtrOutput) ToDSSEAttestationOccurrenceR
 }
 
 func (o DSSEAttestationOccurrenceResponsePtrOutput) Elem() DSSEAttestationOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DSSEAttestationOccurrenceResponse) DSSEAttestationOccurrenceResponse { return *v }).(DSSEAttestationOccurrenceResponseOutput)
+	return o.ApplyT(func(v *DSSEAttestationOccurrenceResponse) DSSEAttestationOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEAttestationOccurrenceResponse
+		return ret
+	}).(DSSEAttestationOccurrenceResponseOutput)
 }
 
 // If doing something security critical, make sure to verify the signatures in this metadata.
@@ -6151,7 +6336,7 @@ func (o DSSEHintOutput) ToDSSEHintPtrOutput() DSSEHintPtrOutput {
 }
 
 func (o DSSEHintOutput) ToDSSEHintPtrOutputWithContext(ctx context.Context) DSSEHintPtrOutput {
-	return o.ApplyT(func(v DSSEHint) *DSSEHint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEHint) *DSSEHint {
 		return &v
 	}).(DSSEHintPtrOutput)
 }
@@ -6176,7 +6361,13 @@ func (o DSSEHintPtrOutput) ToDSSEHintPtrOutputWithContext(ctx context.Context) D
 }
 
 func (o DSSEHintPtrOutput) Elem() DSSEHintOutput {
-	return o.ApplyT(func(v *DSSEHint) DSSEHint { return *v }).(DSSEHintOutput)
+	return o.ApplyT(func(v *DSSEHint) DSSEHint {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEHint
+		return ret
+	}).(DSSEHintOutput)
 }
 
 // The human readable name of this attestation authority, for example "cloudbuild-prod".
@@ -6285,7 +6476,7 @@ func (o DSSEHintResponseOutput) ToDSSEHintResponsePtrOutput() DSSEHintResponsePt
 }
 
 func (o DSSEHintResponseOutput) ToDSSEHintResponsePtrOutputWithContext(ctx context.Context) DSSEHintResponsePtrOutput {
-	return o.ApplyT(func(v DSSEHintResponse) *DSSEHintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DSSEHintResponse) *DSSEHintResponse {
 		return &v
 	}).(DSSEHintResponsePtrOutput)
 }
@@ -6310,7 +6501,13 @@ func (o DSSEHintResponsePtrOutput) ToDSSEHintResponsePtrOutputWithContext(ctx co
 }
 
 func (o DSSEHintResponsePtrOutput) Elem() DSSEHintResponseOutput {
-	return o.ApplyT(func(v *DSSEHintResponse) DSSEHintResponse { return *v }).(DSSEHintResponseOutput)
+	return o.ApplyT(func(v *DSSEHintResponse) DSSEHintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DSSEHintResponse
+		return ret
+	}).(DSSEHintResponseOutput)
 }
 
 // The human readable name of this attestation authority, for example "cloudbuild-prod".
@@ -6419,7 +6616,7 @@ func (o DeployableOutput) ToDeployablePtrOutput() DeployablePtrOutput {
 }
 
 func (o DeployableOutput) ToDeployablePtrOutputWithContext(ctx context.Context) DeployablePtrOutput {
-	return o.ApplyT(func(v Deployable) *Deployable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployable) *Deployable {
 		return &v
 	}).(DeployablePtrOutput)
 }
@@ -6444,7 +6641,13 @@ func (o DeployablePtrOutput) ToDeployablePtrOutputWithContext(ctx context.Contex
 }
 
 func (o DeployablePtrOutput) Elem() DeployableOutput {
-	return o.ApplyT(func(v *Deployable) Deployable { return *v }).(DeployableOutput)
+	return o.ApplyT(func(v *Deployable) Deployable {
+		if v != nil {
+			return *v
+		}
+		var ret Deployable
+		return ret
+	}).(DeployableOutput)
 }
 
 // Resource URI for the artifact being deployed.
@@ -6553,7 +6756,7 @@ func (o DeployableResponseOutput) ToDeployableResponsePtrOutput() DeployableResp
 }
 
 func (o DeployableResponseOutput) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
-	return o.ApplyT(func(v DeployableResponse) *DeployableResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployableResponse) *DeployableResponse {
 		return &v
 	}).(DeployableResponsePtrOutput)
 }
@@ -6578,7 +6781,13 @@ func (o DeployableResponsePtrOutput) ToDeployableResponsePtrOutputWithContext(ct
 }
 
 func (o DeployableResponsePtrOutput) Elem() DeployableResponseOutput {
-	return o.ApplyT(func(v *DeployableResponse) DeployableResponse { return *v }).(DeployableResponseOutput)
+	return o.ApplyT(func(v *DeployableResponse) DeployableResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeployableResponse
+		return ret
+	}).(DeployableResponseOutput)
 }
 
 // Resource URI for the artifact being deployed.
@@ -6707,7 +6916,7 @@ func (o DeploymentOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
 }
 
 func (o DeploymentOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
-	return o.ApplyT(func(v Deployment) *Deployment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deployment) *Deployment {
 		return &v
 	}).(DeploymentPtrOutput)
 }
@@ -6757,7 +6966,13 @@ func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DeploymentPtrOutput) Elem() DeploymentOutput {
-	return o.ApplyT(func(v *Deployment) Deployment { return *v }).(DeploymentOutput)
+	return o.ApplyT(func(v *Deployment) Deployment {
+		if v != nil {
+			return *v
+		}
+		var ret Deployment
+		return ret
+	}).(DeploymentOutput)
 }
 
 // Address of the runtime element hosting this deployment.
@@ -6940,7 +7155,7 @@ func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutput() DeploymentResp
 }
 
 func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentResponse) *DeploymentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentResponse) *DeploymentResponse {
 		return &v
 	}).(DeploymentResponsePtrOutput)
 }
@@ -6995,7 +7210,13 @@ func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ct
 }
 
 func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
-	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse { return *v }).(DeploymentResponseOutput)
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentResponse
+		return ret
+	}).(DeploymentResponseOutput)
 }
 
 // Address of the runtime element hosting this deployment.
@@ -7168,7 +7389,7 @@ func (o DerivedOutput) ToDerivedPtrOutput() DerivedPtrOutput {
 }
 
 func (o DerivedOutput) ToDerivedPtrOutputWithContext(ctx context.Context) DerivedPtrOutput {
-	return o.ApplyT(func(v Derived) *Derived {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Derived) *Derived {
 		return &v
 	}).(DerivedPtrOutput)
 }
@@ -7198,7 +7419,13 @@ func (o DerivedPtrOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Der
 }
 
 func (o DerivedPtrOutput) Elem() DerivedOutput {
-	return o.ApplyT(func(v *Derived) Derived { return *v }).(DerivedOutput)
+	return o.ApplyT(func(v *Derived) Derived {
+		if v != nil {
+			return *v
+		}
+		var ret Derived
+		return ret
+	}).(DerivedOutput)
 }
 
 // The fingerprint of the derived image.
@@ -7329,7 +7556,7 @@ func (o DerivedResponseOutput) ToDerivedResponsePtrOutput() DerivedResponsePtrOu
 }
 
 func (o DerivedResponseOutput) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
-	return o.ApplyT(func(v DerivedResponse) *DerivedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DerivedResponse) *DerivedResponse {
 		return &v
 	}).(DerivedResponsePtrOutput)
 }
@@ -7369,7 +7596,13 @@ func (o DerivedResponsePtrOutput) ToDerivedResponsePtrOutputWithContext(ctx cont
 }
 
 func (o DerivedResponsePtrOutput) Elem() DerivedResponseOutput {
-	return o.ApplyT(func(v *DerivedResponse) DerivedResponse { return *v }).(DerivedResponseOutput)
+	return o.ApplyT(func(v *DerivedResponse) DerivedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DerivedResponse
+		return ret
+	}).(DerivedResponseOutput)
 }
 
 // This contains the base image URL for the derived image occurrence.
@@ -7900,7 +8133,7 @@ func (o DiscoveredOutput) ToDiscoveredPtrOutput() DiscoveredPtrOutput {
 }
 
 func (o DiscoveredOutput) ToDiscoveredPtrOutputWithContext(ctx context.Context) DiscoveredPtrOutput {
-	return o.ApplyT(func(v Discovered) *Discovered {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Discovered) *Discovered {
 		return &v
 	}).(DiscoveredPtrOutput)
 }
@@ -7940,7 +8173,13 @@ func (o DiscoveredPtrOutput) ToDiscoveredPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DiscoveredPtrOutput) Elem() DiscoveredOutput {
-	return o.ApplyT(func(v *Discovered) Discovered { return *v }).(DiscoveredOutput)
+	return o.ApplyT(func(v *Discovered) Discovered {
+		if v != nil {
+			return *v
+		}
+		var ret Discovered
+		return ret
+	}).(DiscoveredOutput)
 }
 
 // The status of discovery for the resource.
@@ -8091,7 +8330,7 @@ func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutput() DiscoveredResp
 }
 
 func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
-	return o.ApplyT(func(v DiscoveredResponse) *DiscoveredResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveredResponse) *DiscoveredResponse {
 		return &v
 	}).(DiscoveredResponsePtrOutput)
 }
@@ -8131,7 +8370,13 @@ func (o DiscoveredResponsePtrOutput) ToDiscoveredResponsePtrOutputWithContext(ct
 }
 
 func (o DiscoveredResponsePtrOutput) Elem() DiscoveredResponseOutput {
-	return o.ApplyT(func(v *DiscoveredResponse) DiscoveredResponse { return *v }).(DiscoveredResponseOutput)
+	return o.ApplyT(func(v *DiscoveredResponse) DiscoveredResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveredResponse
+		return ret
+	}).(DiscoveredResponseOutput)
 }
 
 // The status of discovery for the resource.
@@ -8270,7 +8515,7 @@ func (o DiscoveryOutput) ToDiscoveryPtrOutput() DiscoveryPtrOutput {
 }
 
 func (o DiscoveryOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context) DiscoveryPtrOutput {
-	return o.ApplyT(func(v Discovery) *Discovery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Discovery) *Discovery {
 		return &v
 	}).(DiscoveryPtrOutput)
 }
@@ -8295,7 +8540,13 @@ func (o DiscoveryPtrOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context)
 }
 
 func (o DiscoveryPtrOutput) Elem() DiscoveryOutput {
-	return o.ApplyT(func(v *Discovery) Discovery { return *v }).(DiscoveryOutput)
+	return o.ApplyT(func(v *Discovery) Discovery {
+		if v != nil {
+			return *v
+		}
+		var ret Discovery
+		return ret
+	}).(DiscoveryOutput)
 }
 
 // The kind of analysis that is handled by this discovery.
@@ -8404,7 +8655,7 @@ func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutput() DiscoveryRespons
 }
 
 func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
-	return o.ApplyT(func(v DiscoveryResponse) *DiscoveryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoveryResponse) *DiscoveryResponse {
 		return &v
 	}).(DiscoveryResponsePtrOutput)
 }
@@ -8429,7 +8680,13 @@ func (o DiscoveryResponsePtrOutput) ToDiscoveryResponsePtrOutputWithContext(ctx 
 }
 
 func (o DiscoveryResponsePtrOutput) Elem() DiscoveryResponseOutput {
-	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse { return *v }).(DiscoveryResponseOutput)
+	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoveryResponse
+		return ret
+	}).(DiscoveryResponseOutput)
 }
 
 // The kind of analysis that is handled by this discovery.
@@ -8832,7 +9089,7 @@ func (o DocumentNoteOutput) ToDocumentNotePtrOutput() DocumentNotePtrOutput {
 }
 
 func (o DocumentNoteOutput) ToDocumentNotePtrOutputWithContext(ctx context.Context) DocumentNotePtrOutput {
-	return o.ApplyT(func(v DocumentNote) *DocumentNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentNote) *DocumentNote {
 		return &v
 	}).(DocumentNotePtrOutput)
 }
@@ -8862,7 +9119,13 @@ func (o DocumentNotePtrOutput) ToDocumentNotePtrOutputWithContext(ctx context.Co
 }
 
 func (o DocumentNotePtrOutput) Elem() DocumentNoteOutput {
-	return o.ApplyT(func(v *DocumentNote) DocumentNote { return *v }).(DocumentNoteOutput)
+	return o.ApplyT(func(v *DocumentNote) DocumentNote {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentNote
+		return ret
+	}).(DocumentNoteOutput)
 }
 
 // Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
@@ -8985,7 +9248,7 @@ func (o DocumentNoteResponseOutput) ToDocumentNoteResponsePtrOutput() DocumentNo
 }
 
 func (o DocumentNoteResponseOutput) ToDocumentNoteResponsePtrOutputWithContext(ctx context.Context) DocumentNoteResponsePtrOutput {
-	return o.ApplyT(func(v DocumentNoteResponse) *DocumentNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentNoteResponse) *DocumentNoteResponse {
 		return &v
 	}).(DocumentNoteResponsePtrOutput)
 }
@@ -9015,7 +9278,13 @@ func (o DocumentNoteResponsePtrOutput) ToDocumentNoteResponsePtrOutputWithContex
 }
 
 func (o DocumentNoteResponsePtrOutput) Elem() DocumentNoteResponseOutput {
-	return o.ApplyT(func(v *DocumentNoteResponse) DocumentNoteResponse { return *v }).(DocumentNoteResponseOutput)
+	return o.ApplyT(func(v *DocumentNoteResponse) DocumentNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentNoteResponse
+		return ret
+	}).(DocumentNoteResponseOutput)
 }
 
 // Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
@@ -9166,7 +9435,7 @@ func (o DocumentOccurrenceOutput) ToDocumentOccurrencePtrOutput() DocumentOccurr
 }
 
 func (o DocumentOccurrenceOutput) ToDocumentOccurrencePtrOutputWithContext(ctx context.Context) DocumentOccurrencePtrOutput {
-	return o.ApplyT(func(v DocumentOccurrence) *DocumentOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentOccurrence) *DocumentOccurrence {
 		return &v
 	}).(DocumentOccurrencePtrOutput)
 }
@@ -9231,7 +9500,13 @@ func (o DocumentOccurrencePtrOutput) ToDocumentOccurrencePtrOutputWithContext(ct
 }
 
 func (o DocumentOccurrencePtrOutput) Elem() DocumentOccurrenceOutput {
-	return o.ApplyT(func(v *DocumentOccurrence) DocumentOccurrence { return *v }).(DocumentOccurrenceOutput)
+	return o.ApplyT(func(v *DocumentOccurrence) DocumentOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentOccurrence
+		return ret
+	}).(DocumentOccurrenceOutput)
 }
 
 // Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
@@ -9448,7 +9723,7 @@ func (o DocumentOccurrenceResponseOutput) ToDocumentOccurrenceResponsePtrOutput(
 }
 
 func (o DocumentOccurrenceResponseOutput) ToDocumentOccurrenceResponsePtrOutputWithContext(ctx context.Context) DocumentOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v DocumentOccurrenceResponse) *DocumentOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentOccurrenceResponse) *DocumentOccurrenceResponse {
 		return &v
 	}).(DocumentOccurrenceResponsePtrOutput)
 }
@@ -9508,7 +9783,13 @@ func (o DocumentOccurrenceResponsePtrOutput) ToDocumentOccurrenceResponsePtrOutp
 }
 
 func (o DocumentOccurrenceResponsePtrOutput) Elem() DocumentOccurrenceResponseOutput {
-	return o.ApplyT(func(v *DocumentOccurrenceResponse) DocumentOccurrenceResponse { return *v }).(DocumentOccurrenceResponseOutput)
+	return o.ApplyT(func(v *DocumentOccurrenceResponse) DocumentOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentOccurrenceResponse
+		return ret
+	}).(DocumentOccurrenceResponseOutput)
 }
 
 // Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
@@ -9695,7 +9976,7 @@ func (o EnvelopeOutput) ToEnvelopePtrOutput() EnvelopePtrOutput {
 }
 
 func (o EnvelopeOutput) ToEnvelopePtrOutputWithContext(ctx context.Context) EnvelopePtrOutput {
-	return o.ApplyT(func(v Envelope) *Envelope {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Envelope) *Envelope {
 		return &v
 	}).(EnvelopePtrOutput)
 }
@@ -9730,7 +10011,13 @@ func (o EnvelopePtrOutput) ToEnvelopePtrOutputWithContext(ctx context.Context) E
 }
 
 func (o EnvelopePtrOutput) Elem() EnvelopeOutput {
-	return o.ApplyT(func(v *Envelope) Envelope { return *v }).(EnvelopeOutput)
+	return o.ApplyT(func(v *Envelope) Envelope {
+		if v != nil {
+			return *v
+		}
+		var ret Envelope
+		return ret
+	}).(EnvelopeOutput)
 }
 
 // The bytes being signed
@@ -9867,7 +10154,7 @@ func (o EnvelopeResponseOutput) ToEnvelopeResponsePtrOutput() EnvelopeResponsePt
 }
 
 func (o EnvelopeResponseOutput) ToEnvelopeResponsePtrOutputWithContext(ctx context.Context) EnvelopeResponsePtrOutput {
-	return o.ApplyT(func(v EnvelopeResponse) *EnvelopeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvelopeResponse) *EnvelopeResponse {
 		return &v
 	}).(EnvelopeResponsePtrOutput)
 }
@@ -9902,7 +10189,13 @@ func (o EnvelopeResponsePtrOutput) ToEnvelopeResponsePtrOutputWithContext(ctx co
 }
 
 func (o EnvelopeResponsePtrOutput) Elem() EnvelopeResponseOutput {
-	return o.ApplyT(func(v *EnvelopeResponse) EnvelopeResponse { return *v }).(EnvelopeResponseOutput)
+	return o.ApplyT(func(v *EnvelopeResponse) EnvelopeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvelopeResponse
+		return ret
+	}).(EnvelopeResponseOutput)
 }
 
 // The bytes being signed
@@ -10261,7 +10554,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -10301,7 +10594,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -10784,7 +11083,7 @@ func (o FileNoteOutput) ToFileNotePtrOutput() FileNotePtrOutput {
 }
 
 func (o FileNoteOutput) ToFileNotePtrOutputWithContext(ctx context.Context) FileNotePtrOutput {
-	return o.ApplyT(func(v FileNote) *FileNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileNote) *FileNote {
 		return &v
 	}).(FileNotePtrOutput)
 }
@@ -10819,7 +11118,13 @@ func (o FileNotePtrOutput) ToFileNotePtrOutputWithContext(ctx context.Context) F
 }
 
 func (o FileNotePtrOutput) Elem() FileNoteOutput {
-	return o.ApplyT(func(v *FileNote) FileNote { return *v }).(FileNoteOutput)
+	return o.ApplyT(func(v *FileNote) FileNote {
+		if v != nil {
+			return *v
+		}
+		var ret FileNote
+		return ret
+	}).(FileNoteOutput)
 }
 
 // Provide a unique identifier to match analysis information on each specific file in a package
@@ -10956,7 +11261,7 @@ func (o FileNoteResponseOutput) ToFileNoteResponsePtrOutput() FileNoteResponsePt
 }
 
 func (o FileNoteResponseOutput) ToFileNoteResponsePtrOutputWithContext(ctx context.Context) FileNoteResponsePtrOutput {
-	return o.ApplyT(func(v FileNoteResponse) *FileNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileNoteResponse) *FileNoteResponse {
 		return &v
 	}).(FileNoteResponsePtrOutput)
 }
@@ -10991,7 +11296,13 @@ func (o FileNoteResponsePtrOutput) ToFileNoteResponsePtrOutputWithContext(ctx co
 }
 
 func (o FileNoteResponsePtrOutput) Elem() FileNoteResponseOutput {
-	return o.ApplyT(func(v *FileNoteResponse) FileNoteResponse { return *v }).(FileNoteResponseOutput)
+	return o.ApplyT(func(v *FileNoteResponse) FileNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileNoteResponse
+		return ret
+	}).(FileNoteResponseOutput)
 }
 
 // Provide a unique identifier to match analysis information on each specific file in a package
@@ -11152,7 +11463,7 @@ func (o FileOccurrenceOutput) ToFileOccurrencePtrOutput() FileOccurrencePtrOutpu
 }
 
 func (o FileOccurrenceOutput) ToFileOccurrencePtrOutputWithContext(ctx context.Context) FileOccurrencePtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *FileOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileOccurrence) *FileOccurrence {
 		return &v
 	}).(FileOccurrencePtrOutput)
 }
@@ -11217,7 +11528,13 @@ func (o FileOccurrencePtrOutput) ToFileOccurrencePtrOutputWithContext(ctx contex
 }
 
 func (o FileOccurrencePtrOutput) Elem() FileOccurrenceOutput {
-	return o.ApplyT(func(v *FileOccurrence) FileOccurrence { return *v }).(FileOccurrenceOutput)
+	return o.ApplyT(func(v *FileOccurrence) FileOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret FileOccurrence
+		return ret
+	}).(FileOccurrenceOutput)
 }
 
 // This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
@@ -11434,7 +11751,7 @@ func (o FileOccurrenceResponseOutput) ToFileOccurrenceResponsePtrOutput() FileOc
 }
 
 func (o FileOccurrenceResponseOutput) ToFileOccurrenceResponsePtrOutputWithContext(ctx context.Context) FileOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) *FileOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileOccurrenceResponse) *FileOccurrenceResponse {
 		return &v
 	}).(FileOccurrenceResponsePtrOutput)
 }
@@ -11494,7 +11811,13 @@ func (o FileOccurrenceResponsePtrOutput) ToFileOccurrenceResponsePtrOutputWithCo
 }
 
 func (o FileOccurrenceResponsePtrOutput) Elem() FileOccurrenceResponseOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) FileOccurrenceResponse { return *v }).(FileOccurrenceResponseOutput)
+	return o.ApplyT(func(v *FileOccurrenceResponse) FileOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileOccurrenceResponse
+		return ret
+	}).(FileOccurrenceResponseOutput)
 }
 
 // This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that may be needed to be communicated in some contexts
@@ -11677,7 +12000,7 @@ func (o FingerprintOutput) ToFingerprintPtrOutput() FingerprintPtrOutput {
 }
 
 func (o FingerprintOutput) ToFingerprintPtrOutputWithContext(ctx context.Context) FingerprintPtrOutput {
-	return o.ApplyT(func(v Fingerprint) *Fingerprint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fingerprint) *Fingerprint {
 		return &v
 	}).(FingerprintPtrOutput)
 }
@@ -11707,7 +12030,13 @@ func (o FingerprintPtrOutput) ToFingerprintPtrOutputWithContext(ctx context.Cont
 }
 
 func (o FingerprintPtrOutput) Elem() FingerprintOutput {
-	return o.ApplyT(func(v *Fingerprint) Fingerprint { return *v }).(FingerprintOutput)
+	return o.ApplyT(func(v *Fingerprint) Fingerprint {
+		if v != nil {
+			return *v
+		}
+		var ret Fingerprint
+		return ret
+	}).(FingerprintOutput)
 }
 
 // The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
@@ -11834,7 +12163,7 @@ func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutput() FingerprintR
 }
 
 func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
-	return o.ApplyT(func(v FingerprintResponse) *FingerprintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FingerprintResponse) *FingerprintResponse {
 		return &v
 	}).(FingerprintResponsePtrOutput)
 }
@@ -11869,7 +12198,13 @@ func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutputWithContext(
 }
 
 func (o FingerprintResponsePtrOutput) Elem() FingerprintResponseOutput {
-	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse { return *v }).(FingerprintResponseOutput)
+	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FingerprintResponse
+		return ret
+	}).(FingerprintResponseOutput)
 }
 
 // The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
@@ -12002,7 +12337,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput) ToGoogleDevto
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput)
 }
@@ -12035,7 +12370,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) ToGoogleDe
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContext) GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1AliasContext
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput)
 }
 
@@ -12159,7 +12498,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoo
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput)
 }
@@ -12190,7 +12529,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) To
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput)
 }
 
@@ -12318,7 +12661,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextOutput) ToG
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput)
 }
@@ -12358,7 +12701,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput) 
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextOutput)
 }
 
@@ -12496,7 +12843,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOut
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput)
 }
@@ -12538,7 +12885,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtr
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput)
 }
 
@@ -12680,7 +13031,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextOutput) ToGoog
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput)
 }
@@ -12723,7 +13074,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput) ToG
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextOutput)
 }
 
@@ -12875,7 +13230,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput)
 }
@@ -12920,7 +13275,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOut
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput)
 }
 
@@ -13064,7 +13423,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput) ToGoogleD
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput)
 }
@@ -13095,7 +13454,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) ToGoog
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput)
 }
 
@@ -13219,7 +13582,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) T
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput)
 }
@@ -13250,7 +13613,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput)
 }
 
@@ -13374,7 +13741,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdOutput) ToGoogleDevt
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput)
 }
@@ -13405,7 +13772,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput) ToGoogleD
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdOutput)
 }
 
@@ -13529,7 +13900,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGo
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput)
 }
@@ -13560,7 +13931,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) T
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput)
 }
 
@@ -13684,7 +14059,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput) ToGoogleDevtoolsCon
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoId) *GoogleDevtoolsContaineranalysisV1alpha1RepoId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1RepoId) *GoogleDevtoolsContaineranalysisV1alpha1RepoId {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput)
 }
@@ -13717,7 +14092,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput) ToGoogleDevtools
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1RepoId) GoogleDevtoolsContaineranalysisV1alpha1RepoId {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1RepoId
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput)
 }
 
@@ -13841,7 +14220,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDev
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput)
 }
@@ -13874,7 +14253,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) ToGoogle
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput)
 }
 
@@ -14031,7 +14414,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput) ToGoogleDevt
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContext) *GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SourceContext) *GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput)
 }
@@ -14078,7 +14461,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput) ToGoogleD
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContext) GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SourceContext
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput)
 }
 
@@ -14275,7 +14662,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGo
 }
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
 		return &v
 	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput)
 }
@@ -14324,7 +14711,11 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) T
 
 func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse
+		return ret
 	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput)
 }
 
@@ -14488,7 +14879,7 @@ func (o HashOutput) ToHashPtrOutput() HashPtrOutput {
 }
 
 func (o HashOutput) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutput {
-	return o.ApplyT(func(v Hash) *Hash {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hash) *Hash {
 		return &v
 	}).(HashPtrOutput)
 }
@@ -14518,7 +14909,13 @@ func (o HashPtrOutput) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOu
 }
 
 func (o HashPtrOutput) Elem() HashOutput {
-	return o.ApplyT(func(v *Hash) Hash { return *v }).(HashOutput)
+	return o.ApplyT(func(v *Hash) Hash {
+		if v != nil {
+			return *v
+		}
+		var ret Hash
+		return ret
+	}).(HashOutput)
 }
 
 // The type of hash that was performed.
@@ -14641,7 +15038,7 @@ func (o HashResponseOutput) ToHashResponsePtrOutput() HashResponsePtrOutput {
 }
 
 func (o HashResponseOutput) ToHashResponsePtrOutputWithContext(ctx context.Context) HashResponsePtrOutput {
-	return o.ApplyT(func(v HashResponse) *HashResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HashResponse) *HashResponse {
 		return &v
 	}).(HashResponsePtrOutput)
 }
@@ -14671,7 +15068,13 @@ func (o HashResponsePtrOutput) ToHashResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o HashResponsePtrOutput) Elem() HashResponseOutput {
-	return o.ApplyT(func(v *HashResponse) HashResponse { return *v }).(HashResponseOutput)
+	return o.ApplyT(func(v *HashResponse) HashResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HashResponse
+		return ret
+	}).(HashResponseOutput)
 }
 
 // The type of hash that was performed.
@@ -14797,7 +15200,7 @@ func (o InTotoProvenanceOutput) ToInTotoProvenancePtrOutput() InTotoProvenancePt
 }
 
 func (o InTotoProvenanceOutput) ToInTotoProvenancePtrOutputWithContext(ctx context.Context) InTotoProvenancePtrOutput {
-	return o.ApplyT(func(v InTotoProvenance) *InTotoProvenance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoProvenance) *InTotoProvenance {
 		return &v
 	}).(InTotoProvenancePtrOutput)
 }
@@ -14836,7 +15239,13 @@ func (o InTotoProvenancePtrOutput) ToInTotoProvenancePtrOutputWithContext(ctx co
 }
 
 func (o InTotoProvenancePtrOutput) Elem() InTotoProvenanceOutput {
-	return o.ApplyT(func(v *InTotoProvenance) InTotoProvenance { return *v }).(InTotoProvenanceOutput)
+	return o.ApplyT(func(v *InTotoProvenance) InTotoProvenance {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoProvenance
+		return ret
+	}).(InTotoProvenanceOutput)
 }
 
 // required
@@ -14981,7 +15390,7 @@ func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponsePtrOutput() In
 }
 
 func (o InTotoProvenanceResponseOutput) ToInTotoProvenanceResponsePtrOutputWithContext(ctx context.Context) InTotoProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v InTotoProvenanceResponse) *InTotoProvenanceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoProvenanceResponse) *InTotoProvenanceResponse {
 		return &v
 	}).(InTotoProvenanceResponsePtrOutput)
 }
@@ -15020,7 +15429,13 @@ func (o InTotoProvenanceResponsePtrOutput) ToInTotoProvenanceResponsePtrOutputWi
 }
 
 func (o InTotoProvenanceResponsePtrOutput) Elem() InTotoProvenanceResponseOutput {
-	return o.ApplyT(func(v *InTotoProvenanceResponse) InTotoProvenanceResponse { return *v }).(InTotoProvenanceResponseOutput)
+	return o.ApplyT(func(v *InTotoProvenanceResponse) InTotoProvenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoProvenanceResponse
+		return ret
+	}).(InTotoProvenanceResponseOutput)
 }
 
 // required
@@ -15166,7 +15581,7 @@ func (o InTotoStatementOutput) ToInTotoStatementPtrOutput() InTotoStatementPtrOu
 }
 
 func (o InTotoStatementOutput) ToInTotoStatementPtrOutputWithContext(ctx context.Context) InTotoStatementPtrOutput {
-	return o.ApplyT(func(v InTotoStatement) *InTotoStatement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoStatement) *InTotoStatement {
 		return &v
 	}).(InTotoStatementPtrOutput)
 }
@@ -15204,7 +15619,13 @@ func (o InTotoStatementPtrOutput) ToInTotoStatementPtrOutputWithContext(ctx cont
 }
 
 func (o InTotoStatementPtrOutput) Elem() InTotoStatementOutput {
-	return o.ApplyT(func(v *InTotoStatement) InTotoStatement { return *v }).(InTotoStatementOutput)
+	return o.ApplyT(func(v *InTotoStatement) InTotoStatement {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoStatement
+		return ret
+	}).(InTotoStatementOutput)
 }
 
 // "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
@@ -15349,7 +15770,7 @@ func (o InTotoStatementResponseOutput) ToInTotoStatementResponsePtrOutput() InTo
 }
 
 func (o InTotoStatementResponseOutput) ToInTotoStatementResponsePtrOutputWithContext(ctx context.Context) InTotoStatementResponsePtrOutput {
-	return o.ApplyT(func(v InTotoStatementResponse) *InTotoStatementResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InTotoStatementResponse) *InTotoStatementResponse {
 		return &v
 	}).(InTotoStatementResponsePtrOutput)
 }
@@ -15387,7 +15808,13 @@ func (o InTotoStatementResponsePtrOutput) ToInTotoStatementResponsePtrOutputWith
 }
 
 func (o InTotoStatementResponsePtrOutput) Elem() InTotoStatementResponseOutput {
-	return o.ApplyT(func(v *InTotoStatementResponse) InTotoStatementResponse { return *v }).(InTotoStatementResponseOutput)
+	return o.ApplyT(func(v *InTotoStatementResponse) InTotoStatementResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InTotoStatementResponse
+		return ret
+	}).(InTotoStatementResponseOutput)
 }
 
 // "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
@@ -15524,7 +15951,7 @@ func (o InstallationOutput) ToInstallationPtrOutput() InstallationPtrOutput {
 }
 
 func (o InstallationOutput) ToInstallationPtrOutputWithContext(ctx context.Context) InstallationPtrOutput {
-	return o.ApplyT(func(v Installation) *Installation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Installation) *Installation {
 		return &v
 	}).(InstallationPtrOutput)
 }
@@ -15549,7 +15976,13 @@ func (o InstallationPtrOutput) ToInstallationPtrOutputWithContext(ctx context.Co
 }
 
 func (o InstallationPtrOutput) Elem() InstallationOutput {
-	return o.ApplyT(func(v *Installation) Installation { return *v }).(InstallationOutput)
+	return o.ApplyT(func(v *Installation) Installation {
+		if v != nil {
+			return *v
+		}
+		var ret Installation
+		return ret
+	}).(InstallationOutput)
 }
 
 // All of the places within the filesystem versions of this package have been found.
@@ -15662,7 +16095,7 @@ func (o InstallationResponseOutput) ToInstallationResponsePtrOutput() Installati
 }
 
 func (o InstallationResponseOutput) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
-	return o.ApplyT(func(v InstallationResponse) *InstallationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstallationResponse) *InstallationResponse {
 		return &v
 	}).(InstallationResponsePtrOutput)
 }
@@ -15692,7 +16125,13 @@ func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutputWithContex
 }
 
 func (o InstallationResponsePtrOutput) Elem() InstallationResponseOutput {
-	return o.ApplyT(func(v *InstallationResponse) InstallationResponse { return *v }).(InstallationResponseOutput)
+	return o.ApplyT(func(v *InstallationResponse) InstallationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstallationResponse
+		return ret
+	}).(InstallationResponseOutput)
 }
 
 // All of the places within the filesystem versions of this package have been found.
@@ -16281,7 +16720,7 @@ func (o MetadataOutput) ToMetadataPtrOutput() MetadataPtrOutput {
 }
 
 func (o MetadataOutput) ToMetadataPtrOutputWithContext(ctx context.Context) MetadataPtrOutput {
-	return o.ApplyT(func(v Metadata) *Metadata {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Metadata) *Metadata {
 		return &v
 	}).(MetadataPtrOutput)
 }
@@ -16326,7 +16765,13 @@ func (o MetadataPtrOutput) ToMetadataPtrOutputWithContext(ctx context.Context) M
 }
 
 func (o MetadataPtrOutput) Elem() MetadataOutput {
-	return o.ApplyT(func(v *Metadata) Metadata { return *v }).(MetadataOutput)
+	return o.ApplyT(func(v *Metadata) Metadata {
+		if v != nil {
+			return *v
+		}
+		var ret Metadata
+		return ret
+	}).(MetadataOutput)
 }
 
 // The timestamp of when the build completed.
@@ -16491,7 +16936,7 @@ func (o MetadataResponseOutput) ToMetadataResponsePtrOutput() MetadataResponsePt
 }
 
 func (o MetadataResponseOutput) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return o.ApplyT(func(v MetadataResponse) *MetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataResponse) *MetadataResponse {
 		return &v
 	}).(MetadataResponsePtrOutput)
 }
@@ -16536,7 +16981,13 @@ func (o MetadataResponsePtrOutput) ToMetadataResponsePtrOutputWithContext(ctx co
 }
 
 func (o MetadataResponsePtrOutput) Elem() MetadataResponseOutput {
-	return o.ApplyT(func(v *MetadataResponse) MetadataResponse { return *v }).(MetadataResponseOutput)
+	return o.ApplyT(func(v *MetadataResponse) MetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataResponse
+		return ret
+	}).(MetadataResponseOutput)
 }
 
 // The timestamp of when the build completed.
@@ -16925,7 +17376,7 @@ func (o PackageOutput) ToPackagePtrOutput() PackagePtrOutput {
 }
 
 func (o PackageOutput) ToPackagePtrOutputWithContext(ctx context.Context) PackagePtrOutput {
-	return o.ApplyT(func(v Package) *Package {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Package) *Package {
 		return &v
 	}).(PackagePtrOutput)
 }
@@ -16955,7 +17406,13 @@ func (o PackagePtrOutput) ToPackagePtrOutputWithContext(ctx context.Context) Pac
 }
 
 func (o PackagePtrOutput) Elem() PackageOutput {
-	return o.ApplyT(func(v *Package) Package { return *v }).(PackageOutput)
+	return o.ApplyT(func(v *Package) Package {
+		if v != nil {
+			return *v
+		}
+		var ret Package
+		return ret
+	}).(PackageOutput)
 }
 
 // The various channels by which a package is distributed.
@@ -17364,7 +17821,7 @@ func (o PackageNoteOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
 }
 
 func (o PackageNoteOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o.ApplyT(func(v PackageNote) *PackageNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNote) *PackageNote {
 		return &v
 	}).(PackageNotePtrOutput)
 }
@@ -17464,7 +17921,13 @@ func (o PackageNotePtrOutput) ToPackageNotePtrOutputWithContext(ctx context.Cont
 }
 
 func (o PackageNotePtrOutput) Elem() PackageNoteOutput {
-	return o.ApplyT(func(v *PackageNote) PackageNote { return *v }).(PackageNoteOutput)
+	return o.ApplyT(func(v *PackageNote) PackageNote {
+		if v != nil {
+			return *v
+		}
+		var ret PackageNote
+		return ret
+	}).(PackageNoteOutput)
 }
 
 // Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
@@ -17783,7 +18246,7 @@ func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutput() PackageNoteR
 }
 
 func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o.ApplyT(func(v PackageNoteResponse) *PackageNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteResponse) *PackageNoteResponse {
 		return &v
 	}).(PackageNoteResponsePtrOutput)
 }
@@ -17883,7 +18346,13 @@ func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutputWithContext(
 }
 
 func (o PackageNoteResponsePtrOutput) Elem() PackageNoteResponseOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse { return *v }).(PackageNoteResponseOutput)
+	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageNoteResponse
+		return ret
+	}).(PackageNoteResponseOutput)
 }
 
 // Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
@@ -18162,7 +18631,7 @@ func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutput() PackageOccurrenc
 }
 
 func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *PackageOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrence) *PackageOccurrence {
 		return &v
 	}).(PackageOccurrencePtrOutput)
 }
@@ -18212,7 +18681,13 @@ func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutputWithContext(ctx 
 }
 
 func (o PackageOccurrencePtrOutput) Elem() PackageOccurrenceOutput {
-	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence { return *v }).(PackageOccurrenceOutput)
+	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret PackageOccurrence
+		return ret
+	}).(PackageOccurrenceOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the package being described
@@ -18387,7 +18862,7 @@ func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutput() 
 }
 
 func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) *PackageOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrenceResponse) *PackageOccurrenceResponse {
 		return &v
 	}).(PackageOccurrenceResponsePtrOutput)
 }
@@ -18432,7 +18907,13 @@ func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutput
 }
 
 func (o PackageOccurrenceResponsePtrOutput) Elem() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse { return *v }).(PackageOccurrenceResponseOutput)
+	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageOccurrenceResponse
+		return ret
+	}).(PackageOccurrenceResponseOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the package being described
@@ -18585,7 +19066,7 @@ func (o PackageResponseOutput) ToPackageResponsePtrOutput() PackageResponsePtrOu
 }
 
 func (o PackageResponseOutput) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
-	return o.ApplyT(func(v PackageResponse) *PackageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageResponse) *PackageResponse {
 		return &v
 	}).(PackageResponsePtrOutput)
 }
@@ -18615,7 +19096,13 @@ func (o PackageResponsePtrOutput) ToPackageResponsePtrOutputWithContext(ctx cont
 }
 
 func (o PackageResponsePtrOutput) Elem() PackageResponseOutput {
-	return o.ApplyT(func(v *PackageResponse) PackageResponse { return *v }).(PackageResponseOutput)
+	return o.ApplyT(func(v *PackageResponse) PackageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageResponse
+		return ret
+	}).(PackageResponseOutput)
 }
 
 // The various channels by which a package is distributed.
@@ -18742,7 +19229,7 @@ func (o PgpSignedAttestationOutput) ToPgpSignedAttestationPtrOutput() PgpSignedA
 }
 
 func (o PgpSignedAttestationOutput) ToPgpSignedAttestationPtrOutputWithContext(ctx context.Context) PgpSignedAttestationPtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestation) *PgpSignedAttestation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PgpSignedAttestation) *PgpSignedAttestation {
 		return &v
 	}).(PgpSignedAttestationPtrOutput)
 }
@@ -18777,7 +19264,13 @@ func (o PgpSignedAttestationPtrOutput) ToPgpSignedAttestationPtrOutputWithContex
 }
 
 func (o PgpSignedAttestationPtrOutput) Elem() PgpSignedAttestationOutput {
-	return o.ApplyT(func(v *PgpSignedAttestation) PgpSignedAttestation { return *v }).(PgpSignedAttestationOutput)
+	return o.ApplyT(func(v *PgpSignedAttestation) PgpSignedAttestation {
+		if v != nil {
+			return *v
+		}
+		var ret PgpSignedAttestation
+		return ret
+	}).(PgpSignedAttestationOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -18914,7 +19407,7 @@ func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOut
 }
 
 func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestationResponse) *PgpSignedAttestationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PgpSignedAttestationResponse) *PgpSignedAttestationResponse {
 		return &v
 	}).(PgpSignedAttestationResponsePtrOutput)
 }
@@ -18949,7 +19442,13 @@ func (o PgpSignedAttestationResponsePtrOutput) ToPgpSignedAttestationResponsePtr
 }
 
 func (o PgpSignedAttestationResponsePtrOutput) Elem() PgpSignedAttestationResponseOutput {
-	return o.ApplyT(func(v *PgpSignedAttestationResponse) PgpSignedAttestationResponse { return *v }).(PgpSignedAttestationResponseOutput)
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) PgpSignedAttestationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PgpSignedAttestationResponse
+		return ret
+	}).(PgpSignedAttestationResponseOutput)
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -19094,7 +19593,7 @@ func (o RecipeOutput) ToRecipePtrOutput() RecipePtrOutput {
 }
 
 func (o RecipeOutput) ToRecipePtrOutputWithContext(ctx context.Context) RecipePtrOutput {
-	return o.ApplyT(func(v Recipe) *Recipe {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Recipe) *Recipe {
 		return &v
 	}).(RecipePtrOutput)
 }
@@ -19139,7 +19638,13 @@ func (o RecipePtrOutput) ToRecipePtrOutputWithContext(ctx context.Context) Recip
 }
 
 func (o RecipePtrOutput) Elem() RecipeOutput {
-	return o.ApplyT(func(v *Recipe) Recipe { return *v }).(RecipeOutput)
+	return o.ApplyT(func(v *Recipe) Recipe {
+		if v != nil {
+			return *v
+		}
+		var ret Recipe
+		return ret
+	}).(RecipeOutput)
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
@@ -19304,7 +19809,7 @@ func (o RecipeResponseOutput) ToRecipeResponsePtrOutput() RecipeResponsePtrOutpu
 }
 
 func (o RecipeResponseOutput) ToRecipeResponsePtrOutputWithContext(ctx context.Context) RecipeResponsePtrOutput {
-	return o.ApplyT(func(v RecipeResponse) *RecipeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecipeResponse) *RecipeResponse {
 		return &v
 	}).(RecipeResponsePtrOutput)
 }
@@ -19349,7 +19854,13 @@ func (o RecipeResponsePtrOutput) ToRecipeResponsePtrOutputWithContext(ctx contex
 }
 
 func (o RecipeResponsePtrOutput) Elem() RecipeResponseOutput {
-	return o.ApplyT(func(v *RecipeResponse) RecipeResponse { return *v }).(RecipeResponseOutput)
+	return o.ApplyT(func(v *RecipeResponse) RecipeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RecipeResponse
+		return ret
+	}).(RecipeResponseOutput)
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
@@ -19712,7 +20223,7 @@ func (o RelationshipNoteOutput) ToRelationshipNotePtrOutput() RelationshipNotePt
 }
 
 func (o RelationshipNoteOutput) ToRelationshipNotePtrOutputWithContext(ctx context.Context) RelationshipNotePtrOutput {
-	return o.ApplyT(func(v RelationshipNote) *RelationshipNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipNote) *RelationshipNote {
 		return &v
 	}).(RelationshipNotePtrOutput)
 }
@@ -19732,7 +20243,13 @@ func (o RelationshipNotePtrOutput) ToRelationshipNotePtrOutputWithContext(ctx co
 }
 
 func (o RelationshipNotePtrOutput) Elem() RelationshipNoteOutput {
-	return o.ApplyT(func(v *RelationshipNote) RelationshipNote { return *v }).(RelationshipNoteOutput)
+	return o.ApplyT(func(v *RelationshipNote) RelationshipNote {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipNote
+		return ret
+	}).(RelationshipNoteOutput)
 }
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -19827,7 +20344,7 @@ func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutput() Re
 }
 
 func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutputWithContext(ctx context.Context) RelationshipNoteResponsePtrOutput {
-	return o.ApplyT(func(v RelationshipNoteResponse) *RelationshipNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipNoteResponse) *RelationshipNoteResponse {
 		return &v
 	}).(RelationshipNoteResponsePtrOutput)
 }
@@ -19847,7 +20364,13 @@ func (o RelationshipNoteResponsePtrOutput) ToRelationshipNoteResponsePtrOutputWi
 }
 
 func (o RelationshipNoteResponsePtrOutput) Elem() RelationshipNoteResponseOutput {
-	return o.ApplyT(func(v *RelationshipNoteResponse) RelationshipNoteResponse { return *v }).(RelationshipNoteResponseOutput)
+	return o.ApplyT(func(v *RelationshipNoteResponse) RelationshipNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipNoteResponse
+		return ret
+	}).(RelationshipNoteResponseOutput)
 }
 
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -19958,7 +20481,7 @@ func (o RelationshipOccurrenceOutput) ToRelationshipOccurrencePtrOutput() Relati
 }
 
 func (o RelationshipOccurrenceOutput) ToRelationshipOccurrencePtrOutputWithContext(ctx context.Context) RelationshipOccurrencePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrence) *RelationshipOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrence) *RelationshipOccurrence {
 		return &v
 	}).(RelationshipOccurrencePtrOutput)
 }
@@ -19998,7 +20521,13 @@ func (o RelationshipOccurrencePtrOutput) ToRelationshipOccurrencePtrOutputWithCo
 }
 
 func (o RelationshipOccurrencePtrOutput) Elem() RelationshipOccurrenceOutput {
-	return o.ApplyT(func(v *RelationshipOccurrence) RelationshipOccurrence { return *v }).(RelationshipOccurrenceOutput)
+	return o.ApplyT(func(v *RelationshipOccurrence) RelationshipOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipOccurrence
+		return ret
+	}).(RelationshipOccurrenceOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the relationship
@@ -20149,7 +20678,7 @@ func (o RelationshipOccurrenceResponseOutput) ToRelationshipOccurrenceResponsePt
 }
 
 func (o RelationshipOccurrenceResponseOutput) ToRelationshipOccurrenceResponsePtrOutputWithContext(ctx context.Context) RelationshipOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrenceResponse) *RelationshipOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelationshipOccurrenceResponse) *RelationshipOccurrenceResponse {
 		return &v
 	}).(RelationshipOccurrenceResponsePtrOutput)
 }
@@ -20189,7 +20718,13 @@ func (o RelationshipOccurrenceResponsePtrOutput) ToRelationshipOccurrenceRespons
 }
 
 func (o RelationshipOccurrenceResponsePtrOutput) Elem() RelationshipOccurrenceResponseOutput {
-	return o.ApplyT(func(v *RelationshipOccurrenceResponse) RelationshipOccurrenceResponse { return *v }).(RelationshipOccurrenceResponseOutput)
+	return o.ApplyT(func(v *RelationshipOccurrenceResponse) RelationshipOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RelationshipOccurrenceResponse
+		return ret
+	}).(RelationshipOccurrenceResponseOutput)
 }
 
 // A place for the SPDX file creator to record any general comments about the relationship
@@ -20344,7 +20879,7 @@ func (o RepoSourceOutput) ToRepoSourcePtrOutput() RepoSourcePtrOutput {
 }
 
 func (o RepoSourceOutput) ToRepoSourcePtrOutputWithContext(ctx context.Context) RepoSourcePtrOutput {
-	return o.ApplyT(func(v RepoSource) *RepoSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSource) *RepoSource {
 		return &v
 	}).(RepoSourcePtrOutput)
 }
@@ -20389,7 +20924,13 @@ func (o RepoSourcePtrOutput) ToRepoSourcePtrOutputWithContext(ctx context.Contex
 }
 
 func (o RepoSourcePtrOutput) Elem() RepoSourceOutput {
-	return o.ApplyT(func(v *RepoSource) RepoSource { return *v }).(RepoSourceOutput)
+	return o.ApplyT(func(v *RepoSource) RepoSource {
+		if v != nil {
+			return *v
+		}
+		var ret RepoSource
+		return ret
+	}).(RepoSourceOutput)
 }
 
 // Name of the branch to build.
@@ -20554,7 +21095,7 @@ func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutput() RepoSourceResp
 }
 
 func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return o.ApplyT(func(v RepoSourceResponse) *RepoSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSourceResponse) *RepoSourceResponse {
 		return &v
 	}).(RepoSourceResponsePtrOutput)
 }
@@ -20599,7 +21140,13 @@ func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutputWithContext(ct
 }
 
 func (o RepoSourceResponsePtrOutput) Elem() RepoSourceResponseOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse { return *v }).(RepoSourceResponseOutput)
+	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RepoSourceResponse
+		return ret
+	}).(RepoSourceResponseOutput)
 }
 
 // Name of the branch to build.
@@ -20756,7 +21303,7 @@ func (o ResourceOutput) ToResourcePtrOutput() ResourcePtrOutput {
 }
 
 func (o ResourceOutput) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
-	return o.ApplyT(func(v Resource) *Resource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Resource) *Resource {
 		return &v
 	}).(ResourcePtrOutput)
 }
@@ -20791,7 +21338,13 @@ func (o ResourcePtrOutput) ToResourcePtrOutputWithContext(ctx context.Context) R
 }
 
 func (o ResourcePtrOutput) Elem() ResourceOutput {
-	return o.ApplyT(func(v *Resource) Resource { return *v }).(ResourceOutput)
+	return o.ApplyT(func(v *Resource) Resource {
+		if v != nil {
+			return *v
+		}
+		var ret Resource
+		return ret
+	}).(ResourceOutput)
 }
 
 // The hash of the resource content. E.g., the Docker digest.
@@ -20928,7 +21481,7 @@ func (o ResourceResponseOutput) ToResourceResponsePtrOutput() ResourceResponsePt
 }
 
 func (o ResourceResponseOutput) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
-	return o.ApplyT(func(v ResourceResponse) *ResourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceResponse) *ResourceResponse {
 		return &v
 	}).(ResourceResponsePtrOutput)
 }
@@ -20963,7 +21516,13 @@ func (o ResourceResponsePtrOutput) ToResourceResponsePtrOutputWithContext(ctx co
 }
 
 func (o ResourceResponsePtrOutput) Elem() ResourceResponseOutput {
-	return o.ApplyT(func(v *ResourceResponse) ResourceResponse { return *v }).(ResourceResponseOutput)
+	return o.ApplyT(func(v *ResourceResponse) ResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceResponse
+		return ret
+	}).(ResourceResponseOutput)
 }
 
 // The hash of the resource content. E.g., the Docker digest.
@@ -21112,7 +21671,7 @@ func (o SourceOutput) ToSourcePtrOutput() SourcePtrOutput {
 }
 
 func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
-	return o.ApplyT(func(v Source) *Source {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Source) *Source {
 		return &v
 	}).(SourcePtrOutput)
 }
@@ -21162,7 +21721,13 @@ func (o SourcePtrOutput) ToSourcePtrOutputWithContext(ctx context.Context) Sourc
 }
 
 func (o SourcePtrOutput) Elem() SourceOutput {
-	return o.ApplyT(func(v *Source) Source { return *v }).(SourceOutput)
+	return o.ApplyT(func(v *Source) Source {
+		if v != nil {
+			return *v
+		}
+		var ret Source
+		return ret
+	}).(SourceOutput)
 }
 
 // If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
@@ -21341,7 +21906,7 @@ func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutpu
 }
 
 func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyT(func(v SourceResponse) *SourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
 		return &v
 	}).(SourceResponsePtrOutput)
 }
@@ -21393,7 +21958,13 @@ func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx contex
 }
 
 func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse { return *v }).(SourceResponseOutput)
+	return o.ApplyT(func(v *SourceResponse) SourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceResponse
+		return ret
+	}).(SourceResponseOutput)
 }
 
 // If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
@@ -21560,7 +22131,7 @@ func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
 }
 
 func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
 		return &v
 	}).(StatusPtrOutput)
 }
@@ -21595,7 +22166,13 @@ func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) Statu
 }
 
 func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+	return o.ApplyT(func(v *Status) Status {
+		if v != nil {
+			return *v
+		}
+		var ret Status
+		return ret
+	}).(StatusOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -21732,7 +22309,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -21767,7 +22344,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -21904,7 +22487,7 @@ func (o StorageSourceOutput) ToStorageSourcePtrOutput() StorageSourcePtrOutput {
 }
 
 func (o StorageSourceOutput) ToStorageSourcePtrOutputWithContext(ctx context.Context) StorageSourcePtrOutput {
-	return o.ApplyT(func(v StorageSource) *StorageSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSource) *StorageSource {
 		return &v
 	}).(StorageSourcePtrOutput)
 }
@@ -21939,7 +22522,13 @@ func (o StorageSourcePtrOutput) ToStorageSourcePtrOutputWithContext(ctx context.
 }
 
 func (o StorageSourcePtrOutput) Elem() StorageSourceOutput {
-	return o.ApplyT(func(v *StorageSource) StorageSource { return *v }).(StorageSourceOutput)
+	return o.ApplyT(func(v *StorageSource) StorageSource {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSource
+		return ret
+	}).(StorageSourceOutput)
 }
 
 // Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -22076,7 +22665,7 @@ func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutput() StorageS
 }
 
 func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return o.ApplyT(func(v StorageSourceResponse) *StorageSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceResponse) *StorageSourceResponse {
 		return &v
 	}).(StorageSourceResponsePtrOutput)
 }
@@ -22111,7 +22700,13 @@ func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutputWithCont
 }
 
 func (o StorageSourceResponsePtrOutput) Elem() StorageSourceResponseOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse { return *v }).(StorageSourceResponseOutput)
+	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSourceResponse
+		return ret
+	}).(StorageSourceResponseOutput)
 }
 
 // Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -22483,7 +23078,7 @@ func (o UpgradeDistributionOutput) ToUpgradeDistributionPtrOutput() UpgradeDistr
 }
 
 func (o UpgradeDistributionOutput) ToUpgradeDistributionPtrOutputWithContext(ctx context.Context) UpgradeDistributionPtrOutput {
-	return o.ApplyT(func(v UpgradeDistribution) *UpgradeDistribution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeDistribution) *UpgradeDistribution {
 		return &v
 	}).(UpgradeDistributionPtrOutput)
 }
@@ -22523,7 +23118,13 @@ func (o UpgradeDistributionPtrOutput) ToUpgradeDistributionPtrOutputWithContext(
 }
 
 func (o UpgradeDistributionPtrOutput) Elem() UpgradeDistributionOutput {
-	return o.ApplyT(func(v *UpgradeDistribution) UpgradeDistribution { return *v }).(UpgradeDistributionOutput)
+	return o.ApplyT(func(v *UpgradeDistribution) UpgradeDistribution {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeDistribution
+		return ret
+	}).(UpgradeDistributionOutput)
 }
 
 // The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
@@ -22719,7 +23320,7 @@ func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutpu
 }
 
 func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
-	return o.ApplyT(func(v UpgradeDistributionResponse) *UpgradeDistributionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeDistributionResponse) *UpgradeDistributionResponse {
 		return &v
 	}).(UpgradeDistributionResponsePtrOutput)
 }
@@ -22759,7 +23360,13 @@ func (o UpgradeDistributionResponsePtrOutput) ToUpgradeDistributionResponsePtrOu
 }
 
 func (o UpgradeDistributionResponsePtrOutput) Elem() UpgradeDistributionResponseOutput {
-	return o.ApplyT(func(v *UpgradeDistributionResponse) UpgradeDistributionResponse { return *v }).(UpgradeDistributionResponseOutput)
+	return o.ApplyT(func(v *UpgradeDistributionResponse) UpgradeDistributionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeDistributionResponse
+		return ret
+	}).(UpgradeDistributionResponseOutput)
 }
 
 // The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
@@ -22926,7 +23533,7 @@ func (o UpgradeNoteOutput) ToUpgradeNotePtrOutput() UpgradeNotePtrOutput {
 }
 
 func (o UpgradeNoteOutput) ToUpgradeNotePtrOutputWithContext(ctx context.Context) UpgradeNotePtrOutput {
-	return o.ApplyT(func(v UpgradeNote) *UpgradeNote {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeNote) *UpgradeNote {
 		return &v
 	}).(UpgradeNotePtrOutput)
 }
@@ -22961,7 +23568,13 @@ func (o UpgradeNotePtrOutput) ToUpgradeNotePtrOutputWithContext(ctx context.Cont
 }
 
 func (o UpgradeNotePtrOutput) Elem() UpgradeNoteOutput {
-	return o.ApplyT(func(v *UpgradeNote) UpgradeNote { return *v }).(UpgradeNoteOutput)
+	return o.ApplyT(func(v *UpgradeNote) UpgradeNote {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeNote
+		return ret
+	}).(UpgradeNoteOutput)
 }
 
 // Metadata about the upgrade for each specific operating system.
@@ -23098,7 +23711,7 @@ func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutput() UpgradeNoteR
 }
 
 func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
-	return o.ApplyT(func(v UpgradeNoteResponse) *UpgradeNoteResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeNoteResponse) *UpgradeNoteResponse {
 		return &v
 	}).(UpgradeNoteResponsePtrOutput)
 }
@@ -23133,7 +23746,13 @@ func (o UpgradeNoteResponsePtrOutput) ToUpgradeNoteResponsePtrOutputWithContext(
 }
 
 func (o UpgradeNoteResponsePtrOutput) Elem() UpgradeNoteResponseOutput {
-	return o.ApplyT(func(v *UpgradeNoteResponse) UpgradeNoteResponse { return *v }).(UpgradeNoteResponseOutput)
+	return o.ApplyT(func(v *UpgradeNoteResponse) UpgradeNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeNoteResponse
+		return ret
+	}).(UpgradeNoteResponseOutput)
 }
 
 // Metadata about the upgrade for each specific operating system.
@@ -23270,7 +23889,7 @@ func (o UpgradeOccurrenceOutput) ToUpgradeOccurrencePtrOutput() UpgradeOccurrenc
 }
 
 func (o UpgradeOccurrenceOutput) ToUpgradeOccurrencePtrOutputWithContext(ctx context.Context) UpgradeOccurrencePtrOutput {
-	return o.ApplyT(func(v UpgradeOccurrence) *UpgradeOccurrence {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeOccurrence) *UpgradeOccurrence {
 		return &v
 	}).(UpgradeOccurrencePtrOutput)
 }
@@ -23305,7 +23924,13 @@ func (o UpgradeOccurrencePtrOutput) ToUpgradeOccurrencePtrOutputWithContext(ctx 
 }
 
 func (o UpgradeOccurrencePtrOutput) Elem() UpgradeOccurrenceOutput {
-	return o.ApplyT(func(v *UpgradeOccurrence) UpgradeOccurrence { return *v }).(UpgradeOccurrenceOutput)
+	return o.ApplyT(func(v *UpgradeOccurrence) UpgradeOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeOccurrence
+		return ret
+	}).(UpgradeOccurrenceOutput)
 }
 
 // Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
@@ -23442,7 +24067,7 @@ func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutput() 
 }
 
 func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
-	return o.ApplyT(func(v UpgradeOccurrenceResponse) *UpgradeOccurrenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeOccurrenceResponse) *UpgradeOccurrenceResponse {
 		return &v
 	}).(UpgradeOccurrenceResponsePtrOutput)
 }
@@ -23477,7 +24102,13 @@ func (o UpgradeOccurrenceResponsePtrOutput) ToUpgradeOccurrenceResponsePtrOutput
 }
 
 func (o UpgradeOccurrenceResponsePtrOutput) Elem() UpgradeOccurrenceResponseOutput {
-	return o.ApplyT(func(v *UpgradeOccurrenceResponse) UpgradeOccurrenceResponse { return *v }).(UpgradeOccurrenceResponseOutput)
+	return o.ApplyT(func(v *UpgradeOccurrenceResponse) UpgradeOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeOccurrenceResponse
+		return ret
+	}).(UpgradeOccurrenceResponseOutput)
 }
 
 // Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
@@ -23622,7 +24253,7 @@ func (o VersionOutput) ToVersionPtrOutput() VersionPtrOutput {
 }
 
 func (o VersionOutput) ToVersionPtrOutputWithContext(ctx context.Context) VersionPtrOutput {
-	return o.ApplyT(func(v Version) *Version {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Version) *Version {
 		return &v
 	}).(VersionPtrOutput)
 }
@@ -23667,7 +24298,13 @@ func (o VersionPtrOutput) ToVersionPtrOutputWithContext(ctx context.Context) Ver
 }
 
 func (o VersionPtrOutput) Elem() VersionOutput {
-	return o.ApplyT(func(v *Version) Version { return *v }).(VersionOutput)
+	return o.ApplyT(func(v *Version) Version {
+		if v != nil {
+			return *v
+		}
+		var ret Version
+		return ret
+	}).(VersionOutput)
 }
 
 // Used to correct mistakes in the version numbering scheme.
@@ -23832,7 +24469,7 @@ func (o VersionResponseOutput) ToVersionResponsePtrOutput() VersionResponsePtrOu
 }
 
 func (o VersionResponseOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
-	return o.ApplyT(func(v VersionResponse) *VersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VersionResponse) *VersionResponse {
 		return &v
 	}).(VersionResponsePtrOutput)
 }
@@ -23877,7 +24514,13 @@ func (o VersionResponsePtrOutput) ToVersionResponsePtrOutputWithContext(ctx cont
 }
 
 func (o VersionResponsePtrOutput) Elem() VersionResponseOutput {
-	return o.ApplyT(func(v *VersionResponse) VersionResponse { return *v }).(VersionResponseOutput)
+	return o.ApplyT(func(v *VersionResponse) VersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VersionResponse
+		return ret
+	}).(VersionResponseOutput)
 }
 
 // Used to correct mistakes in the version numbering scheme.
@@ -24034,7 +24677,7 @@ func (o VulnerabilityDetailsOutput) ToVulnerabilityDetailsPtrOutput() Vulnerabil
 }
 
 func (o VulnerabilityDetailsOutput) ToVulnerabilityDetailsPtrOutputWithContext(ctx context.Context) VulnerabilityDetailsPtrOutput {
-	return o.ApplyT(func(v VulnerabilityDetails) *VulnerabilityDetails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityDetails) *VulnerabilityDetails {
 		return &v
 	}).(VulnerabilityDetailsPtrOutput)
 }
@@ -24069,7 +24712,13 @@ func (o VulnerabilityDetailsPtrOutput) ToVulnerabilityDetailsPtrOutputWithContex
 }
 
 func (o VulnerabilityDetailsPtrOutput) Elem() VulnerabilityDetailsOutput {
-	return o.ApplyT(func(v *VulnerabilityDetails) VulnerabilityDetails { return *v }).(VulnerabilityDetailsOutput)
+	return o.ApplyT(func(v *VulnerabilityDetails) VulnerabilityDetails {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityDetails
+		return ret
+	}).(VulnerabilityDetailsOutput)
 }
 
 // The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
@@ -24214,7 +24863,7 @@ func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponsePtrOut
 }
 
 func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityDetailsResponsePtrOutput {
-	return o.ApplyT(func(v VulnerabilityDetailsResponse) *VulnerabilityDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityDetailsResponse) *VulnerabilityDetailsResponse {
 		return &v
 	}).(VulnerabilityDetailsResponsePtrOutput)
 }
@@ -24259,7 +24908,13 @@ func (o VulnerabilityDetailsResponsePtrOutput) ToVulnerabilityDetailsResponsePtr
 }
 
 func (o VulnerabilityDetailsResponsePtrOutput) Elem() VulnerabilityDetailsResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityDetailsResponse) VulnerabilityDetailsResponse { return *v }).(VulnerabilityDetailsResponseOutput)
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) VulnerabilityDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityDetailsResponse
+		return ret
+	}).(VulnerabilityDetailsResponseOutput)
 }
 
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
@@ -24416,7 +25071,7 @@ func (o VulnerabilityLocationOutput) ToVulnerabilityLocationPtrOutput() Vulnerab
 }
 
 func (o VulnerabilityLocationOutput) ToVulnerabilityLocationPtrOutputWithContext(ctx context.Context) VulnerabilityLocationPtrOutput {
-	return o.ApplyT(func(v VulnerabilityLocation) *VulnerabilityLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityLocation) *VulnerabilityLocation {
 		return &v
 	}).(VulnerabilityLocationPtrOutput)
 }
@@ -24451,7 +25106,13 @@ func (o VulnerabilityLocationPtrOutput) ToVulnerabilityLocationPtrOutputWithCont
 }
 
 func (o VulnerabilityLocationPtrOutput) Elem() VulnerabilityLocationOutput {
-	return o.ApplyT(func(v *VulnerabilityLocation) VulnerabilityLocation { return *v }).(VulnerabilityLocationOutput)
+	return o.ApplyT(func(v *VulnerabilityLocation) VulnerabilityLocation {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityLocation
+		return ret
+	}).(VulnerabilityLocationOutput)
 }
 
 // The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
@@ -24661,7 +25322,7 @@ func (o VulnerabilityTypeOutput) ToVulnerabilityTypePtrOutput() VulnerabilityTyp
 }
 
 func (o VulnerabilityTypeOutput) ToVulnerabilityTypePtrOutputWithContext(ctx context.Context) VulnerabilityTypePtrOutput {
-	return o.ApplyT(func(v VulnerabilityType) *VulnerabilityType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityType) *VulnerabilityType {
 		return &v
 	}).(VulnerabilityTypePtrOutput)
 }
@@ -24696,7 +25357,13 @@ func (o VulnerabilityTypePtrOutput) ToVulnerabilityTypePtrOutputWithContext(ctx 
 }
 
 func (o VulnerabilityTypePtrOutput) Elem() VulnerabilityTypeOutput {
-	return o.ApplyT(func(v *VulnerabilityType) VulnerabilityType { return *v }).(VulnerabilityTypeOutput)
+	return o.ApplyT(func(v *VulnerabilityType) VulnerabilityType {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityType
+		return ret
+	}).(VulnerabilityTypeOutput)
 }
 
 // The CVSS score for this Vulnerability.
@@ -24833,7 +25500,7 @@ func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponsePtrOutput() 
 }
 
 func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponsePtrOutputWithContext(ctx context.Context) VulnerabilityTypeResponsePtrOutput {
-	return o.ApplyT(func(v VulnerabilityTypeResponse) *VulnerabilityTypeResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityTypeResponse) *VulnerabilityTypeResponse {
 		return &v
 	}).(VulnerabilityTypeResponsePtrOutput)
 }
@@ -24868,7 +25535,13 @@ func (o VulnerabilityTypeResponsePtrOutput) ToVulnerabilityTypeResponsePtrOutput
 }
 
 func (o VulnerabilityTypeResponsePtrOutput) Elem() VulnerabilityTypeResponseOutput {
-	return o.ApplyT(func(v *VulnerabilityTypeResponse) VulnerabilityTypeResponse { return *v }).(VulnerabilityTypeResponseOutput)
+	return o.ApplyT(func(v *VulnerabilityTypeResponse) VulnerabilityTypeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityTypeResponse
+		return ret
+	}).(VulnerabilityTypeResponseOutput)
 }
 
 // The CVSS score for this Vulnerability.

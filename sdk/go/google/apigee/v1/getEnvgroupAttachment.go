@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupEnvgroupAttachmentResult struct {
 	Environment string `pulumi:"environment"`
 	// ID of the environment group attachment.
 	Name string `pulumi:"name"`
+}
+
+func LookupEnvgroupAttachmentOutput(ctx *pulumi.Context, args LookupEnvgroupAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvgroupAttachmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvgroupAttachmentResult, error) {
+			args := v.(LookupEnvgroupAttachmentArgs)
+			r, err := LookupEnvgroupAttachment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvgroupAttachmentResultOutput)
+}
+
+type LookupEnvgroupAttachmentOutputArgs struct {
+	AttachmentId   pulumi.StringInput `pulumi:"attachmentId"`
+	EnvgroupId     pulumi.StringInput `pulumi:"envgroupId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupEnvgroupAttachmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvgroupAttachmentArgs)(nil)).Elem()
+}
+
+type LookupEnvgroupAttachmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvgroupAttachmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvgroupAttachmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvgroupAttachmentResultOutput) ToLookupEnvgroupAttachmentResultOutput() LookupEnvgroupAttachmentResultOutput {
+	return o
+}
+
+func (o LookupEnvgroupAttachmentResultOutput) ToLookupEnvgroupAttachmentResultOutputWithContext(ctx context.Context) LookupEnvgroupAttachmentResultOutput {
+	return o
+}
+
+// The time at which the environment group attachment was created as milliseconds since epoch.
+func (o LookupEnvgroupAttachmentResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupAttachmentResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the attached environment.
+func (o LookupEnvgroupAttachmentResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupAttachmentResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// ID of the environment group attachment.
+func (o LookupEnvgroupAttachmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvgroupAttachmentResultOutput{})
 }

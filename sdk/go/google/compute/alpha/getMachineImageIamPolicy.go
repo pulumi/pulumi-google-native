@@ -4,6 +4,9 @@
 package alpha
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupMachineImageIamPolicyResult struct {
 	Rules []RuleResponse `pulumi:"rules"`
 	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Version int `pulumi:"version"`
+}
+
+func LookupMachineImageIamPolicyOutput(ctx *pulumi.Context, args LookupMachineImageIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMachineImageIamPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMachineImageIamPolicyResult, error) {
+			args := v.(LookupMachineImageIamPolicyArgs)
+			r, err := LookupMachineImageIamPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMachineImageIamPolicyResultOutput)
+}
+
+type LookupMachineImageIamPolicyOutputArgs struct {
+	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	Project                       pulumi.StringPtrInput `pulumi:"project"`
+	Resource                      pulumi.StringInput    `pulumi:"resource"`
+}
+
+func (LookupMachineImageIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMachineImageIamPolicyArgs)(nil)).Elem()
+}
+
+type LookupMachineImageIamPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMachineImageIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMachineImageIamPolicyResult)(nil)).Elem()
+}
+
+func (o LookupMachineImageIamPolicyResultOutput) ToLookupMachineImageIamPolicyResultOutput() LookupMachineImageIamPolicyResultOutput {
+	return o
+}
+
+func (o LookupMachineImageIamPolicyResultOutput) ToLookupMachineImageIamPolicyResultOutputWithContext(ctx context.Context) LookupMachineImageIamPolicyResultOutput {
+	return o
+}
+
+// Specifies cloud audit logging configuration for this policy.
+func (o LookupMachineImageIamPolicyResultOutput) AuditConfigs() AuditConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) []AuditConfigResponse { return v.AuditConfigs }).(AuditConfigResponseArrayOutput)
+}
+
+// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+func (o LookupMachineImageIamPolicyResultOutput) Bindings() BindingResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) []BindingResponse { return v.Bindings }).(BindingResponseArrayOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+func (o LookupMachineImageIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// This is deprecated and has no effect. Do not use.
+func (o LookupMachineImageIamPolicyResultOutput) IamOwned() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) bool { return v.IamOwned }).(pulumi.BoolOutput)
+}
+
+// This is deprecated and has no effect. Do not use.
+func (o LookupMachineImageIamPolicyResultOutput) Rules() RuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) []RuleResponse { return v.Rules }).(RuleResponseArrayOutput)
+}
+
+// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o LookupMachineImageIamPolicyResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMachineImageIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMachineImageIamPolicyResultOutput{})
 }

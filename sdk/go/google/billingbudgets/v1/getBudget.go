@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,77 @@ type LookupBudgetResult struct {
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRuleResponse `pulumi:"notificationsRule"`
 	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1ThresholdRuleResponse `pulumi:"thresholdRules"`
+}
+
+func LookupBudgetOutput(ctx *pulumi.Context, args LookupBudgetOutputArgs, opts ...pulumi.InvokeOption) LookupBudgetResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBudgetResult, error) {
+			args := v.(LookupBudgetArgs)
+			r, err := LookupBudget(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBudgetResultOutput)
+}
+
+type LookupBudgetOutputArgs struct {
+	BillingAccountId pulumi.StringInput `pulumi:"billingAccountId"`
+	BudgetId         pulumi.StringInput `pulumi:"budgetId"`
+}
+
+func (LookupBudgetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBudgetArgs)(nil)).Elem()
+}
+
+type LookupBudgetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBudgetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBudgetResult)(nil)).Elem()
+}
+
+func (o LookupBudgetResultOutput) ToLookupBudgetResultOutput() LookupBudgetResultOutput {
+	return o
+}
+
+func (o LookupBudgetResultOutput) ToLookupBudgetResultOutputWithContext(ctx context.Context) LookupBudgetResultOutput {
+	return o
+}
+
+// Budgeted amount.
+func (o LookupBudgetResultOutput) Amount() GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput {
+	return o.ApplyT(func(v LookupBudgetResult) GoogleCloudBillingBudgetsV1BudgetAmountResponse { return v.Amount }).(GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput)
+}
+
+// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
+func (o LookupBudgetResultOutput) BudgetFilter() GoogleCloudBillingBudgetsV1FilterResponseOutput {
+	return o.ApplyT(func(v LookupBudgetResult) GoogleCloudBillingBudgetsV1FilterResponse { return v.BudgetFilter }).(GoogleCloudBillingBudgetsV1FilterResponseOutput)
+}
+
+// User data for display name in UI. The name must be less than or equal to 60 characters.
+func (o LookupBudgetResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
+func (o LookupBudgetResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
+func (o LookupBudgetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+func (o LookupBudgetResultOutput) NotificationsRule() GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput {
+	return o.ApplyT(func(v LookupBudgetResult) GoogleCloudBillingBudgetsV1NotificationsRuleResponse {
+		return v.NotificationsRule
+	}).(GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput)
+}
+
+// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
+func (o LookupBudgetResultOutput) ThresholdRules() GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupBudgetResult) []GoogleCloudBillingBudgetsV1ThresholdRuleResponse { return v.ThresholdRules }).(GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBudgetResultOutput{})
 }

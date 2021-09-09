@@ -107,7 +107,7 @@ func (o NotificationConfigEventTypesItemOutput) ToStringPtrOutputWithContext(ctx
 type NotificationConfigEventTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigEventTypesItemPtrOutput) ElementType() reflect.Type {
-	return notificationConfigEventTypesItemPtrType
+	return reflect.TypeOf((**NotificationConfigEventTypesItem)(nil)).Elem()
 }
 
 func (o NotificationConfigEventTypesItemPtrOutput) ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput {
@@ -116,6 +116,16 @@ func (o NotificationConfigEventTypesItemPtrOutput) ToNotificationConfigEventType
 
 func (o NotificationConfigEventTypesItemPtrOutput) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
 	return o
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) Elem() NotificationConfigEventTypesItemOutput {
+	return o.ApplyT(func(v *NotificationConfigEventTypesItem) NotificationConfigEventTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigEventTypesItem
+		return ret
+	}).(NotificationConfigEventTypesItemOutput)
 }
 
 func (o NotificationConfigEventTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -130,16 +140,6 @@ func (o NotificationConfigEventTypesItemPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationConfigEventTypesItemPtrOutput) Elem() NotificationConfigEventTypesItemOutput {
-	return o.ApplyT(func(v *NotificationConfigEventTypesItem) NotificationConfigEventTypesItem {
-		var ret NotificationConfigEventTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NotificationConfigEventTypesItemOutput)
 }
 
 // NotificationConfigEventTypesItemInput is an input type that accepts NotificationConfigEventTypesItemArgs and NotificationConfigEventTypesItemOutput values.
@@ -220,8 +220,8 @@ func (o NotificationConfigEventTypesItemArrayOutput) ToNotificationConfigEventTy
 }
 
 func (o NotificationConfigEventTypesItemArrayOutput) Index(i pulumi.IntInput) NotificationConfigEventTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationConfigEventTypesItemOutput {
-		return vs[0].([]NotificationConfigEventTypesItem)[vs[1].(int)].ToNotificationConfigEventTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationConfigEventTypesItem {
+		return vs[0].([]NotificationConfigEventTypesItem)[vs[1].(int)]
 	}).(NotificationConfigEventTypesItemOutput)
 }
 
@@ -321,7 +321,7 @@ func (o NotificationConfigPayloadFormatOutput) ToStringPtrOutputWithContext(ctx 
 type NotificationConfigPayloadFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigPayloadFormatPtrOutput) ElementType() reflect.Type {
-	return notificationConfigPayloadFormatPtrType
+	return reflect.TypeOf((**NotificationConfigPayloadFormat)(nil)).Elem()
 }
 
 func (o NotificationConfigPayloadFormatPtrOutput) ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput {
@@ -330,6 +330,16 @@ func (o NotificationConfigPayloadFormatPtrOutput) ToNotificationConfigPayloadFor
 
 func (o NotificationConfigPayloadFormatPtrOutput) ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatPtrOutput {
 	return o
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) Elem() NotificationConfigPayloadFormatOutput {
+	return o.ApplyT(func(v *NotificationConfigPayloadFormat) NotificationConfigPayloadFormat {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigPayloadFormat
+		return ret
+	}).(NotificationConfigPayloadFormatOutput)
 }
 
 func (o NotificationConfigPayloadFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -344,16 +354,6 @@ func (o NotificationConfigPayloadFormatPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NotificationConfigPayloadFormatPtrOutput) Elem() NotificationConfigPayloadFormatOutput {
-	return o.ApplyT(func(v *NotificationConfigPayloadFormat) NotificationConfigPayloadFormat {
-		var ret NotificationConfigPayloadFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NotificationConfigPayloadFormatOutput)
 }
 
 // NotificationConfigPayloadFormatInput is an input type that accepts NotificationConfigPayloadFormatArgs and NotificationConfigPayloadFormatOutput values.
@@ -492,7 +492,7 @@ func (o TransferJobStatusOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type TransferJobStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobStatusPtrOutput) ElementType() reflect.Type {
-	return transferJobStatusPtrType
+	return reflect.TypeOf((**TransferJobStatus)(nil)).Elem()
 }
 
 func (o TransferJobStatusPtrOutput) ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput {
@@ -501,6 +501,16 @@ func (o TransferJobStatusPtrOutput) ToTransferJobStatusPtrOutput() TransferJobSt
 
 func (o TransferJobStatusPtrOutput) ToTransferJobStatusPtrOutputWithContext(ctx context.Context) TransferJobStatusPtrOutput {
 	return o
+}
+
+func (o TransferJobStatusPtrOutput) Elem() TransferJobStatusOutput {
+	return o.ApplyT(func(v *TransferJobStatus) TransferJobStatus {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobStatus
+		return ret
+	}).(TransferJobStatusOutput)
 }
 
 func (o TransferJobStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -515,16 +525,6 @@ func (o TransferJobStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TransferJobStatusPtrOutput) Elem() TransferJobStatusOutput {
-	return o.ApplyT(func(v *TransferJobStatus) TransferJobStatus {
-		var ret TransferJobStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TransferJobStatusOutput)
 }
 
 // TransferJobStatusInput is an input type that accepts TransferJobStatusArgs and TransferJobStatusOutput values.

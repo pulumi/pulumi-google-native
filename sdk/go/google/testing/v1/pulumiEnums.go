@@ -106,7 +106,7 @@ func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringPtrOutputWit
 type AndroidInstrumentationTestOrchestratorOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (AndroidInstrumentationTestOrchestratorOptionPtrOutput) ElementType() reflect.Type {
-	return androidInstrumentationTestOrchestratorOptionPtrType
+	return reflect.TypeOf((**AndroidInstrumentationTestOrchestratorOption)(nil)).Elem()
 }
 
 func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
@@ -115,6 +115,16 @@ func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrume
 
 func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
 	return o
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) Elem() AndroidInstrumentationTestOrchestratorOptionOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestOrchestratorOption) AndroidInstrumentationTestOrchestratorOption {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidInstrumentationTestOrchestratorOption
+		return ret
+	}).(AndroidInstrumentationTestOrchestratorOptionOutput)
 }
 
 func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) Elem() AndroidInstrumentationTestOrchestratorOptionOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTestOrchestratorOption) AndroidInstrumentationTestOrchestratorOption {
-		var ret AndroidInstrumentationTestOrchestratorOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AndroidInstrumentationTestOrchestratorOptionOutput)
 }
 
 // AndroidInstrumentationTestOrchestratorOptionInput is an input type that accepts AndroidInstrumentationTestOrchestratorOptionArgs and AndroidInstrumentationTestOrchestratorOptionOutput values.
@@ -275,7 +275,7 @@ func (o AndroidRoboTestRoboModeOutput) ToStringPtrOutputWithContext(ctx context.
 type AndroidRoboTestRoboModePtrOutput struct{ *pulumi.OutputState }
 
 func (AndroidRoboTestRoboModePtrOutput) ElementType() reflect.Type {
-	return androidRoboTestRoboModePtrType
+	return reflect.TypeOf((**AndroidRoboTestRoboMode)(nil)).Elem()
 }
 
 func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutput() AndroidRoboTestRoboModePtrOutput {
@@ -284,6 +284,16 @@ func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutput() A
 
 func (o AndroidRoboTestRoboModePtrOutput) ToAndroidRoboTestRoboModePtrOutputWithContext(ctx context.Context) AndroidRoboTestRoboModePtrOutput {
 	return o
+}
+
+func (o AndroidRoboTestRoboModePtrOutput) Elem() AndroidRoboTestRoboModeOutput {
+	return o.ApplyT(func(v *AndroidRoboTestRoboMode) AndroidRoboTestRoboMode {
+		if v != nil {
+			return *v
+		}
+		var ret AndroidRoboTestRoboMode
+		return ret
+	}).(AndroidRoboTestRoboModeOutput)
 }
 
 func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AndroidRoboTestRoboModePtrOutput) Elem() AndroidRoboTestRoboModeOutput {
-	return o.ApplyT(func(v *AndroidRoboTestRoboMode) AndroidRoboTestRoboMode {
-		var ret AndroidRoboTestRoboMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AndroidRoboTestRoboModeOutput)
 }
 
 // AndroidRoboTestRoboModeInput is an input type that accepts AndroidRoboTestRoboModeArgs and AndroidRoboTestRoboModeOutput values.
@@ -446,7 +446,7 @@ func (o RoboDirectiveActionTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type RoboDirectiveActionTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RoboDirectiveActionTypePtrOutput) ElementType() reflect.Type {
-	return roboDirectiveActionTypePtrType
+	return reflect.TypeOf((**RoboDirectiveActionType)(nil)).Elem()
 }
 
 func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput {
@@ -455,6 +455,16 @@ func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutput() R
 
 func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
 	return o
+}
+
+func (o RoboDirectiveActionTypePtrOutput) Elem() RoboDirectiveActionTypeOutput {
+	return o.ApplyT(func(v *RoboDirectiveActionType) RoboDirectiveActionType {
+		if v != nil {
+			return *v
+		}
+		var ret RoboDirectiveActionType
+		return ret
+	}).(RoboDirectiveActionTypeOutput)
 }
 
 func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RoboDirectiveActionTypePtrOutput) Elem() RoboDirectiveActionTypeOutput {
-	return o.ApplyT(func(v *RoboDirectiveActionType) RoboDirectiveActionType {
-		var ret RoboDirectiveActionType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RoboDirectiveActionTypeOutput)
 }
 
 // RoboDirectiveActionTypeInput is an input type that accepts RoboDirectiveActionTypeArgs and RoboDirectiveActionTypeOutput values.

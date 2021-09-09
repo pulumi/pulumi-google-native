@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -275,7 +275,7 @@ func (o DatabaseDumpDatabaseTypeOutput) ToStringPtrOutputWithContext(ctx context
 type DatabaseDumpDatabaseTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDumpDatabaseTypePtrOutput) ElementType() reflect.Type {
-	return databaseDumpDatabaseTypePtrType
+	return reflect.TypeOf((**DatabaseDumpDatabaseType)(nil)).Elem()
 }
 
 func (o DatabaseDumpDatabaseTypePtrOutput) ToDatabaseDumpDatabaseTypePtrOutput() DatabaseDumpDatabaseTypePtrOutput {
@@ -284,6 +284,16 @@ func (o DatabaseDumpDatabaseTypePtrOutput) ToDatabaseDumpDatabaseTypePtrOutput()
 
 func (o DatabaseDumpDatabaseTypePtrOutput) ToDatabaseDumpDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseDumpDatabaseTypePtrOutput {
 	return o
+}
+
+func (o DatabaseDumpDatabaseTypePtrOutput) Elem() DatabaseDumpDatabaseTypeOutput {
+	return o.ApplyT(func(v *DatabaseDumpDatabaseType) DatabaseDumpDatabaseType {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDumpDatabaseType
+		return ret
+	}).(DatabaseDumpDatabaseTypeOutput)
 }
 
 func (o DatabaseDumpDatabaseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o DatabaseDumpDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseDumpDatabaseTypePtrOutput) Elem() DatabaseDumpDatabaseTypeOutput {
-	return o.ApplyT(func(v *DatabaseDumpDatabaseType) DatabaseDumpDatabaseType {
-		var ret DatabaseDumpDatabaseType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DatabaseDumpDatabaseTypeOutput)
 }
 
 // DatabaseDumpDatabaseTypeInput is an input type that accepts DatabaseDumpDatabaseTypeArgs and DatabaseDumpDatabaseTypeOutput values.
@@ -444,7 +444,7 @@ func (o DatabaseDumpTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type DatabaseDumpTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseDumpTypePtrOutput) ElementType() reflect.Type {
-	return databaseDumpTypePtrType
+	return reflect.TypeOf((**DatabaseDumpType)(nil)).Elem()
 }
 
 func (o DatabaseDumpTypePtrOutput) ToDatabaseDumpTypePtrOutput() DatabaseDumpTypePtrOutput {
@@ -453,6 +453,16 @@ func (o DatabaseDumpTypePtrOutput) ToDatabaseDumpTypePtrOutput() DatabaseDumpTyp
 
 func (o DatabaseDumpTypePtrOutput) ToDatabaseDumpTypePtrOutputWithContext(ctx context.Context) DatabaseDumpTypePtrOutput {
 	return o
+}
+
+func (o DatabaseDumpTypePtrOutput) Elem() DatabaseDumpTypeOutput {
+	return o.ApplyT(func(v *DatabaseDumpType) DatabaseDumpType {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDumpType
+		return ret
+	}).(DatabaseDumpTypeOutput)
 }
 
 func (o DatabaseDumpTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o DatabaseDumpTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseDumpTypePtrOutput) Elem() DatabaseDumpTypeOutput {
-	return o.ApplyT(func(v *DatabaseDumpType) DatabaseDumpType {
-		var ret DatabaseDumpType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DatabaseDumpTypeOutput)
 }
 
 // DatabaseDumpTypeInput is an input type that accepts DatabaseDumpTypeArgs and DatabaseDumpTypeOutput values.
@@ -623,7 +623,7 @@ func (o MaintenanceWindowDayOfWeekOutput) ToStringPtrOutputWithContext(ctx conte
 type MaintenanceWindowDayOfWeekPtrOutput struct{ *pulumi.OutputState }
 
 func (MaintenanceWindowDayOfWeekPtrOutput) ElementType() reflect.Type {
-	return maintenanceWindowDayOfWeekPtrType
+	return reflect.TypeOf((**MaintenanceWindowDayOfWeek)(nil)).Elem()
 }
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutput() MaintenanceWindowDayOfWeekPtrOutput {
@@ -632,6 +632,16 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutp
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) ToMaintenanceWindowDayOfWeekPtrOutputWithContext(ctx context.Context) MaintenanceWindowDayOfWeekPtrOutput {
 	return o
+}
+
+func (o MaintenanceWindowDayOfWeekPtrOutput) Elem() MaintenanceWindowDayOfWeekOutput {
+	return o.ApplyT(func(v *MaintenanceWindowDayOfWeek) MaintenanceWindowDayOfWeek {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowDayOfWeek
+		return ret
+	}).(MaintenanceWindowDayOfWeekOutput)
 }
 
 func (o MaintenanceWindowDayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -646,16 +656,6 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MaintenanceWindowDayOfWeekPtrOutput) Elem() MaintenanceWindowDayOfWeekOutput {
-	return o.ApplyT(func(v *MaintenanceWindowDayOfWeek) MaintenanceWindowDayOfWeek {
-		var ret MaintenanceWindowDayOfWeek
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MaintenanceWindowDayOfWeekOutput)
 }
 
 // MaintenanceWindowDayOfWeekInput is an input type that accepts MaintenanceWindowDayOfWeekArgs and MaintenanceWindowDayOfWeekOutput values.
@@ -792,7 +792,7 @@ func (o ServiceReleaseChannelOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ServiceReleaseChannelPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceReleaseChannelPtrOutput) ElementType() reflect.Type {
-	return serviceReleaseChannelPtrType
+	return reflect.TypeOf((**ServiceReleaseChannel)(nil)).Elem()
 }
 
 func (o ServiceReleaseChannelPtrOutput) ToServiceReleaseChannelPtrOutput() ServiceReleaseChannelPtrOutput {
@@ -801,6 +801,16 @@ func (o ServiceReleaseChannelPtrOutput) ToServiceReleaseChannelPtrOutput() Servi
 
 func (o ServiceReleaseChannelPtrOutput) ToServiceReleaseChannelPtrOutputWithContext(ctx context.Context) ServiceReleaseChannelPtrOutput {
 	return o
+}
+
+func (o ServiceReleaseChannelPtrOutput) Elem() ServiceReleaseChannelOutput {
+	return o.ApplyT(func(v *ServiceReleaseChannel) ServiceReleaseChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceReleaseChannel
+		return ret
+	}).(ServiceReleaseChannelOutput)
 }
 
 func (o ServiceReleaseChannelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -815,16 +825,6 @@ func (o ServiceReleaseChannelPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceReleaseChannelPtrOutput) Elem() ServiceReleaseChannelOutput {
-	return o.ApplyT(func(v *ServiceReleaseChannel) ServiceReleaseChannel {
-		var ret ServiceReleaseChannel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServiceReleaseChannelOutput)
 }
 
 // ServiceReleaseChannelInput is an input type that accepts ServiceReleaseChannelArgs and ServiceReleaseChannelOutput values.
@@ -961,7 +961,7 @@ func (o ServiceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type ServiceTierPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTierPtrOutput) ElementType() reflect.Type {
-	return serviceTierPtrType
+	return reflect.TypeOf((**ServiceTier)(nil)).Elem()
 }
 
 func (o ServiceTierPtrOutput) ToServiceTierPtrOutput() ServiceTierPtrOutput {
@@ -970,6 +970,16 @@ func (o ServiceTierPtrOutput) ToServiceTierPtrOutput() ServiceTierPtrOutput {
 
 func (o ServiceTierPtrOutput) ToServiceTierPtrOutputWithContext(ctx context.Context) ServiceTierPtrOutput {
 	return o
+}
+
+func (o ServiceTierPtrOutput) Elem() ServiceTierOutput {
+	return o.ApplyT(func(v *ServiceTier) ServiceTier {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTier
+		return ret
+	}).(ServiceTierOutput)
 }
 
 func (o ServiceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -984,16 +994,6 @@ func (o ServiceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTierPtrOutput) Elem() ServiceTierOutput {
-	return o.ApplyT(func(v *ServiceTier) ServiceTier {
-		var ret ServiceTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServiceTierOutput)
 }
 
 // ServiceTierInput is an input type that accepts ServiceTierArgs and ServiceTierOutput values.

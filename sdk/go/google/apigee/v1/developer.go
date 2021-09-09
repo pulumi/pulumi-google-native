@@ -171,9 +171,7 @@ func (i *Developer) ToDeveloperOutputWithContext(ctx context.Context) DeveloperO
 	return pulumi.ToOutputWithContext(ctx, i).(DeveloperOutput)
 }
 
-type DeveloperOutput struct {
-	*pulumi.OutputState
-}
+type DeveloperOutput struct{ *pulumi.OutputState }
 
 func (DeveloperOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Developer)(nil))

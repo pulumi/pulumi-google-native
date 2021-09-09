@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,60 @@ type LookupBrandResult struct {
 	OrgInternalOnly bool `pulumi:"orgInternalOnly"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail string `pulumi:"supportEmail"`
+}
+
+func LookupBrandOutput(ctx *pulumi.Context, args LookupBrandOutputArgs, opts ...pulumi.InvokeOption) LookupBrandResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBrandResult, error) {
+			args := v.(LookupBrandArgs)
+			r, err := LookupBrand(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBrandResultOutput)
+}
+
+type LookupBrandOutputArgs struct {
+	BrandId pulumi.StringInput    `pulumi:"brandId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupBrandOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBrandArgs)(nil)).Elem()
+}
+
+type LookupBrandResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBrandResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBrandResult)(nil)).Elem()
+}
+
+func (o LookupBrandResultOutput) ToLookupBrandResultOutput() LookupBrandResultOutput {
+	return o
+}
+
+func (o LookupBrandResultOutput) ToLookupBrandResultOutputWithContext(ctx context.Context) LookupBrandResultOutput {
+	return o
+}
+
+// Application name displayed on OAuth consent screen.
+func (o LookupBrandResultOutput) ApplicationTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandResult) string { return v.ApplicationTitle }).(pulumi.StringOutput)
+}
+
+// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+func (o LookupBrandResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the brand is only intended for usage inside the G Suite organization only.
+func (o LookupBrandResultOutput) OrgInternalOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBrandResult) bool { return v.OrgInternalOnly }).(pulumi.BoolOutput)
+}
+
+// Support email displayed on the OAuth consent screen.
+func (o LookupBrandResultOutput) SupportEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrandResult) string { return v.SupportEmail }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBrandResultOutput{})
 }

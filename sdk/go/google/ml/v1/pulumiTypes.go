@@ -103,7 +103,7 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig) *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig) *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig {
 		return &v
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput)
 }
@@ -131,7 +131,11 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig
+		return ret
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput)
 }
 
@@ -238,7 +242,7 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse) *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse) *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponsePtrOutput)
 }
@@ -266,7 +270,11 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponsePtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse
+		return ret
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput)
 }
 
@@ -376,7 +384,7 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOut
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig) *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig) *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig {
 		return &v
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput)
 }
@@ -404,7 +412,11 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtr
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig
+		return ret
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput)
 }
 
@@ -514,7 +526,7 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigRes
 }
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse) *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse) *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponsePtrOutput)
 }
@@ -542,7 +554,11 @@ func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigRes
 
 func (o GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponsePtrOutput) Elem() GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse) GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse
+		return ret
 	}).(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponseOutput)
 }
 
@@ -681,7 +697,7 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput) ToGoogl
 }
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput) ToGoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric) *GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric) *GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
 		return &v
 	}).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput)
 }
@@ -712,7 +728,11 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) ToGo
 
 func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput) Elem() GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric) GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric
+		return ret
 	}).(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput)
 }
 
@@ -1180,7 +1200,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) ToG
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput)
 }
@@ -1206,7 +1226,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) 
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput)
 }
 
@@ -1367,7 +1391,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) ToGoog
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput)
 }
@@ -1393,7 +1417,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) ToG
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput)
 }
 
@@ -1556,7 +1584,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) ToGoogle
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput)
 }
@@ -1587,7 +1615,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) ToGoo
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput)
 }
 
@@ -1769,7 +1801,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) ToGoogl
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput)
 }
@@ -1800,7 +1832,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) ToGo
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput)
 }
 
@@ -1981,7 +2017,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput)
 }
@@ -2009,7 +2045,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput)
 }
 
@@ -2176,7 +2216,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput)
 }
@@ -2204,7 +2244,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput)
 }
 
@@ -2371,7 +2415,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutpu
 }
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput) ToGoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec) *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec {
 		return &v
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput)
 }
@@ -2397,7 +2441,11 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOu
 
 func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput) Elem() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec) GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec
+		return ret
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput)
 }
 
@@ -3440,7 +3488,7 @@ func (o GoogleCloudMlV1__AcceleratorConfigOutput) ToGoogleCloudMlV1__Accelerator
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigOutput) ToGoogleCloudMlV1__AcceleratorConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AcceleratorConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfig) *GoogleCloudMlV1__AcceleratorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AcceleratorConfig) *GoogleCloudMlV1__AcceleratorConfig {
 		return &v
 	}).(GoogleCloudMlV1__AcceleratorConfigPtrOutput)
 }
@@ -3470,7 +3518,13 @@ func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) ToGoogleCloudMlV1__Accelera
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) Elem() GoogleCloudMlV1__AcceleratorConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfig) GoogleCloudMlV1__AcceleratorConfig { return *v }).(GoogleCloudMlV1__AcceleratorConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfig) GoogleCloudMlV1__AcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AcceleratorConfig
+		return ret
+	}).(GoogleCloudMlV1__AcceleratorConfigOutput)
 }
 
 // The number of accelerators to attach to each machine running the job.
@@ -3593,7 +3647,7 @@ func (o GoogleCloudMlV1__AcceleratorConfigResponseOutput) ToGoogleCloudMlV1__Acc
 }
 
 func (o GoogleCloudMlV1__AcceleratorConfigResponseOutput) ToGoogleCloudMlV1__AcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AcceleratorConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfigResponse) *GoogleCloudMlV1__AcceleratorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AcceleratorConfigResponse) *GoogleCloudMlV1__AcceleratorConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__AcceleratorConfigResponsePtrOutput)
 }
@@ -3624,7 +3678,11 @@ func (o GoogleCloudMlV1__AcceleratorConfigResponsePtrOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__AcceleratorConfigResponsePtrOutput) Elem() GoogleCloudMlV1__AcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfigResponse) GoogleCloudMlV1__AcceleratorConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AcceleratorConfigResponse
+		return ret
 	}).(GoogleCloudMlV1__AcceleratorConfigResponseOutput)
 }
 
@@ -3752,7 +3810,7 @@ func (o GoogleCloudMlV1__AutoScalingOutput) ToGoogleCloudMlV1__AutoScalingPtrOut
 }
 
 func (o GoogleCloudMlV1__AutoScalingOutput) ToGoogleCloudMlV1__AutoScalingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutoScalingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AutoScaling) *GoogleCloudMlV1__AutoScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutoScaling) *GoogleCloudMlV1__AutoScaling {
 		return &v
 	}).(GoogleCloudMlV1__AutoScalingPtrOutput)
 }
@@ -3787,7 +3845,13 @@ func (o GoogleCloudMlV1__AutoScalingPtrOutput) ToGoogleCloudMlV1__AutoScalingPtr
 }
 
 func (o GoogleCloudMlV1__AutoScalingPtrOutput) Elem() GoogleCloudMlV1__AutoScalingOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AutoScaling) GoogleCloudMlV1__AutoScaling { return *v }).(GoogleCloudMlV1__AutoScalingOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__AutoScaling) GoogleCloudMlV1__AutoScaling {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AutoScaling
+		return ret
+	}).(GoogleCloudMlV1__AutoScalingOutput)
 }
 
 // The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability.
@@ -3924,7 +3988,7 @@ func (o GoogleCloudMlV1__AutoScalingResponseOutput) ToGoogleCloudMlV1__AutoScali
 }
 
 func (o GoogleCloudMlV1__AutoScalingResponseOutput) ToGoogleCloudMlV1__AutoScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutoScalingResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AutoScalingResponse) *GoogleCloudMlV1__AutoScalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutoScalingResponse) *GoogleCloudMlV1__AutoScalingResponse {
 		return &v
 	}).(GoogleCloudMlV1__AutoScalingResponsePtrOutput)
 }
@@ -3959,7 +4023,13 @@ func (o GoogleCloudMlV1__AutoScalingResponsePtrOutput) ToGoogleCloudMlV1__AutoSc
 }
 
 func (o GoogleCloudMlV1__AutoScalingResponsePtrOutput) Elem() GoogleCloudMlV1__AutoScalingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AutoScalingResponse) GoogleCloudMlV1__AutoScalingResponse { return *v }).(GoogleCloudMlV1__AutoScalingResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__AutoScalingResponse) GoogleCloudMlV1__AutoScalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AutoScalingResponse
+		return ret
+	}).(GoogleCloudMlV1__AutoScalingResponseOutput)
 }
 
 // The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability.
@@ -4088,10 +4158,11 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) ToGoogleCloudMlV1__Autom
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) ToGoogleCloudMlV1__AutomatedStoppingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AutomatedStoppingConfig) *GoogleCloudMlV1__AutomatedStoppingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutomatedStoppingConfig) *GoogleCloudMlV1__AutomatedStoppingConfig {
 		return &v
 	}).(GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput)
 }
+
 func (o GoogleCloudMlV1__AutomatedStoppingConfigOutput) DecayCurveStoppingConfig() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__AutomatedStoppingConfig) *GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig {
 		return v.DecayCurveStoppingConfig
@@ -4119,7 +4190,13 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) ToGoogleCloudMlV1__Au
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) Elem() GoogleCloudMlV1__AutomatedStoppingConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AutomatedStoppingConfig) GoogleCloudMlV1__AutomatedStoppingConfig { return *v }).(GoogleCloudMlV1__AutomatedStoppingConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__AutomatedStoppingConfig) GoogleCloudMlV1__AutomatedStoppingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AutomatedStoppingConfig
+		return ret
+	}).(GoogleCloudMlV1__AutomatedStoppingConfigOutput)
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput) DecayCurveStoppingConfig() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput {
@@ -4236,10 +4313,11 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV
 }
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) ToGoogleCloudMlV1__AutomatedStoppingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__AutomatedStoppingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AutomatedStoppingConfigResponse) *GoogleCloudMlV1__AutomatedStoppingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__AutomatedStoppingConfigResponse) *GoogleCloudMlV1__AutomatedStoppingConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__AutomatedStoppingConfigResponsePtrOutput)
 }
+
 func (o GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput) DecayCurveStoppingConfig() GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__AutomatedStoppingConfigResponse) GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse {
 		return v.DecayCurveStoppingConfig
@@ -4268,7 +4346,11 @@ func (o GoogleCloudMlV1__AutomatedStoppingConfigResponsePtrOutput) ToGoogleCloud
 
 func (o GoogleCloudMlV1__AutomatedStoppingConfigResponsePtrOutput) Elem() GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__AutomatedStoppingConfigResponse) GoogleCloudMlV1__AutomatedStoppingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__AutomatedStoppingConfigResponse
+		return ret
 	}).(GoogleCloudMlV1__AutomatedStoppingConfigResponseOutput)
 }
 
@@ -4398,7 +4480,7 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputOutput) ToGoogleCloudMlV1__BuiltI
 }
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputOutput) ToGoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__BuiltInAlgorithmOutput) *GoogleCloudMlV1__BuiltInAlgorithmOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__BuiltInAlgorithmOutput) *GoogleCloudMlV1__BuiltInAlgorithmOutput {
 		return &v
 	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput)
 }
@@ -4438,7 +4520,13 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) ToGoogleCloudMlV1__Bui
 }
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput) Elem() GoogleCloudMlV1__BuiltInAlgorithmOutputOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__BuiltInAlgorithmOutput) GoogleCloudMlV1__BuiltInAlgorithmOutput { return *v }).(GoogleCloudMlV1__BuiltInAlgorithmOutputOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__BuiltInAlgorithmOutput) GoogleCloudMlV1__BuiltInAlgorithmOutput {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__BuiltInAlgorithmOutput
+		return ret
+	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputOutput)
 }
 
 // Framework on which the built-in algorithm was trained.
@@ -4589,7 +4677,7 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput) ToGoogleCloudMlV1
 }
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput) ToGoogleCloudMlV1__BuiltInAlgorithmOutputResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__BuiltInAlgorithmOutputResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__BuiltInAlgorithmOutputResponse) *GoogleCloudMlV1__BuiltInAlgorithmOutputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__BuiltInAlgorithmOutputResponse) *GoogleCloudMlV1__BuiltInAlgorithmOutputResponse {
 		return &v
 	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputResponsePtrOutput)
 }
@@ -4630,7 +4718,11 @@ func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponsePtrOutput) ToGoogleCloudM
 
 func (o GoogleCloudMlV1__BuiltInAlgorithmOutputResponsePtrOutput) Elem() GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__BuiltInAlgorithmOutputResponse) GoogleCloudMlV1__BuiltInAlgorithmOutputResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__BuiltInAlgorithmOutputResponse
+		return ret
 	}).(GoogleCloudMlV1__BuiltInAlgorithmOutputResponseOutput)
 }
 
@@ -4986,7 +5078,7 @@ func (o GoogleCloudMlV1__ContainerSpecOutput) ToGoogleCloudMlV1__ContainerSpecPt
 }
 
 func (o GoogleCloudMlV1__ContainerSpecOutput) ToGoogleCloudMlV1__ContainerSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ContainerSpec) *GoogleCloudMlV1__ContainerSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ContainerSpec) *GoogleCloudMlV1__ContainerSpec {
 		return &v
 	}).(GoogleCloudMlV1__ContainerSpecPtrOutput)
 }
@@ -5031,7 +5123,13 @@ func (o GoogleCloudMlV1__ContainerSpecPtrOutput) ToGoogleCloudMlV1__ContainerSpe
 }
 
 func (o GoogleCloudMlV1__ContainerSpecPtrOutput) Elem() GoogleCloudMlV1__ContainerSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ContainerSpec) GoogleCloudMlV1__ContainerSpec { return *v }).(GoogleCloudMlV1__ContainerSpecOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ContainerSpec) GoogleCloudMlV1__ContainerSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ContainerSpec
+		return ret
+	}).(GoogleCloudMlV1__ContainerSpecOutput)
 }
 
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `commmand` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
@@ -5196,7 +5294,7 @@ func (o GoogleCloudMlV1__ContainerSpecResponseOutput) ToGoogleCloudMlV1__Contain
 }
 
 func (o GoogleCloudMlV1__ContainerSpecResponseOutput) ToGoogleCloudMlV1__ContainerSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ContainerSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ContainerSpecResponse) *GoogleCloudMlV1__ContainerSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ContainerSpecResponse) *GoogleCloudMlV1__ContainerSpecResponse {
 		return &v
 	}).(GoogleCloudMlV1__ContainerSpecResponsePtrOutput)
 }
@@ -5243,7 +5341,13 @@ func (o GoogleCloudMlV1__ContainerSpecResponsePtrOutput) ToGoogleCloudMlV1__Cont
 }
 
 func (o GoogleCloudMlV1__ContainerSpecResponsePtrOutput) Elem() GoogleCloudMlV1__ContainerSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ContainerSpecResponse) GoogleCloudMlV1__ContainerSpecResponse { return *v }).(GoogleCloudMlV1__ContainerSpecResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ContainerSpecResponse) GoogleCloudMlV1__ContainerSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ContainerSpecResponse
+		return ret
+	}).(GoogleCloudMlV1__ContainerSpecResponseOutput)
 }
 
 // Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `commmand` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
@@ -5396,7 +5500,7 @@ func (o GoogleCloudMlV1__DiskConfigOutput) ToGoogleCloudMlV1__DiskConfigPtrOutpu
 }
 
 func (o GoogleCloudMlV1__DiskConfigOutput) ToGoogleCloudMlV1__DiskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__DiskConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__DiskConfig) *GoogleCloudMlV1__DiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__DiskConfig) *GoogleCloudMlV1__DiskConfig {
 		return &v
 	}).(GoogleCloudMlV1__DiskConfigPtrOutput)
 }
@@ -5426,7 +5530,13 @@ func (o GoogleCloudMlV1__DiskConfigPtrOutput) ToGoogleCloudMlV1__DiskConfigPtrOu
 }
 
 func (o GoogleCloudMlV1__DiskConfigPtrOutput) Elem() GoogleCloudMlV1__DiskConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__DiskConfig) GoogleCloudMlV1__DiskConfig { return *v }).(GoogleCloudMlV1__DiskConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__DiskConfig) GoogleCloudMlV1__DiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__DiskConfig
+		return ret
+	}).(GoogleCloudMlV1__DiskConfigOutput)
 }
 
 // Size in GB of the boot disk (default is 100GB).
@@ -5549,7 +5659,7 @@ func (o GoogleCloudMlV1__DiskConfigResponseOutput) ToGoogleCloudMlV1__DiskConfig
 }
 
 func (o GoogleCloudMlV1__DiskConfigResponseOutput) ToGoogleCloudMlV1__DiskConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__DiskConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__DiskConfigResponse) *GoogleCloudMlV1__DiskConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__DiskConfigResponse) *GoogleCloudMlV1__DiskConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__DiskConfigResponsePtrOutput)
 }
@@ -5579,7 +5689,13 @@ func (o GoogleCloudMlV1__DiskConfigResponsePtrOutput) ToGoogleCloudMlV1__DiskCon
 }
 
 func (o GoogleCloudMlV1__DiskConfigResponsePtrOutput) Elem() GoogleCloudMlV1__DiskConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__DiskConfigResponse) GoogleCloudMlV1__DiskConfigResponse { return *v }).(GoogleCloudMlV1__DiskConfigResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__DiskConfigResponse) GoogleCloudMlV1__DiskConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__DiskConfigResponse
+		return ret
+	}).(GoogleCloudMlV1__DiskConfigResponseOutput)
 }
 
 // Size in GB of the boot disk (default is 100GB).
@@ -5698,7 +5814,7 @@ func (o GoogleCloudMlV1__EncryptionConfigOutput) ToGoogleCloudMlV1__EncryptionCo
 }
 
 func (o GoogleCloudMlV1__EncryptionConfigOutput) ToGoogleCloudMlV1__EncryptionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__EncryptionConfig) *GoogleCloudMlV1__EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__EncryptionConfig) *GoogleCloudMlV1__EncryptionConfig {
 		return &v
 	}).(GoogleCloudMlV1__EncryptionConfigPtrOutput)
 }
@@ -5723,7 +5839,13 @@ func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) ToGoogleCloudMlV1__Encryptio
 }
 
 func (o GoogleCloudMlV1__EncryptionConfigPtrOutput) Elem() GoogleCloudMlV1__EncryptionConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__EncryptionConfig) GoogleCloudMlV1__EncryptionConfig { return *v }).(GoogleCloudMlV1__EncryptionConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__EncryptionConfig) GoogleCloudMlV1__EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__EncryptionConfig
+		return ret
+	}).(GoogleCloudMlV1__EncryptionConfigOutput)
 }
 
 // The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -5832,7 +5954,7 @@ func (o GoogleCloudMlV1__EncryptionConfigResponseOutput) ToGoogleCloudMlV1__Encr
 }
 
 func (o GoogleCloudMlV1__EncryptionConfigResponseOutput) ToGoogleCloudMlV1__EncryptionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__EncryptionConfigResponse) *GoogleCloudMlV1__EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__EncryptionConfigResponse) *GoogleCloudMlV1__EncryptionConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__EncryptionConfigResponsePtrOutput)
 }
@@ -5858,7 +5980,11 @@ func (o GoogleCloudMlV1__EncryptionConfigResponsePtrOutput) ToGoogleCloudMlV1__E
 
 func (o GoogleCloudMlV1__EncryptionConfigResponsePtrOutput) Elem() GoogleCloudMlV1__EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__EncryptionConfigResponse) GoogleCloudMlV1__EncryptionConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__EncryptionConfigResponse
+		return ret
 	}).(GoogleCloudMlV1__EncryptionConfigResponseOutput)
 }
 
@@ -6194,7 +6320,7 @@ func (o GoogleCloudMlV1__ExplanationConfigOutput) ToGoogleCloudMlV1__Explanation
 }
 
 func (o GoogleCloudMlV1__ExplanationConfigOutput) ToGoogleCloudMlV1__ExplanationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ExplanationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ExplanationConfig) *GoogleCloudMlV1__ExplanationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ExplanationConfig) *GoogleCloudMlV1__ExplanationConfig {
 		return &v
 	}).(GoogleCloudMlV1__ExplanationConfigPtrOutput)
 }
@@ -6233,7 +6359,13 @@ func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) ToGoogleCloudMlV1__Explanat
 }
 
 func (o GoogleCloudMlV1__ExplanationConfigPtrOutput) Elem() GoogleCloudMlV1__ExplanationConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ExplanationConfig) GoogleCloudMlV1__ExplanationConfig { return *v }).(GoogleCloudMlV1__ExplanationConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ExplanationConfig) GoogleCloudMlV1__ExplanationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ExplanationConfig
+		return ret
+	}).(GoogleCloudMlV1__ExplanationConfigOutput)
 }
 
 // Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
@@ -6370,7 +6502,7 @@ func (o GoogleCloudMlV1__ExplanationConfigResponseOutput) ToGoogleCloudMlV1__Exp
 }
 
 func (o GoogleCloudMlV1__ExplanationConfigResponseOutput) ToGoogleCloudMlV1__ExplanationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ExplanationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ExplanationConfigResponse) *GoogleCloudMlV1__ExplanationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ExplanationConfigResponse) *GoogleCloudMlV1__ExplanationConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__ExplanationConfigResponsePtrOutput)
 }
@@ -6412,7 +6544,11 @@ func (o GoogleCloudMlV1__ExplanationConfigResponsePtrOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__ExplanationConfigResponsePtrOutput) Elem() GoogleCloudMlV1__ExplanationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__ExplanationConfigResponse) GoogleCloudMlV1__ExplanationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ExplanationConfigResponse
+		return ret
 	}).(GoogleCloudMlV1__ExplanationConfigResponseOutput)
 }
 
@@ -6921,7 +7057,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) ToGoogleCloudMlV1__Hyperparam
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecOutput) ToGoogleCloudMlV1__HyperparameterSpecPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpec {
 		return &v
 	}).(GoogleCloudMlV1__HyperparameterSpecPtrOutput)
 }
@@ -6988,7 +7124,13 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) ToGoogleCloudMlV1__Hyperpa
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) GoogleCloudMlV1__HyperparameterSpec { return *v }).(GoogleCloudMlV1__HyperparameterSpecOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) GoogleCloudMlV1__HyperparameterSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__HyperparameterSpec
+		return ret
+	}).(GoogleCloudMlV1__HyperparameterSpecOutput)
 }
 
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
@@ -7209,7 +7351,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) ToGoogleCloudMlV1__Hy
 }
 
 func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) ToGoogleCloudMlV1__HyperparameterSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) *GoogleCloudMlV1__HyperparameterSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__HyperparameterSpecResponse) *GoogleCloudMlV1__HyperparameterSpecResponse {
 		return &v
 	}).(GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput)
 }
@@ -7277,7 +7419,11 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) ToGoogleCloudMlV1_
 
 func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) Elem() GoogleCloudMlV1__HyperparameterSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecResponse) GoogleCloudMlV1__HyperparameterSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__HyperparameterSpecResponse
+		return ret
 	}).(GoogleCloudMlV1__HyperparameterSpecResponseOutput)
 }
 
@@ -7467,7 +7613,7 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionOutput) ToGoogleCloudMlV1
 }
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionOutput) ToGoogleCloudMlV1__IntegratedGradientsAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__IntegratedGradientsAttribution) *GoogleCloudMlV1__IntegratedGradientsAttribution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__IntegratedGradientsAttribution) *GoogleCloudMlV1__IntegratedGradientsAttribution {
 		return &v
 	}).(GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput)
 }
@@ -7493,7 +7639,11 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) ToGoogleCloudM
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput) Elem() GoogleCloudMlV1__IntegratedGradientsAttributionOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__IntegratedGradientsAttribution) GoogleCloudMlV1__IntegratedGradientsAttribution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__IntegratedGradientsAttribution
+		return ret
 	}).(GoogleCloudMlV1__IntegratedGradientsAttributionOutput)
 }
 
@@ -7603,7 +7753,7 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput) ToGoogleC
 }
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput) ToGoogleCloudMlV1__IntegratedGradientsAttributionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__IntegratedGradientsAttributionResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__IntegratedGradientsAttributionResponse) *GoogleCloudMlV1__IntegratedGradientsAttributionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__IntegratedGradientsAttributionResponse) *GoogleCloudMlV1__IntegratedGradientsAttributionResponse {
 		return &v
 	}).(GoogleCloudMlV1__IntegratedGradientsAttributionResponsePtrOutput)
 }
@@ -7629,7 +7779,11 @@ func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponsePtrOutput) ToGoog
 
 func (o GoogleCloudMlV1__IntegratedGradientsAttributionResponsePtrOutput) Elem() GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__IntegratedGradientsAttributionResponse) GoogleCloudMlV1__IntegratedGradientsAttributionResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__IntegratedGradientsAttributionResponse
+		return ret
 	}).(GoogleCloudMlV1__IntegratedGradientsAttributionResponseOutput)
 }
 
@@ -7739,7 +7893,7 @@ func (o GoogleCloudMlV1__ManualScalingOutput) ToGoogleCloudMlV1__ManualScalingPt
 }
 
 func (o GoogleCloudMlV1__ManualScalingOutput) ToGoogleCloudMlV1__ManualScalingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ManualScalingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ManualScaling) *GoogleCloudMlV1__ManualScaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ManualScaling) *GoogleCloudMlV1__ManualScaling {
 		return &v
 	}).(GoogleCloudMlV1__ManualScalingPtrOutput)
 }
@@ -7764,7 +7918,13 @@ func (o GoogleCloudMlV1__ManualScalingPtrOutput) ToGoogleCloudMlV1__ManualScalin
 }
 
 func (o GoogleCloudMlV1__ManualScalingPtrOutput) Elem() GoogleCloudMlV1__ManualScalingOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ManualScaling) GoogleCloudMlV1__ManualScaling { return *v }).(GoogleCloudMlV1__ManualScalingOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ManualScaling) GoogleCloudMlV1__ManualScaling {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ManualScaling
+		return ret
+	}).(GoogleCloudMlV1__ManualScalingOutput)
 }
 
 // The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
@@ -7873,7 +8033,7 @@ func (o GoogleCloudMlV1__ManualScalingResponseOutput) ToGoogleCloudMlV1__ManualS
 }
 
 func (o GoogleCloudMlV1__ManualScalingResponseOutput) ToGoogleCloudMlV1__ManualScalingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ManualScalingResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ManualScalingResponse) *GoogleCloudMlV1__ManualScalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ManualScalingResponse) *GoogleCloudMlV1__ManualScalingResponse {
 		return &v
 	}).(GoogleCloudMlV1__ManualScalingResponsePtrOutput)
 }
@@ -7898,7 +8058,13 @@ func (o GoogleCloudMlV1__ManualScalingResponsePtrOutput) ToGoogleCloudMlV1__Manu
 }
 
 func (o GoogleCloudMlV1__ManualScalingResponsePtrOutput) Elem() GoogleCloudMlV1__ManualScalingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ManualScalingResponse) GoogleCloudMlV1__ManualScalingResponse { return *v }).(GoogleCloudMlV1__ManualScalingResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ManualScalingResponse) GoogleCloudMlV1__ManualScalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ManualScalingResponse
+		return ret
+	}).(GoogleCloudMlV1__ManualScalingResponseOutput)
 }
 
 // The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
@@ -8036,7 +8202,7 @@ func (o GoogleCloudMlV1__MeasurementOutput) ToGoogleCloudMlV1__MeasurementPtrOut
 }
 
 func (o GoogleCloudMlV1__MeasurementOutput) ToGoogleCloudMlV1__MeasurementPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__MeasurementPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Measurement) *GoogleCloudMlV1__Measurement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__Measurement) *GoogleCloudMlV1__Measurement {
 		return &v
 	}).(GoogleCloudMlV1__MeasurementPtrOutput)
 }
@@ -8066,7 +8232,13 @@ func (o GoogleCloudMlV1__MeasurementPtrOutput) ToGoogleCloudMlV1__MeasurementPtr
 }
 
 func (o GoogleCloudMlV1__MeasurementPtrOutput) Elem() GoogleCloudMlV1__MeasurementOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Measurement) GoogleCloudMlV1__Measurement { return *v }).(GoogleCloudMlV1__MeasurementOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__Measurement) GoogleCloudMlV1__Measurement {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__Measurement
+		return ret
+	}).(GoogleCloudMlV1__MeasurementOutput)
 }
 
 // Provides a list of metrics that act as inputs into the objective function.
@@ -8238,7 +8410,7 @@ func (o GoogleCloudMlV1__MeasurementResponseOutput) ToGoogleCloudMlV1__Measureme
 }
 
 func (o GoogleCloudMlV1__MeasurementResponseOutput) ToGoogleCloudMlV1__MeasurementResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__MeasurementResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__MeasurementResponse) *GoogleCloudMlV1__MeasurementResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__MeasurementResponse) *GoogleCloudMlV1__MeasurementResponse {
 		return &v
 	}).(GoogleCloudMlV1__MeasurementResponsePtrOutput)
 }
@@ -8275,7 +8447,13 @@ func (o GoogleCloudMlV1__MeasurementResponsePtrOutput) ToGoogleCloudMlV1__Measur
 }
 
 func (o GoogleCloudMlV1__MeasurementResponsePtrOutput) Elem() GoogleCloudMlV1__MeasurementResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__MeasurementResponse) GoogleCloudMlV1__MeasurementResponse { return *v }).(GoogleCloudMlV1__MeasurementResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__MeasurementResponse) GoogleCloudMlV1__MeasurementResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__MeasurementResponse
+		return ret
+	}).(GoogleCloudMlV1__MeasurementResponseOutput)
 }
 
 // Time that the trial has been running at the point of this measurement.
@@ -8994,7 +9172,7 @@ func (o GoogleCloudMlV1__PredictionInputOutput) ToGoogleCloudMlV1__PredictionInp
 }
 
 func (o GoogleCloudMlV1__PredictionInputOutput) ToGoogleCloudMlV1__PredictionInputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionInputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInput {
 		return &v
 	}).(GoogleCloudMlV1__PredictionInputPtrOutput)
 }
@@ -9078,7 +9256,13 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) ToGoogleCloudMlV1__Prediction
 }
 
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) Elem() GoogleCloudMlV1__PredictionInputOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) GoogleCloudMlV1__PredictionInput { return *v }).(GoogleCloudMlV1__PredictionInputOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) GoogleCloudMlV1__PredictionInput {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionInput
+		return ret
+	}).(GoogleCloudMlV1__PredictionInputOutput)
 }
 
 // Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
@@ -9341,7 +9525,7 @@ func (o GoogleCloudMlV1__PredictionInputResponseOutput) ToGoogleCloudMlV1__Predi
 }
 
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) ToGoogleCloudMlV1__PredictionInputResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionInputResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) *GoogleCloudMlV1__PredictionInputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionInputResponse) *GoogleCloudMlV1__PredictionInputResponse {
 		return &v
 	}).(GoogleCloudMlV1__PredictionInputResponsePtrOutput)
 }
@@ -9421,7 +9605,13 @@ func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) ToGoogleCloudMlV1__Pr
 }
 
 func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) Elem() GoogleCloudMlV1__PredictionInputResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) GoogleCloudMlV1__PredictionInputResponse { return *v }).(GoogleCloudMlV1__PredictionInputResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) GoogleCloudMlV1__PredictionInputResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionInputResponse
+		return ret
+	}).(GoogleCloudMlV1__PredictionInputResponseOutput)
 }
 
 // Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
@@ -9652,7 +9842,7 @@ func (o GoogleCloudMlV1__PredictionOutputOutput) ToGoogleCloudMlV1__PredictionOu
 }
 
 func (o GoogleCloudMlV1__PredictionOutputOutput) ToGoogleCloudMlV1__PredictionOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionOutputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionOutput) *GoogleCloudMlV1__PredictionOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionOutput) *GoogleCloudMlV1__PredictionOutput {
 		return &v
 	}).(GoogleCloudMlV1__PredictionOutputPtrOutput)
 }
@@ -9692,7 +9882,13 @@ func (o GoogleCloudMlV1__PredictionOutputPtrOutput) ToGoogleCloudMlV1__Predictio
 }
 
 func (o GoogleCloudMlV1__PredictionOutputPtrOutput) Elem() GoogleCloudMlV1__PredictionOutputOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionOutput) GoogleCloudMlV1__PredictionOutput { return *v }).(GoogleCloudMlV1__PredictionOutputOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionOutput) GoogleCloudMlV1__PredictionOutput {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionOutput
+		return ret
+	}).(GoogleCloudMlV1__PredictionOutputOutput)
 }
 
 // The number of data instances which resulted in errors.
@@ -9843,7 +10039,7 @@ func (o GoogleCloudMlV1__PredictionOutputResponseOutput) ToGoogleCloudMlV1__Pred
 }
 
 func (o GoogleCloudMlV1__PredictionOutputResponseOutput) ToGoogleCloudMlV1__PredictionOutputResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__PredictionOutputResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionOutputResponse) *GoogleCloudMlV1__PredictionOutputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__PredictionOutputResponse) *GoogleCloudMlV1__PredictionOutputResponse {
 		return &v
 	}).(GoogleCloudMlV1__PredictionOutputResponsePtrOutput)
 }
@@ -9884,7 +10080,11 @@ func (o GoogleCloudMlV1__PredictionOutputResponsePtrOutput) ToGoogleCloudMlV1__P
 
 func (o GoogleCloudMlV1__PredictionOutputResponsePtrOutput) Elem() GoogleCloudMlV1__PredictionOutputResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionOutputResponse) GoogleCloudMlV1__PredictionOutputResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__PredictionOutputResponse
+		return ret
 	}).(GoogleCloudMlV1__PredictionOutputResponseOutput)
 }
 
@@ -10044,7 +10244,7 @@ func (o GoogleCloudMlV1__ReplicaConfigOutput) ToGoogleCloudMlV1__ReplicaConfigPt
 }
 
 func (o GoogleCloudMlV1__ReplicaConfigOutput) ToGoogleCloudMlV1__ReplicaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ReplicaConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ReplicaConfig) *GoogleCloudMlV1__ReplicaConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ReplicaConfig) *GoogleCloudMlV1__ReplicaConfig {
 		return &v
 	}).(GoogleCloudMlV1__ReplicaConfigPtrOutput)
 }
@@ -10094,7 +10294,13 @@ func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) ToGoogleCloudMlV1__ReplicaConfi
 }
 
 func (o GoogleCloudMlV1__ReplicaConfigPtrOutput) Elem() GoogleCloudMlV1__ReplicaConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ReplicaConfig) GoogleCloudMlV1__ReplicaConfig { return *v }).(GoogleCloudMlV1__ReplicaConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ReplicaConfig) GoogleCloudMlV1__ReplicaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ReplicaConfig
+		return ret
+	}).(GoogleCloudMlV1__ReplicaConfigOutput)
 }
 
 // Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
@@ -10273,7 +10479,7 @@ func (o GoogleCloudMlV1__ReplicaConfigResponseOutput) ToGoogleCloudMlV1__Replica
 }
 
 func (o GoogleCloudMlV1__ReplicaConfigResponseOutput) ToGoogleCloudMlV1__ReplicaConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__ReplicaConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ReplicaConfigResponse) *GoogleCloudMlV1__ReplicaConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__ReplicaConfigResponse) *GoogleCloudMlV1__ReplicaConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__ReplicaConfigResponsePtrOutput)
 }
@@ -10327,7 +10533,13 @@ func (o GoogleCloudMlV1__ReplicaConfigResponsePtrOutput) ToGoogleCloudMlV1__Repl
 }
 
 func (o GoogleCloudMlV1__ReplicaConfigResponsePtrOutput) Elem() GoogleCloudMlV1__ReplicaConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__ReplicaConfigResponse) GoogleCloudMlV1__ReplicaConfigResponse { return *v }).(GoogleCloudMlV1__ReplicaConfigResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__ReplicaConfigResponse) GoogleCloudMlV1__ReplicaConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__ReplicaConfigResponse
+		return ret
+	}).(GoogleCloudMlV1__ReplicaConfigResponseOutput)
 }
 
 // Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
@@ -10490,7 +10702,7 @@ func (o GoogleCloudMlV1__RequestLoggingConfigOutput) ToGoogleCloudMlV1__RequestL
 }
 
 func (o GoogleCloudMlV1__RequestLoggingConfigOutput) ToGoogleCloudMlV1__RequestLoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RequestLoggingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfig) *GoogleCloudMlV1__RequestLoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__RequestLoggingConfig) *GoogleCloudMlV1__RequestLoggingConfig {
 		return &v
 	}).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
 }
@@ -10520,7 +10732,13 @@ func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) ToGoogleCloudMlV1__Reque
 }
 
 func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) Elem() GoogleCloudMlV1__RequestLoggingConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfig) GoogleCloudMlV1__RequestLoggingConfig { return *v }).(GoogleCloudMlV1__RequestLoggingConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfig) GoogleCloudMlV1__RequestLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__RequestLoggingConfig
+		return ret
+	}).(GoogleCloudMlV1__RequestLoggingConfigOutput)
 }
 
 // Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
@@ -10643,7 +10861,7 @@ func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) ToGoogleCloudMlV1__
 }
 
 func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) ToGoogleCloudMlV1__RequestLoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfigResponse) *GoogleCloudMlV1__RequestLoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__RequestLoggingConfigResponse) *GoogleCloudMlV1__RequestLoggingConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput)
 }
@@ -10674,7 +10892,11 @@ func (o GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput) ToGoogleCloudMlV
 
 func (o GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput) Elem() GoogleCloudMlV1__RequestLoggingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfigResponse) GoogleCloudMlV1__RequestLoggingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__RequestLoggingConfigResponse
+		return ret
 	}).(GoogleCloudMlV1__RequestLoggingConfigResponseOutput)
 }
 
@@ -10798,7 +11020,7 @@ func (o GoogleCloudMlV1__RouteMapOutput) ToGoogleCloudMlV1__RouteMapPtrOutput() 
 }
 
 func (o GoogleCloudMlV1__RouteMapOutput) ToGoogleCloudMlV1__RouteMapPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RouteMapPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__RouteMap) *GoogleCloudMlV1__RouteMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__RouteMap) *GoogleCloudMlV1__RouteMap {
 		return &v
 	}).(GoogleCloudMlV1__RouteMapPtrOutput)
 }
@@ -10828,7 +11050,13 @@ func (o GoogleCloudMlV1__RouteMapPtrOutput) ToGoogleCloudMlV1__RouteMapPtrOutput
 }
 
 func (o GoogleCloudMlV1__RouteMapPtrOutput) Elem() GoogleCloudMlV1__RouteMapOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__RouteMap) GoogleCloudMlV1__RouteMap { return *v }).(GoogleCloudMlV1__RouteMapOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__RouteMap) GoogleCloudMlV1__RouteMap {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__RouteMap
+		return ret
+	}).(GoogleCloudMlV1__RouteMapOutput)
 }
 
 // HTTP path on the container to send health checkss to. AI Platform Prediction intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
@@ -10951,7 +11179,7 @@ func (o GoogleCloudMlV1__RouteMapResponseOutput) ToGoogleCloudMlV1__RouteMapResp
 }
 
 func (o GoogleCloudMlV1__RouteMapResponseOutput) ToGoogleCloudMlV1__RouteMapResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__RouteMapResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__RouteMapResponse) *GoogleCloudMlV1__RouteMapResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__RouteMapResponse) *GoogleCloudMlV1__RouteMapResponse {
 		return &v
 	}).(GoogleCloudMlV1__RouteMapResponsePtrOutput)
 }
@@ -10981,7 +11209,13 @@ func (o GoogleCloudMlV1__RouteMapResponsePtrOutput) ToGoogleCloudMlV1__RouteMapR
 }
 
 func (o GoogleCloudMlV1__RouteMapResponsePtrOutput) Elem() GoogleCloudMlV1__RouteMapResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__RouteMapResponse) GoogleCloudMlV1__RouteMapResponse { return *v }).(GoogleCloudMlV1__RouteMapResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__RouteMapResponse) GoogleCloudMlV1__RouteMapResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__RouteMapResponse
+		return ret
+	}).(GoogleCloudMlV1__RouteMapResponseOutput)
 }
 
 // HTTP path on the container to send health checkss to. AI Platform Prediction intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
@@ -11100,7 +11334,7 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionOutput) ToGoogleCloudMlV1__Sam
 }
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionOutput) ToGoogleCloudMlV1__SampledShapleyAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SampledShapleyAttributionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__SampledShapleyAttribution) *GoogleCloudMlV1__SampledShapleyAttribution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__SampledShapleyAttribution) *GoogleCloudMlV1__SampledShapleyAttribution {
 		return &v
 	}).(GoogleCloudMlV1__SampledShapleyAttributionPtrOutput)
 }
@@ -11126,7 +11360,11 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) ToGoogleCloudMlV1__
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionPtrOutput) Elem() GoogleCloudMlV1__SampledShapleyAttributionOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__SampledShapleyAttribution) GoogleCloudMlV1__SampledShapleyAttribution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__SampledShapleyAttribution
+		return ret
 	}).(GoogleCloudMlV1__SampledShapleyAttributionOutput)
 }
 
@@ -11236,7 +11474,7 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionResponseOutput) ToGoogleCloudM
 }
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionResponseOutput) ToGoogleCloudMlV1__SampledShapleyAttributionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SampledShapleyAttributionResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__SampledShapleyAttributionResponse) *GoogleCloudMlV1__SampledShapleyAttributionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__SampledShapleyAttributionResponse) *GoogleCloudMlV1__SampledShapleyAttributionResponse {
 		return &v
 	}).(GoogleCloudMlV1__SampledShapleyAttributionResponsePtrOutput)
 }
@@ -11262,7 +11500,11 @@ func (o GoogleCloudMlV1__SampledShapleyAttributionResponsePtrOutput) ToGoogleClo
 
 func (o GoogleCloudMlV1__SampledShapleyAttributionResponsePtrOutput) Elem() GoogleCloudMlV1__SampledShapleyAttributionResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__SampledShapleyAttributionResponse) GoogleCloudMlV1__SampledShapleyAttributionResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__SampledShapleyAttributionResponse
+		return ret
 	}).(GoogleCloudMlV1__SampledShapleyAttributionResponseOutput)
 }
 
@@ -11380,7 +11622,7 @@ func (o GoogleCloudMlV1__SchedulingOutput) ToGoogleCloudMlV1__SchedulingPtrOutpu
 }
 
 func (o GoogleCloudMlV1__SchedulingOutput) ToGoogleCloudMlV1__SchedulingPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SchedulingPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__Scheduling) *GoogleCloudMlV1__Scheduling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__Scheduling) *GoogleCloudMlV1__Scheduling {
 		return &v
 	}).(GoogleCloudMlV1__SchedulingPtrOutput)
 }
@@ -11415,7 +11657,13 @@ func (o GoogleCloudMlV1__SchedulingPtrOutput) ToGoogleCloudMlV1__SchedulingPtrOu
 }
 
 func (o GoogleCloudMlV1__SchedulingPtrOutput) Elem() GoogleCloudMlV1__SchedulingOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__Scheduling) GoogleCloudMlV1__Scheduling { return *v }).(GoogleCloudMlV1__SchedulingOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__Scheduling) GoogleCloudMlV1__Scheduling {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__Scheduling
+		return ret
+	}).(GoogleCloudMlV1__SchedulingOutput)
 }
 
 // Optional. The maximum job running time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If the training job is still running after this duration, AI Platform Training cancels it. The duration is measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ``` yaml trainingInput: scheduling: maxRunningTime: 7200s  ```
@@ -11552,7 +11800,7 @@ func (o GoogleCloudMlV1__SchedulingResponseOutput) ToGoogleCloudMlV1__Scheduling
 }
 
 func (o GoogleCloudMlV1__SchedulingResponseOutput) ToGoogleCloudMlV1__SchedulingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__SchedulingResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__SchedulingResponse) *GoogleCloudMlV1__SchedulingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__SchedulingResponse) *GoogleCloudMlV1__SchedulingResponse {
 		return &v
 	}).(GoogleCloudMlV1__SchedulingResponsePtrOutput)
 }
@@ -11587,7 +11835,13 @@ func (o GoogleCloudMlV1__SchedulingResponsePtrOutput) ToGoogleCloudMlV1__Schedul
 }
 
 func (o GoogleCloudMlV1__SchedulingResponsePtrOutput) Elem() GoogleCloudMlV1__SchedulingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__SchedulingResponse) GoogleCloudMlV1__SchedulingResponse { return *v }).(GoogleCloudMlV1__SchedulingResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__SchedulingResponse) GoogleCloudMlV1__SchedulingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__SchedulingResponse
+		return ret
+	}).(GoogleCloudMlV1__SchedulingResponseOutput)
 }
 
 // Optional. The maximum job running time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If the training job is still running after this duration, AI Platform Training cancels it. The duration is measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ``` yaml trainingInput: scheduling: maxRunningTime: 7200s  ```
@@ -11728,7 +11982,7 @@ func (o GoogleCloudMlV1__StudyConfigOutput) ToGoogleCloudMlV1__StudyConfigPtrOut
 }
 
 func (o GoogleCloudMlV1__StudyConfigOutput) ToGoogleCloudMlV1__StudyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfig) *GoogleCloudMlV1__StudyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__StudyConfig) *GoogleCloudMlV1__StudyConfig {
 		return &v
 	}).(GoogleCloudMlV1__StudyConfigPtrOutput)
 }
@@ -11770,7 +12024,13 @@ func (o GoogleCloudMlV1__StudyConfigPtrOutput) ToGoogleCloudMlV1__StudyConfigPtr
 }
 
 func (o GoogleCloudMlV1__StudyConfigPtrOutput) Elem() GoogleCloudMlV1__StudyConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfig) GoogleCloudMlV1__StudyConfig { return *v }).(GoogleCloudMlV1__StudyConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfig) GoogleCloudMlV1__StudyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__StudyConfig
+		return ret
+	}).(GoogleCloudMlV1__StudyConfigOutput)
 }
 
 // The search algorithm specified for the study.
@@ -11921,7 +12181,7 @@ func (o GoogleCloudMlV1__StudyConfigResponseOutput) ToGoogleCloudMlV1__StudyConf
 }
 
 func (o GoogleCloudMlV1__StudyConfigResponseOutput) ToGoogleCloudMlV1__StudyConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__StudyConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfigResponse) *GoogleCloudMlV1__StudyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__StudyConfigResponse) *GoogleCloudMlV1__StudyConfigResponse {
 		return &v
 	}).(GoogleCloudMlV1__StudyConfigResponsePtrOutput)
 }
@@ -11967,7 +12227,13 @@ func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) ToGoogleCloudMlV1__StudyC
 }
 
 func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) Elem() GoogleCloudMlV1__StudyConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfigResponse) GoogleCloudMlV1__StudyConfigResponse { return *v }).(GoogleCloudMlV1__StudyConfigResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfigResponse) GoogleCloudMlV1__StudyConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__StudyConfigResponse
+		return ret
+	}).(GoogleCloudMlV1__StudyConfigResponseOutput)
 }
 
 // The search algorithm specified for the study.
@@ -12206,7 +12472,7 @@ func (o GoogleCloudMlV1__TrainingInputOutput) ToGoogleCloudMlV1__TrainingInputPt
 }
 
 func (o GoogleCloudMlV1__TrainingInputOutput) ToGoogleCloudMlV1__TrainingInputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingInputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *GoogleCloudMlV1__TrainingInput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingInput) *GoogleCloudMlV1__TrainingInput {
 		return &v
 	}).(GoogleCloudMlV1__TrainingInputPtrOutput)
 }
@@ -12356,7 +12622,13 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) ToGoogleCloudMlV1__TrainingInpu
 }
 
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) Elem() GoogleCloudMlV1__TrainingInputOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) GoogleCloudMlV1__TrainingInput { return *v }).(GoogleCloudMlV1__TrainingInputOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) GoogleCloudMlV1__TrainingInput {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__TrainingInput
+		return ret
+	}).(GoogleCloudMlV1__TrainingInputOutput)
 }
 
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
@@ -12815,7 +13087,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) ToGoogleCloudMlV1__Trainin
 }
 
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) ToGoogleCloudMlV1__TrainingInputResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingInputResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) *GoogleCloudMlV1__TrainingInputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingInputResponse) *GoogleCloudMlV1__TrainingInputResponse {
 		return &v
 	}).(GoogleCloudMlV1__TrainingInputResponsePtrOutput)
 }
@@ -12979,7 +13251,13 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) ToGoogleCloudMlV1__Trai
 }
 
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) Elem() GoogleCloudMlV1__TrainingInputResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) GoogleCloudMlV1__TrainingInputResponse { return *v }).(GoogleCloudMlV1__TrainingInputResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) GoogleCloudMlV1__TrainingInputResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__TrainingInputResponse
+		return ret
+	}).(GoogleCloudMlV1__TrainingInputResponseOutput)
 }
 
 // Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
@@ -13362,7 +13640,7 @@ func (o GoogleCloudMlV1__TrainingOutputOutput) ToGoogleCloudMlV1__TrainingOutput
 }
 
 func (o GoogleCloudMlV1__TrainingOutputOutput) ToGoogleCloudMlV1__TrainingOutputPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingOutputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingOutput) *GoogleCloudMlV1__TrainingOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingOutput) *GoogleCloudMlV1__TrainingOutput {
 		return &v
 	}).(GoogleCloudMlV1__TrainingOutputPtrOutput)
 }
@@ -13419,7 +13697,13 @@ func (o GoogleCloudMlV1__TrainingOutputPtrOutput) ToGoogleCloudMlV1__TrainingOut
 }
 
 func (o GoogleCloudMlV1__TrainingOutputPtrOutput) Elem() GoogleCloudMlV1__TrainingOutputOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutput) GoogleCloudMlV1__TrainingOutput { return *v }).(GoogleCloudMlV1__TrainingOutputOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutput) GoogleCloudMlV1__TrainingOutput {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__TrainingOutput
+		return ret
+	}).(GoogleCloudMlV1__TrainingOutputOutput)
 }
 
 // Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -13616,7 +13900,7 @@ func (o GoogleCloudMlV1__TrainingOutputResponseOutput) ToGoogleCloudMlV1__Traini
 }
 
 func (o GoogleCloudMlV1__TrainingOutputResponseOutput) ToGoogleCloudMlV1__TrainingOutputResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__TrainingOutputResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingOutputResponse) *GoogleCloudMlV1__TrainingOutputResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__TrainingOutputResponse) *GoogleCloudMlV1__TrainingOutputResponse {
 		return &v
 	}).(GoogleCloudMlV1__TrainingOutputResponsePtrOutput)
 }
@@ -13680,7 +13964,13 @@ func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) ToGoogleCloudMlV1__Tra
 }
 
 func (o GoogleCloudMlV1__TrainingOutputResponsePtrOutput) Elem() GoogleCloudMlV1__TrainingOutputResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutputResponse) GoogleCloudMlV1__TrainingOutputResponse { return *v }).(GoogleCloudMlV1__TrainingOutputResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingOutputResponse) GoogleCloudMlV1__TrainingOutputResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__TrainingOutputResponse
+		return ret
+	}).(GoogleCloudMlV1__TrainingOutputResponseOutput)
 }
 
 // Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -13959,7 +14249,7 @@ func (o GoogleCloudMlV1__VersionResponseOutput) ToGoogleCloudMlV1__VersionRespon
 }
 
 func (o GoogleCloudMlV1__VersionResponseOutput) ToGoogleCloudMlV1__VersionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__VersionResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) *GoogleCloudMlV1__VersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__VersionResponse) *GoogleCloudMlV1__VersionResponse {
 		return &v
 	}).(GoogleCloudMlV1__VersionResponsePtrOutput)
 }
@@ -14117,7 +14407,13 @@ func (o GoogleCloudMlV1__VersionResponsePtrOutput) ToGoogleCloudMlV1__VersionRes
 }
 
 func (o GoogleCloudMlV1__VersionResponsePtrOutput) Elem() GoogleCloudMlV1__VersionResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__VersionResponse) GoogleCloudMlV1__VersionResponse { return *v }).(GoogleCloudMlV1__VersionResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__VersionResponse) GoogleCloudMlV1__VersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__VersionResponse
+		return ret
+	}).(GoogleCloudMlV1__VersionResponseOutput)
 }
 
 // Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -14476,7 +14772,7 @@ func (o GoogleCloudMlV1__XraiAttributionOutput) ToGoogleCloudMlV1__XraiAttributi
 }
 
 func (o GoogleCloudMlV1__XraiAttributionOutput) ToGoogleCloudMlV1__XraiAttributionPtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__XraiAttributionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__XraiAttribution) *GoogleCloudMlV1__XraiAttribution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__XraiAttribution) *GoogleCloudMlV1__XraiAttribution {
 		return &v
 	}).(GoogleCloudMlV1__XraiAttributionPtrOutput)
 }
@@ -14501,7 +14797,13 @@ func (o GoogleCloudMlV1__XraiAttributionPtrOutput) ToGoogleCloudMlV1__XraiAttrib
 }
 
 func (o GoogleCloudMlV1__XraiAttributionPtrOutput) Elem() GoogleCloudMlV1__XraiAttributionOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__XraiAttribution) GoogleCloudMlV1__XraiAttribution { return *v }).(GoogleCloudMlV1__XraiAttributionOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__XraiAttribution) GoogleCloudMlV1__XraiAttribution {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__XraiAttribution
+		return ret
+	}).(GoogleCloudMlV1__XraiAttributionOutput)
 }
 
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
@@ -14610,7 +14912,7 @@ func (o GoogleCloudMlV1__XraiAttributionResponseOutput) ToGoogleCloudMlV1__XraiA
 }
 
 func (o GoogleCloudMlV1__XraiAttributionResponseOutput) ToGoogleCloudMlV1__XraiAttributionResponsePtrOutputWithContext(ctx context.Context) GoogleCloudMlV1__XraiAttributionResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__XraiAttributionResponse) *GoogleCloudMlV1__XraiAttributionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMlV1__XraiAttributionResponse) *GoogleCloudMlV1__XraiAttributionResponse {
 		return &v
 	}).(GoogleCloudMlV1__XraiAttributionResponsePtrOutput)
 }
@@ -14635,7 +14937,13 @@ func (o GoogleCloudMlV1__XraiAttributionResponsePtrOutput) ToGoogleCloudMlV1__Xr
 }
 
 func (o GoogleCloudMlV1__XraiAttributionResponsePtrOutput) Elem() GoogleCloudMlV1__XraiAttributionResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__XraiAttributionResponse) GoogleCloudMlV1__XraiAttributionResponse { return *v }).(GoogleCloudMlV1__XraiAttributionResponseOutput)
+	return o.ApplyT(func(v *GoogleCloudMlV1__XraiAttributionResponse) GoogleCloudMlV1__XraiAttributionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMlV1__XraiAttributionResponse
+		return ret
+	}).(GoogleCloudMlV1__XraiAttributionResponseOutput)
 }
 
 // Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
@@ -15430,7 +15738,7 @@ func (o GoogleType__ExprOutput) ToGoogleType__ExprPtrOutput() GoogleType__ExprPt
 }
 
 func (o GoogleType__ExprOutput) ToGoogleType__ExprPtrOutputWithContext(ctx context.Context) GoogleType__ExprPtrOutput {
-	return o.ApplyT(func(v GoogleType__Expr) *GoogleType__Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleType__Expr) *GoogleType__Expr {
 		return &v
 	}).(GoogleType__ExprPtrOutput)
 }
@@ -15470,7 +15778,13 @@ func (o GoogleType__ExprPtrOutput) ToGoogleType__ExprPtrOutputWithContext(ctx co
 }
 
 func (o GoogleType__ExprPtrOutput) Elem() GoogleType__ExprOutput {
-	return o.ApplyT(func(v *GoogleType__Expr) GoogleType__Expr { return *v }).(GoogleType__ExprOutput)
+	return o.ApplyT(func(v *GoogleType__Expr) GoogleType__Expr {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleType__Expr
+		return ret
+	}).(GoogleType__ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.

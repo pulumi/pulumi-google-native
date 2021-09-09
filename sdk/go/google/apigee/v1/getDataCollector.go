@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,65 @@ type LookupDataCollectorResult struct {
 	Name string `pulumi:"name"`
 	// Immutable. The type of data this data collector will collect.
 	Type string `pulumi:"type"`
+}
+
+func LookupDataCollectorOutput(ctx *pulumi.Context, args LookupDataCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupDataCollectorResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDataCollectorResult, error) {
+			args := v.(LookupDataCollectorArgs)
+			r, err := LookupDataCollector(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDataCollectorResultOutput)
+}
+
+type LookupDataCollectorOutputArgs struct {
+	DatacollectorId pulumi.StringInput `pulumi:"datacollectorId"`
+	OrganizationId  pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupDataCollectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataCollectorArgs)(nil)).Elem()
+}
+
+type LookupDataCollectorResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDataCollectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataCollectorResult)(nil)).Elem()
+}
+
+func (o LookupDataCollectorResultOutput) ToLookupDataCollectorResultOutput() LookupDataCollectorResultOutput {
+	return o
+}
+
+func (o LookupDataCollectorResultOutput) ToLookupDataCollectorResultOutputWithContext(ctx context.Context) LookupDataCollectorResultOutput {
+	return o
+}
+
+// The time at which the data collector was created in milliseconds since the epoch.
+func (o LookupDataCollectorResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCollectorResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A description of the data collector.
+func (o LookupDataCollectorResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCollectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time at which the Data Collector was last updated in milliseconds since the epoch.
+func (o LookupDataCollectorResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCollectorResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// ID of the data collector. Must begin with `dc_`.
+func (o LookupDataCollectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCollectorResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The type of data this data collector will collect.
+func (o LookupDataCollectorResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCollectorResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDataCollectorResultOutput{})
 }

@@ -141,9 +141,7 @@ func (i *Flow) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowOutput)
 }
 
-type FlowOutput struct {
-	*pulumi.OutputState
-}
+type FlowOutput struct{ *pulumi.OutputState }
 
 func (FlowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Flow)(nil))

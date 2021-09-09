@@ -106,7 +106,7 @@ func (o BuildOptionsLogStreamingOptionOutput) ToStringPtrOutputWithContext(ctx c
 type BuildOptionsLogStreamingOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsLogStreamingOptionPtrOutput) ElementType() reflect.Type {
-	return buildOptionsLogStreamingOptionPtrType
+	return reflect.TypeOf((**BuildOptionsLogStreamingOption)(nil)).Elem()
 }
 
 func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput {
@@ -115,6 +115,16 @@ func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptio
 
 func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
 	return o
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) Elem() BuildOptionsLogStreamingOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsLogStreamingOption) BuildOptionsLogStreamingOption {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsLogStreamingOption
+		return ret
+	}).(BuildOptionsLogStreamingOptionOutput)
 }
 
 func (o BuildOptionsLogStreamingOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o BuildOptionsLogStreamingOptionPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsLogStreamingOptionPtrOutput) Elem() BuildOptionsLogStreamingOptionOutput {
-	return o.ApplyT(func(v *BuildOptionsLogStreamingOption) BuildOptionsLogStreamingOption {
-		var ret BuildOptionsLogStreamingOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsLogStreamingOptionOutput)
 }
 
 // BuildOptionsLogStreamingOptionInput is an input type that accepts BuildOptionsLogStreamingOptionArgs and BuildOptionsLogStreamingOptionOutput values.
@@ -281,7 +281,7 @@ func (o BuildOptionsLoggingOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type BuildOptionsLoggingPtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsLoggingPtrOutput) ElementType() reflect.Type {
-	return buildOptionsLoggingPtrType
+	return reflect.TypeOf((**BuildOptionsLogging)(nil)).Elem()
 }
 
 func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput {
@@ -290,6 +290,16 @@ func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutput() BuildOpti
 
 func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
 	return o
+}
+
+func (o BuildOptionsLoggingPtrOutput) Elem() BuildOptionsLoggingOutput {
+	return o.ApplyT(func(v *BuildOptionsLogging) BuildOptionsLogging {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsLogging
+		return ret
+	}).(BuildOptionsLoggingOutput)
 }
 
 func (o BuildOptionsLoggingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o BuildOptionsLoggingPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsLoggingPtrOutput) Elem() BuildOptionsLoggingOutput {
-	return o.ApplyT(func(v *BuildOptionsLogging) BuildOptionsLogging {
-		var ret BuildOptionsLogging
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsLoggingOutput)
 }
 
 // BuildOptionsLoggingInput is an input type that accepts BuildOptionsLoggingArgs and BuildOptionsLoggingOutput values.
@@ -454,7 +454,7 @@ func (o BuildOptionsMachineTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type BuildOptionsMachineTypePtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsMachineTypePtrOutput) ElementType() reflect.Type {
-	return buildOptionsMachineTypePtrType
+	return reflect.TypeOf((**BuildOptionsMachineType)(nil)).Elem()
 }
 
 func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput {
@@ -463,6 +463,16 @@ func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutput() B
 
 func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
 	return o
+}
+
+func (o BuildOptionsMachineTypePtrOutput) Elem() BuildOptionsMachineTypeOutput {
+	return o.ApplyT(func(v *BuildOptionsMachineType) BuildOptionsMachineType {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsMachineType
+		return ret
+	}).(BuildOptionsMachineTypeOutput)
 }
 
 func (o BuildOptionsMachineTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -477,16 +487,6 @@ func (o BuildOptionsMachineTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsMachineTypePtrOutput) Elem() BuildOptionsMachineTypeOutput {
-	return o.ApplyT(func(v *BuildOptionsMachineType) BuildOptionsMachineType {
-		var ret BuildOptionsMachineType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsMachineTypeOutput)
 }
 
 // BuildOptionsMachineTypeInput is an input type that accepts BuildOptionsMachineTypeArgs and BuildOptionsMachineTypeOutput values.
@@ -621,7 +621,7 @@ func (o BuildOptionsRequestedVerifyOptionOutput) ToStringPtrOutputWithContext(ct
 type BuildOptionsRequestedVerifyOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsRequestedVerifyOptionPtrOutput) ElementType() reflect.Type {
-	return buildOptionsRequestedVerifyOptionPtrType
+	return reflect.TypeOf((**BuildOptionsRequestedVerifyOption)(nil)).Elem()
 }
 
 func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput {
@@ -630,6 +630,16 @@ func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerif
 
 func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
 	return o
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) Elem() BuildOptionsRequestedVerifyOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsRequestedVerifyOption) BuildOptionsRequestedVerifyOption {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsRequestedVerifyOption
+		return ret
+	}).(BuildOptionsRequestedVerifyOptionOutput)
 }
 
 func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -644,16 +654,6 @@ func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsRequestedVerifyOptionPtrOutput) Elem() BuildOptionsRequestedVerifyOptionOutput {
-	return o.ApplyT(func(v *BuildOptionsRequestedVerifyOption) BuildOptionsRequestedVerifyOption {
-		var ret BuildOptionsRequestedVerifyOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsRequestedVerifyOptionOutput)
 }
 
 // BuildOptionsRequestedVerifyOptionInput is an input type that accepts BuildOptionsRequestedVerifyOptionArgs and BuildOptionsRequestedVerifyOptionOutput values.
@@ -789,7 +789,7 @@ func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringPtrOutputWithContext
 type BuildOptionsSourceProvenanceHashItemPtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsSourceProvenanceHashItemPtrOutput) ElementType() reflect.Type {
-	return buildOptionsSourceProvenanceHashItemPtrType
+	return reflect.TypeOf((**BuildOptionsSourceProvenanceHashItem)(nil)).Elem()
 }
 
 func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput {
@@ -798,6 +798,16 @@ func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProve
 
 func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
 	return o
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) Elem() BuildOptionsSourceProvenanceHashItemOutput {
+	return o.ApplyT(func(v *BuildOptionsSourceProvenanceHashItem) BuildOptionsSourceProvenanceHashItem {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsSourceProvenanceHashItem
+		return ret
+	}).(BuildOptionsSourceProvenanceHashItemOutput)
 }
 
 func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -812,16 +822,6 @@ func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsSourceProvenanceHashItemPtrOutput) Elem() BuildOptionsSourceProvenanceHashItemOutput {
-	return o.ApplyT(func(v *BuildOptionsSourceProvenanceHashItem) BuildOptionsSourceProvenanceHashItem {
-		var ret BuildOptionsSourceProvenanceHashItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsSourceProvenanceHashItemOutput)
 }
 
 // BuildOptionsSourceProvenanceHashItemInput is an input type that accepts BuildOptionsSourceProvenanceHashItemArgs and BuildOptionsSourceProvenanceHashItemOutput values.
@@ -902,8 +902,8 @@ func (o BuildOptionsSourceProvenanceHashItemArrayOutput) ToBuildOptionsSourcePro
 }
 
 func (o BuildOptionsSourceProvenanceHashItemArrayOutput) Index(i pulumi.IntInput) BuildOptionsSourceProvenanceHashItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildOptionsSourceProvenanceHashItemOutput {
-		return vs[0].([]BuildOptionsSourceProvenanceHashItem)[vs[1].(int)].ToBuildOptionsSourceProvenanceHashItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildOptionsSourceProvenanceHashItem {
+		return vs[0].([]BuildOptionsSourceProvenanceHashItem)[vs[1].(int)]
 	}).(BuildOptionsSourceProvenanceHashItemOutput)
 }
 
@@ -1001,7 +1001,7 @@ func (o BuildOptionsSubstitutionOptionOutput) ToStringPtrOutputWithContext(ctx c
 type BuildOptionsSubstitutionOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (BuildOptionsSubstitutionOptionPtrOutput) ElementType() reflect.Type {
-	return buildOptionsSubstitutionOptionPtrType
+	return reflect.TypeOf((**BuildOptionsSubstitutionOption)(nil)).Elem()
 }
 
 func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput {
@@ -1010,6 +1010,16 @@ func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptio
 
 func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
 	return o
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) Elem() BuildOptionsSubstitutionOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsSubstitutionOption) BuildOptionsSubstitutionOption {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsSubstitutionOption
+		return ret
+	}).(BuildOptionsSubstitutionOptionOutput)
 }
 
 func (o BuildOptionsSubstitutionOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1024,16 +1034,6 @@ func (o BuildOptionsSubstitutionOptionPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BuildOptionsSubstitutionOptionPtrOutput) Elem() BuildOptionsSubstitutionOptionOutput {
-	return o.ApplyT(func(v *BuildOptionsSubstitutionOption) BuildOptionsSubstitutionOption {
-		var ret BuildOptionsSubstitutionOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BuildOptionsSubstitutionOptionOutput)
 }
 
 // BuildOptionsSubstitutionOptionInput is an input type that accepts BuildOptionsSubstitutionOptionArgs and BuildOptionsSubstitutionOptionOutput values.
@@ -1170,7 +1170,7 @@ func (o GitFileSourceRepoTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type GitFileSourceRepoTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GitFileSourceRepoTypePtrOutput) ElementType() reflect.Type {
-	return gitFileSourceRepoTypePtrType
+	return reflect.TypeOf((**GitFileSourceRepoType)(nil)).Elem()
 }
 
 func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutput() GitFileSourceRepoTypePtrOutput {
@@ -1179,6 +1179,16 @@ func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutput() GitFi
 
 func (o GitFileSourceRepoTypePtrOutput) ToGitFileSourceRepoTypePtrOutputWithContext(ctx context.Context) GitFileSourceRepoTypePtrOutput {
 	return o
+}
+
+func (o GitFileSourceRepoTypePtrOutput) Elem() GitFileSourceRepoTypeOutput {
+	return o.ApplyT(func(v *GitFileSourceRepoType) GitFileSourceRepoType {
+		if v != nil {
+			return *v
+		}
+		var ret GitFileSourceRepoType
+		return ret
+	}).(GitFileSourceRepoTypeOutput)
 }
 
 func (o GitFileSourceRepoTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1193,16 +1203,6 @@ func (o GitFileSourceRepoTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GitFileSourceRepoTypePtrOutput) Elem() GitFileSourceRepoTypeOutput {
-	return o.ApplyT(func(v *GitFileSourceRepoType) GitFileSourceRepoType {
-		var ret GitFileSourceRepoType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GitFileSourceRepoTypeOutput)
 }
 
 // GitFileSourceRepoTypeInput is an input type that accepts GitFileSourceRepoTypeArgs and GitFileSourceRepoTypeOutput values.
@@ -1339,7 +1339,7 @@ func (o GitRepoSourceRepoTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type GitRepoSourceRepoTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GitRepoSourceRepoTypePtrOutput) ElementType() reflect.Type {
-	return gitRepoSourceRepoTypePtrType
+	return reflect.TypeOf((**GitRepoSourceRepoType)(nil)).Elem()
 }
 
 func (o GitRepoSourceRepoTypePtrOutput) ToGitRepoSourceRepoTypePtrOutput() GitRepoSourceRepoTypePtrOutput {
@@ -1348,6 +1348,16 @@ func (o GitRepoSourceRepoTypePtrOutput) ToGitRepoSourceRepoTypePtrOutput() GitRe
 
 func (o GitRepoSourceRepoTypePtrOutput) ToGitRepoSourceRepoTypePtrOutputWithContext(ctx context.Context) GitRepoSourceRepoTypePtrOutput {
 	return o
+}
+
+func (o GitRepoSourceRepoTypePtrOutput) Elem() GitRepoSourceRepoTypeOutput {
+	return o.ApplyT(func(v *GitRepoSourceRepoType) GitRepoSourceRepoType {
+		if v != nil {
+			return *v
+		}
+		var ret GitRepoSourceRepoType
+		return ret
+	}).(GitRepoSourceRepoTypeOutput)
 }
 
 func (o GitRepoSourceRepoTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1362,16 +1372,6 @@ func (o GitRepoSourceRepoTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GitRepoSourceRepoTypePtrOutput) Elem() GitRepoSourceRepoTypeOutput {
-	return o.ApplyT(func(v *GitRepoSourceRepoType) GitRepoSourceRepoType {
-		var ret GitRepoSourceRepoType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GitRepoSourceRepoTypeOutput)
 }
 
 // GitRepoSourceRepoTypeInput is an input type that accepts GitRepoSourceRepoTypeArgs and GitRepoSourceRepoTypeOutput values.
@@ -1508,7 +1508,7 @@ func (o NetworkConfigEgressOptionOutput) ToStringPtrOutputWithContext(ctx contex
 type NetworkConfigEgressOptionPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigEgressOptionPtrOutput) ElementType() reflect.Type {
-	return networkConfigEgressOptionPtrType
+	return reflect.TypeOf((**NetworkConfigEgressOption)(nil)).Elem()
 }
 
 func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput {
@@ -1517,6 +1517,16 @@ func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutput
 
 func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
 	return o
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) Elem() NetworkConfigEgressOptionOutput {
+	return o.ApplyT(func(v *NetworkConfigEgressOption) NetworkConfigEgressOption {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigEgressOption
+		return ret
+	}).(NetworkConfigEgressOptionOutput)
 }
 
 func (o NetworkConfigEgressOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1531,16 +1541,6 @@ func (o NetworkConfigEgressOptionPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NetworkConfigEgressOptionPtrOutput) Elem() NetworkConfigEgressOptionOutput {
-	return o.ApplyT(func(v *NetworkConfigEgressOption) NetworkConfigEgressOption {
-		var ret NetworkConfigEgressOption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NetworkConfigEgressOptionOutput)
 }
 
 // NetworkConfigEgressOptionInput is an input type that accepts NetworkConfigEgressOptionArgs and NetworkConfigEgressOptionOutput values.
@@ -1681,7 +1681,7 @@ func (o PubsubConfigStateOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type PubsubConfigStatePtrOutput struct{ *pulumi.OutputState }
 
 func (PubsubConfigStatePtrOutput) ElementType() reflect.Type {
-	return pubsubConfigStatePtrType
+	return reflect.TypeOf((**PubsubConfigState)(nil)).Elem()
 }
 
 func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput {
@@ -1690,6 +1690,16 @@ func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutput() PubsubConfigS
 
 func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
 	return o
+}
+
+func (o PubsubConfigStatePtrOutput) Elem() PubsubConfigStateOutput {
+	return o.ApplyT(func(v *PubsubConfigState) PubsubConfigState {
+		if v != nil {
+			return *v
+		}
+		var ret PubsubConfigState
+		return ret
+	}).(PubsubConfigStateOutput)
 }
 
 func (o PubsubConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1704,16 +1714,6 @@ func (o PubsubConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PubsubConfigStatePtrOutput) Elem() PubsubConfigStateOutput {
-	return o.ApplyT(func(v *PubsubConfigState) PubsubConfigState {
-		var ret PubsubConfigState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PubsubConfigStateOutput)
 }
 
 // PubsubConfigStateInput is an input type that accepts PubsubConfigStateArgs and PubsubConfigStateOutput values.
@@ -1850,7 +1850,7 @@ func (o PullRequestFilterCommentControlOutput) ToStringPtrOutputWithContext(ctx 
 type PullRequestFilterCommentControlPtrOutput struct{ *pulumi.OutputState }
 
 func (PullRequestFilterCommentControlPtrOutput) ElementType() reflect.Type {
-	return pullRequestFilterCommentControlPtrType
+	return reflect.TypeOf((**PullRequestFilterCommentControl)(nil)).Elem()
 }
 
 func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput {
@@ -1859,6 +1859,16 @@ func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentCont
 
 func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
 	return o
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) Elem() PullRequestFilterCommentControlOutput {
+	return o.ApplyT(func(v *PullRequestFilterCommentControl) PullRequestFilterCommentControl {
+		if v != nil {
+			return *v
+		}
+		var ret PullRequestFilterCommentControl
+		return ret
+	}).(PullRequestFilterCommentControlOutput)
 }
 
 func (o PullRequestFilterCommentControlPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1873,16 +1883,6 @@ func (o PullRequestFilterCommentControlPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PullRequestFilterCommentControlPtrOutput) Elem() PullRequestFilterCommentControlOutput {
-	return o.ApplyT(func(v *PullRequestFilterCommentControl) PullRequestFilterCommentControl {
-		var ret PullRequestFilterCommentControl
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PullRequestFilterCommentControlOutput)
 }
 
 // PullRequestFilterCommentControlInput is an input type that accepts PullRequestFilterCommentControlArgs and PullRequestFilterCommentControlOutput values.
@@ -2019,7 +2019,7 @@ func (o WebhookConfigStateOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type WebhookConfigStatePtrOutput struct{ *pulumi.OutputState }
 
 func (WebhookConfigStatePtrOutput) ElementType() reflect.Type {
-	return webhookConfigStatePtrType
+	return reflect.TypeOf((**WebhookConfigState)(nil)).Elem()
 }
 
 func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput {
@@ -2028,6 +2028,16 @@ func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutput() WebhookConf
 
 func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
 	return o
+}
+
+func (o WebhookConfigStatePtrOutput) Elem() WebhookConfigStateOutput {
+	return o.ApplyT(func(v *WebhookConfigState) WebhookConfigState {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookConfigState
+		return ret
+	}).(WebhookConfigStateOutput)
 }
 
 func (o WebhookConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2042,16 +2052,6 @@ func (o WebhookConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WebhookConfigStatePtrOutput) Elem() WebhookConfigStateOutput {
-	return o.ApplyT(func(v *WebhookConfigState) WebhookConfigState {
-		var ret WebhookConfigState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WebhookConfigStateOutput)
 }
 
 // WebhookConfigStateInput is an input type that accepts WebhookConfigStateArgs and WebhookConfigStateOutput values.

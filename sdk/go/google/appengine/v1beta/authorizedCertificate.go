@@ -115,9 +115,7 @@ func (i *AuthorizedCertificate) ToAuthorizedCertificateOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedCertificateOutput)
 }
 
-type AuthorizedCertificateOutput struct {
-	*pulumi.OutputState
-}
+type AuthorizedCertificateOutput struct{ *pulumi.OutputState }
 
 func (AuthorizedCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AuthorizedCertificate)(nil))

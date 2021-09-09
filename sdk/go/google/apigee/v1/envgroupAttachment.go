@@ -112,9 +112,7 @@ func (i *EnvgroupAttachment) ToEnvgroupAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnvgroupAttachmentOutput)
 }
 
-type EnvgroupAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EnvgroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvgroupAttachment)(nil))

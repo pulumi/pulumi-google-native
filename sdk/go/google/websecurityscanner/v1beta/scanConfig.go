@@ -183,9 +183,7 @@ func (i *ScanConfig) ToScanConfigOutputWithContext(ctx context.Context) ScanConf
 	return pulumi.ToOutputWithContext(ctx, i).(ScanConfigOutput)
 }
 
-type ScanConfigOutput struct {
-	*pulumi.OutputState
-}
+type ScanConfigOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScanConfig)(nil))

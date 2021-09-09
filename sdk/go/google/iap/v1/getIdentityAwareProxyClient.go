@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupIdentityAwareProxyClientResult struct {
 	Name string `pulumi:"name"`
 	// Client secret of the OAuth client.
 	Secret string `pulumi:"secret"`
+}
+
+func LookupIdentityAwareProxyClientOutput(ctx *pulumi.Context, args LookupIdentityAwareProxyClientOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityAwareProxyClientResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIdentityAwareProxyClientResult, error) {
+			args := v.(LookupIdentityAwareProxyClientArgs)
+			r, err := LookupIdentityAwareProxyClient(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIdentityAwareProxyClientResultOutput)
+}
+
+type LookupIdentityAwareProxyClientOutputArgs struct {
+	BrandId                    pulumi.StringInput    `pulumi:"brandId"`
+	IdentityAwareProxyClientId pulumi.StringInput    `pulumi:"identityAwareProxyClientId"`
+	Project                    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupIdentityAwareProxyClientOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIdentityAwareProxyClientArgs)(nil)).Elem()
+}
+
+type LookupIdentityAwareProxyClientResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIdentityAwareProxyClientResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIdentityAwareProxyClientResult)(nil)).Elem()
+}
+
+func (o LookupIdentityAwareProxyClientResultOutput) ToLookupIdentityAwareProxyClientResultOutput() LookupIdentityAwareProxyClientResultOutput {
+	return o
+}
+
+func (o LookupIdentityAwareProxyClientResultOutput) ToLookupIdentityAwareProxyClientResultOutputWithContext(ctx context.Context) LookupIdentityAwareProxyClientResultOutput {
+	return o
+}
+
+// Human-friendly name given to the OAuth client.
+func (o LookupIdentityAwareProxyClientResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityAwareProxyClientResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the OAuth client.
+func (o LookupIdentityAwareProxyClientResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityAwareProxyClientResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Client secret of the OAuth client.
+func (o LookupIdentityAwareProxyClientResultOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIdentityAwareProxyClientResult) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIdentityAwareProxyClientResultOutput{})
 }

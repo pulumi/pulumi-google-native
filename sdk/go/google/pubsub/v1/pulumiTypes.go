@@ -346,7 +346,7 @@ func (o DeadLetterPolicyOutput) ToDeadLetterPolicyPtrOutput() DeadLetterPolicyPt
 }
 
 func (o DeadLetterPolicyOutput) ToDeadLetterPolicyPtrOutputWithContext(ctx context.Context) DeadLetterPolicyPtrOutput {
-	return o.ApplyT(func(v DeadLetterPolicy) *DeadLetterPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeadLetterPolicy) *DeadLetterPolicy {
 		return &v
 	}).(DeadLetterPolicyPtrOutput)
 }
@@ -376,7 +376,13 @@ func (o DeadLetterPolicyPtrOutput) ToDeadLetterPolicyPtrOutputWithContext(ctx co
 }
 
 func (o DeadLetterPolicyPtrOutput) Elem() DeadLetterPolicyOutput {
-	return o.ApplyT(func(v *DeadLetterPolicy) DeadLetterPolicy { return *v }).(DeadLetterPolicyOutput)
+	return o.ApplyT(func(v *DeadLetterPolicy) DeadLetterPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DeadLetterPolicy
+		return ret
+	}).(DeadLetterPolicyOutput)
 }
 
 // The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
@@ -499,7 +505,7 @@ func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponsePtrOutput() De
 }
 
 func (o DeadLetterPolicyResponseOutput) ToDeadLetterPolicyResponsePtrOutputWithContext(ctx context.Context) DeadLetterPolicyResponsePtrOutput {
-	return o.ApplyT(func(v DeadLetterPolicyResponse) *DeadLetterPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeadLetterPolicyResponse) *DeadLetterPolicyResponse {
 		return &v
 	}).(DeadLetterPolicyResponsePtrOutput)
 }
@@ -529,7 +535,13 @@ func (o DeadLetterPolicyResponsePtrOutput) ToDeadLetterPolicyResponsePtrOutputWi
 }
 
 func (o DeadLetterPolicyResponsePtrOutput) Elem() DeadLetterPolicyResponseOutput {
-	return o.ApplyT(func(v *DeadLetterPolicyResponse) DeadLetterPolicyResponse { return *v }).(DeadLetterPolicyResponseOutput)
+	return o.ApplyT(func(v *DeadLetterPolicyResponse) DeadLetterPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeadLetterPolicyResponse
+		return ret
+	}).(DeadLetterPolicyResponseOutput)
 }
 
 // The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
@@ -648,7 +660,7 @@ func (o ExpirationPolicyOutput) ToExpirationPolicyPtrOutput() ExpirationPolicyPt
 }
 
 func (o ExpirationPolicyOutput) ToExpirationPolicyPtrOutputWithContext(ctx context.Context) ExpirationPolicyPtrOutput {
-	return o.ApplyT(func(v ExpirationPolicy) *ExpirationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpirationPolicy) *ExpirationPolicy {
 		return &v
 	}).(ExpirationPolicyPtrOutput)
 }
@@ -673,7 +685,13 @@ func (o ExpirationPolicyPtrOutput) ToExpirationPolicyPtrOutputWithContext(ctx co
 }
 
 func (o ExpirationPolicyPtrOutput) Elem() ExpirationPolicyOutput {
-	return o.ApplyT(func(v *ExpirationPolicy) ExpirationPolicy { return *v }).(ExpirationPolicyOutput)
+	return o.ApplyT(func(v *ExpirationPolicy) ExpirationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ExpirationPolicy
+		return ret
+	}).(ExpirationPolicyOutput)
 }
 
 // Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
@@ -782,7 +800,7 @@ func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponsePtrOutput() Ex
 }
 
 func (o ExpirationPolicyResponseOutput) ToExpirationPolicyResponsePtrOutputWithContext(ctx context.Context) ExpirationPolicyResponsePtrOutput {
-	return o.ApplyT(func(v ExpirationPolicyResponse) *ExpirationPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpirationPolicyResponse) *ExpirationPolicyResponse {
 		return &v
 	}).(ExpirationPolicyResponsePtrOutput)
 }
@@ -807,7 +825,13 @@ func (o ExpirationPolicyResponsePtrOutput) ToExpirationPolicyResponsePtrOutputWi
 }
 
 func (o ExpirationPolicyResponsePtrOutput) Elem() ExpirationPolicyResponseOutput {
-	return o.ApplyT(func(v *ExpirationPolicyResponse) ExpirationPolicyResponse { return *v }).(ExpirationPolicyResponseOutput)
+	return o.ApplyT(func(v *ExpirationPolicyResponse) ExpirationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExpirationPolicyResponse
+		return ret
+	}).(ExpirationPolicyResponseOutput)
 }
 
 // Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
@@ -928,7 +952,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -968,7 +992,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1189,7 +1219,7 @@ func (o MessageStoragePolicyOutput) ToMessageStoragePolicyPtrOutput() MessageSto
 }
 
 func (o MessageStoragePolicyOutput) ToMessageStoragePolicyPtrOutputWithContext(ctx context.Context) MessageStoragePolicyPtrOutput {
-	return o.ApplyT(func(v MessageStoragePolicy) *MessageStoragePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageStoragePolicy) *MessageStoragePolicy {
 		return &v
 	}).(MessageStoragePolicyPtrOutput)
 }
@@ -1214,7 +1244,13 @@ func (o MessageStoragePolicyPtrOutput) ToMessageStoragePolicyPtrOutputWithContex
 }
 
 func (o MessageStoragePolicyPtrOutput) Elem() MessageStoragePolicyOutput {
-	return o.ApplyT(func(v *MessageStoragePolicy) MessageStoragePolicy { return *v }).(MessageStoragePolicyOutput)
+	return o.ApplyT(func(v *MessageStoragePolicy) MessageStoragePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MessageStoragePolicy
+		return ret
+	}).(MessageStoragePolicyOutput)
 }
 
 // A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
@@ -1323,7 +1359,7 @@ func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponsePtrOut
 }
 
 func (o MessageStoragePolicyResponseOutput) ToMessageStoragePolicyResponsePtrOutputWithContext(ctx context.Context) MessageStoragePolicyResponsePtrOutput {
-	return o.ApplyT(func(v MessageStoragePolicyResponse) *MessageStoragePolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageStoragePolicyResponse) *MessageStoragePolicyResponse {
 		return &v
 	}).(MessageStoragePolicyResponsePtrOutput)
 }
@@ -1348,7 +1384,13 @@ func (o MessageStoragePolicyResponsePtrOutput) ToMessageStoragePolicyResponsePtr
 }
 
 func (o MessageStoragePolicyResponsePtrOutput) Elem() MessageStoragePolicyResponseOutput {
-	return o.ApplyT(func(v *MessageStoragePolicyResponse) MessageStoragePolicyResponse { return *v }).(MessageStoragePolicyResponseOutput)
+	return o.ApplyT(func(v *MessageStoragePolicyResponse) MessageStoragePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessageStoragePolicyResponse
+		return ret
+	}).(MessageStoragePolicyResponseOutput)
 }
 
 // A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
@@ -1461,7 +1503,7 @@ func (o OidcTokenOutput) ToOidcTokenPtrOutput() OidcTokenPtrOutput {
 }
 
 func (o OidcTokenOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context) OidcTokenPtrOutput {
-	return o.ApplyT(func(v OidcToken) *OidcToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcToken) *OidcToken {
 		return &v
 	}).(OidcTokenPtrOutput)
 }
@@ -1491,7 +1533,13 @@ func (o OidcTokenPtrOutput) ToOidcTokenPtrOutputWithContext(ctx context.Context)
 }
 
 func (o OidcTokenPtrOutput) Elem() OidcTokenOutput {
-	return o.ApplyT(func(v *OidcToken) OidcToken { return *v }).(OidcTokenOutput)
+	return o.ApplyT(func(v *OidcToken) OidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret OidcToken
+		return ret
+	}).(OidcTokenOutput)
 }
 
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
@@ -1614,7 +1662,7 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenRespons
 }
 
 func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v OidcTokenResponse) *OidcTokenResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
 		return &v
 	}).(OidcTokenResponsePtrOutput)
 }
@@ -1644,7 +1692,13 @@ func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx 
 }
 
 func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse { return *v }).(OidcTokenResponseOutput)
+	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OidcTokenResponse
+		return ret
+	}).(OidcTokenResponseOutput)
 }
 
 // Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
@@ -1771,7 +1825,7 @@ func (o PushConfigOutput) ToPushConfigPtrOutput() PushConfigPtrOutput {
 }
 
 func (o PushConfigOutput) ToPushConfigPtrOutputWithContext(ctx context.Context) PushConfigPtrOutput {
-	return o.ApplyT(func(v PushConfig) *PushConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfig) *PushConfig {
 		return &v
 	}).(PushConfigPtrOutput)
 }
@@ -1806,7 +1860,13 @@ func (o PushConfigPtrOutput) ToPushConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PushConfigPtrOutput) Elem() PushConfigOutput {
-	return o.ApplyT(func(v *PushConfig) PushConfig { return *v }).(PushConfigOutput)
+	return o.ApplyT(func(v *PushConfig) PushConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfig
+		return ret
+	}).(PushConfigOutput)
 }
 
 // Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" }
@@ -1943,7 +2003,7 @@ func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResp
 }
 
 func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
-	return o.ApplyT(func(v PushConfigResponse) *PushConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushConfigResponse) *PushConfigResponse {
 		return &v
 	}).(PushConfigResponsePtrOutput)
 }
@@ -1978,7 +2038,13 @@ func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ct
 }
 
 func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
-	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse { return *v }).(PushConfigResponseOutput)
+	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PushConfigResponse
+		return ret
+	}).(PushConfigResponseOutput)
 }
 
 // Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" }
@@ -2111,7 +2177,7 @@ func (o RetryPolicyOutput) ToRetryPolicyPtrOutput() RetryPolicyPtrOutput {
 }
 
 func (o RetryPolicyOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Context) RetryPolicyPtrOutput {
-	return o.ApplyT(func(v RetryPolicy) *RetryPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryPolicy) *RetryPolicy {
 		return &v
 	}).(RetryPolicyPtrOutput)
 }
@@ -2141,7 +2207,13 @@ func (o RetryPolicyPtrOutput) ToRetryPolicyPtrOutputWithContext(ctx context.Cont
 }
 
 func (o RetryPolicyPtrOutput) Elem() RetryPolicyOutput {
-	return o.ApplyT(func(v *RetryPolicy) RetryPolicy { return *v }).(RetryPolicyOutput)
+	return o.ApplyT(func(v *RetryPolicy) RetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RetryPolicy
+		return ret
+	}).(RetryPolicyOutput)
 }
 
 // The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -2264,7 +2336,7 @@ func (o RetryPolicyResponseOutput) ToRetryPolicyResponsePtrOutput() RetryPolicyR
 }
 
 func (o RetryPolicyResponseOutput) ToRetryPolicyResponsePtrOutputWithContext(ctx context.Context) RetryPolicyResponsePtrOutput {
-	return o.ApplyT(func(v RetryPolicyResponse) *RetryPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryPolicyResponse) *RetryPolicyResponse {
 		return &v
 	}).(RetryPolicyResponsePtrOutput)
 }
@@ -2294,7 +2366,13 @@ func (o RetryPolicyResponsePtrOutput) ToRetryPolicyResponsePtrOutputWithContext(
 }
 
 func (o RetryPolicyResponsePtrOutput) Elem() RetryPolicyResponseOutput {
-	return o.ApplyT(func(v *RetryPolicyResponse) RetryPolicyResponse { return *v }).(RetryPolicyResponseOutput)
+	return o.ApplyT(func(v *RetryPolicyResponse) RetryPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RetryPolicyResponse
+		return ret
+	}).(RetryPolicyResponseOutput)
 }
 
 // The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
@@ -2417,7 +2495,7 @@ func (o SchemaSettingsOutput) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutpu
 }
 
 func (o SchemaSettingsOutput) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
-	return o.ApplyT(func(v SchemaSettings) *SchemaSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSettings) *SchemaSettings {
 		return &v
 	}).(SchemaSettingsPtrOutput)
 }
@@ -2447,7 +2525,13 @@ func (o SchemaSettingsPtrOutput) ToSchemaSettingsPtrOutputWithContext(ctx contex
 }
 
 func (o SchemaSettingsPtrOutput) Elem() SchemaSettingsOutput {
-	return o.ApplyT(func(v *SchemaSettings) SchemaSettings { return *v }).(SchemaSettingsOutput)
+	return o.ApplyT(func(v *SchemaSettings) SchemaSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaSettings
+		return ret
+	}).(SchemaSettingsOutput)
 }
 
 // The encoding of messages validated against `schema`.
@@ -2570,7 +2654,7 @@ func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponsePtrOutput() Schema
 }
 
 func (o SchemaSettingsResponseOutput) ToSchemaSettingsResponsePtrOutputWithContext(ctx context.Context) SchemaSettingsResponsePtrOutput {
-	return o.ApplyT(func(v SchemaSettingsResponse) *SchemaSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSettingsResponse) *SchemaSettingsResponse {
 		return &v
 	}).(SchemaSettingsResponsePtrOutput)
 }
@@ -2600,7 +2684,13 @@ func (o SchemaSettingsResponsePtrOutput) ToSchemaSettingsResponsePtrOutputWithCo
 }
 
 func (o SchemaSettingsResponsePtrOutput) Elem() SchemaSettingsResponseOutput {
-	return o.ApplyT(func(v *SchemaSettingsResponse) SchemaSettingsResponse { return *v }).(SchemaSettingsResponseOutput)
+	return o.ApplyT(func(v *SchemaSettingsResponse) SchemaSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaSettingsResponse
+		return ret
+	}).(SchemaSettingsResponseOutput)
 }
 
 // The encoding of messages validated against `schema`.

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,4 +44,85 @@ type LookupSecretResult struct {
 	Topics []TopicResponse `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
 	Ttl string `pulumi:"ttl"`
+}
+
+func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSecretResult, error) {
+			args := v.(LookupSecretArgs)
+			r, err := LookupSecret(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSecretResultOutput)
+}
+
+type LookupSecretOutputArgs struct {
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+	SecretId pulumi.StringInput    `pulumi:"secretId"`
+}
+
+func (LookupSecretOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretArgs)(nil)).Elem()
+}
+
+type LookupSecretResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretResult)(nil)).Elem()
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResultOutput {
+	return o
+}
+
+func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
+	return o
+}
+
+// The time at which the Secret was created.
+func (o LookupSecretResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Etag of the currently stored Secret.
+func (o LookupSecretResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+func (o LookupSecretResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+func (o LookupSecretResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the Secret in the format `projects/*/secrets/*`.
+func (o LookupSecretResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+func (o LookupSecretResultOutput) Replication() ReplicationResponseOutput {
+	return o.ApplyT(func(v LookupSecretResult) ReplicationResponse { return v.Replication }).(ReplicationResponseOutput)
+}
+
+// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+func (o LookupSecretResultOutput) Rotation() RotationResponseOutput {
+	return o.ApplyT(func(v LookupSecretResult) RotationResponse { return v.Rotation }).(RotationResponseOutput)
+}
+
+// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+func (o LookupSecretResultOutput) Topics() TopicResponseArrayOutput {
+	return o.ApplyT(func(v LookupSecretResult) []TopicResponse { return v.Topics }).(TopicResponseArrayOutput)
+}
+
+// Input only. The TTL for the Secret.
+func (o LookupSecretResultOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretResultOutput{})
 }

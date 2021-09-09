@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,60 @@ type LookupStoredInfoTypeResult struct {
 	Name string `pulumi:"name"`
 	// Pending versions of the stored info type. Empty if no versions are pending.
 	PendingVersions []GooglePrivacyDlpV2StoredInfoTypeVersionResponse `pulumi:"pendingVersions"`
+}
+
+func LookupStoredInfoTypeOutput(ctx *pulumi.Context, args LookupStoredInfoTypeOutputArgs, opts ...pulumi.InvokeOption) LookupStoredInfoTypeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupStoredInfoTypeResult, error) {
+			args := v.(LookupStoredInfoTypeArgs)
+			r, err := LookupStoredInfoType(ctx, &args, opts...)
+			return *r, err
+		}).(LookupStoredInfoTypeResultOutput)
+}
+
+type LookupStoredInfoTypeOutputArgs struct {
+	Location         pulumi.StringInput    `pulumi:"location"`
+	Project          pulumi.StringPtrInput `pulumi:"project"`
+	StoredInfoTypeId pulumi.StringInput    `pulumi:"storedInfoTypeId"`
+}
+
+func (LookupStoredInfoTypeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStoredInfoTypeArgs)(nil)).Elem()
+}
+
+type LookupStoredInfoTypeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStoredInfoTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStoredInfoTypeResult)(nil)).Elem()
+}
+
+func (o LookupStoredInfoTypeResultOutput) ToLookupStoredInfoTypeResultOutput() LookupStoredInfoTypeResultOutput {
+	return o
+}
+
+func (o LookupStoredInfoTypeResultOutput) ToLookupStoredInfoTypeResultOutputWithContext(ctx context.Context) LookupStoredInfoTypeResultOutput {
+	return o
+}
+
+// Current version of the stored info type.
+func (o LookupStoredInfoTypeResultOutput) CurrentVersion() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
+	return o.ApplyT(func(v LookupStoredInfoTypeResult) GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
+		return v.CurrentVersion
+	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
+}
+
+// Resource name.
+func (o LookupStoredInfoTypeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoredInfoTypeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pending versions of the stored info type. Empty if no versions are pending.
+func (o LookupStoredInfoTypeResultOutput) PendingVersions() GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
+	return o.ApplyT(func(v LookupStoredInfoTypeResult) []GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
+		return v.PendingVersions
+	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStoredInfoTypeResultOutput{})
 }

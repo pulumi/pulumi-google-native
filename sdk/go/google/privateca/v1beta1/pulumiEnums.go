@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o CertificateAuthorityTierOutput) ToStringPtrOutputWithContext(ctx context
 type CertificateAuthorityTierPtrOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityTierPtrOutput) ElementType() reflect.Type {
-	return certificateAuthorityTierPtrType
+	return reflect.TypeOf((**CertificateAuthorityTier)(nil)).Elem()
 }
 
 func (o CertificateAuthorityTierPtrOutput) ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput {
@@ -286,6 +286,16 @@ func (o CertificateAuthorityTierPtrOutput) ToCertificateAuthorityTierPtrOutput()
 
 func (o CertificateAuthorityTierPtrOutput) ToCertificateAuthorityTierPtrOutputWithContext(ctx context.Context) CertificateAuthorityTierPtrOutput {
 	return o
+}
+
+func (o CertificateAuthorityTierPtrOutput) Elem() CertificateAuthorityTierOutput {
+	return o.ApplyT(func(v *CertificateAuthorityTier) CertificateAuthorityTier {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityTier
+		return ret
+	}).(CertificateAuthorityTierOutput)
 }
 
 func (o CertificateAuthorityTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o CertificateAuthorityTierPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CertificateAuthorityTierPtrOutput) Elem() CertificateAuthorityTierOutput {
-	return o.ApplyT(func(v *CertificateAuthorityTier) CertificateAuthorityTier {
-		var ret CertificateAuthorityTier
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CertificateAuthorityTierOutput)
 }
 
 // CertificateAuthorityTierInput is an input type that accepts CertificateAuthorityTierArgs and CertificateAuthorityTierOutput values.
@@ -446,7 +446,7 @@ func (o CertificateAuthorityTypeOutput) ToStringPtrOutputWithContext(ctx context
 type CertificateAuthorityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CertificateAuthorityTypePtrOutput) ElementType() reflect.Type {
-	return certificateAuthorityTypePtrType
+	return reflect.TypeOf((**CertificateAuthorityType)(nil)).Elem()
 }
 
 func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput {
@@ -455,6 +455,16 @@ func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutput()
 
 func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
 	return o
+}
+
+func (o CertificateAuthorityTypePtrOutput) Elem() CertificateAuthorityTypeOutput {
+	return o.ApplyT(func(v *CertificateAuthorityType) CertificateAuthorityType {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityType
+		return ret
+	}).(CertificateAuthorityTypeOutput)
 }
 
 func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CertificateAuthorityTypePtrOutput) Elem() CertificateAuthorityTypeOutput {
-	return o.ApplyT(func(v *CertificateAuthorityType) CertificateAuthorityType {
-		var ret CertificateAuthorityType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CertificateAuthorityTypeOutput)
 }
 
 // CertificateAuthorityTypeInput is an input type that accepts CertificateAuthorityTypeArgs and CertificateAuthorityTypeOutput values.
@@ -627,7 +627,7 @@ func (o KeyVersionSpecAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.
 type KeyVersionSpecAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyVersionSpecAlgorithmPtrOutput) ElementType() reflect.Type {
-	return keyVersionSpecAlgorithmPtrType
+	return reflect.TypeOf((**KeyVersionSpecAlgorithm)(nil)).Elem()
 }
 
 func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput {
@@ -636,6 +636,16 @@ func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutput() K
 
 func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
 	return o
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) Elem() KeyVersionSpecAlgorithmOutput {
+	return o.ApplyT(func(v *KeyVersionSpecAlgorithm) KeyVersionSpecAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVersionSpecAlgorithm
+		return ret
+	}).(KeyVersionSpecAlgorithmOutput)
 }
 
 func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -650,16 +660,6 @@ func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o KeyVersionSpecAlgorithmPtrOutput) Elem() KeyVersionSpecAlgorithmOutput {
-	return o.ApplyT(func(v *KeyVersionSpecAlgorithm) KeyVersionSpecAlgorithm {
-		var ret KeyVersionSpecAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(KeyVersionSpecAlgorithmOutput)
 }
 
 // KeyVersionSpecAlgorithmInput is an input type that accepts KeyVersionSpecAlgorithmArgs and KeyVersionSpecAlgorithmOutput values.
@@ -796,7 +796,7 @@ func (o PublicKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type PublicKeyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (PublicKeyTypePtrOutput) ElementType() reflect.Type {
-	return publicKeyTypePtrType
+	return reflect.TypeOf((**PublicKeyType)(nil)).Elem()
 }
 
 func (o PublicKeyTypePtrOutput) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput {
@@ -805,6 +805,16 @@ func (o PublicKeyTypePtrOutput) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutpu
 
 func (o PublicKeyTypePtrOutput) ToPublicKeyTypePtrOutputWithContext(ctx context.Context) PublicKeyTypePtrOutput {
 	return o
+}
+
+func (o PublicKeyTypePtrOutput) Elem() PublicKeyTypeOutput {
+	return o.ApplyT(func(v *PublicKeyType) PublicKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyType
+		return ret
+	}).(PublicKeyTypeOutput)
 }
 
 func (o PublicKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o PublicKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PublicKeyTypePtrOutput) Elem() PublicKeyTypeOutput {
-	return o.ApplyT(func(v *PublicKeyType) PublicKeyType {
-		var ret PublicKeyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PublicKeyTypeOutput)
 }
 
 // PublicKeyTypeInput is an input type that accepts PublicKeyTypeArgs and PublicKeyTypeOutput values.

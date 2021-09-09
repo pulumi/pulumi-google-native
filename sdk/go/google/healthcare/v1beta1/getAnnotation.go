@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,73 @@ type LookupAnnotationResult struct {
 	ResourceAnnotation ResourceAnnotationResponse `pulumi:"resourceAnnotation"`
 	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
 	TextAnnotation SensitiveTextAnnotationResponse `pulumi:"textAnnotation"`
+}
+
+func LookupAnnotationOutput(ctx *pulumi.Context, args LookupAnnotationOutputArgs, opts ...pulumi.InvokeOption) LookupAnnotationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAnnotationResult, error) {
+			args := v.(LookupAnnotationArgs)
+			r, err := LookupAnnotation(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAnnotationResultOutput)
+}
+
+type LookupAnnotationOutputArgs struct {
+	AnnotationId      pulumi.StringInput    `pulumi:"annotationId"`
+	AnnotationStoreId pulumi.StringInput    `pulumi:"annotationStoreId"`
+	DatasetId         pulumi.StringInput    `pulumi:"datasetId"`
+	Location          pulumi.StringInput    `pulumi:"location"`
+	Project           pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupAnnotationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAnnotationArgs)(nil)).Elem()
+}
+
+type LookupAnnotationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAnnotationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAnnotationResult)(nil)).Elem()
+}
+
+func (o LookupAnnotationResultOutput) ToLookupAnnotationResultOutput() LookupAnnotationResultOutput {
+	return o
+}
+
+func (o LookupAnnotationResultOutput) ToLookupAnnotationResultOutputWithContext(ctx context.Context) LookupAnnotationResultOutput {
+	return o
+}
+
+// Details of the source.
+func (o LookupAnnotationResultOutput) AnnotationSource() AnnotationSourceResponseOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) AnnotationSourceResponse { return v.AnnotationSource }).(AnnotationSourceResponseOutput)
+}
+
+// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+func (o LookupAnnotationResultOutput) CustomData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) map[string]string { return v.CustomData }).(pulumi.StringMapOutput)
+}
+
+// Annotations for images. For example, bounding polygons.
+func (o LookupAnnotationResultOutput) ImageAnnotation() ImageAnnotationResponseOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) ImageAnnotationResponse { return v.ImageAnnotation }).(ImageAnnotationResponseOutput)
+}
+
+// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+func (o LookupAnnotationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Annotations for resource. For example, classification tags.
+func (o LookupAnnotationResultOutput) ResourceAnnotation() ResourceAnnotationResponseOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) ResourceAnnotationResponse { return v.ResourceAnnotation }).(ResourceAnnotationResponseOutput)
+}
+
+// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+func (o LookupAnnotationResultOutput) TextAnnotation() SensitiveTextAnnotationResponseOutput {
+	return o.ApplyT(func(v LookupAnnotationResult) SensitiveTextAnnotationResponse { return v.TextAnnotation }).(SensitiveTextAnnotationResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAnnotationResultOutput{})
 }

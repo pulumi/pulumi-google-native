@@ -126,9 +126,7 @@ func (i *Context) ToContextOutputWithContext(ctx context.Context) ContextOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContextOutput)
 }
 
-type ContextOutput struct {
-	*pulumi.OutputState
-}
+type ContextOutput struct{ *pulumi.OutputState }
 
 func (ContextOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Context)(nil))

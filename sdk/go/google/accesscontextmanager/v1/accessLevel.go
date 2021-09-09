@@ -120,9 +120,7 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelOutput)
 }
 
-type AccessLevelOutput struct {
-	*pulumi.OutputState
-}
+type AccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevel)(nil))

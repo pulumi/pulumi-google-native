@@ -107,9 +107,7 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
 }
 
-type DomainMappingOutput struct {
-	*pulumi.OutputState
-}
+type DomainMappingOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMapping)(nil))

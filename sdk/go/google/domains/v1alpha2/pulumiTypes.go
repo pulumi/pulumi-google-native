@@ -790,7 +790,7 @@ func (o ContactOutput) ToContactPtrOutput() ContactPtrOutput {
 }
 
 func (o ContactOutput) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
-	return o.ApplyT(func(v Contact) *Contact {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Contact) *Contact {
 		return &v
 	}).(ContactPtrOutput)
 }
@@ -830,7 +830,13 @@ func (o ContactPtrOutput) ToContactPtrOutputWithContext(ctx context.Context) Con
 }
 
 func (o ContactPtrOutput) Elem() ContactOutput {
-	return o.ApplyT(func(v *Contact) Contact { return *v }).(ContactOutput)
+	return o.ApplyT(func(v *Contact) Contact {
+		if v != nil {
+			return *v
+		}
+		var ret Contact
+		return ret
+	}).(ContactOutput)
 }
 
 // Email address of the contact.
@@ -981,7 +987,7 @@ func (o ContactResponseOutput) ToContactResponsePtrOutput() ContactResponsePtrOu
 }
 
 func (o ContactResponseOutput) ToContactResponsePtrOutputWithContext(ctx context.Context) ContactResponsePtrOutput {
-	return o.ApplyT(func(v ContactResponse) *ContactResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContactResponse) *ContactResponse {
 		return &v
 	}).(ContactResponsePtrOutput)
 }
@@ -1021,7 +1027,13 @@ func (o ContactResponsePtrOutput) ToContactResponsePtrOutputWithContext(ctx cont
 }
 
 func (o ContactResponsePtrOutput) Elem() ContactResponseOutput {
-	return o.ApplyT(func(v *ContactResponse) ContactResponse { return *v }).(ContactResponseOutput)
+	return o.ApplyT(func(v *ContactResponse) ContactResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContactResponse
+		return ret
+	}).(ContactResponseOutput)
 }
 
 // Email address of the contact.
@@ -1172,7 +1184,7 @@ func (o ContactSettingsOutput) ToContactSettingsPtrOutput() ContactSettingsPtrOu
 }
 
 func (o ContactSettingsOutput) ToContactSettingsPtrOutputWithContext(ctx context.Context) ContactSettingsPtrOutput {
-	return o.ApplyT(func(v ContactSettings) *ContactSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContactSettings) *ContactSettings {
 		return &v
 	}).(ContactSettingsPtrOutput)
 }
@@ -1212,7 +1224,13 @@ func (o ContactSettingsPtrOutput) ToContactSettingsPtrOutputWithContext(ctx cont
 }
 
 func (o ContactSettingsPtrOutput) Elem() ContactSettingsOutput {
-	return o.ApplyT(func(v *ContactSettings) ContactSettings { return *v }).(ContactSettingsOutput)
+	return o.ApplyT(func(v *ContactSettings) ContactSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ContactSettings
+		return ret
+	}).(ContactSettingsOutput)
 }
 
 // The administrative contact for the `Registration`.
@@ -1363,7 +1381,7 @@ func (o ContactSettingsResponseOutput) ToContactSettingsResponsePtrOutput() Cont
 }
 
 func (o ContactSettingsResponseOutput) ToContactSettingsResponsePtrOutputWithContext(ctx context.Context) ContactSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ContactSettingsResponse) *ContactSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContactSettingsResponse) *ContactSettingsResponse {
 		return &v
 	}).(ContactSettingsResponsePtrOutput)
 }
@@ -1403,7 +1421,13 @@ func (o ContactSettingsResponsePtrOutput) ToContactSettingsResponsePtrOutputWith
 }
 
 func (o ContactSettingsResponsePtrOutput) Elem() ContactSettingsResponseOutput {
-	return o.ApplyT(func(v *ContactSettingsResponse) ContactSettingsResponse { return *v }).(ContactSettingsResponseOutput)
+	return o.ApplyT(func(v *ContactSettingsResponse) ContactSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContactSettingsResponse
+		return ret
+	}).(ContactSettingsResponseOutput)
 }
 
 // The administrative contact for the `Registration`.
@@ -1546,7 +1570,7 @@ func (o CustomDnsOutput) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
 }
 
 func (o CustomDnsOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
-	return o.ApplyT(func(v CustomDns) *CustomDns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDns) *CustomDns {
 		return &v
 	}).(CustomDnsPtrOutput)
 }
@@ -1576,7 +1600,13 @@ func (o CustomDnsPtrOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context)
 }
 
 func (o CustomDnsPtrOutput) Elem() CustomDnsOutput {
-	return o.ApplyT(func(v *CustomDns) CustomDns { return *v }).(CustomDnsOutput)
+	return o.ApplyT(func(v *CustomDns) CustomDns {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDns
+		return ret
+	}).(CustomDnsOutput)
 }
 
 // The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
@@ -1699,7 +1729,7 @@ func (o CustomDnsResponseOutput) ToCustomDnsResponsePtrOutput() CustomDnsRespons
 }
 
 func (o CustomDnsResponseOutput) ToCustomDnsResponsePtrOutputWithContext(ctx context.Context) CustomDnsResponsePtrOutput {
-	return o.ApplyT(func(v CustomDnsResponse) *CustomDnsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDnsResponse) *CustomDnsResponse {
 		return &v
 	}).(CustomDnsResponsePtrOutput)
 }
@@ -1729,7 +1759,13 @@ func (o CustomDnsResponsePtrOutput) ToCustomDnsResponsePtrOutputWithContext(ctx 
 }
 
 func (o CustomDnsResponsePtrOutput) Elem() CustomDnsResponseOutput {
-	return o.ApplyT(func(v *CustomDnsResponse) CustomDnsResponse { return *v }).(CustomDnsResponseOutput)
+	return o.ApplyT(func(v *CustomDnsResponse) CustomDnsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDnsResponse
+		return ret
+	}).(CustomDnsResponseOutput)
 }
 
 // The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
@@ -1856,7 +1892,7 @@ func (o DnsSettingsOutput) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
 }
 
 func (o DnsSettingsOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
-	return o.ApplyT(func(v DnsSettings) *DnsSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsSettings) *DnsSettings {
 		return &v
 	}).(DnsSettingsPtrOutput)
 }
@@ -1891,7 +1927,13 @@ func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o DnsSettingsPtrOutput) Elem() DnsSettingsOutput {
-	return o.ApplyT(func(v *DnsSettings) DnsSettings { return *v }).(DnsSettingsOutput)
+	return o.ApplyT(func(v *DnsSettings) DnsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DnsSettings
+		return ret
+	}).(DnsSettingsOutput)
 }
 
 // An arbitrary DNS provider identified by its name servers.
@@ -2028,7 +2070,7 @@ func (o DnsSettingsResponseOutput) ToDnsSettingsResponsePtrOutput() DnsSettingsR
 }
 
 func (o DnsSettingsResponseOutput) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
-	return o.ApplyT(func(v DnsSettingsResponse) *DnsSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsSettingsResponse) *DnsSettingsResponse {
 		return &v
 	}).(DnsSettingsResponsePtrOutput)
 }
@@ -2063,7 +2105,13 @@ func (o DnsSettingsResponsePtrOutput) ToDnsSettingsResponsePtrOutputWithContext(
 }
 
 func (o DnsSettingsResponsePtrOutput) Elem() DnsSettingsResponseOutput {
-	return o.ApplyT(func(v *DnsSettingsResponse) DnsSettingsResponse { return *v }).(DnsSettingsResponseOutput)
+	return o.ApplyT(func(v *DnsSettingsResponse) DnsSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DnsSettingsResponse
+		return ret
+	}).(DnsSettingsResponseOutput)
 }
 
 // An arbitrary DNS provider identified by its name servers.
@@ -2458,7 +2506,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -2498,7 +2546,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2955,7 +3009,7 @@ func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPt
 }
 
 func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
-	return o.ApplyT(func(v GoogleDomainsDns) *GoogleDomainsDns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDomainsDns) *GoogleDomainsDns {
 		return &v
 	}).(GoogleDomainsDnsPtrOutput)
 }
@@ -2980,7 +3034,13 @@ func (o GoogleDomainsDnsPtrOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx co
 }
 
 func (o GoogleDomainsDnsPtrOutput) Elem() GoogleDomainsDnsOutput {
-	return o.ApplyT(func(v *GoogleDomainsDns) GoogleDomainsDns { return *v }).(GoogleDomainsDnsOutput)
+	return o.ApplyT(func(v *GoogleDomainsDns) GoogleDomainsDns {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDomainsDns
+		return ret
+	}).(GoogleDomainsDnsOutput)
 }
 
 // The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
@@ -3097,7 +3157,7 @@ func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponsePtrOutput() Go
 }
 
 func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleDomainsDnsResponse) *GoogleDomainsDnsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDomainsDnsResponse) *GoogleDomainsDnsResponse {
 		return &v
 	}).(GoogleDomainsDnsResponsePtrOutput)
 }
@@ -3132,7 +3192,13 @@ func (o GoogleDomainsDnsResponsePtrOutput) ToGoogleDomainsDnsResponsePtrOutputWi
 }
 
 func (o GoogleDomainsDnsResponsePtrOutput) Elem() GoogleDomainsDnsResponseOutput {
-	return o.ApplyT(func(v *GoogleDomainsDnsResponse) GoogleDomainsDnsResponse { return *v }).(GoogleDomainsDnsResponseOutput)
+	return o.ApplyT(func(v *GoogleDomainsDnsResponse) GoogleDomainsDnsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDomainsDnsResponse
+		return ret
+	}).(GoogleDomainsDnsResponseOutput)
 }
 
 // The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
@@ -3261,7 +3327,7 @@ func (o ManagementSettingsOutput) ToManagementSettingsPtrOutput() ManagementSett
 }
 
 func (o ManagementSettingsOutput) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
-	return o.ApplyT(func(v ManagementSettings) *ManagementSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementSettings) *ManagementSettings {
 		return &v
 	}).(ManagementSettingsPtrOutput)
 }
@@ -3286,7 +3352,13 @@ func (o ManagementSettingsPtrOutput) ToManagementSettingsPtrOutputWithContext(ct
 }
 
 func (o ManagementSettingsPtrOutput) Elem() ManagementSettingsOutput {
-	return o.ApplyT(func(v *ManagementSettings) ManagementSettings { return *v }).(ManagementSettingsOutput)
+	return o.ApplyT(func(v *ManagementSettings) ManagementSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementSettings
+		return ret
+	}).(ManagementSettingsOutput)
 }
 
 // Controls whether the domain can be transferred to another registrar.
@@ -3399,7 +3471,7 @@ func (o ManagementSettingsResponseOutput) ToManagementSettingsResponsePtrOutput(
 }
 
 func (o ManagementSettingsResponseOutput) ToManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ManagementSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ManagementSettingsResponse) *ManagementSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementSettingsResponse) *ManagementSettingsResponse {
 		return &v
 	}).(ManagementSettingsResponsePtrOutput)
 }
@@ -3429,7 +3501,13 @@ func (o ManagementSettingsResponsePtrOutput) ToManagementSettingsResponsePtrOutp
 }
 
 func (o ManagementSettingsResponsePtrOutput) Elem() ManagementSettingsResponseOutput {
-	return o.ApplyT(func(v *ManagementSettingsResponse) ManagementSettingsResponse { return *v }).(ManagementSettingsResponseOutput)
+	return o.ApplyT(func(v *ManagementSettingsResponse) ManagementSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementSettingsResponse
+		return ret
+	}).(ManagementSettingsResponseOutput)
 }
 
 // The renewal method for this `Registration`.
@@ -3556,7 +3634,7 @@ func (o MoneyOutput) ToMoneyPtrOutput() MoneyPtrOutput {
 }
 
 func (o MoneyOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
-	return o.ApplyT(func(v Money) *Money {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Money) *Money {
 		return &v
 	}).(MoneyPtrOutput)
 }
@@ -3591,7 +3669,13 @@ func (o MoneyPtrOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPt
 }
 
 func (o MoneyPtrOutput) Elem() MoneyOutput {
-	return o.ApplyT(func(v *Money) Money { return *v }).(MoneyOutput)
+	return o.ApplyT(func(v *Money) Money {
+		if v != nil {
+			return *v
+		}
+		var ret Money
+		return ret
+	}).(MoneyOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -3760,7 +3844,7 @@ func (o PostalAddressOutput) ToPostalAddressPtrOutput() PostalAddressPtrOutput {
 }
 
 func (o PostalAddressOutput) ToPostalAddressPtrOutputWithContext(ctx context.Context) PostalAddressPtrOutput {
-	return o.ApplyT(func(v PostalAddress) *PostalAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostalAddress) *PostalAddress {
 		return &v
 	}).(PostalAddressPtrOutput)
 }
@@ -3835,7 +3919,13 @@ func (o PostalAddressPtrOutput) ToPostalAddressPtrOutputWithContext(ctx context.
 }
 
 func (o PostalAddressPtrOutput) Elem() PostalAddressOutput {
-	return o.ApplyT(func(v *PostalAddress) PostalAddress { return *v }).(PostalAddressOutput)
+	return o.ApplyT(func(v *PostalAddress) PostalAddress {
+		if v != nil {
+			return *v
+		}
+		var ret PostalAddress
+		return ret
+	}).(PostalAddressOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -4084,7 +4174,7 @@ func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutput() PostalAd
 }
 
 func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
-	return o.ApplyT(func(v PostalAddressResponse) *PostalAddressResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostalAddressResponse) *PostalAddressResponse {
 		return &v
 	}).(PostalAddressResponsePtrOutput)
 }
@@ -4159,7 +4249,13 @@ func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutputWithCont
 }
 
 func (o PostalAddressResponsePtrOutput) Elem() PostalAddressResponseOutput {
-	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse { return *v }).(PostalAddressResponseOutput)
+	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PostalAddressResponse
+		return ret
+	}).(PostalAddressResponseOutput)
 }
 
 // Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).

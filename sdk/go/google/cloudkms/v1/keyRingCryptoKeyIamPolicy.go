@@ -129,9 +129,7 @@ func (i *KeyRingCryptoKeyIamPolicy) ToKeyRingCryptoKeyIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingCryptoKeyIamPolicyOutput)
 }
 
-type KeyRingCryptoKeyIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type KeyRingCryptoKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingCryptoKeyIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyRingCryptoKeyIamPolicy)(nil))

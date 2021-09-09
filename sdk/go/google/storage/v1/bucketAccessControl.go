@@ -190,9 +190,7 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlOutput)
 }
 
-type BucketAccessControlOutput struct {
-	*pulumi.OutputState
-}
+type BucketAccessControlOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketAccessControl)(nil))

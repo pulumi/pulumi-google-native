@@ -152,9 +152,7 @@ func (i *UrlMap) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UrlMapOutput)
 }
 
-type UrlMapOutput struct {
-	*pulumi.OutputState
-}
+type UrlMapOutput struct{ *pulumi.OutputState }
 
 func (UrlMapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UrlMap)(nil))

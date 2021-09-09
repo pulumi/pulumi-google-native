@@ -168,9 +168,7 @@ func (i *ConversationProfile) ToConversationProfileOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileOutput)
 }
 
-type ConversationProfileOutput struct {
-	*pulumi.OutputState
-}
+type ConversationProfileOutput struct{ *pulumi.OutputState }
 
 func (ConversationProfileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConversationProfile)(nil))

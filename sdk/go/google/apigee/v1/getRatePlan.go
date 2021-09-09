@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,138 @@ type LookupRatePlanResult struct {
 	StartTime string `pulumi:"startTime"`
 	// Current state of the rate plan (draft or published).
 	State string `pulumi:"state"`
+}
+
+func LookupRatePlanOutput(ctx *pulumi.Context, args LookupRatePlanOutputArgs, opts ...pulumi.InvokeOption) LookupRatePlanResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRatePlanResult, error) {
+			args := v.(LookupRatePlanArgs)
+			r, err := LookupRatePlan(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRatePlanResultOutput)
+}
+
+type LookupRatePlanOutputArgs struct {
+	ApiproductId   pulumi.StringInput `pulumi:"apiproductId"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	RateplanId     pulumi.StringInput `pulumi:"rateplanId"`
+}
+
+func (LookupRatePlanOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRatePlanArgs)(nil)).Elem()
+}
+
+type LookupRatePlanResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRatePlanResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRatePlanResult)(nil)).Elem()
+}
+
+func (o LookupRatePlanResultOutput) ToLookupRatePlanResultOutput() LookupRatePlanResultOutput {
+	return o
+}
+
+func (o LookupRatePlanResultOutput) ToLookupRatePlanResultOutputWithContext(ctx context.Context) LookupRatePlanResultOutput {
+	return o
+}
+
+// Name of the API product that the rate plan is associated with.
+func (o LookupRatePlanResultOutput) Apiproduct() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.Apiproduct }).(pulumi.StringOutput)
+}
+
+// Frequency at which the customer will be billed.
+func (o LookupRatePlanResultOutput) BillingPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.BillingPeriod }).(pulumi.StringOutput)
+}
+
+// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
+func (o LookupRatePlanResultOutput) ConsumptionPricingRates() GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) []GoogleCloudApigeeV1RateRangeResponse { return v.ConsumptionPricingRates }).(GoogleCloudApigeeV1RateRangeResponseArrayOutput)
+}
+
+// Pricing model used for consumption-based charges.
+func (o LookupRatePlanResultOutput) ConsumptionPricingType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.ConsumptionPricingType }).(pulumi.StringOutput)
+}
+
+// Time that the rate plan was created in milliseconds since epoch.
+func (o LookupRatePlanResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
+func (o LookupRatePlanResultOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Description of the rate plan.
+func (o LookupRatePlanResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of the rate plan.
+func (o LookupRatePlanResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
+func (o LookupRatePlanResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Frequency at which the fixed fee is charged.
+func (o LookupRatePlanResultOutput) FixedFeeFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) int { return v.FixedFeeFrequency }).(pulumi.IntOutput)
+}
+
+// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
+func (o LookupRatePlanResultOutput) FixedRecurringFee() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) GoogleTypeMoneyResponse { return v.FixedRecurringFee }).(GoogleTypeMoneyResponseOutput)
+}
+
+// Time the rate plan was last modified in milliseconds since epoch.
+func (o LookupRatePlanResultOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the rate plan.
+func (o LookupRatePlanResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Flag that specifies the billing account type, prepaid or postpaid.
+func (o LookupRatePlanResultOutput) PaymentFundingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.PaymentFundingModel }).(pulumi.StringOutput)
+}
+
+// Details of the revenue sharing model.
+func (o LookupRatePlanResultOutput) RevenueShareRates() GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) []GoogleCloudApigeeV1RevenueShareRangeResponse {
+		return v.RevenueShareRates
+	}).(GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput)
+}
+
+// Method used to calculate the revenue that is shared with developers.
+func (o LookupRatePlanResultOutput) RevenueShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.RevenueShareType }).(pulumi.StringOutput)
+}
+
+// Initial, one-time fee paid when purchasing the API product.
+func (o LookupRatePlanResultOutput) SetupFee() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) GoogleTypeMoneyResponse { return v.SetupFee }).(GoogleTypeMoneyResponseOutput)
+}
+
+// Time when the rate plan becomes active in milliseconds since epoch.
+func (o LookupRatePlanResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Current state of the rate plan (draft or published).
+func (o LookupRatePlanResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRatePlanResultOutput{})
 }

@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupClusterResult struct {
 	ServeNodes int `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State string `pulumi:"state"`
+}
+
+func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterResult, error) {
+			args := v.(LookupClusterArgs)
+			r, err := LookupCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterResultOutput)
+}
+
+type LookupClusterOutputArgs struct {
+	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+type LookupClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterResult)(nil)).Elem()
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
+	return o
+}
+
+// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+func (o LookupClusterResultOutput) DefaultStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultStorageType }).(pulumi.StringOutput)
+}
+
+// Immutable. The encryption configuration for CMEK-protected clusters.
+func (o LookupClusterResultOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+func (o LookupClusterResultOutput) ServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.ServeNodes }).(pulumi.IntOutput)
+}
+
+// The current state of the cluster.
+func (o LookupClusterResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterResultOutput{})
 }

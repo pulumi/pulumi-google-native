@@ -136,9 +136,7 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
-type ReservationOutput struct {
-	*pulumi.OutputState
-}
+type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Reservation)(nil))

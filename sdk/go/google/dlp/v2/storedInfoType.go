@@ -107,9 +107,7 @@ func (i *StoredInfoType) ToStoredInfoTypeOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(StoredInfoTypeOutput)
 }
 
-type StoredInfoTypeOutput struct {
-	*pulumi.OutputState
-}
+type StoredInfoTypeOutput struct{ *pulumi.OutputState }
 
 func (StoredInfoTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoredInfoType)(nil))

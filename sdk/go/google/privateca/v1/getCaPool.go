@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,66 @@ type LookupCaPoolResult struct {
 	PublishingOptions PublishingOptionsResponse `pulumi:"publishingOptions"`
 	// Immutable. The Tier of this CaPool.
 	Tier string `pulumi:"tier"`
+}
+
+func LookupCaPoolOutput(ctx *pulumi.Context, args LookupCaPoolOutputArgs, opts ...pulumi.InvokeOption) LookupCaPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCaPoolResult, error) {
+			args := v.(LookupCaPoolArgs)
+			r, err := LookupCaPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCaPoolResultOutput)
+}
+
+type LookupCaPoolOutputArgs struct {
+	CaPoolId pulumi.StringInput    `pulumi:"caPoolId"`
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupCaPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCaPoolArgs)(nil)).Elem()
+}
+
+type LookupCaPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCaPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCaPoolResult)(nil)).Elem()
+}
+
+func (o LookupCaPoolResultOutput) ToLookupCaPoolResultOutput() LookupCaPoolResultOutput {
+	return o
+}
+
+func (o LookupCaPoolResultOutput) ToLookupCaPoolResultOutputWithContext(ctx context.Context) LookupCaPoolResultOutput {
+	return o
+}
+
+// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
+func (o LookupCaPoolResultOutput) IssuancePolicy() IssuancePolicyResponseOutput {
+	return o.ApplyT(func(v LookupCaPoolResult) IssuancePolicyResponse { return v.IssuancePolicy }).(IssuancePolicyResponseOutput)
+}
+
+// Optional. Labels with user-defined metadata.
+func (o LookupCaPoolResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCaPoolResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+func (o LookupCaPoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+func (o LookupCaPoolResultOutput) PublishingOptions() PublishingOptionsResponseOutput {
+	return o.ApplyT(func(v LookupCaPoolResult) PublishingOptionsResponse { return v.PublishingOptions }).(PublishingOptionsResponseOutput)
+}
+
+// Immutable. The Tier of this CaPool.
+func (o LookupCaPoolResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaPoolResult) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCaPoolResultOutput{})
 }

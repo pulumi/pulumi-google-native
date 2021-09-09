@@ -110,9 +110,7 @@ func (i *FolderReplay) ToFolderReplayOutputWithContext(ctx context.Context) Fold
 	return pulumi.ToOutputWithContext(ctx, i).(FolderReplayOutput)
 }
 
-type FolderReplayOutput struct {
-	*pulumi.OutputState
-}
+type FolderReplayOutput struct{ *pulumi.OutputState }
 
 func (FolderReplayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderReplay)(nil))

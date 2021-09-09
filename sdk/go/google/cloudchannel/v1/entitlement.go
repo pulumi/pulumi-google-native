@@ -149,9 +149,7 @@ func (i *Entitlement) ToEntitlementOutputWithContext(ctx context.Context) Entitl
 	return pulumi.ToOutputWithContext(ctx, i).(EntitlementOutput)
 }
 
-type EntitlementOutput struct {
-	*pulumi.OutputState
-}
+type EntitlementOutput struct{ *pulumi.OutputState }
 
 func (EntitlementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Entitlement)(nil))

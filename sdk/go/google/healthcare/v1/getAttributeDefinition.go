@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,73 @@ type LookupAttributeDefinitionResult struct {
 	Description string `pulumi:"description"`
 	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name string `pulumi:"name"`
+}
+
+func LookupAttributeDefinitionOutput(ctx *pulumi.Context, args LookupAttributeDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupAttributeDefinitionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAttributeDefinitionResult, error) {
+			args := v.(LookupAttributeDefinitionArgs)
+			r, err := LookupAttributeDefinition(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAttributeDefinitionResultOutput)
+}
+
+type LookupAttributeDefinitionOutputArgs struct {
+	AttributeDefinitionId pulumi.StringInput    `pulumi:"attributeDefinitionId"`
+	ConsentStoreId        pulumi.StringInput    `pulumi:"consentStoreId"`
+	DatasetId             pulumi.StringInput    `pulumi:"datasetId"`
+	Location              pulumi.StringInput    `pulumi:"location"`
+	Project               pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupAttributeDefinitionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAttributeDefinitionArgs)(nil)).Elem()
+}
+
+type LookupAttributeDefinitionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAttributeDefinitionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAttributeDefinitionResult)(nil)).Elem()
+}
+
+func (o LookupAttributeDefinitionResultOutput) ToLookupAttributeDefinitionResultOutput() LookupAttributeDefinitionResultOutput {
+	return o
+}
+
+func (o LookupAttributeDefinitionResultOutput) ToLookupAttributeDefinitionResultOutputWithContext(ctx context.Context) LookupAttributeDefinitionResultOutput {
+	return o
+}
+
+// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+func (o LookupAttributeDefinitionResultOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
+}
+
+// The category of the attribute. The value of this field cannot be changed after creation.
+func (o LookupAttributeDefinitionResultOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+func (o LookupAttributeDefinitionResultOutput) ConsentDefaultValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) []string { return v.ConsentDefaultValues }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+func (o LookupAttributeDefinitionResultOutput) DataMappingDefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.DataMappingDefaultValue }).(pulumi.StringOutput)
+}
+
+// Optional. A description of the attribute.
+func (o LookupAttributeDefinitionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+func (o LookupAttributeDefinitionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAttributeDefinitionResultOutput{})
 }

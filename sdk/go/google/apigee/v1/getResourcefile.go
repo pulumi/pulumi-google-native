@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,57 @@ type LookupResourcefileResult struct {
 	Data string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions []map[string]string `pulumi:"extensions"`
+}
+
+func LookupResourcefileOutput(ctx *pulumi.Context, args LookupResourcefileOutputArgs, opts ...pulumi.InvokeOption) LookupResourcefileResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupResourcefileResult, error) {
+			args := v.(LookupResourcefileArgs)
+			r, err := LookupResourcefile(ctx, &args, opts...)
+			return *r, err
+		}).(LookupResourcefileResultOutput)
+}
+
+type LookupResourcefileOutputArgs struct {
+	EnvironmentId  pulumi.StringInput `pulumi:"environmentId"`
+	Name           pulumi.StringInput `pulumi:"name"`
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	Type           pulumi.StringInput `pulumi:"type"`
+}
+
+func (LookupResourcefileOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcefileArgs)(nil)).Elem()
+}
+
+type LookupResourcefileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourcefileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcefileResult)(nil)).Elem()
+}
+
+func (o LookupResourcefileResultOutput) ToLookupResourcefileResultOutput() LookupResourcefileResultOutput {
+	return o
+}
+
+func (o LookupResourcefileResultOutput) ToLookupResourcefileResultOutputWithContext(ctx context.Context) LookupResourcefileResultOutput {
+	return o
+}
+
+// The HTTP Content-Type header value specifying the content type of the body.
+func (o LookupResourcefileResultOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcefileResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The HTTP request/response body as raw binary.
+func (o LookupResourcefileResultOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcefileResult) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Application specific response metadata. Must be set in the first response for streaming APIs.
+func (o LookupResourcefileResultOutput) Extensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupResourcefileResult) []map[string]string { return v.Extensions }).(pulumi.StringMapArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourcefileResultOutput{})
 }

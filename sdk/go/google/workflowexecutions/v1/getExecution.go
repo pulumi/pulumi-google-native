@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,83 @@ type LookupExecutionResult struct {
 	State string `pulumi:"state"`
 	// Revision of the workflow this execution is using.
 	WorkflowRevisionId string `pulumi:"workflowRevisionId"`
+}
+
+func LookupExecutionOutput(ctx *pulumi.Context, args LookupExecutionOutputArgs, opts ...pulumi.InvokeOption) LookupExecutionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupExecutionResult, error) {
+			args := v.(LookupExecutionArgs)
+			r, err := LookupExecution(ctx, &args, opts...)
+			return *r, err
+		}).(LookupExecutionResultOutput)
+}
+
+type LookupExecutionOutputArgs struct {
+	ExecutionId pulumi.StringInput    `pulumi:"executionId"`
+	Location    pulumi.StringInput    `pulumi:"location"`
+	Project     pulumi.StringPtrInput `pulumi:"project"`
+	View        pulumi.StringPtrInput `pulumi:"view"`
+	WorkflowId  pulumi.StringInput    `pulumi:"workflowId"`
+}
+
+func (LookupExecutionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupExecutionArgs)(nil)).Elem()
+}
+
+type LookupExecutionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupExecutionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupExecutionResult)(nil)).Elem()
+}
+
+func (o LookupExecutionResultOutput) ToLookupExecutionResultOutput() LookupExecutionResultOutput {
+	return o
+}
+
+func (o LookupExecutionResultOutput) ToLookupExecutionResultOutputWithContext(ctx context.Context) LookupExecutionResultOutput {
+	return o
+}
+
+// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+func (o LookupExecutionResultOutput) Argument() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.Argument }).(pulumi.StringOutput)
+}
+
+// Marks the end of execution, successful or not.
+func (o LookupExecutionResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+func (o LookupExecutionResultOutput) Error() ErrorResponseOutput {
+	return o.ApplyT(func(v LookupExecutionResult) ErrorResponse { return v.Error }).(ErrorResponseOutput)
+}
+
+// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+func (o LookupExecutionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+func (o LookupExecutionResultOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.Result }).(pulumi.StringOutput)
+}
+
+// Marks the beginning of execution.
+func (o LookupExecutionResultOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Current state of the execution.
+func (o LookupExecutionResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Revision of the workflow this execution is using.
+func (o LookupExecutionResultOutput) WorkflowRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.WorkflowRevisionId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupExecutionResultOutput{})
 }

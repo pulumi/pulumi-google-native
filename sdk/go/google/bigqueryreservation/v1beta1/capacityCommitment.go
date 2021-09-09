@@ -121,9 +121,7 @@ func (i *CapacityCommitment) ToCapacityCommitmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentOutput)
 }
 
-type CapacityCommitmentOutput struct {
-	*pulumi.OutputState
-}
+type CapacityCommitmentOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CapacityCommitment)(nil))

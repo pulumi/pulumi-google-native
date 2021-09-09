@@ -130,9 +130,7 @@ func (i *InterconnectIamPolicy) ToInterconnectIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectIamPolicyOutput)
 }
 
-type InterconnectIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InterconnectIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InterconnectIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InterconnectIamPolicy)(nil))

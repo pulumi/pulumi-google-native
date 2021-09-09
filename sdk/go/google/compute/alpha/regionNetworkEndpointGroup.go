@@ -186,9 +186,7 @@ func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
 }
 
-type RegionNetworkEndpointGroupOutput struct {
-	*pulumi.OutputState
-}
+type RegionNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil))

@@ -4,6 +4,9 @@
 package alpha
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,4 +50,102 @@ type LookupPublicAdvertisedPrefixResult struct {
 	SharedSecret string `pulumi:"sharedSecret"`
 	// The status of the public advertised prefix.
 	Status string `pulumi:"status"`
+}
+
+func LookupPublicAdvertisedPrefixOutput(ctx *pulumi.Context, args LookupPublicAdvertisedPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupPublicAdvertisedPrefixResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupPublicAdvertisedPrefixResult, error) {
+			args := v.(LookupPublicAdvertisedPrefixArgs)
+			r, err := LookupPublicAdvertisedPrefix(ctx, &args, opts...)
+			return *r, err
+		}).(LookupPublicAdvertisedPrefixResultOutput)
+}
+
+type LookupPublicAdvertisedPrefixOutputArgs struct {
+	Project                pulumi.StringPtrInput `pulumi:"project"`
+	PublicAdvertisedPrefix pulumi.StringInput    `pulumi:"publicAdvertisedPrefix"`
+}
+
+func (LookupPublicAdvertisedPrefixOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPublicAdvertisedPrefixArgs)(nil)).Elem()
+}
+
+type LookupPublicAdvertisedPrefixResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPublicAdvertisedPrefixResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPublicAdvertisedPrefixResult)(nil)).Elem()
+}
+
+func (o LookupPublicAdvertisedPrefixResultOutput) ToLookupPublicAdvertisedPrefixResultOutput() LookupPublicAdvertisedPrefixResultOutput {
+	return o
+}
+
+func (o LookupPublicAdvertisedPrefixResultOutput) ToLookupPublicAdvertisedPrefixResultOutputWithContext(ctx context.Context) LookupPublicAdvertisedPrefixResultOutput {
+	return o
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LookupPublicAdvertisedPrefixResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o LookupPublicAdvertisedPrefixResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IPv4 address to be used for reverse DNS verification.
+func (o LookupPublicAdvertisedPrefixResultOutput) DnsVerificationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.DnsVerificationIp }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+func (o LookupPublicAdvertisedPrefixResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+func (o LookupPublicAdvertisedPrefixResultOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+func (o LookupPublicAdvertisedPrefixResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o LookupPublicAdvertisedPrefixResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of public delegated prefixes that exist for this public advertised prefix.
+func (o LookupPublicAdvertisedPrefixResultOutput) PublicDelegatedPrefixs() PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) []PublicAdvertisedPrefixPublicDelegatedPrefixResponse {
+		return v.PublicDelegatedPrefixs
+	}).(PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LookupPublicAdvertisedPrefixResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL with id for the resource.
+func (o LookupPublicAdvertisedPrefixResultOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The shared secret to be used for reverse DNS verification.
+func (o LookupPublicAdvertisedPrefixResultOutput) SharedSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.SharedSecret }).(pulumi.StringOutput)
+}
+
+// The status of the public advertised prefix.
+func (o LookupPublicAdvertisedPrefixResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPublicAdvertisedPrefixResultOutput{})
 }

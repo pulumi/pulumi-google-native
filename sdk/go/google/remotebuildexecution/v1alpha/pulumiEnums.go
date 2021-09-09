@@ -108,7 +108,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ElementType() reflect.Type {
-	return googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrType
+	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy)(nil)).Elem()
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
@@ -117,6 +117,16 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
+		return ret
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput)
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput)
 }
 
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput values.
@@ -277,7 +277,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ElementType() reflect.Type {
-	return googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrType
+	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation)(nil)).Elem()
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
@@ -286,6 +286,16 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation
+		return ret
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput)
 }
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
-		var ret GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput)
 }
 
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput values.

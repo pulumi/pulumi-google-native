@@ -105,7 +105,7 @@ func (o ArgumentArgumentKindOutput) ToStringPtrOutputWithContext(ctx context.Con
 type ArgumentArgumentKindPtrOutput struct{ *pulumi.OutputState }
 
 func (ArgumentArgumentKindPtrOutput) ElementType() reflect.Type {
-	return argumentArgumentKindPtrType
+	return reflect.TypeOf((**ArgumentArgumentKind)(nil)).Elem()
 }
 
 func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutput() ArgumentArgumentKindPtrOutput {
@@ -114,6 +114,16 @@ func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutput() Argumen
 
 func (o ArgumentArgumentKindPtrOutput) ToArgumentArgumentKindPtrOutputWithContext(ctx context.Context) ArgumentArgumentKindPtrOutput {
 	return o
+}
+
+func (o ArgumentArgumentKindPtrOutput) Elem() ArgumentArgumentKindOutput {
+	return o.ApplyT(func(v *ArgumentArgumentKind) ArgumentArgumentKind {
+		if v != nil {
+			return *v
+		}
+		var ret ArgumentArgumentKind
+		return ret
+	}).(ArgumentArgumentKindOutput)
 }
 
 func (o ArgumentArgumentKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -128,16 +138,6 @@ func (o ArgumentArgumentKindPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ArgumentArgumentKindPtrOutput) Elem() ArgumentArgumentKindOutput {
-	return o.ApplyT(func(v *ArgumentArgumentKind) ArgumentArgumentKind {
-		var ret ArgumentArgumentKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ArgumentArgumentKindOutput)
 }
 
 // ArgumentArgumentKindInput is an input type that accepts ArgumentArgumentKindArgs and ArgumentArgumentKindOutput values.
@@ -275,7 +275,7 @@ func (o ArgumentModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ArgumentModePtrOutput struct{ *pulumi.OutputState }
 
 func (ArgumentModePtrOutput) ElementType() reflect.Type {
-	return argumentModePtrType
+	return reflect.TypeOf((**ArgumentMode)(nil)).Elem()
 }
 
 func (o ArgumentModePtrOutput) ToArgumentModePtrOutput() ArgumentModePtrOutput {
@@ -284,6 +284,16 @@ func (o ArgumentModePtrOutput) ToArgumentModePtrOutput() ArgumentModePtrOutput {
 
 func (o ArgumentModePtrOutput) ToArgumentModePtrOutputWithContext(ctx context.Context) ArgumentModePtrOutput {
 	return o
+}
+
+func (o ArgumentModePtrOutput) Elem() ArgumentModeOutput {
+	return o.ApplyT(func(v *ArgumentMode) ArgumentMode {
+		if v != nil {
+			return *v
+		}
+		var ret ArgumentMode
+		return ret
+	}).(ArgumentModeOutput)
 }
 
 func (o ArgumentModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o ArgumentModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ArgumentModePtrOutput) Elem() ArgumentModeOutput {
-	return o.ApplyT(func(v *ArgumentMode) ArgumentMode {
-		var ret ArgumentMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ArgumentModeOutput)
 }
 
 // ArgumentModeInput is an input type that accepts ArgumentModeArgs and ArgumentModeOutput values.
@@ -446,7 +446,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -455,6 +455,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -615,7 +615,7 @@ func (o RoutineDeterminismLevelOutput) ToStringPtrOutputWithContext(ctx context.
 type RoutineDeterminismLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (RoutineDeterminismLevelPtrOutput) ElementType() reflect.Type {
-	return routineDeterminismLevelPtrType
+	return reflect.TypeOf((**RoutineDeterminismLevel)(nil)).Elem()
 }
 
 func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutput() RoutineDeterminismLevelPtrOutput {
@@ -624,6 +624,16 @@ func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutput() R
 
 func (o RoutineDeterminismLevelPtrOutput) ToRoutineDeterminismLevelPtrOutputWithContext(ctx context.Context) RoutineDeterminismLevelPtrOutput {
 	return o
+}
+
+func (o RoutineDeterminismLevelPtrOutput) Elem() RoutineDeterminismLevelOutput {
+	return o.ApplyT(func(v *RoutineDeterminismLevel) RoutineDeterminismLevel {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineDeterminismLevel
+		return ret
+	}).(RoutineDeterminismLevelOutput)
 }
 
 func (o RoutineDeterminismLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -638,16 +648,6 @@ func (o RoutineDeterminismLevelPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RoutineDeterminismLevelPtrOutput) Elem() RoutineDeterminismLevelOutput {
-	return o.ApplyT(func(v *RoutineDeterminismLevel) RoutineDeterminismLevel {
-		var ret RoutineDeterminismLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RoutineDeterminismLevelOutput)
 }
 
 // RoutineDeterminismLevelInput is an input type that accepts RoutineDeterminismLevelArgs and RoutineDeterminismLevelOutput values.
@@ -783,7 +783,7 @@ func (o RoutineLanguageOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type RoutineLanguagePtrOutput struct{ *pulumi.OutputState }
 
 func (RoutineLanguagePtrOutput) ElementType() reflect.Type {
-	return routineLanguagePtrType
+	return reflect.TypeOf((**RoutineLanguage)(nil)).Elem()
 }
 
 func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutput() RoutineLanguagePtrOutput {
@@ -792,6 +792,16 @@ func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutput() RoutineLanguagePt
 
 func (o RoutineLanguagePtrOutput) ToRoutineLanguagePtrOutputWithContext(ctx context.Context) RoutineLanguagePtrOutput {
 	return o
+}
+
+func (o RoutineLanguagePtrOutput) Elem() RoutineLanguageOutput {
+	return o.ApplyT(func(v *RoutineLanguage) RoutineLanguage {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineLanguage
+		return ret
+	}).(RoutineLanguageOutput)
 }
 
 func (o RoutineLanguagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -806,16 +816,6 @@ func (o RoutineLanguagePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RoutineLanguagePtrOutput) Elem() RoutineLanguageOutput {
-	return o.ApplyT(func(v *RoutineLanguage) RoutineLanguage {
-		var ret RoutineLanguage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RoutineLanguageOutput)
 }
 
 // RoutineLanguageInput is an input type that accepts RoutineLanguageArgs and RoutineLanguageOutput values.
@@ -953,7 +953,7 @@ func (o RoutineRoutineTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type RoutineRoutineTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RoutineRoutineTypePtrOutput) ElementType() reflect.Type {
-	return routineRoutineTypePtrType
+	return reflect.TypeOf((**RoutineRoutineType)(nil)).Elem()
 }
 
 func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutput() RoutineRoutineTypePtrOutput {
@@ -962,6 +962,16 @@ func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutput() RoutineRout
 
 func (o RoutineRoutineTypePtrOutput) ToRoutineRoutineTypePtrOutputWithContext(ctx context.Context) RoutineRoutineTypePtrOutput {
 	return o
+}
+
+func (o RoutineRoutineTypePtrOutput) Elem() RoutineRoutineTypeOutput {
+	return o.ApplyT(func(v *RoutineRoutineType) RoutineRoutineType {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineRoutineType
+		return ret
+	}).(RoutineRoutineTypeOutput)
 }
 
 func (o RoutineRoutineTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -976,16 +986,6 @@ func (o RoutineRoutineTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RoutineRoutineTypePtrOutput) Elem() RoutineRoutineTypeOutput {
-	return o.ApplyT(func(v *RoutineRoutineType) RoutineRoutineType {
-		var ret RoutineRoutineType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RoutineRoutineTypeOutput)
 }
 
 // RoutineRoutineTypeInput is an input type that accepts RoutineRoutineTypeArgs and RoutineRoutineTypeOutput values.
@@ -1150,7 +1150,7 @@ func (o StandardSqlDataTypeTypeKindOutput) ToStringPtrOutputWithContext(ctx cont
 type StandardSqlDataTypeTypeKindPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardSqlDataTypeTypeKindPtrOutput) ElementType() reflect.Type {
-	return standardSqlDataTypeTypeKindPtrType
+	return reflect.TypeOf((**StandardSqlDataTypeTypeKind)(nil)).Elem()
 }
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOutput() StandardSqlDataTypeTypeKindPtrOutput {
@@ -1159,6 +1159,16 @@ func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOu
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) ToStandardSqlDataTypeTypeKindPtrOutputWithContext(ctx context.Context) StandardSqlDataTypeTypeKindPtrOutput {
 	return o
+}
+
+func (o StandardSqlDataTypeTypeKindPtrOutput) Elem() StandardSqlDataTypeTypeKindOutput {
+	return o.ApplyT(func(v *StandardSqlDataTypeTypeKind) StandardSqlDataTypeTypeKind {
+		if v != nil {
+			return *v
+		}
+		var ret StandardSqlDataTypeTypeKind
+		return ret
+	}).(StandardSqlDataTypeTypeKindOutput)
 }
 
 func (o StandardSqlDataTypeTypeKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1173,16 +1183,6 @@ func (o StandardSqlDataTypeTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o StandardSqlDataTypeTypeKindPtrOutput) Elem() StandardSqlDataTypeTypeKindOutput {
-	return o.ApplyT(func(v *StandardSqlDataTypeTypeKind) StandardSqlDataTypeTypeKind {
-		var ret StandardSqlDataTypeTypeKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(StandardSqlDataTypeTypeKindOutput)
 }
 
 // StandardSqlDataTypeTypeKindInput is an input type that accepts StandardSqlDataTypeTypeKindArgs and StandardSqlDataTypeTypeKindOutput values.

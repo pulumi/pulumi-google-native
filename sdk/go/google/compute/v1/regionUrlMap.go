@@ -158,9 +158,7 @@ func (i *RegionUrlMap) ToRegionUrlMapOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapOutput)
 }
 
-type RegionUrlMapOutput struct {
-	*pulumi.OutputState
-}
+type RegionUrlMapOutput struct{ *pulumi.OutputState }
 
 func (RegionUrlMapOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionUrlMap)(nil))

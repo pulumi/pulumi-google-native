@@ -180,9 +180,7 @@ func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupOutput)
 }
 
-type GlobalNetworkEndpointGroupOutput struct {
-	*pulumi.OutputState
-}
+type GlobalNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil))

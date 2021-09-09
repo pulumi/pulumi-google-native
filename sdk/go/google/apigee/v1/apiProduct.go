@@ -183,9 +183,7 @@ func (i *ApiProduct) ToApiProductOutputWithContext(ctx context.Context) ApiProdu
 	return pulumi.ToOutputWithContext(ctx, i).(ApiProductOutput)
 }
 
-type ApiProductOutput struct {
-	*pulumi.OutputState
-}
+type ApiProductOutput struct{ *pulumi.OutputState }
 
 func (ApiProductOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiProduct)(nil))

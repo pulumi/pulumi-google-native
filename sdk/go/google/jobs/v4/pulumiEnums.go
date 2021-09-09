@@ -116,7 +116,7 @@ func (o CompanySizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type CompanySizePtrOutput struct{ *pulumi.OutputState }
 
 func (CompanySizePtrOutput) ElementType() reflect.Type {
-	return companySizePtrType
+	return reflect.TypeOf((**CompanySize)(nil)).Elem()
 }
 
 func (o CompanySizePtrOutput) ToCompanySizePtrOutput() CompanySizePtrOutput {
@@ -125,6 +125,16 @@ func (o CompanySizePtrOutput) ToCompanySizePtrOutput() CompanySizePtrOutput {
 
 func (o CompanySizePtrOutput) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
 	return o
+}
+
+func (o CompanySizePtrOutput) Elem() CompanySizeOutput {
+	return o.ApplyT(func(v *CompanySize) CompanySize {
+		if v != nil {
+			return *v
+		}
+		var ret CompanySize
+		return ret
+	}).(CompanySizeOutput)
 }
 
 func (o CompanySizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -139,16 +149,6 @@ func (o CompanySizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CompanySizePtrOutput) Elem() CompanySizeOutput {
-	return o.ApplyT(func(v *CompanySize) CompanySize {
-		var ret CompanySize
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CompanySizeOutput)
 }
 
 // CompanySizeInput is an input type that accepts CompanySizeArgs and CompanySizeOutput values.
@@ -297,7 +297,7 @@ func (o CompensationEntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type CompensationEntryTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CompensationEntryTypePtrOutput) ElementType() reflect.Type {
-	return compensationEntryTypePtrType
+	return reflect.TypeOf((**CompensationEntryType)(nil)).Elem()
 }
 
 func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput {
@@ -306,6 +306,16 @@ func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutput() Compe
 
 func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
 	return o
+}
+
+func (o CompensationEntryTypePtrOutput) Elem() CompensationEntryTypeOutput {
+	return o.ApplyT(func(v *CompensationEntryType) CompensationEntryType {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationEntryType
+		return ret
+	}).(CompensationEntryTypeOutput)
 }
 
 func (o CompensationEntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -320,16 +330,6 @@ func (o CompensationEntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CompensationEntryTypePtrOutput) Elem() CompensationEntryTypeOutput {
-	return o.ApplyT(func(v *CompensationEntryType) CompensationEntryType {
-		var ret CompensationEntryType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CompensationEntryTypeOutput)
 }
 
 // CompensationEntryTypeInput is an input type that accepts CompensationEntryTypeArgs and CompensationEntryTypeOutput values.
@@ -476,7 +476,7 @@ func (o CompensationEntryUnitOutput) ToStringPtrOutputWithContext(ctx context.Co
 type CompensationEntryUnitPtrOutput struct{ *pulumi.OutputState }
 
 func (CompensationEntryUnitPtrOutput) ElementType() reflect.Type {
-	return compensationEntryUnitPtrType
+	return reflect.TypeOf((**CompensationEntryUnit)(nil)).Elem()
 }
 
 func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput {
@@ -485,6 +485,16 @@ func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutput() Compe
 
 func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
 	return o
+}
+
+func (o CompensationEntryUnitPtrOutput) Elem() CompensationEntryUnitOutput {
+	return o.ApplyT(func(v *CompensationEntryUnit) CompensationEntryUnit {
+		if v != nil {
+			return *v
+		}
+		var ret CompensationEntryUnit
+		return ret
+	}).(CompensationEntryUnitOutput)
 }
 
 func (o CompensationEntryUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -499,16 +509,6 @@ func (o CompensationEntryUnitPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CompensationEntryUnitPtrOutput) Elem() CompensationEntryUnitOutput {
-	return o.ApplyT(func(v *CompensationEntryUnit) CompensationEntryUnit {
-		var ret CompensationEntryUnit
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CompensationEntryUnitOutput)
 }
 
 // CompensationEntryUnitInput is an input type that accepts CompensationEntryUnitArgs and CompensationEntryUnitOutput values.
@@ -656,7 +656,7 @@ func (o JobDegreeTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type JobDegreeTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (JobDegreeTypesItemPtrOutput) ElementType() reflect.Type {
-	return jobDegreeTypesItemPtrType
+	return reflect.TypeOf((**JobDegreeTypesItem)(nil)).Elem()
 }
 
 func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput {
@@ -665,6 +665,16 @@ func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutput() JobDegreeTy
 
 func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
 	return o
+}
+
+func (o JobDegreeTypesItemPtrOutput) Elem() JobDegreeTypesItemOutput {
+	return o.ApplyT(func(v *JobDegreeTypesItem) JobDegreeTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret JobDegreeTypesItem
+		return ret
+	}).(JobDegreeTypesItemOutput)
 }
 
 func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -679,16 +689,6 @@ func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobDegreeTypesItemPtrOutput) Elem() JobDegreeTypesItemOutput {
-	return o.ApplyT(func(v *JobDegreeTypesItem) JobDegreeTypesItem {
-		var ret JobDegreeTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobDegreeTypesItemOutput)
 }
 
 // JobDegreeTypesItemInput is an input type that accepts JobDegreeTypesItemArgs and JobDegreeTypesItemOutput values.
@@ -769,8 +769,8 @@ func (o JobDegreeTypesItemArrayOutput) ToJobDegreeTypesItemArrayOutputWithContex
 }
 
 func (o JobDegreeTypesItemArrayOutput) Index(i pulumi.IntInput) JobDegreeTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobDegreeTypesItemOutput {
-		return vs[0].([]JobDegreeTypesItem)[vs[1].(int)].ToJobDegreeTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobDegreeTypesItem {
+		return vs[0].([]JobDegreeTypesItem)[vs[1].(int)]
 	}).(JobDegreeTypesItemOutput)
 }
 
@@ -885,7 +885,7 @@ func (o JobEmploymentTypesItemOutput) ToStringPtrOutputWithContext(ctx context.C
 type JobEmploymentTypesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (JobEmploymentTypesItemPtrOutput) ElementType() reflect.Type {
-	return jobEmploymentTypesItemPtrType
+	return reflect.TypeOf((**JobEmploymentTypesItem)(nil)).Elem()
 }
 
 func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput {
@@ -894,6 +894,16 @@ func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutput() Job
 
 func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
 	return o
+}
+
+func (o JobEmploymentTypesItemPtrOutput) Elem() JobEmploymentTypesItemOutput {
+	return o.ApplyT(func(v *JobEmploymentTypesItem) JobEmploymentTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret JobEmploymentTypesItem
+		return ret
+	}).(JobEmploymentTypesItemOutput)
 }
 
 func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -908,16 +918,6 @@ func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobEmploymentTypesItemPtrOutput) Elem() JobEmploymentTypesItemOutput {
-	return o.ApplyT(func(v *JobEmploymentTypesItem) JobEmploymentTypesItem {
-		var ret JobEmploymentTypesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobEmploymentTypesItemOutput)
 }
 
 // JobEmploymentTypesItemInput is an input type that accepts JobEmploymentTypesItemArgs and JobEmploymentTypesItemOutput values.
@@ -998,8 +998,8 @@ func (o JobEmploymentTypesItemArrayOutput) ToJobEmploymentTypesItemArrayOutputWi
 }
 
 func (o JobEmploymentTypesItemArrayOutput) Index(i pulumi.IntInput) JobEmploymentTypesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobEmploymentTypesItemOutput {
-		return vs[0].([]JobEmploymentTypesItem)[vs[1].(int)].ToJobEmploymentTypesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobEmploymentTypesItem {
+		return vs[0].([]JobEmploymentTypesItem)[vs[1].(int)]
 	}).(JobEmploymentTypesItemOutput)
 }
 
@@ -1116,7 +1116,7 @@ func (o JobJobBenefitsItemOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type JobJobBenefitsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (JobJobBenefitsItemPtrOutput) ElementType() reflect.Type {
-	return jobJobBenefitsItemPtrType
+	return reflect.TypeOf((**JobJobBenefitsItem)(nil)).Elem()
 }
 
 func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput {
@@ -1125,6 +1125,16 @@ func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutput() JobJobBenef
 
 func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
 	return o
+}
+
+func (o JobJobBenefitsItemPtrOutput) Elem() JobJobBenefitsItemOutput {
+	return o.ApplyT(func(v *JobJobBenefitsItem) JobJobBenefitsItem {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobBenefitsItem
+		return ret
+	}).(JobJobBenefitsItemOutput)
 }
 
 func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1139,16 +1149,6 @@ func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobBenefitsItemPtrOutput) Elem() JobJobBenefitsItemOutput {
-	return o.ApplyT(func(v *JobJobBenefitsItem) JobJobBenefitsItem {
-		var ret JobJobBenefitsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobJobBenefitsItemOutput)
 }
 
 // JobJobBenefitsItemInput is an input type that accepts JobJobBenefitsItemArgs and JobJobBenefitsItemOutput values.
@@ -1229,8 +1229,8 @@ func (o JobJobBenefitsItemArrayOutput) ToJobJobBenefitsItemArrayOutputWithContex
 }
 
 func (o JobJobBenefitsItemArrayOutput) Index(i pulumi.IntInput) JobJobBenefitsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobJobBenefitsItemOutput {
-		return vs[0].([]JobJobBenefitsItem)[vs[1].(int)].ToJobJobBenefitsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobJobBenefitsItem {
+		return vs[0].([]JobJobBenefitsItem)[vs[1].(int)]
 	}).(JobJobBenefitsItemOutput)
 }
 
@@ -1336,7 +1336,7 @@ func (o JobJobLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 type JobJobLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (JobJobLevelPtrOutput) ElementType() reflect.Type {
-	return jobJobLevelPtrType
+	return reflect.TypeOf((**JobJobLevel)(nil)).Elem()
 }
 
 func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
@@ -1345,6 +1345,16 @@ func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
 
 func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
 	return o
+}
+
+func (o JobJobLevelPtrOutput) Elem() JobJobLevelOutput {
+	return o.ApplyT(func(v *JobJobLevel) JobJobLevel {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobLevel
+		return ret
+	}).(JobJobLevelOutput)
 }
 
 func (o JobJobLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1359,16 +1369,6 @@ func (o JobJobLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobJobLevelPtrOutput) Elem() JobJobLevelOutput {
-	return o.ApplyT(func(v *JobJobLevel) JobJobLevel {
-		var ret JobJobLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobJobLevelOutput)
 }
 
 // JobJobLevelInput is an input type that accepts JobJobLevelArgs and JobJobLevelOutput values.
@@ -1507,7 +1507,7 @@ func (o JobPostingRegionOutput) ToStringPtrOutputWithContext(ctx context.Context
 type JobPostingRegionPtrOutput struct{ *pulumi.OutputState }
 
 func (JobPostingRegionPtrOutput) ElementType() reflect.Type {
-	return jobPostingRegionPtrType
+	return reflect.TypeOf((**JobPostingRegion)(nil)).Elem()
 }
 
 func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput {
@@ -1516,6 +1516,16 @@ func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutput() JobPostingRegio
 
 func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
 	return o
+}
+
+func (o JobPostingRegionPtrOutput) Elem() JobPostingRegionOutput {
+	return o.ApplyT(func(v *JobPostingRegion) JobPostingRegion {
+		if v != nil {
+			return *v
+		}
+		var ret JobPostingRegion
+		return ret
+	}).(JobPostingRegionOutput)
 }
 
 func (o JobPostingRegionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1530,16 +1540,6 @@ func (o JobPostingRegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobPostingRegionPtrOutput) Elem() JobPostingRegionOutput {
-	return o.ApplyT(func(v *JobPostingRegion) JobPostingRegion {
-		var ret JobPostingRegion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobPostingRegionOutput)
 }
 
 // JobPostingRegionInput is an input type that accepts JobPostingRegionArgs and JobPostingRegionOutput values.
@@ -1676,7 +1676,7 @@ func (o ProcessingOptionsHtmlSanitizationOutput) ToStringPtrOutputWithContext(ct
 type ProcessingOptionsHtmlSanitizationPtrOutput struct{ *pulumi.OutputState }
 
 func (ProcessingOptionsHtmlSanitizationPtrOutput) ElementType() reflect.Type {
-	return processingOptionsHtmlSanitizationPtrType
+	return reflect.TypeOf((**ProcessingOptionsHtmlSanitization)(nil)).Elem()
 }
 
 func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput {
@@ -1685,6 +1685,16 @@ func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanit
 
 func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
 	return o
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) Elem() ProcessingOptionsHtmlSanitizationOutput {
+	return o.ApplyT(func(v *ProcessingOptionsHtmlSanitization) ProcessingOptionsHtmlSanitization {
+		if v != nil {
+			return *v
+		}
+		var ret ProcessingOptionsHtmlSanitization
+		return ret
+	}).(ProcessingOptionsHtmlSanitizationOutput)
 }
 
 func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1699,16 +1709,6 @@ func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ProcessingOptionsHtmlSanitizationPtrOutput) Elem() ProcessingOptionsHtmlSanitizationOutput {
-	return o.ApplyT(func(v *ProcessingOptionsHtmlSanitization) ProcessingOptionsHtmlSanitization {
-		var ret ProcessingOptionsHtmlSanitization
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ProcessingOptionsHtmlSanitizationOutput)
 }
 
 // ProcessingOptionsHtmlSanitizationInput is an input type that accepts ProcessingOptionsHtmlSanitizationArgs and ProcessingOptionsHtmlSanitizationOutput values.

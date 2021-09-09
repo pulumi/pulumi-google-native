@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,95 @@ type LookupSslPolicyResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
 	Warnings []SslPolicyWarningsItemResponse `pulumi:"warnings"`
+}
+
+func LookupSslPolicyOutput(ctx *pulumi.Context, args LookupSslPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSslPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSslPolicyResult, error) {
+			args := v.(LookupSslPolicyArgs)
+			r, err := LookupSslPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSslPolicyResultOutput)
+}
+
+type LookupSslPolicyOutputArgs struct {
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	SslPolicy pulumi.StringInput    `pulumi:"sslPolicy"`
+}
+
+func (LookupSslPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSslPolicyArgs)(nil)).Elem()
+}
+
+type LookupSslPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSslPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSslPolicyResult)(nil)).Elem()
+}
+
+func (o LookupSslPolicyResultOutput) ToLookupSslPolicyResultOutput() LookupSslPolicyResultOutput {
+	return o
+}
+
+func (o LookupSslPolicyResultOutput) ToLookupSslPolicyResultOutputWithContext(ctx context.Context) LookupSslPolicyResultOutput {
+	return o
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LookupSslPolicyResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+func (o LookupSslPolicyResultOutput) CustomFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) []string { return v.CustomFeatures }).(pulumi.StringArrayOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o LookupSslPolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The list of features enabled in the SSL policy.
+func (o LookupSslPolicyResultOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+func (o LookupSslPolicyResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+func (o LookupSslPolicyResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+func (o LookupSslPolicyResultOutput) MinTlsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.MinTlsVersion }).(pulumi.StringOutput)
+}
+
+// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o LookupSslPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+func (o LookupSslPolicyResultOutput) Profile() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Profile }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LookupSslPolicyResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+func (o LookupSslPolicyResultOutput) Warnings() SslPolicyWarningsItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) []SslPolicyWarningsItemResponse { return v.Warnings }).(SslPolicyWarningsItemResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSslPolicyResultOutput{})
 }

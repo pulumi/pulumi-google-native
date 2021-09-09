@@ -4,6 +4,9 @@
 package v1alpha2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,101 @@ type LookupRegistrationResult struct {
 	State string `pulumi:"state"`
 	// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
 	SupportedPrivacy []string `pulumi:"supportedPrivacy"`
+}
+
+func LookupRegistrationOutput(ctx *pulumi.Context, args LookupRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRegistrationResult, error) {
+			args := v.(LookupRegistrationArgs)
+			r, err := LookupRegistration(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRegistrationResultOutput)
+}
+
+type LookupRegistrationOutputArgs struct {
+	Location       pulumi.StringInput    `pulumi:"location"`
+	Project        pulumi.StringPtrInput `pulumi:"project"`
+	RegistrationId pulumi.StringInput    `pulumi:"registrationId"`
+}
+
+func (LookupRegistrationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistrationArgs)(nil)).Elem()
+}
+
+type LookupRegistrationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegistrationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegistrationResult)(nil)).Elem()
+}
+
+func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutput() LookupRegistrationResultOutput {
+	return o
+}
+
+func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutputWithContext(ctx context.Context) LookupRegistrationResultOutput {
+	return o
+}
+
+// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+func (o LookupRegistrationResultOutput) ContactSettings() ContactSettingsResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) ContactSettingsResponse { return v.ContactSettings }).(ContactSettingsResponseOutput)
+}
+
+// The creation timestamp of the `Registration` resource.
+func (o LookupRegistrationResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
+func (o LookupRegistrationResultOutput) DnsSettings() DnsSettingsResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) DnsSettingsResponse { return v.DnsSettings }).(DnsSettingsResponseOutput)
+}
+
+// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+func (o LookupRegistrationResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The expiration timestamp of the `Registration`.
+func (o LookupRegistrationResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The set of issues with the `Registration` that require attention.
+func (o LookupRegistrationResultOutput) Issues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) []string { return v.Issues }).(pulumi.StringArrayOutput)
+}
+
+// Set of labels associated with the `Registration`.
+func (o LookupRegistrationResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
+func (o LookupRegistrationResultOutput) ManagementSettings() ManagementSettingsResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) ManagementSettingsResponse { return v.ManagementSettings }).(ManagementSettingsResponseOutput)
+}
+
+// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
+func (o LookupRegistrationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+func (o LookupRegistrationResultOutput) PendingContactSettings() ContactSettingsResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) ContactSettingsResponse { return v.PendingContactSettings }).(ContactSettingsResponseOutput)
+}
+
+// The state of the `Registration`
+func (o LookupRegistrationResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
+func (o LookupRegistrationResultOutput) SupportedPrivacy() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) []string { return v.SupportedPrivacy }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegistrationResultOutput{})
 }

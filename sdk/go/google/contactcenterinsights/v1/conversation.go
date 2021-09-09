@@ -166,9 +166,7 @@ func (i *Conversation) ToConversationOutputWithContext(ctx context.Context) Conv
 	return pulumi.ToOutputWithContext(ctx, i).(ConversationOutput)
 }
 
-type ConversationOutput struct {
-	*pulumi.OutputState
-}
+type ConversationOutput struct{ *pulumi.OutputState }
 
 func (ConversationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Conversation)(nil))

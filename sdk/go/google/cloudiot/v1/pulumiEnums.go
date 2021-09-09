@@ -110,7 +110,7 @@ func (o DeviceLogLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type DeviceLogLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (DeviceLogLevelPtrOutput) ElementType() reflect.Type {
-	return deviceLogLevelPtrType
+	return reflect.TypeOf((**DeviceLogLevel)(nil)).Elem()
 }
 
 func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput {
@@ -119,6 +119,16 @@ func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOu
 
 func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
 	return o
+}
+
+func (o DeviceLogLevelPtrOutput) Elem() DeviceLogLevelOutput {
+	return o.ApplyT(func(v *DeviceLogLevel) DeviceLogLevel {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceLogLevel
+		return ret
+	}).(DeviceLogLevelOutput)
 }
 
 func (o DeviceLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -133,16 +143,6 @@ func (o DeviceLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeviceLogLevelPtrOutput) Elem() DeviceLogLevelOutput {
-	return o.ApplyT(func(v *DeviceLogLevel) DeviceLogLevel {
-		var ret DeviceLogLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DeviceLogLevelOutput)
 }
 
 // DeviceLogLevelInput is an input type that accepts DeviceLogLevelArgs and DeviceLogLevelOutput values.
@@ -281,7 +281,7 @@ func (o GatewayConfigGatewayAuthMethodOutput) ToStringPtrOutputWithContext(ctx c
 type GatewayConfigGatewayAuthMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayConfigGatewayAuthMethodPtrOutput) ElementType() reflect.Type {
-	return gatewayConfigGatewayAuthMethodPtrType
+	return reflect.TypeOf((**GatewayConfigGatewayAuthMethod)(nil)).Elem()
 }
 
 func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput {
@@ -290,6 +290,16 @@ func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMetho
 
 func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
 	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) Elem() GatewayConfigGatewayAuthMethodOutput {
+	return o.ApplyT(func(v *GatewayConfigGatewayAuthMethod) GatewayConfigGatewayAuthMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayConfigGatewayAuthMethod
+		return ret
+	}).(GatewayConfigGatewayAuthMethodOutput)
 }
 
 func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GatewayConfigGatewayAuthMethodPtrOutput) Elem() GatewayConfigGatewayAuthMethodOutput {
-	return o.ApplyT(func(v *GatewayConfigGatewayAuthMethod) GatewayConfigGatewayAuthMethod {
-		var ret GatewayConfigGatewayAuthMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GatewayConfigGatewayAuthMethodOutput)
 }
 
 // GatewayConfigGatewayAuthMethodInput is an input type that accepts GatewayConfigGatewayAuthMethodArgs and GatewayConfigGatewayAuthMethodOutput values.
@@ -450,7 +450,7 @@ func (o GatewayConfigGatewayTypeOutput) ToStringPtrOutputWithContext(ctx context
 type GatewayConfigGatewayTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayConfigGatewayTypePtrOutput) ElementType() reflect.Type {
-	return gatewayConfigGatewayTypePtrType
+	return reflect.TypeOf((**GatewayConfigGatewayType)(nil)).Elem()
 }
 
 func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput {
@@ -459,6 +459,16 @@ func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutput()
 
 func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
 	return o
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) Elem() GatewayConfigGatewayTypeOutput {
+	return o.ApplyT(func(v *GatewayConfigGatewayType) GatewayConfigGatewayType {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayConfigGatewayType
+		return ret
+	}).(GatewayConfigGatewayTypeOutput)
 }
 
 func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -473,16 +483,6 @@ func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GatewayConfigGatewayTypePtrOutput) Elem() GatewayConfigGatewayTypeOutput {
-	return o.ApplyT(func(v *GatewayConfigGatewayType) GatewayConfigGatewayType {
-		var ret GatewayConfigGatewayType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GatewayConfigGatewayTypeOutput)
 }
 
 // GatewayConfigGatewayTypeInput is an input type that accepts GatewayConfigGatewayTypeArgs and GatewayConfigGatewayTypeOutput values.
@@ -619,7 +619,7 @@ func (o HttpConfigHttpEnabledStateOutput) ToStringPtrOutputWithContext(ctx conte
 type HttpConfigHttpEnabledStatePtrOutput struct{ *pulumi.OutputState }
 
 func (HttpConfigHttpEnabledStatePtrOutput) ElementType() reflect.Type {
-	return httpConfigHttpEnabledStatePtrType
+	return reflect.TypeOf((**HttpConfigHttpEnabledState)(nil)).Elem()
 }
 
 func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput {
@@ -628,6 +628,16 @@ func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutp
 
 func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
 	return o
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) Elem() HttpConfigHttpEnabledStateOutput {
+	return o.ApplyT(func(v *HttpConfigHttpEnabledState) HttpConfigHttpEnabledState {
+		if v != nil {
+			return *v
+		}
+		var ret HttpConfigHttpEnabledState
+		return ret
+	}).(HttpConfigHttpEnabledStateOutput)
 }
 
 func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -642,16 +652,6 @@ func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HttpConfigHttpEnabledStatePtrOutput) Elem() HttpConfigHttpEnabledStateOutput {
-	return o.ApplyT(func(v *HttpConfigHttpEnabledState) HttpConfigHttpEnabledState {
-		var ret HttpConfigHttpEnabledState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HttpConfigHttpEnabledStateOutput)
 }
 
 // HttpConfigHttpEnabledStateInput is an input type that accepts HttpConfigHttpEnabledStateArgs and HttpConfigHttpEnabledStateOutput values.
@@ -788,7 +788,7 @@ func (o MqttConfigMqttEnabledStateOutput) ToStringPtrOutputWithContext(ctx conte
 type MqttConfigMqttEnabledStatePtrOutput struct{ *pulumi.OutputState }
 
 func (MqttConfigMqttEnabledStatePtrOutput) ElementType() reflect.Type {
-	return mqttConfigMqttEnabledStatePtrType
+	return reflect.TypeOf((**MqttConfigMqttEnabledState)(nil)).Elem()
 }
 
 func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput {
@@ -797,6 +797,16 @@ func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutp
 
 func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
 	return o
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) Elem() MqttConfigMqttEnabledStateOutput {
+	return o.ApplyT(func(v *MqttConfigMqttEnabledState) MqttConfigMqttEnabledState {
+		if v != nil {
+			return *v
+		}
+		var ret MqttConfigMqttEnabledState
+		return ret
+	}).(MqttConfigMqttEnabledStateOutput)
 }
 
 func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -811,16 +821,6 @@ func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MqttConfigMqttEnabledStatePtrOutput) Elem() MqttConfigMqttEnabledStateOutput {
-	return o.ApplyT(func(v *MqttConfigMqttEnabledState) MqttConfigMqttEnabledState {
-		var ret MqttConfigMqttEnabledState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MqttConfigMqttEnabledStateOutput)
 }
 
 // MqttConfigMqttEnabledStateInput is an input type that accepts MqttConfigMqttEnabledStateArgs and MqttConfigMqttEnabledStateOutput values.
@@ -955,7 +955,7 @@ func (o PublicKeyCertificateFormatOutput) ToStringPtrOutputWithContext(ctx conte
 type PublicKeyCertificateFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (PublicKeyCertificateFormatPtrOutput) ElementType() reflect.Type {
-	return publicKeyCertificateFormatPtrType
+	return reflect.TypeOf((**PublicKeyCertificateFormat)(nil)).Elem()
 }
 
 func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput {
@@ -964,6 +964,16 @@ func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutp
 
 func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
 	return o
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) Elem() PublicKeyCertificateFormatOutput {
+	return o.ApplyT(func(v *PublicKeyCertificateFormat) PublicKeyCertificateFormat {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyCertificateFormat
+		return ret
+	}).(PublicKeyCertificateFormatOutput)
 }
 
 func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -978,16 +988,6 @@ func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PublicKeyCertificateFormatPtrOutput) Elem() PublicKeyCertificateFormatOutput {
-	return o.ApplyT(func(v *PublicKeyCertificateFormat) PublicKeyCertificateFormat {
-		var ret PublicKeyCertificateFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PublicKeyCertificateFormatOutput)
 }
 
 // PublicKeyCertificateFormatInput is an input type that accepts PublicKeyCertificateFormatArgs and PublicKeyCertificateFormatOutput values.
@@ -1128,7 +1128,7 @@ func (o PublicKeyCredentialFormatOutput) ToStringPtrOutputWithContext(ctx contex
 type PublicKeyCredentialFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (PublicKeyCredentialFormatPtrOutput) ElementType() reflect.Type {
-	return publicKeyCredentialFormatPtrType
+	return reflect.TypeOf((**PublicKeyCredentialFormat)(nil)).Elem()
 }
 
 func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput {
@@ -1137,6 +1137,16 @@ func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutput
 
 func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
 	return o
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) Elem() PublicKeyCredentialFormatOutput {
+	return o.ApplyT(func(v *PublicKeyCredentialFormat) PublicKeyCredentialFormat {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyCredentialFormat
+		return ret
+	}).(PublicKeyCredentialFormatOutput)
 }
 
 func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1151,16 +1161,6 @@ func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PublicKeyCredentialFormatPtrOutput) Elem() PublicKeyCredentialFormatOutput {
-	return o.ApplyT(func(v *PublicKeyCredentialFormat) PublicKeyCredentialFormat {
-		var ret PublicKeyCredentialFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PublicKeyCredentialFormatOutput)
 }
 
 // PublicKeyCredentialFormatInput is an input type that accepts PublicKeyCredentialFormatArgs and PublicKeyCredentialFormatOutput values.
@@ -1301,7 +1301,7 @@ func (o RegistryLogLevelOutput) ToStringPtrOutputWithContext(ctx context.Context
 type RegistryLogLevelPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryLogLevelPtrOutput) ElementType() reflect.Type {
-	return registryLogLevelPtrType
+	return reflect.TypeOf((**RegistryLogLevel)(nil)).Elem()
 }
 
 func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput {
@@ -1310,6 +1310,16 @@ func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutput() RegistryLogLeve
 
 func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
 	return o
+}
+
+func (o RegistryLogLevelPtrOutput) Elem() RegistryLogLevelOutput {
+	return o.ApplyT(func(v *RegistryLogLevel) RegistryLogLevel {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryLogLevel
+		return ret
+	}).(RegistryLogLevelOutput)
 }
 
 func (o RegistryLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1324,16 +1334,6 @@ func (o RegistryLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegistryLogLevelPtrOutput) Elem() RegistryLogLevelOutput {
-	return o.ApplyT(func(v *RegistryLogLevel) RegistryLogLevel {
-		var ret RegistryLogLevel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegistryLogLevelOutput)
 }
 
 // RegistryLogLevelInput is an input type that accepts RegistryLogLevelArgs and RegistryLogLevelOutput values.

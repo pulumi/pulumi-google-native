@@ -146,9 +146,7 @@ func (i *RegionInstantSnapshot) ToRegionInstantSnapshotOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstantSnapshotOutput)
 }
 
-type RegionInstantSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type RegionInstantSnapshotOutput struct{ *pulumi.OutputState }
 
 func (RegionInstantSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionInstantSnapshot)(nil))

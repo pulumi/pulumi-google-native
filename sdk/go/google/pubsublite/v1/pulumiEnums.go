@@ -106,7 +106,7 @@ func (o DeliveryConfigDeliveryRequirementOutput) ToStringPtrOutputWithContext(ct
 type DeliveryConfigDeliveryRequirementPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryConfigDeliveryRequirementPtrOutput) ElementType() reflect.Type {
-	return deliveryConfigDeliveryRequirementPtrType
+	return reflect.TypeOf((**DeliveryConfigDeliveryRequirement)(nil)).Elem()
 }
 
 func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput {
@@ -115,6 +115,16 @@ func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequ
 
 func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
 	return o
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) Elem() DeliveryConfigDeliveryRequirementOutput {
+	return o.ApplyT(func(v *DeliveryConfigDeliveryRequirement) DeliveryConfigDeliveryRequirement {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryConfigDeliveryRequirement
+		return ret
+	}).(DeliveryConfigDeliveryRequirementOutput)
 }
 
 func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DeliveryConfigDeliveryRequirementPtrOutput) Elem() DeliveryConfigDeliveryRequirementOutput {
-	return o.ApplyT(func(v *DeliveryConfigDeliveryRequirement) DeliveryConfigDeliveryRequirement {
-		var ret DeliveryConfigDeliveryRequirement
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DeliveryConfigDeliveryRequirementOutput)
 }
 
 // DeliveryConfigDeliveryRequirementInput is an input type that accepts DeliveryConfigDeliveryRequirementArgs and DeliveryConfigDeliveryRequirementOutput values.

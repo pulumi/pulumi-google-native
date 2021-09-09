@@ -118,9 +118,7 @@ func (i *WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
 }
 
-type WebAppOutput struct {
-	*pulumi.OutputState
-}
+type WebAppOutput struct{ *pulumi.OutputState }
 
 func (WebAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebApp)(nil))

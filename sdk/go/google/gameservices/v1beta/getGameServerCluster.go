@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,88 @@ type LookupGameServerClusterResult struct {
 	Name string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupGameServerClusterOutput(ctx *pulumi.Context, args LookupGameServerClusterOutputArgs, opts ...pulumi.InvokeOption) LookupGameServerClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGameServerClusterResult, error) {
+			args := v.(LookupGameServerClusterArgs)
+			r, err := LookupGameServerCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGameServerClusterResultOutput)
+}
+
+type LookupGameServerClusterOutputArgs struct {
+	GameServerClusterId pulumi.StringInput    `pulumi:"gameServerClusterId"`
+	Location            pulumi.StringInput    `pulumi:"location"`
+	Project             pulumi.StringPtrInput `pulumi:"project"`
+	RealmId             pulumi.StringInput    `pulumi:"realmId"`
+	View                pulumi.StringPtrInput `pulumi:"view"`
+}
+
+func (LookupGameServerClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerClusterArgs)(nil)).Elem()
+}
+
+type LookupGameServerClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGameServerClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGameServerClusterResult)(nil)).Elem()
+}
+
+func (o LookupGameServerClusterResultOutput) ToLookupGameServerClusterResultOutput() LookupGameServerClusterResultOutput {
+	return o
+}
+
+func (o LookupGameServerClusterResultOutput) ToLookupGameServerClusterResultOutputWithContext(ctx context.Context) LookupGameServerClusterResultOutput {
+	return o
+}
+
+// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
+func (o LookupGameServerClusterResultOutput) AllocationPriority() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.AllocationPriority }).(pulumi.StringOutput)
+}
+
+// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+func (o LookupGameServerClusterResultOutput) ClusterState() KubernetesClusterStateResponseOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) KubernetesClusterStateResponse { return v.ClusterState }).(KubernetesClusterStateResponseOutput)
+}
+
+// The game server cluster connection information. This information is used to manage game server clusters.
+func (o LookupGameServerClusterResultOutput) ConnectionInfo() GameServerClusterConnectionInfoResponseOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) GameServerClusterConnectionInfoResponse { return v.ConnectionInfo }).(GameServerClusterConnectionInfoResponseOutput)
+}
+
+// The creation time.
+func (o LookupGameServerClusterResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable description of the cluster.
+func (o LookupGameServerClusterResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ETag of the resource.
+func (o LookupGameServerClusterResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels associated with this game server cluster. Each label is a key-value pair.
+func (o LookupGameServerClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+func (o LookupGameServerClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o LookupGameServerClusterResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGameServerClusterResultOutput{})
 }

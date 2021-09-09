@@ -106,7 +106,7 @@ func (o AnimationFadeFadeTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AnimationFadeFadeTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AnimationFadeFadeTypePtrOutput) ElementType() reflect.Type {
-	return animationFadeFadeTypePtrType
+	return reflect.TypeOf((**AnimationFadeFadeType)(nil)).Elem()
 }
 
 func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutput() AnimationFadeFadeTypePtrOutput {
@@ -115,6 +115,16 @@ func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutput() Anima
 
 func (o AnimationFadeFadeTypePtrOutput) ToAnimationFadeFadeTypePtrOutputWithContext(ctx context.Context) AnimationFadeFadeTypePtrOutput {
 	return o
+}
+
+func (o AnimationFadeFadeTypePtrOutput) Elem() AnimationFadeFadeTypeOutput {
+	return o.ApplyT(func(v *AnimationFadeFadeType) AnimationFadeFadeType {
+		if v != nil {
+			return *v
+		}
+		var ret AnimationFadeFadeType
+		return ret
+	}).(AnimationFadeFadeTypeOutput)
 }
 
 func (o AnimationFadeFadeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AnimationFadeFadeTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AnimationFadeFadeTypePtrOutput) Elem() AnimationFadeFadeTypeOutput {
-	return o.ApplyT(func(v *AnimationFadeFadeType) AnimationFadeFadeType {
-		var ret AnimationFadeFadeType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AnimationFadeFadeTypeOutput)
 }
 
 // AnimationFadeFadeTypeInput is an input type that accepts AnimationFadeFadeTypeArgs and AnimationFadeFadeTypeOutput values.
@@ -275,7 +275,7 @@ func (o ManifestTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ManifestTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ManifestTypePtrOutput) ElementType() reflect.Type {
-	return manifestTypePtrType
+	return reflect.TypeOf((**ManifestType)(nil)).Elem()
 }
 
 func (o ManifestTypePtrOutput) ToManifestTypePtrOutput() ManifestTypePtrOutput {
@@ -284,6 +284,16 @@ func (o ManifestTypePtrOutput) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (o ManifestTypePtrOutput) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return o
+}
+
+func (o ManifestTypePtrOutput) Elem() ManifestTypeOutput {
+	return o.ApplyT(func(v *ManifestType) ManifestType {
+		if v != nil {
+			return *v
+		}
+		var ret ManifestType
+		return ret
+	}).(ManifestTypeOutput)
 }
 
 func (o ManifestTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o ManifestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManifestTypePtrOutput) Elem() ManifestTypeOutput {
-	return o.ApplyT(func(v *ManifestType) ManifestType {
-		var ret ManifestType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManifestTypeOutput)
 }
 
 // ManifestTypeInput is an input type that accepts ManifestTypeArgs and ManifestTypeOutput values.

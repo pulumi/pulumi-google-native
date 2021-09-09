@@ -129,9 +129,7 @@ func (i *InstanceNamespaceIamPolicy) ToInstanceNamespaceIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNamespaceIamPolicyOutput)
 }
 
-type InstanceNamespaceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InstanceNamespaceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceNamespaceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNamespaceIamPolicy)(nil))

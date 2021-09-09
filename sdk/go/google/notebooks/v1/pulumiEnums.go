@@ -124,7 +124,7 @@ func (o AcceleratorConfigTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AcceleratorConfigTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorConfigTypePtrOutput) ElementType() reflect.Type {
-	return acceleratorConfigTypePtrType
+	return reflect.TypeOf((**AcceleratorConfigType)(nil)).Elem()
 }
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput {
@@ -133,6 +133,16 @@ func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() Accel
 
 func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v *AcceleratorConfigType) AcceleratorConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorConfigType
+		return ret
+	}).(AcceleratorConfigTypeOutput)
 }
 
 func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -147,16 +157,6 @@ func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
-	return o.ApplyT(func(v *AcceleratorConfigType) AcceleratorConfigType {
-		var ret AcceleratorConfigType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AcceleratorConfigTypeOutput)
 }
 
 // AcceleratorConfigTypeInput is an input type that accepts AcceleratorConfigTypeArgs and AcceleratorConfigTypeOutput values.
@@ -293,7 +293,7 @@ func (o ExecutionTemplateJobTypeOutput) ToStringPtrOutputWithContext(ctx context
 type ExecutionTemplateJobTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionTemplateJobTypePtrOutput) ElementType() reflect.Type {
-	return executionTemplateJobTypePtrType
+	return reflect.TypeOf((**ExecutionTemplateJobType)(nil)).Elem()
 }
 
 func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutput() ExecutionTemplateJobTypePtrOutput {
@@ -302,6 +302,16 @@ func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutput()
 
 func (o ExecutionTemplateJobTypePtrOutput) ToExecutionTemplateJobTypePtrOutputWithContext(ctx context.Context) ExecutionTemplateJobTypePtrOutput {
 	return o
+}
+
+func (o ExecutionTemplateJobTypePtrOutput) Elem() ExecutionTemplateJobTypeOutput {
+	return o.ApplyT(func(v *ExecutionTemplateJobType) ExecutionTemplateJobType {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionTemplateJobType
+		return ret
+	}).(ExecutionTemplateJobTypeOutput)
 }
 
 func (o ExecutionTemplateJobTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -316,16 +326,6 @@ func (o ExecutionTemplateJobTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecutionTemplateJobTypePtrOutput) Elem() ExecutionTemplateJobTypeOutput {
-	return o.ApplyT(func(v *ExecutionTemplateJobType) ExecutionTemplateJobType {
-		var ret ExecutionTemplateJobType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecutionTemplateJobTypeOutput)
 }
 
 // ExecutionTemplateJobTypeInput is an input type that accepts ExecutionTemplateJobTypeArgs and ExecutionTemplateJobTypeOutput values.
@@ -464,7 +464,7 @@ func (o InstanceBootDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InstanceBootDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceBootDiskTypePtrOutput) ElementType() reflect.Type {
-	return instanceBootDiskTypePtrType
+	return reflect.TypeOf((**InstanceBootDiskType)(nil)).Elem()
 }
 
 func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutput() InstanceBootDiskTypePtrOutput {
@@ -473,6 +473,16 @@ func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutput() Instanc
 
 func (o InstanceBootDiskTypePtrOutput) ToInstanceBootDiskTypePtrOutputWithContext(ctx context.Context) InstanceBootDiskTypePtrOutput {
 	return o
+}
+
+func (o InstanceBootDiskTypePtrOutput) Elem() InstanceBootDiskTypeOutput {
+	return o.ApplyT(func(v *InstanceBootDiskType) InstanceBootDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceBootDiskType
+		return ret
+	}).(InstanceBootDiskTypeOutput)
 }
 
 func (o InstanceBootDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -487,16 +497,6 @@ func (o InstanceBootDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceBootDiskTypePtrOutput) Elem() InstanceBootDiskTypeOutput {
-	return o.ApplyT(func(v *InstanceBootDiskType) InstanceBootDiskType {
-		var ret InstanceBootDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceBootDiskTypeOutput)
 }
 
 // InstanceBootDiskTypeInput is an input type that accepts InstanceBootDiskTypeArgs and InstanceBootDiskTypeOutput values.
@@ -635,7 +635,7 @@ func (o InstanceDataDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Con
 type InstanceDataDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceDataDiskTypePtrOutput) ElementType() reflect.Type {
-	return instanceDataDiskTypePtrType
+	return reflect.TypeOf((**InstanceDataDiskType)(nil)).Elem()
 }
 
 func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutput() InstanceDataDiskTypePtrOutput {
@@ -644,6 +644,16 @@ func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutput() Instanc
 
 func (o InstanceDataDiskTypePtrOutput) ToInstanceDataDiskTypePtrOutputWithContext(ctx context.Context) InstanceDataDiskTypePtrOutput {
 	return o
+}
+
+func (o InstanceDataDiskTypePtrOutput) Elem() InstanceDataDiskTypeOutput {
+	return o.ApplyT(func(v *InstanceDataDiskType) InstanceDataDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDataDiskType
+		return ret
+	}).(InstanceDataDiskTypeOutput)
 }
 
 func (o InstanceDataDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -658,16 +668,6 @@ func (o InstanceDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceDataDiskTypePtrOutput) Elem() InstanceDataDiskTypeOutput {
-	return o.ApplyT(func(v *InstanceDataDiskType) InstanceDataDiskType {
-		var ret InstanceDataDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceDataDiskTypeOutput)
 }
 
 // InstanceDataDiskTypeInput is an input type that accepts InstanceDataDiskTypeArgs and InstanceDataDiskTypeOutput values.
@@ -804,7 +804,7 @@ func (o InstanceDiskEncryptionOutput) ToStringPtrOutputWithContext(ctx context.C
 type InstanceDiskEncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceDiskEncryptionPtrOutput) ElementType() reflect.Type {
-	return instanceDiskEncryptionPtrType
+	return reflect.TypeOf((**InstanceDiskEncryption)(nil)).Elem()
 }
 
 func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutput() InstanceDiskEncryptionPtrOutput {
@@ -813,6 +813,16 @@ func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutput() Ins
 
 func (o InstanceDiskEncryptionPtrOutput) ToInstanceDiskEncryptionPtrOutputWithContext(ctx context.Context) InstanceDiskEncryptionPtrOutput {
 	return o
+}
+
+func (o InstanceDiskEncryptionPtrOutput) Elem() InstanceDiskEncryptionOutput {
+	return o.ApplyT(func(v *InstanceDiskEncryption) InstanceDiskEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDiskEncryption
+		return ret
+	}).(InstanceDiskEncryptionOutput)
 }
 
 func (o InstanceDiskEncryptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -827,16 +837,6 @@ func (o InstanceDiskEncryptionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceDiskEncryptionPtrOutput) Elem() InstanceDiskEncryptionOutput {
-	return o.ApplyT(func(v *InstanceDiskEncryption) InstanceDiskEncryption {
-		var ret InstanceDiskEncryption
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceDiskEncryptionOutput)
 }
 
 // InstanceDiskEncryptionInput is an input type that accepts InstanceDiskEncryptionArgs and InstanceDiskEncryptionOutput values.
@@ -973,7 +973,7 @@ func (o InstanceNicTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type InstanceNicTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceNicTypePtrOutput) ElementType() reflect.Type {
-	return instanceNicTypePtrType
+	return reflect.TypeOf((**InstanceNicType)(nil)).Elem()
 }
 
 func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutput() InstanceNicTypePtrOutput {
@@ -982,6 +982,16 @@ func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutput() InstanceNicTypePt
 
 func (o InstanceNicTypePtrOutput) ToInstanceNicTypePtrOutputWithContext(ctx context.Context) InstanceNicTypePtrOutput {
 	return o
+}
+
+func (o InstanceNicTypePtrOutput) Elem() InstanceNicTypeOutput {
+	return o.ApplyT(func(v *InstanceNicType) InstanceNicType {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNicType
+		return ret
+	}).(InstanceNicTypeOutput)
 }
 
 func (o InstanceNicTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -996,16 +1006,6 @@ func (o InstanceNicTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceNicTypePtrOutput) Elem() InstanceNicTypeOutput {
-	return o.ApplyT(func(v *InstanceNicType) InstanceNicType {
-		var ret InstanceNicType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceNicTypeOutput)
 }
 
 // InstanceNicTypeInput is an input type that accepts InstanceNicTypeArgs and InstanceNicTypeOutput values.
@@ -1144,7 +1144,7 @@ func (o LocalDiskInitializeParamsDiskTypeOutput) ToStringPtrOutputWithContext(ct
 type LocalDiskInitializeParamsDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (LocalDiskInitializeParamsDiskTypePtrOutput) ElementType() reflect.Type {
-	return localDiskInitializeParamsDiskTypePtrType
+	return reflect.TypeOf((**LocalDiskInitializeParamsDiskType)(nil)).Elem()
 }
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsDiskTypePtrOutput() LocalDiskInitializeParamsDiskTypePtrOutput {
@@ -1153,6 +1153,16 @@ func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsD
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToLocalDiskInitializeParamsDiskTypePtrOutputWithContext(ctx context.Context) LocalDiskInitializeParamsDiskTypePtrOutput {
 	return o
+}
+
+func (o LocalDiskInitializeParamsDiskTypePtrOutput) Elem() LocalDiskInitializeParamsDiskTypeOutput {
+	return o.ApplyT(func(v *LocalDiskInitializeParamsDiskType) LocalDiskInitializeParamsDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret LocalDiskInitializeParamsDiskType
+		return ret
+	}).(LocalDiskInitializeParamsDiskTypeOutput)
 }
 
 func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1167,16 +1177,6 @@ func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LocalDiskInitializeParamsDiskTypePtrOutput) Elem() LocalDiskInitializeParamsDiskTypeOutput {
-	return o.ApplyT(func(v *LocalDiskInitializeParamsDiskType) LocalDiskInitializeParamsDiskType {
-		var ret LocalDiskInitializeParamsDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LocalDiskInitializeParamsDiskTypeOutput)
 }
 
 // LocalDiskInitializeParamsDiskTypeInput is an input type that accepts LocalDiskInitializeParamsDiskTypeArgs and LocalDiskInitializeParamsDiskTypeOutput values.
@@ -1315,7 +1315,7 @@ func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithCo
 type ReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
-	return reservationAffinityConsumeReservationTypePtrType
+	return reflect.TypeOf((**ReservationAffinityConsumeReservationType)(nil)).Elem()
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
@@ -1324,6 +1324,16 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinit
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
 	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityConsumeReservationType
+		return ret
+	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1338,16 +1348,6 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
-	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
-		var ret ReservationAffinityConsumeReservationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ReservationAffinityConsumeReservationTypeOutput)
 }
 
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
@@ -1502,7 +1502,7 @@ func (o RuntimeAcceleratorConfigTypeOutput) ToStringPtrOutputWithContext(ctx con
 type RuntimeAcceleratorConfigTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeAcceleratorConfigTypePtrOutput) ElementType() reflect.Type {
-	return runtimeAcceleratorConfigTypePtrType
+	return reflect.TypeOf((**RuntimeAcceleratorConfigType)(nil)).Elem()
 }
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtrOutput() RuntimeAcceleratorConfigTypePtrOutput {
@@ -1511,6 +1511,16 @@ func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtr
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) ToRuntimeAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) RuntimeAcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o RuntimeAcceleratorConfigTypePtrOutput) Elem() RuntimeAcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v *RuntimeAcceleratorConfigType) RuntimeAcceleratorConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAcceleratorConfigType
+		return ret
+	}).(RuntimeAcceleratorConfigTypeOutput)
 }
 
 func (o RuntimeAcceleratorConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1525,16 +1535,6 @@ func (o RuntimeAcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RuntimeAcceleratorConfigTypePtrOutput) Elem() RuntimeAcceleratorConfigTypeOutput {
-	return o.ApplyT(func(v *RuntimeAcceleratorConfigType) RuntimeAcceleratorConfigType {
-		var ret RuntimeAcceleratorConfigType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RuntimeAcceleratorConfigTypeOutput)
 }
 
 // RuntimeAcceleratorConfigTypeInput is an input type that accepts RuntimeAcceleratorConfigTypeArgs and RuntimeAcceleratorConfigTypeOutput values.
@@ -1669,7 +1669,7 @@ func (o RuntimeAccessConfigAccessTypeOutput) ToStringPtrOutputWithContext(ctx co
 type RuntimeAccessConfigAccessTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeAccessConfigAccessTypePtrOutput) ElementType() reflect.Type {
-	return runtimeAccessConfigAccessTypePtrType
+	return reflect.TypeOf((**RuntimeAccessConfigAccessType)(nil)).Elem()
 }
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypePtrOutput() RuntimeAccessConfigAccessTypePtrOutput {
@@ -1678,6 +1678,16 @@ func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypeP
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) ToRuntimeAccessConfigAccessTypePtrOutputWithContext(ctx context.Context) RuntimeAccessConfigAccessTypePtrOutput {
 	return o
+}
+
+func (o RuntimeAccessConfigAccessTypePtrOutput) Elem() RuntimeAccessConfigAccessTypeOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfigAccessType) RuntimeAccessConfigAccessType {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeAccessConfigAccessType
+		return ret
+	}).(RuntimeAccessConfigAccessTypeOutput)
 }
 
 func (o RuntimeAccessConfigAccessTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1692,16 +1702,6 @@ func (o RuntimeAccessConfigAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RuntimeAccessConfigAccessTypePtrOutput) Elem() RuntimeAccessConfigAccessTypeOutput {
-	return o.ApplyT(func(v *RuntimeAccessConfigAccessType) RuntimeAccessConfigAccessType {
-		var ret RuntimeAccessConfigAccessType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RuntimeAccessConfigAccessTypeOutput)
 }
 
 // RuntimeAccessConfigAccessTypeInput is an input type that accepts RuntimeAccessConfigAccessTypeArgs and RuntimeAccessConfigAccessTypeOutput values.
@@ -1845,7 +1845,7 @@ func (o ScheduleStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type ScheduleStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (ScheduleStateEnumPtrOutput) ElementType() reflect.Type {
-	return scheduleStateEnumPtrType
+	return reflect.TypeOf((**ScheduleStateEnum)(nil)).Elem()
 }
 
 func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutput() ScheduleStateEnumPtrOutput {
@@ -1854,6 +1854,16 @@ func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutput() ScheduleState
 
 func (o ScheduleStateEnumPtrOutput) ToScheduleStateEnumPtrOutputWithContext(ctx context.Context) ScheduleStateEnumPtrOutput {
 	return o
+}
+
+func (o ScheduleStateEnumPtrOutput) Elem() ScheduleStateEnumOutput {
+	return o.ApplyT(func(v *ScheduleStateEnum) ScheduleStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleStateEnum
+		return ret
+	}).(ScheduleStateEnumOutput)
 }
 
 func (o ScheduleStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1868,16 +1878,6 @@ func (o ScheduleStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScheduleStateEnumPtrOutput) Elem() ScheduleStateEnumOutput {
-	return o.ApplyT(func(v *ScheduleStateEnum) ScheduleStateEnum {
-		var ret ScheduleStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScheduleStateEnumOutput)
 }
 
 // ScheduleStateEnumInput is an input type that accepts ScheduleStateEnumArgs and ScheduleStateEnumOutput values.
@@ -2024,7 +2024,7 @@ func (o SchedulerAcceleratorConfigTypeOutput) ToStringPtrOutputWithContext(ctx c
 type SchedulerAcceleratorConfigTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SchedulerAcceleratorConfigTypePtrOutput) ElementType() reflect.Type {
-	return schedulerAcceleratorConfigTypePtrType
+	return reflect.TypeOf((**SchedulerAcceleratorConfigType)(nil)).Elem()
 }
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTypePtrOutput() SchedulerAcceleratorConfigTypePtrOutput {
@@ -2033,6 +2033,16 @@ func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTyp
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) ToSchedulerAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigTypePtrOutput {
 	return o
+}
+
+func (o SchedulerAcceleratorConfigTypePtrOutput) Elem() SchedulerAcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v *SchedulerAcceleratorConfigType) SchedulerAcceleratorConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulerAcceleratorConfigType
+		return ret
+	}).(SchedulerAcceleratorConfigTypeOutput)
 }
 
 func (o SchedulerAcceleratorConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2047,16 +2057,6 @@ func (o SchedulerAcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchedulerAcceleratorConfigTypePtrOutput) Elem() SchedulerAcceleratorConfigTypeOutput {
-	return o.ApplyT(func(v *SchedulerAcceleratorConfigType) SchedulerAcceleratorConfigType {
-		var ret SchedulerAcceleratorConfigType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchedulerAcceleratorConfigTypeOutput)
 }
 
 // SchedulerAcceleratorConfigTypeInput is an input type that accepts SchedulerAcceleratorConfigTypeArgs and SchedulerAcceleratorConfigTypeOutput values.
@@ -2193,7 +2193,7 @@ func (o UpgradeHistoryEntryActionOutput) ToStringPtrOutputWithContext(ctx contex
 type UpgradeHistoryEntryActionPtrOutput struct{ *pulumi.OutputState }
 
 func (UpgradeHistoryEntryActionPtrOutput) ElementType() reflect.Type {
-	return upgradeHistoryEntryActionPtrType
+	return reflect.TypeOf((**UpgradeHistoryEntryAction)(nil)).Elem()
 }
 
 func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutput() UpgradeHistoryEntryActionPtrOutput {
@@ -2202,6 +2202,16 @@ func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutput
 
 func (o UpgradeHistoryEntryActionPtrOutput) ToUpgradeHistoryEntryActionPtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryActionPtrOutput {
 	return o
+}
+
+func (o UpgradeHistoryEntryActionPtrOutput) Elem() UpgradeHistoryEntryActionOutput {
+	return o.ApplyT(func(v *UpgradeHistoryEntryAction) UpgradeHistoryEntryAction {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeHistoryEntryAction
+		return ret
+	}).(UpgradeHistoryEntryActionOutput)
 }
 
 func (o UpgradeHistoryEntryActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2216,16 +2226,6 @@ func (o UpgradeHistoryEntryActionPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o UpgradeHistoryEntryActionPtrOutput) Elem() UpgradeHistoryEntryActionOutput {
-	return o.ApplyT(func(v *UpgradeHistoryEntryAction) UpgradeHistoryEntryAction {
-		var ret UpgradeHistoryEntryAction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(UpgradeHistoryEntryActionOutput)
 }
 
 // UpgradeHistoryEntryActionInput is an input type that accepts UpgradeHistoryEntryActionArgs and UpgradeHistoryEntryActionOutput values.
@@ -2364,7 +2364,7 @@ func (o UpgradeHistoryEntryStateOutput) ToStringPtrOutputWithContext(ctx context
 type UpgradeHistoryEntryStatePtrOutput struct{ *pulumi.OutputState }
 
 func (UpgradeHistoryEntryStatePtrOutput) ElementType() reflect.Type {
-	return upgradeHistoryEntryStatePtrType
+	return reflect.TypeOf((**UpgradeHistoryEntryState)(nil)).Elem()
 }
 
 func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutput() UpgradeHistoryEntryStatePtrOutput {
@@ -2373,6 +2373,16 @@ func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutput()
 
 func (o UpgradeHistoryEntryStatePtrOutput) ToUpgradeHistoryEntryStatePtrOutputWithContext(ctx context.Context) UpgradeHistoryEntryStatePtrOutput {
 	return o
+}
+
+func (o UpgradeHistoryEntryStatePtrOutput) Elem() UpgradeHistoryEntryStateOutput {
+	return o.ApplyT(func(v *UpgradeHistoryEntryState) UpgradeHistoryEntryState {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeHistoryEntryState
+		return ret
+	}).(UpgradeHistoryEntryStateOutput)
 }
 
 func (o UpgradeHistoryEntryStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2387,16 +2397,6 @@ func (o UpgradeHistoryEntryStatePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o UpgradeHistoryEntryStatePtrOutput) Elem() UpgradeHistoryEntryStateOutput {
-	return o.ApplyT(func(v *UpgradeHistoryEntryState) UpgradeHistoryEntryState {
-		var ret UpgradeHistoryEntryState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(UpgradeHistoryEntryStateOutput)
 }
 
 // UpgradeHistoryEntryStateInput is an input type that accepts UpgradeHistoryEntryStateArgs and UpgradeHistoryEntryStateOutput values.
@@ -2533,7 +2533,7 @@ func (o VirtualMachineConfigNicTypeOutput) ToStringPtrOutputWithContext(ctx cont
 type VirtualMachineConfigNicTypePtrOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineConfigNicTypePtrOutput) ElementType() reflect.Type {
-	return virtualMachineConfigNicTypePtrType
+	return reflect.TypeOf((**VirtualMachineConfigNicType)(nil)).Elem()
 }
 
 func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOutput() VirtualMachineConfigNicTypePtrOutput {
@@ -2542,6 +2542,16 @@ func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOu
 
 func (o VirtualMachineConfigNicTypePtrOutput) ToVirtualMachineConfigNicTypePtrOutputWithContext(ctx context.Context) VirtualMachineConfigNicTypePtrOutput {
 	return o
+}
+
+func (o VirtualMachineConfigNicTypePtrOutput) Elem() VirtualMachineConfigNicTypeOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigNicType) VirtualMachineConfigNicType {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineConfigNicType
+		return ret
+	}).(VirtualMachineConfigNicTypeOutput)
 }
 
 func (o VirtualMachineConfigNicTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2556,16 +2566,6 @@ func (o VirtualMachineConfigNicTypePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o VirtualMachineConfigNicTypePtrOutput) Elem() VirtualMachineConfigNicTypeOutput {
-	return o.ApplyT(func(v *VirtualMachineConfigNicType) VirtualMachineConfigNicType {
-		var ret VirtualMachineConfigNicType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(VirtualMachineConfigNicTypeOutput)
 }
 
 // VirtualMachineConfigNicTypeInput is an input type that accepts VirtualMachineConfigNicTypeArgs and VirtualMachineConfigNicTypeOutput values.

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,72 @@ type LookupResourceRecordSetResult struct {
 	Ttl int `pulumi:"ttl"`
 	// The identifier of a supported record type. See the list of Supported DNS record types.
 	Type string `pulumi:"type"`
+}
+
+func LookupResourceRecordSetOutput(ctx *pulumi.Context, args LookupResourceRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupResourceRecordSetResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupResourceRecordSetResult, error) {
+			args := v.(LookupResourceRecordSetArgs)
+			r, err := LookupResourceRecordSet(ctx, &args, opts...)
+			return *r, err
+		}).(LookupResourceRecordSetResultOutput)
+}
+
+type LookupResourceRecordSetOutputArgs struct {
+	ClientOperationId pulumi.StringPtrInput `pulumi:"clientOperationId"`
+	ManagedZone       pulumi.StringInput    `pulumi:"managedZone"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Project           pulumi.StringPtrInput `pulumi:"project"`
+	Type              pulumi.StringInput    `pulumi:"type"`
+}
+
+func (LookupResourceRecordSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceRecordSetArgs)(nil)).Elem()
+}
+
+type LookupResourceRecordSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceRecordSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceRecordSetResult)(nil)).Elem()
+}
+
+func (o LookupResourceRecordSetResultOutput) ToLookupResourceRecordSetResultOutput() LookupResourceRecordSetResultOutput {
+	return o
+}
+
+func (o LookupResourceRecordSetResultOutput) ToLookupResourceRecordSetResultOutputWithContext(ctx context.Context) LookupResourceRecordSetResultOutput {
+	return o
+}
+
+func (o LookupResourceRecordSetResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// For example, www.example.com.
+func (o LookupResourceRecordSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+func (o LookupResourceRecordSetResultOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// As defined in RFC 4034 (section 3.2).
+func (o LookupResourceRecordSetResultOutput) SignatureRrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
+}
+
+// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+func (o LookupResourceRecordSetResultOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The identifier of a supported record type. See the list of Supported DNS record types.
+func (o LookupResourceRecordSetResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceRecordSetResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourceRecordSetResultOutput{})
 }

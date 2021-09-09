@@ -104,7 +104,7 @@ func (o BasicPerfSampleSeriesPerfMetricTypeOutput) ToStringPtrOutputWithContext(
 type BasicPerfSampleSeriesPerfMetricTypePtrOutput struct{ *pulumi.OutputState }
 
 func (BasicPerfSampleSeriesPerfMetricTypePtrOutput) ElementType() reflect.Type {
-	return basicPerfSampleSeriesPerfMetricTypePtrType
+	return reflect.TypeOf((**BasicPerfSampleSeriesPerfMetricType)(nil)).Elem()
 }
 
 func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToBasicPerfSampleSeriesPerfMetricTypePtrOutput() BasicPerfSampleSeriesPerfMetricTypePtrOutput {
@@ -113,6 +113,16 @@ func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToBasicPerfSampleSeriesPer
 
 func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToBasicPerfSampleSeriesPerfMetricTypePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPerfMetricTypePtrOutput {
 	return o
+}
+
+func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) Elem() BasicPerfSampleSeriesPerfMetricTypeOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesPerfMetricType) BasicPerfSampleSeriesPerfMetricType {
+		if v != nil {
+			return *v
+		}
+		var ret BasicPerfSampleSeriesPerfMetricType
+		return ret
+	}).(BasicPerfSampleSeriesPerfMetricTypeOutput)
 }
 
 func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) Elem() BasicPerfSampleSeriesPerfMetricTypeOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeriesPerfMetricType) BasicPerfSampleSeriesPerfMetricType {
-		var ret BasicPerfSampleSeriesPerfMetricType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BasicPerfSampleSeriesPerfMetricTypeOutput)
 }
 
 // BasicPerfSampleSeriesPerfMetricTypeInput is an input type that accepts BasicPerfSampleSeriesPerfMetricTypeArgs and BasicPerfSampleSeriesPerfMetricTypeOutput values.
@@ -272,7 +272,7 @@ func (o BasicPerfSampleSeriesPerfUnitOutput) ToStringPtrOutputWithContext(ctx co
 type BasicPerfSampleSeriesPerfUnitPtrOutput struct{ *pulumi.OutputState }
 
 func (BasicPerfSampleSeriesPerfUnitPtrOutput) ElementType() reflect.Type {
-	return basicPerfSampleSeriesPerfUnitPtrType
+	return reflect.TypeOf((**BasicPerfSampleSeriesPerfUnit)(nil)).Elem()
 }
 
 func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToBasicPerfSampleSeriesPerfUnitPtrOutput() BasicPerfSampleSeriesPerfUnitPtrOutput {
@@ -281,6 +281,16 @@ func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToBasicPerfSampleSeriesPerfUnitP
 
 func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToBasicPerfSampleSeriesPerfUnitPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesPerfUnitPtrOutput {
 	return o
+}
+
+func (o BasicPerfSampleSeriesPerfUnitPtrOutput) Elem() BasicPerfSampleSeriesPerfUnitOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesPerfUnit) BasicPerfSampleSeriesPerfUnit {
+		if v != nil {
+			return *v
+		}
+		var ret BasicPerfSampleSeriesPerfUnit
+		return ret
+	}).(BasicPerfSampleSeriesPerfUnitOutput)
 }
 
 func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -295,16 +305,6 @@ func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BasicPerfSampleSeriesPerfUnitPtrOutput) Elem() BasicPerfSampleSeriesPerfUnitOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeriesPerfUnit) BasicPerfSampleSeriesPerfUnit {
-		var ret BasicPerfSampleSeriesPerfUnit
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BasicPerfSampleSeriesPerfUnitOutput)
 }
 
 // BasicPerfSampleSeriesPerfUnitInput is an input type that accepts BasicPerfSampleSeriesPerfUnitArgs and BasicPerfSampleSeriesPerfUnitOutput values.
@@ -451,7 +451,7 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelOutput) ToStringPtrOutputWithConte
 type BasicPerfSampleSeriesSampleSeriesLabelPtrOutput struct{ *pulumi.OutputState }
 
 func (BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ElementType() reflect.Type {
-	return basicPerfSampleSeriesSampleSeriesLabelPtrType
+	return reflect.TypeOf((**BasicPerfSampleSeriesSampleSeriesLabel)(nil)).Elem()
 }
 
 func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToBasicPerfSampleSeriesSampleSeriesLabelPtrOutput() BasicPerfSampleSeriesSampleSeriesLabelPtrOutput {
@@ -460,6 +460,16 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToBasicPerfSampleSeries
 
 func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToBasicPerfSampleSeriesSampleSeriesLabelPtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesSampleSeriesLabelPtrOutput {
 	return o
+}
+
+func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) Elem() BasicPerfSampleSeriesSampleSeriesLabelOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesSampleSeriesLabel) BasicPerfSampleSeriesSampleSeriesLabel {
+		if v != nil {
+			return *v
+		}
+		var ret BasicPerfSampleSeriesSampleSeriesLabel
+		return ret
+	}).(BasicPerfSampleSeriesSampleSeriesLabelOutput)
 }
 
 func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -474,16 +484,6 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) Elem() BasicPerfSampleSeriesSampleSeriesLabelOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeriesSampleSeriesLabel) BasicPerfSampleSeriesSampleSeriesLabel {
-		var ret BasicPerfSampleSeriesSampleSeriesLabel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BasicPerfSampleSeriesSampleSeriesLabelOutput)
 }
 
 // BasicPerfSampleSeriesSampleSeriesLabelInput is an input type that accepts BasicPerfSampleSeriesSampleSeriesLabelArgs and BasicPerfSampleSeriesSampleSeriesLabelOutput values.
@@ -622,7 +622,7 @@ func (o ExecutionStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ExecutionStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionStateEnumPtrOutput) ElementType() reflect.Type {
-	return executionStateEnumPtrType
+	return reflect.TypeOf((**ExecutionStateEnum)(nil)).Elem()
 }
 
 func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutput() ExecutionStateEnumPtrOutput {
@@ -631,6 +631,16 @@ func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutput() ExecutionSt
 
 func (o ExecutionStateEnumPtrOutput) ToExecutionStateEnumPtrOutputWithContext(ctx context.Context) ExecutionStateEnumPtrOutput {
 	return o
+}
+
+func (o ExecutionStateEnumPtrOutput) Elem() ExecutionStateEnumOutput {
+	return o.ApplyT(func(v *ExecutionStateEnum) ExecutionStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionStateEnum
+		return ret
+	}).(ExecutionStateEnumOutput)
 }
 
 func (o ExecutionStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -645,16 +655,6 @@ func (o ExecutionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecutionStateEnumPtrOutput) Elem() ExecutionStateEnumOutput {
-	return o.ApplyT(func(v *ExecutionStateEnum) ExecutionStateEnum {
-		var ret ExecutionStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecutionStateEnumOutput)
 }
 
 // ExecutionStateEnumInput is an input type that accepts ExecutionStateEnumArgs and ExecutionStateEnumOutput values.
@@ -788,7 +788,7 @@ func (o HistoryTestPlatformOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type HistoryTestPlatformPtrOutput struct{ *pulumi.OutputState }
 
 func (HistoryTestPlatformPtrOutput) ElementType() reflect.Type {
-	return historyTestPlatformPtrType
+	return reflect.TypeOf((**HistoryTestPlatform)(nil)).Elem()
 }
 
 func (o HistoryTestPlatformPtrOutput) ToHistoryTestPlatformPtrOutput() HistoryTestPlatformPtrOutput {
@@ -797,6 +797,16 @@ func (o HistoryTestPlatformPtrOutput) ToHistoryTestPlatformPtrOutput() HistoryTe
 
 func (o HistoryTestPlatformPtrOutput) ToHistoryTestPlatformPtrOutputWithContext(ctx context.Context) HistoryTestPlatformPtrOutput {
 	return o
+}
+
+func (o HistoryTestPlatformPtrOutput) Elem() HistoryTestPlatformOutput {
+	return o.ApplyT(func(v *HistoryTestPlatform) HistoryTestPlatform {
+		if v != nil {
+			return *v
+		}
+		var ret HistoryTestPlatform
+		return ret
+	}).(HistoryTestPlatformOutput)
 }
 
 func (o HistoryTestPlatformPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -811,16 +821,6 @@ func (o HistoryTestPlatformPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o HistoryTestPlatformPtrOutput) Elem() HistoryTestPlatformOutput {
-	return o.ApplyT(func(v *HistoryTestPlatform) HistoryTestPlatform {
-		var ret HistoryTestPlatform
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(HistoryTestPlatformOutput)
 }
 
 // HistoryTestPlatformInput is an input type that accepts HistoryTestPlatformArgs and HistoryTestPlatformOutput values.
@@ -962,7 +962,7 @@ func (o IndividualOutcomeOutcomeSummaryOutput) ToStringPtrOutputWithContext(ctx 
 type IndividualOutcomeOutcomeSummaryPtrOutput struct{ *pulumi.OutputState }
 
 func (IndividualOutcomeOutcomeSummaryPtrOutput) ElementType() reflect.Type {
-	return individualOutcomeOutcomeSummaryPtrType
+	return reflect.TypeOf((**IndividualOutcomeOutcomeSummary)(nil)).Elem()
 }
 
 func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToIndividualOutcomeOutcomeSummaryPtrOutput() IndividualOutcomeOutcomeSummaryPtrOutput {
@@ -971,6 +971,16 @@ func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToIndividualOutcomeOutcomeSumm
 
 func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToIndividualOutcomeOutcomeSummaryPtrOutputWithContext(ctx context.Context) IndividualOutcomeOutcomeSummaryPtrOutput {
 	return o
+}
+
+func (o IndividualOutcomeOutcomeSummaryPtrOutput) Elem() IndividualOutcomeOutcomeSummaryOutput {
+	return o.ApplyT(func(v *IndividualOutcomeOutcomeSummary) IndividualOutcomeOutcomeSummary {
+		if v != nil {
+			return *v
+		}
+		var ret IndividualOutcomeOutcomeSummary
+		return ret
+	}).(IndividualOutcomeOutcomeSummaryOutput)
 }
 
 func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -985,16 +995,6 @@ func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o IndividualOutcomeOutcomeSummaryPtrOutput) Elem() IndividualOutcomeOutcomeSummaryOutput {
-	return o.ApplyT(func(v *IndividualOutcomeOutcomeSummary) IndividualOutcomeOutcomeSummary {
-		var ret IndividualOutcomeOutcomeSummary
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(IndividualOutcomeOutcomeSummaryOutput)
 }
 
 // IndividualOutcomeOutcomeSummaryInput is an input type that accepts IndividualOutcomeOutcomeSummaryArgs and IndividualOutcomeOutcomeSummaryOutput values.
@@ -1137,7 +1137,7 @@ func (o OutcomeSummaryOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type OutcomeSummaryPtrOutput struct{ *pulumi.OutputState }
 
 func (OutcomeSummaryPtrOutput) ElementType() reflect.Type {
-	return outcomeSummaryPtrType
+	return reflect.TypeOf((**OutcomeSummary)(nil)).Elem()
 }
 
 func (o OutcomeSummaryPtrOutput) ToOutcomeSummaryPtrOutput() OutcomeSummaryPtrOutput {
@@ -1146,6 +1146,16 @@ func (o OutcomeSummaryPtrOutput) ToOutcomeSummaryPtrOutput() OutcomeSummaryPtrOu
 
 func (o OutcomeSummaryPtrOutput) ToOutcomeSummaryPtrOutputWithContext(ctx context.Context) OutcomeSummaryPtrOutput {
 	return o
+}
+
+func (o OutcomeSummaryPtrOutput) Elem() OutcomeSummaryOutput {
+	return o.ApplyT(func(v *OutcomeSummary) OutcomeSummary {
+		if v != nil {
+			return *v
+		}
+		var ret OutcomeSummary
+		return ret
+	}).(OutcomeSummaryOutput)
 }
 
 func (o OutcomeSummaryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1160,16 +1170,6 @@ func (o OutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OutcomeSummaryPtrOutput) Elem() OutcomeSummaryOutput {
-	return o.ApplyT(func(v *OutcomeSummary) OutcomeSummary {
-		var ret OutcomeSummary
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OutcomeSummaryOutput)
 }
 
 // OutcomeSummaryInput is an input type that accepts OutcomeSummaryArgs and OutcomeSummaryOutput values.
@@ -1312,7 +1312,7 @@ func (o PrimaryStepRollUpOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type PrimaryStepRollUpPtrOutput struct{ *pulumi.OutputState }
 
 func (PrimaryStepRollUpPtrOutput) ElementType() reflect.Type {
-	return primaryStepRollUpPtrType
+	return reflect.TypeOf((**PrimaryStepRollUp)(nil)).Elem()
 }
 
 func (o PrimaryStepRollUpPtrOutput) ToPrimaryStepRollUpPtrOutput() PrimaryStepRollUpPtrOutput {
@@ -1321,6 +1321,16 @@ func (o PrimaryStepRollUpPtrOutput) ToPrimaryStepRollUpPtrOutput() PrimaryStepRo
 
 func (o PrimaryStepRollUpPtrOutput) ToPrimaryStepRollUpPtrOutputWithContext(ctx context.Context) PrimaryStepRollUpPtrOutput {
 	return o
+}
+
+func (o PrimaryStepRollUpPtrOutput) Elem() PrimaryStepRollUpOutput {
+	return o.ApplyT(func(v *PrimaryStepRollUp) PrimaryStepRollUp {
+		if v != nil {
+			return *v
+		}
+		var ret PrimaryStepRollUp
+		return ret
+	}).(PrimaryStepRollUpOutput)
 }
 
 func (o PrimaryStepRollUpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1335,16 +1345,6 @@ func (o PrimaryStepRollUpPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PrimaryStepRollUpPtrOutput) Elem() PrimaryStepRollUpOutput {
-	return o.ApplyT(func(v *PrimaryStepRollUp) PrimaryStepRollUp {
-		var ret PrimaryStepRollUp
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PrimaryStepRollUpOutput)
 }
 
 // PrimaryStepRollUpInput is an input type that accepts PrimaryStepRollUpArgs and PrimaryStepRollUpOutput values.
@@ -1483,7 +1483,7 @@ func (o StepStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type StepStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (StepStateEnumPtrOutput) ElementType() reflect.Type {
-	return stepStateEnumPtrType
+	return reflect.TypeOf((**StepStateEnum)(nil)).Elem()
 }
 
 func (o StepStateEnumPtrOutput) ToStepStateEnumPtrOutput() StepStateEnumPtrOutput {
@@ -1492,6 +1492,16 @@ func (o StepStateEnumPtrOutput) ToStepStateEnumPtrOutput() StepStateEnumPtrOutpu
 
 func (o StepStateEnumPtrOutput) ToStepStateEnumPtrOutputWithContext(ctx context.Context) StepStateEnumPtrOutput {
 	return o
+}
+
+func (o StepStateEnumPtrOutput) Elem() StepStateEnumOutput {
+	return o.ApplyT(func(v *StepStateEnum) StepStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret StepStateEnum
+		return ret
+	}).(StepStateEnumOutput)
 }
 
 func (o StepStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1506,16 +1516,6 @@ func (o StepStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o StepStateEnumPtrOutput) Elem() StepStateEnumOutput {
-	return o.ApplyT(func(v *StepStateEnum) StepStateEnum {
-		var ret StepStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(StepStateEnumOutput)
 }
 
 // StepStateEnumInput is an input type that accepts StepStateEnumArgs and StepStateEnumOutput values.
@@ -1652,7 +1652,7 @@ func (o TestIssueCategoryOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type TestIssueCategoryPtrOutput struct{ *pulumi.OutputState }
 
 func (TestIssueCategoryPtrOutput) ElementType() reflect.Type {
-	return testIssueCategoryPtrType
+	return reflect.TypeOf((**TestIssueCategory)(nil)).Elem()
 }
 
 func (o TestIssueCategoryPtrOutput) ToTestIssueCategoryPtrOutput() TestIssueCategoryPtrOutput {
@@ -1661,6 +1661,16 @@ func (o TestIssueCategoryPtrOutput) ToTestIssueCategoryPtrOutput() TestIssueCate
 
 func (o TestIssueCategoryPtrOutput) ToTestIssueCategoryPtrOutputWithContext(ctx context.Context) TestIssueCategoryPtrOutput {
 	return o
+}
+
+func (o TestIssueCategoryPtrOutput) Elem() TestIssueCategoryOutput {
+	return o.ApplyT(func(v *TestIssueCategory) TestIssueCategory {
+		if v != nil {
+			return *v
+		}
+		var ret TestIssueCategory
+		return ret
+	}).(TestIssueCategoryOutput)
 }
 
 func (o TestIssueCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1675,16 +1685,6 @@ func (o TestIssueCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TestIssueCategoryPtrOutput) Elem() TestIssueCategoryOutput {
-	return o.ApplyT(func(v *TestIssueCategory) TestIssueCategory {
-		var ret TestIssueCategory
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TestIssueCategoryOutput)
 }
 
 // TestIssueCategoryInput is an input type that accepts TestIssueCategoryArgs and TestIssueCategoryOutput values.
@@ -1825,7 +1825,7 @@ func (o TestIssueSeverityOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type TestIssueSeverityPtrOutput struct{ *pulumi.OutputState }
 
 func (TestIssueSeverityPtrOutput) ElementType() reflect.Type {
-	return testIssueSeverityPtrType
+	return reflect.TypeOf((**TestIssueSeverity)(nil)).Elem()
 }
 
 func (o TestIssueSeverityPtrOutput) ToTestIssueSeverityPtrOutput() TestIssueSeverityPtrOutput {
@@ -1834,6 +1834,16 @@ func (o TestIssueSeverityPtrOutput) ToTestIssueSeverityPtrOutput() TestIssueSeve
 
 func (o TestIssueSeverityPtrOutput) ToTestIssueSeverityPtrOutputWithContext(ctx context.Context) TestIssueSeverityPtrOutput {
 	return o
+}
+
+func (o TestIssueSeverityPtrOutput) Elem() TestIssueSeverityOutput {
+	return o.ApplyT(func(v *TestIssueSeverity) TestIssueSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret TestIssueSeverity
+		return ret
+	}).(TestIssueSeverityOutput)
 }
 
 func (o TestIssueSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1848,16 +1858,6 @@ func (o TestIssueSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TestIssueSeverityPtrOutput) Elem() TestIssueSeverityOutput {
-	return o.ApplyT(func(v *TestIssueSeverity) TestIssueSeverity {
-		var ret TestIssueSeverity
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TestIssueSeverityOutput)
 }
 
 // TestIssueSeverityInput is an input type that accepts TestIssueSeverityArgs and TestIssueSeverityOutput values.
@@ -2050,7 +2050,7 @@ func (o TestIssueTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type TestIssueTypePtrOutput struct{ *pulumi.OutputState }
 
 func (TestIssueTypePtrOutput) ElementType() reflect.Type {
-	return testIssueTypePtrType
+	return reflect.TypeOf((**TestIssueType)(nil)).Elem()
 }
 
 func (o TestIssueTypePtrOutput) ToTestIssueTypePtrOutput() TestIssueTypePtrOutput {
@@ -2059,6 +2059,16 @@ func (o TestIssueTypePtrOutput) ToTestIssueTypePtrOutput() TestIssueTypePtrOutpu
 
 func (o TestIssueTypePtrOutput) ToTestIssueTypePtrOutputWithContext(ctx context.Context) TestIssueTypePtrOutput {
 	return o
+}
+
+func (o TestIssueTypePtrOutput) Elem() TestIssueTypeOutput {
+	return o.ApplyT(func(v *TestIssueType) TestIssueType {
+		if v != nil {
+			return *v
+		}
+		var ret TestIssueType
+		return ret
+	}).(TestIssueTypeOutput)
 }
 
 func (o TestIssueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2073,16 +2083,6 @@ func (o TestIssueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TestIssueTypePtrOutput) Elem() TestIssueTypeOutput {
-	return o.ApplyT(func(v *TestIssueType) TestIssueType {
-		var ret TestIssueType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TestIssueTypeOutput)
 }
 
 // TestIssueTypeInput is an input type that accepts TestIssueTypeArgs and TestIssueTypeOutput values.

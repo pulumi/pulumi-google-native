@@ -117,9 +117,7 @@ func (i *InstanceDatabaseIamPolicy) ToInstanceDatabaseIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseIamPolicyOutput)
 }
 
-type InstanceDatabaseIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type InstanceDatabaseIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDatabaseIamPolicy)(nil))

@@ -104,7 +104,7 @@ func (o ApiSyntaxOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type ApiSyntaxPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiSyntaxPtrOutput) ElementType() reflect.Type {
-	return apiSyntaxPtrType
+	return reflect.TypeOf((**ApiSyntax)(nil)).Elem()
 }
 
 func (o ApiSyntaxPtrOutput) ToApiSyntaxPtrOutput() ApiSyntaxPtrOutput {
@@ -113,6 +113,16 @@ func (o ApiSyntaxPtrOutput) ToApiSyntaxPtrOutput() ApiSyntaxPtrOutput {
 
 func (o ApiSyntaxPtrOutput) ToApiSyntaxPtrOutputWithContext(ctx context.Context) ApiSyntaxPtrOutput {
 	return o
+}
+
+func (o ApiSyntaxPtrOutput) Elem() ApiSyntaxOutput {
+	return o.ApplyT(func(v *ApiSyntax) ApiSyntax {
+		if v != nil {
+			return *v
+		}
+		var ret ApiSyntax
+		return ret
+	}).(ApiSyntaxOutput)
 }
 
 func (o ApiSyntaxPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o ApiSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ApiSyntaxPtrOutput) Elem() ApiSyntaxOutput {
-	return o.ApplyT(func(v *ApiSyntax) ApiSyntax {
-		var ret ApiSyntax
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ApiSyntaxOutput)
 }
 
 // ApiSyntaxInput is an input type that accepts ApiSyntaxArgs and ApiSyntaxOutput values.
@@ -275,7 +275,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -284,6 +284,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -442,7 +442,7 @@ func (o BackendRulePathTranslationOutput) ToStringPtrOutputWithContext(ctx conte
 type BackendRulePathTranslationPtrOutput struct{ *pulumi.OutputState }
 
 func (BackendRulePathTranslationPtrOutput) ElementType() reflect.Type {
-	return backendRulePathTranslationPtrType
+	return reflect.TypeOf((**BackendRulePathTranslation)(nil)).Elem()
 }
 
 func (o BackendRulePathTranslationPtrOutput) ToBackendRulePathTranslationPtrOutput() BackendRulePathTranslationPtrOutput {
@@ -451,6 +451,16 @@ func (o BackendRulePathTranslationPtrOutput) ToBackendRulePathTranslationPtrOutp
 
 func (o BackendRulePathTranslationPtrOutput) ToBackendRulePathTranslationPtrOutputWithContext(ctx context.Context) BackendRulePathTranslationPtrOutput {
 	return o
+}
+
+func (o BackendRulePathTranslationPtrOutput) Elem() BackendRulePathTranslationOutput {
+	return o.ApplyT(func(v *BackendRulePathTranslation) BackendRulePathTranslation {
+		if v != nil {
+			return *v
+		}
+		var ret BackendRulePathTranslation
+		return ret
+	}).(BackendRulePathTranslationOutput)
 }
 
 func (o BackendRulePathTranslationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -465,16 +475,6 @@ func (o BackendRulePathTranslationPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BackendRulePathTranslationPtrOutput) Elem() BackendRulePathTranslationOutput {
-	return o.ApplyT(func(v *BackendRulePathTranslation) BackendRulePathTranslation {
-		var ret BackendRulePathTranslation
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BackendRulePathTranslationOutput)
 }
 
 // BackendRulePathTranslationInput is an input type that accepts BackendRulePathTranslationArgs and BackendRulePathTranslationOutput values.
@@ -609,7 +609,7 @@ func (o EnumSyntaxOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type EnumSyntaxPtrOutput struct{ *pulumi.OutputState }
 
 func (EnumSyntaxPtrOutput) ElementType() reflect.Type {
-	return enumSyntaxPtrType
+	return reflect.TypeOf((**EnumSyntax)(nil)).Elem()
 }
 
 func (o EnumSyntaxPtrOutput) ToEnumSyntaxPtrOutput() EnumSyntaxPtrOutput {
@@ -618,6 +618,16 @@ func (o EnumSyntaxPtrOutput) ToEnumSyntaxPtrOutput() EnumSyntaxPtrOutput {
 
 func (o EnumSyntaxPtrOutput) ToEnumSyntaxPtrOutputWithContext(ctx context.Context) EnumSyntaxPtrOutput {
 	return o
+}
+
+func (o EnumSyntaxPtrOutput) Elem() EnumSyntaxOutput {
+	return o.ApplyT(func(v *EnumSyntax) EnumSyntax {
+		if v != nil {
+			return *v
+		}
+		var ret EnumSyntax
+		return ret
+	}).(EnumSyntaxOutput)
 }
 
 func (o EnumSyntaxPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -632,16 +642,6 @@ func (o EnumSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnumSyntaxPtrOutput) Elem() EnumSyntaxOutput {
-	return o.ApplyT(func(v *EnumSyntax) EnumSyntax {
-		var ret EnumSyntax
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EnumSyntaxOutput)
 }
 
 // EnumSyntaxInput is an input type that accepts EnumSyntaxArgs and EnumSyntaxOutput values.
@@ -780,7 +780,7 @@ func (o FieldCardinalityOutput) ToStringPtrOutputWithContext(ctx context.Context
 type FieldCardinalityPtrOutput struct{ *pulumi.OutputState }
 
 func (FieldCardinalityPtrOutput) ElementType() reflect.Type {
-	return fieldCardinalityPtrType
+	return reflect.TypeOf((**FieldCardinality)(nil)).Elem()
 }
 
 func (o FieldCardinalityPtrOutput) ToFieldCardinalityPtrOutput() FieldCardinalityPtrOutput {
@@ -789,6 +789,16 @@ func (o FieldCardinalityPtrOutput) ToFieldCardinalityPtrOutput() FieldCardinalit
 
 func (o FieldCardinalityPtrOutput) ToFieldCardinalityPtrOutputWithContext(ctx context.Context) FieldCardinalityPtrOutput {
 	return o
+}
+
+func (o FieldCardinalityPtrOutput) Elem() FieldCardinalityOutput {
+	return o.ApplyT(func(v *FieldCardinality) FieldCardinality {
+		if v != nil {
+			return *v
+		}
+		var ret FieldCardinality
+		return ret
+	}).(FieldCardinalityOutput)
 }
 
 func (o FieldCardinalityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -803,16 +813,6 @@ func (o FieldCardinalityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FieldCardinalityPtrOutput) Elem() FieldCardinalityOutput {
-	return o.ApplyT(func(v *FieldCardinality) FieldCardinality {
-		var ret FieldCardinality
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FieldCardinalityOutput)
 }
 
 // FieldCardinalityInput is an input type that accepts FieldCardinalityArgs and FieldCardinalityOutput values.
@@ -981,7 +981,7 @@ func (o FieldKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type FieldKindPtrOutput struct{ *pulumi.OutputState }
 
 func (FieldKindPtrOutput) ElementType() reflect.Type {
-	return fieldKindPtrType
+	return reflect.TypeOf((**FieldKind)(nil)).Elem()
 }
 
 func (o FieldKindPtrOutput) ToFieldKindPtrOutput() FieldKindPtrOutput {
@@ -990,6 +990,16 @@ func (o FieldKindPtrOutput) ToFieldKindPtrOutput() FieldKindPtrOutput {
 
 func (o FieldKindPtrOutput) ToFieldKindPtrOutputWithContext(ctx context.Context) FieldKindPtrOutput {
 	return o
+}
+
+func (o FieldKindPtrOutput) Elem() FieldKindOutput {
+	return o.ApplyT(func(v *FieldKind) FieldKind {
+		if v != nil {
+			return *v
+		}
+		var ret FieldKind
+		return ret
+	}).(FieldKindOutput)
 }
 
 func (o FieldKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1004,16 +1014,6 @@ func (o FieldKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o FieldKindPtrOutput) Elem() FieldKindOutput {
-	return o.ApplyT(func(v *FieldKind) FieldKind {
-		var ret FieldKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(FieldKindOutput)
 }
 
 // FieldKindInput is an input type that accepts FieldKindArgs and FieldKindOutput values.
@@ -1150,7 +1150,7 @@ func (o LabelDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx context
 type LabelDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
 
 func (LabelDescriptorValueTypePtrOutput) ElementType() reflect.Type {
-	return labelDescriptorValueTypePtrType
+	return reflect.TypeOf((**LabelDescriptorValueType)(nil)).Elem()
 }
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
@@ -1159,6 +1159,16 @@ func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput()
 
 func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *LabelDescriptorValueType) LabelDescriptorValueType {
+		if v != nil {
+			return *v
+		}
+		var ret LabelDescriptorValueType
+		return ret
+	}).(LabelDescriptorValueTypeOutput)
 }
 
 func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1173,16 +1183,6 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
-	return o.ApplyT(func(v *LabelDescriptorValueType) LabelDescriptorValueType {
-		var ret LabelDescriptorValueType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(LabelDescriptorValueTypeOutput)
 }
 
 // LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
@@ -1317,7 +1317,7 @@ func (o MethodSyntaxOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type MethodSyntaxPtrOutput struct{ *pulumi.OutputState }
 
 func (MethodSyntaxPtrOutput) ElementType() reflect.Type {
-	return methodSyntaxPtrType
+	return reflect.TypeOf((**MethodSyntax)(nil)).Elem()
 }
 
 func (o MethodSyntaxPtrOutput) ToMethodSyntaxPtrOutput() MethodSyntaxPtrOutput {
@@ -1326,6 +1326,16 @@ func (o MethodSyntaxPtrOutput) ToMethodSyntaxPtrOutput() MethodSyntaxPtrOutput {
 
 func (o MethodSyntaxPtrOutput) ToMethodSyntaxPtrOutputWithContext(ctx context.Context) MethodSyntaxPtrOutput {
 	return o
+}
+
+func (o MethodSyntaxPtrOutput) Elem() MethodSyntaxOutput {
+	return o.ApplyT(func(v *MethodSyntax) MethodSyntax {
+		if v != nil {
+			return *v
+		}
+		var ret MethodSyntax
+		return ret
+	}).(MethodSyntaxOutput)
 }
 
 func (o MethodSyntaxPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1340,16 +1350,6 @@ func (o MethodSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MethodSyntaxPtrOutput) Elem() MethodSyntaxOutput {
-	return o.ApplyT(func(v *MethodSyntax) MethodSyntax {
-		var ret MethodSyntax
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MethodSyntaxOutput)
 }
 
 // MethodSyntaxInput is an input type that accepts MethodSyntaxArgs and MethodSyntaxOutput values.
@@ -1496,7 +1496,7 @@ func (o MetricDescriptorLaunchStageOutput) ToStringPtrOutputWithContext(ctx cont
 type MetricDescriptorLaunchStagePtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorLaunchStagePtrOutput) ElementType() reflect.Type {
-	return metricDescriptorLaunchStagePtrType
+	return reflect.TypeOf((**MetricDescriptorLaunchStage)(nil)).Elem()
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
@@ -1505,6 +1505,16 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOu
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
+	return o.ApplyT(func(v *MetricDescriptorLaunchStage) MetricDescriptorLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorLaunchStage
+		return ret
+	}).(MetricDescriptorLaunchStageOutput)
 }
 
 func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1519,16 +1529,6 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
-	return o.ApplyT(func(v *MetricDescriptorLaunchStage) MetricDescriptorLaunchStage {
-		var ret MetricDescriptorLaunchStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorLaunchStageOutput)
 }
 
 // MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
@@ -1667,7 +1667,7 @@ func (o MetricDescriptorMetricKindOutput) ToStringPtrOutputWithContext(ctx conte
 type MetricDescriptorMetricKindPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorMetricKindPtrOutput) ElementType() reflect.Type {
-	return metricDescriptorMetricKindPtrType
+	return reflect.TypeOf((**MetricDescriptorMetricKind)(nil)).Elem()
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
@@ -1676,6 +1676,16 @@ func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutp
 
 func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetricKind) MetricDescriptorMetricKind {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetricKind
+		return ret
+	}).(MetricDescriptorMetricKindOutput)
 }
 
 func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1690,16 +1700,6 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetricKind) MetricDescriptorMetricKind {
-		var ret MetricDescriptorMetricKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorMetricKindOutput)
 }
 
 // MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
@@ -1844,7 +1844,7 @@ func (o MetricDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type MetricDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorValueTypePtrOutput) ElementType() reflect.Type {
-	return metricDescriptorValueTypePtrType
+	return reflect.TypeOf((**MetricDescriptorValueType)(nil)).Elem()
 }
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
@@ -1853,6 +1853,16 @@ func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput
 
 func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
 	return o
+}
+
+func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *MetricDescriptorValueType) MetricDescriptorValueType {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorValueType
+		return ret
+	}).(MetricDescriptorValueTypeOutput)
 }
 
 func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1867,16 +1877,6 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
-	return o.ApplyT(func(v *MetricDescriptorValueType) MetricDescriptorValueType {
-		var ret MetricDescriptorValueType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MetricDescriptorValueTypeOutput)
 }
 
 // MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
@@ -2023,7 +2023,7 @@ func (o MonitoredResourceDescriptorLaunchStageOutput) ToStringPtrOutputWithConte
 type MonitoredResourceDescriptorLaunchStagePtrOutput struct{ *pulumi.OutputState }
 
 func (MonitoredResourceDescriptorLaunchStagePtrOutput) ElementType() reflect.Type {
-	return monitoredResourceDescriptorLaunchStagePtrType
+	return reflect.TypeOf((**MonitoredResourceDescriptorLaunchStage)(nil)).Elem()
 }
 
 func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToMonitoredResourceDescriptorLaunchStagePtrOutput() MonitoredResourceDescriptorLaunchStagePtrOutput {
@@ -2032,6 +2032,16 @@ func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToMonitoredResourceDesc
 
 func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToMonitoredResourceDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MonitoredResourceDescriptorLaunchStagePtrOutput {
 	return o
+}
+
+func (o MonitoredResourceDescriptorLaunchStagePtrOutput) Elem() MonitoredResourceDescriptorLaunchStageOutput {
+	return o.ApplyT(func(v *MonitoredResourceDescriptorLaunchStage) MonitoredResourceDescriptorLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoredResourceDescriptorLaunchStage
+		return ret
+	}).(MonitoredResourceDescriptorLaunchStageOutput)
 }
 
 func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2046,16 +2056,6 @@ func (o MonitoredResourceDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MonitoredResourceDescriptorLaunchStagePtrOutput) Elem() MonitoredResourceDescriptorLaunchStageOutput {
-	return o.ApplyT(func(v *MonitoredResourceDescriptorLaunchStage) MonitoredResourceDescriptorLaunchStage {
-		var ret MonitoredResourceDescriptorLaunchStage
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MonitoredResourceDescriptorLaunchStageOutput)
 }
 
 // MonitoredResourceDescriptorLaunchStageInput is an input type that accepts MonitoredResourceDescriptorLaunchStageArgs and MonitoredResourceDescriptorLaunchStageOutput values.
@@ -2200,7 +2200,7 @@ func (o RolloutStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 type RolloutStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (RolloutStatusPtrOutput) ElementType() reflect.Type {
-	return rolloutStatusPtrType
+	return reflect.TypeOf((**RolloutStatus)(nil)).Elem()
 }
 
 func (o RolloutStatusPtrOutput) ToRolloutStatusPtrOutput() RolloutStatusPtrOutput {
@@ -2209,6 +2209,16 @@ func (o RolloutStatusPtrOutput) ToRolloutStatusPtrOutput() RolloutStatusPtrOutpu
 
 func (o RolloutStatusPtrOutput) ToRolloutStatusPtrOutputWithContext(ctx context.Context) RolloutStatusPtrOutput {
 	return o
+}
+
+func (o RolloutStatusPtrOutput) Elem() RolloutStatusOutput {
+	return o.ApplyT(func(v *RolloutStatus) RolloutStatus {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutStatus
+		return ret
+	}).(RolloutStatusOutput)
 }
 
 func (o RolloutStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2223,16 +2233,6 @@ func (o RolloutStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RolloutStatusPtrOutput) Elem() RolloutStatusOutput {
-	return o.ApplyT(func(v *RolloutStatus) RolloutStatus {
-		var ret RolloutStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RolloutStatusOutput)
 }
 
 // RolloutStatusInput is an input type that accepts RolloutStatusArgs and RolloutStatusOutput values.
@@ -2367,7 +2367,7 @@ func (o TypeSyntaxOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type TypeSyntaxPtrOutput struct{ *pulumi.OutputState }
 
 func (TypeSyntaxPtrOutput) ElementType() reflect.Type {
-	return typeSyntaxPtrType
+	return reflect.TypeOf((**TypeSyntax)(nil)).Elem()
 }
 
 func (o TypeSyntaxPtrOutput) ToTypeSyntaxPtrOutput() TypeSyntaxPtrOutput {
@@ -2376,6 +2376,16 @@ func (o TypeSyntaxPtrOutput) ToTypeSyntaxPtrOutput() TypeSyntaxPtrOutput {
 
 func (o TypeSyntaxPtrOutput) ToTypeSyntaxPtrOutputWithContext(ctx context.Context) TypeSyntaxPtrOutput {
 	return o
+}
+
+func (o TypeSyntaxPtrOutput) Elem() TypeSyntaxOutput {
+	return o.ApplyT(func(v *TypeSyntax) TypeSyntax {
+		if v != nil {
+			return *v
+		}
+		var ret TypeSyntax
+		return ret
+	}).(TypeSyntaxOutput)
 }
 
 func (o TypeSyntaxPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2390,16 +2400,6 @@ func (o TypeSyntaxPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TypeSyntaxPtrOutput) Elem() TypeSyntaxOutput {
-	return o.ApplyT(func(v *TypeSyntax) TypeSyntax {
-		var ret TypeSyntax
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TypeSyntaxOutput)
 }
 
 // TypeSyntaxInput is an input type that accepts TypeSyntaxArgs and TypeSyntaxOutput values.

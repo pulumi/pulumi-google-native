@@ -149,9 +149,7 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkOutput)
 }
 
-type BillingAccountSinkOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountSinkOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccountSink)(nil))

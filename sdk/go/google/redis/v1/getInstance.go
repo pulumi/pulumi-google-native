@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,161 @@ type LookupInstanceResult struct {
 	Tier string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode string `pulumi:"transitEncryptionMode"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+type LookupInstanceOutputArgs struct {
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+func (o LookupInstanceResultOutput) AlternativeLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AlternativeLocationId }).(pulumi.StringOutput)
+}
+
+// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
+func (o LookupInstanceResultOutput) AuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.AuthEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+func (o LookupInstanceResultOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+func (o LookupInstanceResultOutput) ConnectMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ConnectMode }).(pulumi.StringOutput)
+}
+
+// The time the instance was created.
+func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+func (o LookupInstanceResultOutput) CurrentLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentLocationId }).(pulumi.StringOutput)
+}
+
+// An arbitrary and optional user-provided name for the instance.
+func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user provided metadata
+func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+func (o LookupInstanceResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+func (o LookupInstanceResultOutput) MaintenancePolicy() MaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) MaintenancePolicyResponse { return v.MaintenancePolicy }).(MaintenancePolicyResponseOutput)
+}
+
+// Date and time of upcoming maintenance events which have been scheduled.
+func (o LookupInstanceResultOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) MaintenanceScheduleResponse { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
+}
+
+// Redis memory size in GiB.
+func (o LookupInstanceResultOutput) MemorySizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.MemorySizeGb }).(pulumi.IntOutput)
+}
+
+// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
+func (o LookupInstanceResultOutput) PersistenceIamIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PersistenceIamIdentity }).(pulumi.StringOutput)
+}
+
+// The port number of the exposed Redis endpoint.
+func (o LookupInstanceResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
+func (o LookupInstanceResultOutput) RedisConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.RedisConfigs }).(pulumi.StringMapOutput)
+}
+
+// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+func (o LookupInstanceResultOutput) RedisVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.RedisVersion }).(pulumi.StringOutput)
+}
+
+// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+func (o LookupInstanceResultOutput) ReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+// List of server CA certificates for the instance.
+func (o LookupInstanceResultOutput) ServerCaCerts() TlsCertificateResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []TlsCertificateResponse { return v.ServerCaCerts }).(TlsCertificateResponseArrayOutput)
+}
+
+// The current state of this instance.
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current status of this instance, if available.
+func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The service tier of the instance.
+func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
+func (o LookupInstanceResultOutput) TransitEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.TransitEncryptionMode }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

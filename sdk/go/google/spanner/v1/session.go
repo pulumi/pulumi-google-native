@@ -110,9 +110,7 @@ func (i *Session) ToSessionOutputWithContext(ctx context.Context) SessionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SessionOutput)
 }
 
-type SessionOutput struct {
-	*pulumi.OutputState
-}
+type SessionOutput struct{ *pulumi.OutputState }
 
 func (SessionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Session)(nil))

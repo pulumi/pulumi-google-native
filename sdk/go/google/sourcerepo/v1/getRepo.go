@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,65 @@ type LookupRepoResult struct {
 	Size string `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
 	Url string `pulumi:"url"`
+}
+
+func LookupRepoOutput(ctx *pulumi.Context, args LookupRepoOutputArgs, opts ...pulumi.InvokeOption) LookupRepoResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRepoResult, error) {
+			args := v.(LookupRepoArgs)
+			r, err := LookupRepo(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRepoResultOutput)
+}
+
+type LookupRepoOutputArgs struct {
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	RepoId  pulumi.StringInput    `pulumi:"repoId"`
+}
+
+func (LookupRepoOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRepoArgs)(nil)).Elem()
+}
+
+type LookupRepoResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRepoResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRepoResult)(nil)).Elem()
+}
+
+func (o LookupRepoResultOutput) ToLookupRepoResultOutput() LookupRepoResultOutput {
+	return o
+}
+
+func (o LookupRepoResultOutput) ToLookupRepoResultOutputWithContext(ctx context.Context) LookupRepoResultOutput {
+	return o
+}
+
+// How this repository mirrors a repository managed by another service. Read-only field.
+func (o LookupRepoResultOutput) MirrorConfig() MirrorConfigResponseOutput {
+	return o.ApplyT(func(v LookupRepoResult) MirrorConfigResponse { return v.MirrorConfig }).(MirrorConfigResponseOutput)
+}
+
+// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+func (o LookupRepoResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepoResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+func (o LookupRepoResultOutput) PubsubConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepoResult) map[string]string { return v.PubsubConfigs }).(pulumi.StringMapOutput)
+}
+
+// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
+func (o LookupRepoResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepoResult) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
+func (o LookupRepoResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepoResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRepoResultOutput{})
 }

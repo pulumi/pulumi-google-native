@@ -128,7 +128,7 @@ func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutputWithContext(ctx co
 type AggregationCrossSeriesReducerPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregationCrossSeriesReducerPtrOutput) ElementType() reflect.Type {
-	return aggregationCrossSeriesReducerPtrType
+	return reflect.TypeOf((**AggregationCrossSeriesReducer)(nil)).Elem()
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
@@ -137,6 +137,16 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerP
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
+	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationCrossSeriesReducer
+		return ret
+	}).(AggregationCrossSeriesReducerOutput)
 }
 
 func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -151,16 +161,6 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
-	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
-		var ret AggregationCrossSeriesReducer
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AggregationCrossSeriesReducerOutput)
 }
 
 // AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
@@ -329,7 +329,7 @@ func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutputWithContext(ctx cont
 type AggregationPerSeriesAlignerPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregationPerSeriesAlignerPtrOutput) ElementType() reflect.Type {
-	return aggregationPerSeriesAlignerPtrType
+	return reflect.TypeOf((**AggregationPerSeriesAligner)(nil)).Elem()
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
@@ -338,6 +338,16 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOu
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
 	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
+	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPerSeriesAligner
+		return ret
+	}).(AggregationPerSeriesAlignerOutput)
 }
 
 func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -352,16 +362,6 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
-	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
-		var ret AggregationPerSeriesAligner
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AggregationPerSeriesAlignerOutput)
 }
 
 // AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
@@ -498,7 +498,7 @@ func (o AxisScaleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 type AxisScalePtrOutput struct{ *pulumi.OutputState }
 
 func (AxisScalePtrOutput) ElementType() reflect.Type {
-	return axisScalePtrType
+	return reflect.TypeOf((**AxisScale)(nil)).Elem()
 }
 
 func (o AxisScalePtrOutput) ToAxisScalePtrOutput() AxisScalePtrOutput {
@@ -507,6 +507,16 @@ func (o AxisScalePtrOutput) ToAxisScalePtrOutput() AxisScalePtrOutput {
 
 func (o AxisScalePtrOutput) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
 	return o
+}
+
+func (o AxisScalePtrOutput) Elem() AxisScaleOutput {
+	return o.ApplyT(func(v *AxisScale) AxisScale {
+		if v != nil {
+			return *v
+		}
+		var ret AxisScale
+		return ret
+	}).(AxisScaleOutput)
 }
 
 func (o AxisScalePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -521,16 +531,6 @@ func (o AxisScalePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AxisScalePtrOutput) Elem() AxisScaleOutput {
-	return o.ApplyT(func(v *AxisScale) AxisScale {
-		var ret AxisScale
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AxisScaleOutput)
 }
 
 // AxisScaleInput is an input type that accepts AxisScaleArgs and AxisScaleOutput values.
@@ -669,7 +669,7 @@ func (o ChartOptionsModeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type ChartOptionsModePtrOutput struct{ *pulumi.OutputState }
 
 func (ChartOptionsModePtrOutput) ElementType() reflect.Type {
-	return chartOptionsModePtrType
+	return reflect.TypeOf((**ChartOptionsMode)(nil)).Elem()
 }
 
 func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput {
@@ -678,6 +678,16 @@ func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutput() ChartOptionsMod
 
 func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
 	return o
+}
+
+func (o ChartOptionsModePtrOutput) Elem() ChartOptionsModeOutput {
+	return o.ApplyT(func(v *ChartOptionsMode) ChartOptionsMode {
+		if v != nil {
+			return *v
+		}
+		var ret ChartOptionsMode
+		return ret
+	}).(ChartOptionsModeOutput)
 }
 
 func (o ChartOptionsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -692,16 +702,6 @@ func (o ChartOptionsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ChartOptionsModePtrOutput) Elem() ChartOptionsModeOutput {
-	return o.ApplyT(func(v *ChartOptionsMode) ChartOptionsMode {
-		var ret ChartOptionsMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ChartOptionsModeOutput)
 }
 
 // ChartOptionsModeInput is an input type that accepts ChartOptionsModeArgs and ChartOptionsModeOutput values.
@@ -842,7 +842,7 @@ func (o DataSetPlotTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type DataSetPlotTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DataSetPlotTypePtrOutput) ElementType() reflect.Type {
-	return dataSetPlotTypePtrType
+	return reflect.TypeOf((**DataSetPlotType)(nil)).Elem()
 }
 
 func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput {
@@ -851,6 +851,16 @@ func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutput() DataSetPlotTypePt
 
 func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
 	return o
+}
+
+func (o DataSetPlotTypePtrOutput) Elem() DataSetPlotTypeOutput {
+	return o.ApplyT(func(v *DataSetPlotType) DataSetPlotType {
+		if v != nil {
+			return *v
+		}
+		var ret DataSetPlotType
+		return ret
+	}).(DataSetPlotTypeOutput)
 }
 
 func (o DataSetPlotTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -865,16 +875,6 @@ func (o DataSetPlotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataSetPlotTypePtrOutput) Elem() DataSetPlotTypeOutput {
-	return o.ApplyT(func(v *DataSetPlotType) DataSetPlotType {
-		var ret DataSetPlotType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DataSetPlotTypeOutput)
 }
 
 // DataSetPlotTypeInput is an input type that accepts DataSetPlotTypeArgs and DataSetPlotTypeOutput values.
@@ -1011,7 +1011,7 @@ func (o DataSetTargetAxisOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type DataSetTargetAxisPtrOutput struct{ *pulumi.OutputState }
 
 func (DataSetTargetAxisPtrOutput) ElementType() reflect.Type {
-	return dataSetTargetAxisPtrType
+	return reflect.TypeOf((**DataSetTargetAxis)(nil)).Elem()
 }
 
 func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutput() DataSetTargetAxisPtrOutput {
@@ -1020,6 +1020,16 @@ func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutput() DataSetTarget
 
 func (o DataSetTargetAxisPtrOutput) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
 	return o
+}
+
+func (o DataSetTargetAxisPtrOutput) Elem() DataSetTargetAxisOutput {
+	return o.ApplyT(func(v *DataSetTargetAxis) DataSetTargetAxis {
+		if v != nil {
+			return *v
+		}
+		var ret DataSetTargetAxis
+		return ret
+	}).(DataSetTargetAxisOutput)
 }
 
 func (o DataSetTargetAxisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1034,16 +1044,6 @@ func (o DataSetTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataSetTargetAxisPtrOutput) Elem() DataSetTargetAxisOutput {
-	return o.ApplyT(func(v *DataSetTargetAxis) DataSetTargetAxis {
-		var ret DataSetTargetAxis
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DataSetTargetAxisOutput)
 }
 
 // DataSetTargetAxisInput is an input type that accepts DataSetTargetAxisArgs and DataSetTargetAxisOutput values.
@@ -1180,7 +1180,7 @@ func (o PickTimeSeriesFilterDirectionOutput) ToStringPtrOutputWithContext(ctx co
 type PickTimeSeriesFilterDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (PickTimeSeriesFilterDirectionPtrOutput) ElementType() reflect.Type {
-	return pickTimeSeriesFilterDirectionPtrType
+	return reflect.TypeOf((**PickTimeSeriesFilterDirection)(nil)).Elem()
 }
 
 func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput {
@@ -1189,6 +1189,16 @@ func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionP
 
 func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
 	return o
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) Elem() PickTimeSeriesFilterDirectionOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilterDirection) PickTimeSeriesFilterDirection {
+		if v != nil {
+			return *v
+		}
+		var ret PickTimeSeriesFilterDirection
+		return ret
+	}).(PickTimeSeriesFilterDirectionOutput)
 }
 
 func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1203,16 +1213,6 @@ func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PickTimeSeriesFilterDirectionPtrOutput) Elem() PickTimeSeriesFilterDirectionOutput {
-	return o.ApplyT(func(v *PickTimeSeriesFilterDirection) PickTimeSeriesFilterDirection {
-		var ret PickTimeSeriesFilterDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PickTimeSeriesFilterDirectionOutput)
 }
 
 // PickTimeSeriesFilterDirectionInput is an input type that accepts PickTimeSeriesFilterDirectionArgs and PickTimeSeriesFilterDirectionOutput values.
@@ -1355,7 +1355,7 @@ func (o PickTimeSeriesFilterRankingMethodOutput) ToStringPtrOutputWithContext(ct
 type PickTimeSeriesFilterRankingMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (PickTimeSeriesFilterRankingMethodPtrOutput) ElementType() reflect.Type {
-	return pickTimeSeriesFilterRankingMethodPtrType
+	return reflect.TypeOf((**PickTimeSeriesFilterRankingMethod)(nil)).Elem()
 }
 
 func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput {
@@ -1364,6 +1364,16 @@ func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankin
 
 func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
 	return o
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) Elem() PickTimeSeriesFilterRankingMethodOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilterRankingMethod) PickTimeSeriesFilterRankingMethod {
+		if v != nil {
+			return *v
+		}
+		var ret PickTimeSeriesFilterRankingMethod
+		return ret
+	}).(PickTimeSeriesFilterRankingMethodOutput)
 }
 
 func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1378,16 +1388,6 @@ func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PickTimeSeriesFilterRankingMethodPtrOutput) Elem() PickTimeSeriesFilterRankingMethodOutput {
-	return o.ApplyT(func(v *PickTimeSeriesFilterRankingMethod) PickTimeSeriesFilterRankingMethod {
-		var ret PickTimeSeriesFilterRankingMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PickTimeSeriesFilterRankingMethodOutput)
 }
 
 // PickTimeSeriesFilterRankingMethodInput is an input type that accepts PickTimeSeriesFilterRankingMethodArgs and PickTimeSeriesFilterRankingMethodOutput values.
@@ -1524,7 +1524,7 @@ func (o SparkChartViewSparkChartTypeOutput) ToStringPtrOutputWithContext(ctx con
 type SparkChartViewSparkChartTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SparkChartViewSparkChartTypePtrOutput) ElementType() reflect.Type {
-	return sparkChartViewSparkChartTypePtrType
+	return reflect.TypeOf((**SparkChartViewSparkChartType)(nil)).Elem()
 }
 
 func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput {
@@ -1533,6 +1533,16 @@ func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtr
 
 func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
 	return o
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) Elem() SparkChartViewSparkChartTypeOutput {
+	return o.ApplyT(func(v *SparkChartViewSparkChartType) SparkChartViewSparkChartType {
+		if v != nil {
+			return *v
+		}
+		var ret SparkChartViewSparkChartType
+		return ret
+	}).(SparkChartViewSparkChartTypeOutput)
 }
 
 func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1547,16 +1557,6 @@ func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SparkChartViewSparkChartTypePtrOutput) Elem() SparkChartViewSparkChartTypeOutput {
-	return o.ApplyT(func(v *SparkChartViewSparkChartType) SparkChartViewSparkChartType {
-		var ret SparkChartViewSparkChartType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SparkChartViewSparkChartTypeOutput)
 }
 
 // SparkChartViewSparkChartTypeInput is an input type that accepts SparkChartViewSparkChartTypeArgs and SparkChartViewSparkChartTypeOutput values.
@@ -1693,7 +1693,7 @@ func (o TextFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type TextFormatPtrOutput struct{ *pulumi.OutputState }
 
 func (TextFormatPtrOutput) ElementType() reflect.Type {
-	return textFormatPtrType
+	return reflect.TypeOf((**TextFormat)(nil)).Elem()
 }
 
 func (o TextFormatPtrOutput) ToTextFormatPtrOutput() TextFormatPtrOutput {
@@ -1702,6 +1702,16 @@ func (o TextFormatPtrOutput) ToTextFormatPtrOutput() TextFormatPtrOutput {
 
 func (o TextFormatPtrOutput) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
 	return o
+}
+
+func (o TextFormatPtrOutput) Elem() TextFormatOutput {
+	return o.ApplyT(func(v *TextFormat) TextFormat {
+		if v != nil {
+			return *v
+		}
+		var ret TextFormat
+		return ret
+	}).(TextFormatOutput)
 }
 
 func (o TextFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1716,16 +1726,6 @@ func (o TextFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TextFormatPtrOutput) Elem() TextFormatOutput {
-	return o.ApplyT(func(v *TextFormat) TextFormat {
-		var ret TextFormat
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TextFormatOutput)
 }
 
 // TextFormatInput is an input type that accepts TextFormatArgs and TextFormatOutput values.
@@ -1862,7 +1862,7 @@ func (o ThresholdColorOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type ThresholdColorPtrOutput struct{ *pulumi.OutputState }
 
 func (ThresholdColorPtrOutput) ElementType() reflect.Type {
-	return thresholdColorPtrType
+	return reflect.TypeOf((**ThresholdColor)(nil)).Elem()
 }
 
 func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutput() ThresholdColorPtrOutput {
@@ -1871,6 +1871,16 @@ func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutput() ThresholdColorPtrOu
 
 func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
 	return o
+}
+
+func (o ThresholdColorPtrOutput) Elem() ThresholdColorOutput {
+	return o.ApplyT(func(v *ThresholdColor) ThresholdColor {
+		if v != nil {
+			return *v
+		}
+		var ret ThresholdColor
+		return ret
+	}).(ThresholdColorOutput)
 }
 
 func (o ThresholdColorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1885,16 +1895,6 @@ func (o ThresholdColorPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ThresholdColorPtrOutput) Elem() ThresholdColorOutput {
-	return o.ApplyT(func(v *ThresholdColor) ThresholdColor {
-		var ret ThresholdColor
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ThresholdColorOutput)
 }
 
 // ThresholdColorInput is an input type that accepts ThresholdColorArgs and ThresholdColorOutput values.
@@ -2031,7 +2031,7 @@ func (o ThresholdDirectionOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ThresholdDirectionPtrOutput struct{ *pulumi.OutputState }
 
 func (ThresholdDirectionPtrOutput) ElementType() reflect.Type {
-	return thresholdDirectionPtrType
+	return reflect.TypeOf((**ThresholdDirection)(nil)).Elem()
 }
 
 func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput {
@@ -2040,6 +2040,16 @@ func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutput() ThresholdDi
 
 func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
 	return o
+}
+
+func (o ThresholdDirectionPtrOutput) Elem() ThresholdDirectionOutput {
+	return o.ApplyT(func(v *ThresholdDirection) ThresholdDirection {
+		if v != nil {
+			return *v
+		}
+		var ret ThresholdDirection
+		return ret
+	}).(ThresholdDirectionOutput)
 }
 
 func (o ThresholdDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2054,16 +2064,6 @@ func (o ThresholdDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ThresholdDirectionPtrOutput) Elem() ThresholdDirectionOutput {
-	return o.ApplyT(func(v *ThresholdDirection) ThresholdDirection {
-		var ret ThresholdDirection
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ThresholdDirectionOutput)
 }
 
 // ThresholdDirectionInput is an input type that accepts ThresholdDirectionArgs and ThresholdDirectionOutput values.
@@ -2200,7 +2200,7 @@ func (o ThresholdTargetAxisOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ThresholdTargetAxisPtrOutput struct{ *pulumi.OutputState }
 
 func (ThresholdTargetAxisPtrOutput) ElementType() reflect.Type {
-	return thresholdTargetAxisPtrType
+	return reflect.TypeOf((**ThresholdTargetAxis)(nil)).Elem()
 }
 
 func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutput() ThresholdTargetAxisPtrOutput {
@@ -2209,6 +2209,16 @@ func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutput() Threshold
 
 func (o ThresholdTargetAxisPtrOutput) ToThresholdTargetAxisPtrOutputWithContext(ctx context.Context) ThresholdTargetAxisPtrOutput {
 	return o
+}
+
+func (o ThresholdTargetAxisPtrOutput) Elem() ThresholdTargetAxisOutput {
+	return o.ApplyT(func(v *ThresholdTargetAxis) ThresholdTargetAxis {
+		if v != nil {
+			return *v
+		}
+		var ret ThresholdTargetAxis
+		return ret
+	}).(ThresholdTargetAxisOutput)
 }
 
 func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2223,16 +2233,6 @@ func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ThresholdTargetAxisPtrOutput) Elem() ThresholdTargetAxisOutput {
-	return o.ApplyT(func(v *ThresholdTargetAxis) ThresholdTargetAxis {
-		var ret ThresholdTargetAxis
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ThresholdTargetAxisOutput)
 }
 
 // ThresholdTargetAxisInput is an input type that accepts ThresholdTargetAxisArgs and ThresholdTargetAxisOutput values.

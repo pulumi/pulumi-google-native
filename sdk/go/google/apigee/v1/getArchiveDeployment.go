@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupArchiveDeploymentResult struct {
 	Operation string `pulumi:"operation"`
 	// The time at which the Archive Deployment was updated in milliseconds since the epoch.
 	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+func LookupArchiveDeploymentOutput(ctx *pulumi.Context, args LookupArchiveDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupArchiveDeploymentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupArchiveDeploymentResult, error) {
+			args := v.(LookupArchiveDeploymentArgs)
+			r, err := LookupArchiveDeployment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupArchiveDeploymentResultOutput)
+}
+
+type LookupArchiveDeploymentOutputArgs struct {
+	ArchiveDeploymentId pulumi.StringInput `pulumi:"archiveDeploymentId"`
+	EnvironmentId       pulumi.StringInput `pulumi:"environmentId"`
+	OrganizationId      pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (LookupArchiveDeploymentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupArchiveDeploymentArgs)(nil)).Elem()
+}
+
+type LookupArchiveDeploymentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupArchiveDeploymentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupArchiveDeploymentResult)(nil)).Elem()
+}
+
+func (o LookupArchiveDeploymentResultOutput) ToLookupArchiveDeploymentResultOutput() LookupArchiveDeploymentResultOutput {
+	return o
+}
+
+func (o LookupArchiveDeploymentResultOutput) ToLookupArchiveDeploymentResultOutputWithContext(ctx context.Context) LookupArchiveDeploymentResultOutput {
+	return o
+}
+
+// The time at which the Archive Deployment was created in milliseconds since the epoch.
+func (o LookupArchiveDeploymentResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Input only. The Google Cloud Storage signed URL returned from GenerateUploadUrl and used to upload the Archive zip file.
+func (o LookupArchiveDeploymentResultOutput) GcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) string { return v.GcsUri }).(pulumi.StringOutput)
+}
+
+// User-supplied key-value pairs used to organize ArchiveDeployments. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+func (o LookupArchiveDeploymentResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+func (o LookupArchiveDeploymentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
+func (o LookupArchiveDeploymentResultOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The time at which the Archive Deployment was updated in milliseconds since the epoch.
+func (o LookupArchiveDeploymentResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchiveDeploymentResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupArchiveDeploymentResultOutput{})
 }

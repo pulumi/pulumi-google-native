@@ -103,9 +103,7 @@ func (i *IdentityAwareProxyClient) ToIdentityAwareProxyClientOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityAwareProxyClientOutput)
 }
 
-type IdentityAwareProxyClientOutput struct {
-	*pulumi.OutputState
-}
+type IdentityAwareProxyClientOutput struct{ *pulumi.OutputState }
 
 func (IdentityAwareProxyClientOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityAwareProxyClient)(nil))

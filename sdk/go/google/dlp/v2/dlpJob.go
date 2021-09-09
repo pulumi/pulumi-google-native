@@ -121,9 +121,7 @@ func (i *DlpJob) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DlpJobOutput)
 }
 
-type DlpJobOutput struct {
-	*pulumi.OutputState
-}
+type DlpJobOutput struct{ *pulumi.OutputState }
 
 func (DlpJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DlpJob)(nil))

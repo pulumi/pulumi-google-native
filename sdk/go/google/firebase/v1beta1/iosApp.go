@@ -122,9 +122,7 @@ func (i *IosApp) ToIosAppOutputWithContext(ctx context.Context) IosAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IosAppOutput)
 }
 
-type IosAppOutput struct {
-	*pulumi.OutputState
-}
+type IosAppOutput struct{ *pulumi.OutputState }
 
 func (IosAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IosApp)(nil))

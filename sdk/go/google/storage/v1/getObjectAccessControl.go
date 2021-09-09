@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,115 @@ type LookupObjectAccessControlResult struct {
 	Role string `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink string `pulumi:"selfLink"`
+}
+
+func LookupObjectAccessControlOutput(ctx *pulumi.Context, args LookupObjectAccessControlOutputArgs, opts ...pulumi.InvokeOption) LookupObjectAccessControlResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupObjectAccessControlResult, error) {
+			args := v.(LookupObjectAccessControlArgs)
+			r, err := LookupObjectAccessControl(ctx, &args, opts...)
+			return *r, err
+		}).(LookupObjectAccessControlResultOutput)
+}
+
+type LookupObjectAccessControlOutputArgs struct {
+	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
+	Entity                 pulumi.StringInput    `pulumi:"entity"`
+	Generation             pulumi.StringPtrInput `pulumi:"generation"`
+	Object                 pulumi.StringInput    `pulumi:"object"`
+	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
+	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+}
+
+func (LookupObjectAccessControlOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupObjectAccessControlArgs)(nil)).Elem()
+}
+
+type LookupObjectAccessControlResultOutput struct{ *pulumi.OutputState }
+
+func (LookupObjectAccessControlResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupObjectAccessControlResult)(nil)).Elem()
+}
+
+func (o LookupObjectAccessControlResultOutput) ToLookupObjectAccessControlResultOutput() LookupObjectAccessControlResultOutput {
+	return o
+}
+
+func (o LookupObjectAccessControlResultOutput) ToLookupObjectAccessControlResultOutputWithContext(ctx context.Context) LookupObjectAccessControlResultOutput {
+	return o
+}
+
+// The name of the bucket.
+func (o LookupObjectAccessControlResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The domain associated with the entity, if any.
+func (o LookupObjectAccessControlResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The email address associated with the entity, if any.
+func (o LookupObjectAccessControlResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The entity holding the permission, in one of the following forms:
+// - user-userId
+// - user-email
+// - group-groupId
+// - group-email
+// - domain-domain
+// - project-team-projectId
+// - allUsers
+// - allAuthenticatedUsers Examples:
+// - The user liz@example.com would be user-liz@example.com.
+// - The group example@googlegroups.com would be group-example@googlegroups.com.
+// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+func (o LookupObjectAccessControlResultOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity, if any.
+func (o LookupObjectAccessControlResultOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the access-control entry.
+func (o LookupObjectAccessControlResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The content generation of the object, if applied to an object.
+func (o LookupObjectAccessControlResultOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+func (o LookupObjectAccessControlResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the object, if applied to an object.
+func (o LookupObjectAccessControlResultOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Object }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+func (o LookupObjectAccessControlResultOutput) ProjectTeam() ObjectAccessControlProjectTeamResponseOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) ObjectAccessControlProjectTeamResponse { return v.ProjectTeam }).(ObjectAccessControlProjectTeamResponseOutput)
+}
+
+// The access permission for the entity.
+func (o LookupObjectAccessControlResultOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The link to this access-control entry.
+func (o LookupObjectAccessControlResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObjectAccessControlResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupObjectAccessControlResultOutput{})
 }

@@ -106,7 +106,7 @@ func (o ConversationMediumOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ConversationMediumPtrOutput struct{ *pulumi.OutputState }
 
 func (ConversationMediumPtrOutput) ElementType() reflect.Type {
-	return conversationMediumPtrType
+	return reflect.TypeOf((**ConversationMedium)(nil)).Elem()
 }
 
 func (o ConversationMediumPtrOutput) ToConversationMediumPtrOutput() ConversationMediumPtrOutput {
@@ -115,6 +115,16 @@ func (o ConversationMediumPtrOutput) ToConversationMediumPtrOutput() Conversatio
 
 func (o ConversationMediumPtrOutput) ToConversationMediumPtrOutputWithContext(ctx context.Context) ConversationMediumPtrOutput {
 	return o
+}
+
+func (o ConversationMediumPtrOutput) Elem() ConversationMediumOutput {
+	return o.ApplyT(func(v *ConversationMedium) ConversationMedium {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationMedium
+		return ret
+	}).(ConversationMediumOutput)
 }
 
 func (o ConversationMediumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o ConversationMediumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConversationMediumPtrOutput) Elem() ConversationMediumOutput {
-	return o.ApplyT(func(v *ConversationMedium) ConversationMedium {
-		var ret ConversationMedium
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConversationMediumOutput)
 }
 
 // ConversationMediumInput is an input type that accepts ConversationMediumArgs and ConversationMediumOutput values.
@@ -275,7 +275,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput)
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ElementType() reflect.Type {
-	return googleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrType
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium)(nil)).Elem()
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput {
@@ -284,6 +284,16 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutp
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ToGoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput {
 	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput)
 }
 
 func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutp
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutput) Elem() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput {
-	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
-		var ret GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput)
 }
 
 // GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput is an input type that accepts GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumArgs and GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput values.
@@ -444,7 +444,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput) ToStri
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrType
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType)(nil)).Elem()
 }
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput() GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput {
@@ -453,6 +453,16 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToG
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) Elem() GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput)
 }
 
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToS
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) Elem() GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType {
-		var ret GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput)
 }
 
 // GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput is an input type that accepts GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeArgs and GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput values.
@@ -617,7 +617,7 @@ func (o PhraseMatcherRoleMatchOutput) ToStringPtrOutputWithContext(ctx context.C
 type PhraseMatcherRoleMatchPtrOutput struct{ *pulumi.OutputState }
 
 func (PhraseMatcherRoleMatchPtrOutput) ElementType() reflect.Type {
-	return phraseMatcherRoleMatchPtrType
+	return reflect.TypeOf((**PhraseMatcherRoleMatch)(nil)).Elem()
 }
 
 func (o PhraseMatcherRoleMatchPtrOutput) ToPhraseMatcherRoleMatchPtrOutput() PhraseMatcherRoleMatchPtrOutput {
@@ -626,6 +626,16 @@ func (o PhraseMatcherRoleMatchPtrOutput) ToPhraseMatcherRoleMatchPtrOutput() Phr
 
 func (o PhraseMatcherRoleMatchPtrOutput) ToPhraseMatcherRoleMatchPtrOutputWithContext(ctx context.Context) PhraseMatcherRoleMatchPtrOutput {
 	return o
+}
+
+func (o PhraseMatcherRoleMatchPtrOutput) Elem() PhraseMatcherRoleMatchOutput {
+	return o.ApplyT(func(v *PhraseMatcherRoleMatch) PhraseMatcherRoleMatch {
+		if v != nil {
+			return *v
+		}
+		var ret PhraseMatcherRoleMatch
+		return ret
+	}).(PhraseMatcherRoleMatchOutput)
 }
 
 func (o PhraseMatcherRoleMatchPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -640,16 +650,6 @@ func (o PhraseMatcherRoleMatchPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PhraseMatcherRoleMatchPtrOutput) Elem() PhraseMatcherRoleMatchOutput {
-	return o.ApplyT(func(v *PhraseMatcherRoleMatch) PhraseMatcherRoleMatch {
-		var ret PhraseMatcherRoleMatch
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PhraseMatcherRoleMatchOutput)
 }
 
 // PhraseMatcherRoleMatchInput is an input type that accepts PhraseMatcherRoleMatchArgs and PhraseMatcherRoleMatchOutput values.
@@ -786,7 +786,7 @@ func (o PhraseMatcherTypeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type PhraseMatcherTypePtrOutput struct{ *pulumi.OutputState }
 
 func (PhraseMatcherTypePtrOutput) ElementType() reflect.Type {
-	return phraseMatcherTypePtrType
+	return reflect.TypeOf((**PhraseMatcherType)(nil)).Elem()
 }
 
 func (o PhraseMatcherTypePtrOutput) ToPhraseMatcherTypePtrOutput() PhraseMatcherTypePtrOutput {
@@ -795,6 +795,16 @@ func (o PhraseMatcherTypePtrOutput) ToPhraseMatcherTypePtrOutput() PhraseMatcher
 
 func (o PhraseMatcherTypePtrOutput) ToPhraseMatcherTypePtrOutputWithContext(ctx context.Context) PhraseMatcherTypePtrOutput {
 	return o
+}
+
+func (o PhraseMatcherTypePtrOutput) Elem() PhraseMatcherTypeOutput {
+	return o.ApplyT(func(v *PhraseMatcherType) PhraseMatcherType {
+		if v != nil {
+			return *v
+		}
+		var ret PhraseMatcherType
+		return ret
+	}).(PhraseMatcherTypeOutput)
 }
 
 func (o PhraseMatcherTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -809,16 +819,6 @@ func (o PhraseMatcherTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PhraseMatcherTypePtrOutput) Elem() PhraseMatcherTypeOutput {
-	return o.ApplyT(func(v *PhraseMatcherType) PhraseMatcherType {
-		var ret PhraseMatcherType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PhraseMatcherTypeOutput)
 }
 
 // PhraseMatcherTypeInput is an input type that accepts PhraseMatcherTypeArgs and PhraseMatcherTypeOutput values.

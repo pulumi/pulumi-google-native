@@ -134,9 +134,7 @@ func (i *Change) ToChangeOutputWithContext(ctx context.Context) ChangeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeOutput)
 }
 
-type ChangeOutput struct {
-	*pulumi.OutputState
-}
+type ChangeOutput struct{ *pulumi.OutputState }
 
 func (ChangeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Change)(nil))

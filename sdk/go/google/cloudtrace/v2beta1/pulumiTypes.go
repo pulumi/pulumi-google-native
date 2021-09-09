@@ -106,7 +106,7 @@ func (o OutputConfigOutput) ToOutputConfigPtrOutput() OutputConfigPtrOutput {
 }
 
 func (o OutputConfigOutput) ToOutputConfigPtrOutputWithContext(ctx context.Context) OutputConfigPtrOutput {
-	return o.ApplyT(func(v OutputConfig) *OutputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputConfig) *OutputConfig {
 		return &v
 	}).(OutputConfigPtrOutput)
 }
@@ -131,7 +131,13 @@ func (o OutputConfigPtrOutput) ToOutputConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o OutputConfigPtrOutput) Elem() OutputConfigOutput {
-	return o.ApplyT(func(v *OutputConfig) OutputConfig { return *v }).(OutputConfigOutput)
+	return o.ApplyT(func(v *OutputConfig) OutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OutputConfig
+		return ret
+	}).(OutputConfigOutput)
 }
 
 // The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -240,7 +246,7 @@ func (o OutputConfigResponseOutput) ToOutputConfigResponsePtrOutput() OutputConf
 }
 
 func (o OutputConfigResponseOutput) ToOutputConfigResponsePtrOutputWithContext(ctx context.Context) OutputConfigResponsePtrOutput {
-	return o.ApplyT(func(v OutputConfigResponse) *OutputConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutputConfigResponse) *OutputConfigResponse {
 		return &v
 	}).(OutputConfigResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o OutputConfigResponsePtrOutput) ToOutputConfigResponsePtrOutputWithContex
 }
 
 func (o OutputConfigResponsePtrOutput) Elem() OutputConfigResponseOutput {
-	return o.ApplyT(func(v *OutputConfigResponse) OutputConfigResponse { return *v }).(OutputConfigResponseOutput)
+	return o.ApplyT(func(v *OutputConfigResponse) OutputConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OutputConfigResponse
+		return ret
+	}).(OutputConfigResponseOutput)
 }
 
 // The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"

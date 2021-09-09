@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -279,7 +279,7 @@ func (o ContactSettingsPrivacyOutput) ToStringPtrOutputWithContext(ctx context.C
 type ContactSettingsPrivacyPtrOutput struct{ *pulumi.OutputState }
 
 func (ContactSettingsPrivacyPtrOutput) ElementType() reflect.Type {
-	return contactSettingsPrivacyPtrType
+	return reflect.TypeOf((**ContactSettingsPrivacy)(nil)).Elem()
 }
 
 func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput {
@@ -288,6 +288,16 @@ func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutput() Con
 
 func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
 	return o
+}
+
+func (o ContactSettingsPrivacyPtrOutput) Elem() ContactSettingsPrivacyOutput {
+	return o.ApplyT(func(v *ContactSettingsPrivacy) ContactSettingsPrivacy {
+		if v != nil {
+			return *v
+		}
+		var ret ContactSettingsPrivacy
+		return ret
+	}).(ContactSettingsPrivacyOutput)
 }
 
 func (o ContactSettingsPrivacyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -302,16 +312,6 @@ func (o ContactSettingsPrivacyPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ContactSettingsPrivacyPtrOutput) Elem() ContactSettingsPrivacyOutput {
-	return o.ApplyT(func(v *ContactSettingsPrivacy) ContactSettingsPrivacy {
-		var ret ContactSettingsPrivacy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ContactSettingsPrivacyOutput)
 }
 
 // ContactSettingsPrivacyInput is an input type that accepts ContactSettingsPrivacyArgs and ContactSettingsPrivacyOutput values.
@@ -468,7 +468,7 @@ func (o DsRecordAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type DsRecordAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (DsRecordAlgorithmPtrOutput) ElementType() reflect.Type {
-	return dsRecordAlgorithmPtrType
+	return reflect.TypeOf((**DsRecordAlgorithm)(nil)).Elem()
 }
 
 func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput {
@@ -477,6 +477,16 @@ func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutput() DsRecordAlgor
 
 func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
 	return o
+}
+
+func (o DsRecordAlgorithmPtrOutput) Elem() DsRecordAlgorithmOutput {
+	return o.ApplyT(func(v *DsRecordAlgorithm) DsRecordAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret DsRecordAlgorithm
+		return ret
+	}).(DsRecordAlgorithmOutput)
 }
 
 func (o DsRecordAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -491,16 +501,6 @@ func (o DsRecordAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DsRecordAlgorithmPtrOutput) Elem() DsRecordAlgorithmOutput {
-	return o.ApplyT(func(v *DsRecordAlgorithm) DsRecordAlgorithm {
-		var ret DsRecordAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DsRecordAlgorithmOutput)
 }
 
 // DsRecordAlgorithmInput is an input type that accepts DsRecordAlgorithmArgs and DsRecordAlgorithmOutput values.
@@ -641,7 +641,7 @@ func (o DsRecordDigestTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type DsRecordDigestTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DsRecordDigestTypePtrOutput) ElementType() reflect.Type {
-	return dsRecordDigestTypePtrType
+	return reflect.TypeOf((**DsRecordDigestType)(nil)).Elem()
 }
 
 func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput {
@@ -650,6 +650,16 @@ func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutput() DsRecordDig
 
 func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
 	return o
+}
+
+func (o DsRecordDigestTypePtrOutput) Elem() DsRecordDigestTypeOutput {
+	return o.ApplyT(func(v *DsRecordDigestType) DsRecordDigestType {
+		if v != nil {
+			return *v
+		}
+		var ret DsRecordDigestType
+		return ret
+	}).(DsRecordDigestTypeOutput)
 }
 
 func (o DsRecordDigestTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -664,16 +674,6 @@ func (o DsRecordDigestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DsRecordDigestTypePtrOutput) Elem() DsRecordDigestTypeOutput {
-	return o.ApplyT(func(v *DsRecordDigestType) DsRecordDigestType {
-		var ret DsRecordDigestType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DsRecordDigestTypeOutput)
 }
 
 // DsRecordDigestTypeInput is an input type that accepts DsRecordDigestTypeArgs and DsRecordDigestTypeOutput values.
@@ -810,7 +810,7 @@ func (o GoogleDomainsDnsDsStateOutput) ToStringPtrOutputWithContext(ctx context.
 type GoogleDomainsDnsDsStatePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleDomainsDnsDsStatePtrOutput) ElementType() reflect.Type {
-	return googleDomainsDnsDsStatePtrType
+	return reflect.TypeOf((**GoogleDomainsDnsDsState)(nil)).Elem()
 }
 
 func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput {
@@ -819,6 +819,16 @@ func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutput() G
 
 func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
 	return o
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) Elem() GoogleDomainsDnsDsStateOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsDsState) GoogleDomainsDnsDsState {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDomainsDnsDsState
+		return ret
+	}).(GoogleDomainsDnsDsStateOutput)
 }
 
 func (o GoogleDomainsDnsDsStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -833,16 +843,6 @@ func (o GoogleDomainsDnsDsStatePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleDomainsDnsDsStatePtrOutput) Elem() GoogleDomainsDnsDsStateOutput {
-	return o.ApplyT(func(v *GoogleDomainsDnsDsState) GoogleDomainsDnsDsState {
-		var ret GoogleDomainsDnsDsState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleDomainsDnsDsStateOutput)
 }
 
 // GoogleDomainsDnsDsStateInput is an input type that accepts GoogleDomainsDnsDsStateArgs and GoogleDomainsDnsDsStateOutput values.
@@ -979,7 +979,7 @@ func (o ManagementSettingsTransferLockStateOutput) ToStringPtrOutputWithContext(
 type ManagementSettingsTransferLockStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagementSettingsTransferLockStatePtrOutput) ElementType() reflect.Type {
-	return managementSettingsTransferLockStatePtrType
+	return reflect.TypeOf((**ManagementSettingsTransferLockState)(nil)).Elem()
 }
 
 func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput {
@@ -988,6 +988,16 @@ func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransf
 
 func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
 	return o
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) Elem() ManagementSettingsTransferLockStateOutput {
+	return o.ApplyT(func(v *ManagementSettingsTransferLockState) ManagementSettingsTransferLockState {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementSettingsTransferLockState
+		return ret
+	}).(ManagementSettingsTransferLockStateOutput)
 }
 
 func (o ManagementSettingsTransferLockStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1002,16 +1012,6 @@ func (o ManagementSettingsTransferLockStatePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManagementSettingsTransferLockStatePtrOutput) Elem() ManagementSettingsTransferLockStateOutput {
-	return o.ApplyT(func(v *ManagementSettingsTransferLockState) ManagementSettingsTransferLockState {
-		var ret ManagementSettingsTransferLockState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManagementSettingsTransferLockStateOutput)
 }
 
 // ManagementSettingsTransferLockStateInput is an input type that accepts ManagementSettingsTransferLockStateArgs and ManagementSettingsTransferLockStateOutput values.
@@ -1145,7 +1145,7 @@ func (o RegistrationContactNoticesItemOutput) ToStringPtrOutputWithContext(ctx c
 type RegistrationContactNoticesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistrationContactNoticesItemPtrOutput) ElementType() reflect.Type {
-	return registrationContactNoticesItemPtrType
+	return reflect.TypeOf((**RegistrationContactNoticesItem)(nil)).Elem()
 }
 
 func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput {
@@ -1154,6 +1154,16 @@ func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesIte
 
 func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
 	return o
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) Elem() RegistrationContactNoticesItemOutput {
+	return o.ApplyT(func(v *RegistrationContactNoticesItem) RegistrationContactNoticesItem {
+		if v != nil {
+			return *v
+		}
+		var ret RegistrationContactNoticesItem
+		return ret
+	}).(RegistrationContactNoticesItemOutput)
 }
 
 func (o RegistrationContactNoticesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1168,16 +1178,6 @@ func (o RegistrationContactNoticesItemPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegistrationContactNoticesItemPtrOutput) Elem() RegistrationContactNoticesItemOutput {
-	return o.ApplyT(func(v *RegistrationContactNoticesItem) RegistrationContactNoticesItem {
-		var ret RegistrationContactNoticesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegistrationContactNoticesItemOutput)
 }
 
 // RegistrationContactNoticesItemInput is an input type that accepts RegistrationContactNoticesItemArgs and RegistrationContactNoticesItemOutput values.
@@ -1258,8 +1258,8 @@ func (o RegistrationContactNoticesItemArrayOutput) ToRegistrationContactNoticesI
 }
 
 func (o RegistrationContactNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationContactNoticesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationContactNoticesItemOutput {
-		return vs[0].([]RegistrationContactNoticesItem)[vs[1].(int)].ToRegistrationContactNoticesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationContactNoticesItem {
+		return vs[0].([]RegistrationContactNoticesItem)[vs[1].(int)]
 	}).(RegistrationContactNoticesItemOutput)
 }
 
@@ -1356,7 +1356,7 @@ func (o RegistrationDomainNoticesItemOutput) ToStringPtrOutputWithContext(ctx co
 type RegistrationDomainNoticesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistrationDomainNoticesItemPtrOutput) ElementType() reflect.Type {
-	return registrationDomainNoticesItemPtrType
+	return reflect.TypeOf((**RegistrationDomainNoticesItem)(nil)).Elem()
 }
 
 func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput {
@@ -1365,6 +1365,16 @@ func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemP
 
 func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
 	return o
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) Elem() RegistrationDomainNoticesItemOutput {
+	return o.ApplyT(func(v *RegistrationDomainNoticesItem) RegistrationDomainNoticesItem {
+		if v != nil {
+			return *v
+		}
+		var ret RegistrationDomainNoticesItem
+		return ret
+	}).(RegistrationDomainNoticesItemOutput)
 }
 
 func (o RegistrationDomainNoticesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1379,16 +1389,6 @@ func (o RegistrationDomainNoticesItemPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RegistrationDomainNoticesItemPtrOutput) Elem() RegistrationDomainNoticesItemOutput {
-	return o.ApplyT(func(v *RegistrationDomainNoticesItem) RegistrationDomainNoticesItem {
-		var ret RegistrationDomainNoticesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RegistrationDomainNoticesItemOutput)
 }
 
 // RegistrationDomainNoticesItemInput is an input type that accepts RegistrationDomainNoticesItemArgs and RegistrationDomainNoticesItemOutput values.
@@ -1469,8 +1469,8 @@ func (o RegistrationDomainNoticesItemArrayOutput) ToRegistrationDomainNoticesIte
 }
 
 func (o RegistrationDomainNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationDomainNoticesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationDomainNoticesItemOutput {
-		return vs[0].([]RegistrationDomainNoticesItem)[vs[1].(int)].ToRegistrationDomainNoticesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationDomainNoticesItem {
+		return vs[0].([]RegistrationDomainNoticesItem)[vs[1].(int)]
 	}).(RegistrationDomainNoticesItemOutput)
 }
 

@@ -118,7 +118,7 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput) ToGoogleCloudBilli
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput) ToGoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput)
 }
@@ -161,7 +161,11 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) ToGoogleCloudBi
 
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule) GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput)
 }
 
@@ -313,7 +317,7 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput) ToGoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrOutput)
 }
@@ -358,7 +362,11 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse) GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput)
 }
 
@@ -502,7 +510,7 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountOutput) ToGoogleCloudBilling
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetAmount) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1BudgetAmount) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput)
 }
@@ -535,7 +543,11 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput) ToGoogleCloudBill
 
 func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1BudgetAmountOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetAmount) GoogleCloudBillingBudgetsV1beta1BudgetAmount {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1BudgetAmount
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1BudgetAmountOutput)
 }
 
@@ -659,7 +671,7 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountResponseOutput) ToGoogleClou
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountResponseOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse) *GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse) *GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutput)
 }
@@ -694,7 +706,11 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutput) ToGoogleC
 
 func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1BudgetAmountResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse) GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1BudgetAmountResponseOutput)
 }
 
@@ -818,7 +834,7 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput) ToGoogleCloudBilling
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput) ToGoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriod) *GoogleCloudBillingBudgetsV1beta1CustomPeriod {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1CustomPeriod) *GoogleCloudBillingBudgetsV1beta1CustomPeriod {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput)
 }
@@ -849,7 +865,11 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput) ToGoogleCloudBill
 
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1CustomPeriod) GoogleCloudBillingBudgetsV1beta1CustomPeriod {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1CustomPeriod
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput)
 }
 
@@ -973,7 +993,7 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput) ToGoogleClou
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput) ToGoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) *GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) *GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput)
 }
@@ -1006,7 +1026,11 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput) ToGoogleC
 
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput)
 }
 
@@ -1154,7 +1178,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) ToGoogleCloudBillingBudget
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) ToGoogleCloudBillingBudgetsV1beta1FilterPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) *GoogleCloudBillingBudgetsV1beta1Filter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1Filter) *GoogleCloudBillingBudgetsV1beta1Filter {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1FilterPtrOutput)
 }
@@ -1220,7 +1244,13 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) ToGoogleCloudBillingBud
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) GoogleCloudBillingBudgetsV1beta1Filter { return *v }).(GoogleCloudBillingBudgetsV1beta1FilterOutput)
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) GoogleCloudBillingBudgetsV1beta1Filter {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1Filter
+		return ret
+	}).(GoogleCloudBillingBudgetsV1beta1FilterOutput)
 }
 
 // Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
@@ -1427,7 +1457,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) ToGoogleCloudBilli
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) ToGoogleCloudBillingBudgetsV1beta1FilterResponsePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1FilterResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1FilterResponse) *GoogleCloudBillingBudgetsV1beta1FilterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1FilterResponse) *GoogleCloudBillingBudgetsV1beta1FilterResponse {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1FilterResponsePtrOutput)
 }
@@ -1490,7 +1520,11 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterResponsePtrOutput) ToGoogleCloudBi
 
 func (o GoogleCloudBillingBudgetsV1beta1FilterResponsePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1FilterResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1FilterResponse) GoogleCloudBillingBudgetsV1beta1FilterResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1FilterResponse
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1FilterResponseOutput)
 }
 
@@ -1666,7 +1700,7 @@ func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountOutput) ToGoogleCloudBil
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountOutput) ToGoogleCloudBillingBudgetsV1beta1LastPeriodAmountPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1LastPeriodAmountPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1LastPeriodAmount) *GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1LastPeriodAmount) *GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1LastPeriodAmountPtrOutput)
 }
@@ -1687,7 +1721,11 @@ func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1LastPeriodAmountOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1LastPeriodAmount) GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1LastPeriodAmount
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1LastPeriodAmountOutput)
 }
 
@@ -1783,7 +1821,7 @@ func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponseOutput) ToGoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse) *GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse) *GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse {
 		return &v
 	}).(GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutput)
 }
@@ -1804,7 +1842,11 @@ func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutput) ToGoo
 
 func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse) GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse
+		return ret
 	}).(GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponseOutput)
 }
 
@@ -2132,7 +2174,7 @@ func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutpu
 }
 
 func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *GoogleTypeDate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDate) *GoogleTypeDate {
 		return &v
 	}).(GoogleTypeDatePtrOutput)
 }
@@ -2167,7 +2209,13 @@ func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx contex
 }
 
 func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate { return *v }).(GoogleTypeDateOutput)
+	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDate
+		return ret
+	}).(GoogleTypeDateOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -2304,7 +2352,7 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() Google
 }
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDateResponse) *GoogleTypeDateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateResponse) *GoogleTypeDateResponse {
 		return &v
 	}).(GoogleTypeDateResponsePtrOutput)
 }
@@ -2339,7 +2387,13 @@ func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithCo
 }
 
 func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse { return *v }).(GoogleTypeDateResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDateResponse
+		return ret
+	}).(GoogleTypeDateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -2476,7 +2530,7 @@ func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOu
 }
 
 func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
-	return o.ApplyT(func(v GoogleTypeMoney) *GoogleTypeMoney {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoney) *GoogleTypeMoney {
 		return &v
 	}).(GoogleTypeMoneyPtrOutput)
 }
@@ -2511,7 +2565,13 @@ func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx cont
 }
 
 func (o GoogleTypeMoneyPtrOutput) Elem() GoogleTypeMoneyOutput {
-	return o.ApplyT(func(v *GoogleTypeMoney) GoogleTypeMoney { return *v }).(GoogleTypeMoneyOutput)
+	return o.ApplyT(func(v *GoogleTypeMoney) GoogleTypeMoney {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeMoney
+		return ret
+	}).(GoogleTypeMoneyOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.
@@ -2648,7 +2708,7 @@ func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutput() Goog
 }
 
 func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeMoneyResponse) *GoogleTypeMoneyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeMoneyResponse) *GoogleTypeMoneyResponse {
 		return &v
 	}).(GoogleTypeMoneyResponsePtrOutput)
 }
@@ -2683,7 +2743,13 @@ func (o GoogleTypeMoneyResponsePtrOutput) ToGoogleTypeMoneyResponsePtrOutputWith
 }
 
 func (o GoogleTypeMoneyResponsePtrOutput) Elem() GoogleTypeMoneyResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeMoneyResponse) GoogleTypeMoneyResponse { return *v }).(GoogleTypeMoneyResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) GoogleTypeMoneyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeMoneyResponse
+		return ret
+	}).(GoogleTypeMoneyResponseOutput)
 }
 
 // The three-letter currency code defined in ISO 4217.

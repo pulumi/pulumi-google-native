@@ -124,9 +124,7 @@ func (i *MigrationJobIamPolicy) ToMigrationJobIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobIamPolicyOutput)
 }
 
-type MigrationJobIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type MigrationJobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MigrationJobIamPolicy)(nil))

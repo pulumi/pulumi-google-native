@@ -117,9 +117,7 @@ func (i *Sharedflow) ToSharedflowOutputWithContext(ctx context.Context) Sharedfl
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowOutput)
 }
 
-type SharedflowOutput struct {
-	*pulumi.OutputState
-}
+type SharedflowOutput struct{ *pulumi.OutputState }
 
 func (SharedflowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Sharedflow)(nil))

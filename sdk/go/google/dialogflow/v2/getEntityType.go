@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,72 @@ type LookupEntityTypeResult struct {
 	Kind string `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name string `pulumi:"name"`
+}
+
+func LookupEntityTypeOutput(ctx *pulumi.Context, args LookupEntityTypeOutputArgs, opts ...pulumi.InvokeOption) LookupEntityTypeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEntityTypeResult, error) {
+			args := v.(LookupEntityTypeArgs)
+			r, err := LookupEntityType(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEntityTypeResultOutput)
+}
+
+type LookupEntityTypeOutputArgs struct {
+	EntityTypeId pulumi.StringInput    `pulumi:"entityTypeId"`
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	Location     pulumi.StringInput    `pulumi:"location"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupEntityTypeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEntityTypeArgs)(nil)).Elem()
+}
+
+type LookupEntityTypeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEntityTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEntityTypeResult)(nil)).Elem()
+}
+
+func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutput() LookupEntityTypeResultOutput {
+	return o
+}
+
+func (o LookupEntityTypeResultOutput) ToLookupEntityTypeResultOutputWithContext(ctx context.Context) LookupEntityTypeResultOutput {
+	return o
+}
+
+// Optional. Indicates whether the entity type can be automatically expanded.
+func (o LookupEntityTypeResultOutput) AutoExpansionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) string { return v.AutoExpansionMode }).(pulumi.StringOutput)
+}
+
+// The name of the entity type.
+func (o LookupEntityTypeResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Enables fuzzy entity extraction during classification.
+func (o LookupEntityTypeResultOutput) EnableFuzzyExtraction() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) bool { return v.EnableFuzzyExtraction }).(pulumi.BoolOutput)
+}
+
+// Optional. The collection of entity entries associated with the entity type.
+func (o LookupEntityTypeResultOutput) Entities() GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) []GoogleCloudDialogflowV2EntityTypeEntityResponse { return v.Entities }).(GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput)
+}
+
+// Indicates the kind of entity type.
+func (o LookupEntityTypeResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
+func (o LookupEntityTypeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTypeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEntityTypeResultOutput{})
 }

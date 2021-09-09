@@ -127,9 +127,7 @@ func (i *NetworkEdgeSecurityService) ToNetworkEdgeSecurityServiceOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEdgeSecurityServiceOutput)
 }
 
-type NetworkEdgeSecurityServiceOutput struct {
-	*pulumi.OutputState
-}
+type NetworkEdgeSecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (NetworkEdgeSecurityServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkEdgeSecurityService)(nil))

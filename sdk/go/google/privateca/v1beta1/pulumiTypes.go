@@ -110,7 +110,7 @@ func (o AccessUrlsResponseOutput) ToAccessUrlsResponsePtrOutput() AccessUrlsResp
 }
 
 func (o AccessUrlsResponseOutput) ToAccessUrlsResponsePtrOutputWithContext(ctx context.Context) AccessUrlsResponsePtrOutput {
-	return o.ApplyT(func(v AccessUrlsResponse) *AccessUrlsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessUrlsResponse) *AccessUrlsResponse {
 		return &v
 	}).(AccessUrlsResponsePtrOutput)
 }
@@ -140,7 +140,13 @@ func (o AccessUrlsResponsePtrOutput) ToAccessUrlsResponsePtrOutputWithContext(ct
 }
 
 func (o AccessUrlsResponsePtrOutput) Elem() AccessUrlsResponseOutput {
-	return o.ApplyT(func(v *AccessUrlsResponse) AccessUrlsResponse { return *v }).(AccessUrlsResponseOutput)
+	return o.ApplyT(func(v *AccessUrlsResponse) AccessUrlsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccessUrlsResponse
+		return ret
+	}).(AccessUrlsResponseOutput)
 }
 
 // The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
@@ -256,7 +262,7 @@ func (o AllowedConfigListOutput) ToAllowedConfigListPtrOutput() AllowedConfigLis
 }
 
 func (o AllowedConfigListOutput) ToAllowedConfigListPtrOutputWithContext(ctx context.Context) AllowedConfigListPtrOutput {
-	return o.ApplyT(func(v AllowedConfigList) *AllowedConfigList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedConfigList) *AllowedConfigList {
 		return &v
 	}).(AllowedConfigListPtrOutput)
 }
@@ -281,7 +287,13 @@ func (o AllowedConfigListPtrOutput) ToAllowedConfigListPtrOutputWithContext(ctx 
 }
 
 func (o AllowedConfigListPtrOutput) Elem() AllowedConfigListOutput {
-	return o.ApplyT(func(v *AllowedConfigList) AllowedConfigList { return *v }).(AllowedConfigListOutput)
+	return o.ApplyT(func(v *AllowedConfigList) AllowedConfigList {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedConfigList
+		return ret
+	}).(AllowedConfigListOutput)
 }
 
 // All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
@@ -387,7 +399,7 @@ func (o AllowedConfigListResponseOutput) ToAllowedConfigListResponsePtrOutput() 
 }
 
 func (o AllowedConfigListResponseOutput) ToAllowedConfigListResponsePtrOutputWithContext(ctx context.Context) AllowedConfigListResponsePtrOutput {
-	return o.ApplyT(func(v AllowedConfigListResponse) *AllowedConfigListResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedConfigListResponse) *AllowedConfigListResponse {
 		return &v
 	}).(AllowedConfigListResponsePtrOutput)
 }
@@ -412,7 +424,13 @@ func (o AllowedConfigListResponsePtrOutput) ToAllowedConfigListResponsePtrOutput
 }
 
 func (o AllowedConfigListResponsePtrOutput) Elem() AllowedConfigListResponseOutput {
-	return o.ApplyT(func(v *AllowedConfigListResponse) AllowedConfigListResponse { return *v }).(AllowedConfigListResponseOutput)
+	return o.ApplyT(func(v *AllowedConfigListResponse) AllowedConfigListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedConfigListResponse
+		return ret
+	}).(AllowedConfigListResponseOutput)
 }
 
 // All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
@@ -541,7 +559,7 @@ func (o AllowedSubjectAltNamesOutput) ToAllowedSubjectAltNamesPtrOutput() Allowe
 }
 
 func (o AllowedSubjectAltNamesOutput) ToAllowedSubjectAltNamesPtrOutputWithContext(ctx context.Context) AllowedSubjectAltNamesPtrOutput {
-	return o.ApplyT(func(v AllowedSubjectAltNames) *AllowedSubjectAltNames {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedSubjectAltNames) *AllowedSubjectAltNames {
 		return &v
 	}).(AllowedSubjectAltNamesPtrOutput)
 }
@@ -591,7 +609,13 @@ func (o AllowedSubjectAltNamesPtrOutput) ToAllowedSubjectAltNamesPtrOutputWithCo
 }
 
 func (o AllowedSubjectAltNamesPtrOutput) Elem() AllowedSubjectAltNamesOutput {
-	return o.ApplyT(func(v *AllowedSubjectAltNames) AllowedSubjectAltNames { return *v }).(AllowedSubjectAltNamesOutput)
+	return o.ApplyT(func(v *AllowedSubjectAltNames) AllowedSubjectAltNames {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedSubjectAltNames
+		return ret
+	}).(AllowedSubjectAltNamesOutput)
 }
 
 // Optional. Specifies if to allow custom X509Extension values.
@@ -770,7 +794,7 @@ func (o AllowedSubjectAltNamesResponseOutput) ToAllowedSubjectAltNamesResponsePt
 }
 
 func (o AllowedSubjectAltNamesResponseOutput) ToAllowedSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) AllowedSubjectAltNamesResponsePtrOutput {
-	return o.ApplyT(func(v AllowedSubjectAltNamesResponse) *AllowedSubjectAltNamesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedSubjectAltNamesResponse) *AllowedSubjectAltNamesResponse {
 		return &v
 	}).(AllowedSubjectAltNamesResponsePtrOutput)
 }
@@ -820,7 +844,13 @@ func (o AllowedSubjectAltNamesResponsePtrOutput) ToAllowedSubjectAltNamesRespons
 }
 
 func (o AllowedSubjectAltNamesResponsePtrOutput) Elem() AllowedSubjectAltNamesResponseOutput {
-	return o.ApplyT(func(v *AllowedSubjectAltNamesResponse) AllowedSubjectAltNamesResponse { return *v }).(AllowedSubjectAltNamesResponseOutput)
+	return o.ApplyT(func(v *AllowedSubjectAltNamesResponse) AllowedSubjectAltNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedSubjectAltNamesResponse
+		return ret
+	}).(AllowedSubjectAltNamesResponseOutput)
 }
 
 // Optional. Specifies if to allow custom X509Extension values.
@@ -1655,7 +1685,7 @@ func (o CaOptionsOutput) ToCaOptionsPtrOutput() CaOptionsPtrOutput {
 }
 
 func (o CaOptionsOutput) ToCaOptionsPtrOutputWithContext(ctx context.Context) CaOptionsPtrOutput {
-	return o.ApplyT(func(v CaOptions) *CaOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaOptions) *CaOptions {
 		return &v
 	}).(CaOptionsPtrOutput)
 }
@@ -1685,7 +1715,13 @@ func (o CaOptionsPtrOutput) ToCaOptionsPtrOutputWithContext(ctx context.Context)
 }
 
 func (o CaOptionsPtrOutput) Elem() CaOptionsOutput {
-	return o.ApplyT(func(v *CaOptions) CaOptions { return *v }).(CaOptionsOutput)
+	return o.ApplyT(func(v *CaOptions) CaOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CaOptions
+		return ret
+	}).(CaOptionsOutput)
 }
 
 // Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
@@ -1808,7 +1844,7 @@ func (o CaOptionsResponseOutput) ToCaOptionsResponsePtrOutput() CaOptionsRespons
 }
 
 func (o CaOptionsResponseOutput) ToCaOptionsResponsePtrOutputWithContext(ctx context.Context) CaOptionsResponsePtrOutput {
-	return o.ApplyT(func(v CaOptionsResponse) *CaOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaOptionsResponse) *CaOptionsResponse {
 		return &v
 	}).(CaOptionsResponsePtrOutput)
 }
@@ -1838,7 +1874,13 @@ func (o CaOptionsResponsePtrOutput) ToCaOptionsResponsePtrOutputWithContext(ctx 
 }
 
 func (o CaOptionsResponsePtrOutput) Elem() CaOptionsResponseOutput {
-	return o.ApplyT(func(v *CaOptionsResponse) CaOptionsResponse { return *v }).(CaOptionsResponseOutput)
+	return o.ApplyT(func(v *CaOptionsResponse) CaOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CaOptionsResponse
+		return ret
+	}).(CaOptionsResponseOutput)
 }
 
 // Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
@@ -1981,7 +2023,7 @@ func (o CertificateAuthorityPolicyOutput) ToCertificateAuthorityPolicyPtrOutput(
 }
 
 func (o CertificateAuthorityPolicyOutput) ToCertificateAuthorityPolicyPtrOutputWithContext(ctx context.Context) CertificateAuthorityPolicyPtrOutput {
-	return o.ApplyT(func(v CertificateAuthorityPolicy) *CertificateAuthorityPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityPolicy) *CertificateAuthorityPolicy {
 		return &v
 	}).(CertificateAuthorityPolicyPtrOutput)
 }
@@ -2036,7 +2078,13 @@ func (o CertificateAuthorityPolicyPtrOutput) ToCertificateAuthorityPolicyPtrOutp
 }
 
 func (o CertificateAuthorityPolicyPtrOutput) Elem() CertificateAuthorityPolicyOutput {
-	return o.ApplyT(func(v *CertificateAuthorityPolicy) CertificateAuthorityPolicy { return *v }).(CertificateAuthorityPolicyOutput)
+	return o.ApplyT(func(v *CertificateAuthorityPolicy) CertificateAuthorityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityPolicy
+		return ret
+	}).(CertificateAuthorityPolicyOutput)
 }
 
 // Optional. If any value is specified here, then all Certificates issued by the CertificateAuthority must match at least one listed value. If no value is specified, all values will be allowed for this fied. Glob patterns are also supported.
@@ -2229,7 +2277,7 @@ func (o CertificateAuthorityPolicyResponseOutput) ToCertificateAuthorityPolicyRe
 }
 
 func (o CertificateAuthorityPolicyResponseOutput) ToCertificateAuthorityPolicyResponsePtrOutputWithContext(ctx context.Context) CertificateAuthorityPolicyResponsePtrOutput {
-	return o.ApplyT(func(v CertificateAuthorityPolicyResponse) *CertificateAuthorityPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityPolicyResponse) *CertificateAuthorityPolicyResponse {
 		return &v
 	}).(CertificateAuthorityPolicyResponsePtrOutput)
 }
@@ -2288,7 +2336,13 @@ func (o CertificateAuthorityPolicyResponsePtrOutput) ToCertificateAuthorityPolic
 }
 
 func (o CertificateAuthorityPolicyResponsePtrOutput) Elem() CertificateAuthorityPolicyResponseOutput {
-	return o.ApplyT(func(v *CertificateAuthorityPolicyResponse) CertificateAuthorityPolicyResponse { return *v }).(CertificateAuthorityPolicyResponseOutput)
+	return o.ApplyT(func(v *CertificateAuthorityPolicyResponse) CertificateAuthorityPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityPolicyResponse
+		return ret
+	}).(CertificateAuthorityPolicyResponseOutput)
 }
 
 // Optional. If any value is specified here, then all Certificates issued by the CertificateAuthority must match at least one listed value. If no value is specified, all values will be allowed for this fied. Glob patterns are also supported.
@@ -2465,7 +2519,7 @@ func (o CertificateConfigOutput) ToCertificateConfigPtrOutput() CertificateConfi
 }
 
 func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
-	return o.ApplyT(func(v CertificateConfig) *CertificateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfig) *CertificateConfig {
 		return &v
 	}).(CertificateConfigPtrOutput)
 }
@@ -2500,7 +2554,13 @@ func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutputWithContext(ctx 
 }
 
 func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
-	return o.ApplyT(func(v *CertificateConfig) CertificateConfig { return *v }).(CertificateConfigOutput)
+	return o.ApplyT(func(v *CertificateConfig) CertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfig
+		return ret
+	}).(CertificateConfigOutput)
 }
 
 // Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
@@ -2637,7 +2697,7 @@ func (o CertificateConfigResponseOutput) ToCertificateConfigResponsePtrOutput() 
 }
 
 func (o CertificateConfigResponseOutput) ToCertificateConfigResponsePtrOutputWithContext(ctx context.Context) CertificateConfigResponsePtrOutput {
-	return o.ApplyT(func(v CertificateConfigResponse) *CertificateConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateConfigResponse) *CertificateConfigResponse {
 		return &v
 	}).(CertificateConfigResponsePtrOutput)
 }
@@ -2672,7 +2732,13 @@ func (o CertificateConfigResponsePtrOutput) ToCertificateConfigResponsePtrOutput
 }
 
 func (o CertificateConfigResponsePtrOutput) Elem() CertificateConfigResponseOutput {
-	return o.ApplyT(func(v *CertificateConfigResponse) CertificateConfigResponse { return *v }).(CertificateConfigResponseOutput)
+	return o.ApplyT(func(v *CertificateConfigResponse) CertificateConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateConfigResponse
+		return ret
+	}).(CertificateConfigResponseOutput)
 }
 
 // Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
@@ -2854,7 +2920,7 @@ func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponsePt
 }
 
 func (o CertificateDescriptionResponseOutput) ToCertificateDescriptionResponsePtrOutputWithContext(ctx context.Context) CertificateDescriptionResponsePtrOutput {
-	return o.ApplyT(func(v CertificateDescriptionResponse) *CertificateDescriptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateDescriptionResponse) *CertificateDescriptionResponse {
 		return &v
 	}).(CertificateDescriptionResponsePtrOutput)
 }
@@ -2914,7 +2980,13 @@ func (o CertificateDescriptionResponsePtrOutput) ToCertificateDescriptionRespons
 }
 
 func (o CertificateDescriptionResponsePtrOutput) Elem() CertificateDescriptionResponseOutput {
-	return o.ApplyT(func(v *CertificateDescriptionResponse) CertificateDescriptionResponse { return *v }).(CertificateDescriptionResponseOutput)
+	return o.ApplyT(func(v *CertificateDescriptionResponse) CertificateDescriptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateDescriptionResponse
+		return ret
+	}).(CertificateDescriptionResponseOutput)
 }
 
 // Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
@@ -3113,7 +3185,7 @@ func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponsePt
 }
 
 func (o CertificateFingerprintResponseOutput) ToCertificateFingerprintResponsePtrOutputWithContext(ctx context.Context) CertificateFingerprintResponsePtrOutput {
-	return o.ApplyT(func(v CertificateFingerprintResponse) *CertificateFingerprintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateFingerprintResponse) *CertificateFingerprintResponse {
 		return &v
 	}).(CertificateFingerprintResponsePtrOutput)
 }
@@ -3138,7 +3210,13 @@ func (o CertificateFingerprintResponsePtrOutput) ToCertificateFingerprintRespons
 }
 
 func (o CertificateFingerprintResponsePtrOutput) Elem() CertificateFingerprintResponseOutput {
-	return o.ApplyT(func(v *CertificateFingerprintResponse) CertificateFingerprintResponse { return *v }).(CertificateFingerprintResponseOutput)
+	return o.ApplyT(func(v *CertificateFingerprintResponse) CertificateFingerprintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateFingerprintResponse
+		return ret
+	}).(CertificateFingerprintResponseOutput)
 }
 
 // The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
@@ -3259,7 +3337,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -3299,7 +3377,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3540,7 +3624,7 @@ func (o ExtendedKeyUsageOptionsOutput) ToExtendedKeyUsageOptionsPtrOutput() Exte
 }
 
 func (o ExtendedKeyUsageOptionsOutput) ToExtendedKeyUsageOptionsPtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsPtrOutput {
-	return o.ApplyT(func(v ExtendedKeyUsageOptions) *ExtendedKeyUsageOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedKeyUsageOptions) *ExtendedKeyUsageOptions {
 		return &v
 	}).(ExtendedKeyUsageOptionsPtrOutput)
 }
@@ -3590,7 +3674,13 @@ func (o ExtendedKeyUsageOptionsPtrOutput) ToExtendedKeyUsageOptionsPtrOutputWith
 }
 
 func (o ExtendedKeyUsageOptionsPtrOutput) Elem() ExtendedKeyUsageOptionsOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptions) ExtendedKeyUsageOptions { return *v }).(ExtendedKeyUsageOptionsOutput)
+	return o.ApplyT(func(v *ExtendedKeyUsageOptions) ExtendedKeyUsageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedKeyUsageOptions
+		return ret
+	}).(ExtendedKeyUsageOptionsOutput)
 }
 
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -3769,7 +3859,7 @@ func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponse
 }
 
 func (o ExtendedKeyUsageOptionsResponseOutput) ToExtendedKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) ExtendedKeyUsageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v ExtendedKeyUsageOptionsResponse) *ExtendedKeyUsageOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedKeyUsageOptionsResponse) *ExtendedKeyUsageOptionsResponse {
 		return &v
 	}).(ExtendedKeyUsageOptionsResponsePtrOutput)
 }
@@ -3819,7 +3909,13 @@ func (o ExtendedKeyUsageOptionsResponsePtrOutput) ToExtendedKeyUsageOptionsRespo
 }
 
 func (o ExtendedKeyUsageOptionsResponsePtrOutput) Elem() ExtendedKeyUsageOptionsResponseOutput {
-	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) ExtendedKeyUsageOptionsResponse { return *v }).(ExtendedKeyUsageOptionsResponseOutput)
+	return o.ApplyT(func(v *ExtendedKeyUsageOptionsResponse) ExtendedKeyUsageOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedKeyUsageOptionsResponse
+		return ret
+	}).(ExtendedKeyUsageOptionsResponseOutput)
 }
 
 // Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -3982,7 +4078,7 @@ func (o IssuanceModesOutput) ToIssuanceModesPtrOutput() IssuanceModesPtrOutput {
 }
 
 func (o IssuanceModesOutput) ToIssuanceModesPtrOutputWithContext(ctx context.Context) IssuanceModesPtrOutput {
-	return o.ApplyT(func(v IssuanceModes) *IssuanceModes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuanceModes) *IssuanceModes {
 		return &v
 	}).(IssuanceModesPtrOutput)
 }
@@ -4012,7 +4108,13 @@ func (o IssuanceModesPtrOutput) ToIssuanceModesPtrOutputWithContext(ctx context.
 }
 
 func (o IssuanceModesPtrOutput) Elem() IssuanceModesOutput {
-	return o.ApplyT(func(v *IssuanceModes) IssuanceModes { return *v }).(IssuanceModesOutput)
+	return o.ApplyT(func(v *IssuanceModes) IssuanceModes {
+		if v != nil {
+			return *v
+		}
+		var ret IssuanceModes
+		return ret
+	}).(IssuanceModesOutput)
 }
 
 // When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -4135,7 +4237,7 @@ func (o IssuanceModesResponseOutput) ToIssuanceModesResponsePtrOutput() Issuance
 }
 
 func (o IssuanceModesResponseOutput) ToIssuanceModesResponsePtrOutputWithContext(ctx context.Context) IssuanceModesResponsePtrOutput {
-	return o.ApplyT(func(v IssuanceModesResponse) *IssuanceModesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuanceModesResponse) *IssuanceModesResponse {
 		return &v
 	}).(IssuanceModesResponsePtrOutput)
 }
@@ -4165,7 +4267,13 @@ func (o IssuanceModesResponsePtrOutput) ToIssuanceModesResponsePtrOutputWithCont
 }
 
 func (o IssuanceModesResponsePtrOutput) Elem() IssuanceModesResponseOutput {
-	return o.ApplyT(func(v *IssuanceModesResponse) IssuanceModesResponse { return *v }).(IssuanceModesResponseOutput)
+	return o.ApplyT(func(v *IssuanceModesResponse) IssuanceModesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IssuanceModesResponse
+		return ret
+	}).(IssuanceModesResponseOutput)
 }
 
 // When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -4288,7 +4396,7 @@ func (o IssuingOptionsOutput) ToIssuingOptionsPtrOutput() IssuingOptionsPtrOutpu
 }
 
 func (o IssuingOptionsOutput) ToIssuingOptionsPtrOutputWithContext(ctx context.Context) IssuingOptionsPtrOutput {
-	return o.ApplyT(func(v IssuingOptions) *IssuingOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuingOptions) *IssuingOptions {
 		return &v
 	}).(IssuingOptionsPtrOutput)
 }
@@ -4318,7 +4426,13 @@ func (o IssuingOptionsPtrOutput) ToIssuingOptionsPtrOutputWithContext(ctx contex
 }
 
 func (o IssuingOptionsPtrOutput) Elem() IssuingOptionsOutput {
-	return o.ApplyT(func(v *IssuingOptions) IssuingOptions { return *v }).(IssuingOptionsOutput)
+	return o.ApplyT(func(v *IssuingOptions) IssuingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IssuingOptions
+		return ret
+	}).(IssuingOptionsOutput)
 }
 
 // When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
@@ -4441,7 +4555,7 @@ func (o IssuingOptionsResponseOutput) ToIssuingOptionsResponsePtrOutput() Issuin
 }
 
 func (o IssuingOptionsResponseOutput) ToIssuingOptionsResponsePtrOutputWithContext(ctx context.Context) IssuingOptionsResponsePtrOutput {
-	return o.ApplyT(func(v IssuingOptionsResponse) *IssuingOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IssuingOptionsResponse) *IssuingOptionsResponse {
 		return &v
 	}).(IssuingOptionsResponsePtrOutput)
 }
@@ -4471,7 +4585,13 @@ func (o IssuingOptionsResponsePtrOutput) ToIssuingOptionsResponsePtrOutputWithCo
 }
 
 func (o IssuingOptionsResponsePtrOutput) Elem() IssuingOptionsResponseOutput {
-	return o.ApplyT(func(v *IssuingOptionsResponse) IssuingOptionsResponse { return *v }).(IssuingOptionsResponseOutput)
+	return o.ApplyT(func(v *IssuingOptionsResponse) IssuingOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IssuingOptionsResponse
+		return ret
+	}).(IssuingOptionsResponseOutput)
 }
 
 // When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
@@ -4590,7 +4710,7 @@ func (o KeyIdResponseOutput) ToKeyIdResponsePtrOutput() KeyIdResponsePtrOutput {
 }
 
 func (o KeyIdResponseOutput) ToKeyIdResponsePtrOutputWithContext(ctx context.Context) KeyIdResponsePtrOutput {
-	return o.ApplyT(func(v KeyIdResponse) *KeyIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyIdResponse) *KeyIdResponse {
 		return &v
 	}).(KeyIdResponsePtrOutput)
 }
@@ -4615,7 +4735,13 @@ func (o KeyIdResponsePtrOutput) ToKeyIdResponsePtrOutputWithContext(ctx context.
 }
 
 func (o KeyIdResponsePtrOutput) Elem() KeyIdResponseOutput {
-	return o.ApplyT(func(v *KeyIdResponse) KeyIdResponse { return *v }).(KeyIdResponseOutput)
+	return o.ApplyT(func(v *KeyIdResponse) KeyIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyIdResponse
+		return ret
+	}).(KeyIdResponseOutput)
 }
 
 // Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
@@ -4732,7 +4858,7 @@ func (o KeyUsageOutput) ToKeyUsagePtrOutput() KeyUsagePtrOutput {
 }
 
 func (o KeyUsageOutput) ToKeyUsagePtrOutputWithContext(ctx context.Context) KeyUsagePtrOutput {
-	return o.ApplyT(func(v KeyUsage) *KeyUsage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsage) *KeyUsage {
 		return &v
 	}).(KeyUsagePtrOutput)
 }
@@ -4767,7 +4893,13 @@ func (o KeyUsagePtrOutput) ToKeyUsagePtrOutputWithContext(ctx context.Context) K
 }
 
 func (o KeyUsagePtrOutput) Elem() KeyUsageOutput {
-	return o.ApplyT(func(v *KeyUsage) KeyUsage { return *v }).(KeyUsageOutput)
+	return o.ApplyT(func(v *KeyUsage) KeyUsage {
+		if v != nil {
+			return *v
+		}
+		var ret KeyUsage
+		return ret
+	}).(KeyUsageOutput)
 }
 
 // Describes high-level ways in which a key may be used.
@@ -4928,7 +5060,7 @@ func (o KeyUsageOptionsOutput) ToKeyUsageOptionsPtrOutput() KeyUsageOptionsPtrOu
 }
 
 func (o KeyUsageOptionsOutput) ToKeyUsageOptionsPtrOutputWithContext(ctx context.Context) KeyUsageOptionsPtrOutput {
-	return o.ApplyT(func(v KeyUsageOptions) *KeyUsageOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageOptions) *KeyUsageOptions {
 		return &v
 	}).(KeyUsageOptionsPtrOutput)
 }
@@ -4993,7 +5125,13 @@ func (o KeyUsageOptionsPtrOutput) ToKeyUsageOptionsPtrOutputWithContext(ctx cont
 }
 
 func (o KeyUsageOptionsPtrOutput) Elem() KeyUsageOptionsOutput {
-	return o.ApplyT(func(v *KeyUsageOptions) KeyUsageOptions { return *v }).(KeyUsageOptionsOutput)
+	return o.ApplyT(func(v *KeyUsageOptions) KeyUsageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret KeyUsageOptions
+		return ret
+	}).(KeyUsageOptionsOutput)
 }
 
 // The key may be used to sign certificates.
@@ -5214,7 +5352,7 @@ func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponsePtrOutput() KeyU
 }
 
 func (o KeyUsageOptionsResponseOutput) ToKeyUsageOptionsResponsePtrOutputWithContext(ctx context.Context) KeyUsageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v KeyUsageOptionsResponse) *KeyUsageOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageOptionsResponse) *KeyUsageOptionsResponse {
 		return &v
 	}).(KeyUsageOptionsResponsePtrOutput)
 }
@@ -5279,7 +5417,13 @@ func (o KeyUsageOptionsResponsePtrOutput) ToKeyUsageOptionsResponsePtrOutputWith
 }
 
 func (o KeyUsageOptionsResponsePtrOutput) Elem() KeyUsageOptionsResponseOutput {
-	return o.ApplyT(func(v *KeyUsageOptionsResponse) KeyUsageOptionsResponse { return *v }).(KeyUsageOptionsResponseOutput)
+	return o.ApplyT(func(v *KeyUsageOptionsResponse) KeyUsageOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyUsageOptionsResponse
+		return ret
+	}).(KeyUsageOptionsResponseOutput)
 }
 
 // The key may be used to sign certificates.
@@ -5476,7 +5620,7 @@ func (o KeyUsageResponseOutput) ToKeyUsageResponsePtrOutput() KeyUsageResponsePt
 }
 
 func (o KeyUsageResponseOutput) ToKeyUsageResponsePtrOutputWithContext(ctx context.Context) KeyUsageResponsePtrOutput {
-	return o.ApplyT(func(v KeyUsageResponse) *KeyUsageResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyUsageResponse) *KeyUsageResponse {
 		return &v
 	}).(KeyUsageResponsePtrOutput)
 }
@@ -5511,7 +5655,13 @@ func (o KeyUsageResponsePtrOutput) ToKeyUsageResponsePtrOutputWithContext(ctx co
 }
 
 func (o KeyUsageResponsePtrOutput) Elem() KeyUsageResponseOutput {
-	return o.ApplyT(func(v *KeyUsageResponse) KeyUsageResponse { return *v }).(KeyUsageResponseOutput)
+	return o.ApplyT(func(v *KeyUsageResponse) KeyUsageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyUsageResponse
+		return ret
+	}).(KeyUsageResponseOutput)
 }
 
 // Describes high-level ways in which a key may be used.
@@ -5644,7 +5794,7 @@ func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutput() KeyVersionSpecPtrOutpu
 }
 
 func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutputWithContext(ctx context.Context) KeyVersionSpecPtrOutput {
-	return o.ApplyT(func(v KeyVersionSpec) *KeyVersionSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersionSpec) *KeyVersionSpec {
 		return &v
 	}).(KeyVersionSpecPtrOutput)
 }
@@ -5674,7 +5824,13 @@ func (o KeyVersionSpecPtrOutput) ToKeyVersionSpecPtrOutputWithContext(ctx contex
 }
 
 func (o KeyVersionSpecPtrOutput) Elem() KeyVersionSpecOutput {
-	return o.ApplyT(func(v *KeyVersionSpec) KeyVersionSpec { return *v }).(KeyVersionSpecOutput)
+	return o.ApplyT(func(v *KeyVersionSpec) KeyVersionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVersionSpec
+		return ret
+	}).(KeyVersionSpecOutput)
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -5797,7 +5953,7 @@ func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponsePtrOutput() KeyVer
 }
 
 func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponsePtrOutputWithContext(ctx context.Context) KeyVersionSpecResponsePtrOutput {
-	return o.ApplyT(func(v KeyVersionSpecResponse) *KeyVersionSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersionSpecResponse) *KeyVersionSpecResponse {
 		return &v
 	}).(KeyVersionSpecResponsePtrOutput)
 }
@@ -5827,7 +5983,13 @@ func (o KeyVersionSpecResponsePtrOutput) ToKeyVersionSpecResponsePtrOutputWithCo
 }
 
 func (o KeyVersionSpecResponsePtrOutput) Elem() KeyVersionSpecResponseOutput {
-	return o.ApplyT(func(v *KeyVersionSpecResponse) KeyVersionSpecResponse { return *v }).(KeyVersionSpecResponseOutput)
+	return o.ApplyT(func(v *KeyVersionSpecResponse) KeyVersionSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVersionSpecResponse
+		return ret
+	}).(KeyVersionSpecResponseOutput)
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -6150,7 +6312,7 @@ func (o PublicKeyOutput) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
 }
 
 func (o PublicKeyOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
-	return o.ApplyT(func(v PublicKey) *PublicKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKey) *PublicKey {
 		return &v
 	}).(PublicKeyPtrOutput)
 }
@@ -6180,7 +6342,13 @@ func (o PublicKeyPtrOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context)
 }
 
 func (o PublicKeyPtrOutput) Elem() PublicKeyOutput {
-	return o.ApplyT(func(v *PublicKey) PublicKey { return *v }).(PublicKeyOutput)
+	return o.ApplyT(func(v *PublicKey) PublicKey {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKey
+		return ret
+	}).(PublicKeyOutput)
 }
 
 // A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
@@ -6303,7 +6471,7 @@ func (o PublicKeyResponseOutput) ToPublicKeyResponsePtrOutput() PublicKeyRespons
 }
 
 func (o PublicKeyResponseOutput) ToPublicKeyResponsePtrOutputWithContext(ctx context.Context) PublicKeyResponsePtrOutput {
-	return o.ApplyT(func(v PublicKeyResponse) *PublicKeyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyResponse) *PublicKeyResponse {
 		return &v
 	}).(PublicKeyResponsePtrOutput)
 }
@@ -6333,7 +6501,13 @@ func (o PublicKeyResponsePtrOutput) ToPublicKeyResponsePtrOutputWithContext(ctx 
 }
 
 func (o PublicKeyResponsePtrOutput) Elem() PublicKeyResponseOutput {
-	return o.ApplyT(func(v *PublicKeyResponse) PublicKeyResponse { return *v }).(PublicKeyResponseOutput)
+	return o.ApplyT(func(v *PublicKeyResponse) PublicKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublicKeyResponse
+		return ret
+	}).(PublicKeyResponseOutput)
 }
 
 // A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
@@ -6468,7 +6642,7 @@ func (o ReusableConfigValuesOutput) ToReusableConfigValuesPtrOutput() ReusableCo
 }
 
 func (o ReusableConfigValuesOutput) ToReusableConfigValuesPtrOutputWithContext(ctx context.Context) ReusableConfigValuesPtrOutput {
-	return o.ApplyT(func(v ReusableConfigValues) *ReusableConfigValues {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReusableConfigValues) *ReusableConfigValues {
 		return &v
 	}).(ReusableConfigValuesPtrOutput)
 }
@@ -6513,7 +6687,13 @@ func (o ReusableConfigValuesPtrOutput) ToReusableConfigValuesPtrOutputWithContex
 }
 
 func (o ReusableConfigValuesPtrOutput) Elem() ReusableConfigValuesOutput {
-	return o.ApplyT(func(v *ReusableConfigValues) ReusableConfigValues { return *v }).(ReusableConfigValuesOutput)
+	return o.ApplyT(func(v *ReusableConfigValues) ReusableConfigValues {
+		if v != nil {
+			return *v
+		}
+		var ret ReusableConfigValues
+		return ret
+	}).(ReusableConfigValuesOutput)
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -6678,7 +6858,7 @@ func (o ReusableConfigValuesResponseOutput) ToReusableConfigValuesResponsePtrOut
 }
 
 func (o ReusableConfigValuesResponseOutput) ToReusableConfigValuesResponsePtrOutputWithContext(ctx context.Context) ReusableConfigValuesResponsePtrOutput {
-	return o.ApplyT(func(v ReusableConfigValuesResponse) *ReusableConfigValuesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReusableConfigValuesResponse) *ReusableConfigValuesResponse {
 		return &v
 	}).(ReusableConfigValuesResponsePtrOutput)
 }
@@ -6723,7 +6903,13 @@ func (o ReusableConfigValuesResponsePtrOutput) ToReusableConfigValuesResponsePtr
 }
 
 func (o ReusableConfigValuesResponsePtrOutput) Elem() ReusableConfigValuesResponseOutput {
-	return o.ApplyT(func(v *ReusableConfigValuesResponse) ReusableConfigValuesResponse { return *v }).(ReusableConfigValuesResponseOutput)
+	return o.ApplyT(func(v *ReusableConfigValuesResponse) ReusableConfigValuesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReusableConfigValuesResponse
+		return ret
+	}).(ReusableConfigValuesResponseOutput)
 }
 
 // Optional. Describes custom X.509 extensions.
@@ -6901,7 +7087,7 @@ func (o ReusableConfigWrapperOutput) ToReusableConfigWrapperPtrOutput() Reusable
 }
 
 func (o ReusableConfigWrapperOutput) ToReusableConfigWrapperPtrOutputWithContext(ctx context.Context) ReusableConfigWrapperPtrOutput {
-	return o.ApplyT(func(v ReusableConfigWrapper) *ReusableConfigWrapper {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReusableConfigWrapper) *ReusableConfigWrapper {
 		return &v
 	}).(ReusableConfigWrapperPtrOutput)
 }
@@ -6931,7 +7117,13 @@ func (o ReusableConfigWrapperPtrOutput) ToReusableConfigWrapperPtrOutputWithCont
 }
 
 func (o ReusableConfigWrapperPtrOutput) Elem() ReusableConfigWrapperOutput {
-	return o.ApplyT(func(v *ReusableConfigWrapper) ReusableConfigWrapper { return *v }).(ReusableConfigWrapperOutput)
+	return o.ApplyT(func(v *ReusableConfigWrapper) ReusableConfigWrapper {
+		if v != nil {
+			return *v
+		}
+		var ret ReusableConfigWrapper
+		return ret
+	}).(ReusableConfigWrapperOutput)
 }
 
 // A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
@@ -7099,7 +7291,7 @@ func (o ReusableConfigWrapperResponseOutput) ToReusableConfigWrapperResponsePtrO
 }
 
 func (o ReusableConfigWrapperResponseOutput) ToReusableConfigWrapperResponsePtrOutputWithContext(ctx context.Context) ReusableConfigWrapperResponsePtrOutput {
-	return o.ApplyT(func(v ReusableConfigWrapperResponse) *ReusableConfigWrapperResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReusableConfigWrapperResponse) *ReusableConfigWrapperResponse {
 		return &v
 	}).(ReusableConfigWrapperResponsePtrOutput)
 }
@@ -7129,7 +7321,13 @@ func (o ReusableConfigWrapperResponsePtrOutput) ToReusableConfigWrapperResponseP
 }
 
 func (o ReusableConfigWrapperResponsePtrOutput) Elem() ReusableConfigWrapperResponseOutput {
-	return o.ApplyT(func(v *ReusableConfigWrapperResponse) ReusableConfigWrapperResponse { return *v }).(ReusableConfigWrapperResponseOutput)
+	return o.ApplyT(func(v *ReusableConfigWrapperResponse) ReusableConfigWrapperResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReusableConfigWrapperResponse
+		return ret
+	}).(ReusableConfigWrapperResponseOutput)
 }
 
 // A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
@@ -7272,7 +7470,7 @@ func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponsePtrOutput() 
 }
 
 func (o RevocationDetailsResponseOutput) ToRevocationDetailsResponsePtrOutputWithContext(ctx context.Context) RevocationDetailsResponsePtrOutput {
-	return o.ApplyT(func(v RevocationDetailsResponse) *RevocationDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RevocationDetailsResponse) *RevocationDetailsResponse {
 		return &v
 	}).(RevocationDetailsResponsePtrOutput)
 }
@@ -7302,7 +7500,13 @@ func (o RevocationDetailsResponsePtrOutput) ToRevocationDetailsResponsePtrOutput
 }
 
 func (o RevocationDetailsResponsePtrOutput) Elem() RevocationDetailsResponseOutput {
-	return o.ApplyT(func(v *RevocationDetailsResponse) RevocationDetailsResponse { return *v }).(RevocationDetailsResponseOutput)
+	return o.ApplyT(func(v *RevocationDetailsResponse) RevocationDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RevocationDetailsResponse
+		return ret
+	}).(RevocationDetailsResponseOutput)
 }
 
 // Indicates why a Certificate was revoked.
@@ -7470,7 +7674,7 @@ func (o SubjectOutput) ToSubjectPtrOutput() SubjectPtrOutput {
 }
 
 func (o SubjectOutput) ToSubjectPtrOutputWithContext(ctx context.Context) SubjectPtrOutput {
-	return o.ApplyT(func(v Subject) *Subject {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subject) *Subject {
 		return &v
 	}).(SubjectPtrOutput)
 }
@@ -7525,7 +7729,13 @@ func (o SubjectPtrOutput) ToSubjectPtrOutputWithContext(ctx context.Context) Sub
 }
 
 func (o SubjectPtrOutput) Elem() SubjectOutput {
-	return o.ApplyT(func(v *Subject) Subject { return *v }).(SubjectOutput)
+	return o.ApplyT(func(v *Subject) Subject {
+		if v != nil {
+			return *v
+		}
+		var ret Subject
+		return ret
+	}).(SubjectOutput)
 }
 
 // The country code of the subject.
@@ -7730,7 +7940,7 @@ func (o SubjectAltNamesOutput) ToSubjectAltNamesPtrOutput() SubjectAltNamesPtrOu
 }
 
 func (o SubjectAltNamesOutput) ToSubjectAltNamesPtrOutputWithContext(ctx context.Context) SubjectAltNamesPtrOutput {
-	return o.ApplyT(func(v SubjectAltNames) *SubjectAltNames {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectAltNames) *SubjectAltNames {
 		return &v
 	}).(SubjectAltNamesPtrOutput)
 }
@@ -7775,7 +7985,13 @@ func (o SubjectAltNamesPtrOutput) ToSubjectAltNamesPtrOutputWithContext(ctx cont
 }
 
 func (o SubjectAltNamesPtrOutput) Elem() SubjectAltNamesOutput {
-	return o.ApplyT(func(v *SubjectAltNames) SubjectAltNames { return *v }).(SubjectAltNamesOutput)
+	return o.ApplyT(func(v *SubjectAltNames) SubjectAltNames {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectAltNames
+		return ret
+	}).(SubjectAltNamesOutput)
 }
 
 // Contains additional subject alternative name values.
@@ -7940,7 +8156,7 @@ func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponsePtrOutput() Subj
 }
 
 func (o SubjectAltNamesResponseOutput) ToSubjectAltNamesResponsePtrOutputWithContext(ctx context.Context) SubjectAltNamesResponsePtrOutput {
-	return o.ApplyT(func(v SubjectAltNamesResponse) *SubjectAltNamesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectAltNamesResponse) *SubjectAltNamesResponse {
 		return &v
 	}).(SubjectAltNamesResponsePtrOutput)
 }
@@ -7985,7 +8201,13 @@ func (o SubjectAltNamesResponsePtrOutput) ToSubjectAltNamesResponsePtrOutputWith
 }
 
 func (o SubjectAltNamesResponsePtrOutput) Elem() SubjectAltNamesResponseOutput {
-	return o.ApplyT(func(v *SubjectAltNamesResponse) SubjectAltNamesResponse { return *v }).(SubjectAltNamesResponseOutput)
+	return o.ApplyT(func(v *SubjectAltNamesResponse) SubjectAltNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectAltNamesResponse
+		return ret
+	}).(SubjectAltNamesResponseOutput)
 }
 
 // Contains additional subject alternative name values.
@@ -8142,7 +8364,7 @@ func (o SubjectConfigOutput) ToSubjectConfigPtrOutput() SubjectConfigPtrOutput {
 }
 
 func (o SubjectConfigOutput) ToSubjectConfigPtrOutputWithContext(ctx context.Context) SubjectConfigPtrOutput {
-	return o.ApplyT(func(v SubjectConfig) *SubjectConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectConfig) *SubjectConfig {
 		return &v
 	}).(SubjectConfigPtrOutput)
 }
@@ -8177,7 +8399,13 @@ func (o SubjectConfigPtrOutput) ToSubjectConfigPtrOutputWithContext(ctx context.
 }
 
 func (o SubjectConfigPtrOutput) Elem() SubjectConfigOutput {
-	return o.ApplyT(func(v *SubjectConfig) SubjectConfig { return *v }).(SubjectConfigOutput)
+	return o.ApplyT(func(v *SubjectConfig) SubjectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectConfig
+		return ret
+	}).(SubjectConfigOutput)
 }
 
 // Optional. The "common name" of the distinguished name.
@@ -8314,7 +8542,7 @@ func (o SubjectConfigResponseOutput) ToSubjectConfigResponsePtrOutput() SubjectC
 }
 
 func (o SubjectConfigResponseOutput) ToSubjectConfigResponsePtrOutputWithContext(ctx context.Context) SubjectConfigResponsePtrOutput {
-	return o.ApplyT(func(v SubjectConfigResponse) *SubjectConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectConfigResponse) *SubjectConfigResponse {
 		return &v
 	}).(SubjectConfigResponsePtrOutput)
 }
@@ -8349,7 +8577,13 @@ func (o SubjectConfigResponsePtrOutput) ToSubjectConfigResponsePtrOutputWithCont
 }
 
 func (o SubjectConfigResponsePtrOutput) Elem() SubjectConfigResponseOutput {
-	return o.ApplyT(func(v *SubjectConfigResponse) SubjectConfigResponse { return *v }).(SubjectConfigResponseOutput)
+	return o.ApplyT(func(v *SubjectConfigResponse) SubjectConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectConfigResponse
+		return ret
+	}).(SubjectConfigResponseOutput)
 }
 
 // Optional. The "common name" of the distinguished name.
@@ -8502,7 +8736,7 @@ func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponsePtrOutput(
 }
 
 func (o SubjectDescriptionResponseOutput) ToSubjectDescriptionResponsePtrOutputWithContext(ctx context.Context) SubjectDescriptionResponsePtrOutput {
-	return o.ApplyT(func(v SubjectDescriptionResponse) *SubjectDescriptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectDescriptionResponse) *SubjectDescriptionResponse {
 		return &v
 	}).(SubjectDescriptionResponsePtrOutput)
 }
@@ -8557,7 +8791,13 @@ func (o SubjectDescriptionResponsePtrOutput) ToSubjectDescriptionResponsePtrOutp
 }
 
 func (o SubjectDescriptionResponsePtrOutput) Elem() SubjectDescriptionResponseOutput {
-	return o.ApplyT(func(v *SubjectDescriptionResponse) SubjectDescriptionResponse { return *v }).(SubjectDescriptionResponseOutput)
+	return o.ApplyT(func(v *SubjectDescriptionResponse) SubjectDescriptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectDescriptionResponse
+		return ret
+	}).(SubjectDescriptionResponseOutput)
 }
 
 // The "common name" of the distinguished name.
@@ -8775,7 +9015,7 @@ func (o SubjectResponseOutput) ToSubjectResponsePtrOutput() SubjectResponsePtrOu
 }
 
 func (o SubjectResponseOutput) ToSubjectResponsePtrOutputWithContext(ctx context.Context) SubjectResponsePtrOutput {
-	return o.ApplyT(func(v SubjectResponse) *SubjectResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubjectResponse) *SubjectResponse {
 		return &v
 	}).(SubjectResponsePtrOutput)
 }
@@ -8830,7 +9070,13 @@ func (o SubjectResponsePtrOutput) ToSubjectResponsePtrOutputWithContext(ctx cont
 }
 
 func (o SubjectResponsePtrOutput) Elem() SubjectResponseOutput {
-	return o.ApplyT(func(v *SubjectResponse) SubjectResponse { return *v }).(SubjectResponseOutput)
+	return o.ApplyT(func(v *SubjectResponse) SubjectResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubjectResponse
+		return ret
+	}).(SubjectResponseOutput)
 }
 
 // The country code of the subject.
@@ -9023,7 +9269,7 @@ func (o SubordinateConfigOutput) ToSubordinateConfigPtrOutput() SubordinateConfi
 }
 
 func (o SubordinateConfigOutput) ToSubordinateConfigPtrOutputWithContext(ctx context.Context) SubordinateConfigPtrOutput {
-	return o.ApplyT(func(v SubordinateConfig) *SubordinateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfig) *SubordinateConfig {
 		return &v
 	}).(SubordinateConfigPtrOutput)
 }
@@ -9053,7 +9299,13 @@ func (o SubordinateConfigPtrOutput) ToSubordinateConfigPtrOutputWithContext(ctx 
 }
 
 func (o SubordinateConfigPtrOutput) Elem() SubordinateConfigOutput {
-	return o.ApplyT(func(v *SubordinateConfig) SubordinateConfig { return *v }).(SubordinateConfigOutput)
+	return o.ApplyT(func(v *SubordinateConfig) SubordinateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubordinateConfig
+		return ret
+	}).(SubordinateConfigOutput)
 }
 
 // This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
@@ -9172,7 +9424,7 @@ func (o SubordinateConfigChainOutput) ToSubordinateConfigChainPtrOutput() Subord
 }
 
 func (o SubordinateConfigChainOutput) ToSubordinateConfigChainPtrOutputWithContext(ctx context.Context) SubordinateConfigChainPtrOutput {
-	return o.ApplyT(func(v SubordinateConfigChain) *SubordinateConfigChain {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfigChain) *SubordinateConfigChain {
 		return &v
 	}).(SubordinateConfigChainPtrOutput)
 }
@@ -9197,7 +9449,13 @@ func (o SubordinateConfigChainPtrOutput) ToSubordinateConfigChainPtrOutputWithCo
 }
 
 func (o SubordinateConfigChainPtrOutput) Elem() SubordinateConfigChainOutput {
-	return o.ApplyT(func(v *SubordinateConfigChain) SubordinateConfigChain { return *v }).(SubordinateConfigChainOutput)
+	return o.ApplyT(func(v *SubordinateConfigChain) SubordinateConfigChain {
+		if v != nil {
+			return *v
+		}
+		var ret SubordinateConfigChain
+		return ret
+	}).(SubordinateConfigChainOutput)
 }
 
 // Expected to be in leaf-to-root order according to RFC 5246.
@@ -9306,7 +9564,7 @@ func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponsePt
 }
 
 func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigChainResponsePtrOutput {
-	return o.ApplyT(func(v SubordinateConfigChainResponse) *SubordinateConfigChainResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfigChainResponse) *SubordinateConfigChainResponse {
 		return &v
 	}).(SubordinateConfigChainResponsePtrOutput)
 }
@@ -9331,7 +9589,13 @@ func (o SubordinateConfigChainResponsePtrOutput) ToSubordinateConfigChainRespons
 }
 
 func (o SubordinateConfigChainResponsePtrOutput) Elem() SubordinateConfigChainResponseOutput {
-	return o.ApplyT(func(v *SubordinateConfigChainResponse) SubordinateConfigChainResponse { return *v }).(SubordinateConfigChainResponseOutput)
+	return o.ApplyT(func(v *SubordinateConfigChainResponse) SubordinateConfigChainResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubordinateConfigChainResponse
+		return ret
+	}).(SubordinateConfigChainResponseOutput)
 }
 
 // Expected to be in leaf-to-root order according to RFC 5246.
@@ -9444,7 +9708,7 @@ func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutput() 
 }
 
 func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutputWithContext(ctx context.Context) SubordinateConfigResponsePtrOutput {
-	return o.ApplyT(func(v SubordinateConfigResponse) *SubordinateConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubordinateConfigResponse) *SubordinateConfigResponse {
 		return &v
 	}).(SubordinateConfigResponsePtrOutput)
 }
@@ -9474,7 +9738,13 @@ func (o SubordinateConfigResponsePtrOutput) ToSubordinateConfigResponsePtrOutput
 }
 
 func (o SubordinateConfigResponsePtrOutput) Elem() SubordinateConfigResponseOutput {
-	return o.ApplyT(func(v *SubordinateConfigResponse) SubordinateConfigResponse { return *v }).(SubordinateConfigResponseOutput)
+	return o.ApplyT(func(v *SubordinateConfigResponse) SubordinateConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubordinateConfigResponse
+		return ret
+	}).(SubordinateConfigResponseOutput)
 }
 
 // This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.

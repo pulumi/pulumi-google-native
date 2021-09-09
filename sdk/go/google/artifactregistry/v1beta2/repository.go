@@ -132,9 +132,7 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
-type RepositoryOutput struct {
-	*pulumi.OutputState
-}
+type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Repository)(nil))

@@ -138,9 +138,7 @@ func (i *RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerOutput)
 }
 
-type RegionAutoscalerOutput struct {
-	*pulumi.OutputState
-}
+type RegionAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionAutoscaler)(nil))

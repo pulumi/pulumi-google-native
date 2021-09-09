@@ -266,9 +266,7 @@ func (i *RegionBackendService) ToRegionBackendServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceOutput)
 }
 
-type RegionBackendServiceOutput struct {
-	*pulumi.OutputState
-}
+type RegionBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionBackendService)(nil))

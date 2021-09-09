@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o CloudSqlPropertiesTypeOutput) ToStringPtrOutputWithContext(ctx context.C
 type CloudSqlPropertiesTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudSqlPropertiesTypePtrOutput) ElementType() reflect.Type {
-	return cloudSqlPropertiesTypePtrType
+	return reflect.TypeOf((**CloudSqlPropertiesType)(nil)).Elem()
 }
 
 func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutput() CloudSqlPropertiesTypePtrOutput {
@@ -286,6 +286,16 @@ func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutput() Clo
 
 func (o CloudSqlPropertiesTypePtrOutput) ToCloudSqlPropertiesTypePtrOutputWithContext(ctx context.Context) CloudSqlPropertiesTypePtrOutput {
 	return o
+}
+
+func (o CloudSqlPropertiesTypePtrOutput) Elem() CloudSqlPropertiesTypeOutput {
+	return o.ApplyT(func(v *CloudSqlPropertiesType) CloudSqlPropertiesType {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlPropertiesType
+		return ret
+	}).(CloudSqlPropertiesTypeOutput)
 }
 
 func (o CloudSqlPropertiesTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o CloudSqlPropertiesTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CloudSqlPropertiesTypePtrOutput) Elem() CloudSqlPropertiesTypeOutput {
-	return o.ApplyT(func(v *CloudSqlPropertiesType) CloudSqlPropertiesType {
-		var ret CloudSqlPropertiesType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CloudSqlPropertiesTypeOutput)
 }
 
 // CloudSqlPropertiesTypeInput is an input type that accepts CloudSqlPropertiesTypeArgs and CloudSqlPropertiesTypeOutput values.

@@ -208,9 +208,7 @@ func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
 }
 
-type NoteOutput struct {
-	*pulumi.OutputState
-}
+type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Note)(nil))

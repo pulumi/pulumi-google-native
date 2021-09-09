@@ -105,7 +105,7 @@ func (o ScanConfigTargetPlatformsItemOutput) ToStringPtrOutputWithContext(ctx co
 type ScanConfigTargetPlatformsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigTargetPlatformsItemPtrOutput) ElementType() reflect.Type {
-	return scanConfigTargetPlatformsItemPtrType
+	return reflect.TypeOf((**ScanConfigTargetPlatformsItem)(nil)).Elem()
 }
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemPtrOutput() ScanConfigTargetPlatformsItemPtrOutput {
@@ -114,6 +114,16 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemP
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemPtrOutput {
 	return o
+}
+
+func (o ScanConfigTargetPlatformsItemPtrOutput) Elem() ScanConfigTargetPlatformsItemOutput {
+	return o.ApplyT(func(v *ScanConfigTargetPlatformsItem) ScanConfigTargetPlatformsItem {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigTargetPlatformsItem
+		return ret
+	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
 func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -128,16 +138,6 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigTargetPlatformsItemPtrOutput) Elem() ScanConfigTargetPlatformsItemOutput {
-	return o.ApplyT(func(v *ScanConfigTargetPlatformsItem) ScanConfigTargetPlatformsItem {
-		var ret ScanConfigTargetPlatformsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
 // ScanConfigTargetPlatformsItemInput is an input type that accepts ScanConfigTargetPlatformsItemArgs and ScanConfigTargetPlatformsItemOutput values.
@@ -218,8 +218,8 @@ func (o ScanConfigTargetPlatformsItemArrayOutput) ToScanConfigTargetPlatformsIte
 }
 
 func (o ScanConfigTargetPlatformsItemArrayOutput) Index(i pulumi.IntInput) ScanConfigTargetPlatformsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScanConfigTargetPlatformsItemOutput {
-		return vs[0].([]ScanConfigTargetPlatformsItem)[vs[1].(int)].ToScanConfigTargetPlatformsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScanConfigTargetPlatformsItem {
+		return vs[0].([]ScanConfigTargetPlatformsItem)[vs[1].(int)]
 	}).(ScanConfigTargetPlatformsItemOutput)
 }
 
@@ -321,7 +321,7 @@ func (o ScanConfigUserAgentOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type ScanConfigUserAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (ScanConfigUserAgentPtrOutput) ElementType() reflect.Type {
-	return scanConfigUserAgentPtrType
+	return reflect.TypeOf((**ScanConfigUserAgent)(nil)).Elem()
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfigUserAgentPtrOutput {
@@ -330,6 +330,16 @@ func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutput() ScanConfi
 
 func (o ScanConfigUserAgentPtrOutput) ToScanConfigUserAgentPtrOutputWithContext(ctx context.Context) ScanConfigUserAgentPtrOutput {
 	return o
+}
+
+func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
+	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
+		if v != nil {
+			return *v
+		}
+		var ret ScanConfigUserAgent
+		return ret
+	}).(ScanConfigUserAgentOutput)
 }
 
 func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -344,16 +354,6 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanConfigUserAgentPtrOutput) Elem() ScanConfigUserAgentOutput {
-	return o.ApplyT(func(v *ScanConfigUserAgent) ScanConfigUserAgent {
-		var ret ScanConfigUserAgent
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanConfigUserAgentOutput)
 }
 
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
@@ -492,7 +492,7 @@ func (o ScanRunExecutionStateOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ScanRunExecutionStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunExecutionStatePtrOutput) ElementType() reflect.Type {
-	return scanRunExecutionStatePtrType
+	return reflect.TypeOf((**ScanRunExecutionState)(nil)).Elem()
 }
 
 func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutput() ScanRunExecutionStatePtrOutput {
@@ -501,6 +501,16 @@ func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutput() ScanR
 
 func (o ScanRunExecutionStatePtrOutput) ToScanRunExecutionStatePtrOutputWithContext(ctx context.Context) ScanRunExecutionStatePtrOutput {
 	return o
+}
+
+func (o ScanRunExecutionStatePtrOutput) Elem() ScanRunExecutionStateOutput {
+	return o.ApplyT(func(v *ScanRunExecutionState) ScanRunExecutionState {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunExecutionState
+		return ret
+	}).(ScanRunExecutionStateOutput)
 }
 
 func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -515,16 +525,6 @@ func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunExecutionStatePtrOutput) Elem() ScanRunExecutionStateOutput {
-	return o.ApplyT(func(v *ScanRunExecutionState) ScanRunExecutionState {
-		var ret ScanRunExecutionState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunExecutionStateOutput)
 }
 
 // ScanRunExecutionStateInput is an input type that accepts ScanRunExecutionStateArgs and ScanRunExecutionStateOutput values.
@@ -663,7 +663,7 @@ func (o ScanRunResultStateOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ScanRunResultStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ScanRunResultStatePtrOutput) ElementType() reflect.Type {
-	return scanRunResultStatePtrType
+	return reflect.TypeOf((**ScanRunResultState)(nil)).Elem()
 }
 
 func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutput() ScanRunResultStatePtrOutput {
@@ -672,6 +672,16 @@ func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutput() ScanRunResu
 
 func (o ScanRunResultStatePtrOutput) ToScanRunResultStatePtrOutputWithContext(ctx context.Context) ScanRunResultStatePtrOutput {
 	return o
+}
+
+func (o ScanRunResultStatePtrOutput) Elem() ScanRunResultStateOutput {
+	return o.ApplyT(func(v *ScanRunResultState) ScanRunResultState {
+		if v != nil {
+			return *v
+		}
+		var ret ScanRunResultState
+		return ret
+	}).(ScanRunResultStateOutput)
 }
 
 func (o ScanRunResultStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -686,16 +696,6 @@ func (o ScanRunResultStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ScanRunResultStatePtrOutput) Elem() ScanRunResultStateOutput {
-	return o.ApplyT(func(v *ScanRunResultState) ScanRunResultState {
-		var ret ScanRunResultState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ScanRunResultStateOutput)
 }
 
 // ScanRunResultStateInput is an input type that accepts ScanRunResultStateArgs and ScanRunResultStateOutput values.

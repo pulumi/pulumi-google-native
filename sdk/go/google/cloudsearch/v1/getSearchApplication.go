@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,4 +46,92 @@ type LookupSearchApplicationResult struct {
 	ScoringConfig ScoringConfigResponse `pulumi:"scoringConfig"`
 	// Configuration for a sources specified in data_source_restrictions.
 	SourceConfig []SourceConfigResponse `pulumi:"sourceConfig"`
+}
+
+func LookupSearchApplicationOutput(ctx *pulumi.Context, args LookupSearchApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupSearchApplicationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupSearchApplicationResult, error) {
+			args := v.(LookupSearchApplicationArgs)
+			r, err := LookupSearchApplication(ctx, &args, opts...)
+			return *r, err
+		}).(LookupSearchApplicationResultOutput)
+}
+
+type LookupSearchApplicationOutputArgs struct {
+	DebugOptionsEnableDebugging pulumi.StringPtrInput `pulumi:"debugOptionsEnableDebugging"`
+	SearchapplicationId         pulumi.StringInput    `pulumi:"searchapplicationId"`
+}
+
+func (LookupSearchApplicationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSearchApplicationArgs)(nil)).Elem()
+}
+
+type LookupSearchApplicationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSearchApplicationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSearchApplicationResult)(nil)).Elem()
+}
+
+func (o LookupSearchApplicationResultOutput) ToLookupSearchApplicationResultOutput() LookupSearchApplicationResultOutput {
+	return o
+}
+
+func (o LookupSearchApplicationResultOutput) ToLookupSearchApplicationResultOutputWithContext(ctx context.Context) LookupSearchApplicationResultOutput {
+	return o
+}
+
+// Retrictions applied to the configurations. The maximum number of elements is 10.
+func (o LookupSearchApplicationResultOutput) DataSourceRestrictions() DataSourceRestrictionResponseArrayOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) []DataSourceRestrictionResponse { return v.DataSourceRestrictions }).(DataSourceRestrictionResponseArrayOutput)
+}
+
+// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+func (o LookupSearchApplicationResultOutput) DefaultFacetOptions() FacetOptionsResponseArrayOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) []FacetOptionsResponse { return v.DefaultFacetOptions }).(FacetOptionsResponseArrayOutput)
+}
+
+// The default options for sorting the search results
+func (o LookupSearchApplicationResultOutput) DefaultSortOptions() SortOptionsResponseOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) SortOptionsResponse { return v.DefaultSortOptions }).(SortOptionsResponseOutput)
+}
+
+// Display name of the Search Application. The maximum length is 300 characters.
+func (o LookupSearchApplicationResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+func (o LookupSearchApplicationResultOutput) EnableAuditLog() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) bool { return v.EnableAuditLog }).(pulumi.BoolOutput)
+}
+
+// Name of the Search Application. Format: searchapplications/{application_id}.
+func (o LookupSearchApplicationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+func (o LookupSearchApplicationResultOutput) OperationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) []string { return v.OperationIds }).(pulumi.StringArrayOutput)
+}
+
+// The default options for query interpretation
+func (o LookupSearchApplicationResultOutput) QueryInterpretationConfig() QueryInterpretationConfigResponseOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) QueryInterpretationConfigResponse {
+		return v.QueryInterpretationConfig
+	}).(QueryInterpretationConfigResponseOutput)
+}
+
+// Configuration for ranking results.
+func (o LookupSearchApplicationResultOutput) ScoringConfig() ScoringConfigResponseOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) ScoringConfigResponse { return v.ScoringConfig }).(ScoringConfigResponseOutput)
+}
+
+// Configuration for a sources specified in data_source_restrictions.
+func (o LookupSearchApplicationResultOutput) SourceConfig() SourceConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupSearchApplicationResult) []SourceConfigResponse { return v.SourceConfig }).(SourceConfigResponseArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSearchApplicationResultOutput{})
 }

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,4 +49,96 @@ type LookupInstanceResult struct {
 	StatusMessage string `pulumi:"statusMessage"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
+}
+
+func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+			args := v.(LookupInstanceArgs)
+			r, err := LookupInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInstanceResultOutput)
+}
+
+type LookupInstanceOutputArgs struct {
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceArgs)(nil)).Elem()
+}
+
+type LookupInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceResult)(nil)).Elem()
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanceResultOutput {
+	return o
+}
+
+func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
+	return o
+}
+
+// The time when the instance was created.
+func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the instance (2048 characters or less).
+func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+func (o LookupInstanceResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// File system shares on the instance. For this version, only a single file share is supported.
+func (o LookupInstanceResultOutput) FileShares() FileShareConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []FileShareConfigResponse { return v.FileShares }).(FileShareConfigResponseArrayOutput)
+}
+
+// Resource labels to represent user provided metadata.
+func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
+func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VPC networks to which the instance is connected. For this version, only a single network is supported.
+func (o LookupInstanceResultOutput) Networks() NetworkConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []NetworkConfigResponse { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// The instance state.
+func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the instance state, if available.
+func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The service tier of the instance.
+func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceResultOutput{})
 }

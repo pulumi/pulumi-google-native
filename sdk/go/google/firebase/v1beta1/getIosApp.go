@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,70 @@ type LookupIosAppResult struct {
 	Name string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 	Project string `pulumi:"project"`
+}
+
+func LookupIosAppOutput(ctx *pulumi.Context, args LookupIosAppOutputArgs, opts ...pulumi.InvokeOption) LookupIosAppResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIosAppResult, error) {
+			args := v.(LookupIosAppArgs)
+			r, err := LookupIosApp(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIosAppResultOutput)
+}
+
+type LookupIosAppOutputArgs struct {
+	IosAppId pulumi.StringInput    `pulumi:"iosAppId"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupIosAppOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIosAppArgs)(nil)).Elem()
+}
+
+type LookupIosAppResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIosAppResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIosAppResult)(nil)).Elem()
+}
+
+func (o LookupIosAppResultOutput) ToLookupIosAppResultOutput() LookupIosAppResultOutput {
+	return o
+}
+
+func (o LookupIosAppResultOutput) ToLookupIosAppResultOutputWithContext(ctx context.Context) LookupIosAppResultOutput {
+	return o
+}
+
+// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+func (o LookupIosAppResultOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+func (o LookupIosAppResultOutput) AppStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.AppStoreId }).(pulumi.StringOutput)
+}
+
+// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+func (o LookupIosAppResultOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// The user-assigned display name for the `IosApp`.
+func (o LookupIosAppResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+func (o LookupIosAppResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+func (o LookupIosAppResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIosAppResultOutput{})
 }

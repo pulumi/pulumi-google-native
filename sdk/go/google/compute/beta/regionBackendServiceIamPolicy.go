@@ -135,9 +135,7 @@ func (i *RegionBackendServiceIamPolicy) ToRegionBackendServiceIamPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamPolicyOutput)
 }
 
-type RegionBackendServiceIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionBackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionBackendServiceIamPolicy)(nil))

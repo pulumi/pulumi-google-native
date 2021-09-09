@@ -104,7 +104,7 @@ func (o BasicLevelCombiningFunctionOutput) ToStringPtrOutputWithContext(ctx cont
 type BasicLevelCombiningFunctionPtrOutput struct{ *pulumi.OutputState }
 
 func (BasicLevelCombiningFunctionPtrOutput) ElementType() reflect.Type {
-	return basicLevelCombiningFunctionPtrType
+	return reflect.TypeOf((**BasicLevelCombiningFunction)(nil)).Elem()
 }
 
 func (o BasicLevelCombiningFunctionPtrOutput) ToBasicLevelCombiningFunctionPtrOutput() BasicLevelCombiningFunctionPtrOutput {
@@ -113,6 +113,16 @@ func (o BasicLevelCombiningFunctionPtrOutput) ToBasicLevelCombiningFunctionPtrOu
 
 func (o BasicLevelCombiningFunctionPtrOutput) ToBasicLevelCombiningFunctionPtrOutputWithContext(ctx context.Context) BasicLevelCombiningFunctionPtrOutput {
 	return o
+}
+
+func (o BasicLevelCombiningFunctionPtrOutput) Elem() BasicLevelCombiningFunctionOutput {
+	return o.ApplyT(func(v *BasicLevelCombiningFunction) BasicLevelCombiningFunction {
+		if v != nil {
+			return *v
+		}
+		var ret BasicLevelCombiningFunction
+		return ret
+	}).(BasicLevelCombiningFunctionOutput)
 }
 
 func (o BasicLevelCombiningFunctionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o BasicLevelCombiningFunctionPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o BasicLevelCombiningFunctionPtrOutput) Elem() BasicLevelCombiningFunctionOutput {
-	return o.ApplyT(func(v *BasicLevelCombiningFunction) BasicLevelCombiningFunction {
-		var ret BasicLevelCombiningFunction
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(BasicLevelCombiningFunctionOutput)
 }
 
 // BasicLevelCombiningFunctionInput is an input type that accepts BasicLevelCombiningFunctionArgs and BasicLevelCombiningFunctionOutput values.
@@ -274,7 +274,7 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemOutput) ToStringPtrOutputWi
 type DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ElementType() reflect.Type {
-	return devicePolicyAllowedDeviceManagementLevelsItemPtrType
+	return reflect.TypeOf((**DevicePolicyAllowedDeviceManagementLevelsItem)(nil)).Elem()
 }
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutput() DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput {
@@ -283,6 +283,16 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToDevicePolicyAl
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToDevicePolicyAllowedDeviceManagementLevelsItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) Elem() DevicePolicyAllowedDeviceManagementLevelsItemOutput {
+	return o.ApplyT(func(v *DevicePolicyAllowedDeviceManagementLevelsItem) DevicePolicyAllowedDeviceManagementLevelsItem {
+		if v != nil {
+			return *v
+		}
+		var ret DevicePolicyAllowedDeviceManagementLevelsItem
+		return ret
+	}).(DevicePolicyAllowedDeviceManagementLevelsItemOutput)
 }
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -297,16 +307,6 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) Elem() DevicePolicyAllowedDeviceManagementLevelsItemOutput {
-	return o.ApplyT(func(v *DevicePolicyAllowedDeviceManagementLevelsItem) DevicePolicyAllowedDeviceManagementLevelsItem {
-		var ret DevicePolicyAllowedDeviceManagementLevelsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DevicePolicyAllowedDeviceManagementLevelsItemOutput)
 }
 
 // DevicePolicyAllowedDeviceManagementLevelsItemInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArgs and DevicePolicyAllowedDeviceManagementLevelsItemOutput values.
@@ -387,8 +387,8 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) ToDevicePolicy
 }
 
 func (o DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput) Index(i pulumi.IntInput) DevicePolicyAllowedDeviceManagementLevelsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePolicyAllowedDeviceManagementLevelsItemOutput {
-		return vs[0].([]DevicePolicyAllowedDeviceManagementLevelsItem)[vs[1].(int)].ToDevicePolicyAllowedDeviceManagementLevelsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePolicyAllowedDeviceManagementLevelsItem {
+		return vs[0].([]DevicePolicyAllowedDeviceManagementLevelsItem)[vs[1].(int)]
 	}).(DevicePolicyAllowedDeviceManagementLevelsItemOutput)
 }
 
@@ -489,7 +489,7 @@ func (o DevicePolicyAllowedEncryptionStatusesItemOutput) ToStringPtrOutputWithCo
 type DevicePolicyAllowedEncryptionStatusesItemPtrOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ElementType() reflect.Type {
-	return devicePolicyAllowedEncryptionStatusesItemPtrType
+	return reflect.TypeOf((**DevicePolicyAllowedEncryptionStatusesItem)(nil)).Elem()
 }
 
 func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToDevicePolicyAllowedEncryptionStatusesItemPtrOutput() DevicePolicyAllowedEncryptionStatusesItemPtrOutput {
@@ -498,6 +498,16 @@ func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToDevicePolicyAllowe
 
 func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToDevicePolicyAllowedEncryptionStatusesItemPtrOutputWithContext(ctx context.Context) DevicePolicyAllowedEncryptionStatusesItemPtrOutput {
 	return o
+}
+
+func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) Elem() DevicePolicyAllowedEncryptionStatusesItemOutput {
+	return o.ApplyT(func(v *DevicePolicyAllowedEncryptionStatusesItem) DevicePolicyAllowedEncryptionStatusesItem {
+		if v != nil {
+			return *v
+		}
+		var ret DevicePolicyAllowedEncryptionStatusesItem
+		return ret
+	}).(DevicePolicyAllowedEncryptionStatusesItemOutput)
 }
 
 func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -512,16 +522,6 @@ func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToStringPtrOutputWit
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) Elem() DevicePolicyAllowedEncryptionStatusesItemOutput {
-	return o.ApplyT(func(v *DevicePolicyAllowedEncryptionStatusesItem) DevicePolicyAllowedEncryptionStatusesItem {
-		var ret DevicePolicyAllowedEncryptionStatusesItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DevicePolicyAllowedEncryptionStatusesItemOutput)
 }
 
 // DevicePolicyAllowedEncryptionStatusesItemInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArgs and DevicePolicyAllowedEncryptionStatusesItemOutput values.
@@ -602,8 +602,8 @@ func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) ToDevicePolicyAllo
 }
 
 func (o DevicePolicyAllowedEncryptionStatusesItemArrayOutput) Index(i pulumi.IntInput) DevicePolicyAllowedEncryptionStatusesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePolicyAllowedEncryptionStatusesItemOutput {
-		return vs[0].([]DevicePolicyAllowedEncryptionStatusesItem)[vs[1].(int)].ToDevicePolicyAllowedEncryptionStatusesItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePolicyAllowedEncryptionStatusesItem {
+		return vs[0].([]DevicePolicyAllowedEncryptionStatusesItem)[vs[1].(int)]
 	}).(DevicePolicyAllowedEncryptionStatusesItemOutput)
 }
 
@@ -711,7 +711,7 @@ func (o OsConstraintOsTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type OsConstraintOsTypePtrOutput struct{ *pulumi.OutputState }
 
 func (OsConstraintOsTypePtrOutput) ElementType() reflect.Type {
-	return osConstraintOsTypePtrType
+	return reflect.TypeOf((**OsConstraintOsType)(nil)).Elem()
 }
 
 func (o OsConstraintOsTypePtrOutput) ToOsConstraintOsTypePtrOutput() OsConstraintOsTypePtrOutput {
@@ -720,6 +720,16 @@ func (o OsConstraintOsTypePtrOutput) ToOsConstraintOsTypePtrOutput() OsConstrain
 
 func (o OsConstraintOsTypePtrOutput) ToOsConstraintOsTypePtrOutputWithContext(ctx context.Context) OsConstraintOsTypePtrOutput {
 	return o
+}
+
+func (o OsConstraintOsTypePtrOutput) Elem() OsConstraintOsTypeOutput {
+	return o.ApplyT(func(v *OsConstraintOsType) OsConstraintOsType {
+		if v != nil {
+			return *v
+		}
+		var ret OsConstraintOsType
+		return ret
+	}).(OsConstraintOsTypeOutput)
 }
 
 func (o OsConstraintOsTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -734,16 +744,6 @@ func (o OsConstraintOsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OsConstraintOsTypePtrOutput) Elem() OsConstraintOsTypeOutput {
-	return o.ApplyT(func(v *OsConstraintOsType) OsConstraintOsType {
-		var ret OsConstraintOsType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OsConstraintOsTypeOutput)
 }
 
 // OsConstraintOsTypeInput is an input type that accepts OsConstraintOsTypeArgs and OsConstraintOsTypeOutput values.
@@ -878,7 +878,7 @@ func (o ServicePerimeterPerimeterTypeOutput) ToStringPtrOutputWithContext(ctx co
 type ServicePerimeterPerimeterTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterPerimeterTypePtrOutput) ElementType() reflect.Type {
-	return servicePerimeterPerimeterTypePtrType
+	return reflect.TypeOf((**ServicePerimeterPerimeterType)(nil)).Elem()
 }
 
 func (o ServicePerimeterPerimeterTypePtrOutput) ToServicePerimeterPerimeterTypePtrOutput() ServicePerimeterPerimeterTypePtrOutput {
@@ -887,6 +887,16 @@ func (o ServicePerimeterPerimeterTypePtrOutput) ToServicePerimeterPerimeterTypeP
 
 func (o ServicePerimeterPerimeterTypePtrOutput) ToServicePerimeterPerimeterTypePtrOutputWithContext(ctx context.Context) ServicePerimeterPerimeterTypePtrOutput {
 	return o
+}
+
+func (o ServicePerimeterPerimeterTypePtrOutput) Elem() ServicePerimeterPerimeterTypeOutput {
+	return o.ApplyT(func(v *ServicePerimeterPerimeterType) ServicePerimeterPerimeterType {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterPerimeterType
+		return ret
+	}).(ServicePerimeterPerimeterTypeOutput)
 }
 
 func (o ServicePerimeterPerimeterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -901,16 +911,6 @@ func (o ServicePerimeterPerimeterTypePtrOutput) ToStringPtrOutputWithContext(ctx
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServicePerimeterPerimeterTypePtrOutput) Elem() ServicePerimeterPerimeterTypeOutput {
-	return o.ApplyT(func(v *ServicePerimeterPerimeterType) ServicePerimeterPerimeterType {
-		var ret ServicePerimeterPerimeterType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ServicePerimeterPerimeterTypeOutput)
 }
 
 // ServicePerimeterPerimeterTypeInput is an input type that accepts ServicePerimeterPerimeterTypeArgs and ServicePerimeterPerimeterTypeOutput values.

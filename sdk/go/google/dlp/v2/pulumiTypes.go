@@ -444,7 +444,7 @@ func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePr
 }
 
 func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput)
 }
@@ -528,7 +528,11 @@ func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) ToGoogl
 
 func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) Elem() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse
+		return ret
 	}).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput)
 }
 
@@ -964,7 +968,7 @@ func (o GooglePrivacyDlpV2BigQueryFieldOutput) ToGooglePrivacyDlpV2BigQueryField
 }
 
 func (o GooglePrivacyDlpV2BigQueryFieldOutput) ToGooglePrivacyDlpV2BigQueryFieldPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryField) *GooglePrivacyDlpV2BigQueryField {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryField) *GooglePrivacyDlpV2BigQueryField {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryFieldPtrOutput)
 }
@@ -994,7 +998,13 @@ func (o GooglePrivacyDlpV2BigQueryFieldPtrOutput) ToGooglePrivacyDlpV2BigQueryFi
 }
 
 func (o GooglePrivacyDlpV2BigQueryFieldPtrOutput) Elem() GooglePrivacyDlpV2BigQueryFieldOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryField) GooglePrivacyDlpV2BigQueryField { return *v }).(GooglePrivacyDlpV2BigQueryFieldOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryField) GooglePrivacyDlpV2BigQueryField {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryField
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryFieldOutput)
 }
 
 // Designated field in the BigQuery table.
@@ -1117,7 +1127,7 @@ func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) ToGooglePrivacyDlpV2BigQu
 }
 
 func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryFieldResponse) *GooglePrivacyDlpV2BigQueryFieldResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryFieldResponse) *GooglePrivacyDlpV2BigQueryFieldResponse {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput)
 }
@@ -1149,7 +1159,13 @@ func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) ToGooglePrivacyDlpV2Bi
 }
 
 func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryFieldResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryFieldResponse) GooglePrivacyDlpV2BigQueryFieldResponse { return *v }).(GooglePrivacyDlpV2BigQueryFieldResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryFieldResponse) GooglePrivacyDlpV2BigQueryFieldResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryFieldResponse
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryFieldResponseOutput)
 }
 
 // Designated field in the BigQuery table.
@@ -1286,7 +1302,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) ToGooglePrivacyDlpV2BigQueryOpt
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) ToGooglePrivacyDlpV2BigQueryOptionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *GooglePrivacyDlpV2BigQueryOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryOptions) *GooglePrivacyDlpV2BigQueryOptions {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryOptionsPtrOutput)
 }
@@ -1337,7 +1353,13 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) ToGooglePrivacyDlpV2BigQuery
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) GooglePrivacyDlpV2BigQueryOptions { return *v }).(GooglePrivacyDlpV2BigQueryOptionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) GooglePrivacyDlpV2BigQueryOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryOptions
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryOptionsOutput)
 }
 
 // References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
@@ -1513,7 +1535,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2Big
 }
 
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) *GooglePrivacyDlpV2BigQueryOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryOptionsResponse) *GooglePrivacyDlpV2BigQueryOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput)
 }
@@ -1569,7 +1591,11 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) GooglePrivacyDlpV2BigQueryOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryOptionsResponse
+		return ret
 	}).(GooglePrivacyDlpV2BigQueryOptionsResponseOutput)
 }
 
@@ -1736,7 +1762,7 @@ func (o GooglePrivacyDlpV2BigQueryTableOutput) ToGooglePrivacyDlpV2BigQueryTable
 }
 
 func (o GooglePrivacyDlpV2BigQueryTableOutput) ToGooglePrivacyDlpV2BigQueryTablePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTablePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTable) *GooglePrivacyDlpV2BigQueryTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTable) *GooglePrivacyDlpV2BigQueryTable {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
 }
@@ -1771,7 +1797,13 @@ func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) ToGooglePrivacyDlpV2BigQueryTa
 }
 
 func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTable) GooglePrivacyDlpV2BigQueryTable { return *v }).(GooglePrivacyDlpV2BigQueryTableOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTable) GooglePrivacyDlpV2BigQueryTable {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryTable
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryTableOutput)
 }
 
 // Dataset ID of the table.
@@ -1908,7 +1940,7 @@ func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ToGooglePrivacyDlpV2BigQu
 }
 
 func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTableResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
 		return &v
 	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
 }
@@ -1943,7 +1975,13 @@ func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) ToGooglePrivacyDlpV2Bi
 }
 
 func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) GooglePrivacyDlpV2BigQueryTableResponse { return *v }).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) GooglePrivacyDlpV2BigQueryTableResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BigQueryTableResponse
+		return ret
+	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
 }
 
 // Dataset ID of the table.
@@ -2308,7 +2346,7 @@ func (o GooglePrivacyDlpV2BucketingConfigOutput) ToGooglePrivacyDlpV2BucketingCo
 }
 
 func (o GooglePrivacyDlpV2BucketingConfigOutput) ToGooglePrivacyDlpV2BucketingConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BucketingConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BucketingConfig) *GooglePrivacyDlpV2BucketingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BucketingConfig) *GooglePrivacyDlpV2BucketingConfig {
 		return &v
 	}).(GooglePrivacyDlpV2BucketingConfigPtrOutput)
 }
@@ -2333,7 +2371,13 @@ func (o GooglePrivacyDlpV2BucketingConfigPtrOutput) ToGooglePrivacyDlpV2Bucketin
 }
 
 func (o GooglePrivacyDlpV2BucketingConfigPtrOutput) Elem() GooglePrivacyDlpV2BucketingConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BucketingConfig) GooglePrivacyDlpV2BucketingConfig { return *v }).(GooglePrivacyDlpV2BucketingConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2BucketingConfig) GooglePrivacyDlpV2BucketingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2BucketingConfig
+		return ret
+	}).(GooglePrivacyDlpV2BucketingConfigOutput)
 }
 
 // Set of buckets. Ranges must be non-overlapping.
@@ -2497,7 +2541,7 @@ func (o GooglePrivacyDlpV2CategoricalStatsConfigOutput) ToGooglePrivacyDlpV2Cate
 }
 
 func (o GooglePrivacyDlpV2CategoricalStatsConfigOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CategoricalStatsConfig) *GooglePrivacyDlpV2CategoricalStatsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CategoricalStatsConfig) *GooglePrivacyDlpV2CategoricalStatsConfig {
 		return &v
 	}).(GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput)
 }
@@ -2522,7 +2566,13 @@ func (o GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput) ToGooglePrivacyDlpV2C
 }
 
 func (o GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput) Elem() GooglePrivacyDlpV2CategoricalStatsConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsConfig) GooglePrivacyDlpV2CategoricalStatsConfig { return *v }).(GooglePrivacyDlpV2CategoricalStatsConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsConfig) GooglePrivacyDlpV2CategoricalStatsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CategoricalStatsConfig
+		return ret
+	}).(GooglePrivacyDlpV2CategoricalStatsConfigOutput)
 }
 
 // Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
@@ -2631,7 +2681,7 @@ func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) ToGooglePrivacyD
 }
 
 func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CategoricalStatsConfigResponse) *GooglePrivacyDlpV2CategoricalStatsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CategoricalStatsConfigResponse) *GooglePrivacyDlpV2CategoricalStatsConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput)
 }
@@ -2659,7 +2709,11 @@ func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) ToGooglePriva
 
 func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsConfigResponse) GooglePrivacyDlpV2CategoricalStatsConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CategoricalStatsConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput)
 }
 
@@ -2911,7 +2965,7 @@ func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ToGooglePrivacyD
 }
 
 func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CategoricalStatsResultResponse) *GooglePrivacyDlpV2CategoricalStatsResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CategoricalStatsResultResponse) *GooglePrivacyDlpV2CategoricalStatsResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput)
 }
@@ -2939,7 +2993,11 @@ func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) ToGooglePriva
 
 func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) Elem() GooglePrivacyDlpV2CategoricalStatsResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsResultResponse) GooglePrivacyDlpV2CategoricalStatsResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CategoricalStatsResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2CategoricalStatsResultResponseOutput)
 }
 
@@ -3061,7 +3119,7 @@ func (o GooglePrivacyDlpV2CharacterMaskConfigOutput) ToGooglePrivacyDlpV2Charact
 }
 
 func (o GooglePrivacyDlpV2CharacterMaskConfigOutput) ToGooglePrivacyDlpV2CharacterMaskConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharacterMaskConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CharacterMaskConfig) *GooglePrivacyDlpV2CharacterMaskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CharacterMaskConfig) *GooglePrivacyDlpV2CharacterMaskConfig {
 		return &v
 	}).(GooglePrivacyDlpV2CharacterMaskConfigPtrOutput)
 }
@@ -3103,7 +3161,13 @@ func (o GooglePrivacyDlpV2CharacterMaskConfigPtrOutput) ToGooglePrivacyDlpV2Char
 }
 
 func (o GooglePrivacyDlpV2CharacterMaskConfigPtrOutput) Elem() GooglePrivacyDlpV2CharacterMaskConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CharacterMaskConfig) GooglePrivacyDlpV2CharacterMaskConfig { return *v }).(GooglePrivacyDlpV2CharacterMaskConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CharacterMaskConfig) GooglePrivacyDlpV2CharacterMaskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CharacterMaskConfig
+		return ret
+	}).(GooglePrivacyDlpV2CharacterMaskConfigOutput)
 }
 
 // When masking a string, items in this list will be skipped when replacing characters. For example, if the input string is `555-555-5555` and you instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP returns `***-**5-5555`.
@@ -3546,7 +3610,7 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetOutput) ToGooglePrivacyDlpV2CloudSt
 }
 
 func (o GooglePrivacyDlpV2CloudStorageFileSetOutput) ToGooglePrivacyDlpV2CloudStorageFileSetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageFileSet) *GooglePrivacyDlpV2CloudStorageFileSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageFileSet) *GooglePrivacyDlpV2CloudStorageFileSet {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageFileSetPtrOutput)
 }
@@ -3571,7 +3635,13 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetPtrOutput) ToGooglePrivacyDlpV2Clou
 }
 
 func (o GooglePrivacyDlpV2CloudStorageFileSetPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageFileSetOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageFileSet) GooglePrivacyDlpV2CloudStorageFileSet { return *v }).(GooglePrivacyDlpV2CloudStorageFileSetOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageFileSet) GooglePrivacyDlpV2CloudStorageFileSet {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageFileSet
+		return ret
+	}).(GooglePrivacyDlpV2CloudStorageFileSetOutput)
 }
 
 // The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
@@ -3680,7 +3750,7 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) ToGooglePrivacyDlpV
 }
 
 func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageFileSetResponse) *GooglePrivacyDlpV2CloudStorageFileSetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageFileSetResponse) *GooglePrivacyDlpV2CloudStorageFileSetResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput)
 }
@@ -3706,7 +3776,11 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageFileSetResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageFileSetResponse) GooglePrivacyDlpV2CloudStorageFileSetResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageFileSetResponse
+		return ret
 	}).(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput)
 }
 
@@ -3834,7 +3908,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) ToGooglePrivacyDlpV2CloudSt
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) ToGooglePrivacyDlpV2CloudStorageOptionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *GooglePrivacyDlpV2CloudStorageOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageOptions) *GooglePrivacyDlpV2CloudStorageOptions {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageOptionsPtrOutput)
 }
@@ -3887,7 +3961,13 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) ToGooglePrivacyDlpV2Clou
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) GooglePrivacyDlpV2CloudStorageOptions { return *v }).(GooglePrivacyDlpV2CloudStorageOptionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) GooglePrivacyDlpV2CloudStorageOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageOptions
+		return ret
+	}).(GooglePrivacyDlpV2CloudStorageOptionsOutput)
 }
 
 // Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
@@ -4063,7 +4143,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV
 }
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) *GooglePrivacyDlpV2CloudStorageOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageOptionsResponse) *GooglePrivacyDlpV2CloudStorageOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput)
 }
@@ -4115,7 +4195,11 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) GooglePrivacyDlpV2CloudStorageOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageOptionsResponse
+		return ret
 	}).(GooglePrivacyDlpV2CloudStorageOptionsResponseOutput)
 }
 
@@ -4274,7 +4358,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathOutput) ToGooglePrivacyDlpV2CloudStora
 }
 
 func (o GooglePrivacyDlpV2CloudStoragePathOutput) ToGooglePrivacyDlpV2CloudStoragePathPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStoragePath) *GooglePrivacyDlpV2CloudStoragePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStoragePath) *GooglePrivacyDlpV2CloudStoragePath {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStoragePathPtrOutput)
 }
@@ -4299,7 +4383,13 @@ func (o GooglePrivacyDlpV2CloudStoragePathPtrOutput) ToGooglePrivacyDlpV2CloudSt
 }
 
 func (o GooglePrivacyDlpV2CloudStoragePathPtrOutput) Elem() GooglePrivacyDlpV2CloudStoragePathOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePath) GooglePrivacyDlpV2CloudStoragePath { return *v }).(GooglePrivacyDlpV2CloudStoragePathOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePath) GooglePrivacyDlpV2CloudStoragePath {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStoragePath
+		return ret
+	}).(GooglePrivacyDlpV2CloudStoragePathOutput)
 }
 
 // A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
@@ -4408,7 +4498,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2Cl
 }
 
 func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStoragePathResponse) *GooglePrivacyDlpV2CloudStoragePathResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStoragePathResponse) *GooglePrivacyDlpV2CloudStoragePathResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput)
 }
@@ -4434,7 +4524,11 @@ func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStoragePathResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePathResponse) GooglePrivacyDlpV2CloudStoragePathResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStoragePathResponse
+		return ret
 	}).(GooglePrivacyDlpV2CloudStoragePathResponseOutput)
 }
 
@@ -4552,7 +4646,7 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetOutput) ToGooglePrivacyDlpV2Cl
 }
 
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageRegexFileSet) *GooglePrivacyDlpV2CloudStorageRegexFileSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageRegexFileSet) *GooglePrivacyDlpV2CloudStorageRegexFileSet {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput)
 }
@@ -4588,7 +4682,11 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput) Elem() GooglePrivacyDlpV2CloudStorageRegexFileSetOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSet) GooglePrivacyDlpV2CloudStorageRegexFileSet {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageRegexFileSet
+		return ret
 	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetOutput)
 }
 
@@ -4726,7 +4824,7 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ToGooglePrivac
 }
 
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
 		return &v
 	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput)
 }
@@ -4762,7 +4860,11 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CloudStorageRegexFileSetResponse
+		return ret
 	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput)
 }
 
@@ -5128,7 +5230,7 @@ func (o GooglePrivacyDlpV2ConditionsOutput) ToGooglePrivacyDlpV2ConditionsPtrOut
 }
 
 func (o GooglePrivacyDlpV2ConditionsOutput) ToGooglePrivacyDlpV2ConditionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Conditions) *GooglePrivacyDlpV2Conditions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Conditions) *GooglePrivacyDlpV2Conditions {
 		return &v
 	}).(GooglePrivacyDlpV2ConditionsPtrOutput)
 }
@@ -5153,7 +5255,13 @@ func (o GooglePrivacyDlpV2ConditionsPtrOutput) ToGooglePrivacyDlpV2ConditionsPtr
 }
 
 func (o GooglePrivacyDlpV2ConditionsPtrOutput) Elem() GooglePrivacyDlpV2ConditionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Conditions) GooglePrivacyDlpV2Conditions { return *v }).(GooglePrivacyDlpV2ConditionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Conditions) GooglePrivacyDlpV2Conditions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Conditions
+		return ret
+	}).(GooglePrivacyDlpV2ConditionsOutput)
 }
 
 // A collection of conditions.
@@ -5327,7 +5435,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigOutput) ToGooglePrivacyDlpV2C
 }
 
 func (o GooglePrivacyDlpV2CryptoDeterministicConfigOutput) ToGooglePrivacyDlpV2CryptoDeterministicConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoDeterministicConfig) *GooglePrivacyDlpV2CryptoDeterministicConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CryptoDeterministicConfig) *GooglePrivacyDlpV2CryptoDeterministicConfig {
 		return &v
 	}).(GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput)
 }
@@ -5365,7 +5473,11 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput) Elem() GooglePrivacyDlpV2CryptoDeterministicConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoDeterministicConfig) GooglePrivacyDlpV2CryptoDeterministicConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CryptoDeterministicConfig
+		return ret
 	}).(GooglePrivacyDlpV2CryptoDeterministicConfigOutput)
 }
 
@@ -5574,7 +5686,7 @@ func (o GooglePrivacyDlpV2CryptoHashConfigOutput) ToGooglePrivacyDlpV2CryptoHash
 }
 
 func (o GooglePrivacyDlpV2CryptoHashConfigOutput) ToGooglePrivacyDlpV2CryptoHashConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoHashConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoHashConfig) *GooglePrivacyDlpV2CryptoHashConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CryptoHashConfig) *GooglePrivacyDlpV2CryptoHashConfig {
 		return &v
 	}).(GooglePrivacyDlpV2CryptoHashConfigPtrOutput)
 }
@@ -5599,7 +5711,13 @@ func (o GooglePrivacyDlpV2CryptoHashConfigPtrOutput) ToGooglePrivacyDlpV2CryptoH
 }
 
 func (o GooglePrivacyDlpV2CryptoHashConfigPtrOutput) Elem() GooglePrivacyDlpV2CryptoHashConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoHashConfig) GooglePrivacyDlpV2CryptoHashConfig { return *v }).(GooglePrivacyDlpV2CryptoHashConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoHashConfig) GooglePrivacyDlpV2CryptoHashConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CryptoHashConfig
+		return ret
+	}).(GooglePrivacyDlpV2CryptoHashConfigOutput)
 }
 
 // The key used by the hash function.
@@ -5773,7 +5891,7 @@ func (o GooglePrivacyDlpV2CryptoKeyOutput) ToGooglePrivacyDlpV2CryptoKeyPtrOutpu
 }
 
 func (o GooglePrivacyDlpV2CryptoKeyOutput) ToGooglePrivacyDlpV2CryptoKeyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoKeyPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoKey) *GooglePrivacyDlpV2CryptoKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CryptoKey) *GooglePrivacyDlpV2CryptoKey {
 		return &v
 	}).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
@@ -5808,7 +5926,13 @@ func (o GooglePrivacyDlpV2CryptoKeyPtrOutput) ToGooglePrivacyDlpV2CryptoKeyPtrOu
 }
 
 func (o GooglePrivacyDlpV2CryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2CryptoKeyOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoKey) GooglePrivacyDlpV2CryptoKey { return *v }).(GooglePrivacyDlpV2CryptoKeyOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoKey) GooglePrivacyDlpV2CryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CryptoKey
+		return ret
+	}).(GooglePrivacyDlpV2CryptoKeyOutput)
 }
 
 // Key wrapped using Cloud KMS
@@ -6036,7 +6160,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) ToGooglePrivacyDlpV2C
 }
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
 		return &v
 	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput)
 }
@@ -6091,7 +6215,11 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) Elem() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
+		return ret
 	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput)
 }
 
@@ -6699,7 +6827,7 @@ func (o GooglePrivacyDlpV2DatastoreOptionsOutput) ToGooglePrivacyDlpV2DatastoreO
 }
 
 func (o GooglePrivacyDlpV2DatastoreOptionsOutput) ToGooglePrivacyDlpV2DatastoreOptionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DatastoreOptions) *GooglePrivacyDlpV2DatastoreOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DatastoreOptions) *GooglePrivacyDlpV2DatastoreOptions {
 		return &v
 	}).(GooglePrivacyDlpV2DatastoreOptionsPtrOutput)
 }
@@ -6729,7 +6857,13 @@ func (o GooglePrivacyDlpV2DatastoreOptionsPtrOutput) ToGooglePrivacyDlpV2Datasto
 }
 
 func (o GooglePrivacyDlpV2DatastoreOptionsPtrOutput) Elem() GooglePrivacyDlpV2DatastoreOptionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptions) GooglePrivacyDlpV2DatastoreOptions { return *v }).(GooglePrivacyDlpV2DatastoreOptionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptions) GooglePrivacyDlpV2DatastoreOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DatastoreOptions
+		return ret
+	}).(GooglePrivacyDlpV2DatastoreOptionsOutput)
 }
 
 // The kind to process.
@@ -6852,7 +6986,7 @@ func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) ToGooglePrivacyDlpV2Da
 }
 
 func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DatastoreOptionsResponse) *GooglePrivacyDlpV2DatastoreOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DatastoreOptionsResponse) *GooglePrivacyDlpV2DatastoreOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput)
 }
@@ -6887,7 +7021,11 @@ func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2DatastoreOptionsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptionsResponse) GooglePrivacyDlpV2DatastoreOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DatastoreOptionsResponse
+		return ret
 	}).(GooglePrivacyDlpV2DatastoreOptionsResponseOutput)
 }
 
@@ -7019,7 +7157,7 @@ func (o GooglePrivacyDlpV2DateShiftConfigOutput) ToGooglePrivacyDlpV2DateShiftCo
 }
 
 func (o GooglePrivacyDlpV2DateShiftConfigOutput) ToGooglePrivacyDlpV2DateShiftConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DateShiftConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) *GooglePrivacyDlpV2DateShiftConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DateShiftConfig) *GooglePrivacyDlpV2DateShiftConfig {
 		return &v
 	}).(GooglePrivacyDlpV2DateShiftConfigPtrOutput)
 }
@@ -7059,7 +7197,13 @@ func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) ToGooglePrivacyDlpV2DateShif
 }
 
 func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) Elem() GooglePrivacyDlpV2DateShiftConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DateShiftConfig) GooglePrivacyDlpV2DateShiftConfig { return *v }).(GooglePrivacyDlpV2DateShiftConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DateShiftConfig) GooglePrivacyDlpV2DateShiftConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DateShiftConfig
+		return ret
+	}).(GooglePrivacyDlpV2DateShiftConfigOutput)
 }
 
 // Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
@@ -7290,7 +7434,7 @@ func (o GooglePrivacyDlpV2DeidentifyConfigOutput) ToGooglePrivacyDlpV2Deidentify
 }
 
 func (o GooglePrivacyDlpV2DeidentifyConfigOutput) ToGooglePrivacyDlpV2DeidentifyConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2DeidentifyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2DeidentifyConfig {
 		return &v
 	}).(GooglePrivacyDlpV2DeidentifyConfigPtrOutput)
 }
@@ -7331,7 +7475,13 @@ func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) ToGooglePrivacyDlpV2Deident
 }
 
 func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) Elem() GooglePrivacyDlpV2DeidentifyConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfig) GooglePrivacyDlpV2DeidentifyConfig { return *v }).(GooglePrivacyDlpV2DeidentifyConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfig) GooglePrivacyDlpV2DeidentifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeidentifyConfig
+		return ret
+	}).(GooglePrivacyDlpV2DeidentifyConfigOutput)
 }
 
 // Treat the dataset as free-form text and apply the same free text transformation everywhere.
@@ -7468,7 +7618,7 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2De
 }
 
 func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2DeidentifyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2DeidentifyConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput)
 }
@@ -7510,7 +7660,11 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2DeidentifyConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeidentifyConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput)
 }
 
@@ -7648,7 +7802,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput) ToGooglePrivacyDl
 }
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationConfig) *GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeltaPresenceEstimationConfig) *GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
 		return &v
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput)
 }
@@ -7686,7 +7840,11 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput) ToGooglePrivac
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput) Elem() GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfig) GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeltaPresenceEstimationConfig
+		return ret
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput)
 }
 
@@ -7824,7 +7982,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGoogleP
 }
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput)
 }
@@ -7864,7 +8022,11 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) ToGoog
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput)
 }
 
@@ -8251,7 +8413,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) ToGoogleP
 }
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput)
 }
@@ -8279,7 +8441,11 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) ToGoog
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) Elem() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput)
 }
 
@@ -8595,7 +8761,7 @@ func (o GooglePrivacyDlpV2DictionaryOutput) ToGooglePrivacyDlpV2DictionaryPtrOut
 }
 
 func (o GooglePrivacyDlpV2DictionaryOutput) ToGooglePrivacyDlpV2DictionaryPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Dictionary) *GooglePrivacyDlpV2Dictionary {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Dictionary) *GooglePrivacyDlpV2Dictionary {
 		return &v
 	}).(GooglePrivacyDlpV2DictionaryPtrOutput)
 }
@@ -8625,7 +8791,13 @@ func (o GooglePrivacyDlpV2DictionaryPtrOutput) ToGooglePrivacyDlpV2DictionaryPtr
 }
 
 func (o GooglePrivacyDlpV2DictionaryPtrOutput) Elem() GooglePrivacyDlpV2DictionaryOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Dictionary) GooglePrivacyDlpV2Dictionary { return *v }).(GooglePrivacyDlpV2DictionaryOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Dictionary) GooglePrivacyDlpV2Dictionary {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Dictionary
+		return ret
+	}).(GooglePrivacyDlpV2DictionaryOutput)
 }
 
 // Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
@@ -8748,7 +8920,7 @@ func (o GooglePrivacyDlpV2DictionaryResponseOutput) ToGooglePrivacyDlpV2Dictiona
 }
 
 func (o GooglePrivacyDlpV2DictionaryResponseOutput) ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DictionaryResponse) *GooglePrivacyDlpV2DictionaryResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DictionaryResponse) *GooglePrivacyDlpV2DictionaryResponse {
 		return &v
 	}).(GooglePrivacyDlpV2DictionaryResponsePtrOutput)
 }
@@ -8780,7 +8952,13 @@ func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) ToGooglePrivacyDlpV2Dicti
 }
 
 func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) Elem() GooglePrivacyDlpV2DictionaryResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2DictionaryResponse { return *v }).(GooglePrivacyDlpV2DictionaryResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2DictionaryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DictionaryResponse
+		return ret
+	}).(GooglePrivacyDlpV2DictionaryResponseOutput)
 }
 
 // Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
@@ -8899,7 +9077,7 @@ func (o GooglePrivacyDlpV2EntityIdOutput) ToGooglePrivacyDlpV2EntityIdPtrOutput(
 }
 
 func (o GooglePrivacyDlpV2EntityIdOutput) ToGooglePrivacyDlpV2EntityIdPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2EntityId) *GooglePrivacyDlpV2EntityId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2EntityId) *GooglePrivacyDlpV2EntityId {
 		return &v
 	}).(GooglePrivacyDlpV2EntityIdPtrOutput)
 }
@@ -8924,7 +9102,13 @@ func (o GooglePrivacyDlpV2EntityIdPtrOutput) ToGooglePrivacyDlpV2EntityIdPtrOutp
 }
 
 func (o GooglePrivacyDlpV2EntityIdPtrOutput) Elem() GooglePrivacyDlpV2EntityIdOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityId) GooglePrivacyDlpV2EntityId { return *v }).(GooglePrivacyDlpV2EntityIdOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityId) GooglePrivacyDlpV2EntityId {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2EntityId
+		return ret
+	}).(GooglePrivacyDlpV2EntityIdOutput)
 }
 
 // Composite key indicating which field contains the entity identifier.
@@ -9033,7 +9217,7 @@ func (o GooglePrivacyDlpV2EntityIdResponseOutput) ToGooglePrivacyDlpV2EntityIdRe
 }
 
 func (o GooglePrivacyDlpV2EntityIdResponseOutput) ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2EntityIdResponse) *GooglePrivacyDlpV2EntityIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2EntityIdResponse) *GooglePrivacyDlpV2EntityIdResponse {
 		return &v
 	}).(GooglePrivacyDlpV2EntityIdResponsePtrOutput)
 }
@@ -9058,7 +9242,13 @@ func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) ToGooglePrivacyDlpV2EntityI
 }
 
 func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) Elem() GooglePrivacyDlpV2EntityIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityIdResponse) GooglePrivacyDlpV2EntityIdResponse { return *v }).(GooglePrivacyDlpV2EntityIdResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityIdResponse) GooglePrivacyDlpV2EntityIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2EntityIdResponse
+		return ret
+	}).(GooglePrivacyDlpV2EntityIdResponseOutput)
 }
 
 // Composite key indicating which field contains the entity identifier.
@@ -9276,7 +9466,7 @@ func (o GooglePrivacyDlpV2ExcludeInfoTypesOutput) ToGooglePrivacyDlpV2ExcludeInf
 }
 
 func (o GooglePrivacyDlpV2ExcludeInfoTypesOutput) ToGooglePrivacyDlpV2ExcludeInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ExcludeInfoTypes) *GooglePrivacyDlpV2ExcludeInfoTypes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ExcludeInfoTypes) *GooglePrivacyDlpV2ExcludeInfoTypes {
 		return &v
 	}).(GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput)
 }
@@ -9301,7 +9491,13 @@ func (o GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput) ToGooglePrivacyDlpV2Exclude
 }
 
 func (o GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput) Elem() GooglePrivacyDlpV2ExcludeInfoTypesOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ExcludeInfoTypes) GooglePrivacyDlpV2ExcludeInfoTypes { return *v }).(GooglePrivacyDlpV2ExcludeInfoTypesOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExcludeInfoTypes) GooglePrivacyDlpV2ExcludeInfoTypes {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ExcludeInfoTypes
+		return ret
+	}).(GooglePrivacyDlpV2ExcludeInfoTypesOutput)
 }
 
 // InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
@@ -9479,7 +9675,7 @@ func (o GooglePrivacyDlpV2ExclusionRuleOutput) ToGooglePrivacyDlpV2ExclusionRule
 }
 
 func (o GooglePrivacyDlpV2ExclusionRuleOutput) ToGooglePrivacyDlpV2ExclusionRulePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExclusionRulePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExclusionRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExclusionRule {
 		return &v
 	}).(GooglePrivacyDlpV2ExclusionRulePtrOutput)
 }
@@ -9521,7 +9717,13 @@ func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) ToGooglePrivacyDlpV2ExclusionR
 }
 
 func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) Elem() GooglePrivacyDlpV2ExclusionRuleOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRule) GooglePrivacyDlpV2ExclusionRule { return *v }).(GooglePrivacyDlpV2ExclusionRuleOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRule) GooglePrivacyDlpV2ExclusionRule {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ExclusionRule
+		return ret
+	}).(GooglePrivacyDlpV2ExclusionRuleOutput)
 }
 
 // Dictionary which defines the rule.
@@ -9750,7 +9952,7 @@ func (o GooglePrivacyDlpV2ExpressionsOutput) ToGooglePrivacyDlpV2ExpressionsPtrO
 }
 
 func (o GooglePrivacyDlpV2ExpressionsOutput) ToGooglePrivacyDlpV2ExpressionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExpressionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Expressions) *GooglePrivacyDlpV2Expressions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Expressions) *GooglePrivacyDlpV2Expressions {
 		return &v
 	}).(GooglePrivacyDlpV2ExpressionsPtrOutput)
 }
@@ -9782,7 +9984,13 @@ func (o GooglePrivacyDlpV2ExpressionsPtrOutput) ToGooglePrivacyDlpV2ExpressionsP
 }
 
 func (o GooglePrivacyDlpV2ExpressionsPtrOutput) Elem() GooglePrivacyDlpV2ExpressionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Expressions) GooglePrivacyDlpV2Expressions { return *v }).(GooglePrivacyDlpV2ExpressionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Expressions) GooglePrivacyDlpV2Expressions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Expressions
+		return ret
+	}).(GooglePrivacyDlpV2ExpressionsOutput)
 }
 
 // Conditions to apply to the expression.
@@ -9992,7 +10200,7 @@ func (o GooglePrivacyDlpV2FieldIdOutput) ToGooglePrivacyDlpV2FieldIdPtrOutput() 
 }
 
 func (o GooglePrivacyDlpV2FieldIdOutput) ToGooglePrivacyDlpV2FieldIdPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FieldId) *GooglePrivacyDlpV2FieldId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FieldId) *GooglePrivacyDlpV2FieldId {
 		return &v
 	}).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
@@ -10017,7 +10225,13 @@ func (o GooglePrivacyDlpV2FieldIdPtrOutput) ToGooglePrivacyDlpV2FieldIdPtrOutput
 }
 
 func (o GooglePrivacyDlpV2FieldIdPtrOutput) Elem() GooglePrivacyDlpV2FieldIdOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldId) GooglePrivacyDlpV2FieldId { return *v }).(GooglePrivacyDlpV2FieldIdOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldId) GooglePrivacyDlpV2FieldId {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FieldId
+		return ret
+	}).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
 // Name describing the field.
@@ -10171,7 +10385,7 @@ func (o GooglePrivacyDlpV2FieldIdResponseOutput) ToGooglePrivacyDlpV2FieldIdResp
 }
 
 func (o GooglePrivacyDlpV2FieldIdResponseOutput) ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FieldIdResponse) *GooglePrivacyDlpV2FieldIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FieldIdResponse) *GooglePrivacyDlpV2FieldIdResponse {
 		return &v
 	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
 }
@@ -10196,7 +10410,13 @@ func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) ToGooglePrivacyDlpV2FieldIdR
 }
 
 func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) Elem() GooglePrivacyDlpV2FieldIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldIdResponse) GooglePrivacyDlpV2FieldIdResponse { return *v }).(GooglePrivacyDlpV2FieldIdResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldIdResponse) GooglePrivacyDlpV2FieldIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FieldIdResponse
+		return ret
+	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
 // Name describing the field.
@@ -10595,7 +10815,7 @@ func (o GooglePrivacyDlpV2FileSetOutput) ToGooglePrivacyDlpV2FileSetPtrOutput() 
 }
 
 func (o GooglePrivacyDlpV2FileSetOutput) ToGooglePrivacyDlpV2FileSetPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FileSet) *GooglePrivacyDlpV2FileSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FileSet) *GooglePrivacyDlpV2FileSet {
 		return &v
 	}).(GooglePrivacyDlpV2FileSetPtrOutput)
 }
@@ -10625,7 +10845,13 @@ func (o GooglePrivacyDlpV2FileSetPtrOutput) ToGooglePrivacyDlpV2FileSetPtrOutput
 }
 
 func (o GooglePrivacyDlpV2FileSetPtrOutput) Elem() GooglePrivacyDlpV2FileSetOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSet) GooglePrivacyDlpV2FileSet { return *v }).(GooglePrivacyDlpV2FileSetOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSet) GooglePrivacyDlpV2FileSet {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FileSet
+		return ret
+	}).(GooglePrivacyDlpV2FileSetOutput)
 }
 
 // The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
@@ -10748,7 +10974,7 @@ func (o GooglePrivacyDlpV2FileSetResponseOutput) ToGooglePrivacyDlpV2FileSetResp
 }
 
 func (o GooglePrivacyDlpV2FileSetResponseOutput) ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FileSetResponse) *GooglePrivacyDlpV2FileSetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FileSetResponse) *GooglePrivacyDlpV2FileSetResponse {
 		return &v
 	}).(GooglePrivacyDlpV2FileSetResponsePtrOutput)
 }
@@ -10780,7 +11006,13 @@ func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) ToGooglePrivacyDlpV2FileSetR
 }
 
 func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2FileSetResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSetResponse) GooglePrivacyDlpV2FileSetResponse { return *v }).(GooglePrivacyDlpV2FileSetResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSetResponse) GooglePrivacyDlpV2FileSetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FileSetResponse
+		return ret
+	}).(GooglePrivacyDlpV2FileSetResponseOutput)
 }
 
 // The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
@@ -10907,7 +11139,7 @@ func (o GooglePrivacyDlpV2FindingLimitsOutput) ToGooglePrivacyDlpV2FindingLimits
 }
 
 func (o GooglePrivacyDlpV2FindingLimitsOutput) ToGooglePrivacyDlpV2FindingLimitsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FindingLimits) *GooglePrivacyDlpV2FindingLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FindingLimits) *GooglePrivacyDlpV2FindingLimits {
 		return &v
 	}).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
@@ -10944,7 +11176,13 @@ func (o GooglePrivacyDlpV2FindingLimitsPtrOutput) ToGooglePrivacyDlpV2FindingLim
 }
 
 func (o GooglePrivacyDlpV2FindingLimitsPtrOutput) Elem() GooglePrivacyDlpV2FindingLimitsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimits) GooglePrivacyDlpV2FindingLimits { return *v }).(GooglePrivacyDlpV2FindingLimitsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimits) GooglePrivacyDlpV2FindingLimits {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FindingLimits
+		return ret
+	}).(GooglePrivacyDlpV2FindingLimitsOutput)
 }
 
 // Configuration of findings limit given for specified infoTypes.
@@ -11081,7 +11319,7 @@ func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2Findi
 }
 
 func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FindingLimitsResponse) *GooglePrivacyDlpV2FindingLimitsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FindingLimitsResponse) *GooglePrivacyDlpV2FindingLimitsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2FindingLimitsResponsePtrOutput)
 }
@@ -11118,7 +11356,13 @@ func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) ToGooglePrivacyDlpV2Fi
 }
 
 func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) Elem() GooglePrivacyDlpV2FindingLimitsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) GooglePrivacyDlpV2FindingLimitsResponse { return *v }).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) GooglePrivacyDlpV2FindingLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FindingLimitsResponse
+		return ret
+	}).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
 }
 
 // Configuration of findings limit given for specified infoTypes.
@@ -11255,7 +11499,7 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) ToGooglePrivacyDlpV2Fi
 }
 
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) ToGooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2FixedSizeBucketingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2FixedSizeBucketingConfig {
 		return &v
 	}).(GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput)
 }
@@ -11291,7 +11535,11 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) Elem() GooglePrivacyDlpV2FixedSizeBucketingConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2FixedSizeBucketingConfig) GooglePrivacyDlpV2FixedSizeBucketingConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2FixedSizeBucketingConfig
+		return ret
 	}).(GooglePrivacyDlpV2FixedSizeBucketingConfigOutput)
 }
 
@@ -11506,7 +11754,7 @@ func (o GooglePrivacyDlpV2HotwordRuleOutput) ToGooglePrivacyDlpV2HotwordRulePtrO
 }
 
 func (o GooglePrivacyDlpV2HotwordRuleOutput) ToGooglePrivacyDlpV2HotwordRulePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HotwordRulePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2HotwordRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2HotwordRule {
 		return &v
 	}).(GooglePrivacyDlpV2HotwordRulePtrOutput)
 }
@@ -11543,7 +11791,13 @@ func (o GooglePrivacyDlpV2HotwordRulePtrOutput) ToGooglePrivacyDlpV2HotwordRuleP
 }
 
 func (o GooglePrivacyDlpV2HotwordRulePtrOutput) Elem() GooglePrivacyDlpV2HotwordRuleOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HotwordRule) GooglePrivacyDlpV2HotwordRule { return *v }).(GooglePrivacyDlpV2HotwordRuleOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2HotwordRule) GooglePrivacyDlpV2HotwordRule {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2HotwordRule
+		return ret
+	}).(GooglePrivacyDlpV2HotwordRuleOutput)
 }
 
 // Regular expression pattern defining what qualifies as a hotword.
@@ -11755,7 +12009,7 @@ func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ToGooglePrivacy
 }
 
 func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2HybridInspectStatisticsResponse) *GooglePrivacyDlpV2HybridInspectStatisticsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HybridInspectStatisticsResponse) *GooglePrivacyDlpV2HybridInspectStatisticsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput)
 }
@@ -11791,7 +12045,11 @@ func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) Elem() GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridInspectStatisticsResponse) GooglePrivacyDlpV2HybridInspectStatisticsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2HybridInspectStatisticsResponse
+		return ret
 	}).(GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput)
 }
 
@@ -11933,7 +12191,7 @@ func (o GooglePrivacyDlpV2HybridOptionsOutput) ToGooglePrivacyDlpV2HybridOptions
 }
 
 func (o GooglePrivacyDlpV2HybridOptionsOutput) ToGooglePrivacyDlpV2HybridOptionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2HybridOptions) *GooglePrivacyDlpV2HybridOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HybridOptions) *GooglePrivacyDlpV2HybridOptions {
 		return &v
 	}).(GooglePrivacyDlpV2HybridOptionsPtrOutput)
 }
@@ -11973,7 +12231,13 @@ func (o GooglePrivacyDlpV2HybridOptionsPtrOutput) ToGooglePrivacyDlpV2HybridOpti
 }
 
 func (o GooglePrivacyDlpV2HybridOptionsPtrOutput) Elem() GooglePrivacyDlpV2HybridOptionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptions) GooglePrivacyDlpV2HybridOptions { return *v }).(GooglePrivacyDlpV2HybridOptionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptions) GooglePrivacyDlpV2HybridOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2HybridOptions
+		return ret
+	}).(GooglePrivacyDlpV2HybridOptionsOutput)
 }
 
 // A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -12124,7 +12388,7 @@ func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2Hybri
 }
 
 func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2HybridOptionsResponse) *GooglePrivacyDlpV2HybridOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HybridOptionsResponse) *GooglePrivacyDlpV2HybridOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2HybridOptionsResponsePtrOutput)
 }
@@ -12166,7 +12430,13 @@ func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) ToGooglePrivacyDlpV2Hy
 }
 
 func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2HybridOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) GooglePrivacyDlpV2HybridOptionsResponse { return *v }).(GooglePrivacyDlpV2HybridOptionsResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) GooglePrivacyDlpV2HybridOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2HybridOptionsResponse
+		return ret
+	}).(GooglePrivacyDlpV2HybridOptionsResponseOutput)
 }
 
 // A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -12330,7 +12600,7 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) ToGooglePrivacyDlpV2InfoTypePtrOutput(
 }
 
 func (o GooglePrivacyDlpV2InfoTypeOutput) ToGooglePrivacyDlpV2InfoTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *GooglePrivacyDlpV2InfoType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InfoType) *GooglePrivacyDlpV2InfoType {
 		return &v
 	}).(GooglePrivacyDlpV2InfoTypePtrOutput)
 }
@@ -12355,7 +12625,13 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) ToGooglePrivacyDlpV2InfoTypePtrOutp
 }
 
 func (o GooglePrivacyDlpV2InfoTypePtrOutput) Elem() GooglePrivacyDlpV2InfoTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) GooglePrivacyDlpV2InfoType { return *v }).(GooglePrivacyDlpV2InfoTypeOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) GooglePrivacyDlpV2InfoType {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InfoType
+		return ret
+	}).(GooglePrivacyDlpV2InfoTypeOutput)
 }
 
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
@@ -13135,7 +13411,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsOutput) ToGooglePrivacyDlpV2Inf
 }
 
 func (o GooglePrivacyDlpV2InfoTypeTransformationsOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformations) *GooglePrivacyDlpV2InfoTypeTransformations {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InfoTypeTransformations) *GooglePrivacyDlpV2InfoTypeTransformations {
 		return &v
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput)
 }
@@ -13163,7 +13439,11 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput) Elem() GooglePrivacyDlpV2InfoTypeTransformationsOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformations) GooglePrivacyDlpV2InfoTypeTransformations {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InfoTypeTransformations
+		return ret
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsOutput)
 }
 
@@ -13273,7 +13553,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacy
 }
 
 func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformationsResponse) *GooglePrivacyDlpV2InfoTypeTransformationsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InfoTypeTransformationsResponse) *GooglePrivacyDlpV2InfoTypeTransformationsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput)
 }
@@ -13301,7 +13581,11 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) ToGooglePriv
 
 func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) Elem() GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformationsResponse) GooglePrivacyDlpV2InfoTypeTransformationsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InfoTypeTransformationsResponse
+		return ret
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput)
 }
 
@@ -13439,7 +13723,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) ToGooglePrivacyDlpV2InspectConfig
 }
 
 func (o GooglePrivacyDlpV2InspectConfigOutput) ToGooglePrivacyDlpV2InspectConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfig {
 		return &v
 	}).(GooglePrivacyDlpV2InspectConfigPtrOutput)
 }
@@ -13503,7 +13787,13 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ToGooglePrivacyDlpV2InspectCon
 }
 
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Elem() GooglePrivacyDlpV2InspectConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) GooglePrivacyDlpV2InspectConfig { return *v }).(GooglePrivacyDlpV2InspectConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) GooglePrivacyDlpV2InspectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectConfig
+		return ret
+	}).(GooglePrivacyDlpV2InspectConfigOutput)
 }
 
 // List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -13710,7 +14000,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2Inspe
 }
 
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) *GooglePrivacyDlpV2InspectConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectConfigResponse) *GooglePrivacyDlpV2InspectConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2InspectConfigResponsePtrOutput)
 }
@@ -13778,7 +14068,13 @@ func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ToGooglePrivacyDlpV2In
 }
 
 func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2InspectConfigResponse { return *v }).(GooglePrivacyDlpV2InspectConfigResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2InspectConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectConfigResponse
+		return ret
+	}).(GooglePrivacyDlpV2InspectConfigResponseOutput)
 }
 
 // List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -13961,7 +14257,7 @@ func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) ToGooglePrivac
 }
 
 func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectDataSourceDetailsResponse) *GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectDataSourceDetailsResponse) *GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput)
 }
@@ -13996,7 +14292,11 @@ func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectDataSourceDetailsResponse) GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectDataSourceDetailsResponse
+		return ret
 	}).(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput)
 }
 
@@ -14128,7 +14428,7 @@ func (o GooglePrivacyDlpV2InspectJobConfigOutput) ToGooglePrivacyDlpV2InspectJob
 }
 
 func (o GooglePrivacyDlpV2InspectJobConfigOutput) ToGooglePrivacyDlpV2InspectJobConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectJobConfig) *GooglePrivacyDlpV2InspectJobConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectJobConfig) *GooglePrivacyDlpV2InspectJobConfig {
 		return &v
 	}).(GooglePrivacyDlpV2InspectJobConfigPtrOutput)
 }
@@ -14168,7 +14468,13 @@ func (o GooglePrivacyDlpV2InspectJobConfigPtrOutput) ToGooglePrivacyDlpV2Inspect
 }
 
 func (o GooglePrivacyDlpV2InspectJobConfigPtrOutput) Elem() GooglePrivacyDlpV2InspectJobConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfig) GooglePrivacyDlpV2InspectJobConfig { return *v }).(GooglePrivacyDlpV2InspectJobConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfig) GooglePrivacyDlpV2InspectJobConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectJobConfig
+		return ret
+	}).(GooglePrivacyDlpV2InspectJobConfigOutput)
 }
 
 // Actions to execute at the completion of the job.
@@ -14319,7 +14625,7 @@ func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2In
 }
 
 func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectJobConfigResponse) *GooglePrivacyDlpV2InspectJobConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectJobConfigResponse) *GooglePrivacyDlpV2InspectJobConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput)
 }
@@ -14366,7 +14672,11 @@ func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectJobConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) GooglePrivacyDlpV2InspectJobConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectJobConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2InspectJobConfigResponseOutput)
 }
 
@@ -14526,7 +14836,7 @@ func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2Ins
 }
 
 func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateResponse) *GooglePrivacyDlpV2InspectTemplateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectTemplateResponse) *GooglePrivacyDlpV2InspectTemplateResponse {
 		return &v
 	}).(GooglePrivacyDlpV2InspectTemplateResponsePtrOutput)
 }
@@ -14579,7 +14889,11 @@ func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectTemplateResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) GooglePrivacyDlpV2InspectTemplateResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2InspectTemplateResponse
+		return ret
 	}).(GooglePrivacyDlpV2InspectTemplateResponseOutput)
 }
 
@@ -15179,7 +15493,7 @@ func (o GooglePrivacyDlpV2JobNotificationEmailsOutput) ToGooglePrivacyDlpV2JobNo
 }
 
 func (o GooglePrivacyDlpV2JobNotificationEmailsOutput) ToGooglePrivacyDlpV2JobNotificationEmailsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobNotificationEmailsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobNotificationEmails) *GooglePrivacyDlpV2JobNotificationEmails {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2JobNotificationEmails) *GooglePrivacyDlpV2JobNotificationEmails {
 		return &v
 	}).(GooglePrivacyDlpV2JobNotificationEmailsPtrOutput)
 }
@@ -15199,7 +15513,13 @@ func (o GooglePrivacyDlpV2JobNotificationEmailsPtrOutput) ToGooglePrivacyDlpV2Jo
 }
 
 func (o GooglePrivacyDlpV2JobNotificationEmailsPtrOutput) Elem() GooglePrivacyDlpV2JobNotificationEmailsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobNotificationEmails) GooglePrivacyDlpV2JobNotificationEmails { return *v }).(GooglePrivacyDlpV2JobNotificationEmailsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobNotificationEmails) GooglePrivacyDlpV2JobNotificationEmails {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2JobNotificationEmails
+		return ret
+	}).(GooglePrivacyDlpV2JobNotificationEmailsOutput)
 }
 
 // Enable email notification to project owners and editors on jobs's completion/failure.
@@ -15348,7 +15668,7 @@ func (o GooglePrivacyDlpV2KAnonymityConfigOutput) ToGooglePrivacyDlpV2KAnonymity
 }
 
 func (o GooglePrivacyDlpV2KAnonymityConfigOutput) ToGooglePrivacyDlpV2KAnonymityConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KAnonymityConfig) *GooglePrivacyDlpV2KAnonymityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KAnonymityConfig) *GooglePrivacyDlpV2KAnonymityConfig {
 		return &v
 	}).(GooglePrivacyDlpV2KAnonymityConfigPtrOutput)
 }
@@ -15378,7 +15698,13 @@ func (o GooglePrivacyDlpV2KAnonymityConfigPtrOutput) ToGooglePrivacyDlpV2KAnonym
 }
 
 func (o GooglePrivacyDlpV2KAnonymityConfigPtrOutput) Elem() GooglePrivacyDlpV2KAnonymityConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfig) GooglePrivacyDlpV2KAnonymityConfig { return *v }).(GooglePrivacyDlpV2KAnonymityConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfig) GooglePrivacyDlpV2KAnonymityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KAnonymityConfig
+		return ret
+	}).(GooglePrivacyDlpV2KAnonymityConfigOutput)
 }
 
 // Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored.
@@ -15501,7 +15827,7 @@ func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KA
 }
 
 func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KAnonymityConfigResponse) *GooglePrivacyDlpV2KAnonymityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KAnonymityConfigResponse) *GooglePrivacyDlpV2KAnonymityConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput)
 }
@@ -15536,7 +15862,11 @@ func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2KAnonymityConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfigResponse) GooglePrivacyDlpV2KAnonymityConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KAnonymityConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2KAnonymityConfigResponseOutput)
 }
 
@@ -15909,7 +16239,7 @@ func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) ToGooglePrivacyDlpV2KA
 }
 
 func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KAnonymityResultResponse) *GooglePrivacyDlpV2KAnonymityResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KAnonymityResultResponse) *GooglePrivacyDlpV2KAnonymityResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput)
 }
@@ -15937,7 +16267,11 @@ func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) Elem() GooglePrivacyDlpV2KAnonymityResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityResultResponse) GooglePrivacyDlpV2KAnonymityResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KAnonymityResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2KAnonymityResultResponseOutput)
 }
 
@@ -16055,7 +16389,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigOutput) ToGooglePrivacyDlpV2KMapEs
 }
 
 func (o GooglePrivacyDlpV2KMapEstimationConfigOutput) ToGooglePrivacyDlpV2KMapEstimationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationConfig) *GooglePrivacyDlpV2KMapEstimationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KMapEstimationConfig) *GooglePrivacyDlpV2KMapEstimationConfig {
 		return &v
 	}).(GooglePrivacyDlpV2KMapEstimationConfigPtrOutput)
 }
@@ -16092,7 +16426,13 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigPtrOutput) ToGooglePrivacyDlpV2KMa
 }
 
 func (o GooglePrivacyDlpV2KMapEstimationConfigPtrOutput) Elem() GooglePrivacyDlpV2KMapEstimationConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfig) GooglePrivacyDlpV2KMapEstimationConfig { return *v }).(GooglePrivacyDlpV2KMapEstimationConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfig) GooglePrivacyDlpV2KMapEstimationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KMapEstimationConfig
+		return ret
+	}).(GooglePrivacyDlpV2KMapEstimationConfigOutput)
 }
 
 // Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
@@ -16229,7 +16569,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlp
 }
 
 func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationConfigResponse) *GooglePrivacyDlpV2KMapEstimationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KMapEstimationConfigResponse) *GooglePrivacyDlpV2KMapEstimationConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput)
 }
@@ -16269,7 +16609,11 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) ToGooglePrivacy
 
 func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2KMapEstimationConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) GooglePrivacyDlpV2KMapEstimationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KMapEstimationConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2KMapEstimationConfigResponseOutput)
 }
 
@@ -16648,7 +16992,7 @@ func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) ToGooglePrivacyDlp
 }
 
 func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationResultResponse) *GooglePrivacyDlpV2KMapEstimationResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KMapEstimationResultResponse) *GooglePrivacyDlpV2KMapEstimationResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput)
 }
@@ -16676,7 +17020,11 @@ func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) ToGooglePrivacy
 
 func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) Elem() GooglePrivacyDlpV2KMapEstimationResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationResultResponse) GooglePrivacyDlpV2KMapEstimationResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KMapEstimationResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2KMapEstimationResultResponseOutput)
 }
 
@@ -16786,7 +17134,7 @@ func (o GooglePrivacyDlpV2KindExpressionOutput) ToGooglePrivacyDlpV2KindExpressi
 }
 
 func (o GooglePrivacyDlpV2KindExpressionOutput) ToGooglePrivacyDlpV2KindExpressionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KindExpression) *GooglePrivacyDlpV2KindExpression {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KindExpression) *GooglePrivacyDlpV2KindExpression {
 		return &v
 	}).(GooglePrivacyDlpV2KindExpressionPtrOutput)
 }
@@ -16811,7 +17159,13 @@ func (o GooglePrivacyDlpV2KindExpressionPtrOutput) ToGooglePrivacyDlpV2KindExpre
 }
 
 func (o GooglePrivacyDlpV2KindExpressionPtrOutput) Elem() GooglePrivacyDlpV2KindExpressionOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpression) GooglePrivacyDlpV2KindExpression { return *v }).(GooglePrivacyDlpV2KindExpressionOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpression) GooglePrivacyDlpV2KindExpression {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KindExpression
+		return ret
+	}).(GooglePrivacyDlpV2KindExpressionOutput)
 }
 
 // The name of the kind.
@@ -16920,7 +17274,7 @@ func (o GooglePrivacyDlpV2KindExpressionResponseOutput) ToGooglePrivacyDlpV2Kind
 }
 
 func (o GooglePrivacyDlpV2KindExpressionResponseOutput) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KindExpressionResponse) *GooglePrivacyDlpV2KindExpressionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KindExpressionResponse) *GooglePrivacyDlpV2KindExpressionResponse {
 		return &v
 	}).(GooglePrivacyDlpV2KindExpressionResponsePtrOutput)
 }
@@ -16945,7 +17299,13 @@ func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) ToGooglePrivacyDlpV2K
 }
 
 func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Elem() GooglePrivacyDlpV2KindExpressionResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpressionResponse) GooglePrivacyDlpV2KindExpressionResponse { return *v }).(GooglePrivacyDlpV2KindExpressionResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpressionResponse) GooglePrivacyDlpV2KindExpressionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KindExpressionResponse
+		return ret
+	}).(GooglePrivacyDlpV2KindExpressionResponseOutput)
 }
 
 // The name of the kind.
@@ -17058,7 +17418,7 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ToGooglePrivacyDlpV2KmsWrap
 }
 
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ToGooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKey) *GooglePrivacyDlpV2KmsWrappedCryptoKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KmsWrappedCryptoKey) *GooglePrivacyDlpV2KmsWrappedCryptoKey {
 		return &v
 	}).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
@@ -17088,7 +17448,13 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) ToGooglePrivacyDlpV2KmsW
 }
 
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KmsWrappedCryptoKey) GooglePrivacyDlpV2KmsWrappedCryptoKey { return *v }).(GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2KmsWrappedCryptoKey) GooglePrivacyDlpV2KmsWrappedCryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2KmsWrappedCryptoKey
+		return ret
+	}).(GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput)
 }
 
 // The resource name of the KMS CryptoKey to use for unwrapping.
@@ -17275,7 +17641,7 @@ func (o GooglePrivacyDlpV2LDiversityConfigOutput) ToGooglePrivacyDlpV2LDiversity
 }
 
 func (o GooglePrivacyDlpV2LDiversityConfigOutput) ToGooglePrivacyDlpV2LDiversityConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LDiversityConfig) *GooglePrivacyDlpV2LDiversityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LDiversityConfig) *GooglePrivacyDlpV2LDiversityConfig {
 		return &v
 	}).(GooglePrivacyDlpV2LDiversityConfigPtrOutput)
 }
@@ -17305,7 +17671,13 @@ func (o GooglePrivacyDlpV2LDiversityConfigPtrOutput) ToGooglePrivacyDlpV2LDivers
 }
 
 func (o GooglePrivacyDlpV2LDiversityConfigPtrOutput) Elem() GooglePrivacyDlpV2LDiversityConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfig) GooglePrivacyDlpV2LDiversityConfig { return *v }).(GooglePrivacyDlpV2LDiversityConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfig) GooglePrivacyDlpV2LDiversityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LDiversityConfig
+		return ret
+	}).(GooglePrivacyDlpV2LDiversityConfigOutput)
 }
 
 // Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key.
@@ -17428,7 +17800,7 @@ func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LD
 }
 
 func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LDiversityConfigResponse) *GooglePrivacyDlpV2LDiversityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LDiversityConfigResponse) *GooglePrivacyDlpV2LDiversityConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput)
 }
@@ -17463,7 +17835,11 @@ func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2LDiversityConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfigResponse) GooglePrivacyDlpV2LDiversityConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LDiversityConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2LDiversityConfigResponseOutput)
 }
 
@@ -17858,7 +18234,7 @@ func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) ToGooglePrivacyDlpV2LD
 }
 
 func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LDiversityResultResponse) *GooglePrivacyDlpV2LDiversityResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LDiversityResultResponse) *GooglePrivacyDlpV2LDiversityResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2LDiversityResultResponsePtrOutput)
 }
@@ -17886,7 +18262,11 @@ func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) Elem() GooglePrivacyDlpV2LDiversityResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityResultResponse) GooglePrivacyDlpV2LDiversityResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LDiversityResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2LDiversityResultResponseOutput)
 }
 
@@ -18004,7 +18384,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) ToGooglePrivacyDlpV
 }
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryConfig) *GooglePrivacyDlpV2LargeCustomDictionaryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LargeCustomDictionaryConfig) *GooglePrivacyDlpV2LargeCustomDictionaryConfig {
 		return &v
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput)
 }
@@ -18046,7 +18426,11 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) Elem() GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfig) GooglePrivacyDlpV2LargeCustomDictionaryConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LargeCustomDictionaryConfig
+		return ret
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput)
 }
 
@@ -18184,7 +18568,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePri
 }
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput)
 }
@@ -18226,7 +18610,11 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) ToGoogle
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput)
 }
 
@@ -18356,7 +18744,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ToGooglePriv
 }
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput)
 }
@@ -18382,7 +18770,11 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) ToGoogleP
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) Elem() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse
+		return ret
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput)
 }
 
@@ -18488,7 +18880,7 @@ func (o GooglePrivacyDlpV2LeaveUntransformedOutput) ToGooglePrivacyDlpV2LeaveUnt
 }
 
 func (o GooglePrivacyDlpV2LeaveUntransformedOutput) ToGooglePrivacyDlpV2LeaveUntransformedPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LeaveUntransformed) *GooglePrivacyDlpV2LeaveUntransformed {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LeaveUntransformed) *GooglePrivacyDlpV2LeaveUntransformed {
 		return &v
 	}).(GooglePrivacyDlpV2LeaveUntransformedPtrOutput)
 }
@@ -18508,7 +18900,13 @@ func (o GooglePrivacyDlpV2LeaveUntransformedPtrOutput) ToGooglePrivacyDlpV2Leave
 }
 
 func (o GooglePrivacyDlpV2LeaveUntransformedPtrOutput) Elem() GooglePrivacyDlpV2LeaveUntransformedOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LeaveUntransformed) GooglePrivacyDlpV2LeaveUntransformed { return *v }).(GooglePrivacyDlpV2LeaveUntransformedOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2LeaveUntransformed) GooglePrivacyDlpV2LeaveUntransformed {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LeaveUntransformed
+		return ret
+	}).(GooglePrivacyDlpV2LeaveUntransformedOutput)
 }
 
 // Skips the data without modifying it if the requested transformation would cause an error. For example, if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in the response.
@@ -18603,7 +19001,7 @@ func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2
 }
 
 func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LeaveUntransformedResponse) *GooglePrivacyDlpV2LeaveUntransformedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LeaveUntransformedResponse) *GooglePrivacyDlpV2LeaveUntransformedResponse {
 		return &v
 	}).(GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput)
 }
@@ -18624,7 +19022,11 @@ func (o GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) Elem() GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LeaveUntransformedResponse) GooglePrivacyDlpV2LeaveUntransformedResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LeaveUntransformedResponse
+		return ret
 	}).(GooglePrivacyDlpV2LeaveUntransformedResponseOutput)
 }
 
@@ -18728,7 +19130,7 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentOutput) ToGooglePrivacyDlpV2Likeli
 }
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentOutput) ToGooglePrivacyDlpV2LikelihoodAdjustmentPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2LikelihoodAdjustment) *GooglePrivacyDlpV2LikelihoodAdjustment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LikelihoodAdjustment) *GooglePrivacyDlpV2LikelihoodAdjustment {
 		return &v
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput)
 }
@@ -18760,7 +19162,13 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput) ToGooglePrivacyDlpV2Lik
 }
 
 func (o GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput) Elem() GooglePrivacyDlpV2LikelihoodAdjustmentOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LikelihoodAdjustment) GooglePrivacyDlpV2LikelihoodAdjustment { return *v }).(GooglePrivacyDlpV2LikelihoodAdjustmentOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2LikelihoodAdjustment) GooglePrivacyDlpV2LikelihoodAdjustment {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2LikelihoodAdjustment
+		return ret
+	}).(GooglePrivacyDlpV2LikelihoodAdjustmentOutput)
 }
 
 // Set the likelihood of a finding to a fixed value.
@@ -18939,7 +19347,7 @@ func (o GooglePrivacyDlpV2ManualOutput) ToGooglePrivacyDlpV2ManualPtrOutput() Go
 }
 
 func (o GooglePrivacyDlpV2ManualOutput) ToGooglePrivacyDlpV2ManualPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ManualPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Manual) *GooglePrivacyDlpV2Manual {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Manual) *GooglePrivacyDlpV2Manual {
 		return &v
 	}).(GooglePrivacyDlpV2ManualPtrOutput)
 }
@@ -18959,7 +19367,13 @@ func (o GooglePrivacyDlpV2ManualPtrOutput) ToGooglePrivacyDlpV2ManualPtrOutputWi
 }
 
 func (o GooglePrivacyDlpV2ManualPtrOutput) Elem() GooglePrivacyDlpV2ManualOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Manual) GooglePrivacyDlpV2Manual { return *v }).(GooglePrivacyDlpV2ManualOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Manual) GooglePrivacyDlpV2Manual {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Manual
+		return ret
+	}).(GooglePrivacyDlpV2ManualOutput)
 }
 
 // Job trigger option for hybrid jobs. Jobs must be manually created and finished.
@@ -19104,7 +19518,7 @@ func (o GooglePrivacyDlpV2NumericalStatsConfigOutput) ToGooglePrivacyDlpV2Numeri
 }
 
 func (o GooglePrivacyDlpV2NumericalStatsConfigOutput) ToGooglePrivacyDlpV2NumericalStatsConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2NumericalStatsConfig) *GooglePrivacyDlpV2NumericalStatsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2NumericalStatsConfig) *GooglePrivacyDlpV2NumericalStatsConfig {
 		return &v
 	}).(GooglePrivacyDlpV2NumericalStatsConfigPtrOutput)
 }
@@ -19129,7 +19543,13 @@ func (o GooglePrivacyDlpV2NumericalStatsConfigPtrOutput) ToGooglePrivacyDlpV2Num
 }
 
 func (o GooglePrivacyDlpV2NumericalStatsConfigPtrOutput) Elem() GooglePrivacyDlpV2NumericalStatsConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsConfig) GooglePrivacyDlpV2NumericalStatsConfig { return *v }).(GooglePrivacyDlpV2NumericalStatsConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsConfig) GooglePrivacyDlpV2NumericalStatsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2NumericalStatsConfig
+		return ret
+	}).(GooglePrivacyDlpV2NumericalStatsConfigOutput)
 }
 
 // Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
@@ -19238,7 +19658,7 @@ func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) ToGooglePrivacyDlp
 }
 
 func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2NumericalStatsConfigResponse) *GooglePrivacyDlpV2NumericalStatsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2NumericalStatsConfigResponse) *GooglePrivacyDlpV2NumericalStatsConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput)
 }
@@ -19266,7 +19686,11 @@ func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) ToGooglePrivacy
 
 func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2NumericalStatsConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsConfigResponse) GooglePrivacyDlpV2NumericalStatsConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2NumericalStatsConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput)
 }
 
@@ -19384,7 +19808,7 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlp
 }
 
 func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2NumericalStatsResultResponse) *GooglePrivacyDlpV2NumericalStatsResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2NumericalStatsResultResponse) *GooglePrivacyDlpV2NumericalStatsResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput)
 }
@@ -19426,7 +19850,11 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) ToGooglePrivacy
 
 func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) Elem() GooglePrivacyDlpV2NumericalStatsResultResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsResultResponse) GooglePrivacyDlpV2NumericalStatsResultResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2NumericalStatsResultResponse
+		return ret
 	}).(GooglePrivacyDlpV2NumericalStatsResultResponseOutput)
 }
 
@@ -19560,7 +19988,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutput) ToGooglePrivacyDlpV2OutputS
 }
 
 func (o GooglePrivacyDlpV2OutputStorageConfigOutput) ToGooglePrivacyDlpV2OutputStorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OutputStorageConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2OutputStorageConfig) *GooglePrivacyDlpV2OutputStorageConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2OutputStorageConfig) *GooglePrivacyDlpV2OutputStorageConfig {
 		return &v
 	}).(GooglePrivacyDlpV2OutputStorageConfigPtrOutput)
 }
@@ -19592,7 +20020,13 @@ func (o GooglePrivacyDlpV2OutputStorageConfigPtrOutput) ToGooglePrivacyDlpV2Outp
 }
 
 func (o GooglePrivacyDlpV2OutputStorageConfigPtrOutput) Elem() GooglePrivacyDlpV2OutputStorageConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2OutputStorageConfig) GooglePrivacyDlpV2OutputStorageConfig { return *v }).(GooglePrivacyDlpV2OutputStorageConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2OutputStorageConfig) GooglePrivacyDlpV2OutputStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2OutputStorageConfig
+		return ret
+	}).(GooglePrivacyDlpV2OutputStorageConfigOutput)
 }
 
 // Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
@@ -19781,7 +20215,7 @@ func (o GooglePrivacyDlpV2PartitionIdOutput) ToGooglePrivacyDlpV2PartitionIdPtrO
 }
 
 func (o GooglePrivacyDlpV2PartitionIdOutput) ToGooglePrivacyDlpV2PartitionIdPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionId) *GooglePrivacyDlpV2PartitionId {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PartitionId) *GooglePrivacyDlpV2PartitionId {
 		return &v
 	}).(GooglePrivacyDlpV2PartitionIdPtrOutput)
 }
@@ -19811,7 +20245,13 @@ func (o GooglePrivacyDlpV2PartitionIdPtrOutput) ToGooglePrivacyDlpV2PartitionIdP
 }
 
 func (o GooglePrivacyDlpV2PartitionIdPtrOutput) Elem() GooglePrivacyDlpV2PartitionIdOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionId) GooglePrivacyDlpV2PartitionId { return *v }).(GooglePrivacyDlpV2PartitionIdOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionId) GooglePrivacyDlpV2PartitionId {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PartitionId
+		return ret
+	}).(GooglePrivacyDlpV2PartitionIdOutput)
 }
 
 // If not empty, the ID of the namespace to which the entities belong.
@@ -19934,7 +20374,7 @@ func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ToGooglePrivacyDlpV2Partiti
 }
 
 func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionIdResponse) *GooglePrivacyDlpV2PartitionIdResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PartitionIdResponse) *GooglePrivacyDlpV2PartitionIdResponse {
 		return &v
 	}).(GooglePrivacyDlpV2PartitionIdResponsePtrOutput)
 }
@@ -19964,7 +20404,13 @@ func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) ToGooglePrivacyDlpV2Part
 }
 
 func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) Elem() GooglePrivacyDlpV2PartitionIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) GooglePrivacyDlpV2PartitionIdResponse { return *v }).(GooglePrivacyDlpV2PartitionIdResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) GooglePrivacyDlpV2PartitionIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PartitionIdResponse
+		return ret
+	}).(GooglePrivacyDlpV2PartitionIdResponseOutput)
 }
 
 // If not empty, the ID of the namespace to which the entities belong.
@@ -20123,7 +20569,7 @@ func (o GooglePrivacyDlpV2PrimitiveTransformationOutput) ToGooglePrivacyDlpV2Pri
 }
 
 func (o GooglePrivacyDlpV2PrimitiveTransformationOutput) ToGooglePrivacyDlpV2PrimitiveTransformationPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrimitiveTransformationPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2PrimitiveTransformation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2PrimitiveTransformation {
 		return &v
 	}).(GooglePrivacyDlpV2PrimitiveTransformationPtrOutput)
 }
@@ -20221,7 +20667,11 @@ func (o GooglePrivacyDlpV2PrimitiveTransformationPtrOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2PrimitiveTransformationPtrOutput) Elem() GooglePrivacyDlpV2PrimitiveTransformationOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2PrimitiveTransformation) GooglePrivacyDlpV2PrimitiveTransformation {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PrimitiveTransformation
+		return ret
 	}).(GooglePrivacyDlpV2PrimitiveTransformationOutput)
 }
 
@@ -20618,7 +21068,7 @@ func (o GooglePrivacyDlpV2PrivacyMetricOutput) ToGooglePrivacyDlpV2PrivacyMetric
 }
 
 func (o GooglePrivacyDlpV2PrivacyMetricOutput) ToGooglePrivacyDlpV2PrivacyMetricPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PrivacyMetric) *GooglePrivacyDlpV2PrivacyMetric {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PrivacyMetric) *GooglePrivacyDlpV2PrivacyMetric {
 		return &v
 	}).(GooglePrivacyDlpV2PrivacyMetricPtrOutput)
 }
@@ -20676,7 +21126,13 @@ func (o GooglePrivacyDlpV2PrivacyMetricPtrOutput) ToGooglePrivacyDlpV2PrivacyMet
 }
 
 func (o GooglePrivacyDlpV2PrivacyMetricPtrOutput) Elem() GooglePrivacyDlpV2PrivacyMetricOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetric) GooglePrivacyDlpV2PrivacyMetric { return *v }).(GooglePrivacyDlpV2PrivacyMetricOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetric) GooglePrivacyDlpV2PrivacyMetric {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PrivacyMetric
+		return ret
+	}).(GooglePrivacyDlpV2PrivacyMetricOutput)
 }
 
 // Categorical stats
@@ -20855,7 +21311,7 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2Priva
 }
 
 func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2PrivacyMetricResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2PrivacyMetricResponse {
 		return &v
 	}).(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput)
 }
@@ -20917,7 +21373,13 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) ToGooglePrivacyDlpV2Pr
 }
 
 func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) Elem() GooglePrivacyDlpV2PrivacyMetricResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) GooglePrivacyDlpV2PrivacyMetricResponse { return *v }).(GooglePrivacyDlpV2PrivacyMetricResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) GooglePrivacyDlpV2PrivacyMetricResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PrivacyMetricResponse
+		return ret
+	}).(GooglePrivacyDlpV2PrivacyMetricResponseOutput)
 }
 
 // Categorical stats
@@ -21080,7 +21542,7 @@ func (o GooglePrivacyDlpV2ProximityOutput) ToGooglePrivacyDlpV2ProximityPtrOutpu
 }
 
 func (o GooglePrivacyDlpV2ProximityOutput) ToGooglePrivacyDlpV2ProximityPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ProximityPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Proximity) *GooglePrivacyDlpV2Proximity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Proximity) *GooglePrivacyDlpV2Proximity {
 		return &v
 	}).(GooglePrivacyDlpV2ProximityPtrOutput)
 }
@@ -21110,7 +21572,13 @@ func (o GooglePrivacyDlpV2ProximityPtrOutput) ToGooglePrivacyDlpV2ProximityPtrOu
 }
 
 func (o GooglePrivacyDlpV2ProximityPtrOutput) Elem() GooglePrivacyDlpV2ProximityOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Proximity) GooglePrivacyDlpV2Proximity { return *v }).(GooglePrivacyDlpV2ProximityOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Proximity) GooglePrivacyDlpV2Proximity {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Proximity
+		return ret
+	}).(GooglePrivacyDlpV2ProximityOutput)
 }
 
 // Number of characters after the finding to consider.
@@ -21289,7 +21757,7 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput) ToGooglePriva
 }
 
 func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput) ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog) *GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog) *GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
 		return &v
 	}).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput)
 }
@@ -21310,7 +21778,11 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) ToGooglePr
 
 func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) Elem() GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+		return ret
 	}).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput)
 }
 
@@ -21452,7 +21924,7 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccOutput) ToGooglePrivacyDlpV2Publis
 }
 
 func (o GooglePrivacyDlpV2PublishSummaryToCsccOutput) ToGooglePrivacyDlpV2PublishSummaryToCsccPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PublishSummaryToCscc) *GooglePrivacyDlpV2PublishSummaryToCscc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PublishSummaryToCscc) *GooglePrivacyDlpV2PublishSummaryToCscc {
 		return &v
 	}).(GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput)
 }
@@ -21472,7 +21944,13 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput) ToGooglePrivacyDlpV2Pub
 }
 
 func (o GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput) Elem() GooglePrivacyDlpV2PublishSummaryToCsccOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishSummaryToCscc) GooglePrivacyDlpV2PublishSummaryToCscc { return *v }).(GooglePrivacyDlpV2PublishSummaryToCsccOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishSummaryToCscc) GooglePrivacyDlpV2PublishSummaryToCscc {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PublishSummaryToCscc
+		return ret
+	}).(GooglePrivacyDlpV2PublishSummaryToCsccOutput)
 }
 
 // Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
@@ -21617,7 +22095,7 @@ func (o GooglePrivacyDlpV2PublishToPubSubOutput) ToGooglePrivacyDlpV2PublishToPu
 }
 
 func (o GooglePrivacyDlpV2PublishToPubSubOutput) ToGooglePrivacyDlpV2PublishToPubSubPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishToPubSubPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PublishToPubSub) *GooglePrivacyDlpV2PublishToPubSub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PublishToPubSub) *GooglePrivacyDlpV2PublishToPubSub {
 		return &v
 	}).(GooglePrivacyDlpV2PublishToPubSubPtrOutput)
 }
@@ -21642,7 +22120,13 @@ func (o GooglePrivacyDlpV2PublishToPubSubPtrOutput) ToGooglePrivacyDlpV2PublishT
 }
 
 func (o GooglePrivacyDlpV2PublishToPubSubPtrOutput) Elem() GooglePrivacyDlpV2PublishToPubSubOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishToPubSub) GooglePrivacyDlpV2PublishToPubSub { return *v }).(GooglePrivacyDlpV2PublishToPubSubOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishToPubSub) GooglePrivacyDlpV2PublishToPubSub {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PublishToPubSub
+		return ret
+	}).(GooglePrivacyDlpV2PublishToPubSubOutput)
 }
 
 // Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
@@ -21802,7 +22286,7 @@ func (o GooglePrivacyDlpV2PublishToStackdriverOutput) ToGooglePrivacyDlpV2Publis
 }
 
 func (o GooglePrivacyDlpV2PublishToStackdriverOutput) ToGooglePrivacyDlpV2PublishToStackdriverPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishToStackdriverPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PublishToStackdriver) *GooglePrivacyDlpV2PublishToStackdriver {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PublishToStackdriver) *GooglePrivacyDlpV2PublishToStackdriver {
 		return &v
 	}).(GooglePrivacyDlpV2PublishToStackdriverPtrOutput)
 }
@@ -21822,7 +22306,13 @@ func (o GooglePrivacyDlpV2PublishToStackdriverPtrOutput) ToGooglePrivacyDlpV2Pub
 }
 
 func (o GooglePrivacyDlpV2PublishToStackdriverPtrOutput) Elem() GooglePrivacyDlpV2PublishToStackdriverOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishToStackdriver) GooglePrivacyDlpV2PublishToStackdriver { return *v }).(GooglePrivacyDlpV2PublishToStackdriverOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PublishToStackdriver) GooglePrivacyDlpV2PublishToStackdriver {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2PublishToStackdriver
+		return ret
+	}).(GooglePrivacyDlpV2PublishToStackdriverOutput)
 }
 
 // Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish a metric to stack driver on each infotype requested and how many findings were found for it. CustomDetectors will be bucketed as 'Custom' under the Stackdriver label 'info_type'.
@@ -22659,7 +23149,7 @@ func (o GooglePrivacyDlpV2RecordConditionOutput) ToGooglePrivacyDlpV2RecordCondi
 }
 
 func (o GooglePrivacyDlpV2RecordConditionOutput) ToGooglePrivacyDlpV2RecordConditionPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordConditionPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RecordCondition) *GooglePrivacyDlpV2RecordCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RecordCondition) *GooglePrivacyDlpV2RecordCondition {
 		return &v
 	}).(GooglePrivacyDlpV2RecordConditionPtrOutput)
 }
@@ -22684,7 +23174,13 @@ func (o GooglePrivacyDlpV2RecordConditionPtrOutput) ToGooglePrivacyDlpV2RecordCo
 }
 
 func (o GooglePrivacyDlpV2RecordConditionPtrOutput) Elem() GooglePrivacyDlpV2RecordConditionOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordCondition) GooglePrivacyDlpV2RecordCondition { return *v }).(GooglePrivacyDlpV2RecordConditionOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordCondition) GooglePrivacyDlpV2RecordCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RecordCondition
+		return ret
+	}).(GooglePrivacyDlpV2RecordConditionOutput)
 }
 
 // An expression.
@@ -23056,7 +23552,7 @@ func (o GooglePrivacyDlpV2RecordTransformationsOutput) ToGooglePrivacyDlpV2Recor
 }
 
 func (o GooglePrivacyDlpV2RecordTransformationsOutput) ToGooglePrivacyDlpV2RecordTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RecordTransformations) *GooglePrivacyDlpV2RecordTransformations {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RecordTransformations) *GooglePrivacyDlpV2RecordTransformations {
 		return &v
 	}).(GooglePrivacyDlpV2RecordTransformationsPtrOutput)
 }
@@ -23090,7 +23586,13 @@ func (o GooglePrivacyDlpV2RecordTransformationsPtrOutput) ToGooglePrivacyDlpV2Re
 }
 
 func (o GooglePrivacyDlpV2RecordTransformationsPtrOutput) Elem() GooglePrivacyDlpV2RecordTransformationsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformations) GooglePrivacyDlpV2RecordTransformations { return *v }).(GooglePrivacyDlpV2RecordTransformationsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformations) GooglePrivacyDlpV2RecordTransformations {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RecordTransformations
+		return ret
+	}).(GooglePrivacyDlpV2RecordTransformationsOutput)
 }
 
 // Transform the record by applying various field transformations.
@@ -23213,7 +23715,7 @@ func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) ToGooglePrivacyDl
 }
 
 func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RecordTransformationsResponse) *GooglePrivacyDlpV2RecordTransformationsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RecordTransformationsResponse) *GooglePrivacyDlpV2RecordTransformationsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput)
 }
@@ -23248,7 +23750,11 @@ func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) ToGooglePrivac
 
 func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) Elem() GooglePrivacyDlpV2RecordTransformationsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformationsResponse) GooglePrivacyDlpV2RecordTransformationsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RecordTransformationsResponse
+		return ret
 	}).(GooglePrivacyDlpV2RecordTransformationsResponseOutput)
 }
 
@@ -23364,7 +23870,7 @@ func (o GooglePrivacyDlpV2RedactConfigOutput) ToGooglePrivacyDlpV2RedactConfigPt
 }
 
 func (o GooglePrivacyDlpV2RedactConfigOutput) ToGooglePrivacyDlpV2RedactConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RedactConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RedactConfig) *GooglePrivacyDlpV2RedactConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RedactConfig) *GooglePrivacyDlpV2RedactConfig {
 		return &v
 	}).(GooglePrivacyDlpV2RedactConfigPtrOutput)
 }
@@ -23384,7 +23890,13 @@ func (o GooglePrivacyDlpV2RedactConfigPtrOutput) ToGooglePrivacyDlpV2RedactConfi
 }
 
 func (o GooglePrivacyDlpV2RedactConfigPtrOutput) Elem() GooglePrivacyDlpV2RedactConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RedactConfig) GooglePrivacyDlpV2RedactConfig { return *v }).(GooglePrivacyDlpV2RedactConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2RedactConfig) GooglePrivacyDlpV2RedactConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RedactConfig
+		return ret
+	}).(GooglePrivacyDlpV2RedactConfigOutput)
 }
 
 // Redact a given value. For example, if used with an `InfoTypeTransformation` transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
@@ -23533,7 +24045,7 @@ func (o GooglePrivacyDlpV2RegexOutput) ToGooglePrivacyDlpV2RegexPtrOutput() Goog
 }
 
 func (o GooglePrivacyDlpV2RegexOutput) ToGooglePrivacyDlpV2RegexPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Regex) *GooglePrivacyDlpV2Regex {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Regex) *GooglePrivacyDlpV2Regex {
 		return &v
 	}).(GooglePrivacyDlpV2RegexPtrOutput)
 }
@@ -23563,7 +24075,13 @@ func (o GooglePrivacyDlpV2RegexPtrOutput) ToGooglePrivacyDlpV2RegexPtrOutputWith
 }
 
 func (o GooglePrivacyDlpV2RegexPtrOutput) Elem() GooglePrivacyDlpV2RegexOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Regex) GooglePrivacyDlpV2Regex { return *v }).(GooglePrivacyDlpV2RegexOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Regex) GooglePrivacyDlpV2Regex {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Regex
+		return ret
+	}).(GooglePrivacyDlpV2RegexOutput)
 }
 
 // The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
@@ -23686,7 +24204,7 @@ func (o GooglePrivacyDlpV2RegexResponseOutput) ToGooglePrivacyDlpV2RegexResponse
 }
 
 func (o GooglePrivacyDlpV2RegexResponseOutput) ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RegexResponse) *GooglePrivacyDlpV2RegexResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RegexResponse) *GooglePrivacyDlpV2RegexResponse {
 		return &v
 	}).(GooglePrivacyDlpV2RegexResponsePtrOutput)
 }
@@ -23716,7 +24234,13 @@ func (o GooglePrivacyDlpV2RegexResponsePtrOutput) ToGooglePrivacyDlpV2RegexRespo
 }
 
 func (o GooglePrivacyDlpV2RegexResponsePtrOutput) Elem() GooglePrivacyDlpV2RegexResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RegexResponse) GooglePrivacyDlpV2RegexResponse { return *v }).(GooglePrivacyDlpV2RegexResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2RegexResponse) GooglePrivacyDlpV2RegexResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RegexResponse
+		return ret
+	}).(GooglePrivacyDlpV2RegexResponseOutput)
 }
 
 // The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
@@ -23835,7 +24359,7 @@ func (o GooglePrivacyDlpV2ReplaceValueConfigOutput) ToGooglePrivacyDlpV2ReplaceV
 }
 
 func (o GooglePrivacyDlpV2ReplaceValueConfigOutput) ToGooglePrivacyDlpV2ReplaceValueConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceValueConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceValueConfig) *GooglePrivacyDlpV2ReplaceValueConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ReplaceValueConfig) *GooglePrivacyDlpV2ReplaceValueConfig {
 		return &v
 	}).(GooglePrivacyDlpV2ReplaceValueConfigPtrOutput)
 }
@@ -23860,7 +24384,13 @@ func (o GooglePrivacyDlpV2ReplaceValueConfigPtrOutput) ToGooglePrivacyDlpV2Repla
 }
 
 func (o GooglePrivacyDlpV2ReplaceValueConfigPtrOutput) Elem() GooglePrivacyDlpV2ReplaceValueConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceValueConfig) GooglePrivacyDlpV2ReplaceValueConfig { return *v }).(GooglePrivacyDlpV2ReplaceValueConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceValueConfig) GooglePrivacyDlpV2ReplaceValueConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ReplaceValueConfig
+		return ret
+	}).(GooglePrivacyDlpV2ReplaceValueConfigOutput)
 }
 
 // Value to replace it with.
@@ -24022,7 +24552,7 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput) ToGooglePrivacyDlpV2R
 }
 
 func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput) ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceWithInfoTypeConfig) *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ReplaceWithInfoTypeConfig) *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
 		return &v
 	}).(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput)
 }
@@ -24043,7 +24573,11 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput) Elem() GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig) GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
+		return ret
 	}).(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput)
 }
 
@@ -24193,7 +24727,7 @@ func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2Re
 }
 
 func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedOptionsResponse) *GooglePrivacyDlpV2RequestedOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RequestedOptionsResponse) *GooglePrivacyDlpV2RequestedOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput)
 }
@@ -24228,7 +24762,11 @@ func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2RequestedOptionsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedOptionsResponse) GooglePrivacyDlpV2RequestedOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RequestedOptionsResponse
+		return ret
 	}).(GooglePrivacyDlpV2RequestedOptionsResponseOutput)
 }
 
@@ -24348,7 +24886,7 @@ func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) ToGooglePr
 }
 
 func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput)
 }
@@ -24376,7 +24914,11 @@ func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) ToGoogl
 
 func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse
+		return ret
 	}).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput)
 }
 
@@ -24498,7 +25040,7 @@ func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultRespon
 }
 
 func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ResultResponse) *GooglePrivacyDlpV2ResultResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ResultResponse) *GooglePrivacyDlpV2ResultResponse {
 		return &v
 	}).(GooglePrivacyDlpV2ResultResponsePtrOutput)
 }
@@ -24542,7 +25084,13 @@ func (o GooglePrivacyDlpV2ResultResponsePtrOutput) ToGooglePrivacyDlpV2ResultRes
 }
 
 func (o GooglePrivacyDlpV2ResultResponsePtrOutput) Elem() GooglePrivacyDlpV2ResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) GooglePrivacyDlpV2ResultResponse { return *v }).(GooglePrivacyDlpV2ResultResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) GooglePrivacyDlpV2ResultResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ResultResponse
+		return ret
+	}).(GooglePrivacyDlpV2ResultResponseOutput)
 }
 
 // Statistics related to the processing of hybrid inspect.
@@ -24689,7 +25237,7 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigOutput) ToGooglePrivacyDlpV2RiskA
 }
 
 func (o GooglePrivacyDlpV2RiskAnalysisJobConfigOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RiskAnalysisJobConfig) *GooglePrivacyDlpV2RiskAnalysisJobConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RiskAnalysisJobConfig) *GooglePrivacyDlpV2RiskAnalysisJobConfig {
 		return &v
 	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput)
 }
@@ -24726,7 +25274,13 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput) ToGooglePrivacyDlpV2Ri
 }
 
 func (o GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput) Elem() GooglePrivacyDlpV2RiskAnalysisJobConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfig) GooglePrivacyDlpV2RiskAnalysisJobConfig { return *v }).(GooglePrivacyDlpV2RiskAnalysisJobConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfig) GooglePrivacyDlpV2RiskAnalysisJobConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RiskAnalysisJobConfig
+		return ret
+	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigOutput)
 }
 
 // Actions to execute at the completion of the job. Are executed in the order provided.
@@ -24863,7 +25417,7 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDl
 }
 
 func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput)
 }
@@ -24905,7 +25459,11 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) ToGooglePrivac
 
 func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2RiskAnalysisJobConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput)
 }
 
@@ -25035,7 +25593,7 @@ func (o GooglePrivacyDlpV2SaveFindingsOutput) ToGooglePrivacyDlpV2SaveFindingsPt
 }
 
 func (o GooglePrivacyDlpV2SaveFindingsOutput) ToGooglePrivacyDlpV2SaveFindingsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SaveFindingsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2SaveFindings) *GooglePrivacyDlpV2SaveFindings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2SaveFindings) *GooglePrivacyDlpV2SaveFindings {
 		return &v
 	}).(GooglePrivacyDlpV2SaveFindingsPtrOutput)
 }
@@ -25060,7 +25618,13 @@ func (o GooglePrivacyDlpV2SaveFindingsPtrOutput) ToGooglePrivacyDlpV2SaveFinding
 }
 
 func (o GooglePrivacyDlpV2SaveFindingsPtrOutput) Elem() GooglePrivacyDlpV2SaveFindingsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2SaveFindings) GooglePrivacyDlpV2SaveFindings { return *v }).(GooglePrivacyDlpV2SaveFindingsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SaveFindings) GooglePrivacyDlpV2SaveFindings {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2SaveFindings
+		return ret
+	}).(GooglePrivacyDlpV2SaveFindingsOutput)
 }
 
 // Location to store findings outside of DLP.
@@ -25226,7 +25790,7 @@ func (o GooglePrivacyDlpV2ScheduleOutput) ToGooglePrivacyDlpV2SchedulePtrOutput(
 }
 
 func (o GooglePrivacyDlpV2ScheduleOutput) ToGooglePrivacyDlpV2SchedulePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SchedulePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Schedule) *GooglePrivacyDlpV2Schedule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Schedule) *GooglePrivacyDlpV2Schedule {
 		return &v
 	}).(GooglePrivacyDlpV2SchedulePtrOutput)
 }
@@ -25251,7 +25815,13 @@ func (o GooglePrivacyDlpV2SchedulePtrOutput) ToGooglePrivacyDlpV2SchedulePtrOutp
 }
 
 func (o GooglePrivacyDlpV2SchedulePtrOutput) Elem() GooglePrivacyDlpV2ScheduleOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Schedule) GooglePrivacyDlpV2Schedule { return *v }).(GooglePrivacyDlpV2ScheduleOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Schedule) GooglePrivacyDlpV2Schedule {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Schedule
+		return ret
+	}).(GooglePrivacyDlpV2ScheduleOutput)
 }
 
 // With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
@@ -25671,7 +26241,7 @@ func (o GooglePrivacyDlpV2StorageConfigOutput) ToGooglePrivacyDlpV2StorageConfig
 }
 
 func (o GooglePrivacyDlpV2StorageConfigOutput) ToGooglePrivacyDlpV2StorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2StorageConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2StorageConfig {
 		return &v
 	}).(GooglePrivacyDlpV2StorageConfigPtrOutput)
 }
@@ -25717,7 +26287,13 @@ func (o GooglePrivacyDlpV2StorageConfigPtrOutput) ToGooglePrivacyDlpV2StorageCon
 }
 
 func (o GooglePrivacyDlpV2StorageConfigPtrOutput) Elem() GooglePrivacyDlpV2StorageConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfig) GooglePrivacyDlpV2StorageConfig { return *v }).(GooglePrivacyDlpV2StorageConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfig) GooglePrivacyDlpV2StorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StorageConfig
+		return ret
+	}).(GooglePrivacyDlpV2StorageConfigOutput)
 }
 
 // BigQuery options.
@@ -25879,7 +26455,7 @@ func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2Stora
 }
 
 func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2StorageConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2StorageConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2StorageConfigResponsePtrOutput)
 }
@@ -25933,7 +26509,13 @@ func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) ToGooglePrivacyDlpV2St
 }
 
 func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2StorageConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2StorageConfigResponse { return *v }).(GooglePrivacyDlpV2StorageConfigResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2StorageConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StorageConfigResponse
+		return ret
+	}).(GooglePrivacyDlpV2StorageConfigResponseOutput)
 }
 
 // BigQuery options.
@@ -26097,7 +26679,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2Stored
 }
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2StoredInfoTypeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2StoredInfoTypeConfig {
 		return &v
 	}).(GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput)
 }
@@ -26144,7 +26726,13 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) ToGooglePrivacyDlpV2Sto
 }
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) GooglePrivacyDlpV2StoredInfoTypeConfig { return *v }).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) GooglePrivacyDlpV2StoredInfoTypeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StoredInfoTypeConfig
+		return ret
+	}).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput)
 }
 
 // Description of the StoredInfoType (max 256 characters).
@@ -26309,7 +26897,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlp
 }
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput)
 }
@@ -26359,7 +26947,11 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) ToGooglePrivacy
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StoredInfoTypeConfigResponse
+		return ret
 	}).(GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput)
 }
 
@@ -26509,7 +27101,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) ToGooglePrivacyDlpV
 }
 
 func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeStatsResponse) *GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeStatsResponse) *GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput)
 }
@@ -26537,7 +27129,11 @@ func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeStatsResponse) GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StoredInfoTypeStatsResponse
+		return ret
 	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput)
 }
 
@@ -26688,7 +27284,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDl
 }
 
 func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
 		return &v
 	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput)
 }
@@ -26740,7 +27336,11 @@ func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) ToGooglePrivac
 
 func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StoredInfoTypeVersionResponse
+		return ret
 	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
 }
 
@@ -26914,7 +27514,7 @@ func (o GooglePrivacyDlpV2StoredTypeOutput) ToGooglePrivacyDlpV2StoredTypePtrOut
 }
 
 func (o GooglePrivacyDlpV2StoredTypeOutput) ToGooglePrivacyDlpV2StoredTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StoredType) *GooglePrivacyDlpV2StoredType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredType) *GooglePrivacyDlpV2StoredType {
 		return &v
 	}).(GooglePrivacyDlpV2StoredTypePtrOutput)
 }
@@ -26944,7 +27544,13 @@ func (o GooglePrivacyDlpV2StoredTypePtrOutput) ToGooglePrivacyDlpV2StoredTypePtr
 }
 
 func (o GooglePrivacyDlpV2StoredTypePtrOutput) Elem() GooglePrivacyDlpV2StoredTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredType) GooglePrivacyDlpV2StoredType { return *v }).(GooglePrivacyDlpV2StoredTypeOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredType) GooglePrivacyDlpV2StoredType {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2StoredType
+		return ret
+	}).(GooglePrivacyDlpV2StoredTypeOutput)
 }
 
 // Timestamp indicating when the version of the `StoredInfoType` used for inspection was created. Output-only field, populated by the system.
@@ -27123,7 +27729,7 @@ func (o GooglePrivacyDlpV2SurrogateTypeOutput) ToGooglePrivacyDlpV2SurrogateType
 }
 
 func (o GooglePrivacyDlpV2SurrogateTypeOutput) ToGooglePrivacyDlpV2SurrogateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SurrogateTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2SurrogateType) *GooglePrivacyDlpV2SurrogateType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2SurrogateType) *GooglePrivacyDlpV2SurrogateType {
 		return &v
 	}).(GooglePrivacyDlpV2SurrogateTypePtrOutput)
 }
@@ -27143,7 +27749,13 @@ func (o GooglePrivacyDlpV2SurrogateTypePtrOutput) ToGooglePrivacyDlpV2SurrogateT
 }
 
 func (o GooglePrivacyDlpV2SurrogateTypePtrOutput) Elem() GooglePrivacyDlpV2SurrogateTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2SurrogateType) GooglePrivacyDlpV2SurrogateType { return *v }).(GooglePrivacyDlpV2SurrogateTypeOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SurrogateType) GooglePrivacyDlpV2SurrogateType {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2SurrogateType
+		return ret
+	}).(GooglePrivacyDlpV2SurrogateTypeOutput)
 }
 
 // Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
@@ -27288,7 +27900,7 @@ func (o GooglePrivacyDlpV2TableOptionsOutput) ToGooglePrivacyDlpV2TableOptionsPt
 }
 
 func (o GooglePrivacyDlpV2TableOptionsOutput) ToGooglePrivacyDlpV2TableOptionsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TableOptions) *GooglePrivacyDlpV2TableOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TableOptions) *GooglePrivacyDlpV2TableOptions {
 		return &v
 	}).(GooglePrivacyDlpV2TableOptionsPtrOutput)
 }
@@ -27313,7 +27925,13 @@ func (o GooglePrivacyDlpV2TableOptionsPtrOutput) ToGooglePrivacyDlpV2TableOption
 }
 
 func (o GooglePrivacyDlpV2TableOptionsPtrOutput) Elem() GooglePrivacyDlpV2TableOptionsOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptions) GooglePrivacyDlpV2TableOptions { return *v }).(GooglePrivacyDlpV2TableOptionsOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptions) GooglePrivacyDlpV2TableOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TableOptions
+		return ret
+	}).(GooglePrivacyDlpV2TableOptionsOutput)
 }
 
 // The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
@@ -27422,7 +28040,7 @@ func (o GooglePrivacyDlpV2TableOptionsResponseOutput) ToGooglePrivacyDlpV2TableO
 }
 
 func (o GooglePrivacyDlpV2TableOptionsResponseOutput) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TableOptionsResponse) *GooglePrivacyDlpV2TableOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TableOptionsResponse) *GooglePrivacyDlpV2TableOptionsResponse {
 		return &v
 	}).(GooglePrivacyDlpV2TableOptionsResponsePtrOutput)
 }
@@ -27449,7 +28067,13 @@ func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) ToGooglePrivacyDlpV2Tab
 }
 
 func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2TableOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptionsResponse) GooglePrivacyDlpV2TableOptionsResponse { return *v }).(GooglePrivacyDlpV2TableOptionsResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptionsResponse) GooglePrivacyDlpV2TableOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TableOptionsResponse
+		return ret
+	}).(GooglePrivacyDlpV2TableOptionsResponseOutput)
 }
 
 // The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
@@ -27808,7 +28432,7 @@ func (o GooglePrivacyDlpV2ThrowErrorOutput) ToGooglePrivacyDlpV2ThrowErrorPtrOut
 }
 
 func (o GooglePrivacyDlpV2ThrowErrorOutput) ToGooglePrivacyDlpV2ThrowErrorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ThrowError) *GooglePrivacyDlpV2ThrowError {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ThrowError) *GooglePrivacyDlpV2ThrowError {
 		return &v
 	}).(GooglePrivacyDlpV2ThrowErrorPtrOutput)
 }
@@ -27828,7 +28452,13 @@ func (o GooglePrivacyDlpV2ThrowErrorPtrOutput) ToGooglePrivacyDlpV2ThrowErrorPtr
 }
 
 func (o GooglePrivacyDlpV2ThrowErrorPtrOutput) Elem() GooglePrivacyDlpV2ThrowErrorOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ThrowError) GooglePrivacyDlpV2ThrowError { return *v }).(GooglePrivacyDlpV2ThrowErrorOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ThrowError) GooglePrivacyDlpV2ThrowError {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ThrowError
+		return ret
+	}).(GooglePrivacyDlpV2ThrowErrorOutput)
 }
 
 // Throw an error and fail the request when a transformation error occurs.
@@ -27923,7 +28553,7 @@ func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErr
 }
 
 func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ThrowErrorResponse) *GooglePrivacyDlpV2ThrowErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ThrowErrorResponse) *GooglePrivacyDlpV2ThrowErrorResponse {
 		return &v
 	}).(GooglePrivacyDlpV2ThrowErrorResponsePtrOutput)
 }
@@ -27943,7 +28573,13 @@ func (o GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) ToGooglePrivacyDlpV2Throw
 }
 
 func (o GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) Elem() GooglePrivacyDlpV2ThrowErrorResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ThrowErrorResponse) GooglePrivacyDlpV2ThrowErrorResponse { return *v }).(GooglePrivacyDlpV2ThrowErrorResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ThrowErrorResponse) GooglePrivacyDlpV2ThrowErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ThrowErrorResponse
+		return ret
+	}).(GooglePrivacyDlpV2ThrowErrorResponseOutput)
 }
 
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
@@ -28042,7 +28678,7 @@ func (o GooglePrivacyDlpV2TimePartConfigOutput) ToGooglePrivacyDlpV2TimePartConf
 }
 
 func (o GooglePrivacyDlpV2TimePartConfigOutput) ToGooglePrivacyDlpV2TimePartConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimePartConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TimePartConfig) *GooglePrivacyDlpV2TimePartConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TimePartConfig) *GooglePrivacyDlpV2TimePartConfig {
 		return &v
 	}).(GooglePrivacyDlpV2TimePartConfigPtrOutput)
 }
@@ -28069,7 +28705,13 @@ func (o GooglePrivacyDlpV2TimePartConfigPtrOutput) ToGooglePrivacyDlpV2TimePartC
 }
 
 func (o GooglePrivacyDlpV2TimePartConfigPtrOutput) Elem() GooglePrivacyDlpV2TimePartConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimePartConfig) GooglePrivacyDlpV2TimePartConfig { return *v }).(GooglePrivacyDlpV2TimePartConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TimePartConfig) GooglePrivacyDlpV2TimePartConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TimePartConfig
+		return ret
+	}).(GooglePrivacyDlpV2TimePartConfigOutput)
 }
 
 // The part of the time to keep.
@@ -28245,7 +28887,7 @@ func (o GooglePrivacyDlpV2TimespanConfigOutput) ToGooglePrivacyDlpV2TimespanConf
 }
 
 func (o GooglePrivacyDlpV2TimespanConfigOutput) ToGooglePrivacyDlpV2TimespanConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2TimespanConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2TimespanConfig {
 		return &v
 	}).(GooglePrivacyDlpV2TimespanConfigPtrOutput)
 }
@@ -28285,7 +28927,13 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) ToGooglePrivacyDlpV2TimespanC
 }
 
 func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) Elem() GooglePrivacyDlpV2TimespanConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfig) GooglePrivacyDlpV2TimespanConfig { return *v }).(GooglePrivacyDlpV2TimespanConfigOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfig) GooglePrivacyDlpV2TimespanConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TimespanConfig
+		return ret
+	}).(GooglePrivacyDlpV2TimespanConfigOutput)
 }
 
 // When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
@@ -28436,7 +29084,7 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2Time
 }
 
 func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) *GooglePrivacyDlpV2TimespanConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TimespanConfigResponse) *GooglePrivacyDlpV2TimespanConfigResponse {
 		return &v
 	}).(GooglePrivacyDlpV2TimespanConfigResponsePtrOutput)
 }
@@ -28478,7 +29126,13 @@ func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) ToGooglePrivacyDlpV2T
 }
 
 func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2TimespanConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2TimespanConfigResponse { return *v }).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2TimespanConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TimespanConfigResponse
+		return ret
+	}).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
 }
 
 // When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
@@ -28621,7 +29275,7 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingOutput) ToGooglePrivacyDlpV
 }
 
 func (o GooglePrivacyDlpV2TransformationErrorHandlingOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationErrorHandling) *GooglePrivacyDlpV2TransformationErrorHandling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransformationErrorHandling) *GooglePrivacyDlpV2TransformationErrorHandling {
 		return &v
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput)
 }
@@ -28656,7 +29310,11 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput) ToGooglePrivacyD
 
 func (o GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput) Elem() GooglePrivacyDlpV2TransformationErrorHandlingOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationErrorHandling) GooglePrivacyDlpV2TransformationErrorHandling {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TransformationErrorHandling
+		return ret
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingOutput)
 }
 
@@ -28780,7 +29438,7 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ToGooglePri
 }
 
 func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationErrorHandlingResponse) *GooglePrivacyDlpV2TransformationErrorHandlingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransformationErrorHandlingResponse) *GooglePrivacyDlpV2TransformationErrorHandlingResponse {
 		return &v
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput)
 }
@@ -28815,7 +29473,11 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ToGoogle
 
 func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) Elem() GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationErrorHandlingResponse) GooglePrivacyDlpV2TransformationErrorHandlingResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TransformationErrorHandlingResponse
+		return ret
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
 }
 
@@ -28935,7 +29597,7 @@ func (o GooglePrivacyDlpV2TransientCryptoKeyOutput) ToGooglePrivacyDlpV2Transien
 }
 
 func (o GooglePrivacyDlpV2TransientCryptoKeyOutput) ToGooglePrivacyDlpV2TransientCryptoKeyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransientCryptoKeyPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TransientCryptoKey) *GooglePrivacyDlpV2TransientCryptoKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransientCryptoKey) *GooglePrivacyDlpV2TransientCryptoKey {
 		return &v
 	}).(GooglePrivacyDlpV2TransientCryptoKeyPtrOutput)
 }
@@ -28960,7 +29622,13 @@ func (o GooglePrivacyDlpV2TransientCryptoKeyPtrOutput) ToGooglePrivacyDlpV2Trans
 }
 
 func (o GooglePrivacyDlpV2TransientCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2TransientCryptoKeyOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TransientCryptoKey) GooglePrivacyDlpV2TransientCryptoKey { return *v }).(GooglePrivacyDlpV2TransientCryptoKeyOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransientCryptoKey) GooglePrivacyDlpV2TransientCryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TransientCryptoKey
+		return ret
+	}).(GooglePrivacyDlpV2TransientCryptoKeyOutput)
 }
 
 // Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -29342,7 +30010,7 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyOutput) ToGooglePrivacyDlpV2Unwrappe
 }
 
 func (o GooglePrivacyDlpV2UnwrappedCryptoKeyOutput) ToGooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2UnwrappedCryptoKey) *GooglePrivacyDlpV2UnwrappedCryptoKey {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2UnwrappedCryptoKey) *GooglePrivacyDlpV2UnwrappedCryptoKey {
 		return &v
 	}).(GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput)
 }
@@ -29367,7 +30035,13 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput) ToGooglePrivacyDlpV2Unwra
 }
 
 func (o GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2UnwrappedCryptoKeyOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2UnwrappedCryptoKey) GooglePrivacyDlpV2UnwrappedCryptoKey { return *v }).(GooglePrivacyDlpV2UnwrappedCryptoKeyOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2UnwrappedCryptoKey) GooglePrivacyDlpV2UnwrappedCryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2UnwrappedCryptoKey
+		return ret
+	}).(GooglePrivacyDlpV2UnwrappedCryptoKeyOutput)
 }
 
 // A 128/192/256 bit key.
@@ -29559,7 +30233,7 @@ func (o GooglePrivacyDlpV2ValueOutput) ToGooglePrivacyDlpV2ValuePtrOutput() Goog
 }
 
 func (o GooglePrivacyDlpV2ValueOutput) ToGooglePrivacyDlpV2ValuePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValuePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Value) *GooglePrivacyDlpV2Value {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Value) *GooglePrivacyDlpV2Value {
 		return &v
 	}).(GooglePrivacyDlpV2ValuePtrOutput)
 }
@@ -29619,7 +30293,13 @@ func (o GooglePrivacyDlpV2ValuePtrOutput) ToGooglePrivacyDlpV2ValuePtrOutputWith
 }
 
 func (o GooglePrivacyDlpV2ValuePtrOutput) Elem() GooglePrivacyDlpV2ValueOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2Value) GooglePrivacyDlpV2Value { return *v }).(GooglePrivacyDlpV2ValueOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Value) GooglePrivacyDlpV2Value {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Value
+		return ret
+	}).(GooglePrivacyDlpV2ValueOutput)
 }
 
 // boolean
@@ -29960,7 +30640,7 @@ func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponse
 }
 
 func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2ValueResponse) *GooglePrivacyDlpV2ValueResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ValueResponse) *GooglePrivacyDlpV2ValueResponse {
 		return &v
 	}).(GooglePrivacyDlpV2ValueResponsePtrOutput)
 }
@@ -30020,7 +30700,13 @@ func (o GooglePrivacyDlpV2ValueResponsePtrOutput) ToGooglePrivacyDlpV2ValueRespo
 }
 
 func (o GooglePrivacyDlpV2ValueResponsePtrOutput) Elem() GooglePrivacyDlpV2ValueResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) GooglePrivacyDlpV2ValueResponse { return *v }).(GooglePrivacyDlpV2ValueResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) GooglePrivacyDlpV2ValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ValueResponse
+		return ret
+	}).(GooglePrivacyDlpV2ValueResponseOutput)
 }
 
 // boolean
@@ -30219,7 +30905,7 @@ func (o GooglePrivacyDlpV2WordListOutput) ToGooglePrivacyDlpV2WordListPtrOutput(
 }
 
 func (o GooglePrivacyDlpV2WordListOutput) ToGooglePrivacyDlpV2WordListPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2WordList) *GooglePrivacyDlpV2WordList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2WordList) *GooglePrivacyDlpV2WordList {
 		return &v
 	}).(GooglePrivacyDlpV2WordListPtrOutput)
 }
@@ -30244,7 +30930,13 @@ func (o GooglePrivacyDlpV2WordListPtrOutput) ToGooglePrivacyDlpV2WordListPtrOutp
 }
 
 func (o GooglePrivacyDlpV2WordListPtrOutput) Elem() GooglePrivacyDlpV2WordListOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2WordList) GooglePrivacyDlpV2WordList { return *v }).(GooglePrivacyDlpV2WordListOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2WordList) GooglePrivacyDlpV2WordList {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2WordList
+		return ret
+	}).(GooglePrivacyDlpV2WordListOutput)
 }
 
 // Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
@@ -30353,7 +31045,7 @@ func (o GooglePrivacyDlpV2WordListResponseOutput) ToGooglePrivacyDlpV2WordListRe
 }
 
 func (o GooglePrivacyDlpV2WordListResponseOutput) ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2WordListResponse) *GooglePrivacyDlpV2WordListResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2WordListResponse) *GooglePrivacyDlpV2WordListResponse {
 		return &v
 	}).(GooglePrivacyDlpV2WordListResponsePtrOutput)
 }
@@ -30378,7 +31070,13 @@ func (o GooglePrivacyDlpV2WordListResponsePtrOutput) ToGooglePrivacyDlpV2WordLis
 }
 
 func (o GooglePrivacyDlpV2WordListResponsePtrOutput) Elem() GooglePrivacyDlpV2WordListResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2WordListResponse) GooglePrivacyDlpV2WordListResponse { return *v }).(GooglePrivacyDlpV2WordListResponseOutput)
+	return o.ApplyT(func(v *GooglePrivacyDlpV2WordListResponse) GooglePrivacyDlpV2WordListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2WordListResponse
+		return ret
+	}).(GooglePrivacyDlpV2WordListResponseOutput)
 }
 
 // Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
@@ -30483,7 +31181,7 @@ func (o GoogleProtobufEmptyOutput) ToGoogleProtobufEmptyPtrOutput() GoogleProtob
 }
 
 func (o GoogleProtobufEmptyOutput) ToGoogleProtobufEmptyPtrOutputWithContext(ctx context.Context) GoogleProtobufEmptyPtrOutput {
-	return o.ApplyT(func(v GoogleProtobufEmpty) *GoogleProtobufEmpty {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleProtobufEmpty) *GoogleProtobufEmpty {
 		return &v
 	}).(GoogleProtobufEmptyPtrOutput)
 }
@@ -30503,7 +31201,13 @@ func (o GoogleProtobufEmptyPtrOutput) ToGoogleProtobufEmptyPtrOutputWithContext(
 }
 
 func (o GoogleProtobufEmptyPtrOutput) Elem() GoogleProtobufEmptyOutput {
-	return o.ApplyT(func(v *GoogleProtobufEmpty) GoogleProtobufEmpty { return *v }).(GoogleProtobufEmptyOutput)
+	return o.ApplyT(func(v *GoogleProtobufEmpty) GoogleProtobufEmpty {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleProtobufEmpty
+		return ret
+	}).(GoogleProtobufEmptyOutput)
 }
 
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
@@ -30729,7 +31433,7 @@ func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutpu
 }
 
 func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *GoogleTypeDate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDate) *GoogleTypeDate {
 		return &v
 	}).(GoogleTypeDatePtrOutput)
 }
@@ -30764,7 +31468,13 @@ func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx contex
 }
 
 func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate { return *v }).(GoogleTypeDateOutput)
+	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDate
+		return ret
+	}).(GoogleTypeDateOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -30901,7 +31611,7 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() Google
 }
 
 func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDateResponse) *GoogleTypeDateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateResponse) *GoogleTypeDateResponse {
 		return &v
 	}).(GoogleTypeDateResponsePtrOutput)
 }
@@ -30936,7 +31646,13 @@ func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithCo
 }
 
 func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse { return *v }).(GoogleTypeDateResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDateResponse
+		return ret
+	}).(GoogleTypeDateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -31077,7 +31793,7 @@ func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayPtrOutput() GoogleTypeTi
 }
 
 func (o GoogleTypeTimeOfDayOutput) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayPtrOutput {
-	return o.ApplyT(func(v GoogleTypeTimeOfDay) *GoogleTypeTimeOfDay {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeTimeOfDay) *GoogleTypeTimeOfDay {
 		return &v
 	}).(GoogleTypeTimeOfDayPtrOutput)
 }
@@ -31117,7 +31833,13 @@ func (o GoogleTypeTimeOfDayPtrOutput) ToGoogleTypeTimeOfDayPtrOutputWithContext(
 }
 
 func (o GoogleTypeTimeOfDayPtrOutput) Elem() GoogleTypeTimeOfDayOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDay) GoogleTypeTimeOfDay { return *v }).(GoogleTypeTimeOfDayOutput)
+	return o.ApplyT(func(v *GoogleTypeTimeOfDay) GoogleTypeTimeOfDay {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeTimeOfDay
+		return ret
+	}).(GoogleTypeTimeOfDayOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -31268,7 +31990,7 @@ func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponsePtrOutpu
 }
 
 func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponsePtrOutput {
-	return o.ApplyT(func(v GoogleTypeTimeOfDayResponse) *GoogleTypeTimeOfDayResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeTimeOfDayResponse) *GoogleTypeTimeOfDayResponse {
 		return &v
 	}).(GoogleTypeTimeOfDayResponsePtrOutput)
 }
@@ -31308,7 +32030,13 @@ func (o GoogleTypeTimeOfDayResponsePtrOutput) ToGoogleTypeTimeOfDayResponsePtrOu
 }
 
 func (o GoogleTypeTimeOfDayResponsePtrOutput) Elem() GoogleTypeTimeOfDayResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) GoogleTypeTimeOfDayResponse { return *v }).(GoogleTypeTimeOfDayResponseOutput)
+	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) GoogleTypeTimeOfDayResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeTimeOfDayResponse
+		return ret
+	}).(GoogleTypeTimeOfDayResponseOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.

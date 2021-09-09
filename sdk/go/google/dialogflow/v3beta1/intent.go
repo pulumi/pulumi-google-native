@@ -147,9 +147,7 @@ func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentOutput)
 }
 
-type IntentOutput struct {
-	*pulumi.OutputState
-}
+type IntentOutput struct{ *pulumi.OutputState }
 
 func (IntentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Intent)(nil))

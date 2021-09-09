@@ -151,9 +151,7 @@ func (i *Feed) ToFeedOutputWithContext(ctx context.Context) FeedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeedOutput)
 }
 
-type FeedOutput struct {
-	*pulumi.OutputState
-}
+type FeedOutput struct{ *pulumi.OutputState }
 
 func (FeedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Feed)(nil))

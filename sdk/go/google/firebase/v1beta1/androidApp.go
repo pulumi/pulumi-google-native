@@ -116,9 +116,7 @@ func (i *AndroidApp) ToAndroidAppOutputWithContext(ctx context.Context) AndroidA
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppOutput)
 }
 
-type AndroidAppOutput struct {
-	*pulumi.OutputState
-}
+type AndroidAppOutput struct{ *pulumi.OutputState }
 
 func (AndroidAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AndroidApp)(nil))

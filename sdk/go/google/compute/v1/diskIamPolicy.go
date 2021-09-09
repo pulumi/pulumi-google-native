@@ -132,9 +132,7 @@ func (i *DiskIamPolicy) ToDiskIamPolicyOutputWithContext(ctx context.Context) Di
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyOutput)
 }
 
-type DiskIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type DiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DiskIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DiskIamPolicy)(nil))

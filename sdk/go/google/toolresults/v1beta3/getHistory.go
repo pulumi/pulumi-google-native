@@ -4,6 +4,9 @@
 package v1beta3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,60 @@ type LookupHistoryResult struct {
 	Name string `pulumi:"name"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform string `pulumi:"testPlatform"`
+}
+
+func LookupHistoryOutput(ctx *pulumi.Context, args LookupHistoryOutputArgs, opts ...pulumi.InvokeOption) LookupHistoryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHistoryResult, error) {
+			args := v.(LookupHistoryArgs)
+			r, err := LookupHistory(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHistoryResultOutput)
+}
+
+type LookupHistoryOutputArgs struct {
+	HistoryId pulumi.StringInput    `pulumi:"historyId"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupHistoryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHistoryArgs)(nil)).Elem()
+}
+
+type LookupHistoryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHistoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHistoryResult)(nil)).Elem()
+}
+
+func (o LookupHistoryResultOutput) ToLookupHistoryResultOutput() LookupHistoryResultOutput {
+	return o
+}
+
+func (o LookupHistoryResultOutput) ToLookupHistoryResultOutputWithContext(ctx context.Context) LookupHistoryResultOutput {
+	return o
+}
+
+// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
+func (o LookupHistoryResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHistoryResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
+func (o LookupHistoryResultOutput) HistoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHistoryResult) string { return v.HistoryId }).(pulumi.StringOutput)
+}
+
+// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+func (o LookupHistoryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHistoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+func (o LookupHistoryResultOutput) TestPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHistoryResult) string { return v.TestPlatform }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHistoryResultOutput{})
 }

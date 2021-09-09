@@ -115,9 +115,7 @@ func (i *SslCert) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
 }
 
-type SslCertOutput struct {
-	*pulumi.OutputState
-}
+type SslCertOutput struct{ *pulumi.OutputState }
 
 func (SslCertOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SslCert)(nil))

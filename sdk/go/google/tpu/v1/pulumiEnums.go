@@ -112,7 +112,7 @@ func (o NodeHealthOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type NodeHealthPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeHealthPtrOutput) ElementType() reflect.Type {
-	return nodeHealthPtrType
+	return reflect.TypeOf((**NodeHealth)(nil)).Elem()
 }
 
 func (o NodeHealthPtrOutput) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
@@ -121,6 +121,16 @@ func (o NodeHealthPtrOutput) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (o NodeHealthPtrOutput) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return o
+}
+
+func (o NodeHealthPtrOutput) Elem() NodeHealthOutput {
+	return o.ApplyT(func(v *NodeHealth) NodeHealth {
+		if v != nil {
+			return *v
+		}
+		var ret NodeHealth
+		return ret
+	}).(NodeHealthOutput)
 }
 
 func (o NodeHealthPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -135,16 +145,6 @@ func (o NodeHealthPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o NodeHealthPtrOutput) Elem() NodeHealthOutput {
-	return o.ApplyT(func(v *NodeHealth) NodeHealth {
-		var ret NodeHealth
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(NodeHealthOutput)
 }
 
 // NodeHealthInput is an input type that accepts NodeHealthArgs and NodeHealthOutput values.

@@ -4,6 +4,9 @@
 package v2beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,56 @@ type LookupKnowledgeBaseResult struct {
 	LanguageCode string `pulumi:"languageCode"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
 	Name string `pulumi:"name"`
+}
+
+func LookupKnowledgeBaseOutput(ctx *pulumi.Context, args LookupKnowledgeBaseOutputArgs, opts ...pulumi.InvokeOption) LookupKnowledgeBaseResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKnowledgeBaseResult, error) {
+			args := v.(LookupKnowledgeBaseArgs)
+			r, err := LookupKnowledgeBase(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKnowledgeBaseResultOutput)
+}
+
+type LookupKnowledgeBaseOutputArgs struct {
+	KnowledgeBaseId pulumi.StringInput    `pulumi:"knowledgeBaseId"`
+	Location        pulumi.StringInput    `pulumi:"location"`
+	Project         pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupKnowledgeBaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKnowledgeBaseArgs)(nil)).Elem()
+}
+
+type LookupKnowledgeBaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKnowledgeBaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKnowledgeBaseResult)(nil)).Elem()
+}
+
+func (o LookupKnowledgeBaseResultOutput) ToLookupKnowledgeBaseResultOutput() LookupKnowledgeBaseResultOutput {
+	return o
+}
+
+func (o LookupKnowledgeBaseResultOutput) ToLookupKnowledgeBaseResultOutputWithContext(ctx context.Context) LookupKnowledgeBaseResultOutput {
+	return o
+}
+
+// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+func (o LookupKnowledgeBaseResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKnowledgeBaseResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
+func (o LookupKnowledgeBaseResultOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKnowledgeBaseResult) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+func (o LookupKnowledgeBaseResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKnowledgeBaseResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKnowledgeBaseResultOutput{})
 }

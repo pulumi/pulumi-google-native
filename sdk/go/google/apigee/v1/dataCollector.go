@@ -114,9 +114,7 @@ func (i *DataCollector) ToDataCollectorOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DataCollectorOutput)
 }
 
-type DataCollectorOutput struct {
-	*pulumi.OutputState
-}
+type DataCollectorOutput struct{ *pulumi.OutputState }
 
 func (DataCollectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataCollector)(nil))

@@ -112,7 +112,7 @@ func (o AppEngineHttpRequestHttpMethodOutput) ToStringPtrOutputWithContext(ctx c
 type AppEngineHttpRequestHttpMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineHttpRequestHttpMethodPtrOutput) ElementType() reflect.Type {
-	return appEngineHttpRequestHttpMethodPtrType
+	return reflect.TypeOf((**AppEngineHttpRequestHttpMethod)(nil)).Elem()
 }
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput {
@@ -121,6 +121,16 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMetho
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
 	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
+	return o.ApplyT(func(v *AppEngineHttpRequestHttpMethod) AppEngineHttpRequestHttpMethod {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineHttpRequestHttpMethod
+		return ret
+	}).(AppEngineHttpRequestHttpMethodOutput)
 }
 
 func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -135,16 +145,6 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequestHttpMethod) AppEngineHttpRequestHttpMethod {
-		var ret AppEngineHttpRequestHttpMethod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AppEngineHttpRequestHttpMethodOutput)
 }
 
 // AppEngineHttpRequestHttpMethodInput is an input type that accepts AppEngineHttpRequestHttpMethodArgs and AppEngineHttpRequestHttpMethodOutput values.
@@ -281,7 +281,7 @@ func (o TaskResponseViewOutput) ToStringPtrOutputWithContext(ctx context.Context
 type TaskResponseViewPtrOutput struct{ *pulumi.OutputState }
 
 func (TaskResponseViewPtrOutput) ElementType() reflect.Type {
-	return taskResponseViewPtrType
+	return reflect.TypeOf((**TaskResponseView)(nil)).Elem()
 }
 
 func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput {
@@ -290,6 +290,16 @@ func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseVie
 
 func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
 	return o
+}
+
+func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
+	return o.ApplyT(func(v *TaskResponseView) TaskResponseView {
+		if v != nil {
+			return *v
+		}
+		var ret TaskResponseView
+		return ret
+	}).(TaskResponseViewOutput)
 }
 
 func (o TaskResponseViewPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o TaskResponseViewPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
-	return o.ApplyT(func(v *TaskResponseView) TaskResponseView {
-		var ret TaskResponseView
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TaskResponseViewOutput)
 }
 
 // TaskResponseViewInput is an input type that accepts TaskResponseViewArgs and TaskResponseViewOutput values.

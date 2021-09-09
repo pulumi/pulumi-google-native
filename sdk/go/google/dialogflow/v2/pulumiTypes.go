@@ -106,7 +106,7 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) ToGoogleCloudDialogfl
 }
 
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfig) *GoogleCloudDialogflowV2AutomatedAgentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2AutomatedAgentConfig) *GoogleCloudDialogflowV2AutomatedAgentConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput)
 }
@@ -132,7 +132,11 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) ToGoogleCloudDialo
 
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) Elem() GoogleCloudDialogflowV2AutomatedAgentConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfig) GoogleCloudDialogflowV2AutomatedAgentConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2AutomatedAgentConfig
+		return ret
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigOutput)
 }
 
@@ -242,7 +246,7 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) *GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) *GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput)
 }
@@ -268,7 +272,11 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfigResponse) GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2AutomatedAgentConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
 }
 
@@ -614,7 +622,7 @@ func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2ConversationPhoneNumberResponse) *GoogleCloudDialogflowV2ConversationPhoneNumberResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2ConversationPhoneNumberResponse) *GoogleCloudDialogflowV2ConversationPhoneNumberResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput)
 }
@@ -640,7 +648,11 @@ func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) Elem() GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2ConversationPhoneNumberResponse) GoogleCloudDialogflowV2ConversationPhoneNumberResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2ConversationPhoneNumberResponse
+		return ret
 	}).(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput)
 }
 
@@ -754,7 +766,7 @@ func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2DocumentReloadStatusResponse) *GoogleCloudDialogflowV2DocumentReloadStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2DocumentReloadStatusResponse) *GoogleCloudDialogflowV2DocumentReloadStatusResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput)
 }
@@ -785,7 +797,11 @@ func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) Elem() GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2DocumentReloadStatusResponse) GoogleCloudDialogflowV2DocumentReloadStatusResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2DocumentReloadStatusResponse
+		return ret
 	}).(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput)
 }
 
@@ -1139,7 +1155,7 @@ func (o GoogleCloudDialogflowV2FulfillmentOutput) ToGoogleCloudDialogflowV2Fulfi
 }
 
 func (o GoogleCloudDialogflowV2FulfillmentOutput) ToGoogleCloudDialogflowV2FulfillmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2Fulfillment) *GoogleCloudDialogflowV2Fulfillment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2Fulfillment) *GoogleCloudDialogflowV2Fulfillment {
 		return &v
 	}).(GoogleCloudDialogflowV2FulfillmentPtrOutput)
 }
@@ -1188,7 +1204,13 @@ func (o GoogleCloudDialogflowV2FulfillmentPtrOutput) ToGoogleCloudDialogflowV2Fu
 }
 
 func (o GoogleCloudDialogflowV2FulfillmentPtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2Fulfillment) GoogleCloudDialogflowV2Fulfillment { return *v }).(GoogleCloudDialogflowV2FulfillmentOutput)
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2Fulfillment) GoogleCloudDialogflowV2Fulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2Fulfillment
+		return ret
+	}).(GoogleCloudDialogflowV2FulfillmentOutput)
 }
 
 // Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
@@ -1555,7 +1577,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebService) *GoogleCloudDialogflowV2FulfillmentGenericWebService {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2FulfillmentGenericWebService) *GoogleCloudDialogflowV2FulfillmentGenericWebService {
 		return &v
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput)
 }
@@ -1601,7 +1623,11 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebService) GoogleCloudDialogflowV2FulfillmentGenericWebService {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2FulfillmentGenericWebService
+		return ret
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput)
 }
 
@@ -1767,7 +1793,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoo
 }
 
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
 }
@@ -1815,7 +1841,11 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) To
 
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse
+		return ret
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput)
 }
 
@@ -1981,7 +2011,7 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflo
 }
 
 func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentResponse) *GoogleCloudDialogflowV2FulfillmentResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2FulfillmentResponse) *GoogleCloudDialogflowV2FulfillmentResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2FulfillmentResponsePtrOutput)
 }
@@ -2031,7 +2061,11 @@ func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) ToGoogleCloudDialog
 
 func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) GoogleCloudDialogflowV2FulfillmentResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2FulfillmentResponse
+		return ret
 	}).(GoogleCloudDialogflowV2FulfillmentResponseOutput)
 }
 
@@ -2193,7 +2227,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput) ToGoogleCloudDia
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput)
 }
@@ -2242,7 +2276,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput)
 }
 
@@ -2382,7 +2420,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigO
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput)
 }
@@ -2410,7 +2448,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigP
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput)
 }
 
@@ -2581,7 +2623,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOut
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
 }
@@ -2616,7 +2658,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtr
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput)
 }
 
@@ -2740,7 +2786,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigRes
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput)
 }
@@ -2775,7 +2821,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigRes
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput)
 }
 
@@ -2907,7 +2957,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogle
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput)
 }
@@ -2956,7 +3006,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) ToGoo
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput)
 }
 
@@ -3100,7 +3154,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigOutput) 
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput)
 }
@@ -3135,7 +3189,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutpu
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigOutput)
 }
 
@@ -3259,7 +3317,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput)
 }
@@ -3294,7 +3352,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput)
 }
 
@@ -3726,7 +3788,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOut
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput)
 }
@@ -3789,7 +3851,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtr
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput)
 }
 
@@ -3957,7 +4023,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigCon
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput)
 }
@@ -3999,7 +4065,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigCon
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput)
 }
 
@@ -4208,7 +4278,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
 }
@@ -4236,7 +4306,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput)
 }
 
@@ -4403,7 +4477,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
 }
@@ -4431,7 +4505,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput)
 }
 
@@ -4598,7 +4676,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
 }
@@ -4626,7 +4704,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput)
 }
 
@@ -4909,7 +4991,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSetting
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput)
 }
@@ -4944,7 +5026,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSetting
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsOutput)
 }
 
@@ -5136,7 +5222,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialo
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput)
 }
@@ -5171,7 +5257,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) ToGoogleCloudDi
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput)
 }
 
@@ -5291,7 +5381,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) To
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
 }
@@ -5317,7 +5407,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput)
 }
 
@@ -5427,7 +5521,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOu
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput)
 }
@@ -5455,7 +5549,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePt
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput)
 }
 
@@ -5569,7 +5667,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput)
 }
@@ -5604,7 +5702,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
 }
 
@@ -5736,7 +5838,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigO
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
 }
@@ -5785,7 +5887,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigP
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput)
 }
 
@@ -5937,7 +6043,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 }
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput)
 }
@@ -5986,7 +6092,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput)
 }
 
@@ -6503,7 +6613,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardOutput) ToGoogleCloudDialog
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageBasicCardOutput) ToGoogleCloudDialogflowV2IntentMessageBasicCardPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCard) *GoogleCloudDialogflowV2IntentMessageBasicCard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageBasicCard) *GoogleCloudDialogflowV2IntentMessageBasicCard {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageBasicCardPtrOutput)
 }
@@ -6553,7 +6663,11 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardPtrOutput) ToGoogleCloudDia
 
 func (o GoogleCloudDialogflowV2IntentMessageBasicCardPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageBasicCardOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBasicCard) GoogleCloudDialogflowV2IntentMessageBasicCard {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageBasicCard
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageBasicCardOutput)
 }
 
@@ -7134,7 +7248,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput)
 }
@@ -7169,7 +7283,11 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) ToGoogl
 
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput)
 }
 
@@ -7797,7 +7915,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCardOutput) ToGoogleCloudDialogflowV
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageCardOutput) ToGoogleCloudDialogflowV2IntentMessageCardPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCardPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCard) *GoogleCloudDialogflowV2IntentMessageCard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageCard) *GoogleCloudDialogflowV2IntentMessageCard {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageCardPtrOutput)
 }
@@ -7839,7 +7957,13 @@ func (o GoogleCloudDialogflowV2IntentMessageCardPtrOutput) ToGoogleCloudDialogfl
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageCardPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageCardOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageCard) GoogleCloudDialogflowV2IntentMessageCard { return *v }).(GoogleCloudDialogflowV2IntentMessageCardOutput)
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageCard) GoogleCloudDialogflowV2IntentMessageCard {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageCard
+		return ret
+	}).(GoogleCloudDialogflowV2IntentMessageCardOutput)
 }
 
 // Optional. The collection of card buttons.
@@ -8280,7 +8404,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput) ToGoogleCloudD
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelect) *GoogleCloudDialogflowV2IntentMessageCarouselSelect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageCarouselSelect) *GoogleCloudDialogflowV2IntentMessageCarouselSelect {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput)
 }
@@ -8308,7 +8432,11 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput) ToGoogleClo
 
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageCarouselSelect) GoogleCloudDialogflowV2IntentMessageCarouselSelect {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageCarouselSelect
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput)
 }
 
@@ -8963,7 +9091,7 @@ func (o GoogleCloudDialogflowV2IntentMessageImageOutput) ToGoogleCloudDialogflow
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageImageOutput) ToGoogleCloudDialogflowV2IntentMessageImagePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageImagePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageImage) *GoogleCloudDialogflowV2IntentMessageImage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageImage) *GoogleCloudDialogflowV2IntentMessageImage {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageImagePtrOutput)
 }
@@ -8994,7 +9122,11 @@ func (o GoogleCloudDialogflowV2IntentMessageImagePtrOutput) ToGoogleCloudDialogf
 
 func (o GoogleCloudDialogflowV2IntentMessageImagePtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageImageOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageImage) GoogleCloudDialogflowV2IntentMessageImage {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageImage
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageImageOutput)
 }
 
@@ -9182,7 +9314,7 @@ func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) ToGoogleClo
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput)
 }
@@ -9213,7 +9345,11 @@ func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput) ToGoogle
 
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput)
 }
 
@@ -9405,7 +9541,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectOutput) ToGoogleCloudDialo
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageListSelectOutput) ToGoogleCloudDialogflowV2IntentMessageListSelectPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelect) *GoogleCloudDialogflowV2IntentMessageListSelect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageListSelect) *GoogleCloudDialogflowV2IntentMessageListSelect {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput)
 }
@@ -9443,7 +9579,11 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput) ToGoogleCloudDi
 
 func (o GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageListSelectOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageListSelect) GoogleCloudDialogflowV2IntentMessageListSelect {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageListSelect
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageListSelectOutput)
 }
 
@@ -9914,7 +10054,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) ToGoogleCloudDia
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) ToGoogleCloudDialogflowV2IntentMessageMediaContentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContent) *GoogleCloudDialogflowV2IntentMessageMediaContent {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageMediaContent) *GoogleCloudDialogflowV2IntentMessageMediaContent {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput)
 }
@@ -9949,7 +10089,11 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageMediaContentOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageMediaContent) GoogleCloudDialogflowV2IntentMessageMediaContent {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageMediaContent
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageMediaContentOutput)
 }
 
@@ -10429,7 +10573,7 @@ func (o GoogleCloudDialogflowV2IntentMessageQuickRepliesOutput) ToGoogleCloudDia
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageQuickRepliesOutput) ToGoogleCloudDialogflowV2IntentMessageQuickRepliesPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageQuickReplies) *GoogleCloudDialogflowV2IntentMessageQuickReplies {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageQuickReplies) *GoogleCloudDialogflowV2IntentMessageQuickReplies {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrOutput)
 }
@@ -10460,7 +10604,11 @@ func (o GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageQuickRepliesOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageQuickReplies) GoogleCloudDialogflowV2IntentMessageQuickReplies {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageQuickReplies
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageQuickRepliesOutput)
 }
 
@@ -11260,7 +11408,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput) ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSimpleResponses) *GoogleCloudDialogflowV2IntentMessageSimpleResponses {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageSimpleResponses) *GoogleCloudDialogflowV2IntentMessageSimpleResponses {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput)
 }
@@ -11288,7 +11436,11 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSimpleResponses) GoogleCloudDialogflowV2IntentMessageSimpleResponses {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageSimpleResponses
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput)
 }
 
@@ -11655,7 +11807,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsOutput) ToGoogleCloudDial
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionsOutput) ToGoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestions) *GoogleCloudDialogflowV2IntentMessageSuggestions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageSuggestions) *GoogleCloudDialogflowV2IntentMessageSuggestions {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput)
 }
@@ -11683,7 +11835,11 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) ToGoogleCloudD
 
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageSuggestionsOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSuggestions) GoogleCloudDialogflowV2IntentMessageSuggestions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageSuggestions
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageSuggestionsOutput)
 }
 
@@ -11870,7 +12026,7 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardOutput) ToGoogleCloudDialog
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageTableCardOutput) ToGoogleCloudDialogflowV2IntentMessageTableCardPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCard) *GoogleCloudDialogflowV2IntentMessageTableCard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageTableCard) *GoogleCloudDialogflowV2IntentMessageTableCard {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput)
 }
@@ -11929,7 +12085,11 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput) ToGoogleCloudDia
 
 func (o GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageTableCardOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageTableCard) GoogleCloudDialogflowV2IntentMessageTableCard {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageTableCard
+		return ret
 	}).(GoogleCloudDialogflowV2IntentMessageTableCardOutput)
 }
 
@@ -12619,7 +12779,7 @@ func (o GoogleCloudDialogflowV2IntentMessageTextOutput) ToGoogleCloudDialogflowV
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageTextOutput) ToGoogleCloudDialogflowV2IntentMessageTextPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTextPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageText) *GoogleCloudDialogflowV2IntentMessageText {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2IntentMessageText) *GoogleCloudDialogflowV2IntentMessageText {
 		return &v
 	}).(GoogleCloudDialogflowV2IntentMessageTextPtrOutput)
 }
@@ -12644,7 +12804,13 @@ func (o GoogleCloudDialogflowV2IntentMessageTextPtrOutput) ToGoogleCloudDialogfl
 }
 
 func (o GoogleCloudDialogflowV2IntentMessageTextPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageTextOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageText) GoogleCloudDialogflowV2IntentMessageText { return *v }).(GoogleCloudDialogflowV2IntentMessageTextOutput)
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageText) GoogleCloudDialogflowV2IntentMessageText {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2IntentMessageText
+		return ret
+	}).(GoogleCloudDialogflowV2IntentMessageTextOutput)
 }
 
 // Optional. The collection of the agent's responses.
@@ -13639,7 +13805,7 @@ func (o GoogleCloudDialogflowV2LoggingConfigOutput) ToGoogleCloudDialogflowV2Log
 }
 
 func (o GoogleCloudDialogflowV2LoggingConfigOutput) ToGoogleCloudDialogflowV2LoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2LoggingConfig) *GoogleCloudDialogflowV2LoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2LoggingConfig) *GoogleCloudDialogflowV2LoggingConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2LoggingConfigPtrOutput)
 }
@@ -13664,7 +13830,13 @@ func (o GoogleCloudDialogflowV2LoggingConfigPtrOutput) ToGoogleCloudDialogflowV2
 }
 
 func (o GoogleCloudDialogflowV2LoggingConfigPtrOutput) Elem() GoogleCloudDialogflowV2LoggingConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2LoggingConfig) GoogleCloudDialogflowV2LoggingConfig { return *v }).(GoogleCloudDialogflowV2LoggingConfigOutput)
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2LoggingConfig) GoogleCloudDialogflowV2LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2LoggingConfig
+		return ret
+	}).(GoogleCloudDialogflowV2LoggingConfigOutput)
 }
 
 // Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
@@ -13773,7 +13945,7 @@ func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) ToGoogleCloudDialogf
 }
 
 func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2LoggingConfigResponse) *GoogleCloudDialogflowV2LoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2LoggingConfigResponse) *GoogleCloudDialogflowV2LoggingConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput)
 }
@@ -13799,7 +13971,11 @@ func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) ToGoogleCloudDial
 
 func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2LoggingConfigResponse) GoogleCloudDialogflowV2LoggingConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2LoggingConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2LoggingConfigResponseOutput)
 }
 
@@ -13913,7 +14089,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigOutput) ToGoogleCloudDialogflow
 }
 
 func (o GoogleCloudDialogflowV2NotificationConfigOutput) ToGoogleCloudDialogflowV2NotificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfig) *GoogleCloudDialogflowV2NotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2NotificationConfig) *GoogleCloudDialogflowV2NotificationConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2NotificationConfigPtrOutput)
 }
@@ -13946,7 +14122,11 @@ func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) ToGoogleCloudDialogf
 
 func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) Elem() GoogleCloudDialogflowV2NotificationConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfig) GoogleCloudDialogflowV2NotificationConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2NotificationConfig
+		return ret
 	}).(GoogleCloudDialogflowV2NotificationConfigOutput)
 }
 
@@ -14070,7 +14250,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) ToGoogleCloudDi
 }
 
 func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfigResponse) *GoogleCloudDialogflowV2NotificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2NotificationConfigResponse) *GoogleCloudDialogflowV2NotificationConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput)
 }
@@ -14101,7 +14281,11 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfigResponse) GoogleCloudDialogflowV2NotificationConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2NotificationConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
 }
 
@@ -14221,7 +14405,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) ToGoogleCloudDialogflow
 }
 
 func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfig {
 		return &v
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput)
 }
@@ -14249,7 +14433,11 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) ToGoogleCloudDialogf
 
 func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) Elem() GoogleCloudDialogflowV2SpeechToTextConfigOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfig) GoogleCloudDialogflowV2SpeechToTextConfig {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2SpeechToTextConfig
+		return ret
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigOutput)
 }
 
@@ -14359,7 +14547,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDi
 }
 
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfigResponse) *GoogleCloudDialogflowV2SpeechToTextConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SpeechToTextConfigResponse) *GoogleCloudDialogflowV2SpeechToTextConfigResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput)
 }
@@ -14385,7 +14573,11 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfigResponse) GoogleCloudDialogflowV2SpeechToTextConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2SpeechToTextConfigResponse
+		return ret
 	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
 }
 
@@ -14495,7 +14687,7 @@ func (o GoogleCloudDialogflowV2SuggestionFeatureOutput) ToGoogleCloudDialogflowV
 }
 
 func (o GoogleCloudDialogflowV2SuggestionFeatureOutput) ToGoogleCloudDialogflowV2SuggestionFeaturePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SuggestionFeaturePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2SuggestionFeature) *GoogleCloudDialogflowV2SuggestionFeature {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SuggestionFeature) *GoogleCloudDialogflowV2SuggestionFeature {
 		return &v
 	}).(GoogleCloudDialogflowV2SuggestionFeaturePtrOutput)
 }
@@ -14522,7 +14714,13 @@ func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) ToGoogleCloudDialogfl
 }
 
 func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) Elem() GoogleCloudDialogflowV2SuggestionFeatureOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2SuggestionFeature) GoogleCloudDialogflowV2SuggestionFeature { return *v }).(GoogleCloudDialogflowV2SuggestionFeatureOutput)
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SuggestionFeature) GoogleCloudDialogflowV2SuggestionFeature {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2SuggestionFeature
+		return ret
+	}).(GoogleCloudDialogflowV2SuggestionFeatureOutput)
 }
 
 // Type of Human Agent Assistant API feature to request.
@@ -14698,7 +14896,7 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) ToGoogleCloudDialogfl
 }
 
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) *GoogleCloudDialogflowV2TextToSpeechSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2TextToSpeechSettings) *GoogleCloudDialogflowV2TextToSpeechSettings {
 		return &v
 	}).(GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput)
 }
@@ -14743,7 +14941,11 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) ToGoogleCloudDialo
 
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) Elem() GoogleCloudDialogflowV2TextToSpeechSettingsOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettings) GoogleCloudDialogflowV2TextToSpeechSettings {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2TextToSpeechSettings
+		return ret
 	}).(GoogleCloudDialogflowV2TextToSpeechSettingsOutput)
 }
 
@@ -14895,7 +15097,7 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
 		return &v
 	}).(GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput)
 }
@@ -14938,7 +15140,11 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2TextToSpeechSettingsResponse
+		return ret
 	}).(GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput)
 }
 
@@ -15086,7 +15292,7 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponsePtrOutput() Goog
 }
 
 func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponsePtrOutputWithContext(ctx context.Context) GoogleRpcStatusResponsePtrOutput {
-	return o.ApplyT(func(v GoogleRpcStatusResponse) *GoogleRpcStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleRpcStatusResponse) *GoogleRpcStatusResponse {
 		return &v
 	}).(GoogleRpcStatusResponsePtrOutput)
 }
@@ -15121,7 +15327,13 @@ func (o GoogleRpcStatusResponsePtrOutput) ToGoogleRpcStatusResponsePtrOutputWith
 }
 
 func (o GoogleRpcStatusResponsePtrOutput) Elem() GoogleRpcStatusResponseOutput {
-	return o.ApplyT(func(v *GoogleRpcStatusResponse) GoogleRpcStatusResponse { return *v }).(GoogleRpcStatusResponseOutput)
+	return o.ApplyT(func(v *GoogleRpcStatusResponse) GoogleRpcStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleRpcStatusResponse
+		return ret
+	}).(GoogleRpcStatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.

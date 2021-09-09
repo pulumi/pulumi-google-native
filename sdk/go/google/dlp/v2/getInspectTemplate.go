@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,71 @@ type LookupInspectTemplateResult struct {
 	Name string `pulumi:"name"`
 	// The last update timestamp of an inspectTemplate.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupInspectTemplateOutput(ctx *pulumi.Context, args LookupInspectTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInspectTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupInspectTemplateResult, error) {
+			args := v.(LookupInspectTemplateArgs)
+			r, err := LookupInspectTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(LookupInspectTemplateResultOutput)
+}
+
+type LookupInspectTemplateOutputArgs struct {
+	InspectTemplateId pulumi.StringInput    `pulumi:"inspectTemplateId"`
+	Location          pulumi.StringInput    `pulumi:"location"`
+	Project           pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupInspectTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInspectTemplateArgs)(nil)).Elem()
+}
+
+type LookupInspectTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInspectTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInspectTemplateResult)(nil)).Elem()
+}
+
+func (o LookupInspectTemplateResultOutput) ToLookupInspectTemplateResultOutput() LookupInspectTemplateResultOutput {
+	return o
+}
+
+func (o LookupInspectTemplateResultOutput) ToLookupInspectTemplateResultOutputWithContext(ctx context.Context) LookupInspectTemplateResultOutput {
+	return o
+}
+
+// The creation timestamp of an inspectTemplate.
+func (o LookupInspectTemplateResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description (max 256 chars).
+func (o LookupInspectTemplateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name (max 256 chars).
+func (o LookupInspectTemplateResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The core content of the template. Configuration of the scanning process.
+func (o LookupInspectTemplateResultOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigResponseOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) GooglePrivacyDlpV2InspectConfigResponse { return v.InspectConfig }).(GooglePrivacyDlpV2InspectConfigResponseOutput)
+}
+
+// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+func (o LookupInspectTemplateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of an inspectTemplate.
+func (o LookupInspectTemplateResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInspectTemplateResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInspectTemplateResultOutput{})
 }

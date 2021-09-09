@@ -192,9 +192,7 @@ func (i *Occurrence) ToOccurrenceOutputWithContext(ctx context.Context) Occurren
 	return pulumi.ToOutputWithContext(ctx, i).(OccurrenceOutput)
 }
 
-type OccurrenceOutput struct {
-	*pulumi.OutputState
-}
+type OccurrenceOutput struct{ *pulumi.OutputState }
 
 func (OccurrenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Occurrence)(nil))

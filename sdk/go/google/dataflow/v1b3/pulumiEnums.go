@@ -106,7 +106,7 @@ func (o AutoscalingSettingsAlgorithmOutput) ToStringPtrOutputWithContext(ctx con
 type AutoscalingSettingsAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingSettingsAlgorithmPtrOutput) ElementType() reflect.Type {
-	return autoscalingSettingsAlgorithmPtrType
+	return reflect.TypeOf((**AutoscalingSettingsAlgorithm)(nil)).Elem()
 }
 
 func (o AutoscalingSettingsAlgorithmPtrOutput) ToAutoscalingSettingsAlgorithmPtrOutput() AutoscalingSettingsAlgorithmPtrOutput {
@@ -115,6 +115,16 @@ func (o AutoscalingSettingsAlgorithmPtrOutput) ToAutoscalingSettingsAlgorithmPtr
 
 func (o AutoscalingSettingsAlgorithmPtrOutput) ToAutoscalingSettingsAlgorithmPtrOutputWithContext(ctx context.Context) AutoscalingSettingsAlgorithmPtrOutput {
 	return o
+}
+
+func (o AutoscalingSettingsAlgorithmPtrOutput) Elem() AutoscalingSettingsAlgorithmOutput {
+	return o.ApplyT(func(v *AutoscalingSettingsAlgorithm) AutoscalingSettingsAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingSettingsAlgorithm
+		return ret
+	}).(AutoscalingSettingsAlgorithmOutput)
 }
 
 func (o AutoscalingSettingsAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AutoscalingSettingsAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AutoscalingSettingsAlgorithmPtrOutput) Elem() AutoscalingSettingsAlgorithmOutput {
-	return o.ApplyT(func(v *AutoscalingSettingsAlgorithm) AutoscalingSettingsAlgorithm {
-		var ret AutoscalingSettingsAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AutoscalingSettingsAlgorithmOutput)
 }
 
 // AutoscalingSettingsAlgorithmInput is an input type that accepts AutoscalingSettingsAlgorithmArgs and AutoscalingSettingsAlgorithmOutput values.
@@ -275,7 +275,7 @@ func (o EnvironmentFlexResourceSchedulingGoalOutput) ToStringPtrOutputWithContex
 type EnvironmentFlexResourceSchedulingGoalPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentFlexResourceSchedulingGoalPtrOutput) ElementType() reflect.Type {
-	return environmentFlexResourceSchedulingGoalPtrType
+	return reflect.TypeOf((**EnvironmentFlexResourceSchedulingGoal)(nil)).Elem()
 }
 
 func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToEnvironmentFlexResourceSchedulingGoalPtrOutput() EnvironmentFlexResourceSchedulingGoalPtrOutput {
@@ -284,6 +284,16 @@ func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToEnvironmentFlexResourc
 
 func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToEnvironmentFlexResourceSchedulingGoalPtrOutputWithContext(ctx context.Context) EnvironmentFlexResourceSchedulingGoalPtrOutput {
 	return o
+}
+
+func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) Elem() EnvironmentFlexResourceSchedulingGoalOutput {
+	return o.ApplyT(func(v *EnvironmentFlexResourceSchedulingGoal) EnvironmentFlexResourceSchedulingGoal {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentFlexResourceSchedulingGoal
+		return ret
+	}).(EnvironmentFlexResourceSchedulingGoalOutput)
 }
 
 func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToStringPtrOutputWithCon
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) Elem() EnvironmentFlexResourceSchedulingGoalOutput {
-	return o.ApplyT(func(v *EnvironmentFlexResourceSchedulingGoal) EnvironmentFlexResourceSchedulingGoal {
-		var ret EnvironmentFlexResourceSchedulingGoal
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EnvironmentFlexResourceSchedulingGoalOutput)
 }
 
 // EnvironmentFlexResourceSchedulingGoalInput is an input type that accepts EnvironmentFlexResourceSchedulingGoalArgs and EnvironmentFlexResourceSchedulingGoalOutput values.
@@ -464,7 +464,7 @@ func (o ExecutionStageStateExecutionStageStateOutput) ToStringPtrOutputWithConte
 type ExecutionStageStateExecutionStageStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionStageStateExecutionStageStatePtrOutput) ElementType() reflect.Type {
-	return executionStageStateExecutionStageStatePtrType
+	return reflect.TypeOf((**ExecutionStageStateExecutionStageState)(nil)).Elem()
 }
 
 func (o ExecutionStageStateExecutionStageStatePtrOutput) ToExecutionStageStateExecutionStageStatePtrOutput() ExecutionStageStateExecutionStageStatePtrOutput {
@@ -473,6 +473,16 @@ func (o ExecutionStageStateExecutionStageStatePtrOutput) ToExecutionStageStateEx
 
 func (o ExecutionStageStateExecutionStageStatePtrOutput) ToExecutionStageStateExecutionStageStatePtrOutputWithContext(ctx context.Context) ExecutionStageStateExecutionStageStatePtrOutput {
 	return o
+}
+
+func (o ExecutionStageStateExecutionStageStatePtrOutput) Elem() ExecutionStageStateExecutionStageStateOutput {
+	return o.ApplyT(func(v *ExecutionStageStateExecutionStageState) ExecutionStageStateExecutionStageState {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionStageStateExecutionStageState
+		return ret
+	}).(ExecutionStageStateExecutionStageStateOutput)
 }
 
 func (o ExecutionStageStateExecutionStageStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -487,16 +497,6 @@ func (o ExecutionStageStateExecutionStageStatePtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecutionStageStateExecutionStageStatePtrOutput) Elem() ExecutionStageStateExecutionStageStateOutput {
-	return o.ApplyT(func(v *ExecutionStageStateExecutionStageState) ExecutionStageStateExecutionStageState {
-		var ret ExecutionStageStateExecutionStageState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecutionStageStateExecutionStageStateOutput)
 }
 
 // ExecutionStageStateExecutionStageStateInput is an input type that accepts ExecutionStageStateExecutionStageStateArgs and ExecutionStageStateExecutionStageStateOutput values.
@@ -645,7 +645,7 @@ func (o ExecutionStageSummaryKindOutput) ToStringPtrOutputWithContext(ctx contex
 type ExecutionStageSummaryKindPtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionStageSummaryKindPtrOutput) ElementType() reflect.Type {
-	return executionStageSummaryKindPtrType
+	return reflect.TypeOf((**ExecutionStageSummaryKind)(nil)).Elem()
 }
 
 func (o ExecutionStageSummaryKindPtrOutput) ToExecutionStageSummaryKindPtrOutput() ExecutionStageSummaryKindPtrOutput {
@@ -654,6 +654,16 @@ func (o ExecutionStageSummaryKindPtrOutput) ToExecutionStageSummaryKindPtrOutput
 
 func (o ExecutionStageSummaryKindPtrOutput) ToExecutionStageSummaryKindPtrOutputWithContext(ctx context.Context) ExecutionStageSummaryKindPtrOutput {
 	return o
+}
+
+func (o ExecutionStageSummaryKindPtrOutput) Elem() ExecutionStageSummaryKindOutput {
+	return o.ApplyT(func(v *ExecutionStageSummaryKind) ExecutionStageSummaryKind {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionStageSummaryKind
+		return ret
+	}).(ExecutionStageSummaryKindOutput)
 }
 
 func (o ExecutionStageSummaryKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -668,16 +678,6 @@ func (o ExecutionStageSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecutionStageSummaryKindPtrOutput) Elem() ExecutionStageSummaryKindOutput {
-	return o.ApplyT(func(v *ExecutionStageSummaryKind) ExecutionStageSummaryKind {
-		var ret ExecutionStageSummaryKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecutionStageSummaryKindOutput)
 }
 
 // ExecutionStageSummaryKindInput is an input type that accepts ExecutionStageSummaryKindArgs and ExecutionStageSummaryKindOutput values.
@@ -834,7 +834,7 @@ func (o JobCurrentStateOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type JobCurrentStatePtrOutput struct{ *pulumi.OutputState }
 
 func (JobCurrentStatePtrOutput) ElementType() reflect.Type {
-	return jobCurrentStatePtrType
+	return reflect.TypeOf((**JobCurrentState)(nil)).Elem()
 }
 
 func (o JobCurrentStatePtrOutput) ToJobCurrentStatePtrOutput() JobCurrentStatePtrOutput {
@@ -843,6 +843,16 @@ func (o JobCurrentStatePtrOutput) ToJobCurrentStatePtrOutput() JobCurrentStatePt
 
 func (o JobCurrentStatePtrOutput) ToJobCurrentStatePtrOutputWithContext(ctx context.Context) JobCurrentStatePtrOutput {
 	return o
+}
+
+func (o JobCurrentStatePtrOutput) Elem() JobCurrentStateOutput {
+	return o.ApplyT(func(v *JobCurrentState) JobCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret JobCurrentState
+		return ret
+	}).(JobCurrentStateOutput)
 }
 
 func (o JobCurrentStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -857,16 +867,6 @@ func (o JobCurrentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobCurrentStatePtrOutput) Elem() JobCurrentStateOutput {
-	return o.ApplyT(func(v *JobCurrentState) JobCurrentState {
-		var ret JobCurrentState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobCurrentStateOutput)
 }
 
 // JobCurrentStateInput is an input type that accepts JobCurrentStateArgs and JobCurrentStateOutput values.
@@ -1023,7 +1023,7 @@ func (o JobRequestedStateOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type JobRequestedStatePtrOutput struct{ *pulumi.OutputState }
 
 func (JobRequestedStatePtrOutput) ElementType() reflect.Type {
-	return jobRequestedStatePtrType
+	return reflect.TypeOf((**JobRequestedState)(nil)).Elem()
 }
 
 func (o JobRequestedStatePtrOutput) ToJobRequestedStatePtrOutput() JobRequestedStatePtrOutput {
@@ -1032,6 +1032,16 @@ func (o JobRequestedStatePtrOutput) ToJobRequestedStatePtrOutput() JobRequestedS
 
 func (o JobRequestedStatePtrOutput) ToJobRequestedStatePtrOutputWithContext(ctx context.Context) JobRequestedStatePtrOutput {
 	return o
+}
+
+func (o JobRequestedStatePtrOutput) Elem() JobRequestedStateOutput {
+	return o.ApplyT(func(v *JobRequestedState) JobRequestedState {
+		if v != nil {
+			return *v
+		}
+		var ret JobRequestedState
+		return ret
+	}).(JobRequestedStateOutput)
 }
 
 func (o JobRequestedStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1046,16 +1056,6 @@ func (o JobRequestedStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobRequestedStatePtrOutput) Elem() JobRequestedStateOutput {
-	return o.ApplyT(func(v *JobRequestedState) JobRequestedState {
-		var ret JobRequestedState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobRequestedStateOutput)
 }
 
 // JobRequestedStateInput is an input type that accepts JobRequestedStateArgs and JobRequestedStateOutput values.
@@ -1192,7 +1192,7 @@ func (o JobTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 type JobTypePtrOutput struct{ *pulumi.OutputState }
 
 func (JobTypePtrOutput) ElementType() reflect.Type {
-	return jobTypePtrType
+	return reflect.TypeOf((**JobType)(nil)).Elem()
 }
 
 func (o JobTypePtrOutput) ToJobTypePtrOutput() JobTypePtrOutput {
@@ -1201,6 +1201,16 @@ func (o JobTypePtrOutput) ToJobTypePtrOutput() JobTypePtrOutput {
 
 func (o JobTypePtrOutput) ToJobTypePtrOutputWithContext(ctx context.Context) JobTypePtrOutput {
 	return o
+}
+
+func (o JobTypePtrOutput) Elem() JobTypeOutput {
+	return o.ApplyT(func(v *JobType) JobType {
+		if v != nil {
+			return *v
+		}
+		var ret JobType
+		return ret
+	}).(JobTypeOutput)
 }
 
 func (o JobTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1215,16 +1225,6 @@ func (o JobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o JobTypePtrOutput) Elem() JobTypeOutput {
-	return o.ApplyT(func(v *JobType) JobType {
-		var ret JobType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(JobTypeOutput)
 }
 
 // JobTypeInput is an input type that accepts JobTypeArgs and JobTypeOutput values.
@@ -1361,7 +1361,7 @@ func (o RuntimeEnvironmentIpConfigurationOutput) ToStringPtrOutputWithContext(ct
 type RuntimeEnvironmentIpConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeEnvironmentIpConfigurationPtrOutput) ElementType() reflect.Type {
-	return runtimeEnvironmentIpConfigurationPtrType
+	return reflect.TypeOf((**RuntimeEnvironmentIpConfiguration)(nil)).Elem()
 }
 
 func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToRuntimeEnvironmentIpConfigurationPtrOutput() RuntimeEnvironmentIpConfigurationPtrOutput {
@@ -1370,6 +1370,16 @@ func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToRuntimeEnvironmentIpConfig
 
 func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToRuntimeEnvironmentIpConfigurationPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentIpConfigurationPtrOutput {
 	return o
+}
+
+func (o RuntimeEnvironmentIpConfigurationPtrOutput) Elem() RuntimeEnvironmentIpConfigurationOutput {
+	return o.ApplyT(func(v *RuntimeEnvironmentIpConfiguration) RuntimeEnvironmentIpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeEnvironmentIpConfiguration
+		return ret
+	}).(RuntimeEnvironmentIpConfigurationOutput)
 }
 
 func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1384,16 +1394,6 @@ func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToStringPtrOutputWithContext
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RuntimeEnvironmentIpConfigurationPtrOutput) Elem() RuntimeEnvironmentIpConfigurationOutput {
-	return o.ApplyT(func(v *RuntimeEnvironmentIpConfiguration) RuntimeEnvironmentIpConfiguration {
-		var ret RuntimeEnvironmentIpConfiguration
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RuntimeEnvironmentIpConfigurationOutput)
 }
 
 // RuntimeEnvironmentIpConfigurationInput is an input type that accepts RuntimeEnvironmentIpConfigurationArgs and RuntimeEnvironmentIpConfigurationOutput values.
@@ -1534,7 +1534,7 @@ func (o SdkVersionSdkSupportStatusOutput) ToStringPtrOutputWithContext(ctx conte
 type SdkVersionSdkSupportStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (SdkVersionSdkSupportStatusPtrOutput) ElementType() reflect.Type {
-	return sdkVersionSdkSupportStatusPtrType
+	return reflect.TypeOf((**SdkVersionSdkSupportStatus)(nil)).Elem()
 }
 
 func (o SdkVersionSdkSupportStatusPtrOutput) ToSdkVersionSdkSupportStatusPtrOutput() SdkVersionSdkSupportStatusPtrOutput {
@@ -1543,6 +1543,16 @@ func (o SdkVersionSdkSupportStatusPtrOutput) ToSdkVersionSdkSupportStatusPtrOutp
 
 func (o SdkVersionSdkSupportStatusPtrOutput) ToSdkVersionSdkSupportStatusPtrOutputWithContext(ctx context.Context) SdkVersionSdkSupportStatusPtrOutput {
 	return o
+}
+
+func (o SdkVersionSdkSupportStatusPtrOutput) Elem() SdkVersionSdkSupportStatusOutput {
+	return o.ApplyT(func(v *SdkVersionSdkSupportStatus) SdkVersionSdkSupportStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SdkVersionSdkSupportStatus
+		return ret
+	}).(SdkVersionSdkSupportStatusOutput)
 }
 
 func (o SdkVersionSdkSupportStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1557,16 +1567,6 @@ func (o SdkVersionSdkSupportStatusPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SdkVersionSdkSupportStatusPtrOutput) Elem() SdkVersionSdkSupportStatusOutput {
-	return o.ApplyT(func(v *SdkVersionSdkSupportStatus) SdkVersionSdkSupportStatus {
-		var ret SdkVersionSdkSupportStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SdkVersionSdkSupportStatusOutput)
 }
 
 // SdkVersionSdkSupportStatusInput is an input type that accepts SdkVersionSdkSupportStatusArgs and SdkVersionSdkSupportStatusOutput values.
@@ -1715,7 +1715,7 @@ func (o TransformSummaryKindOutput) ToStringPtrOutputWithContext(ctx context.Con
 type TransformSummaryKindPtrOutput struct{ *pulumi.OutputState }
 
 func (TransformSummaryKindPtrOutput) ElementType() reflect.Type {
-	return transformSummaryKindPtrType
+	return reflect.TypeOf((**TransformSummaryKind)(nil)).Elem()
 }
 
 func (o TransformSummaryKindPtrOutput) ToTransformSummaryKindPtrOutput() TransformSummaryKindPtrOutput {
@@ -1724,6 +1724,16 @@ func (o TransformSummaryKindPtrOutput) ToTransformSummaryKindPtrOutput() Transfo
 
 func (o TransformSummaryKindPtrOutput) ToTransformSummaryKindPtrOutputWithContext(ctx context.Context) TransformSummaryKindPtrOutput {
 	return o
+}
+
+func (o TransformSummaryKindPtrOutput) Elem() TransformSummaryKindOutput {
+	return o.ApplyT(func(v *TransformSummaryKind) TransformSummaryKind {
+		if v != nil {
+			return *v
+		}
+		var ret TransformSummaryKind
+		return ret
+	}).(TransformSummaryKindOutput)
 }
 
 func (o TransformSummaryKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1738,16 +1748,6 @@ func (o TransformSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TransformSummaryKindPtrOutput) Elem() TransformSummaryKindOutput {
-	return o.ApplyT(func(v *TransformSummaryKind) TransformSummaryKind {
-		var ret TransformSummaryKind
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TransformSummaryKindOutput)
 }
 
 // TransformSummaryKindInput is an input type that accepts TransformSummaryKindArgs and TransformSummaryKindOutput values.
@@ -1886,7 +1886,7 @@ func (o WorkerPoolDefaultPackageSetOutput) ToStringPtrOutputWithContext(ctx cont
 type WorkerPoolDefaultPackageSetPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolDefaultPackageSetPtrOutput) ElementType() reflect.Type {
-	return workerPoolDefaultPackageSetPtrType
+	return reflect.TypeOf((**WorkerPoolDefaultPackageSet)(nil)).Elem()
 }
 
 func (o WorkerPoolDefaultPackageSetPtrOutput) ToWorkerPoolDefaultPackageSetPtrOutput() WorkerPoolDefaultPackageSetPtrOutput {
@@ -1895,6 +1895,16 @@ func (o WorkerPoolDefaultPackageSetPtrOutput) ToWorkerPoolDefaultPackageSetPtrOu
 
 func (o WorkerPoolDefaultPackageSetPtrOutput) ToWorkerPoolDefaultPackageSetPtrOutputWithContext(ctx context.Context) WorkerPoolDefaultPackageSetPtrOutput {
 	return o
+}
+
+func (o WorkerPoolDefaultPackageSetPtrOutput) Elem() WorkerPoolDefaultPackageSetOutput {
+	return o.ApplyT(func(v *WorkerPoolDefaultPackageSet) WorkerPoolDefaultPackageSet {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolDefaultPackageSet
+		return ret
+	}).(WorkerPoolDefaultPackageSetOutput)
 }
 
 func (o WorkerPoolDefaultPackageSetPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1909,16 +1919,6 @@ func (o WorkerPoolDefaultPackageSetPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkerPoolDefaultPackageSetPtrOutput) Elem() WorkerPoolDefaultPackageSetOutput {
-	return o.ApplyT(func(v *WorkerPoolDefaultPackageSet) WorkerPoolDefaultPackageSet {
-		var ret WorkerPoolDefaultPackageSet
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WorkerPoolDefaultPackageSetOutput)
 }
 
 // WorkerPoolDefaultPackageSetInput is an input type that accepts WorkerPoolDefaultPackageSetArgs and WorkerPoolDefaultPackageSetOutput values.
@@ -2055,7 +2055,7 @@ func (o WorkerPoolIpConfigurationOutput) ToStringPtrOutputWithContext(ctx contex
 type WorkerPoolIpConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolIpConfigurationPtrOutput) ElementType() reflect.Type {
-	return workerPoolIpConfigurationPtrType
+	return reflect.TypeOf((**WorkerPoolIpConfiguration)(nil)).Elem()
 }
 
 func (o WorkerPoolIpConfigurationPtrOutput) ToWorkerPoolIpConfigurationPtrOutput() WorkerPoolIpConfigurationPtrOutput {
@@ -2064,6 +2064,16 @@ func (o WorkerPoolIpConfigurationPtrOutput) ToWorkerPoolIpConfigurationPtrOutput
 
 func (o WorkerPoolIpConfigurationPtrOutput) ToWorkerPoolIpConfigurationPtrOutputWithContext(ctx context.Context) WorkerPoolIpConfigurationPtrOutput {
 	return o
+}
+
+func (o WorkerPoolIpConfigurationPtrOutput) Elem() WorkerPoolIpConfigurationOutput {
+	return o.ApplyT(func(v *WorkerPoolIpConfiguration) WorkerPoolIpConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolIpConfiguration
+		return ret
+	}).(WorkerPoolIpConfigurationOutput)
 }
 
 func (o WorkerPoolIpConfigurationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2078,16 +2088,6 @@ func (o WorkerPoolIpConfigurationPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkerPoolIpConfigurationPtrOutput) Elem() WorkerPoolIpConfigurationOutput {
-	return o.ApplyT(func(v *WorkerPoolIpConfiguration) WorkerPoolIpConfiguration {
-		var ret WorkerPoolIpConfiguration
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WorkerPoolIpConfigurationOutput)
 }
 
 // WorkerPoolIpConfigurationInput is an input type that accepts WorkerPoolIpConfigurationArgs and WorkerPoolIpConfigurationOutput values.
@@ -2226,7 +2226,7 @@ func (o WorkerPoolTeardownPolicyOutput) ToStringPtrOutputWithContext(ctx context
 type WorkerPoolTeardownPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolTeardownPolicyPtrOutput) ElementType() reflect.Type {
-	return workerPoolTeardownPolicyPtrType
+	return reflect.TypeOf((**WorkerPoolTeardownPolicy)(nil)).Elem()
 }
 
 func (o WorkerPoolTeardownPolicyPtrOutput) ToWorkerPoolTeardownPolicyPtrOutput() WorkerPoolTeardownPolicyPtrOutput {
@@ -2235,6 +2235,16 @@ func (o WorkerPoolTeardownPolicyPtrOutput) ToWorkerPoolTeardownPolicyPtrOutput()
 
 func (o WorkerPoolTeardownPolicyPtrOutput) ToWorkerPoolTeardownPolicyPtrOutputWithContext(ctx context.Context) WorkerPoolTeardownPolicyPtrOutput {
 	return o
+}
+
+func (o WorkerPoolTeardownPolicyPtrOutput) Elem() WorkerPoolTeardownPolicyOutput {
+	return o.ApplyT(func(v *WorkerPoolTeardownPolicy) WorkerPoolTeardownPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTeardownPolicy
+		return ret
+	}).(WorkerPoolTeardownPolicyOutput)
 }
 
 func (o WorkerPoolTeardownPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2249,16 +2259,6 @@ func (o WorkerPoolTeardownPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkerPoolTeardownPolicyPtrOutput) Elem() WorkerPoolTeardownPolicyOutput {
-	return o.ApplyT(func(v *WorkerPoolTeardownPolicy) WorkerPoolTeardownPolicy {
-		var ret WorkerPoolTeardownPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WorkerPoolTeardownPolicyOutput)
 }
 
 // WorkerPoolTeardownPolicyInput is an input type that accepts WorkerPoolTeardownPolicyArgs and WorkerPoolTeardownPolicyOutput values.

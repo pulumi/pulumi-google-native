@@ -103,7 +103,7 @@ func (o InstanceMemcacheVersionOutput) ToStringPtrOutputWithContext(ctx context.
 type InstanceMemcacheVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceMemcacheVersionPtrOutput) ElementType() reflect.Type {
-	return instanceMemcacheVersionPtrType
+	return reflect.TypeOf((**InstanceMemcacheVersion)(nil)).Elem()
 }
 
 func (o InstanceMemcacheVersionPtrOutput) ToInstanceMemcacheVersionPtrOutput() InstanceMemcacheVersionPtrOutput {
@@ -112,6 +112,16 @@ func (o InstanceMemcacheVersionPtrOutput) ToInstanceMemcacheVersionPtrOutput() I
 
 func (o InstanceMemcacheVersionPtrOutput) ToInstanceMemcacheVersionPtrOutputWithContext(ctx context.Context) InstanceMemcacheVersionPtrOutput {
 	return o
+}
+
+func (o InstanceMemcacheVersionPtrOutput) Elem() InstanceMemcacheVersionOutput {
+	return o.ApplyT(func(v *InstanceMemcacheVersion) InstanceMemcacheVersion {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMemcacheVersion
+		return ret
+	}).(InstanceMemcacheVersionOutput)
 }
 
 func (o InstanceMemcacheVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -126,16 +136,6 @@ func (o InstanceMemcacheVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceMemcacheVersionPtrOutput) Elem() InstanceMemcacheVersionOutput {
-	return o.ApplyT(func(v *InstanceMemcacheVersion) InstanceMemcacheVersion {
-		var ret InstanceMemcacheVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceMemcacheVersionOutput)
 }
 
 // InstanceMemcacheVersionInput is an input type that accepts InstanceMemcacheVersionArgs and InstanceMemcacheVersionOutput values.
@@ -270,7 +270,7 @@ func (o InstanceMessageCodeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type InstanceMessageCodePtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceMessageCodePtrOutput) ElementType() reflect.Type {
-	return instanceMessageCodePtrType
+	return reflect.TypeOf((**InstanceMessageCode)(nil)).Elem()
 }
 
 func (o InstanceMessageCodePtrOutput) ToInstanceMessageCodePtrOutput() InstanceMessageCodePtrOutput {
@@ -279,6 +279,16 @@ func (o InstanceMessageCodePtrOutput) ToInstanceMessageCodePtrOutput() InstanceM
 
 func (o InstanceMessageCodePtrOutput) ToInstanceMessageCodePtrOutputWithContext(ctx context.Context) InstanceMessageCodePtrOutput {
 	return o
+}
+
+func (o InstanceMessageCodePtrOutput) Elem() InstanceMessageCodeOutput {
+	return o.ApplyT(func(v *InstanceMessageCode) InstanceMessageCode {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMessageCode
+		return ret
+	}).(InstanceMessageCodeOutput)
 }
 
 func (o InstanceMessageCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -293,16 +303,6 @@ func (o InstanceMessageCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceMessageCodePtrOutput) Elem() InstanceMessageCodeOutput {
-	return o.ApplyT(func(v *InstanceMessageCode) InstanceMessageCode {
-		var ret InstanceMessageCode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstanceMessageCodeOutput)
 }
 
 // InstanceMessageCodeInput is an input type that accepts InstanceMessageCodeArgs and InstanceMessageCodeOutput values.

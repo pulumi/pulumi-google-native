@@ -324,7 +324,7 @@ func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutpu
 }
 
 func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
-	return o.ApplyT(func(v DatabaseConfig) *DatabaseConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConfig) *DatabaseConfig {
 		return &v
 	}).(DatabaseConfigPtrOutput)
 }
@@ -349,7 +349,13 @@ func (o DatabaseConfigPtrOutput) ToDatabaseConfigPtrOutputWithContext(ctx contex
 }
 
 func (o DatabaseConfigPtrOutput) Elem() DatabaseConfigOutput {
-	return o.ApplyT(func(v *DatabaseConfig) DatabaseConfig { return *v }).(DatabaseConfigOutput)
+	return o.ApplyT(func(v *DatabaseConfig) DatabaseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseConfig
+		return ret
+	}).(DatabaseConfigOutput)
 }
 
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
@@ -458,7 +464,7 @@ func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponsePtrOutput() Databa
 }
 
 func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigResponsePtrOutput {
-	return o.ApplyT(func(v DatabaseConfigResponse) *DatabaseConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConfigResponse) *DatabaseConfigResponse {
 		return &v
 	}).(DatabaseConfigResponsePtrOutput)
 }
@@ -483,7 +489,13 @@ func (o DatabaseConfigResponsePtrOutput) ToDatabaseConfigResponsePtrOutputWithCo
 }
 
 func (o DatabaseConfigResponsePtrOutput) Elem() DatabaseConfigResponseOutput {
-	return o.ApplyT(func(v *DatabaseConfigResponse) DatabaseConfigResponse { return *v }).(DatabaseConfigResponseOutput)
+	return o.ApplyT(func(v *DatabaseConfigResponse) DatabaseConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseConfigResponse
+		return ret
+	}).(DatabaseConfigResponseOutput)
 }
 
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
@@ -592,7 +604,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -617,7 +629,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
@@ -726,7 +744,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -751,7 +769,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
@@ -888,7 +912,7 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutput() EnvironmentConfi
 }
 
 func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfig) *EnvironmentConfig {
 		return &v
 	}).(EnvironmentConfigPtrOutput)
 }
@@ -948,7 +972,13 @@ func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx 
 }
 
 func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig { return *v }).(EnvironmentConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfig
+		return ret
+	}).(EnvironmentConfigOutput)
 }
 
 // Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
@@ -1167,7 +1197,7 @@ func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponsePtrOutput() 
 }
 
 func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) EnvironmentConfigResponsePtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigResponse) *EnvironmentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigResponse) *EnvironmentConfigResponse {
 		return &v
 	}).(EnvironmentConfigResponsePtrOutput)
 }
@@ -1244,7 +1274,13 @@ func (o EnvironmentConfigResponsePtrOutput) ToEnvironmentConfigResponsePtrOutput
 }
 
 func (o EnvironmentConfigResponsePtrOutput) Elem() EnvironmentConfigResponseOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) EnvironmentConfigResponse { return *v }).(EnvironmentConfigResponseOutput)
+	return o.ApplyT(func(v *EnvironmentConfigResponse) EnvironmentConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigResponse
+		return ret
+	}).(EnvironmentConfigResponseOutput)
 }
 
 // The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
@@ -1469,7 +1505,7 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutput() IPAllocationPo
 }
 
 func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx context.Context) IPAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicy) *IPAllocationPolicy {
 		return &v
 	}).(IPAllocationPolicyPtrOutput)
 }
@@ -1514,7 +1550,13 @@ func (o IPAllocationPolicyPtrOutput) ToIPAllocationPolicyPtrOutputWithContext(ct
 }
 
 func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) IPAllocationPolicy { return *v }).(IPAllocationPolicyOutput)
+	return o.ApplyT(func(v *IPAllocationPolicy) IPAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicy
+		return ret
+	}).(IPAllocationPolicyOutput)
 }
 
 // Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -1679,7 +1721,7 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutput(
 }
 
 func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) *IPAllocationPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicyResponse) *IPAllocationPolicyResponse {
 		return &v
 	}).(IPAllocationPolicyResponsePtrOutput)
 }
@@ -1724,7 +1766,13 @@ func (o IPAllocationPolicyResponsePtrOutput) ToIPAllocationPolicyResponsePtrOutp
 }
 
 func (o IPAllocationPolicyResponsePtrOutput) Elem() IPAllocationPolicyResponseOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) IPAllocationPolicyResponse { return *v }).(IPAllocationPolicyResponseOutput)
+	return o.ApplyT(func(v *IPAllocationPolicyResponse) IPAllocationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicyResponse
+		return ret
+	}).(IPAllocationPolicyResponseOutput)
 }
 
 // Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. This field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -1905,7 +1953,7 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
 }
 
 func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return o.ApplyT(func(v NodeConfig) *NodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
 		return &v
 	}).(NodeConfigPtrOutput)
 }
@@ -1970,7 +2018,13 @@ func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
-	return o.ApplyT(func(v *NodeConfig) NodeConfig { return *v }).(NodeConfigOutput)
+	return o.ApplyT(func(v *NodeConfig) NodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfig
+		return ret
+	}).(NodeConfigOutput)
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
@@ -2191,7 +2245,7 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutput() NodeConfigResp
 }
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o.ApplyT(func(v NodeConfigResponse) *NodeConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigResponse) *NodeConfigResponse {
 		return &v
 	}).(NodeConfigResponsePtrOutput)
 }
@@ -2256,7 +2310,13 @@ func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutputWithContext(ct
 }
 
 func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse { return *v }).(NodeConfigResponseOutput)
+	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfigResponse
+		return ret
+	}).(NodeConfigResponseOutput)
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated.
@@ -2449,7 +2509,7 @@ func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutput() PrivateClu
 }
 
 func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutputWithContext(ctx context.Context) PrivateClusterConfigPtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfig) *PrivateClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterConfig) *PrivateClusterConfig {
 		return &v
 	}).(PrivateClusterConfigPtrOutput)
 }
@@ -2479,7 +2539,13 @@ func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutputWithContex
 }
 
 func (o PrivateClusterConfigPtrOutput) Elem() PrivateClusterConfigOutput {
-	return o.ApplyT(func(v *PrivateClusterConfig) PrivateClusterConfig { return *v }).(PrivateClusterConfigOutput)
+	return o.ApplyT(func(v *PrivateClusterConfig) PrivateClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterConfig
+		return ret
+	}).(PrivateClusterConfigOutput)
 }
 
 // Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
@@ -2606,7 +2672,7 @@ func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOut
 }
 
 func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfigResponse) *PrivateClusterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterConfigResponse) *PrivateClusterConfigResponse {
 		return &v
 	}).(PrivateClusterConfigResponsePtrOutput)
 }
@@ -2641,7 +2707,13 @@ func (o PrivateClusterConfigResponsePtrOutput) ToPrivateClusterConfigResponsePtr
 }
 
 func (o PrivateClusterConfigResponsePtrOutput) Elem() PrivateClusterConfigResponseOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) PrivateClusterConfigResponse { return *v }).(PrivateClusterConfigResponseOutput)
+	return o.ApplyT(func(v *PrivateClusterConfigResponse) PrivateClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterConfigResponse
+		return ret
+	}).(PrivateClusterConfigResponseOutput)
 }
 
 // Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
@@ -2782,7 +2854,7 @@ func (o PrivateEnvironmentConfigOutput) ToPrivateEnvironmentConfigPtrOutput() Pr
 }
 
 func (o PrivateEnvironmentConfigOutput) ToPrivateEnvironmentConfigPtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigPtrOutput {
-	return o.ApplyT(func(v PrivateEnvironmentConfig) *PrivateEnvironmentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEnvironmentConfig) *PrivateEnvironmentConfig {
 		return &v
 	}).(PrivateEnvironmentConfigPtrOutput)
 }
@@ -2822,7 +2894,13 @@ func (o PrivateEnvironmentConfigPtrOutput) ToPrivateEnvironmentConfigPtrOutputWi
 }
 
 func (o PrivateEnvironmentConfigPtrOutput) Elem() PrivateEnvironmentConfigOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfig) PrivateEnvironmentConfig { return *v }).(PrivateEnvironmentConfigOutput)
+	return o.ApplyT(func(v *PrivateEnvironmentConfig) PrivateEnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEnvironmentConfig
+		return ret
+	}).(PrivateEnvironmentConfigOutput)
 }
 
 // Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
@@ -2977,7 +3055,7 @@ func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigRespon
 }
 
 func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) *PrivateEnvironmentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEnvironmentConfigResponse) *PrivateEnvironmentConfigResponse {
 		return &v
 	}).(PrivateEnvironmentConfigResponsePtrOutput)
 }
@@ -3022,7 +3100,13 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) ToPrivateEnvironmentConfigRes
 }
 
 func (o PrivateEnvironmentConfigResponsePtrOutput) Elem() PrivateEnvironmentConfigResponseOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) PrivateEnvironmentConfigResponse { return *v }).(PrivateEnvironmentConfigResponseOutput)
+	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) PrivateEnvironmentConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEnvironmentConfigResponse
+		return ret
+	}).(PrivateEnvironmentConfigResponseOutput)
 }
 
 // Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
@@ -3187,7 +3271,7 @@ func (o SoftwareConfigOutput) ToSoftwareConfigPtrOutput() SoftwareConfigPtrOutpu
 }
 
 func (o SoftwareConfigOutput) ToSoftwareConfigPtrOutputWithContext(ctx context.Context) SoftwareConfigPtrOutput {
-	return o.ApplyT(func(v SoftwareConfig) *SoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfig) *SoftwareConfig {
 		return &v
 	}).(SoftwareConfigPtrOutput)
 }
@@ -3232,7 +3316,13 @@ func (o SoftwareConfigPtrOutput) ToSoftwareConfigPtrOutputWithContext(ctx contex
 }
 
 func (o SoftwareConfigPtrOutput) Elem() SoftwareConfigOutput {
-	return o.ApplyT(func(v *SoftwareConfig) SoftwareConfig { return *v }).(SoftwareConfigOutput)
+	return o.ApplyT(func(v *SoftwareConfig) SoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfig
+		return ret
+	}).(SoftwareConfigOutput)
 }
 
 // Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -3397,7 +3487,7 @@ func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutput() Softwa
 }
 
 func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return o.ApplyT(func(v SoftwareConfigResponse) *SoftwareConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfigResponse) *SoftwareConfigResponse {
 		return &v
 	}).(SoftwareConfigResponsePtrOutput)
 }
@@ -3442,7 +3532,13 @@ func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutputWithCo
 }
 
 func (o SoftwareConfigResponsePtrOutput) Elem() SoftwareConfigResponseOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse { return *v }).(SoftwareConfigResponseOutput)
+	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfigResponse
+		return ret
+	}).(SoftwareConfigResponseOutput)
 }
 
 // Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -3591,7 +3687,7 @@ func (o WebServerConfigOutput) ToWebServerConfigPtrOutput() WebServerConfigPtrOu
 }
 
 func (o WebServerConfigOutput) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
-	return o.ApplyT(func(v WebServerConfig) *WebServerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerConfig) *WebServerConfig {
 		return &v
 	}).(WebServerConfigPtrOutput)
 }
@@ -3616,7 +3712,13 @@ func (o WebServerConfigPtrOutput) ToWebServerConfigPtrOutputWithContext(ctx cont
 }
 
 func (o WebServerConfigPtrOutput) Elem() WebServerConfigOutput {
-	return o.ApplyT(func(v *WebServerConfig) WebServerConfig { return *v }).(WebServerConfigOutput)
+	return o.ApplyT(func(v *WebServerConfig) WebServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WebServerConfig
+		return ret
+	}).(WebServerConfigOutput)
 }
 
 // Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
@@ -3725,7 +3827,7 @@ func (o WebServerConfigResponseOutput) ToWebServerConfigResponsePtrOutput() WebS
 }
 
 func (o WebServerConfigResponseOutput) ToWebServerConfigResponsePtrOutputWithContext(ctx context.Context) WebServerConfigResponsePtrOutput {
-	return o.ApplyT(func(v WebServerConfigResponse) *WebServerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerConfigResponse) *WebServerConfigResponse {
 		return &v
 	}).(WebServerConfigResponsePtrOutput)
 }
@@ -3750,7 +3852,13 @@ func (o WebServerConfigResponsePtrOutput) ToWebServerConfigResponsePtrOutputWith
 }
 
 func (o WebServerConfigResponsePtrOutput) Elem() WebServerConfigResponseOutput {
-	return o.ApplyT(func(v *WebServerConfigResponse) WebServerConfigResponse { return *v }).(WebServerConfigResponseOutput)
+	return o.ApplyT(func(v *WebServerConfigResponse) WebServerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebServerConfigResponse
+		return ret
+	}).(WebServerConfigResponseOutput)
 }
 
 // Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
@@ -3859,7 +3967,7 @@ func (o WebServerNetworkAccessControlOutput) ToWebServerNetworkAccessControlPtrO
 }
 
 func (o WebServerNetworkAccessControlOutput) ToWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlPtrOutput {
-	return o.ApplyT(func(v WebServerNetworkAccessControl) *WebServerNetworkAccessControl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerNetworkAccessControl) *WebServerNetworkAccessControl {
 		return &v
 	}).(WebServerNetworkAccessControlPtrOutput)
 }
@@ -3884,7 +3992,13 @@ func (o WebServerNetworkAccessControlPtrOutput) ToWebServerNetworkAccessControlP
 }
 
 func (o WebServerNetworkAccessControlPtrOutput) Elem() WebServerNetworkAccessControlOutput {
-	return o.ApplyT(func(v *WebServerNetworkAccessControl) WebServerNetworkAccessControl { return *v }).(WebServerNetworkAccessControlOutput)
+	return o.ApplyT(func(v *WebServerNetworkAccessControl) WebServerNetworkAccessControl {
+		if v != nil {
+			return *v
+		}
+		var ret WebServerNetworkAccessControl
+		return ret
+	}).(WebServerNetworkAccessControlOutput)
 }
 
 // A collection of allowed IP ranges with descriptions.
@@ -3993,7 +4107,7 @@ func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessCon
 }
 
 func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponsePtrOutput {
-	return o.ApplyT(func(v WebServerNetworkAccessControlResponse) *WebServerNetworkAccessControlResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerNetworkAccessControlResponse) *WebServerNetworkAccessControlResponse {
 		return &v
 	}).(WebServerNetworkAccessControlResponsePtrOutput)
 }
@@ -4018,7 +4132,13 @@ func (o WebServerNetworkAccessControlResponsePtrOutput) ToWebServerNetworkAccess
 }
 
 func (o WebServerNetworkAccessControlResponsePtrOutput) Elem() WebServerNetworkAccessControlResponseOutput {
-	return o.ApplyT(func(v *WebServerNetworkAccessControlResponse) WebServerNetworkAccessControlResponse { return *v }).(WebServerNetworkAccessControlResponseOutput)
+	return o.ApplyT(func(v *WebServerNetworkAccessControlResponse) WebServerNetworkAccessControlResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebServerNetworkAccessControlResponse
+		return ret
+	}).(WebServerNetworkAccessControlResponseOutput)
 }
 
 // A collection of allowed IP ranges with descriptions.

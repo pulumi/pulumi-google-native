@@ -112,7 +112,7 @@ func (o DataCollectorTypeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type DataCollectorTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DataCollectorTypePtrOutput) ElementType() reflect.Type {
-	return dataCollectorTypePtrType
+	return reflect.TypeOf((**DataCollectorType)(nil)).Elem()
 }
 
 func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput {
@@ -121,6 +121,16 @@ func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutput() DataCollector
 
 func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
 	return o
+}
+
+func (o DataCollectorTypePtrOutput) Elem() DataCollectorTypeOutput {
+	return o.ApplyT(func(v *DataCollectorType) DataCollectorType {
+		if v != nil {
+			return *v
+		}
+		var ret DataCollectorType
+		return ret
+	}).(DataCollectorTypeOutput)
 }
 
 func (o DataCollectorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -135,16 +145,6 @@ func (o DataCollectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataCollectorTypePtrOutput) Elem() DataCollectorTypeOutput {
-	return o.ApplyT(func(v *DataCollectorType) DataCollectorType {
-		var ret DataCollectorType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DataCollectorTypeOutput)
 }
 
 // DataCollectorTypeInput is an input type that accepts DataCollectorTypeArgs and DataCollectorTypeOutput values.
@@ -281,7 +281,7 @@ func (o EnvironmentApiProxyTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type EnvironmentApiProxyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentApiProxyTypePtrOutput) ElementType() reflect.Type {
-	return environmentApiProxyTypePtrType
+	return reflect.TypeOf((**EnvironmentApiProxyType)(nil)).Elem()
 }
 
 func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutput() EnvironmentApiProxyTypePtrOutput {
@@ -290,6 +290,16 @@ func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutput() E
 
 func (o EnvironmentApiProxyTypePtrOutput) ToEnvironmentApiProxyTypePtrOutputWithContext(ctx context.Context) EnvironmentApiProxyTypePtrOutput {
 	return o
+}
+
+func (o EnvironmentApiProxyTypePtrOutput) Elem() EnvironmentApiProxyTypeOutput {
+	return o.ApplyT(func(v *EnvironmentApiProxyType) EnvironmentApiProxyType {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentApiProxyType
+		return ret
+	}).(EnvironmentApiProxyTypeOutput)
 }
 
 func (o EnvironmentApiProxyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -304,16 +314,6 @@ func (o EnvironmentApiProxyTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvironmentApiProxyTypePtrOutput) Elem() EnvironmentApiProxyTypeOutput {
-	return o.ApplyT(func(v *EnvironmentApiProxyType) EnvironmentApiProxyType {
-		var ret EnvironmentApiProxyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EnvironmentApiProxyTypeOutput)
 }
 
 // EnvironmentApiProxyTypeInput is an input type that accepts EnvironmentApiProxyTypeArgs and EnvironmentApiProxyTypeOutput values.
@@ -450,7 +450,7 @@ func (o EnvironmentDeploymentTypeOutput) ToStringPtrOutputWithContext(ctx contex
 type EnvironmentDeploymentTypePtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentDeploymentTypePtrOutput) ElementType() reflect.Type {
-	return environmentDeploymentTypePtrType
+	return reflect.TypeOf((**EnvironmentDeploymentType)(nil)).Elem()
 }
 
 func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutput() EnvironmentDeploymentTypePtrOutput {
@@ -459,6 +459,16 @@ func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutput
 
 func (o EnvironmentDeploymentTypePtrOutput) ToEnvironmentDeploymentTypePtrOutputWithContext(ctx context.Context) EnvironmentDeploymentTypePtrOutput {
 	return o
+}
+
+func (o EnvironmentDeploymentTypePtrOutput) Elem() EnvironmentDeploymentTypeOutput {
+	return o.ApplyT(func(v *EnvironmentDeploymentType) EnvironmentDeploymentType {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentDeploymentType
+		return ret
+	}).(EnvironmentDeploymentTypeOutput)
 }
 
 func (o EnvironmentDeploymentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -473,16 +483,6 @@ func (o EnvironmentDeploymentTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o EnvironmentDeploymentTypePtrOutput) Elem() EnvironmentDeploymentTypeOutput {
-	return o.ApplyT(func(v *EnvironmentDeploymentType) EnvironmentDeploymentType {
-		var ret EnvironmentDeploymentType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(EnvironmentDeploymentTypeOutput)
 }
 
 // EnvironmentDeploymentTypeInput is an input type that accepts EnvironmentDeploymentTypeArgs and EnvironmentDeploymentTypeOutput values.
@@ -619,7 +619,7 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringPtrOutputWi
 type GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ElementType() reflect.Type {
-	return googleCloudApigeeV1TraceSamplingConfigSamplerPtrType
+	return reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfigSampler)(nil)).Elem()
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
@@ -628,6 +628,16 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApi
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
 	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigSampler) GoogleCloudApigeeV1TraceSamplingConfigSampler {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1TraceSamplingConfigSampler
+		return ret
+	}).(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput)
 }
 
 func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -642,16 +652,6 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToStringPtrOutpu
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigSampler) GoogleCloudApigeeV1TraceSamplingConfigSampler {
-		var ret GoogleCloudApigeeV1TraceSamplingConfigSampler
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput)
 }
 
 // GoogleCloudApigeeV1TraceSamplingConfigSamplerInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs and GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput values.
@@ -790,7 +790,7 @@ func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx
 type GoogleIamV1AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return googleIamV1AuditLogConfigLogTypePtrType
+	return reflect.TypeOf((**GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
@@ -799,6 +799,16 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLo
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamV1AuditLogConfigLogType
+		return ret
+	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
 }
 
 func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -813,16 +823,6 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
-		var ret GoogleIamV1AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
 }
 
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
@@ -969,7 +969,7 @@ func (o InstancePeeringCidrRangeOutput) ToStringPtrOutputWithContext(ctx context
 type InstancePeeringCidrRangePtrOutput struct{ *pulumi.OutputState }
 
 func (InstancePeeringCidrRangePtrOutput) ElementType() reflect.Type {
-	return instancePeeringCidrRangePtrType
+	return reflect.TypeOf((**InstancePeeringCidrRange)(nil)).Elem()
 }
 
 func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput {
@@ -978,6 +978,16 @@ func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutput()
 
 func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
 	return o
+}
+
+func (o InstancePeeringCidrRangePtrOutput) Elem() InstancePeeringCidrRangeOutput {
+	return o.ApplyT(func(v *InstancePeeringCidrRange) InstancePeeringCidrRange {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePeeringCidrRange
+		return ret
+	}).(InstancePeeringCidrRangeOutput)
 }
 
 func (o InstancePeeringCidrRangePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -992,16 +1002,6 @@ func (o InstancePeeringCidrRangePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstancePeeringCidrRangePtrOutput) Elem() InstancePeeringCidrRangeOutput {
-	return o.ApplyT(func(v *InstancePeeringCidrRange) InstancePeeringCidrRange {
-		var ret InstancePeeringCidrRange
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstancePeeringCidrRangeOutput)
 }
 
 // InstancePeeringCidrRangeInput is an input type that accepts InstancePeeringCidrRangeArgs and InstancePeeringCidrRangeOutput values.
@@ -1138,7 +1138,7 @@ func (o OrganizationBillingTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type OrganizationBillingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBillingTypePtrOutput) ElementType() reflect.Type {
-	return organizationBillingTypePtrType
+	return reflect.TypeOf((**OrganizationBillingType)(nil)).Elem()
 }
 
 func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput {
@@ -1147,6 +1147,16 @@ func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutput() O
 
 func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
 	return o
+}
+
+func (o OrganizationBillingTypePtrOutput) Elem() OrganizationBillingTypeOutput {
+	return o.ApplyT(func(v *OrganizationBillingType) OrganizationBillingType {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationBillingType
+		return ret
+	}).(OrganizationBillingTypeOutput)
 }
 
 func (o OrganizationBillingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1161,16 +1171,6 @@ func (o OrganizationBillingTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationBillingTypePtrOutput) Elem() OrganizationBillingTypeOutput {
-	return o.ApplyT(func(v *OrganizationBillingType) OrganizationBillingType {
-		var ret OrganizationBillingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationBillingTypeOutput)
 }
 
 // OrganizationBillingTypeInput is an input type that accepts OrganizationBillingTypeArgs and OrganizationBillingTypeOutput values.
@@ -1307,7 +1307,7 @@ func (o OrganizationRuntimeTypeOutput) ToStringPtrOutputWithContext(ctx context.
 type OrganizationRuntimeTypePtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationRuntimeTypePtrOutput) ElementType() reflect.Type {
-	return organizationRuntimeTypePtrType
+	return reflect.TypeOf((**OrganizationRuntimeType)(nil)).Elem()
 }
 
 func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput {
@@ -1316,6 +1316,16 @@ func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutput() O
 
 func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
 	return o
+}
+
+func (o OrganizationRuntimeTypePtrOutput) Elem() OrganizationRuntimeTypeOutput {
+	return o.ApplyT(func(v *OrganizationRuntimeType) OrganizationRuntimeType {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationRuntimeType
+		return ret
+	}).(OrganizationRuntimeTypeOutput)
 }
 
 func (o OrganizationRuntimeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1330,16 +1340,6 @@ func (o OrganizationRuntimeTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationRuntimeTypePtrOutput) Elem() OrganizationRuntimeTypeOutput {
-	return o.ApplyT(func(v *OrganizationRuntimeType) OrganizationRuntimeType {
-		var ret OrganizationRuntimeType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationRuntimeTypeOutput)
 }
 
 // OrganizationRuntimeTypeInput is an input type that accepts OrganizationRuntimeTypeArgs and OrganizationRuntimeTypeOutput values.
@@ -1478,7 +1478,7 @@ func (o OrganizationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type OrganizationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationTypePtrOutput) ElementType() reflect.Type {
-	return organizationTypePtrType
+	return reflect.TypeOf((**OrganizationType)(nil)).Elem()
 }
 
 func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutput() OrganizationTypePtrOutput {
@@ -1487,6 +1487,16 @@ func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutput() OrganizationTyp
 
 func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
 	return o
+}
+
+func (o OrganizationTypePtrOutput) Elem() OrganizationTypeOutput {
+	return o.ApplyT(func(v *OrganizationType) OrganizationType {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationType
+		return ret
+	}).(OrganizationTypeOutput)
 }
 
 func (o OrganizationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1501,16 +1511,6 @@ func (o OrganizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o OrganizationTypePtrOutput) Elem() OrganizationTypeOutput {
-	return o.ApplyT(func(v *OrganizationType) OrganizationType {
-		var ret OrganizationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(OrganizationTypeOutput)
 }
 
 // OrganizationTypeInput is an input type that accepts OrganizationTypeArgs and OrganizationTypeOutput values.
@@ -1647,7 +1647,7 @@ func (o RatePlanBillingPeriodOutput) ToStringPtrOutputWithContext(ctx context.Co
 type RatePlanBillingPeriodPtrOutput struct{ *pulumi.OutputState }
 
 func (RatePlanBillingPeriodPtrOutput) ElementType() reflect.Type {
-	return ratePlanBillingPeriodPtrType
+	return reflect.TypeOf((**RatePlanBillingPeriod)(nil)).Elem()
 }
 
 func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput {
@@ -1656,6 +1656,16 @@ func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutput() RateP
 
 func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
 	return o
+}
+
+func (o RatePlanBillingPeriodPtrOutput) Elem() RatePlanBillingPeriodOutput {
+	return o.ApplyT(func(v *RatePlanBillingPeriod) RatePlanBillingPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanBillingPeriod
+		return ret
+	}).(RatePlanBillingPeriodOutput)
 }
 
 func (o RatePlanBillingPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1670,16 +1680,6 @@ func (o RatePlanBillingPeriodPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RatePlanBillingPeriodPtrOutput) Elem() RatePlanBillingPeriodOutput {
-	return o.ApplyT(func(v *RatePlanBillingPeriod) RatePlanBillingPeriod {
-		var ret RatePlanBillingPeriod
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RatePlanBillingPeriodOutput)
 }
 
 // RatePlanBillingPeriodInput is an input type that accepts RatePlanBillingPeriodArgs and RatePlanBillingPeriodOutput values.
@@ -1820,7 +1820,7 @@ func (o RatePlanConsumptionPricingTypeOutput) ToStringPtrOutputWithContext(ctx c
 type RatePlanConsumptionPricingTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RatePlanConsumptionPricingTypePtrOutput) ElementType() reflect.Type {
-	return ratePlanConsumptionPricingTypePtrType
+	return reflect.TypeOf((**RatePlanConsumptionPricingType)(nil)).Elem()
 }
 
 func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput {
@@ -1829,6 +1829,16 @@ func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTyp
 
 func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
 	return o
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) Elem() RatePlanConsumptionPricingTypeOutput {
+	return o.ApplyT(func(v *RatePlanConsumptionPricingType) RatePlanConsumptionPricingType {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanConsumptionPricingType
+		return ret
+	}).(RatePlanConsumptionPricingTypeOutput)
 }
 
 func (o RatePlanConsumptionPricingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1843,16 +1853,6 @@ func (o RatePlanConsumptionPricingTypePtrOutput) ToStringPtrOutputWithContext(ct
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RatePlanConsumptionPricingTypePtrOutput) Elem() RatePlanConsumptionPricingTypeOutput {
-	return o.ApplyT(func(v *RatePlanConsumptionPricingType) RatePlanConsumptionPricingType {
-		var ret RatePlanConsumptionPricingType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RatePlanConsumptionPricingTypeOutput)
 }
 
 // RatePlanConsumptionPricingTypeInput is an input type that accepts RatePlanConsumptionPricingTypeArgs and RatePlanConsumptionPricingTypeOutput values.
@@ -1989,7 +1989,7 @@ func (o RatePlanPaymentFundingModelOutput) ToStringPtrOutputWithContext(ctx cont
 type RatePlanPaymentFundingModelPtrOutput struct{ *pulumi.OutputState }
 
 func (RatePlanPaymentFundingModelPtrOutput) ElementType() reflect.Type {
-	return ratePlanPaymentFundingModelPtrType
+	return reflect.TypeOf((**RatePlanPaymentFundingModel)(nil)).Elem()
 }
 
 func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
@@ -1998,6 +1998,16 @@ func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOu
 
 func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
 	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) Elem() RatePlanPaymentFundingModelOutput {
+	return o.ApplyT(func(v *RatePlanPaymentFundingModel) RatePlanPaymentFundingModel {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanPaymentFundingModel
+		return ret
+	}).(RatePlanPaymentFundingModelOutput)
 }
 
 func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2012,16 +2022,6 @@ func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutputWithContext(ctx c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RatePlanPaymentFundingModelPtrOutput) Elem() RatePlanPaymentFundingModelOutput {
-	return o.ApplyT(func(v *RatePlanPaymentFundingModel) RatePlanPaymentFundingModel {
-		var ret RatePlanPaymentFundingModel
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RatePlanPaymentFundingModelOutput)
 }
 
 // RatePlanPaymentFundingModelInput is an input type that accepts RatePlanPaymentFundingModelArgs and RatePlanPaymentFundingModelOutput values.
@@ -2158,7 +2158,7 @@ func (o RatePlanRevenueShareTypeOutput) ToStringPtrOutputWithContext(ctx context
 type RatePlanRevenueShareTypePtrOutput struct{ *pulumi.OutputState }
 
 func (RatePlanRevenueShareTypePtrOutput) ElementType() reflect.Type {
-	return ratePlanRevenueShareTypePtrType
+	return reflect.TypeOf((**RatePlanRevenueShareType)(nil)).Elem()
 }
 
 func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput {
@@ -2167,6 +2167,16 @@ func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutput()
 
 func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
 	return o
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) Elem() RatePlanRevenueShareTypeOutput {
+	return o.ApplyT(func(v *RatePlanRevenueShareType) RatePlanRevenueShareType {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanRevenueShareType
+		return ret
+	}).(RatePlanRevenueShareTypeOutput)
 }
 
 func (o RatePlanRevenueShareTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2181,16 +2191,6 @@ func (o RatePlanRevenueShareTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RatePlanRevenueShareTypePtrOutput) Elem() RatePlanRevenueShareTypeOutput {
-	return o.ApplyT(func(v *RatePlanRevenueShareType) RatePlanRevenueShareType {
-		var ret RatePlanRevenueShareType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RatePlanRevenueShareTypeOutput)
 }
 
 // RatePlanRevenueShareTypeInput is an input type that accepts RatePlanRevenueShareTypeArgs and RatePlanRevenueShareTypeOutput values.
@@ -2327,7 +2327,7 @@ func (o RatePlanStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type RatePlanStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (RatePlanStateEnumPtrOutput) ElementType() reflect.Type {
-	return ratePlanStateEnumPtrType
+	return reflect.TypeOf((**RatePlanStateEnum)(nil)).Elem()
 }
 
 func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput {
@@ -2336,6 +2336,16 @@ func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutput() RatePlanState
 
 func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
 	return o
+}
+
+func (o RatePlanStateEnumPtrOutput) Elem() RatePlanStateEnumOutput {
+	return o.ApplyT(func(v *RatePlanStateEnum) RatePlanStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanStateEnum
+		return ret
+	}).(RatePlanStateEnumOutput)
 }
 
 func (o RatePlanStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2350,16 +2360,6 @@ func (o RatePlanStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RatePlanStateEnumPtrOutput) Elem() RatePlanStateEnumOutput {
-	return o.ApplyT(func(v *RatePlanStateEnum) RatePlanStateEnum {
-		var ret RatePlanStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RatePlanStateEnumOutput)
 }
 
 // RatePlanStateEnumInput is an input type that accepts RatePlanStateEnumArgs and RatePlanStateEnumOutput values.
@@ -2496,7 +2496,7 @@ func (o TargetServerProtocolOutput) ToStringPtrOutputWithContext(ctx context.Con
 type TargetServerProtocolPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetServerProtocolPtrOutput) ElementType() reflect.Type {
-	return targetServerProtocolPtrType
+	return reflect.TypeOf((**TargetServerProtocol)(nil)).Elem()
 }
 
 func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput {
@@ -2505,6 +2505,16 @@ func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutput() TargetS
 
 func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
 	return o
+}
+
+func (o TargetServerProtocolPtrOutput) Elem() TargetServerProtocolOutput {
+	return o.ApplyT(func(v *TargetServerProtocol) TargetServerProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret TargetServerProtocol
+		return ret
+	}).(TargetServerProtocolOutput)
 }
 
 func (o TargetServerProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2519,16 +2529,6 @@ func (o TargetServerProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o TargetServerProtocolPtrOutput) Elem() TargetServerProtocolOutput {
-	return o.ApplyT(func(v *TargetServerProtocol) TargetServerProtocol {
-		var ret TargetServerProtocol
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(TargetServerProtocolOutput)
 }
 
 // TargetServerProtocolInput is an input type that accepts TargetServerProtocolArgs and TargetServerProtocolOutput values.

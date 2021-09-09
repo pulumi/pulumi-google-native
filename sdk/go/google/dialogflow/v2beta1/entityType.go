@@ -134,9 +134,7 @@ func (i *EntityType) ToEntityTypeOutputWithContext(ctx context.Context) EntityTy
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeOutput)
 }
 
-type EntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type EntityTypeOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntityType)(nil))

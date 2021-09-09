@@ -546,7 +546,7 @@ func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
 }
 
 func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
-	return o.ApplyT(func(v Authority) *Authority {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Authority) *Authority {
 		return &v
 	}).(AuthorityPtrOutput)
 }
@@ -576,7 +576,13 @@ func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AuthorityPtrOutput) Elem() AuthorityOutput {
-	return o.ApplyT(func(v *Authority) Authority { return *v }).(AuthorityOutput)
+	return o.ApplyT(func(v *Authority) Authority {
+		if v != nil {
+			return *v
+		}
+		var ret Authority
+		return ret
+	}).(AuthorityOutput)
 }
 
 // Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
@@ -707,7 +713,7 @@ func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutput() AuthorityRespons
 }
 
 func (o AuthorityResponseOutput) ToAuthorityResponsePtrOutputWithContext(ctx context.Context) AuthorityResponsePtrOutput {
-	return o.ApplyT(func(v AuthorityResponse) *AuthorityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorityResponse) *AuthorityResponse {
 		return &v
 	}).(AuthorityResponsePtrOutput)
 }
@@ -747,7 +753,13 @@ func (o AuthorityResponsePtrOutput) ToAuthorityResponsePtrOutputWithContext(ctx 
 }
 
 func (o AuthorityResponsePtrOutput) Elem() AuthorityResponseOutput {
-	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse { return *v }).(AuthorityResponseOutput)
+	return o.ApplyT(func(v *AuthorityResponse) AuthorityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorityResponse
+		return ret
+	}).(AuthorityResponseOutput)
 }
 
 // An identity provider that reflects the `issuer` in the workload identity pool.
@@ -1122,7 +1134,7 @@ func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpe
 }
 
 func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
-	return o.ApplyT(func(v CommonFeatureSpec) *CommonFeatureSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureSpec) *CommonFeatureSpec {
 		return &v
 	}).(CommonFeatureSpecPtrOutput)
 }
@@ -1147,7 +1159,13 @@ func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx 
 }
 
 func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
-	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec { return *v }).(CommonFeatureSpecOutput)
+	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureSpec
+		return ret
+	}).(CommonFeatureSpecOutput)
 }
 
 // Multicluster Ingress-specific spec.
@@ -1256,7 +1274,7 @@ func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutput() 
 }
 
 func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
-	return o.ApplyT(func(v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
 		return &v
 	}).(CommonFeatureSpecResponsePtrOutput)
 }
@@ -1281,7 +1299,13 @@ func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutput
 }
 
 func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutput {
-	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse { return *v }).(CommonFeatureSpecResponseOutput)
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureSpecResponse
+		return ret
+	}).(CommonFeatureSpecResponseOutput)
 }
 
 // Multicluster Ingress-specific spec.
@@ -1390,7 +1414,7 @@ func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutput(
 }
 
 func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
-	return o.ApplyT(func(v CommonFeatureStateResponse) *CommonFeatureStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFeatureStateResponse) *CommonFeatureStateResponse {
 		return &v
 	}).(CommonFeatureStateResponsePtrOutput)
 }
@@ -1415,7 +1439,13 @@ func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutp
 }
 
 func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOutput {
-	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse { return *v }).(CommonFeatureStateResponseOutput)
+	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFeatureStateResponse
+		return ret
+	}).(CommonFeatureStateResponseOutput)
 }
 
 // The "running state" of the Feature in this Hub.
@@ -1536,7 +1566,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -1576,7 +1606,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1797,7 +1833,7 @@ func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOut
 }
 
 func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
-	return o.ApplyT(func(v FeatureResourceStateResponse) *FeatureResourceStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureResourceStateResponse) *FeatureResourceStateResponse {
 		return &v
 	}).(FeatureResourceStateResponsePtrOutput)
 }
@@ -1822,7 +1858,13 @@ func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtr
 }
 
 func (o FeatureResourceStateResponsePtrOutput) Elem() FeatureResourceStateResponseOutput {
-	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse { return *v }).(FeatureResourceStateResponseOutput)
+	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureResourceStateResponse
+		return ret
+	}).(FeatureResourceStateResponseOutput)
 }
 
 // The current state of the Feature resource in the Hub API.
@@ -1939,7 +1981,7 @@ func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutput() FeatureSta
 }
 
 func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
-	return o.ApplyT(func(v FeatureStateResponse) *FeatureStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureStateResponse) *FeatureStateResponse {
 		return &v
 	}).(FeatureStateResponsePtrOutput)
 }
@@ -1974,7 +2016,13 @@ func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutputWithContex
 }
 
 func (o FeatureStateResponsePtrOutput) Elem() FeatureStateResponseOutput {
-	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse { return *v }).(FeatureStateResponseOutput)
+	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureStateResponse
+		return ret
+	}).(FeatureStateResponseOutput)
 }
 
 // The high-level, machine-readable status of this Feature.
@@ -2103,7 +2151,7 @@ func (o GkeClusterOutput) ToGkeClusterPtrOutput() GkeClusterPtrOutput {
 }
 
 func (o GkeClusterOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) GkeClusterPtrOutput {
-	return o.ApplyT(func(v GkeCluster) *GkeCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeCluster) *GkeCluster {
 		return &v
 	}).(GkeClusterPtrOutput)
 }
@@ -2128,7 +2176,13 @@ func (o GkeClusterPtrOutput) ToGkeClusterPtrOutputWithContext(ctx context.Contex
 }
 
 func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
-	return o.ApplyT(func(v *GkeCluster) GkeCluster { return *v }).(GkeClusterOutput)
+	return o.ApplyT(func(v *GkeCluster) GkeCluster {
+		if v != nil {
+			return *v
+		}
+		var ret GkeCluster
+		return ret
+	}).(GkeClusterOutput)
 }
 
 // Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
@@ -2241,7 +2295,7 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutput() GkeClusterResp
 }
 
 func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return o.ApplyT(func(v GkeClusterResponse) *GkeClusterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterResponse) *GkeClusterResponse {
 		return &v
 	}).(GkeClusterResponsePtrOutput)
 }
@@ -2271,7 +2325,13 @@ func (o GkeClusterResponsePtrOutput) ToGkeClusterResponsePtrOutputWithContext(ct
 }
 
 func (o GkeClusterResponsePtrOutput) Elem() GkeClusterResponseOutput {
-	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse { return *v }).(GkeClusterResponseOutput)
+	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterResponse
+		return ret
+	}).(GkeClusterResponseOutput)
 }
 
 // If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
@@ -2410,7 +2470,7 @@ func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponsePtrOutput(
 }
 
 func (o KubernetesMetadataResponseOutput) ToKubernetesMetadataResponsePtrOutputWithContext(ctx context.Context) KubernetesMetadataResponsePtrOutput {
-	return o.ApplyT(func(v KubernetesMetadataResponse) *KubernetesMetadataResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesMetadataResponse) *KubernetesMetadataResponse {
 		return &v
 	}).(KubernetesMetadataResponsePtrOutput)
 }
@@ -2460,7 +2520,13 @@ func (o KubernetesMetadataResponsePtrOutput) ToKubernetesMetadataResponsePtrOutp
 }
 
 func (o KubernetesMetadataResponsePtrOutput) Elem() KubernetesMetadataResponseOutput {
-	return o.ApplyT(func(v *KubernetesMetadataResponse) KubernetesMetadataResponse { return *v }).(KubernetesMetadataResponseOutput)
+	return o.ApplyT(func(v *KubernetesMetadataResponse) KubernetesMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesMetadataResponse
+		return ret
+	}).(KubernetesMetadataResponseOutput)
 }
 
 // Kubernetes API server version string as reported by `/version`.
@@ -2619,7 +2685,7 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutput() MembershipEndp
 }
 
 func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
-	return o.ApplyT(func(v MembershipEndpoint) *MembershipEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpoint) *MembershipEndpoint {
 		return &v
 	}).(MembershipEndpointPtrOutput)
 }
@@ -2644,7 +2710,13 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ct
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
-	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint { return *v }).(MembershipEndpointOutput)
+	return o.ApplyT(func(v *MembershipEndpoint) MembershipEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpoint
+		return ret
+	}).(MembershipEndpointOutput)
 }
 
 // Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
@@ -2757,7 +2829,7 @@ func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponsePtrOutput(
 }
 
 func (o MembershipEndpointResponseOutput) ToMembershipEndpointResponsePtrOutputWithContext(ctx context.Context) MembershipEndpointResponsePtrOutput {
-	return o.ApplyT(func(v MembershipEndpointResponse) *MembershipEndpointResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipEndpointResponse) *MembershipEndpointResponse {
 		return &v
 	}).(MembershipEndpointResponsePtrOutput)
 }
@@ -2787,7 +2859,13 @@ func (o MembershipEndpointResponsePtrOutput) ToMembershipEndpointResponsePtrOutp
 }
 
 func (o MembershipEndpointResponsePtrOutput) Elem() MembershipEndpointResponseOutput {
-	return o.ApplyT(func(v *MembershipEndpointResponse) MembershipEndpointResponse { return *v }).(MembershipEndpointResponseOutput)
+	return o.ApplyT(func(v *MembershipEndpointResponse) MembershipEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipEndpointResponse
+		return ret
+	}).(MembershipEndpointResponseOutput)
 }
 
 // Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
@@ -2906,7 +2984,7 @@ func (o MembershipStateResponseOutput) ToMembershipStateResponsePtrOutput() Memb
 }
 
 func (o MembershipStateResponseOutput) ToMembershipStateResponsePtrOutputWithContext(ctx context.Context) MembershipStateResponsePtrOutput {
-	return o.ApplyT(func(v MembershipStateResponse) *MembershipStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipStateResponse) *MembershipStateResponse {
 		return &v
 	}).(MembershipStateResponsePtrOutput)
 }
@@ -2931,7 +3009,13 @@ func (o MembershipStateResponsePtrOutput) ToMembershipStateResponsePtrOutputWith
 }
 
 func (o MembershipStateResponsePtrOutput) Elem() MembershipStateResponseOutput {
-	return o.ApplyT(func(v *MembershipStateResponse) MembershipStateResponse { return *v }).(MembershipStateResponseOutput)
+	return o.ApplyT(func(v *MembershipStateResponse) MembershipStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipStateResponse
+		return ret
+	}).(MembershipStateResponseOutput)
 }
 
 // The current state of the Membership resource.
@@ -3040,7 +3124,7 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 }
 
 func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
 		return &v
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
@@ -3065,7 +3149,13 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpe
 }
 
 func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatureSpecOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterIngressFeatureSpec
+		return ret
+	}).(MultiClusterIngressFeatureSpecOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -3174,7 +3264,7 @@ func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatu
 }
 
 func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
 		return &v
 	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
 }
@@ -3199,7 +3289,13 @@ func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFe
 }
 
 func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterIngressFeatureSpecResponse
+		return ret
+	}).(MultiClusterIngressFeatureSpecResponseOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

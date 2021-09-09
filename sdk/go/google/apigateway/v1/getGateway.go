@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,81 @@ type LookupGatewayResult struct {
 	State string `pulumi:"state"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGatewayResult, error) {
+			args := v.(LookupGatewayArgs)
+			r, err := LookupGateway(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGatewayResultOutput)
+}
+
+type LookupGatewayOutputArgs struct {
+	GatewayId pulumi.StringInput    `pulumi:"gatewayId"`
+	Location  pulumi.StringInput    `pulumi:"location"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupGatewayOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGatewayArgs)(nil)).Elem()
+}
+
+type LookupGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGatewayResult)(nil)).Elem()
+}
+
+func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayResultOutput {
+	return o
+}
+
+func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
+	return o
+}
+
+// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+func (o LookupGatewayResultOutput) ApiConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.ApiConfig }).(pulumi.StringOutput)
+}
+
+// Created time.
+func (o LookupGatewayResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+func (o LookupGatewayResultOutput) DefaultHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+// Optional. Display name.
+func (o LookupGatewayResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+func (o LookupGatewayResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupGatewayResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+func (o LookupGatewayResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the Gateway.
+func (o LookupGatewayResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Updated time.
+func (o LookupGatewayResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGatewayResultOutput{})
 }

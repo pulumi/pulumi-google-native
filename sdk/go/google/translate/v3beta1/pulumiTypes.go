@@ -106,7 +106,7 @@ func (o GcsSourceOutput) ToGcsSourcePtrOutput() GcsSourcePtrOutput {
 }
 
 func (o GcsSourceOutput) ToGcsSourcePtrOutputWithContext(ctx context.Context) GcsSourcePtrOutput {
-	return o.ApplyT(func(v GcsSource) *GcsSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsSource) *GcsSource {
 		return &v
 	}).(GcsSourcePtrOutput)
 }
@@ -131,7 +131,13 @@ func (o GcsSourcePtrOutput) ToGcsSourcePtrOutputWithContext(ctx context.Context)
 }
 
 func (o GcsSourcePtrOutput) Elem() GcsSourceOutput {
-	return o.ApplyT(func(v *GcsSource) GcsSource { return *v }).(GcsSourceOutput)
+	return o.ApplyT(func(v *GcsSource) GcsSource {
+		if v != nil {
+			return *v
+		}
+		var ret GcsSource
+		return ret
+	}).(GcsSourceOutput)
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -240,7 +246,7 @@ func (o GcsSourceResponseOutput) ToGcsSourceResponsePtrOutput() GcsSourceRespons
 }
 
 func (o GcsSourceResponseOutput) ToGcsSourceResponsePtrOutputWithContext(ctx context.Context) GcsSourceResponsePtrOutput {
-	return o.ApplyT(func(v GcsSourceResponse) *GcsSourceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsSourceResponse) *GcsSourceResponse {
 		return &v
 	}).(GcsSourceResponsePtrOutput)
 }
@@ -265,7 +271,13 @@ func (o GcsSourceResponsePtrOutput) ToGcsSourceResponsePtrOutputWithContext(ctx 
 }
 
 func (o GcsSourceResponsePtrOutput) Elem() GcsSourceResponseOutput {
-	return o.ApplyT(func(v *GcsSourceResponse) GcsSourceResponse { return *v }).(GcsSourceResponseOutput)
+	return o.ApplyT(func(v *GcsSourceResponse) GcsSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcsSourceResponse
+		return ret
+	}).(GcsSourceResponseOutput)
 }
 
 // Source data URI. For example, `gs://my_bucket/my_object`.
@@ -374,7 +386,7 @@ func (o GlossaryInputConfigOutput) ToGlossaryInputConfigPtrOutput() GlossaryInpu
 }
 
 func (o GlossaryInputConfigOutput) ToGlossaryInputConfigPtrOutputWithContext(ctx context.Context) GlossaryInputConfigPtrOutput {
-	return o.ApplyT(func(v GlossaryInputConfig) *GlossaryInputConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryInputConfig) *GlossaryInputConfig {
 		return &v
 	}).(GlossaryInputConfigPtrOutput)
 }
@@ -399,7 +411,13 @@ func (o GlossaryInputConfigPtrOutput) ToGlossaryInputConfigPtrOutputWithContext(
 }
 
 func (o GlossaryInputConfigPtrOutput) Elem() GlossaryInputConfigOutput {
-	return o.ApplyT(func(v *GlossaryInputConfig) GlossaryInputConfig { return *v }).(GlossaryInputConfigOutput)
+	return o.ApplyT(func(v *GlossaryInputConfig) GlossaryInputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryInputConfig
+		return ret
+	}).(GlossaryInputConfigOutput)
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
@@ -508,7 +526,7 @@ func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponsePtrOutpu
 }
 
 func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponsePtrOutputWithContext(ctx context.Context) GlossaryInputConfigResponsePtrOutput {
-	return o.ApplyT(func(v GlossaryInputConfigResponse) *GlossaryInputConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryInputConfigResponse) *GlossaryInputConfigResponse {
 		return &v
 	}).(GlossaryInputConfigResponsePtrOutput)
 }
@@ -533,7 +551,13 @@ func (o GlossaryInputConfigResponsePtrOutput) ToGlossaryInputConfigResponsePtrOu
 }
 
 func (o GlossaryInputConfigResponsePtrOutput) Elem() GlossaryInputConfigResponseOutput {
-	return o.ApplyT(func(v *GlossaryInputConfigResponse) GlossaryInputConfigResponse { return *v }).(GlossaryInputConfigResponseOutput)
+	return o.ApplyT(func(v *GlossaryInputConfigResponse) GlossaryInputConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryInputConfigResponse
+		return ret
+	}).(GlossaryInputConfigResponseOutput)
 }
 
 // Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
@@ -646,7 +670,7 @@ func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutput() LanguageCodePairPt
 }
 
 func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutputWithContext(ctx context.Context) LanguageCodePairPtrOutput {
-	return o.ApplyT(func(v LanguageCodePair) *LanguageCodePair {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LanguageCodePair) *LanguageCodePair {
 		return &v
 	}).(LanguageCodePairPtrOutput)
 }
@@ -676,7 +700,13 @@ func (o LanguageCodePairPtrOutput) ToLanguageCodePairPtrOutputWithContext(ctx co
 }
 
 func (o LanguageCodePairPtrOutput) Elem() LanguageCodePairOutput {
-	return o.ApplyT(func(v *LanguageCodePair) LanguageCodePair { return *v }).(LanguageCodePairOutput)
+	return o.ApplyT(func(v *LanguageCodePair) LanguageCodePair {
+		if v != nil {
+			return *v
+		}
+		var ret LanguageCodePair
+		return ret
+	}).(LanguageCodePairOutput)
 }
 
 // The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
@@ -799,7 +829,7 @@ func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponsePtrOutput() La
 }
 
 func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponsePtrOutputWithContext(ctx context.Context) LanguageCodePairResponsePtrOutput {
-	return o.ApplyT(func(v LanguageCodePairResponse) *LanguageCodePairResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LanguageCodePairResponse) *LanguageCodePairResponse {
 		return &v
 	}).(LanguageCodePairResponsePtrOutput)
 }
@@ -829,7 +859,13 @@ func (o LanguageCodePairResponsePtrOutput) ToLanguageCodePairResponsePtrOutputWi
 }
 
 func (o LanguageCodePairResponsePtrOutput) Elem() LanguageCodePairResponseOutput {
-	return o.ApplyT(func(v *LanguageCodePairResponse) LanguageCodePairResponse { return *v }).(LanguageCodePairResponseOutput)
+	return o.ApplyT(func(v *LanguageCodePairResponse) LanguageCodePairResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LanguageCodePairResponse
+		return ret
+	}).(LanguageCodePairResponseOutput)
 }
 
 // The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
@@ -948,7 +984,7 @@ func (o LanguageCodesSetOutput) ToLanguageCodesSetPtrOutput() LanguageCodesSetPt
 }
 
 func (o LanguageCodesSetOutput) ToLanguageCodesSetPtrOutputWithContext(ctx context.Context) LanguageCodesSetPtrOutput {
-	return o.ApplyT(func(v LanguageCodesSet) *LanguageCodesSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LanguageCodesSet) *LanguageCodesSet {
 		return &v
 	}).(LanguageCodesSetPtrOutput)
 }
@@ -973,7 +1009,13 @@ func (o LanguageCodesSetPtrOutput) ToLanguageCodesSetPtrOutputWithContext(ctx co
 }
 
 func (o LanguageCodesSetPtrOutput) Elem() LanguageCodesSetOutput {
-	return o.ApplyT(func(v *LanguageCodesSet) LanguageCodesSet { return *v }).(LanguageCodesSetOutput)
+	return o.ApplyT(func(v *LanguageCodesSet) LanguageCodesSet {
+		if v != nil {
+			return *v
+		}
+		var ret LanguageCodesSet
+		return ret
+	}).(LanguageCodesSetOutput)
 }
 
 // The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
@@ -1082,7 +1124,7 @@ func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponsePtrOutput() La
 }
 
 func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponsePtrOutputWithContext(ctx context.Context) LanguageCodesSetResponsePtrOutput {
-	return o.ApplyT(func(v LanguageCodesSetResponse) *LanguageCodesSetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LanguageCodesSetResponse) *LanguageCodesSetResponse {
 		return &v
 	}).(LanguageCodesSetResponsePtrOutput)
 }
@@ -1107,7 +1149,13 @@ func (o LanguageCodesSetResponsePtrOutput) ToLanguageCodesSetResponsePtrOutputWi
 }
 
 func (o LanguageCodesSetResponsePtrOutput) Elem() LanguageCodesSetResponseOutput {
-	return o.ApplyT(func(v *LanguageCodesSetResponse) LanguageCodesSetResponse { return *v }).(LanguageCodesSetResponseOutput)
+	return o.ApplyT(func(v *LanguageCodesSetResponse) LanguageCodesSetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LanguageCodesSetResponse
+		return ret
+	}).(LanguageCodesSetResponseOutput)
 }
 
 // The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.

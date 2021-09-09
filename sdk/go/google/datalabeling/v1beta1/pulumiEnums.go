@@ -107,7 +107,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
@@ -116,6 +116,16 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType) GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType
+		return ret
+	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput)
 }
 
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -130,16 +140,6 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType) GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType {
-		var ret GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput)
 }
 
 // GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeArgs and GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput values.
@@ -297,7 +297,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput) ToStringP
 type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1InputConfigAnnotationType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput {
@@ -306,6 +306,16 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToGoog
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType) GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1InputConfigAnnotationType
+		return ret
+	}).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput)
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -320,16 +330,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToStri
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType) GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
-		var ret GoogleCloudDatalabelingV1beta1InputConfigAnnotationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput)
 }
 
 // GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeArgs and GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput values.
@@ -470,7 +470,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput) ToStringPtrOutp
 type GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudDatalabelingV1beta1InputConfigDataTypePtrType
+	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1InputConfigDataType)(nil)).Elem()
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput() GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput {
@@ -479,6 +479,16 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToGoogleClou
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToGoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigDataType) GoogleCloudDatalabelingV1beta1InputConfigDataType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1InputConfigDataType
+		return ret
+	}).(GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput)
 }
 
 func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -493,16 +503,6 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToStringPtrO
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) Elem() GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigDataType) GoogleCloudDatalabelingV1beta1InputConfigDataType {
-		var ret GoogleCloudDatalabelingV1beta1InputConfigDataType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput)
 }
 
 // GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigDataTypeArgs and GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput values.
@@ -643,7 +643,7 @@ func (o InstructionDataTypeOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type InstructionDataTypePtrOutput struct{ *pulumi.OutputState }
 
 func (InstructionDataTypePtrOutput) ElementType() reflect.Type {
-	return instructionDataTypePtrType
+	return reflect.TypeOf((**InstructionDataType)(nil)).Elem()
 }
 
 func (o InstructionDataTypePtrOutput) ToInstructionDataTypePtrOutput() InstructionDataTypePtrOutput {
@@ -652,6 +652,16 @@ func (o InstructionDataTypePtrOutput) ToInstructionDataTypePtrOutput() Instructi
 
 func (o InstructionDataTypePtrOutput) ToInstructionDataTypePtrOutputWithContext(ctx context.Context) InstructionDataTypePtrOutput {
 	return o
+}
+
+func (o InstructionDataTypePtrOutput) Elem() InstructionDataTypeOutput {
+	return o.ApplyT(func(v *InstructionDataType) InstructionDataType {
+		if v != nil {
+			return *v
+		}
+		var ret InstructionDataType
+		return ret
+	}).(InstructionDataTypeOutput)
 }
 
 func (o InstructionDataTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -666,16 +676,6 @@ func (o InstructionDataTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o InstructionDataTypePtrOutput) Elem() InstructionDataTypeOutput {
-	return o.ApplyT(func(v *InstructionDataType) InstructionDataType {
-		var ret InstructionDataType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(InstructionDataTypeOutput)
 }
 
 // InstructionDataTypeInput is an input type that accepts InstructionDataTypeArgs and InstructionDataTypeOutput values.

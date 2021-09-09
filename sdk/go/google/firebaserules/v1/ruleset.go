@@ -99,9 +99,7 @@ func (i *Ruleset) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetOutput)
 }
 
-type RulesetOutput struct {
-	*pulumi.OutputState
-}
+type RulesetOutput struct{ *pulumi.OutputState }
 
 func (RulesetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Ruleset)(nil))

@@ -140,9 +140,7 @@ func (i *TypeProvider) ToTypeProviderOutputWithContext(ctx context.Context) Type
 	return pulumi.ToOutputWithContext(ctx, i).(TypeProviderOutput)
 }
 
-type TypeProviderOutput struct {
-	*pulumi.OutputState
-}
+type TypeProviderOutput struct{ *pulumi.OutputState }
 
 func (TypeProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TypeProvider)(nil))

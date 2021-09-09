@@ -102,7 +102,7 @@ func (o ChangeStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 type ChangeStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (ChangeStatusPtrOutput) ElementType() reflect.Type {
-	return changeStatusPtrType
+	return reflect.TypeOf((**ChangeStatus)(nil)).Elem()
 }
 
 func (o ChangeStatusPtrOutput) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
@@ -111,6 +111,16 @@ func (o ChangeStatusPtrOutput) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
 
 func (o ChangeStatusPtrOutput) ToChangeStatusPtrOutputWithContext(ctx context.Context) ChangeStatusPtrOutput {
 	return o
+}
+
+func (o ChangeStatusPtrOutput) Elem() ChangeStatusOutput {
+	return o.ApplyT(func(v *ChangeStatus) ChangeStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeStatus
+		return ret
+	}).(ChangeStatusOutput)
 }
 
 func (o ChangeStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -125,16 +135,6 @@ func (o ChangeStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ChangeStatusPtrOutput) Elem() ChangeStatusOutput {
-	return o.ApplyT(func(v *ChangeStatus) ChangeStatus {
-		var ret ChangeStatus
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ChangeStatusOutput)
 }
 
 // ChangeStatusInput is an input type that accepts ChangeStatusArgs and ChangeStatusOutput values.
@@ -270,7 +270,7 @@ func (o DnsKeySpecAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type DnsKeySpecAlgorithmPtrOutput struct{ *pulumi.OutputState }
 
 func (DnsKeySpecAlgorithmPtrOutput) ElementType() reflect.Type {
-	return dnsKeySpecAlgorithmPtrType
+	return reflect.TypeOf((**DnsKeySpecAlgorithm)(nil)).Elem()
 }
 
 func (o DnsKeySpecAlgorithmPtrOutput) ToDnsKeySpecAlgorithmPtrOutput() DnsKeySpecAlgorithmPtrOutput {
@@ -279,6 +279,16 @@ func (o DnsKeySpecAlgorithmPtrOutput) ToDnsKeySpecAlgorithmPtrOutput() DnsKeySpe
 
 func (o DnsKeySpecAlgorithmPtrOutput) ToDnsKeySpecAlgorithmPtrOutputWithContext(ctx context.Context) DnsKeySpecAlgorithmPtrOutput {
 	return o
+}
+
+func (o DnsKeySpecAlgorithmPtrOutput) Elem() DnsKeySpecAlgorithmOutput {
+	return o.ApplyT(func(v *DnsKeySpecAlgorithm) DnsKeySpecAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret DnsKeySpecAlgorithm
+		return ret
+	}).(DnsKeySpecAlgorithmOutput)
 }
 
 func (o DnsKeySpecAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -293,16 +303,6 @@ func (o DnsKeySpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DnsKeySpecAlgorithmPtrOutput) Elem() DnsKeySpecAlgorithmOutput {
-	return o.ApplyT(func(v *DnsKeySpecAlgorithm) DnsKeySpecAlgorithm {
-		var ret DnsKeySpecAlgorithm
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DnsKeySpecAlgorithmOutput)
 }
 
 // DnsKeySpecAlgorithmInput is an input type that accepts DnsKeySpecAlgorithmArgs and DnsKeySpecAlgorithmOutput values.
@@ -435,7 +435,7 @@ func (o DnsKeySpecKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Contex
 type DnsKeySpecKeyTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DnsKeySpecKeyTypePtrOutput) ElementType() reflect.Type {
-	return dnsKeySpecKeyTypePtrType
+	return reflect.TypeOf((**DnsKeySpecKeyType)(nil)).Elem()
 }
 
 func (o DnsKeySpecKeyTypePtrOutput) ToDnsKeySpecKeyTypePtrOutput() DnsKeySpecKeyTypePtrOutput {
@@ -444,6 +444,16 @@ func (o DnsKeySpecKeyTypePtrOutput) ToDnsKeySpecKeyTypePtrOutput() DnsKeySpecKey
 
 func (o DnsKeySpecKeyTypePtrOutput) ToDnsKeySpecKeyTypePtrOutputWithContext(ctx context.Context) DnsKeySpecKeyTypePtrOutput {
 	return o
+}
+
+func (o DnsKeySpecKeyTypePtrOutput) Elem() DnsKeySpecKeyTypeOutput {
+	return o.ApplyT(func(v *DnsKeySpecKeyType) DnsKeySpecKeyType {
+		if v != nil {
+			return *v
+		}
+		var ret DnsKeySpecKeyType
+		return ret
+	}).(DnsKeySpecKeyTypeOutput)
 }
 
 func (o DnsKeySpecKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -458,16 +468,6 @@ func (o DnsKeySpecKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DnsKeySpecKeyTypePtrOutput) Elem() DnsKeySpecKeyTypeOutput {
-	return o.ApplyT(func(v *DnsKeySpecKeyType) DnsKeySpecKeyType {
-		var ret DnsKeySpecKeyType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DnsKeySpecKeyTypeOutput)
 }
 
 // DnsKeySpecKeyTypeInput is an input type that accepts DnsKeySpecKeyTypeArgs and DnsKeySpecKeyTypeOutput values.
@@ -600,7 +600,7 @@ func (o ManagedZoneDnsSecConfigNonExistenceOutput) ToStringPtrOutputWithContext(
 type ManagedZoneDnsSecConfigNonExistencePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnsSecConfigNonExistencePtrOutput) ElementType() reflect.Type {
-	return managedZoneDnsSecConfigNonExistencePtrType
+	return reflect.TypeOf((**ManagedZoneDnsSecConfigNonExistence)(nil)).Elem()
 }
 
 func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToManagedZoneDnsSecConfigNonExistencePtrOutput() ManagedZoneDnsSecConfigNonExistencePtrOutput {
@@ -609,6 +609,16 @@ func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToManagedZoneDnsSecConfigN
 
 func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToManagedZoneDnsSecConfigNonExistencePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigNonExistencePtrOutput {
 	return o
+}
+
+func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) Elem() ManagedZoneDnsSecConfigNonExistenceOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigNonExistence) ManagedZoneDnsSecConfigNonExistence {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneDnsSecConfigNonExistence
+		return ret
+	}).(ManagedZoneDnsSecConfigNonExistenceOutput)
 }
 
 func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -623,16 +633,6 @@ func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToStringPtrOutputWithConte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) Elem() ManagedZoneDnsSecConfigNonExistenceOutput {
-	return o.ApplyT(func(v *ManagedZoneDnsSecConfigNonExistence) ManagedZoneDnsSecConfigNonExistence {
-		var ret ManagedZoneDnsSecConfigNonExistence
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManagedZoneDnsSecConfigNonExistenceOutput)
 }
 
 // ManagedZoneDnsSecConfigNonExistenceInput is an input type that accepts ManagedZoneDnsSecConfigNonExistenceArgs and ManagedZoneDnsSecConfigNonExistenceOutput values.
@@ -769,7 +769,7 @@ func (o ManagedZoneDnsSecConfigStateOutput) ToStringPtrOutputWithContext(ctx con
 type ManagedZoneDnsSecConfigStatePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnsSecConfigStatePtrOutput) ElementType() reflect.Type {
-	return managedZoneDnsSecConfigStatePtrType
+	return reflect.TypeOf((**ManagedZoneDnsSecConfigState)(nil)).Elem()
 }
 
 func (o ManagedZoneDnsSecConfigStatePtrOutput) ToManagedZoneDnsSecConfigStatePtrOutput() ManagedZoneDnsSecConfigStatePtrOutput {
@@ -778,6 +778,16 @@ func (o ManagedZoneDnsSecConfigStatePtrOutput) ToManagedZoneDnsSecConfigStatePtr
 
 func (o ManagedZoneDnsSecConfigStatePtrOutput) ToManagedZoneDnsSecConfigStatePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigStatePtrOutput {
 	return o
+}
+
+func (o ManagedZoneDnsSecConfigStatePtrOutput) Elem() ManagedZoneDnsSecConfigStateOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigState) ManagedZoneDnsSecConfigState {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneDnsSecConfigState
+		return ret
+	}).(ManagedZoneDnsSecConfigStateOutput)
 }
 
 func (o ManagedZoneDnsSecConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -792,16 +802,6 @@ func (o ManagedZoneDnsSecConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManagedZoneDnsSecConfigStatePtrOutput) Elem() ManagedZoneDnsSecConfigStateOutput {
-	return o.ApplyT(func(v *ManagedZoneDnsSecConfigState) ManagedZoneDnsSecConfigState {
-		var ret ManagedZoneDnsSecConfigState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManagedZoneDnsSecConfigStateOutput)
 }
 
 // ManagedZoneDnsSecConfigStateInput is an input type that accepts ManagedZoneDnsSecConfigStateArgs and ManagedZoneDnsSecConfigStateOutput values.
@@ -936,7 +936,7 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput) ToStrin
 type ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ElementType() reflect.Type {
-	return managedZoneForwardingConfigNameServerTargetForwardingPathPtrType
+	return reflect.TypeOf((**ManagedZoneForwardingConfigNameServerTargetForwardingPath)(nil)).Elem()
 }
 
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput() ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput {
@@ -945,6 +945,16 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToMa
 
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput {
 	return o
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) Elem() ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput {
+	return o.ApplyT(func(v *ManagedZoneForwardingConfigNameServerTargetForwardingPath) ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneForwardingConfigNameServerTargetForwardingPath
+		return ret
+	}).(ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput)
 }
 
 func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -959,16 +969,6 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToSt
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) Elem() ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput {
-	return o.ApplyT(func(v *ManagedZoneForwardingConfigNameServerTargetForwardingPath) ManagedZoneForwardingConfigNameServerTargetForwardingPath {
-		var ret ManagedZoneForwardingConfigNameServerTargetForwardingPath
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput)
 }
 
 // ManagedZoneForwardingConfigNameServerTargetForwardingPathInput is an input type that accepts ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs and ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput values.
@@ -1101,7 +1101,7 @@ func (o ManagedZoneVisibilityOutput) ToStringPtrOutputWithContext(ctx context.Co
 type ManagedZoneVisibilityPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneVisibilityPtrOutput) ElementType() reflect.Type {
-	return managedZoneVisibilityPtrType
+	return reflect.TypeOf((**ManagedZoneVisibility)(nil)).Elem()
 }
 
 func (o ManagedZoneVisibilityPtrOutput) ToManagedZoneVisibilityPtrOutput() ManagedZoneVisibilityPtrOutput {
@@ -1110,6 +1110,16 @@ func (o ManagedZoneVisibilityPtrOutput) ToManagedZoneVisibilityPtrOutput() Manag
 
 func (o ManagedZoneVisibilityPtrOutput) ToManagedZoneVisibilityPtrOutputWithContext(ctx context.Context) ManagedZoneVisibilityPtrOutput {
 	return o
+}
+
+func (o ManagedZoneVisibilityPtrOutput) Elem() ManagedZoneVisibilityOutput {
+	return o.ApplyT(func(v *ManagedZoneVisibility) ManagedZoneVisibility {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneVisibility
+		return ret
+	}).(ManagedZoneVisibilityOutput)
 }
 
 func (o ManagedZoneVisibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1124,16 +1134,6 @@ func (o ManagedZoneVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ManagedZoneVisibilityPtrOutput) Elem() ManagedZoneVisibilityOutput {
-	return o.ApplyT(func(v *ManagedZoneVisibility) ManagedZoneVisibility {
-		var ret ManagedZoneVisibility
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ManagedZoneVisibilityOutput)
 }
 
 // ManagedZoneVisibilityInput is an input type that accepts ManagedZoneVisibilityArgs and ManagedZoneVisibilityOutput values.
@@ -1268,7 +1268,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput) T
 type PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ElementType() reflect.Type {
-	return policyAlternativeNameServerConfigTargetNameServerForwardingPathPtrType
+	return reflect.TypeOf((**PolicyAlternativeNameServerConfigTargetNameServerForwardingPath)(nil)).Elem()
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ToPolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput() PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput {
@@ -1277,6 +1277,16 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ToPolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput {
 	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) Elem() PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput {
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigTargetNameServerForwardingPath) PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
+		return ret
+	}).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput)
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1291,16 +1301,6 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput) Elem() PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput {
-	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigTargetNameServerForwardingPath) PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
-		var ret PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput)
 }
 
 // PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs and PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput values.
@@ -1434,7 +1434,7 @@ func (o ResponsePolicyRuleBehaviorOutput) ToStringPtrOutputWithContext(ctx conte
 type ResponsePolicyRuleBehaviorPtrOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleBehaviorPtrOutput) ElementType() reflect.Type {
-	return responsePolicyRuleBehaviorPtrType
+	return reflect.TypeOf((**ResponsePolicyRuleBehavior)(nil)).Elem()
 }
 
 func (o ResponsePolicyRuleBehaviorPtrOutput) ToResponsePolicyRuleBehaviorPtrOutput() ResponsePolicyRuleBehaviorPtrOutput {
@@ -1443,6 +1443,16 @@ func (o ResponsePolicyRuleBehaviorPtrOutput) ToResponsePolicyRuleBehaviorPtrOutp
 
 func (o ResponsePolicyRuleBehaviorPtrOutput) ToResponsePolicyRuleBehaviorPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleBehaviorPtrOutput {
 	return o
+}
+
+func (o ResponsePolicyRuleBehaviorPtrOutput) Elem() ResponsePolicyRuleBehaviorOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleBehavior) ResponsePolicyRuleBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret ResponsePolicyRuleBehavior
+		return ret
+	}).(ResponsePolicyRuleBehaviorOutput)
 }
 
 func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1457,16 +1467,6 @@ func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResponsePolicyRuleBehaviorPtrOutput) Elem() ResponsePolicyRuleBehaviorOutput {
-	return o.ApplyT(func(v *ResponsePolicyRuleBehavior) ResponsePolicyRuleBehavior {
-		var ret ResponsePolicyRuleBehavior
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResponsePolicyRuleBehaviorOutput)
 }
 
 // ResponsePolicyRuleBehaviorInput is an input type that accepts ResponsePolicyRuleBehaviorArgs and ResponsePolicyRuleBehaviorOutput values.

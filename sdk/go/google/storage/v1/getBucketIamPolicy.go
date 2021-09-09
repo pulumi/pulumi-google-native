@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,67 @@ type LookupBucketIamPolicyResult struct {
 	ResourceId string `pulumi:"resourceId"`
 	// The IAM policy format version.
 	Version int `pulumi:"version"`
+}
+
+func LookupBucketIamPolicyOutput(ctx *pulumi.Context, args LookupBucketIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBucketIamPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupBucketIamPolicyResult, error) {
+			args := v.(LookupBucketIamPolicyArgs)
+			r, err := LookupBucketIamPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupBucketIamPolicyResultOutput)
+}
+
+type LookupBucketIamPolicyOutputArgs struct {
+	Bucket                        pulumi.StringInput    `pulumi:"bucket"`
+	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	ProvisionalUserProject        pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
+	UserProject                   pulumi.StringPtrInput `pulumi:"userProject"`
+}
+
+func (LookupBucketIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBucketIamPolicyArgs)(nil)).Elem()
+}
+
+type LookupBucketIamPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBucketIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBucketIamPolicyResult)(nil)).Elem()
+}
+
+func (o LookupBucketIamPolicyResultOutput) ToLookupBucketIamPolicyResultOutput() LookupBucketIamPolicyResultOutput {
+	return o
+}
+
+func (o LookupBucketIamPolicyResultOutput) ToLookupBucketIamPolicyResultOutputWithContext(ctx context.Context) LookupBucketIamPolicyResultOutput {
+	return o
+}
+
+// An association between a role, which comes with a set of permissions, and members who may assume that role.
+func (o LookupBucketIamPolicyResultOutput) Bindings() BucketIamPolicyBindingsItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupBucketIamPolicyResult) []BucketIamPolicyBindingsItemResponse { return v.Bindings }).(BucketIamPolicyBindingsItemResponseArrayOutput)
+}
+
+// HTTP 1.1  Entity tag for the policy.
+func (o LookupBucketIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+func (o LookupBucketIamPolicyResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketIamPolicyResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+func (o LookupBucketIamPolicyResultOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketIamPolicyResult) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The IAM policy format version.
+func (o LookupBucketIamPolicyResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBucketIamPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBucketIamPolicyResultOutput{})
 }

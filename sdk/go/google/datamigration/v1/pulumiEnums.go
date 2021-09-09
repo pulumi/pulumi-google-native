@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -277,7 +277,7 @@ func (o CloudSqlSettingsActivationPolicyOutput) ToStringPtrOutputWithContext(ctx
 type CloudSqlSettingsActivationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudSqlSettingsActivationPolicyPtrOutput) ElementType() reflect.Type {
-	return cloudSqlSettingsActivationPolicyPtrType
+	return reflect.TypeOf((**CloudSqlSettingsActivationPolicy)(nil)).Elem()
 }
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput {
@@ -286,6 +286,16 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationP
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) Elem() CloudSqlSettingsActivationPolicyOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsActivationPolicy) CloudSqlSettingsActivationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsActivationPolicy
+		return ret
+	}).(CloudSqlSettingsActivationPolicyOutput)
 }
 
 func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CloudSqlSettingsActivationPolicyPtrOutput) Elem() CloudSqlSettingsActivationPolicyOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsActivationPolicy) CloudSqlSettingsActivationPolicy {
-		var ret CloudSqlSettingsActivationPolicy
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CloudSqlSettingsActivationPolicyOutput)
 }
 
 // CloudSqlSettingsActivationPolicyInput is an input type that accepts CloudSqlSettingsActivationPolicyArgs and CloudSqlSettingsActivationPolicyOutput values.
@@ -446,7 +446,7 @@ func (o CloudSqlSettingsDataDiskTypeOutput) ToStringPtrOutputWithContext(ctx con
 type CloudSqlSettingsDataDiskTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudSqlSettingsDataDiskTypePtrOutput) ElementType() reflect.Type {
-	return cloudSqlSettingsDataDiskTypePtrType
+	return reflect.TypeOf((**CloudSqlSettingsDataDiskType)(nil)).Elem()
 }
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput {
@@ -455,6 +455,16 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtr
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) Elem() CloudSqlSettingsDataDiskTypeOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsDataDiskType) CloudSqlSettingsDataDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsDataDiskType
+		return ret
+	}).(CloudSqlSettingsDataDiskTypeOutput)
 }
 
 func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -469,16 +479,6 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CloudSqlSettingsDataDiskTypePtrOutput) Elem() CloudSqlSettingsDataDiskTypeOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsDataDiskType) CloudSqlSettingsDataDiskType {
-		var ret CloudSqlSettingsDataDiskType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CloudSqlSettingsDataDiskTypeOutput)
 }
 
 // CloudSqlSettingsDataDiskTypeInput is an input type that accepts CloudSqlSettingsDataDiskTypeArgs and CloudSqlSettingsDataDiskTypeOutput values.
@@ -627,7 +627,7 @@ func (o CloudSqlSettingsDatabaseVersionOutput) ToStringPtrOutputWithContext(ctx 
 type CloudSqlSettingsDatabaseVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudSqlSettingsDatabaseVersionPtrOutput) ElementType() reflect.Type {
-	return cloudSqlSettingsDatabaseVersionPtrType
+	return reflect.TypeOf((**CloudSqlSettingsDatabaseVersion)(nil)).Elem()
 }
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput {
@@ -636,6 +636,16 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVers
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
 	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) Elem() CloudSqlSettingsDatabaseVersionOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsDatabaseVersion) CloudSqlSettingsDatabaseVersion {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsDatabaseVersion
+		return ret
+	}).(CloudSqlSettingsDatabaseVersionOutput)
 }
 
 func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -650,16 +660,6 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(c
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o CloudSqlSettingsDatabaseVersionPtrOutput) Elem() CloudSqlSettingsDatabaseVersionOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsDatabaseVersion) CloudSqlSettingsDatabaseVersion {
-		var ret CloudSqlSettingsDatabaseVersion
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(CloudSqlSettingsDatabaseVersionOutput)
 }
 
 // CloudSqlSettingsDatabaseVersionInput is an input type that accepts CloudSqlSettingsDatabaseVersionArgs and CloudSqlSettingsDatabaseVersionOutput values.
@@ -796,7 +796,7 @@ func (o ConnectionProfileProviderOutput) ToStringPtrOutputWithContext(ctx contex
 type ConnectionProfileProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileProviderPtrOutput) ElementType() reflect.Type {
-	return connectionProfileProviderPtrType
+	return reflect.TypeOf((**ConnectionProfileProvider)(nil)).Elem()
 }
 
 func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput {
@@ -805,6 +805,16 @@ func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutput
 
 func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
 	return o
+}
+
+func (o ConnectionProfileProviderPtrOutput) Elem() ConnectionProfileProviderOutput {
+	return o.ApplyT(func(v *ConnectionProfileProvider) ConnectionProfileProvider {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileProvider
+		return ret
+	}).(ConnectionProfileProviderOutput)
 }
 
 func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -819,16 +829,6 @@ func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionProfileProviderPtrOutput) Elem() ConnectionProfileProviderOutput {
-	return o.ApplyT(func(v *ConnectionProfileProvider) ConnectionProfileProvider {
-		var ret ConnectionProfileProvider
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConnectionProfileProviderOutput)
 }
 
 // ConnectionProfileProviderInput is an input type that accepts ConnectionProfileProviderArgs and ConnectionProfileProviderOutput values.
@@ -975,7 +975,7 @@ func (o ConnectionProfileStateEnumOutput) ToStringPtrOutputWithContext(ctx conte
 type ConnectionProfileStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileStateEnumPtrOutput) ElementType() reflect.Type {
-	return connectionProfileStateEnumPtrType
+	return reflect.TypeOf((**ConnectionProfileStateEnum)(nil)).Elem()
 }
 
 func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput {
@@ -984,6 +984,16 @@ func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutp
 
 func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
 	return o
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) Elem() ConnectionProfileStateEnumOutput {
+	return o.ApplyT(func(v *ConnectionProfileStateEnum) ConnectionProfileStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStateEnum
+		return ret
+	}).(ConnectionProfileStateEnumOutput)
 }
 
 func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -998,16 +1008,6 @@ func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionProfileStateEnumPtrOutput) Elem() ConnectionProfileStateEnumOutput {
-	return o.ApplyT(func(v *ConnectionProfileStateEnum) ConnectionProfileStateEnum {
-		var ret ConnectionProfileStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ConnectionProfileStateEnumOutput)
 }
 
 // ConnectionProfileStateEnumInput is an input type that accepts ConnectionProfileStateEnumArgs and ConnectionProfileStateEnumOutput values.
@@ -1144,7 +1144,7 @@ func (o DatabaseTypeEngineOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type DatabaseTypeEnginePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseTypeEnginePtrOutput) ElementType() reflect.Type {
-	return databaseTypeEnginePtrType
+	return reflect.TypeOf((**DatabaseTypeEngine)(nil)).Elem()
 }
 
 func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput {
@@ -1153,6 +1153,16 @@ func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTyp
 
 func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
 	return o
+}
+
+func (o DatabaseTypeEnginePtrOutput) Elem() DatabaseTypeEngineOutput {
+	return o.ApplyT(func(v *DatabaseTypeEngine) DatabaseTypeEngine {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseTypeEngine
+		return ret
+	}).(DatabaseTypeEngineOutput)
 }
 
 func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1167,16 +1177,6 @@ func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseTypeEnginePtrOutput) Elem() DatabaseTypeEngineOutput {
-	return o.ApplyT(func(v *DatabaseTypeEngine) DatabaseTypeEngine {
-		var ret DatabaseTypeEngine
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DatabaseTypeEngineOutput)
 }
 
 // DatabaseTypeEngineInput is an input type that accepts DatabaseTypeEngineArgs and DatabaseTypeEngineOutput values.
@@ -1313,7 +1313,7 @@ func (o DatabaseTypeProviderOutput) ToStringPtrOutputWithContext(ctx context.Con
 type DatabaseTypeProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseTypeProviderPtrOutput) ElementType() reflect.Type {
-	return databaseTypeProviderPtrType
+	return reflect.TypeOf((**DatabaseTypeProvider)(nil)).Elem()
 }
 
 func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput {
@@ -1322,6 +1322,16 @@ func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutput() Databas
 
 func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
 	return o
+}
+
+func (o DatabaseTypeProviderPtrOutput) Elem() DatabaseTypeProviderOutput {
+	return o.ApplyT(func(v *DatabaseTypeProvider) DatabaseTypeProvider {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseTypeProvider
+		return ret
+	}).(DatabaseTypeProviderOutput)
 }
 
 func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1336,16 +1346,6 @@ func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DatabaseTypeProviderPtrOutput) Elem() DatabaseTypeProviderOutput {
-	return o.ApplyT(func(v *DatabaseTypeProvider) DatabaseTypeProvider {
-		var ret DatabaseTypeProvider
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DatabaseTypeProviderOutput)
 }
 
 // DatabaseTypeProviderInput is an input type that accepts DatabaseTypeProviderArgs and DatabaseTypeProviderOutput values.
@@ -1508,7 +1508,7 @@ func (o MigrationJobStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Co
 type MigrationJobStateEnumPtrOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobStateEnumPtrOutput) ElementType() reflect.Type {
-	return migrationJobStateEnumPtrType
+	return reflect.TypeOf((**MigrationJobStateEnum)(nil)).Elem()
 }
 
 func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput {
@@ -1517,6 +1517,16 @@ func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutput() Migra
 
 func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
 	return o
+}
+
+func (o MigrationJobStateEnumPtrOutput) Elem() MigrationJobStateEnumOutput {
+	return o.ApplyT(func(v *MigrationJobStateEnum) MigrationJobStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobStateEnum
+		return ret
+	}).(MigrationJobStateEnumOutput)
 }
 
 func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1531,16 +1541,6 @@ func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MigrationJobStateEnumPtrOutput) Elem() MigrationJobStateEnumOutput {
-	return o.ApplyT(func(v *MigrationJobStateEnum) MigrationJobStateEnum {
-		var ret MigrationJobStateEnum
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MigrationJobStateEnumOutput)
 }
 
 // MigrationJobStateEnumInput is an input type that accepts MigrationJobStateEnumArgs and MigrationJobStateEnumOutput values.
@@ -1677,7 +1677,7 @@ func (o MigrationJobTypeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type MigrationJobTypePtrOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobTypePtrOutput) ElementType() reflect.Type {
-	return migrationJobTypePtrType
+	return reflect.TypeOf((**MigrationJobType)(nil)).Elem()
 }
 
 func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput {
@@ -1686,6 +1686,16 @@ func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutput() MigrationJobTyp
 
 func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
 	return o
+}
+
+func (o MigrationJobTypePtrOutput) Elem() MigrationJobTypeOutput {
+	return o.ApplyT(func(v *MigrationJobType) MigrationJobType {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobType
+		return ret
+	}).(MigrationJobTypeOutput)
 }
 
 func (o MigrationJobTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1700,16 +1710,6 @@ func (o MigrationJobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o MigrationJobTypePtrOutput) Elem() MigrationJobTypeOutput {
-	return o.ApplyT(func(v *MigrationJobType) MigrationJobType {
-		var ret MigrationJobType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(MigrationJobTypeOutput)
 }
 
 // MigrationJobTypeInput is an input type that accepts MigrationJobTypeArgs and MigrationJobTypeOutput values.

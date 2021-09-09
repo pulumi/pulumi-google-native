@@ -123,9 +123,7 @@ func (i *ServiceAccount) ToServiceAccountOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountOutput)
 }
 
-type ServiceAccountOutput struct {
-	*pulumi.OutputState
-}
+type ServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (ServiceAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceAccount)(nil))

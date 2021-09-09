@@ -106,7 +106,7 @@ func (o SchemaSettingsEncodingOutput) ToStringPtrOutputWithContext(ctx context.C
 type SchemaSettingsEncodingPtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaSettingsEncodingPtrOutput) ElementType() reflect.Type {
-	return schemaSettingsEncodingPtrType
+	return reflect.TypeOf((**SchemaSettingsEncoding)(nil)).Elem()
 }
 
 func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput {
@@ -115,6 +115,16 @@ func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutput() Sch
 
 func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
 	return o
+}
+
+func (o SchemaSettingsEncodingPtrOutput) Elem() SchemaSettingsEncodingOutput {
+	return o.ApplyT(func(v *SchemaSettingsEncoding) SchemaSettingsEncoding {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaSettingsEncoding
+		return ret
+	}).(SchemaSettingsEncodingOutput)
 }
 
 func (o SchemaSettingsEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o SchemaSettingsEncodingPtrOutput) ToStringPtrOutputWithContext(ctx contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaSettingsEncodingPtrOutput) Elem() SchemaSettingsEncodingOutput {
-	return o.ApplyT(func(v *SchemaSettingsEncoding) SchemaSettingsEncoding {
-		var ret SchemaSettingsEncoding
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchemaSettingsEncodingOutput)
 }
 
 // SchemaSettingsEncodingInput is an input type that accepts SchemaSettingsEncodingArgs and SchemaSettingsEncodingOutput values.
@@ -275,7 +275,7 @@ func (o SchemaTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 type SchemaTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SchemaTypePtrOutput) ElementType() reflect.Type {
-	return schemaTypePtrType
+	return reflect.TypeOf((**SchemaType)(nil)).Elem()
 }
 
 func (o SchemaTypePtrOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
@@ -284,6 +284,16 @@ func (o SchemaTypePtrOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (o SchemaTypePtrOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return o
+}
+
+func (o SchemaTypePtrOutput) Elem() SchemaTypeOutput {
+	return o.ApplyT(func(v *SchemaType) SchemaType {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaType
+		return ret
+	}).(SchemaTypeOutput)
 }
 
 func (o SchemaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o SchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaTypePtrOutput) Elem() SchemaTypeOutput {
-	return o.ApplyT(func(v *SchemaType) SchemaType {
-		var ret SchemaType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SchemaTypeOutput)
 }
 
 // SchemaTypeInput is an input type that accepts SchemaTypeArgs and SchemaTypeOutput values.

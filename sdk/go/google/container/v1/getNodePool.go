@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,117 @@ type LookupNodePoolResult struct {
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
 	Version string `pulumi:"version"`
+}
+
+func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, opts ...pulumi.InvokeOption) LookupNodePoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupNodePoolResult, error) {
+			args := v.(LookupNodePoolArgs)
+			r, err := LookupNodePool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupNodePoolResultOutput)
+}
+
+type LookupNodePoolOutputArgs struct {
+	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	Location   pulumi.StringInput    `pulumi:"location"`
+	NodePoolId pulumi.StringInput    `pulumi:"nodePoolId"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupNodePoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodePoolArgs)(nil)).Elem()
+}
+
+type LookupNodePoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupNodePoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupNodePoolResult)(nil)).Elem()
+}
+
+func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutput() LookupNodePoolResultOutput {
+	return o
+}
+
+func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutputWithContext(ctx context.Context) LookupNodePoolResultOutput {
+	return o
+}
+
+// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+func (o LookupNodePoolResultOutput) Autoscaling() NodePoolAutoscalingResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) NodePoolAutoscalingResponse { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
+}
+
+// Which conditions caused the current node pool state.
+func (o LookupNodePoolResultOutput) Conditions() StatusConditionResponseArrayOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) []StatusConditionResponse { return v.Conditions }).(StatusConditionResponseArrayOutput)
+}
+
+// The node configuration of the pool.
+func (o LookupNodePoolResultOutput) Config() NodeConfigResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) NodeConfigResponse { return v.Config }).(NodeConfigResponseOutput)
+}
+
+// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+func (o LookupNodePoolResultOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
+}
+
+// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+func (o LookupNodePoolResultOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+func (o LookupNodePoolResultOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// NodeManagement configuration for this NodePool.
+func (o LookupNodePoolResultOutput) Management() NodeManagementResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
+}
+
+// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+func (o LookupNodePoolResultOutput) MaxPodsConstraint() MaxPodsConstraintResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) MaxPodsConstraintResponse { return v.MaxPodsConstraint }).(MaxPodsConstraintResponseOutput)
+}
+
+// The name of the node pool.
+func (o LookupNodePoolResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+func (o LookupNodePoolResultOutput) NetworkConfig() NodeNetworkConfigResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) NodeNetworkConfigResponse { return v.NetworkConfig }).(NodeNetworkConfigResponseOutput)
+}
+
+// [Output only] The pod CIDR block size per node in this node pool.
+func (o LookupNodePoolResultOutput) PodIpv4CidrSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) int { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+// [Output only] Server-defined URL for the resource.
+func (o LookupNodePoolResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Output only] The status of the nodes in this pool instance.
+func (o LookupNodePoolResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Upgrade settings control disruption and speed of the upgrade.
+func (o LookupNodePoolResultOutput) UpgradeSettings() UpgradeSettingsResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) UpgradeSettingsResponse { return v.UpgradeSettings }).(UpgradeSettingsResponseOutput)
+}
+
+// The version of the Kubernetes of this node.
+func (o LookupNodePoolResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupNodePoolResultOutput{})
 }

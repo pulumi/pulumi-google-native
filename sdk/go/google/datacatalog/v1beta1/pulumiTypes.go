@@ -354,7 +354,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -394,7 +394,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -611,7 +617,7 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecOutput) ToGoogleClou
 }
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecOutput) ToGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec) *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec) *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecPtrOutput)
 }
@@ -632,7 +638,11 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecPtrOutput) ToGoogleC
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecPtrOutput) Elem() GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec) GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecOutput)
 }
 
@@ -740,7 +750,7 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponseOutput) ToGo
 }
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponseOutput) ToGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse) *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse) *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrOutput)
 }
@@ -776,7 +786,11 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrOutput) T
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse) GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponseOutput)
 }
 
@@ -910,7 +924,7 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecOutput) ToGoogleCloudDatac
 }
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecOutput) ToGoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1BigQueryTableSpec) *GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1BigQueryTableSpec) *GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrOutput)
 }
@@ -945,7 +959,11 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1beta1BigQueryTableSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1BigQueryTableSpec) GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1BigQueryTableSpec
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1BigQueryTableSpecOutput)
 }
 
@@ -1073,7 +1091,7 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponseOutput) ToGoogleCl
 }
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponseOutput) ToGoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse) *GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse) *GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutput)
 }
@@ -1113,7 +1131,11 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutput) ToGoogl
 
 func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse) GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponseOutput)
 }
 
@@ -1639,7 +1661,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput) ToGoogleCloudDatacata
 }
 
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput) ToGoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1GcsFilesetSpec) *GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1GcsFilesetSpec) *GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput)
 }
@@ -1665,7 +1687,11 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput) Elem() GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1GcsFilesetSpec) GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1GcsFilesetSpec
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput)
 }
 
@@ -1779,7 +1805,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput) ToGoogleCloud
 }
 
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse) *GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse) *GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput)
 }
@@ -1812,7 +1838,11 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput) ToGoogleCl
 
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse) GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput)
 }
 
@@ -1932,7 +1962,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaOutput) ToGoogleCloudDatacatalogV1bet
 }
 
 func (o GoogleCloudDatacatalogV1beta1SchemaOutput) ToGoogleCloudDatacatalogV1beta1SchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1SchemaPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1Schema) *GoogleCloudDatacatalogV1beta1Schema {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1Schema) *GoogleCloudDatacatalogV1beta1Schema {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1SchemaPtrOutput)
 }
@@ -1959,7 +1989,13 @@ func (o GoogleCloudDatacatalogV1beta1SchemaPtrOutput) ToGoogleCloudDatacatalogV1
 }
 
 func (o GoogleCloudDatacatalogV1beta1SchemaPtrOutput) Elem() GoogleCloudDatacatalogV1beta1SchemaOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1Schema) GoogleCloudDatacatalogV1beta1Schema { return *v }).(GoogleCloudDatacatalogV1beta1SchemaOutput)
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1Schema) GoogleCloudDatacatalogV1beta1Schema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1Schema
+		return ret
+	}).(GoogleCloudDatacatalogV1beta1SchemaOutput)
 }
 
 // Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
@@ -2068,7 +2104,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaResponseOutput) ToGoogleCloudDatacata
 }
 
 func (o GoogleCloudDatacatalogV1beta1SchemaResponseOutput) ToGoogleCloudDatacatalogV1beta1SchemaResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1SchemaResponse) *GoogleCloudDatacatalogV1beta1SchemaResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1SchemaResponse) *GoogleCloudDatacatalogV1beta1SchemaResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput)
 }
@@ -2096,7 +2132,11 @@ func (o GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput) ToGoogleCloudDatac
 
 func (o GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1SchemaResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1SchemaResponse) GoogleCloudDatacatalogV1beta1SchemaResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1SchemaResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1SchemaResponseOutput)
 }
 
@@ -2214,7 +2254,7 @@ func (o GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput) ToGoogleClo
 }
 
 func (o GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput) ToGoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1SystemTimestampsResponse) *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1SystemTimestampsResponse) *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrOutput)
 }
@@ -2250,7 +2290,11 @@ func (o GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrOutput) ToGoogle
 
 func (o GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse) GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1SystemTimestampsResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput)
 }
 
@@ -2376,7 +2420,7 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecOutput) ToGoogleCloudDatacatalogV1
 }
 
 func (o GoogleCloudDatacatalogV1beta1TableSpecOutput) ToGoogleCloudDatacatalogV1beta1TableSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TableSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TableSpec) *GoogleCloudDatacatalogV1beta1TableSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1TableSpec) *GoogleCloudDatacatalogV1beta1TableSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1TableSpecPtrOutput)
 }
@@ -2396,7 +2440,13 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecPtrOutput) ToGoogleCloudDatacatalo
 }
 
 func (o GoogleCloudDatacatalogV1beta1TableSpecPtrOutput) Elem() GoogleCloudDatacatalogV1beta1TableSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1TableSpec) GoogleCloudDatacatalogV1beta1TableSpec { return *v }).(GoogleCloudDatacatalogV1beta1TableSpecOutput)
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1TableSpec) GoogleCloudDatacatalogV1beta1TableSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1TableSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1beta1TableSpecOutput)
 }
 
 // Normal BigQuery table spec.
@@ -2495,7 +2545,7 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecResponseOutput) ToGoogleCloudDatac
 }
 
 func (o GoogleCloudDatacatalogV1beta1TableSpecResponseOutput) ToGoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TableSpecResponse) *GoogleCloudDatacatalogV1beta1TableSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1TableSpecResponse) *GoogleCloudDatacatalogV1beta1TableSpecResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput)
 }
@@ -2521,7 +2571,11 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1TableSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1TableSpecResponse) GoogleCloudDatacatalogV1beta1TableSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1TableSpecResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1TableSpecResponseOutput)
 }
 
@@ -2635,7 +2689,7 @@ func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDat
 }
 
 func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) *GoogleCloudDatacatalogV1beta1UsageSignalResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1UsageSignalResponse) *GoogleCloudDatacatalogV1beta1UsageSignalResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput)
 }
@@ -2668,7 +2722,11 @@ func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) ToGoogleCloud
 
 func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1UsageSignalResponse) GoogleCloudDatacatalogV1beta1UsageSignalResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1UsageSignalResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput)
 }
 
@@ -2784,7 +2842,7 @@ func (o GoogleCloudDatacatalogV1beta1ViewSpecOutput) ToGoogleCloudDatacatalogV1b
 }
 
 func (o GoogleCloudDatacatalogV1beta1ViewSpecOutput) ToGoogleCloudDatacatalogV1beta1ViewSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ViewSpec) *GoogleCloudDatacatalogV1beta1ViewSpec {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1ViewSpec) *GoogleCloudDatacatalogV1beta1ViewSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput)
 }
@@ -2804,7 +2862,13 @@ func (o GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput) ToGoogleCloudDatacatalog
 }
 
 func (o GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput) Elem() GoogleCloudDatacatalogV1beta1ViewSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1ViewSpec) GoogleCloudDatacatalogV1beta1ViewSpec { return *v }).(GoogleCloudDatacatalogV1beta1ViewSpecOutput)
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1ViewSpec) GoogleCloudDatacatalogV1beta1ViewSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1ViewSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1beta1ViewSpecOutput)
 }
 
 // Table view specification.
@@ -2903,7 +2967,7 @@ func (o GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput) ToGoogleCloudDataca
 }
 
 func (o GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput) ToGoogleCloudDatacatalogV1beta1ViewSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1ViewSpecResponsePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ViewSpecResponse) *GoogleCloudDatacatalogV1beta1ViewSpecResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1ViewSpecResponse) *GoogleCloudDatacatalogV1beta1ViewSpecResponse {
 		return &v
 	}).(GoogleCloudDatacatalogV1beta1ViewSpecResponsePtrOutput)
 }
@@ -2929,7 +2993,11 @@ func (o GoogleCloudDatacatalogV1beta1ViewSpecResponsePtrOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDatacatalogV1beta1ViewSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1ViewSpecResponse) GoogleCloudDatacatalogV1beta1ViewSpecResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1ViewSpecResponse
+		return ret
 	}).(GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput)
 }
 

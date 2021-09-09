@@ -117,9 +117,7 @@ func (i *RegionOperationIamPolicy) ToRegionOperationIamPolicyOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionOperationIamPolicyOutput)
 }
 
-type RegionOperationIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type RegionOperationIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionOperationIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegionOperationIamPolicy)(nil))

@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,76 @@ type LookupEnvironmentResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
 	Uuid string `pulumi:"uuid"`
+}
+
+func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEnvironmentResult, error) {
+			args := v.(LookupEnvironmentArgs)
+			r, err := LookupEnvironment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEnvironmentResultOutput)
+}
+
+type LookupEnvironmentOutputArgs struct {
+	EnvironmentId pulumi.StringInput    `pulumi:"environmentId"`
+	Location      pulumi.StringInput    `pulumi:"location"`
+	Project       pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentArgs)(nil)).Elem()
+}
+
+type LookupEnvironmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEnvironmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEnvironmentResult)(nil)).Elem()
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupEnvironmentResultOutput {
+	return o
+}
+
+func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
+	return o
+}
+
+// Configuration parameters for this environment.
+func (o LookupEnvironmentResultOutput) Config() EnvironmentConfigResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) EnvironmentConfigResponse { return v.Config }).(EnvironmentConfigResponseOutput)
+}
+
+// The time at which this environment was created.
+func (o LookupEnvironmentResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+func (o LookupEnvironmentResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the environment.
+func (o LookupEnvironmentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The time at which this environment was last modified.
+func (o LookupEnvironmentResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
+func (o LookupEnvironmentResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEnvironmentResultOutput{})
 }

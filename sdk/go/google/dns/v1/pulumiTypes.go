@@ -361,7 +361,7 @@ func (o ManagedZoneDnsSecConfigOutput) ToManagedZoneDnsSecConfigPtrOutput() Mana
 }
 
 func (o ManagedZoneDnsSecConfigOutput) ToManagedZoneDnsSecConfigPtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneDnsSecConfig) *ManagedZoneDnsSecConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneDnsSecConfig) *ManagedZoneDnsSecConfig {
 		return &v
 	}).(ManagedZoneDnsSecConfigPtrOutput)
 }
@@ -400,7 +400,13 @@ func (o ManagedZoneDnsSecConfigPtrOutput) ToManagedZoneDnsSecConfigPtrOutputWith
 }
 
 func (o ManagedZoneDnsSecConfigPtrOutput) Elem() ManagedZoneDnsSecConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneDnsSecConfig) ManagedZoneDnsSecConfig { return *v }).(ManagedZoneDnsSecConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfig) ManagedZoneDnsSecConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneDnsSecConfig
+		return ret
+	}).(ManagedZoneDnsSecConfigOutput)
 }
 
 // Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
@@ -545,7 +551,7 @@ func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponse
 }
 
 func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) *ManagedZoneDnsSecConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneDnsSecConfigResponse) *ManagedZoneDnsSecConfigResponse {
 		return &v
 	}).(ManagedZoneDnsSecConfigResponsePtrOutput)
 }
@@ -584,7 +590,13 @@ func (o ManagedZoneDnsSecConfigResponsePtrOutput) ToManagedZoneDnsSecConfigRespo
 }
 
 func (o ManagedZoneDnsSecConfigResponsePtrOutput) Elem() ManagedZoneDnsSecConfigResponseOutput {
-	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) ManagedZoneDnsSecConfigResponse { return *v }).(ManagedZoneDnsSecConfigResponseOutput)
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) ManagedZoneDnsSecConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneDnsSecConfigResponse
+		return ret
+	}).(ManagedZoneDnsSecConfigResponseOutput)
 }
 
 // Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
@@ -721,10 +733,11 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 }
 
 func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneForwardingConfig) *ManagedZoneForwardingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneForwardingConfig) *ManagedZoneForwardingConfig {
 		return &v
 	}).(ManagedZoneForwardingConfigPtrOutput)
 }
+
 func (o ManagedZoneForwardingConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -751,7 +764,13 @@ func (o ManagedZoneForwardingConfigPtrOutput) ToManagedZoneForwardingConfigPtrOu
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig { return *v }).(ManagedZoneForwardingConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneForwardingConfig
+		return ret
+	}).(ManagedZoneForwardingConfigOutput)
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -1094,10 +1113,11 @@ func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfig
 }
 
 func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZoneForwardingConfigResponse) *ManagedZoneForwardingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneForwardingConfigResponse) *ManagedZoneForwardingConfigResponse {
 		return &v
 	}).(ManagedZoneForwardingConfigResponsePtrOutput)
 }
+
 func (o ManagedZoneForwardingConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -1124,7 +1144,13 @@ func (o ManagedZoneForwardingConfigResponsePtrOutput) ToManagedZoneForwardingCon
 }
 
 func (o ManagedZoneForwardingConfigResponsePtrOutput) Elem() ManagedZoneForwardingConfigResponseOutput {
-	return o.ApplyT(func(v *ManagedZoneForwardingConfigResponse) ManagedZoneForwardingConfigResponse { return *v }).(ManagedZoneForwardingConfigResponseOutput)
+	return o.ApplyT(func(v *ManagedZoneForwardingConfigResponse) ManagedZoneForwardingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneForwardingConfigResponse
+		return ret
+	}).(ManagedZoneForwardingConfigResponseOutput)
 }
 
 func (o ManagedZoneForwardingConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
@@ -1241,10 +1267,11 @@ func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutput() Ma
 }
 
 func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfig) *ManagedZonePeeringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfig) *ManagedZonePeeringConfig {
 		return &v
 	}).(ManagedZonePeeringConfigPtrOutput)
 }
+
 func (o ManagedZonePeeringConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZonePeeringConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1269,7 +1296,13 @@ func (o ManagedZonePeeringConfigPtrOutput) ToManagedZonePeeringConfigPtrOutputWi
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) Elem() ManagedZonePeeringConfigOutput {
-	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig { return *v }).(ManagedZonePeeringConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfig
+		return ret
+	}).(ManagedZonePeeringConfigOutput)
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -1386,10 +1419,11 @@ func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigRespon
 }
 
 func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfigResponse) *ManagedZonePeeringConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfigResponse) *ManagedZonePeeringConfigResponse {
 		return &v
 	}).(ManagedZonePeeringConfigResponsePtrOutput)
 }
+
 func (o ManagedZonePeeringConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZonePeeringConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -1416,7 +1450,13 @@ func (o ManagedZonePeeringConfigResponsePtrOutput) ToManagedZonePeeringConfigRes
 }
 
 func (o ManagedZonePeeringConfigResponsePtrOutput) Elem() ManagedZonePeeringConfigResponseOutput {
-	return o.ApplyT(func(v *ManagedZonePeeringConfigResponse) ManagedZonePeeringConfigResponse { return *v }).(ManagedZonePeeringConfigResponseOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfigResponse) ManagedZonePeeringConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfigResponse
+		return ret
+	}).(ManagedZonePeeringConfigResponseOutput)
 }
 
 func (o ManagedZonePeeringConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
@@ -1537,7 +1577,7 @@ func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigT
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigTargetNetworkPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkPtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetwork) *ManagedZonePeeringConfigTargetNetwork {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfigTargetNetwork) *ManagedZonePeeringConfigTargetNetwork {
 		return &v
 	}).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
 }
@@ -1571,7 +1611,13 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) ToManagedZonePeeringConf
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) Elem() ManagedZonePeeringConfigTargetNetworkOutput {
-	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) ManagedZonePeeringConfigTargetNetwork { return *v }).(ManagedZonePeeringConfigTargetNetworkOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) ManagedZonePeeringConfigTargetNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfigTargetNetwork
+		return ret
+	}).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
 // The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
@@ -1702,7 +1748,7 @@ func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeerin
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetworkResponse) *ManagedZonePeeringConfigTargetNetworkResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePeeringConfigTargetNetworkResponse) *ManagedZonePeeringConfigTargetNetworkResponse {
 		return &v
 	}).(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput)
 }
@@ -1737,7 +1783,11 @@ func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) ToManagedZonePee
 
 func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) Elem() ManagedZonePeeringConfigTargetNetworkResponseOutput {
 	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetworkResponse) ManagedZonePeeringConfigTargetNetworkResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePeeringConfigTargetNetworkResponse
+		return ret
 	}).(ManagedZonePeeringConfigTargetNetworkResponseOutput)
 }
 
@@ -1865,10 +1915,11 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 }
 
 func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibilityConfigPtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) *ManagedZonePrivateVisibilityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePrivateVisibilityConfig) *ManagedZonePrivateVisibilityConfig {
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
+
 func (o ManagedZonePrivateVisibilityConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1895,7 +1946,13 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToManagedZonePrivateVisibil
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVisibilityConfigOutput {
-	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePrivateVisibilityConfig
+		return ret
+	}).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -2218,10 +2275,11 @@ func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVi
 }
 
 func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) *ManagedZonePrivateVisibilityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePrivateVisibilityConfigResponse) *ManagedZonePrivateVisibilityConfigResponse {
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigResponsePtrOutput)
 }
+
 func (o ManagedZonePrivateVisibilityConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -2249,7 +2307,11 @@ func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) ToManagedZonePrivat
 
 func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Elem() ManagedZonePrivateVisibilityConfigResponseOutput {
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) ManagedZonePrivateVisibilityConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZonePrivateVisibilityConfigResponse
+		return ret
 	}).(ManagedZonePrivateVisibilityConfigResponseOutput)
 }
 
@@ -2363,10 +2425,11 @@ func (o ManagedZoneReverseLookupConfigOutput) ToManagedZoneReverseLookupConfigPt
 }
 
 func (o ManagedZoneReverseLookupConfigOutput) ToManagedZoneReverseLookupConfigPtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneReverseLookupConfig) *ManagedZoneReverseLookupConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneReverseLookupConfig) *ManagedZoneReverseLookupConfig {
 		return &v
 	}).(ManagedZoneReverseLookupConfigPtrOutput)
 }
+
 func (o ManagedZoneReverseLookupConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneReverseLookupConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -2386,7 +2449,13 @@ func (o ManagedZoneReverseLookupConfigPtrOutput) ToManagedZoneReverseLookupConfi
 }
 
 func (o ManagedZoneReverseLookupConfigPtrOutput) Elem() ManagedZoneReverseLookupConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneReverseLookupConfig) ManagedZoneReverseLookupConfig { return *v }).(ManagedZoneReverseLookupConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneReverseLookupConfig) ManagedZoneReverseLookupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneReverseLookupConfig
+		return ret
+	}).(ManagedZoneReverseLookupConfigOutput)
 }
 
 func (o ManagedZoneReverseLookupConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -2489,10 +2558,11 @@ func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookup
 }
 
 func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZoneReverseLookupConfigResponse) *ManagedZoneReverseLookupConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneReverseLookupConfigResponse) *ManagedZoneReverseLookupConfigResponse {
 		return &v
 	}).(ManagedZoneReverseLookupConfigResponsePtrOutput)
 }
+
 func (o ManagedZoneReverseLookupConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZoneReverseLookupConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -2512,7 +2582,13 @@ func (o ManagedZoneReverseLookupConfigResponsePtrOutput) ToManagedZoneReverseLoo
 }
 
 func (o ManagedZoneReverseLookupConfigResponsePtrOutput) Elem() ManagedZoneReverseLookupConfigResponseOutput {
-	return o.ApplyT(func(v *ManagedZoneReverseLookupConfigResponse) ManagedZoneReverseLookupConfigResponse { return *v }).(ManagedZoneReverseLookupConfigResponseOutput)
+	return o.ApplyT(func(v *ManagedZoneReverseLookupConfigResponse) ManagedZoneReverseLookupConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneReverseLookupConfigResponse
+		return ret
+	}).(ManagedZoneReverseLookupConfigResponseOutput)
 }
 
 func (o ManagedZoneReverseLookupConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
@@ -2622,10 +2698,11 @@ func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryCo
 }
 
 func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfig {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }
+
 func (o ManagedZoneServiceDirectoryConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -2652,7 +2729,13 @@ func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirector
 }
 
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) Elem() ManagedZoneServiceDirectoryConfigOutput {
-	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig { return *v }).(ManagedZoneServiceDirectoryConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfig
+		return ret
+	}).(ManagedZoneServiceDirectoryConfigOutput)
 }
 
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -2773,7 +2856,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDi
 }
 
 func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *ManagedZoneServiceDirectoryConfigNamespace {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfigNamespace) *ManagedZoneServiceDirectoryConfigNamespace {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
 }
@@ -2808,7 +2891,11 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServic
 
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) ManagedZoneServiceDirectoryConfigNamespace {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfigNamespace
+		return ret
 	}).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
 }
 
@@ -2940,7 +3027,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneS
 }
 
 func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespaceResponse) *ManagedZoneServiceDirectoryConfigNamespaceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfigNamespaceResponse) *ManagedZoneServiceDirectoryConfigNamespaceResponse {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput)
 }
@@ -2975,7 +3062,11 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) ToManagedZo
 
 func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespaceResponse) ManagedZoneServiceDirectoryConfigNamespaceResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfigNamespaceResponse
+		return ret
 	}).(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput)
 }
 
@@ -3106,10 +3197,11 @@ func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDir
 }
 
 func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigResponse) *ManagedZoneServiceDirectoryConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneServiceDirectoryConfigResponse) *ManagedZoneServiceDirectoryConfigResponse {
 		return &v
 	}).(ManagedZoneServiceDirectoryConfigResponsePtrOutput)
 }
+
 func (o ManagedZoneServiceDirectoryConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -3137,7 +3229,11 @@ func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) ToManagedZoneService
 
 func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) Elem() ManagedZoneServiceDirectoryConfigResponseOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigResponse) ManagedZoneServiceDirectoryConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneServiceDirectoryConfigResponse
+		return ret
 	}).(ManagedZoneServiceDirectoryConfigResponseOutput)
 }
 
@@ -3255,10 +3351,11 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 }
 
 func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerConfigPtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigPtrOutput {
-	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) *PolicyAlternativeNameServerConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyAlternativeNameServerConfig) *PolicyAlternativeNameServerConfig {
 		return &v
 	}).(PolicyAlternativeNameServerConfigPtrOutput)
 }
+
 func (o PolicyAlternativeNameServerConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3285,7 +3382,13 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) ToPolicyAlternativeNameServe
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeNameServerConfigOutput {
-	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig { return *v }).(PolicyAlternativeNameServerConfigOutput)
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyAlternativeNameServerConfig
+		return ret
+	}).(PolicyAlternativeNameServerConfigOutput)
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -3402,10 +3505,11 @@ func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeName
 }
 
 func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput {
-	return o.ApplyT(func(v PolicyAlternativeNameServerConfigResponse) *PolicyAlternativeNameServerConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyAlternativeNameServerConfigResponse) *PolicyAlternativeNameServerConfigResponse {
 		return &v
 	}).(PolicyAlternativeNameServerConfigResponsePtrOutput)
 }
+
 func (o PolicyAlternativeNameServerConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -3433,7 +3537,11 @@ func (o PolicyAlternativeNameServerConfigResponsePtrOutput) ToPolicyAlternativeN
 
 func (o PolicyAlternativeNameServerConfigResponsePtrOutput) Elem() PolicyAlternativeNameServerConfigResponseOutput {
 	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigResponse) PolicyAlternativeNameServerConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PolicyAlternativeNameServerConfigResponse
+		return ret
 	}).(PolicyAlternativeNameServerConfigResponseOutput)
 }
 

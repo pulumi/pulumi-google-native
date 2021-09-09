@@ -352,7 +352,7 @@ func (o AddonsConfigOutput) ToAddonsConfigPtrOutput() AddonsConfigPtrOutput {
 }
 
 func (o AddonsConfigOutput) ToAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigPtrOutput {
-	return o.ApplyT(func(v AddonsConfig) *AddonsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfig) *AddonsConfig {
 		return &v
 	}).(AddonsConfigPtrOutput)
 }
@@ -412,7 +412,13 @@ func (o AddonsConfigPtrOutput) ToAddonsConfigPtrOutputWithContext(ctx context.Co
 }
 
 func (o AddonsConfigPtrOutput) Elem() AddonsConfigOutput {
-	return o.ApplyT(func(v *AddonsConfig) AddonsConfig { return *v }).(AddonsConfigOutput)
+	return o.ApplyT(func(v *AddonsConfig) AddonsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfig
+		return ret
+	}).(AddonsConfigOutput)
 }
 
 // Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -619,7 +625,7 @@ func (o AddonsConfigResponseOutput) ToAddonsConfigResponsePtrOutput() AddonsConf
 }
 
 func (o AddonsConfigResponseOutput) ToAddonsConfigResponsePtrOutputWithContext(ctx context.Context) AddonsConfigResponsePtrOutput {
-	return o.ApplyT(func(v AddonsConfigResponse) *AddonsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigResponse) *AddonsConfigResponse {
 		return &v
 	}).(AddonsConfigResponsePtrOutput)
 }
@@ -681,7 +687,13 @@ func (o AddonsConfigResponsePtrOutput) ToAddonsConfigResponsePtrOutputWithContex
 }
 
 func (o AddonsConfigResponsePtrOutput) Elem() AddonsConfigResponseOutput {
-	return o.ApplyT(func(v *AddonsConfigResponse) AddonsConfigResponse { return *v }).(AddonsConfigResponseOutput)
+	return o.ApplyT(func(v *AddonsConfigResponse) AddonsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AddonsConfigResponse
+		return ret
+	}).(AddonsConfigResponseOutput)
 }
 
 // Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -864,7 +876,7 @@ func (o AuthenticatorGroupsConfigOutput) ToAuthenticatorGroupsConfigPtrOutput() 
 }
 
 func (o AuthenticatorGroupsConfigOutput) ToAuthenticatorGroupsConfigPtrOutputWithContext(ctx context.Context) AuthenticatorGroupsConfigPtrOutput {
-	return o.ApplyT(func(v AuthenticatorGroupsConfig) *AuthenticatorGroupsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticatorGroupsConfig) *AuthenticatorGroupsConfig {
 		return &v
 	}).(AuthenticatorGroupsConfigPtrOutput)
 }
@@ -894,7 +906,13 @@ func (o AuthenticatorGroupsConfigPtrOutput) ToAuthenticatorGroupsConfigPtrOutput
 }
 
 func (o AuthenticatorGroupsConfigPtrOutput) Elem() AuthenticatorGroupsConfigOutput {
-	return o.ApplyT(func(v *AuthenticatorGroupsConfig) AuthenticatorGroupsConfig { return *v }).(AuthenticatorGroupsConfigOutput)
+	return o.ApplyT(func(v *AuthenticatorGroupsConfig) AuthenticatorGroupsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticatorGroupsConfig
+		return ret
+	}).(AuthenticatorGroupsConfigOutput)
 }
 
 // Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -1017,7 +1035,7 @@ func (o AuthenticatorGroupsConfigResponseOutput) ToAuthenticatorGroupsConfigResp
 }
 
 func (o AuthenticatorGroupsConfigResponseOutput) ToAuthenticatorGroupsConfigResponsePtrOutputWithContext(ctx context.Context) AuthenticatorGroupsConfigResponsePtrOutput {
-	return o.ApplyT(func(v AuthenticatorGroupsConfigResponse) *AuthenticatorGroupsConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticatorGroupsConfigResponse) *AuthenticatorGroupsConfigResponse {
 		return &v
 	}).(AuthenticatorGroupsConfigResponsePtrOutput)
 }
@@ -1047,7 +1065,13 @@ func (o AuthenticatorGroupsConfigResponsePtrOutput) ToAuthenticatorGroupsConfigR
 }
 
 func (o AuthenticatorGroupsConfigResponsePtrOutput) Elem() AuthenticatorGroupsConfigResponseOutput {
-	return o.ApplyT(func(v *AuthenticatorGroupsConfigResponse) AuthenticatorGroupsConfigResponse { return *v }).(AuthenticatorGroupsConfigResponseOutput)
+	return o.ApplyT(func(v *AuthenticatorGroupsConfigResponse) AuthenticatorGroupsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticatorGroupsConfigResponse
+		return ret
+	}).(AuthenticatorGroupsConfigResponseOutput)
 }
 
 // Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -1162,7 +1186,7 @@ func (o AutoUpgradeOptionsOutput) ToAutoUpgradeOptionsPtrOutput() AutoUpgradeOpt
 }
 
 func (o AutoUpgradeOptionsOutput) ToAutoUpgradeOptionsPtrOutputWithContext(ctx context.Context) AutoUpgradeOptionsPtrOutput {
-	return o.ApplyT(func(v AutoUpgradeOptions) *AutoUpgradeOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoUpgradeOptions) *AutoUpgradeOptions {
 		return &v
 	}).(AutoUpgradeOptionsPtrOutput)
 }
@@ -1182,7 +1206,13 @@ func (o AutoUpgradeOptionsPtrOutput) ToAutoUpgradeOptionsPtrOutputWithContext(ct
 }
 
 func (o AutoUpgradeOptionsPtrOutput) Elem() AutoUpgradeOptionsOutput {
-	return o.ApplyT(func(v *AutoUpgradeOptions) AutoUpgradeOptions { return *v }).(AutoUpgradeOptionsOutput)
+	return o.ApplyT(func(v *AutoUpgradeOptions) AutoUpgradeOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeOptions
+		return ret
+	}).(AutoUpgradeOptionsOutput)
 }
 
 // AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
@@ -1285,7 +1315,7 @@ func (o AutoUpgradeOptionsResponseOutput) ToAutoUpgradeOptionsResponsePtrOutput(
 }
 
 func (o AutoUpgradeOptionsResponseOutput) ToAutoUpgradeOptionsResponsePtrOutputWithContext(ctx context.Context) AutoUpgradeOptionsResponsePtrOutput {
-	return o.ApplyT(func(v AutoUpgradeOptionsResponse) *AutoUpgradeOptionsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoUpgradeOptionsResponse) *AutoUpgradeOptionsResponse {
 		return &v
 	}).(AutoUpgradeOptionsResponsePtrOutput)
 }
@@ -1315,7 +1345,13 @@ func (o AutoUpgradeOptionsResponsePtrOutput) ToAutoUpgradeOptionsResponsePtrOutp
 }
 
 func (o AutoUpgradeOptionsResponsePtrOutput) Elem() AutoUpgradeOptionsResponseOutput {
-	return o.ApplyT(func(v *AutoUpgradeOptionsResponse) AutoUpgradeOptionsResponse { return *v }).(AutoUpgradeOptionsResponseOutput)
+	return o.ApplyT(func(v *AutoUpgradeOptionsResponse) AutoUpgradeOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeOptionsResponse
+		return ret
+	}).(AutoUpgradeOptionsResponseOutput)
 }
 
 // [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -1434,7 +1470,7 @@ func (o AutopilotOutput) ToAutopilotPtrOutput() AutopilotPtrOutput {
 }
 
 func (o AutopilotOutput) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
-	return o.ApplyT(func(v Autopilot) *Autopilot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Autopilot) *Autopilot {
 		return &v
 	}).(AutopilotPtrOutput)
 }
@@ -1459,7 +1495,13 @@ func (o AutopilotPtrOutput) ToAutopilotPtrOutputWithContext(ctx context.Context)
 }
 
 func (o AutopilotPtrOutput) Elem() AutopilotOutput {
-	return o.ApplyT(func(v *Autopilot) Autopilot { return *v }).(AutopilotOutput)
+	return o.ApplyT(func(v *Autopilot) Autopilot {
+		if v != nil {
+			return *v
+		}
+		var ret Autopilot
+		return ret
+	}).(AutopilotOutput)
 }
 
 // Enable Autopilot
@@ -1568,7 +1610,7 @@ func (o AutopilotResponseOutput) ToAutopilotResponsePtrOutput() AutopilotRespons
 }
 
 func (o AutopilotResponseOutput) ToAutopilotResponsePtrOutputWithContext(ctx context.Context) AutopilotResponsePtrOutput {
-	return o.ApplyT(func(v AutopilotResponse) *AutopilotResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutopilotResponse) *AutopilotResponse {
 		return &v
 	}).(AutopilotResponsePtrOutput)
 }
@@ -1593,7 +1635,13 @@ func (o AutopilotResponsePtrOutput) ToAutopilotResponsePtrOutputWithContext(ctx 
 }
 
 func (o AutopilotResponsePtrOutput) Elem() AutopilotResponseOutput {
-	return o.ApplyT(func(v *AutopilotResponse) AutopilotResponse { return *v }).(AutopilotResponseOutput)
+	return o.ApplyT(func(v *AutopilotResponse) AutopilotResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutopilotResponse
+		return ret
+	}).(AutopilotResponseOutput)
 }
 
 // Enable Autopilot
@@ -1738,7 +1786,7 @@ func (o AutoprovisioningNodePoolDefaultsOutput) ToAutoprovisioningNodePoolDefaul
 }
 
 func (o AutoprovisioningNodePoolDefaultsOutput) ToAutoprovisioningNodePoolDefaultsPtrOutputWithContext(ctx context.Context) AutoprovisioningNodePoolDefaultsPtrOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *AutoprovisioningNodePoolDefaults {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoprovisioningNodePoolDefaults) *AutoprovisioningNodePoolDefaults {
 		return &v
 	}).(AutoprovisioningNodePoolDefaultsPtrOutput)
 }
@@ -1808,7 +1856,13 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) ToAutoprovisioningNodePoolDef
 }
 
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) Elem() AutoprovisioningNodePoolDefaultsOutput {
-	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) AutoprovisioningNodePoolDefaults { return *v }).(AutoprovisioningNodePoolDefaultsOutput)
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) AutoprovisioningNodePoolDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret AutoprovisioningNodePoolDefaults
+		return ret
+	}).(AutoprovisioningNodePoolDefaultsOutput)
 }
 
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -2043,7 +2097,7 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ToAutoprovisioningNodePo
 }
 
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) ToAutoprovisioningNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) AutoprovisioningNodePoolDefaultsResponsePtrOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) *AutoprovisioningNodePoolDefaultsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoprovisioningNodePoolDefaultsResponse) *AutoprovisioningNodePoolDefaultsResponse {
 		return &v
 	}).(AutoprovisioningNodePoolDefaultsResponsePtrOutput)
 }
@@ -2115,7 +2169,13 @@ func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) ToAutoprovisioningNod
 }
 
 func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) Elem() AutoprovisioningNodePoolDefaultsResponseOutput {
-	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaultsResponse) AutoprovisioningNodePoolDefaultsResponse { return *v }).(AutoprovisioningNodePoolDefaultsResponseOutput)
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaultsResponse) AutoprovisioningNodePoolDefaultsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoprovisioningNodePoolDefaultsResponse
+		return ret
+	}).(AutoprovisioningNodePoolDefaultsResponseOutput)
 }
 
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -2314,7 +2374,7 @@ func (o BigQueryDestinationOutput) ToBigQueryDestinationPtrOutput() BigQueryDest
 }
 
 func (o BigQueryDestinationOutput) ToBigQueryDestinationPtrOutputWithContext(ctx context.Context) BigQueryDestinationPtrOutput {
-	return o.ApplyT(func(v BigQueryDestination) *BigQueryDestination {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDestination) *BigQueryDestination {
 		return &v
 	}).(BigQueryDestinationPtrOutput)
 }
@@ -2339,7 +2399,13 @@ func (o BigQueryDestinationPtrOutput) ToBigQueryDestinationPtrOutputWithContext(
 }
 
 func (o BigQueryDestinationPtrOutput) Elem() BigQueryDestinationOutput {
-	return o.ApplyT(func(v *BigQueryDestination) BigQueryDestination { return *v }).(BigQueryDestinationOutput)
+	return o.ApplyT(func(v *BigQueryDestination) BigQueryDestination {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryDestination
+		return ret
+	}).(BigQueryDestinationOutput)
 }
 
 // The ID of a BigQuery Dataset.
@@ -2448,7 +2514,7 @@ func (o BigQueryDestinationResponseOutput) ToBigQueryDestinationResponsePtrOutpu
 }
 
 func (o BigQueryDestinationResponseOutput) ToBigQueryDestinationResponsePtrOutputWithContext(ctx context.Context) BigQueryDestinationResponsePtrOutput {
-	return o.ApplyT(func(v BigQueryDestinationResponse) *BigQueryDestinationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDestinationResponse) *BigQueryDestinationResponse {
 		return &v
 	}).(BigQueryDestinationResponsePtrOutput)
 }
@@ -2473,7 +2539,13 @@ func (o BigQueryDestinationResponsePtrOutput) ToBigQueryDestinationResponsePtrOu
 }
 
 func (o BigQueryDestinationResponsePtrOutput) Elem() BigQueryDestinationResponseOutput {
-	return o.ApplyT(func(v *BigQueryDestinationResponse) BigQueryDestinationResponse { return *v }).(BigQueryDestinationResponseOutput)
+	return o.ApplyT(func(v *BigQueryDestinationResponse) BigQueryDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryDestinationResponse
+		return ret
+	}).(BigQueryDestinationResponseOutput)
 }
 
 // The ID of a BigQuery Dataset.
@@ -2582,7 +2654,7 @@ func (o BinaryAuthorizationOutput) ToBinaryAuthorizationPtrOutput() BinaryAuthor
 }
 
 func (o BinaryAuthorizationOutput) ToBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BinaryAuthorizationPtrOutput {
-	return o.ApplyT(func(v BinaryAuthorization) *BinaryAuthorization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorization) *BinaryAuthorization {
 		return &v
 	}).(BinaryAuthorizationPtrOutput)
 }
@@ -2607,7 +2679,13 @@ func (o BinaryAuthorizationPtrOutput) ToBinaryAuthorizationPtrOutputWithContext(
 }
 
 func (o BinaryAuthorizationPtrOutput) Elem() BinaryAuthorizationOutput {
-	return o.ApplyT(func(v *BinaryAuthorization) BinaryAuthorization { return *v }).(BinaryAuthorizationOutput)
+	return o.ApplyT(func(v *BinaryAuthorization) BinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorization
+		return ret
+	}).(BinaryAuthorizationOutput)
 }
 
 // Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
@@ -2716,7 +2794,7 @@ func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponsePtrOutpu
 }
 
 func (o BinaryAuthorizationResponseOutput) ToBinaryAuthorizationResponsePtrOutputWithContext(ctx context.Context) BinaryAuthorizationResponsePtrOutput {
-	return o.ApplyT(func(v BinaryAuthorizationResponse) *BinaryAuthorizationResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorizationResponse) *BinaryAuthorizationResponse {
 		return &v
 	}).(BinaryAuthorizationResponsePtrOutput)
 }
@@ -2741,7 +2819,13 @@ func (o BinaryAuthorizationResponsePtrOutput) ToBinaryAuthorizationResponsePtrOu
 }
 
 func (o BinaryAuthorizationResponsePtrOutput) Elem() BinaryAuthorizationResponseOutput {
-	return o.ApplyT(func(v *BinaryAuthorizationResponse) BinaryAuthorizationResponse { return *v }).(BinaryAuthorizationResponseOutput)
+	return o.ApplyT(func(v *BinaryAuthorizationResponse) BinaryAuthorizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorizationResponse
+		return ret
+	}).(BinaryAuthorizationResponseOutput)
 }
 
 // Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
@@ -3068,7 +3152,7 @@ func (o ClientCertificateConfigOutput) ToClientCertificateConfigPtrOutput() Clie
 }
 
 func (o ClientCertificateConfigOutput) ToClientCertificateConfigPtrOutputWithContext(ctx context.Context) ClientCertificateConfigPtrOutput {
-	return o.ApplyT(func(v ClientCertificateConfig) *ClientCertificateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateConfig) *ClientCertificateConfig {
 		return &v
 	}).(ClientCertificateConfigPtrOutput)
 }
@@ -3093,7 +3177,13 @@ func (o ClientCertificateConfigPtrOutput) ToClientCertificateConfigPtrOutputWith
 }
 
 func (o ClientCertificateConfigPtrOutput) Elem() ClientCertificateConfigOutput {
-	return o.ApplyT(func(v *ClientCertificateConfig) ClientCertificateConfig { return *v }).(ClientCertificateConfigOutput)
+	return o.ApplyT(func(v *ClientCertificateConfig) ClientCertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateConfig
+		return ret
+	}).(ClientCertificateConfigOutput)
 }
 
 // Issue a client certificate.
@@ -3202,7 +3292,7 @@ func (o ClientCertificateConfigResponseOutput) ToClientCertificateConfigResponse
 }
 
 func (o ClientCertificateConfigResponseOutput) ToClientCertificateConfigResponsePtrOutputWithContext(ctx context.Context) ClientCertificateConfigResponsePtrOutput {
-	return o.ApplyT(func(v ClientCertificateConfigResponse) *ClientCertificateConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCertificateConfigResponse) *ClientCertificateConfigResponse {
 		return &v
 	}).(ClientCertificateConfigResponsePtrOutput)
 }
@@ -3227,7 +3317,13 @@ func (o ClientCertificateConfigResponsePtrOutput) ToClientCertificateConfigRespo
 }
 
 func (o ClientCertificateConfigResponsePtrOutput) Elem() ClientCertificateConfigResponseOutput {
-	return o.ApplyT(func(v *ClientCertificateConfigResponse) ClientCertificateConfigResponse { return *v }).(ClientCertificateConfigResponseOutput)
+	return o.ApplyT(func(v *ClientCertificateConfigResponse) ClientCertificateConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCertificateConfigResponse
+		return ret
+	}).(ClientCertificateConfigResponseOutput)
 }
 
 // Issue a client certificate.
@@ -3340,7 +3436,7 @@ func (o CloudRunConfigOutput) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutpu
 }
 
 func (o CloudRunConfigOutput) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
-	return o.ApplyT(func(v CloudRunConfig) *CloudRunConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunConfig) *CloudRunConfig {
 		return &v
 	}).(CloudRunConfigPtrOutput)
 }
@@ -3370,7 +3466,13 @@ func (o CloudRunConfigPtrOutput) ToCloudRunConfigPtrOutputWithContext(ctx contex
 }
 
 func (o CloudRunConfigPtrOutput) Elem() CloudRunConfigOutput {
-	return o.ApplyT(func(v *CloudRunConfig) CloudRunConfig { return *v }).(CloudRunConfigOutput)
+	return o.ApplyT(func(v *CloudRunConfig) CloudRunConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunConfig
+		return ret
+	}).(CloudRunConfigOutput)
 }
 
 // Whether Cloud Run addon is enabled for this cluster.
@@ -3493,7 +3595,7 @@ func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponsePtrOutput() CloudR
 }
 
 func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponsePtrOutputWithContext(ctx context.Context) CloudRunConfigResponsePtrOutput {
-	return o.ApplyT(func(v CloudRunConfigResponse) *CloudRunConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunConfigResponse) *CloudRunConfigResponse {
 		return &v
 	}).(CloudRunConfigResponsePtrOutput)
 }
@@ -3523,7 +3625,13 @@ func (o CloudRunConfigResponsePtrOutput) ToCloudRunConfigResponsePtrOutputWithCo
 }
 
 func (o CloudRunConfigResponsePtrOutput) Elem() CloudRunConfigResponseOutput {
-	return o.ApplyT(func(v *CloudRunConfigResponse) CloudRunConfigResponse { return *v }).(CloudRunConfigResponseOutput)
+	return o.ApplyT(func(v *CloudRunConfigResponse) CloudRunConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunConfigResponse
+		return ret
+	}).(CloudRunConfigResponseOutput)
 }
 
 // Whether Cloud Run addon is enabled for this cluster.
@@ -3658,7 +3766,7 @@ func (o ClusterAutoscalingOutput) ToClusterAutoscalingPtrOutput() ClusterAutosca
 }
 
 func (o ClusterAutoscalingOutput) ToClusterAutoscalingPtrOutputWithContext(ctx context.Context) ClusterAutoscalingPtrOutput {
-	return o.ApplyT(func(v ClusterAutoscaling) *ClusterAutoscaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscaling) *ClusterAutoscaling {
 		return &v
 	}).(ClusterAutoscalingPtrOutput)
 }
@@ -3705,7 +3813,13 @@ func (o ClusterAutoscalingPtrOutput) ToClusterAutoscalingPtrOutputWithContext(ct
 }
 
 func (o ClusterAutoscalingPtrOutput) Elem() ClusterAutoscalingOutput {
-	return o.ApplyT(func(v *ClusterAutoscaling) ClusterAutoscaling { return *v }).(ClusterAutoscalingOutput)
+	return o.ApplyT(func(v *ClusterAutoscaling) ClusterAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscaling
+		return ret
+	}).(ClusterAutoscalingOutput)
 }
 
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
@@ -3870,7 +3984,7 @@ func (o ClusterAutoscalingResponseOutput) ToClusterAutoscalingResponsePtrOutput(
 }
 
 func (o ClusterAutoscalingResponseOutput) ToClusterAutoscalingResponsePtrOutputWithContext(ctx context.Context) ClusterAutoscalingResponsePtrOutput {
-	return o.ApplyT(func(v ClusterAutoscalingResponse) *ClusterAutoscalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingResponse) *ClusterAutoscalingResponse {
 		return &v
 	}).(ClusterAutoscalingResponsePtrOutput)
 }
@@ -3917,7 +4031,13 @@ func (o ClusterAutoscalingResponsePtrOutput) ToClusterAutoscalingResponsePtrOutp
 }
 
 func (o ClusterAutoscalingResponsePtrOutput) Elem() ClusterAutoscalingResponseOutput {
-	return o.ApplyT(func(v *ClusterAutoscalingResponse) ClusterAutoscalingResponse { return *v }).(ClusterAutoscalingResponseOutput)
+	return o.ApplyT(func(v *ClusterAutoscalingResponse) ClusterAutoscalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingResponse
+		return ret
+	}).(ClusterAutoscalingResponseOutput)
 }
 
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
@@ -4375,7 +4495,7 @@ func (o ConfidentialNodesOutput) ToConfidentialNodesPtrOutput() ConfidentialNode
 }
 
 func (o ConfidentialNodesOutput) ToConfidentialNodesPtrOutputWithContext(ctx context.Context) ConfidentialNodesPtrOutput {
-	return o.ApplyT(func(v ConfidentialNodes) *ConfidentialNodes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialNodes) *ConfidentialNodes {
 		return &v
 	}).(ConfidentialNodesPtrOutput)
 }
@@ -4400,7 +4520,13 @@ func (o ConfidentialNodesPtrOutput) ToConfidentialNodesPtrOutputWithContext(ctx 
 }
 
 func (o ConfidentialNodesPtrOutput) Elem() ConfidentialNodesOutput {
-	return o.ApplyT(func(v *ConfidentialNodes) ConfidentialNodes { return *v }).(ConfidentialNodesOutput)
+	return o.ApplyT(func(v *ConfidentialNodes) ConfidentialNodes {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialNodes
+		return ret
+	}).(ConfidentialNodesOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this cluster.
@@ -4509,7 +4635,7 @@ func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponsePtrOutput() 
 }
 
 func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponsePtrOutputWithContext(ctx context.Context) ConfidentialNodesResponsePtrOutput {
-	return o.ApplyT(func(v ConfidentialNodesResponse) *ConfidentialNodesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialNodesResponse) *ConfidentialNodesResponse {
 		return &v
 	}).(ConfidentialNodesResponsePtrOutput)
 }
@@ -4534,7 +4660,13 @@ func (o ConfidentialNodesResponsePtrOutput) ToConfidentialNodesResponsePtrOutput
 }
 
 func (o ConfidentialNodesResponsePtrOutput) Elem() ConfidentialNodesResponseOutput {
-	return o.ApplyT(func(v *ConfidentialNodesResponse) ConfidentialNodesResponse { return *v }).(ConfidentialNodesResponseOutput)
+	return o.ApplyT(func(v *ConfidentialNodesResponse) ConfidentialNodesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialNodesResponse
+		return ret
+	}).(ConfidentialNodesResponseOutput)
 }
 
 // Whether Confidential Nodes feature is enabled for all nodes in this cluster.
@@ -4643,7 +4775,7 @@ func (o ConfigConnectorConfigOutput) ToConfigConnectorConfigPtrOutput() ConfigCo
 }
 
 func (o ConfigConnectorConfigOutput) ToConfigConnectorConfigPtrOutputWithContext(ctx context.Context) ConfigConnectorConfigPtrOutput {
-	return o.ApplyT(func(v ConfigConnectorConfig) *ConfigConnectorConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigConnectorConfig) *ConfigConnectorConfig {
 		return &v
 	}).(ConfigConnectorConfigPtrOutput)
 }
@@ -4668,7 +4800,13 @@ func (o ConfigConnectorConfigPtrOutput) ToConfigConnectorConfigPtrOutputWithCont
 }
 
 func (o ConfigConnectorConfigPtrOutput) Elem() ConfigConnectorConfigOutput {
-	return o.ApplyT(func(v *ConfigConnectorConfig) ConfigConnectorConfig { return *v }).(ConfigConnectorConfigOutput)
+	return o.ApplyT(func(v *ConfigConnectorConfig) ConfigConnectorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigConnectorConfig
+		return ret
+	}).(ConfigConnectorConfigOutput)
 }
 
 // Whether Cloud Connector is enabled for this cluster.
@@ -4777,7 +4915,7 @@ func (o ConfigConnectorConfigResponseOutput) ToConfigConnectorConfigResponsePtrO
 }
 
 func (o ConfigConnectorConfigResponseOutput) ToConfigConnectorConfigResponsePtrOutputWithContext(ctx context.Context) ConfigConnectorConfigResponsePtrOutput {
-	return o.ApplyT(func(v ConfigConnectorConfigResponse) *ConfigConnectorConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigConnectorConfigResponse) *ConfigConnectorConfigResponse {
 		return &v
 	}).(ConfigConnectorConfigResponsePtrOutput)
 }
@@ -4802,7 +4940,13 @@ func (o ConfigConnectorConfigResponsePtrOutput) ToConfigConnectorConfigResponseP
 }
 
 func (o ConfigConnectorConfigResponsePtrOutput) Elem() ConfigConnectorConfigResponseOutput {
-	return o.ApplyT(func(v *ConfigConnectorConfigResponse) ConfigConnectorConfigResponse { return *v }).(ConfigConnectorConfigResponseOutput)
+	return o.ApplyT(func(v *ConfigConnectorConfigResponse) ConfigConnectorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigConnectorConfigResponse
+		return ret
+	}).(ConfigConnectorConfigResponseOutput)
 }
 
 // Whether Cloud Connector is enabled for this cluster.
@@ -4911,7 +5055,7 @@ func (o ConsumptionMeteringConfigOutput) ToConsumptionMeteringConfigPtrOutput() 
 }
 
 func (o ConsumptionMeteringConfigOutput) ToConsumptionMeteringConfigPtrOutputWithContext(ctx context.Context) ConsumptionMeteringConfigPtrOutput {
-	return o.ApplyT(func(v ConsumptionMeteringConfig) *ConsumptionMeteringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumptionMeteringConfig) *ConsumptionMeteringConfig {
 		return &v
 	}).(ConsumptionMeteringConfigPtrOutput)
 }
@@ -4936,7 +5080,13 @@ func (o ConsumptionMeteringConfigPtrOutput) ToConsumptionMeteringConfigPtrOutput
 }
 
 func (o ConsumptionMeteringConfigPtrOutput) Elem() ConsumptionMeteringConfigOutput {
-	return o.ApplyT(func(v *ConsumptionMeteringConfig) ConsumptionMeteringConfig { return *v }).(ConsumptionMeteringConfigOutput)
+	return o.ApplyT(func(v *ConsumptionMeteringConfig) ConsumptionMeteringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumptionMeteringConfig
+		return ret
+	}).(ConsumptionMeteringConfigOutput)
 }
 
 // Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
@@ -5045,7 +5195,7 @@ func (o ConsumptionMeteringConfigResponseOutput) ToConsumptionMeteringConfigResp
 }
 
 func (o ConsumptionMeteringConfigResponseOutput) ToConsumptionMeteringConfigResponsePtrOutputWithContext(ctx context.Context) ConsumptionMeteringConfigResponsePtrOutput {
-	return o.ApplyT(func(v ConsumptionMeteringConfigResponse) *ConsumptionMeteringConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumptionMeteringConfigResponse) *ConsumptionMeteringConfigResponse {
 		return &v
 	}).(ConsumptionMeteringConfigResponsePtrOutput)
 }
@@ -5070,7 +5220,13 @@ func (o ConsumptionMeteringConfigResponsePtrOutput) ToConsumptionMeteringConfigR
 }
 
 func (o ConsumptionMeteringConfigResponsePtrOutput) Elem() ConsumptionMeteringConfigResponseOutput {
-	return o.ApplyT(func(v *ConsumptionMeteringConfigResponse) ConsumptionMeteringConfigResponse { return *v }).(ConsumptionMeteringConfigResponseOutput)
+	return o.ApplyT(func(v *ConsumptionMeteringConfigResponse) ConsumptionMeteringConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConsumptionMeteringConfigResponse
+		return ret
+	}).(ConsumptionMeteringConfigResponseOutput)
 }
 
 // Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
@@ -5179,7 +5335,7 @@ func (o DailyMaintenanceWindowOutput) ToDailyMaintenanceWindowPtrOutput() DailyM
 }
 
 func (o DailyMaintenanceWindowOutput) ToDailyMaintenanceWindowPtrOutputWithContext(ctx context.Context) DailyMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v DailyMaintenanceWindow) *DailyMaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DailyMaintenanceWindow) *DailyMaintenanceWindow {
 		return &v
 	}).(DailyMaintenanceWindowPtrOutput)
 }
@@ -5204,7 +5360,13 @@ func (o DailyMaintenanceWindowPtrOutput) ToDailyMaintenanceWindowPtrOutputWithCo
 }
 
 func (o DailyMaintenanceWindowPtrOutput) Elem() DailyMaintenanceWindowOutput {
-	return o.ApplyT(func(v *DailyMaintenanceWindow) DailyMaintenanceWindow { return *v }).(DailyMaintenanceWindowOutput)
+	return o.ApplyT(func(v *DailyMaintenanceWindow) DailyMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret DailyMaintenanceWindow
+		return ret
+	}).(DailyMaintenanceWindowOutput)
 }
 
 // Time within the maintenance window to start the maintenance operations. Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
@@ -5317,7 +5479,7 @@ func (o DailyMaintenanceWindowResponseOutput) ToDailyMaintenanceWindowResponsePt
 }
 
 func (o DailyMaintenanceWindowResponseOutput) ToDailyMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) DailyMaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v DailyMaintenanceWindowResponse) *DailyMaintenanceWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DailyMaintenanceWindowResponse) *DailyMaintenanceWindowResponse {
 		return &v
 	}).(DailyMaintenanceWindowResponsePtrOutput)
 }
@@ -5347,7 +5509,13 @@ func (o DailyMaintenanceWindowResponsePtrOutput) ToDailyMaintenanceWindowRespons
 }
 
 func (o DailyMaintenanceWindowResponsePtrOutput) Elem() DailyMaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *DailyMaintenanceWindowResponse) DailyMaintenanceWindowResponse { return *v }).(DailyMaintenanceWindowResponseOutput)
+	return o.ApplyT(func(v *DailyMaintenanceWindowResponse) DailyMaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DailyMaintenanceWindowResponse
+		return ret
+	}).(DailyMaintenanceWindowResponseOutput)
 }
 
 // [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
@@ -5470,7 +5638,7 @@ func (o DatabaseEncryptionOutput) ToDatabaseEncryptionPtrOutput() DatabaseEncryp
 }
 
 func (o DatabaseEncryptionOutput) ToDatabaseEncryptionPtrOutputWithContext(ctx context.Context) DatabaseEncryptionPtrOutput {
-	return o.ApplyT(func(v DatabaseEncryption) *DatabaseEncryption {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseEncryption) *DatabaseEncryption {
 		return &v
 	}).(DatabaseEncryptionPtrOutput)
 }
@@ -5500,7 +5668,13 @@ func (o DatabaseEncryptionPtrOutput) ToDatabaseEncryptionPtrOutputWithContext(ct
 }
 
 func (o DatabaseEncryptionPtrOutput) Elem() DatabaseEncryptionOutput {
-	return o.ApplyT(func(v *DatabaseEncryption) DatabaseEncryption { return *v }).(DatabaseEncryptionOutput)
+	return o.ApplyT(func(v *DatabaseEncryption) DatabaseEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseEncryption
+		return ret
+	}).(DatabaseEncryptionOutput)
 }
 
 // Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
@@ -5623,7 +5797,7 @@ func (o DatabaseEncryptionResponseOutput) ToDatabaseEncryptionResponsePtrOutput(
 }
 
 func (o DatabaseEncryptionResponseOutput) ToDatabaseEncryptionResponsePtrOutputWithContext(ctx context.Context) DatabaseEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v DatabaseEncryptionResponse) *DatabaseEncryptionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseEncryptionResponse) *DatabaseEncryptionResponse {
 		return &v
 	}).(DatabaseEncryptionResponsePtrOutput)
 }
@@ -5653,7 +5827,13 @@ func (o DatabaseEncryptionResponsePtrOutput) ToDatabaseEncryptionResponsePtrOutp
 }
 
 func (o DatabaseEncryptionResponsePtrOutput) Elem() DatabaseEncryptionResponseOutput {
-	return o.ApplyT(func(v *DatabaseEncryptionResponse) DatabaseEncryptionResponse { return *v }).(DatabaseEncryptionResponseOutput)
+	return o.ApplyT(func(v *DatabaseEncryptionResponse) DatabaseEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseEncryptionResponse
+		return ret
+	}).(DatabaseEncryptionResponseOutput)
 }
 
 // Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
@@ -5772,7 +5952,7 @@ func (o DefaultSnatStatusOutput) ToDefaultSnatStatusPtrOutput() DefaultSnatStatu
 }
 
 func (o DefaultSnatStatusOutput) ToDefaultSnatStatusPtrOutputWithContext(ctx context.Context) DefaultSnatStatusPtrOutput {
-	return o.ApplyT(func(v DefaultSnatStatus) *DefaultSnatStatus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultSnatStatus) *DefaultSnatStatus {
 		return &v
 	}).(DefaultSnatStatusPtrOutput)
 }
@@ -5797,7 +5977,13 @@ func (o DefaultSnatStatusPtrOutput) ToDefaultSnatStatusPtrOutputWithContext(ctx 
 }
 
 func (o DefaultSnatStatusPtrOutput) Elem() DefaultSnatStatusOutput {
-	return o.ApplyT(func(v *DefaultSnatStatus) DefaultSnatStatus { return *v }).(DefaultSnatStatusOutput)
+	return o.ApplyT(func(v *DefaultSnatStatus) DefaultSnatStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultSnatStatus
+		return ret
+	}).(DefaultSnatStatusOutput)
 }
 
 // Disables cluster default sNAT rules.
@@ -5906,7 +6092,7 @@ func (o DefaultSnatStatusResponseOutput) ToDefaultSnatStatusResponsePtrOutput() 
 }
 
 func (o DefaultSnatStatusResponseOutput) ToDefaultSnatStatusResponsePtrOutputWithContext(ctx context.Context) DefaultSnatStatusResponsePtrOutput {
-	return o.ApplyT(func(v DefaultSnatStatusResponse) *DefaultSnatStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultSnatStatusResponse) *DefaultSnatStatusResponse {
 		return &v
 	}).(DefaultSnatStatusResponsePtrOutput)
 }
@@ -5931,7 +6117,13 @@ func (o DefaultSnatStatusResponsePtrOutput) ToDefaultSnatStatusResponsePtrOutput
 }
 
 func (o DefaultSnatStatusResponsePtrOutput) Elem() DefaultSnatStatusResponseOutput {
-	return o.ApplyT(func(v *DefaultSnatStatusResponse) DefaultSnatStatusResponse { return *v }).(DefaultSnatStatusResponseOutput)
+	return o.ApplyT(func(v *DefaultSnatStatusResponse) DefaultSnatStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultSnatStatusResponse
+		return ret
+	}).(DefaultSnatStatusResponseOutput)
 }
 
 // Disables cluster default sNAT rules.
@@ -6040,7 +6232,7 @@ func (o DnsCacheConfigOutput) ToDnsCacheConfigPtrOutput() DnsCacheConfigPtrOutpu
 }
 
 func (o DnsCacheConfigOutput) ToDnsCacheConfigPtrOutputWithContext(ctx context.Context) DnsCacheConfigPtrOutput {
-	return o.ApplyT(func(v DnsCacheConfig) *DnsCacheConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsCacheConfig) *DnsCacheConfig {
 		return &v
 	}).(DnsCacheConfigPtrOutput)
 }
@@ -6065,7 +6257,13 @@ func (o DnsCacheConfigPtrOutput) ToDnsCacheConfigPtrOutputWithContext(ctx contex
 }
 
 func (o DnsCacheConfigPtrOutput) Elem() DnsCacheConfigOutput {
-	return o.ApplyT(func(v *DnsCacheConfig) DnsCacheConfig { return *v }).(DnsCacheConfigOutput)
+	return o.ApplyT(func(v *DnsCacheConfig) DnsCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DnsCacheConfig
+		return ret
+	}).(DnsCacheConfigOutput)
 }
 
 // Whether NodeLocal DNSCache is enabled for this cluster.
@@ -6174,7 +6372,7 @@ func (o DnsCacheConfigResponseOutput) ToDnsCacheConfigResponsePtrOutput() DnsCac
 }
 
 func (o DnsCacheConfigResponseOutput) ToDnsCacheConfigResponsePtrOutputWithContext(ctx context.Context) DnsCacheConfigResponsePtrOutput {
-	return o.ApplyT(func(v DnsCacheConfigResponse) *DnsCacheConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsCacheConfigResponse) *DnsCacheConfigResponse {
 		return &v
 	}).(DnsCacheConfigResponsePtrOutput)
 }
@@ -6199,7 +6397,13 @@ func (o DnsCacheConfigResponsePtrOutput) ToDnsCacheConfigResponsePtrOutputWithCo
 }
 
 func (o DnsCacheConfigResponsePtrOutput) Elem() DnsCacheConfigResponseOutput {
-	return o.ApplyT(func(v *DnsCacheConfigResponse) DnsCacheConfigResponse { return *v }).(DnsCacheConfigResponseOutput)
+	return o.ApplyT(func(v *DnsCacheConfigResponse) DnsCacheConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DnsCacheConfigResponse
+		return ret
+	}).(DnsCacheConfigResponseOutput)
 }
 
 // Whether NodeLocal DNSCache is enabled for this cluster.
@@ -6308,7 +6512,7 @@ func (o GcePersistentDiskCsiDriverConfigOutput) ToGcePersistentDiskCsiDriverConf
 }
 
 func (o GcePersistentDiskCsiDriverConfigOutput) ToGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcePersistentDiskCsiDriverConfigPtrOutput {
-	return o.ApplyT(func(v GcePersistentDiskCsiDriverConfig) *GcePersistentDiskCsiDriverConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcePersistentDiskCsiDriverConfig) *GcePersistentDiskCsiDriverConfig {
 		return &v
 	}).(GcePersistentDiskCsiDriverConfigPtrOutput)
 }
@@ -6333,7 +6537,13 @@ func (o GcePersistentDiskCsiDriverConfigPtrOutput) ToGcePersistentDiskCsiDriverC
 }
 
 func (o GcePersistentDiskCsiDriverConfigPtrOutput) Elem() GcePersistentDiskCsiDriverConfigOutput {
-	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfig) GcePersistentDiskCsiDriverConfig { return *v }).(GcePersistentDiskCsiDriverConfigOutput)
+	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfig) GcePersistentDiskCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcePersistentDiskCsiDriverConfig
+		return ret
+	}).(GcePersistentDiskCsiDriverConfigOutput)
 }
 
 // Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -6442,7 +6652,7 @@ func (o GcePersistentDiskCsiDriverConfigResponseOutput) ToGcePersistentDiskCsiDr
 }
 
 func (o GcePersistentDiskCsiDriverConfigResponseOutput) ToGcePersistentDiskCsiDriverConfigResponsePtrOutputWithContext(ctx context.Context) GcePersistentDiskCsiDriverConfigResponsePtrOutput {
-	return o.ApplyT(func(v GcePersistentDiskCsiDriverConfigResponse) *GcePersistentDiskCsiDriverConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcePersistentDiskCsiDriverConfigResponse) *GcePersistentDiskCsiDriverConfigResponse {
 		return &v
 	}).(GcePersistentDiskCsiDriverConfigResponsePtrOutput)
 }
@@ -6467,7 +6677,13 @@ func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) ToGcePersistentDiskCs
 }
 
 func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Elem() GcePersistentDiskCsiDriverConfigResponseOutput {
-	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfigResponse) GcePersistentDiskCsiDriverConfigResponse { return *v }).(GcePersistentDiskCsiDriverConfigResponseOutput)
+	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfigResponse) GcePersistentDiskCsiDriverConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcePersistentDiskCsiDriverConfigResponse
+		return ret
+	}).(GcePersistentDiskCsiDriverConfigResponseOutput)
 }
 
 // Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -6576,7 +6792,7 @@ func (o HorizontalPodAutoscalingOutput) ToHorizontalPodAutoscalingPtrOutput() Ho
 }
 
 func (o HorizontalPodAutoscalingOutput) ToHorizontalPodAutoscalingPtrOutputWithContext(ctx context.Context) HorizontalPodAutoscalingPtrOutput {
-	return o.ApplyT(func(v HorizontalPodAutoscaling) *HorizontalPodAutoscaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HorizontalPodAutoscaling) *HorizontalPodAutoscaling {
 		return &v
 	}).(HorizontalPodAutoscalingPtrOutput)
 }
@@ -6601,7 +6817,13 @@ func (o HorizontalPodAutoscalingPtrOutput) ToHorizontalPodAutoscalingPtrOutputWi
 }
 
 func (o HorizontalPodAutoscalingPtrOutput) Elem() HorizontalPodAutoscalingOutput {
-	return o.ApplyT(func(v *HorizontalPodAutoscaling) HorizontalPodAutoscaling { return *v }).(HorizontalPodAutoscalingOutput)
+	return o.ApplyT(func(v *HorizontalPodAutoscaling) HorizontalPodAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret HorizontalPodAutoscaling
+		return ret
+	}).(HorizontalPodAutoscalingOutput)
 }
 
 // Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
@@ -6710,7 +6932,7 @@ func (o HorizontalPodAutoscalingResponseOutput) ToHorizontalPodAutoscalingRespon
 }
 
 func (o HorizontalPodAutoscalingResponseOutput) ToHorizontalPodAutoscalingResponsePtrOutputWithContext(ctx context.Context) HorizontalPodAutoscalingResponsePtrOutput {
-	return o.ApplyT(func(v HorizontalPodAutoscalingResponse) *HorizontalPodAutoscalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HorizontalPodAutoscalingResponse) *HorizontalPodAutoscalingResponse {
 		return &v
 	}).(HorizontalPodAutoscalingResponsePtrOutput)
 }
@@ -6735,7 +6957,13 @@ func (o HorizontalPodAutoscalingResponsePtrOutput) ToHorizontalPodAutoscalingRes
 }
 
 func (o HorizontalPodAutoscalingResponsePtrOutput) Elem() HorizontalPodAutoscalingResponseOutput {
-	return o.ApplyT(func(v *HorizontalPodAutoscalingResponse) HorizontalPodAutoscalingResponse { return *v }).(HorizontalPodAutoscalingResponseOutput)
+	return o.ApplyT(func(v *HorizontalPodAutoscalingResponse) HorizontalPodAutoscalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HorizontalPodAutoscalingResponse
+		return ret
+	}).(HorizontalPodAutoscalingResponseOutput)
 }
 
 // Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
@@ -6844,7 +7072,7 @@ func (o HttpLoadBalancingOutput) ToHttpLoadBalancingPtrOutput() HttpLoadBalancin
 }
 
 func (o HttpLoadBalancingOutput) ToHttpLoadBalancingPtrOutputWithContext(ctx context.Context) HttpLoadBalancingPtrOutput {
-	return o.ApplyT(func(v HttpLoadBalancing) *HttpLoadBalancing {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpLoadBalancing) *HttpLoadBalancing {
 		return &v
 	}).(HttpLoadBalancingPtrOutput)
 }
@@ -6869,7 +7097,13 @@ func (o HttpLoadBalancingPtrOutput) ToHttpLoadBalancingPtrOutputWithContext(ctx 
 }
 
 func (o HttpLoadBalancingPtrOutput) Elem() HttpLoadBalancingOutput {
-	return o.ApplyT(func(v *HttpLoadBalancing) HttpLoadBalancing { return *v }).(HttpLoadBalancingOutput)
+	return o.ApplyT(func(v *HttpLoadBalancing) HttpLoadBalancing {
+		if v != nil {
+			return *v
+		}
+		var ret HttpLoadBalancing
+		return ret
+	}).(HttpLoadBalancingOutput)
 }
 
 // Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
@@ -6978,7 +7212,7 @@ func (o HttpLoadBalancingResponseOutput) ToHttpLoadBalancingResponsePtrOutput() 
 }
 
 func (o HttpLoadBalancingResponseOutput) ToHttpLoadBalancingResponsePtrOutputWithContext(ctx context.Context) HttpLoadBalancingResponsePtrOutput {
-	return o.ApplyT(func(v HttpLoadBalancingResponse) *HttpLoadBalancingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpLoadBalancingResponse) *HttpLoadBalancingResponse {
 		return &v
 	}).(HttpLoadBalancingResponsePtrOutput)
 }
@@ -7003,7 +7237,13 @@ func (o HttpLoadBalancingResponsePtrOutput) ToHttpLoadBalancingResponsePtrOutput
 }
 
 func (o HttpLoadBalancingResponsePtrOutput) Elem() HttpLoadBalancingResponseOutput {
-	return o.ApplyT(func(v *HttpLoadBalancingResponse) HttpLoadBalancingResponse { return *v }).(HttpLoadBalancingResponseOutput)
+	return o.ApplyT(func(v *HttpLoadBalancingResponse) HttpLoadBalancingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpLoadBalancingResponse
+		return ret
+	}).(HttpLoadBalancingResponseOutput)
 }
 
 // Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
@@ -7112,7 +7352,7 @@ func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutput() ILBSubsettin
 }
 
 func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
-	return o.ApplyT(func(v ILBSubsettingConfig) *ILBSubsettingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ILBSubsettingConfig) *ILBSubsettingConfig {
 		return &v
 	}).(ILBSubsettingConfigPtrOutput)
 }
@@ -7137,7 +7377,13 @@ func (o ILBSubsettingConfigPtrOutput) ToILBSubsettingConfigPtrOutputWithContext(
 }
 
 func (o ILBSubsettingConfigPtrOutput) Elem() ILBSubsettingConfigOutput {
-	return o.ApplyT(func(v *ILBSubsettingConfig) ILBSubsettingConfig { return *v }).(ILBSubsettingConfigOutput)
+	return o.ApplyT(func(v *ILBSubsettingConfig) ILBSubsettingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ILBSubsettingConfig
+		return ret
+	}).(ILBSubsettingConfigOutput)
 }
 
 // Enables l4 ILB subsetting for this cluster.
@@ -7282,7 +7528,7 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutput() IPAllocationPo
 }
 
 func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx context.Context) IPAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicy) *IPAllocationPolicy {
 		return &v
 	}).(IPAllocationPolicyPtrOutput)
 }
@@ -7352,7 +7598,13 @@ func (o IPAllocationPolicyPtrOutput) ToIPAllocationPolicyPtrOutputWithContext(ct
 }
 
 func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
-	return o.ApplyT(func(v *IPAllocationPolicy) IPAllocationPolicy { return *v }).(IPAllocationPolicyOutput)
+	return o.ApplyT(func(v *IPAllocationPolicy) IPAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicy
+		return ret
+	}).(IPAllocationPolicyOutput)
 }
 
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -7587,7 +7839,7 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutput(
 }
 
 func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return o.ApplyT(func(v IPAllocationPolicyResponse) *IPAllocationPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicyResponse) *IPAllocationPolicyResponse {
 		return &v
 	}).(IPAllocationPolicyResponsePtrOutput)
 }
@@ -7657,7 +7909,13 @@ func (o IPAllocationPolicyResponsePtrOutput) ToIPAllocationPolicyResponsePtrOutp
 }
 
 func (o IPAllocationPolicyResponsePtrOutput) Elem() IPAllocationPolicyResponseOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) IPAllocationPolicyResponse { return *v }).(IPAllocationPolicyResponseOutput)
+	return o.ApplyT(func(v *IPAllocationPolicyResponse) IPAllocationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicyResponse
+		return ret
+	}).(IPAllocationPolicyResponseOutput)
 }
 
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -7856,7 +8114,7 @@ func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigPtrOutput() 
 }
 
 func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigPtrOutput {
-	return o.ApplyT(func(v IntraNodeVisibilityConfig) *IntraNodeVisibilityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntraNodeVisibilityConfig) *IntraNodeVisibilityConfig {
 		return &v
 	}).(IntraNodeVisibilityConfigPtrOutput)
 }
@@ -7881,7 +8139,13 @@ func (o IntraNodeVisibilityConfigPtrOutput) ToIntraNodeVisibilityConfigPtrOutput
 }
 
 func (o IntraNodeVisibilityConfigPtrOutput) Elem() IntraNodeVisibilityConfigOutput {
-	return o.ApplyT(func(v *IntraNodeVisibilityConfig) IntraNodeVisibilityConfig { return *v }).(IntraNodeVisibilityConfigOutput)
+	return o.ApplyT(func(v *IntraNodeVisibilityConfig) IntraNodeVisibilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IntraNodeVisibilityConfig
+		return ret
+	}).(IntraNodeVisibilityConfigOutput)
 }
 
 // Enables intra node visibility for this cluster.
@@ -7990,7 +8254,7 @@ func (o KubernetesDashboardOutput) ToKubernetesDashboardPtrOutput() KubernetesDa
 }
 
 func (o KubernetesDashboardOutput) ToKubernetesDashboardPtrOutputWithContext(ctx context.Context) KubernetesDashboardPtrOutput {
-	return o.ApplyT(func(v KubernetesDashboard) *KubernetesDashboard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesDashboard) *KubernetesDashboard {
 		return &v
 	}).(KubernetesDashboardPtrOutput)
 }
@@ -8015,7 +8279,13 @@ func (o KubernetesDashboardPtrOutput) ToKubernetesDashboardPtrOutputWithContext(
 }
 
 func (o KubernetesDashboardPtrOutput) Elem() KubernetesDashboardOutput {
-	return o.ApplyT(func(v *KubernetesDashboard) KubernetesDashboard { return *v }).(KubernetesDashboardOutput)
+	return o.ApplyT(func(v *KubernetesDashboard) KubernetesDashboard {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesDashboard
+		return ret
+	}).(KubernetesDashboardOutput)
 }
 
 // Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -8124,7 +8394,7 @@ func (o KubernetesDashboardResponseOutput) ToKubernetesDashboardResponsePtrOutpu
 }
 
 func (o KubernetesDashboardResponseOutput) ToKubernetesDashboardResponsePtrOutputWithContext(ctx context.Context) KubernetesDashboardResponsePtrOutput {
-	return o.ApplyT(func(v KubernetesDashboardResponse) *KubernetesDashboardResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesDashboardResponse) *KubernetesDashboardResponse {
 		return &v
 	}).(KubernetesDashboardResponsePtrOutput)
 }
@@ -8149,7 +8419,13 @@ func (o KubernetesDashboardResponsePtrOutput) ToKubernetesDashboardResponsePtrOu
 }
 
 func (o KubernetesDashboardResponsePtrOutput) Elem() KubernetesDashboardResponseOutput {
-	return o.ApplyT(func(v *KubernetesDashboardResponse) KubernetesDashboardResponse { return *v }).(KubernetesDashboardResponseOutput)
+	return o.ApplyT(func(v *KubernetesDashboardResponse) KubernetesDashboardResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesDashboardResponse
+		return ret
+	}).(KubernetesDashboardResponseOutput)
 }
 
 // Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -8258,7 +8534,7 @@ func (o LegacyAbacOutput) ToLegacyAbacPtrOutput() LegacyAbacPtrOutput {
 }
 
 func (o LegacyAbacOutput) ToLegacyAbacPtrOutputWithContext(ctx context.Context) LegacyAbacPtrOutput {
-	return o.ApplyT(func(v LegacyAbac) *LegacyAbac {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LegacyAbac) *LegacyAbac {
 		return &v
 	}).(LegacyAbacPtrOutput)
 }
@@ -8283,7 +8559,13 @@ func (o LegacyAbacPtrOutput) ToLegacyAbacPtrOutputWithContext(ctx context.Contex
 }
 
 func (o LegacyAbacPtrOutput) Elem() LegacyAbacOutput {
-	return o.ApplyT(func(v *LegacyAbac) LegacyAbac { return *v }).(LegacyAbacOutput)
+	return o.ApplyT(func(v *LegacyAbac) LegacyAbac {
+		if v != nil {
+			return *v
+		}
+		var ret LegacyAbac
+		return ret
+	}).(LegacyAbacOutput)
 }
 
 // Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -8392,7 +8674,7 @@ func (o LegacyAbacResponseOutput) ToLegacyAbacResponsePtrOutput() LegacyAbacResp
 }
 
 func (o LegacyAbacResponseOutput) ToLegacyAbacResponsePtrOutputWithContext(ctx context.Context) LegacyAbacResponsePtrOutput {
-	return o.ApplyT(func(v LegacyAbacResponse) *LegacyAbacResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LegacyAbacResponse) *LegacyAbacResponse {
 		return &v
 	}).(LegacyAbacResponsePtrOutput)
 }
@@ -8417,7 +8699,13 @@ func (o LegacyAbacResponsePtrOutput) ToLegacyAbacResponsePtrOutputWithContext(ct
 }
 
 func (o LegacyAbacResponsePtrOutput) Elem() LegacyAbacResponseOutput {
-	return o.ApplyT(func(v *LegacyAbacResponse) LegacyAbacResponse { return *v }).(LegacyAbacResponseOutput)
+	return o.ApplyT(func(v *LegacyAbacResponse) LegacyAbacResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LegacyAbacResponse
+		return ret
+	}).(LegacyAbacResponseOutput)
 }
 
 // Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -8526,7 +8814,7 @@ func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOu
 }
 
 func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx context.Context) LinuxNodeConfigPtrOutput {
-	return o.ApplyT(func(v LinuxNodeConfig) *LinuxNodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxNodeConfig) *LinuxNodeConfig {
 		return &v
 	}).(LinuxNodeConfigPtrOutput)
 }
@@ -8551,7 +8839,13 @@ func (o LinuxNodeConfigPtrOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx cont
 }
 
 func (o LinuxNodeConfigPtrOutput) Elem() LinuxNodeConfigOutput {
-	return o.ApplyT(func(v *LinuxNodeConfig) LinuxNodeConfig { return *v }).(LinuxNodeConfigOutput)
+	return o.ApplyT(func(v *LinuxNodeConfig) LinuxNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxNodeConfig
+		return ret
+	}).(LinuxNodeConfigOutput)
 }
 
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
@@ -8660,7 +8954,7 @@ func (o LinuxNodeConfigResponseOutput) ToLinuxNodeConfigResponsePtrOutput() Linu
 }
 
 func (o LinuxNodeConfigResponseOutput) ToLinuxNodeConfigResponsePtrOutputWithContext(ctx context.Context) LinuxNodeConfigResponsePtrOutput {
-	return o.ApplyT(func(v LinuxNodeConfigResponse) *LinuxNodeConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxNodeConfigResponse) *LinuxNodeConfigResponse {
 		return &v
 	}).(LinuxNodeConfigResponsePtrOutput)
 }
@@ -8685,7 +8979,13 @@ func (o LinuxNodeConfigResponsePtrOutput) ToLinuxNodeConfigResponsePtrOutputWith
 }
 
 func (o LinuxNodeConfigResponsePtrOutput) Elem() LinuxNodeConfigResponseOutput {
-	return o.ApplyT(func(v *LinuxNodeConfigResponse) LinuxNodeConfigResponse { return *v }).(LinuxNodeConfigResponseOutput)
+	return o.ApplyT(func(v *LinuxNodeConfigResponse) LinuxNodeConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxNodeConfigResponse
+		return ret
+	}).(LinuxNodeConfigResponseOutput)
 }
 
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
@@ -8794,7 +9094,7 @@ func (o LoggingComponentConfigOutput) ToLoggingComponentConfigPtrOutput() Loggin
 }
 
 func (o LoggingComponentConfigOutput) ToLoggingComponentConfigPtrOutputWithContext(ctx context.Context) LoggingComponentConfigPtrOutput {
-	return o.ApplyT(func(v LoggingComponentConfig) *LoggingComponentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingComponentConfig) *LoggingComponentConfig {
 		return &v
 	}).(LoggingComponentConfigPtrOutput)
 }
@@ -8819,7 +9119,13 @@ func (o LoggingComponentConfigPtrOutput) ToLoggingComponentConfigPtrOutputWithCo
 }
 
 func (o LoggingComponentConfigPtrOutput) Elem() LoggingComponentConfigOutput {
-	return o.ApplyT(func(v *LoggingComponentConfig) LoggingComponentConfig { return *v }).(LoggingComponentConfigOutput)
+	return o.ApplyT(func(v *LoggingComponentConfig) LoggingComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingComponentConfig
+		return ret
+	}).(LoggingComponentConfigOutput)
 }
 
 // Select components to collect logs. An empty set would disable all logging.
@@ -8928,7 +9234,7 @@ func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponsePt
 }
 
 func (o LoggingComponentConfigResponseOutput) ToLoggingComponentConfigResponsePtrOutputWithContext(ctx context.Context) LoggingComponentConfigResponsePtrOutput {
-	return o.ApplyT(func(v LoggingComponentConfigResponse) *LoggingComponentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingComponentConfigResponse) *LoggingComponentConfigResponse {
 		return &v
 	}).(LoggingComponentConfigResponsePtrOutput)
 }
@@ -8953,7 +9259,13 @@ func (o LoggingComponentConfigResponsePtrOutput) ToLoggingComponentConfigRespons
 }
 
 func (o LoggingComponentConfigResponsePtrOutput) Elem() LoggingComponentConfigResponseOutput {
-	return o.ApplyT(func(v *LoggingComponentConfigResponse) LoggingComponentConfigResponse { return *v }).(LoggingComponentConfigResponseOutput)
+	return o.ApplyT(func(v *LoggingComponentConfigResponse) LoggingComponentConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingComponentConfigResponse
+		return ret
+	}).(LoggingComponentConfigResponseOutput)
 }
 
 // Select components to collect logs. An empty set would disable all logging.
@@ -9062,7 +9374,7 @@ func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
 }
 
 func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *LoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
 		return &v
 	}).(LoggingConfigPtrOutput)
 }
@@ -9087,7 +9399,13 @@ func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.
 }
 
 func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
-	return o.ApplyT(func(v *LoggingConfig) LoggingConfig { return *v }).(LoggingConfigOutput)
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfig
+		return ret
+	}).(LoggingConfigOutput)
 }
 
 // Logging components configuration
@@ -9196,7 +9514,7 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingC
 }
 
 func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfigResponse) *LoggingConfigResponse {
 		return &v
 	}).(LoggingConfigResponsePtrOutput)
 }
@@ -9221,7 +9539,13 @@ func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithCont
 }
 
 func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigResponse
+		return ret
+	}).(LoggingConfigResponseOutput)
 }
 
 // Logging components configuration
@@ -9334,7 +9658,7 @@ func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutput() MaintenancePolic
 }
 
 func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
-	return o.ApplyT(func(v MaintenancePolicy) *MaintenancePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenancePolicy) *MaintenancePolicy {
 		return &v
 	}).(MaintenancePolicyPtrOutput)
 }
@@ -9364,7 +9688,13 @@ func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutputWithContext(ctx 
 }
 
 func (o MaintenancePolicyPtrOutput) Elem() MaintenancePolicyOutput {
-	return o.ApplyT(func(v *MaintenancePolicy) MaintenancePolicy { return *v }).(MaintenancePolicyOutput)
+	return o.ApplyT(func(v *MaintenancePolicy) MaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenancePolicy
+		return ret
+	}).(MaintenancePolicyOutput)
 }
 
 // A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version and include it with requests to set the policy.
@@ -9487,7 +9817,7 @@ func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutput() 
 }
 
 func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
-	return o.ApplyT(func(v MaintenancePolicyResponse) *MaintenancePolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenancePolicyResponse) *MaintenancePolicyResponse {
 		return &v
 	}).(MaintenancePolicyResponsePtrOutput)
 }
@@ -9517,7 +9847,13 @@ func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutput
 }
 
 func (o MaintenancePolicyResponsePtrOutput) Elem() MaintenancePolicyResponseOutput {
-	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse { return *v }).(MaintenancePolicyResponseOutput)
+	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenancePolicyResponse
+		return ret
+	}).(MaintenancePolicyResponseOutput)
 }
 
 // A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version and include it with requests to set the policy.
@@ -9644,7 +9980,7 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindo
 }
 
 func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
 }
@@ -9679,7 +10015,13 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx 
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow { return *v }).(MaintenanceWindowOutput)
+	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindow
+		return ret
+	}).(MaintenanceWindowOutput)
 }
 
 // DailyMaintenanceWindow specifies a daily maintenance operation window.
@@ -9816,7 +10158,7 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() 
 }
 
 func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) *MaintenanceWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
 		return &v
 	}).(MaintenanceWindowResponsePtrOutput)
 }
@@ -9851,7 +10193,13 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse { return *v }).(MaintenanceWindowResponseOutput)
+	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowResponse
+		return ret
+	}).(MaintenanceWindowResponseOutput)
 }
 
 // DailyMaintenanceWindow specifies a daily maintenance operation window.
@@ -9988,7 +10336,7 @@ func (o MasterAuthOutput) ToMasterAuthPtrOutput() MasterAuthPtrOutput {
 }
 
 func (o MasterAuthOutput) ToMasterAuthPtrOutputWithContext(ctx context.Context) MasterAuthPtrOutput {
-	return o.ApplyT(func(v MasterAuth) *MasterAuth {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuth) *MasterAuth {
 		return &v
 	}).(MasterAuthPtrOutput)
 }
@@ -10023,7 +10371,13 @@ func (o MasterAuthPtrOutput) ToMasterAuthPtrOutputWithContext(ctx context.Contex
 }
 
 func (o MasterAuthPtrOutput) Elem() MasterAuthOutput {
-	return o.ApplyT(func(v *MasterAuth) MasterAuth { return *v }).(MasterAuthOutput)
+	return o.ApplyT(func(v *MasterAuth) MasterAuth {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuth
+		return ret
+	}).(MasterAuthOutput)
 }
 
 // Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
@@ -10172,7 +10526,7 @@ func (o MasterAuthResponseOutput) ToMasterAuthResponsePtrOutput() MasterAuthResp
 }
 
 func (o MasterAuthResponseOutput) ToMasterAuthResponsePtrOutputWithContext(ctx context.Context) MasterAuthResponsePtrOutput {
-	return o.ApplyT(func(v MasterAuthResponse) *MasterAuthResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuthResponse) *MasterAuthResponse {
 		return &v
 	}).(MasterAuthResponsePtrOutput)
 }
@@ -10222,7 +10576,13 @@ func (o MasterAuthResponsePtrOutput) ToMasterAuthResponsePtrOutputWithContext(ct
 }
 
 func (o MasterAuthResponsePtrOutput) Elem() MasterAuthResponseOutput {
-	return o.ApplyT(func(v *MasterAuthResponse) MasterAuthResponse { return *v }).(MasterAuthResponseOutput)
+	return o.ApplyT(func(v *MasterAuthResponse) MasterAuthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuthResponse
+		return ret
+	}).(MasterAuthResponseOutput)
 }
 
 // [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
@@ -10385,7 +10745,7 @@ func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPt
 }
 
 func (o MasterAuthorizedNetworksConfigOutput) ToMasterAuthorizedNetworksConfigPtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigPtrOutput {
-	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *MasterAuthorizedNetworksConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuthorizedNetworksConfig) *MasterAuthorizedNetworksConfig {
 		return &v
 	}).(MasterAuthorizedNetworksConfigPtrOutput)
 }
@@ -10415,7 +10775,13 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) ToMasterAuthorizedNetworksConfi
 }
 
 func (o MasterAuthorizedNetworksConfigPtrOutput) Elem() MasterAuthorizedNetworksConfigOutput {
-	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) MasterAuthorizedNetworksConfig { return *v }).(MasterAuthorizedNetworksConfigOutput)
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) MasterAuthorizedNetworksConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuthorizedNetworksConfig
+		return ret
+	}).(MasterAuthorizedNetworksConfigOutput)
 }
 
 // cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
@@ -10538,7 +10904,7 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworks
 }
 
 func (o MasterAuthorizedNetworksConfigResponseOutput) ToMasterAuthorizedNetworksConfigResponsePtrOutputWithContext(ctx context.Context) MasterAuthorizedNetworksConfigResponsePtrOutput {
-	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) *MasterAuthorizedNetworksConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterAuthorizedNetworksConfigResponse) *MasterAuthorizedNetworksConfigResponse {
 		return &v
 	}).(MasterAuthorizedNetworksConfigResponsePtrOutput)
 }
@@ -10568,7 +10934,13 @@ func (o MasterAuthorizedNetworksConfigResponsePtrOutput) ToMasterAuthorizedNetwo
 }
 
 func (o MasterAuthorizedNetworksConfigResponsePtrOutput) Elem() MasterAuthorizedNetworksConfigResponseOutput {
-	return o.ApplyT(func(v *MasterAuthorizedNetworksConfigResponse) MasterAuthorizedNetworksConfigResponse { return *v }).(MasterAuthorizedNetworksConfigResponseOutput)
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfigResponse) MasterAuthorizedNetworksConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MasterAuthorizedNetworksConfigResponse
+		return ret
+	}).(MasterAuthorizedNetworksConfigResponseOutput)
 }
 
 // cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
@@ -10687,7 +11059,7 @@ func (o MaxPodsConstraintOutput) ToMaxPodsConstraintPtrOutput() MaxPodsConstrain
 }
 
 func (o MaxPodsConstraintOutput) ToMaxPodsConstraintPtrOutputWithContext(ctx context.Context) MaxPodsConstraintPtrOutput {
-	return o.ApplyT(func(v MaxPodsConstraint) *MaxPodsConstraint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaxPodsConstraint) *MaxPodsConstraint {
 		return &v
 	}).(MaxPodsConstraintPtrOutput)
 }
@@ -10712,7 +11084,13 @@ func (o MaxPodsConstraintPtrOutput) ToMaxPodsConstraintPtrOutputWithContext(ctx 
 }
 
 func (o MaxPodsConstraintPtrOutput) Elem() MaxPodsConstraintOutput {
-	return o.ApplyT(func(v *MaxPodsConstraint) MaxPodsConstraint { return *v }).(MaxPodsConstraintOutput)
+	return o.ApplyT(func(v *MaxPodsConstraint) MaxPodsConstraint {
+		if v != nil {
+			return *v
+		}
+		var ret MaxPodsConstraint
+		return ret
+	}).(MaxPodsConstraintOutput)
 }
 
 // Constraint enforced on the max num of pods per node.
@@ -10821,7 +11199,7 @@ func (o MaxPodsConstraintResponseOutput) ToMaxPodsConstraintResponsePtrOutput() 
 }
 
 func (o MaxPodsConstraintResponseOutput) ToMaxPodsConstraintResponsePtrOutputWithContext(ctx context.Context) MaxPodsConstraintResponsePtrOutput {
-	return o.ApplyT(func(v MaxPodsConstraintResponse) *MaxPodsConstraintResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaxPodsConstraintResponse) *MaxPodsConstraintResponse {
 		return &v
 	}).(MaxPodsConstraintResponsePtrOutput)
 }
@@ -10846,7 +11224,13 @@ func (o MaxPodsConstraintResponsePtrOutput) ToMaxPodsConstraintResponsePtrOutput
 }
 
 func (o MaxPodsConstraintResponsePtrOutput) Elem() MaxPodsConstraintResponseOutput {
-	return o.ApplyT(func(v *MaxPodsConstraintResponse) MaxPodsConstraintResponse { return *v }).(MaxPodsConstraintResponseOutput)
+	return o.ApplyT(func(v *MaxPodsConstraintResponse) MaxPodsConstraintResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaxPodsConstraintResponse
+		return ret
+	}).(MaxPodsConstraintResponseOutput)
 }
 
 // Constraint enforced on the max num of pods per node.
@@ -10955,7 +11339,7 @@ func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigPtrOutput() 
 }
 
 func (o MonitoringComponentConfigOutput) ToMonitoringComponentConfigPtrOutputWithContext(ctx context.Context) MonitoringComponentConfigPtrOutput {
-	return o.ApplyT(func(v MonitoringComponentConfig) *MonitoringComponentConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringComponentConfig) *MonitoringComponentConfig {
 		return &v
 	}).(MonitoringComponentConfigPtrOutput)
 }
@@ -10982,7 +11366,13 @@ func (o MonitoringComponentConfigPtrOutput) ToMonitoringComponentConfigPtrOutput
 }
 
 func (o MonitoringComponentConfigPtrOutput) Elem() MonitoringComponentConfigOutput {
-	return o.ApplyT(func(v *MonitoringComponentConfig) MonitoringComponentConfig { return *v }).(MonitoringComponentConfigOutput)
+	return o.ApplyT(func(v *MonitoringComponentConfig) MonitoringComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringComponentConfig
+		return ret
+	}).(MonitoringComponentConfigOutput)
 }
 
 // Select components to collect metrics. An empty set would disable all monitoring.
@@ -11091,7 +11481,7 @@ func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResp
 }
 
 func (o MonitoringComponentConfigResponseOutput) ToMonitoringComponentConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringComponentConfigResponsePtrOutput {
-	return o.ApplyT(func(v MonitoringComponentConfigResponse) *MonitoringComponentConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringComponentConfigResponse) *MonitoringComponentConfigResponse {
 		return &v
 	}).(MonitoringComponentConfigResponsePtrOutput)
 }
@@ -11116,7 +11506,13 @@ func (o MonitoringComponentConfigResponsePtrOutput) ToMonitoringComponentConfigR
 }
 
 func (o MonitoringComponentConfigResponsePtrOutput) Elem() MonitoringComponentConfigResponseOutput {
-	return o.ApplyT(func(v *MonitoringComponentConfigResponse) MonitoringComponentConfigResponse { return *v }).(MonitoringComponentConfigResponseOutput)
+	return o.ApplyT(func(v *MonitoringComponentConfigResponse) MonitoringComponentConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringComponentConfigResponse
+		return ret
+	}).(MonitoringComponentConfigResponseOutput)
 }
 
 // Select components to collect metrics. An empty set would disable all monitoring.
@@ -11225,7 +11621,7 @@ func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutput() MonitoringConfigPt
 }
 
 func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
-	return o.ApplyT(func(v MonitoringConfig) *MonitoringConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringConfig) *MonitoringConfig {
 		return &v
 	}).(MonitoringConfigPtrOutput)
 }
@@ -11250,7 +11646,13 @@ func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutputWithContext(ctx co
 }
 
 func (o MonitoringConfigPtrOutput) Elem() MonitoringConfigOutput {
-	return o.ApplyT(func(v *MonitoringConfig) MonitoringConfig { return *v }).(MonitoringConfigOutput)
+	return o.ApplyT(func(v *MonitoringConfig) MonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringConfig
+		return ret
+	}).(MonitoringConfigOutput)
 }
 
 // Monitoring components configuration
@@ -11359,7 +11761,7 @@ func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponsePtrOutput() Mo
 }
 
 func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponsePtrOutputWithContext(ctx context.Context) MonitoringConfigResponsePtrOutput {
-	return o.ApplyT(func(v MonitoringConfigResponse) *MonitoringConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringConfigResponse) *MonitoringConfigResponse {
 		return &v
 	}).(MonitoringConfigResponsePtrOutput)
 }
@@ -11384,7 +11786,13 @@ func (o MonitoringConfigResponsePtrOutput) ToMonitoringConfigResponsePtrOutputWi
 }
 
 func (o MonitoringConfigResponsePtrOutput) Elem() MonitoringConfigResponseOutput {
-	return o.ApplyT(func(v *MonitoringConfigResponse) MonitoringConfigResponse { return *v }).(MonitoringConfigResponseOutput)
+	return o.ApplyT(func(v *MonitoringConfigResponse) MonitoringConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringConfigResponse
+		return ret
+	}).(MonitoringConfigResponseOutput)
 }
 
 // Monitoring components configuration
@@ -11509,7 +11917,7 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutput() NetworkConfigPtrOutput {
 }
 
 func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Context) NetworkConfigPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *NetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfig) *NetworkConfig {
 		return &v
 	}).(NetworkConfigPtrOutput)
 }
@@ -11554,7 +11962,13 @@ func (o NetworkConfigPtrOutput) ToNetworkConfigPtrOutputWithContext(ctx context.
 }
 
 func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
-	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
+	return o.ApplyT(func(v *NetworkConfig) NetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfig
+		return ret
+	}).(NetworkConfigOutput)
 }
 
 // The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -11727,7 +12141,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkC
 }
 
 func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v NetworkConfigResponse) *NetworkConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
 		return &v
 	}).(NetworkConfigResponsePtrOutput)
 }
@@ -11782,7 +12196,13 @@ func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithCont
 }
 
 func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
+	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigResponse
+		return ret
+	}).(NetworkConfigResponseOutput)
 }
 
 // The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -11955,7 +12375,7 @@ func (o NetworkPolicyOutput) ToNetworkPolicyPtrOutput() NetworkPolicyPtrOutput {
 }
 
 func (o NetworkPolicyOutput) ToNetworkPolicyPtrOutputWithContext(ctx context.Context) NetworkPolicyPtrOutput {
-	return o.ApplyT(func(v NetworkPolicy) *NetworkPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicy) *NetworkPolicy {
 		return &v
 	}).(NetworkPolicyPtrOutput)
 }
@@ -11985,7 +12405,13 @@ func (o NetworkPolicyPtrOutput) ToNetworkPolicyPtrOutputWithContext(ctx context.
 }
 
 func (o NetworkPolicyPtrOutput) Elem() NetworkPolicyOutput {
-	return o.ApplyT(func(v *NetworkPolicy) NetworkPolicy { return *v }).(NetworkPolicyOutput)
+	return o.ApplyT(func(v *NetworkPolicy) NetworkPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicy
+		return ret
+	}).(NetworkPolicyOutput)
 }
 
 // Whether network policy is enabled on the cluster.
@@ -12104,7 +12530,7 @@ func (o NetworkPolicyConfigOutput) ToNetworkPolicyConfigPtrOutput() NetworkPolic
 }
 
 func (o NetworkPolicyConfigOutput) ToNetworkPolicyConfigPtrOutputWithContext(ctx context.Context) NetworkPolicyConfigPtrOutput {
-	return o.ApplyT(func(v NetworkPolicyConfig) *NetworkPolicyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicyConfig) *NetworkPolicyConfig {
 		return &v
 	}).(NetworkPolicyConfigPtrOutput)
 }
@@ -12129,7 +12555,13 @@ func (o NetworkPolicyConfigPtrOutput) ToNetworkPolicyConfigPtrOutputWithContext(
 }
 
 func (o NetworkPolicyConfigPtrOutput) Elem() NetworkPolicyConfigOutput {
-	return o.ApplyT(func(v *NetworkPolicyConfig) NetworkPolicyConfig { return *v }).(NetworkPolicyConfigOutput)
+	return o.ApplyT(func(v *NetworkPolicyConfig) NetworkPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicyConfig
+		return ret
+	}).(NetworkPolicyConfigOutput)
 }
 
 // Whether NetworkPolicy is enabled for this cluster.
@@ -12238,7 +12670,7 @@ func (o NetworkPolicyConfigResponseOutput) ToNetworkPolicyConfigResponsePtrOutpu
 }
 
 func (o NetworkPolicyConfigResponseOutput) ToNetworkPolicyConfigResponsePtrOutputWithContext(ctx context.Context) NetworkPolicyConfigResponsePtrOutput {
-	return o.ApplyT(func(v NetworkPolicyConfigResponse) *NetworkPolicyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicyConfigResponse) *NetworkPolicyConfigResponse {
 		return &v
 	}).(NetworkPolicyConfigResponsePtrOutput)
 }
@@ -12263,7 +12695,13 @@ func (o NetworkPolicyConfigResponsePtrOutput) ToNetworkPolicyConfigResponsePtrOu
 }
 
 func (o NetworkPolicyConfigResponsePtrOutput) Elem() NetworkPolicyConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkPolicyConfigResponse) NetworkPolicyConfigResponse { return *v }).(NetworkPolicyConfigResponseOutput)
+	return o.ApplyT(func(v *NetworkPolicyConfigResponse) NetworkPolicyConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicyConfigResponse
+		return ret
+	}).(NetworkPolicyConfigResponseOutput)
 }
 
 // Whether NetworkPolicy is enabled for this cluster.
@@ -12376,7 +12814,7 @@ func (o NetworkPolicyResponseOutput) ToNetworkPolicyResponsePtrOutput() NetworkP
 }
 
 func (o NetworkPolicyResponseOutput) ToNetworkPolicyResponsePtrOutputWithContext(ctx context.Context) NetworkPolicyResponsePtrOutput {
-	return o.ApplyT(func(v NetworkPolicyResponse) *NetworkPolicyResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicyResponse) *NetworkPolicyResponse {
 		return &v
 	}).(NetworkPolicyResponsePtrOutput)
 }
@@ -12406,7 +12844,13 @@ func (o NetworkPolicyResponsePtrOutput) ToNetworkPolicyResponsePtrOutputWithCont
 }
 
 func (o NetworkPolicyResponsePtrOutput) Elem() NetworkPolicyResponseOutput {
-	return o.ApplyT(func(v *NetworkPolicyResponse) NetworkPolicyResponse { return *v }).(NetworkPolicyResponseOutput)
+	return o.ApplyT(func(v *NetworkPolicyResponse) NetworkPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicyResponse
+		return ret
+	}).(NetworkPolicyResponseOutput)
 }
 
 // Whether network policy is enabled on the cluster.
@@ -12613,7 +13057,7 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
 }
 
 func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
-	return o.ApplyT(func(v NodeConfig) *NodeConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
 		return &v
 	}).(NodeConfigPtrOutput)
 }
@@ -12748,7 +13192,13 @@ func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
-	return o.ApplyT(func(v *NodeConfig) NodeConfig { return *v }).(NodeConfigOutput)
+	return o.ApplyT(func(v *NodeConfig) NodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfig
+		return ret
+	}).(NodeConfigOutput)
 }
 
 // A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -13165,7 +13615,7 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutput() NodeConfigResp
 }
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o.ApplyT(func(v NodeConfigResponse) *NodeConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigResponse) *NodeConfigResponse {
 		return &v
 	}).(NodeConfigResponsePtrOutput)
 }
@@ -13300,7 +13750,13 @@ func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutputWithContext(ct
 }
 
 func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse { return *v }).(NodeConfigResponseOutput)
+	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfigResponse
+		return ret
+	}).(NodeConfigResponseOutput)
 }
 
 // A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -13637,7 +14093,7 @@ func (o NodeKubeletConfigOutput) ToNodeKubeletConfigPtrOutput() NodeKubeletConfi
 }
 
 func (o NodeKubeletConfigOutput) ToNodeKubeletConfigPtrOutputWithContext(ctx context.Context) NodeKubeletConfigPtrOutput {
-	return o.ApplyT(func(v NodeKubeletConfig) *NodeKubeletConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeKubeletConfig) *NodeKubeletConfig {
 		return &v
 	}).(NodeKubeletConfigPtrOutput)
 }
@@ -13672,7 +14128,13 @@ func (o NodeKubeletConfigPtrOutput) ToNodeKubeletConfigPtrOutputWithContext(ctx 
 }
 
 func (o NodeKubeletConfigPtrOutput) Elem() NodeKubeletConfigOutput {
-	return o.ApplyT(func(v *NodeKubeletConfig) NodeKubeletConfig { return *v }).(NodeKubeletConfigOutput)
+	return o.ApplyT(func(v *NodeKubeletConfig) NodeKubeletConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeKubeletConfig
+		return ret
+	}).(NodeKubeletConfigOutput)
 }
 
 // Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
@@ -13809,7 +14271,7 @@ func (o NodeKubeletConfigResponseOutput) ToNodeKubeletConfigResponsePtrOutput() 
 }
 
 func (o NodeKubeletConfigResponseOutput) ToNodeKubeletConfigResponsePtrOutputWithContext(ctx context.Context) NodeKubeletConfigResponsePtrOutput {
-	return o.ApplyT(func(v NodeKubeletConfigResponse) *NodeKubeletConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeKubeletConfigResponse) *NodeKubeletConfigResponse {
 		return &v
 	}).(NodeKubeletConfigResponsePtrOutput)
 }
@@ -13844,7 +14306,13 @@ func (o NodeKubeletConfigResponsePtrOutput) ToNodeKubeletConfigResponsePtrOutput
 }
 
 func (o NodeKubeletConfigResponsePtrOutput) Elem() NodeKubeletConfigResponseOutput {
-	return o.ApplyT(func(v *NodeKubeletConfigResponse) NodeKubeletConfigResponse { return *v }).(NodeKubeletConfigResponseOutput)
+	return o.ApplyT(func(v *NodeKubeletConfigResponse) NodeKubeletConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeKubeletConfigResponse
+		return ret
+	}).(NodeKubeletConfigResponseOutput)
 }
 
 // Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
@@ -13981,7 +14449,7 @@ func (o NodeManagementOutput) ToNodeManagementPtrOutput() NodeManagementPtrOutpu
 }
 
 func (o NodeManagementOutput) ToNodeManagementPtrOutputWithContext(ctx context.Context) NodeManagementPtrOutput {
-	return o.ApplyT(func(v NodeManagement) *NodeManagement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeManagement) *NodeManagement {
 		return &v
 	}).(NodeManagementPtrOutput)
 }
@@ -14016,7 +14484,13 @@ func (o NodeManagementPtrOutput) ToNodeManagementPtrOutputWithContext(ctx contex
 }
 
 func (o NodeManagementPtrOutput) Elem() NodeManagementOutput {
-	return o.ApplyT(func(v *NodeManagement) NodeManagement { return *v }).(NodeManagementOutput)
+	return o.ApplyT(func(v *NodeManagement) NodeManagement {
+		if v != nil {
+			return *v
+		}
+		var ret NodeManagement
+		return ret
+	}).(NodeManagementOutput)
 }
 
 // A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
@@ -14153,7 +14627,7 @@ func (o NodeManagementResponseOutput) ToNodeManagementResponsePtrOutput() NodeMa
 }
 
 func (o NodeManagementResponseOutput) ToNodeManagementResponsePtrOutputWithContext(ctx context.Context) NodeManagementResponsePtrOutput {
-	return o.ApplyT(func(v NodeManagementResponse) *NodeManagementResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeManagementResponse) *NodeManagementResponse {
 		return &v
 	}).(NodeManagementResponsePtrOutput)
 }
@@ -14188,7 +14662,13 @@ func (o NodeManagementResponsePtrOutput) ToNodeManagementResponsePtrOutputWithCo
 }
 
 func (o NodeManagementResponsePtrOutput) Elem() NodeManagementResponseOutput {
-	return o.ApplyT(func(v *NodeManagementResponse) NodeManagementResponse { return *v }).(NodeManagementResponseOutput)
+	return o.ApplyT(func(v *NodeManagementResponse) NodeManagementResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeManagementResponse
+		return ret
+	}).(NodeManagementResponseOutput)
 }
 
 // A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
@@ -14325,7 +14805,7 @@ func (o NodeNetworkConfigOutput) ToNodeNetworkConfigPtrOutput() NodeNetworkConfi
 }
 
 func (o NodeNetworkConfigOutput) ToNodeNetworkConfigPtrOutputWithContext(ctx context.Context) NodeNetworkConfigPtrOutput {
-	return o.ApplyT(func(v NodeNetworkConfig) *NodeNetworkConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeNetworkConfig) *NodeNetworkConfig {
 		return &v
 	}).(NodeNetworkConfigPtrOutput)
 }
@@ -14360,7 +14840,13 @@ func (o NodeNetworkConfigPtrOutput) ToNodeNetworkConfigPtrOutputWithContext(ctx 
 }
 
 func (o NodeNetworkConfigPtrOutput) Elem() NodeNetworkConfigOutput {
-	return o.ApplyT(func(v *NodeNetworkConfig) NodeNetworkConfig { return *v }).(NodeNetworkConfigOutput)
+	return o.ApplyT(func(v *NodeNetworkConfig) NodeNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeNetworkConfig
+		return ret
+	}).(NodeNetworkConfigOutput)
 }
 
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -14497,7 +14983,7 @@ func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponsePtrOutput() 
 }
 
 func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NodeNetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v NodeNetworkConfigResponse) *NodeNetworkConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeNetworkConfigResponse) *NodeNetworkConfigResponse {
 		return &v
 	}).(NodeNetworkConfigResponsePtrOutput)
 }
@@ -14532,7 +15018,13 @@ func (o NodeNetworkConfigResponsePtrOutput) ToNodeNetworkConfigResponsePtrOutput
 }
 
 func (o NodeNetworkConfigResponsePtrOutput) Elem() NodeNetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NodeNetworkConfigResponse) NodeNetworkConfigResponse { return *v }).(NodeNetworkConfigResponseOutput)
+	return o.ApplyT(func(v *NodeNetworkConfigResponse) NodeNetworkConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeNetworkConfigResponse
+		return ret
+	}).(NodeNetworkConfigResponseOutput)
 }
 
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -14863,7 +15355,7 @@ func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutput() NodePoolAuto
 }
 
 func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingPtrOutput {
-	return o.ApplyT(func(v NodePoolAutoscaling) *NodePoolAutoscaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoscaling) *NodePoolAutoscaling {
 		return &v
 	}).(NodePoolAutoscalingPtrOutput)
 }
@@ -14903,7 +15395,13 @@ func (o NodePoolAutoscalingPtrOutput) ToNodePoolAutoscalingPtrOutputWithContext(
 }
 
 func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
-	return o.ApplyT(func(v *NodePoolAutoscaling) NodePoolAutoscaling { return *v }).(NodePoolAutoscalingOutput)
+	return o.ApplyT(func(v *NodePoolAutoscaling) NodePoolAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoscaling
+		return ret
+	}).(NodePoolAutoscalingOutput)
 }
 
 // Can this node pool be deleted automatically.
@@ -15054,7 +15552,7 @@ func (o NodePoolAutoscalingResponseOutput) ToNodePoolAutoscalingResponsePtrOutpu
 }
 
 func (o NodePoolAutoscalingResponseOutput) ToNodePoolAutoscalingResponsePtrOutputWithContext(ctx context.Context) NodePoolAutoscalingResponsePtrOutput {
-	return o.ApplyT(func(v NodePoolAutoscalingResponse) *NodePoolAutoscalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoscalingResponse) *NodePoolAutoscalingResponse {
 		return &v
 	}).(NodePoolAutoscalingResponsePtrOutput)
 }
@@ -15094,7 +15592,13 @@ func (o NodePoolAutoscalingResponsePtrOutput) ToNodePoolAutoscalingResponsePtrOu
 }
 
 func (o NodePoolAutoscalingResponsePtrOutput) Elem() NodePoolAutoscalingResponseOutput {
-	return o.ApplyT(func(v *NodePoolAutoscalingResponse) NodePoolAutoscalingResponse { return *v }).(NodePoolAutoscalingResponseOutput)
+	return o.ApplyT(func(v *NodePoolAutoscalingResponse) NodePoolAutoscalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoscalingResponse
+		return ret
+	}).(NodePoolAutoscalingResponseOutput)
 }
 
 // Can this node pool be deleted automatically.
@@ -15695,7 +16199,7 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutput() NotificationCo
 }
 
 func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
-	return o.ApplyT(func(v NotificationConfig) *NotificationConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfig) *NotificationConfig {
 		return &v
 	}).(NotificationConfigPtrOutput)
 }
@@ -15720,7 +16224,13 @@ func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ct
 }
 
 func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
-	return o.ApplyT(func(v *NotificationConfig) NotificationConfig { return *v }).(NotificationConfigOutput)
+	return o.ApplyT(func(v *NotificationConfig) NotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfig
+		return ret
+	}).(NotificationConfigOutput)
 }
 
 // Notification config for Pub/Sub.
@@ -15829,7 +16339,7 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutput(
 }
 
 func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v NotificationConfigResponse) *NotificationConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigResponse) *NotificationConfigResponse {
 		return &v
 	}).(NotificationConfigResponsePtrOutput)
 }
@@ -15854,7 +16364,13 @@ func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutp
 }
 
 func (o NotificationConfigResponsePtrOutput) Elem() NotificationConfigResponseOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse { return *v }).(NotificationConfigResponseOutput)
+	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationConfigResponse
+		return ret
+	}).(NotificationConfigResponseOutput)
 }
 
 // Notification config for Pub/Sub.
@@ -15975,7 +16491,7 @@ func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutput() PrivateClu
 }
 
 func (o PrivateClusterConfigOutput) ToPrivateClusterConfigPtrOutputWithContext(ctx context.Context) PrivateClusterConfigPtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfig) *PrivateClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterConfig) *PrivateClusterConfig {
 		return &v
 	}).(PrivateClusterConfigPtrOutput)
 }
@@ -16017,7 +16533,13 @@ func (o PrivateClusterConfigPtrOutput) ToPrivateClusterConfigPtrOutputWithContex
 }
 
 func (o PrivateClusterConfigPtrOutput) Elem() PrivateClusterConfigOutput {
-	return o.ApplyT(func(v *PrivateClusterConfig) PrivateClusterConfig { return *v }).(PrivateClusterConfigOutput)
+	return o.ApplyT(func(v *PrivateClusterConfig) PrivateClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterConfig
+		return ret
+	}).(PrivateClusterConfigOutput)
 }
 
 // Whether the master's internal IP address is used as the cluster endpoint.
@@ -16180,7 +16702,7 @@ func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOut
 }
 
 func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v PrivateClusterConfigResponse) *PrivateClusterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterConfigResponse) *PrivateClusterConfigResponse {
 		return &v
 	}).(PrivateClusterConfigResponsePtrOutput)
 }
@@ -16237,7 +16759,13 @@ func (o PrivateClusterConfigResponsePtrOutput) ToPrivateClusterConfigResponsePtr
 }
 
 func (o PrivateClusterConfigResponsePtrOutput) Elem() PrivateClusterConfigResponseOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) PrivateClusterConfigResponse { return *v }).(PrivateClusterConfigResponseOutput)
+	return o.ApplyT(func(v *PrivateClusterConfigResponse) PrivateClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterConfigResponse
+		return ret
+	}).(PrivateClusterConfigResponseOutput)
 }
 
 // Whether the master's internal IP address is used as the cluster endpoint.
@@ -16406,7 +16934,7 @@ func (o PrivateClusterMasterGlobalAccessConfigOutput) ToPrivateClusterMasterGlob
 }
 
 func (o PrivateClusterMasterGlobalAccessConfigOutput) ToPrivateClusterMasterGlobalAccessConfigPtrOutputWithContext(ctx context.Context) PrivateClusterMasterGlobalAccessConfigPtrOutput {
-	return o.ApplyT(func(v PrivateClusterMasterGlobalAccessConfig) *PrivateClusterMasterGlobalAccessConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterMasterGlobalAccessConfig) *PrivateClusterMasterGlobalAccessConfig {
 		return &v
 	}).(PrivateClusterMasterGlobalAccessConfigPtrOutput)
 }
@@ -16431,7 +16959,13 @@ func (o PrivateClusterMasterGlobalAccessConfigPtrOutput) ToPrivateClusterMasterG
 }
 
 func (o PrivateClusterMasterGlobalAccessConfigPtrOutput) Elem() PrivateClusterMasterGlobalAccessConfigOutput {
-	return o.ApplyT(func(v *PrivateClusterMasterGlobalAccessConfig) PrivateClusterMasterGlobalAccessConfig { return *v }).(PrivateClusterMasterGlobalAccessConfigOutput)
+	return o.ApplyT(func(v *PrivateClusterMasterGlobalAccessConfig) PrivateClusterMasterGlobalAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterMasterGlobalAccessConfig
+		return ret
+	}).(PrivateClusterMasterGlobalAccessConfigOutput)
 }
 
 // Whenever master is accessible globally or not.
@@ -16540,7 +17074,7 @@ func (o PrivateClusterMasterGlobalAccessConfigResponseOutput) ToPrivateClusterMa
 }
 
 func (o PrivateClusterMasterGlobalAccessConfigResponseOutput) ToPrivateClusterMasterGlobalAccessConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterMasterGlobalAccessConfigResponsePtrOutput {
-	return o.ApplyT(func(v PrivateClusterMasterGlobalAccessConfigResponse) *PrivateClusterMasterGlobalAccessConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterMasterGlobalAccessConfigResponse) *PrivateClusterMasterGlobalAccessConfigResponse {
 		return &v
 	}).(PrivateClusterMasterGlobalAccessConfigResponsePtrOutput)
 }
@@ -16566,7 +17100,11 @@ func (o PrivateClusterMasterGlobalAccessConfigResponsePtrOutput) ToPrivateCluste
 
 func (o PrivateClusterMasterGlobalAccessConfigResponsePtrOutput) Elem() PrivateClusterMasterGlobalAccessConfigResponseOutput {
 	return o.ApplyT(func(v *PrivateClusterMasterGlobalAccessConfigResponse) PrivateClusterMasterGlobalAccessConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret PrivateClusterMasterGlobalAccessConfigResponse
+		return ret
 	}).(PrivateClusterMasterGlobalAccessConfigResponseOutput)
 }
 
@@ -16680,7 +17218,7 @@ func (o PubSubOutput) ToPubSubPtrOutput() PubSubPtrOutput {
 }
 
 func (o PubSubOutput) ToPubSubPtrOutputWithContext(ctx context.Context) PubSubPtrOutput {
-	return o.ApplyT(func(v PubSub) *PubSub {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubSub) *PubSub {
 		return &v
 	}).(PubSubPtrOutput)
 }
@@ -16710,7 +17248,13 @@ func (o PubSubPtrOutput) ToPubSubPtrOutputWithContext(ctx context.Context) PubSu
 }
 
 func (o PubSubPtrOutput) Elem() PubSubOutput {
-	return o.ApplyT(func(v *PubSub) PubSub { return *v }).(PubSubOutput)
+	return o.ApplyT(func(v *PubSub) PubSub {
+		if v != nil {
+			return *v
+		}
+		var ret PubSub
+		return ret
+	}).(PubSubOutput)
 }
 
 // Enable notifications for Pub/Sub.
@@ -16833,7 +17377,7 @@ func (o PubSubResponseOutput) ToPubSubResponsePtrOutput() PubSubResponsePtrOutpu
 }
 
 func (o PubSubResponseOutput) ToPubSubResponsePtrOutputWithContext(ctx context.Context) PubSubResponsePtrOutput {
-	return o.ApplyT(func(v PubSubResponse) *PubSubResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubSubResponse) *PubSubResponse {
 		return &v
 	}).(PubSubResponsePtrOutput)
 }
@@ -16863,7 +17407,13 @@ func (o PubSubResponsePtrOutput) ToPubSubResponsePtrOutputWithContext(ctx contex
 }
 
 func (o PubSubResponsePtrOutput) Elem() PubSubResponseOutput {
-	return o.ApplyT(func(v *PubSubResponse) PubSubResponse { return *v }).(PubSubResponseOutput)
+	return o.ApplyT(func(v *PubSubResponse) PubSubResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PubSubResponse
+		return ret
+	}).(PubSubResponseOutput)
 }
 
 // Enable notifications for Pub/Sub.
@@ -16986,7 +17536,7 @@ func (o RecurringTimeWindowOutput) ToRecurringTimeWindowPtrOutput() RecurringTim
 }
 
 func (o RecurringTimeWindowOutput) ToRecurringTimeWindowPtrOutputWithContext(ctx context.Context) RecurringTimeWindowPtrOutput {
-	return o.ApplyT(func(v RecurringTimeWindow) *RecurringTimeWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringTimeWindow) *RecurringTimeWindow {
 		return &v
 	}).(RecurringTimeWindowPtrOutput)
 }
@@ -17016,7 +17566,13 @@ func (o RecurringTimeWindowPtrOutput) ToRecurringTimeWindowPtrOutputWithContext(
 }
 
 func (o RecurringTimeWindowPtrOutput) Elem() RecurringTimeWindowOutput {
-	return o.ApplyT(func(v *RecurringTimeWindow) RecurringTimeWindow { return *v }).(RecurringTimeWindowOutput)
+	return o.ApplyT(func(v *RecurringTimeWindow) RecurringTimeWindow {
+		if v != nil {
+			return *v
+		}
+		var ret RecurringTimeWindow
+		return ret
+	}).(RecurringTimeWindowOutput)
 }
 
 // An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go on for the span of time between the start and end time. For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday, you'd use something like: ```start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR``` Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till the last minute of Sunday UTC: ```start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA``` Note the start and end time's specific dates are largely arbitrary except to specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.
@@ -17139,7 +17695,7 @@ func (o RecurringTimeWindowResponseOutput) ToRecurringTimeWindowResponsePtrOutpu
 }
 
 func (o RecurringTimeWindowResponseOutput) ToRecurringTimeWindowResponsePtrOutputWithContext(ctx context.Context) RecurringTimeWindowResponsePtrOutput {
-	return o.ApplyT(func(v RecurringTimeWindowResponse) *RecurringTimeWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringTimeWindowResponse) *RecurringTimeWindowResponse {
 		return &v
 	}).(RecurringTimeWindowResponsePtrOutput)
 }
@@ -17169,7 +17725,13 @@ func (o RecurringTimeWindowResponsePtrOutput) ToRecurringTimeWindowResponsePtrOu
 }
 
 func (o RecurringTimeWindowResponsePtrOutput) Elem() RecurringTimeWindowResponseOutput {
-	return o.ApplyT(func(v *RecurringTimeWindowResponse) RecurringTimeWindowResponse { return *v }).(RecurringTimeWindowResponseOutput)
+	return o.ApplyT(func(v *RecurringTimeWindowResponse) RecurringTimeWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RecurringTimeWindowResponse
+		return ret
+	}).(RecurringTimeWindowResponseOutput)
 }
 
 // An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go on for the span of time between the start and end time. For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday, you'd use something like: ```start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR``` Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till the last minute of Sunday UTC: ```start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA``` Note the start and end time's specific dates are largely arbitrary except to specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.
@@ -17288,7 +17850,7 @@ func (o ReleaseChannelOutput) ToReleaseChannelPtrOutput() ReleaseChannelPtrOutpu
 }
 
 func (o ReleaseChannelOutput) ToReleaseChannelPtrOutputWithContext(ctx context.Context) ReleaseChannelPtrOutput {
-	return o.ApplyT(func(v ReleaseChannel) *ReleaseChannel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannel) *ReleaseChannel {
 		return &v
 	}).(ReleaseChannelPtrOutput)
 }
@@ -17313,7 +17875,13 @@ func (o ReleaseChannelPtrOutput) ToReleaseChannelPtrOutputWithContext(ctx contex
 }
 
 func (o ReleaseChannelPtrOutput) Elem() ReleaseChannelOutput {
-	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannel { return *v }).(ReleaseChannelOutput)
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannel
+		return ret
+	}).(ReleaseChannelOutput)
 }
 
 // channel specifies which release channel the cluster is subscribed to.
@@ -17422,7 +17990,7 @@ func (o ReleaseChannelResponseOutput) ToReleaseChannelResponsePtrOutput() Releas
 }
 
 func (o ReleaseChannelResponseOutput) ToReleaseChannelResponsePtrOutputWithContext(ctx context.Context) ReleaseChannelResponsePtrOutput {
-	return o.ApplyT(func(v ReleaseChannelResponse) *ReleaseChannelResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelResponse) *ReleaseChannelResponse {
 		return &v
 	}).(ReleaseChannelResponsePtrOutput)
 }
@@ -17447,7 +18015,13 @@ func (o ReleaseChannelResponsePtrOutput) ToReleaseChannelResponsePtrOutputWithCo
 }
 
 func (o ReleaseChannelResponsePtrOutput) Elem() ReleaseChannelResponseOutput {
-	return o.ApplyT(func(v *ReleaseChannelResponse) ReleaseChannelResponse { return *v }).(ReleaseChannelResponseOutput)
+	return o.ApplyT(func(v *ReleaseChannelResponse) ReleaseChannelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelResponse
+		return ret
+	}).(ReleaseChannelResponseOutput)
 }
 
 // channel specifies which release channel the cluster is subscribed to.
@@ -17564,7 +18138,7 @@ func (o ReservationAffinityOutput) ToReservationAffinityPtrOutput() ReservationA
 }
 
 func (o ReservationAffinityOutput) ToReservationAffinityPtrOutputWithContext(ctx context.Context) ReservationAffinityPtrOutput {
-	return o.ApplyT(func(v ReservationAffinity) *ReservationAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinity) *ReservationAffinity {
 		return &v
 	}).(ReservationAffinityPtrOutput)
 }
@@ -17601,7 +18175,13 @@ func (o ReservationAffinityPtrOutput) ToReservationAffinityPtrOutputWithContext(
 }
 
 func (o ReservationAffinityPtrOutput) Elem() ReservationAffinityOutput {
-	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity { return *v }).(ReservationAffinityOutput)
+	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinity
+		return ret
+	}).(ReservationAffinityOutput)
 }
 
 // Corresponds to the type of reservation consumption.
@@ -17738,7 +18318,7 @@ func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutpu
 }
 
 func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
-	return o.ApplyT(func(v ReservationAffinityResponse) *ReservationAffinityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinityResponse) *ReservationAffinityResponse {
 		return &v
 	}).(ReservationAffinityResponsePtrOutput)
 }
@@ -17773,7 +18353,13 @@ func (o ReservationAffinityResponsePtrOutput) ToReservationAffinityResponsePtrOu
 }
 
 func (o ReservationAffinityResponsePtrOutput) Elem() ReservationAffinityResponseOutput {
-	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse { return *v }).(ReservationAffinityResponseOutput)
+	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityResponse
+		return ret
+	}).(ReservationAffinityResponseOutput)
 }
 
 // Corresponds to the type of reservation consumption.
@@ -18146,7 +18732,7 @@ func (o ResourceUsageExportConfigOutput) ToResourceUsageExportConfigPtrOutput() 
 }
 
 func (o ResourceUsageExportConfigOutput) ToResourceUsageExportConfigPtrOutputWithContext(ctx context.Context) ResourceUsageExportConfigPtrOutput {
-	return o.ApplyT(func(v ResourceUsageExportConfig) *ResourceUsageExportConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceUsageExportConfig) *ResourceUsageExportConfig {
 		return &v
 	}).(ResourceUsageExportConfigPtrOutput)
 }
@@ -18181,7 +18767,13 @@ func (o ResourceUsageExportConfigPtrOutput) ToResourceUsageExportConfigPtrOutput
 }
 
 func (o ResourceUsageExportConfigPtrOutput) Elem() ResourceUsageExportConfigOutput {
-	return o.ApplyT(func(v *ResourceUsageExportConfig) ResourceUsageExportConfig { return *v }).(ResourceUsageExportConfigOutput)
+	return o.ApplyT(func(v *ResourceUsageExportConfig) ResourceUsageExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceUsageExportConfig
+		return ret
+	}).(ResourceUsageExportConfigOutput)
 }
 
 // Configuration to use BigQuery as usage export destination.
@@ -18318,7 +18910,7 @@ func (o ResourceUsageExportConfigResponseOutput) ToResourceUsageExportConfigResp
 }
 
 func (o ResourceUsageExportConfigResponseOutput) ToResourceUsageExportConfigResponsePtrOutputWithContext(ctx context.Context) ResourceUsageExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v ResourceUsageExportConfigResponse) *ResourceUsageExportConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceUsageExportConfigResponse) *ResourceUsageExportConfigResponse {
 		return &v
 	}).(ResourceUsageExportConfigResponsePtrOutput)
 }
@@ -18355,7 +18947,13 @@ func (o ResourceUsageExportConfigResponsePtrOutput) ToResourceUsageExportConfigR
 }
 
 func (o ResourceUsageExportConfigResponsePtrOutput) Elem() ResourceUsageExportConfigResponseOutput {
-	return o.ApplyT(func(v *ResourceUsageExportConfigResponse) ResourceUsageExportConfigResponse { return *v }).(ResourceUsageExportConfigResponseOutput)
+	return o.ApplyT(func(v *ResourceUsageExportConfigResponse) ResourceUsageExportConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceUsageExportConfigResponse
+		return ret
+	}).(ResourceUsageExportConfigResponseOutput)
 }
 
 // Configuration to use BigQuery as usage export destination.
@@ -18484,7 +19082,7 @@ func (o SandboxConfigOutput) ToSandboxConfigPtrOutput() SandboxConfigPtrOutput {
 }
 
 func (o SandboxConfigOutput) ToSandboxConfigPtrOutputWithContext(ctx context.Context) SandboxConfigPtrOutput {
-	return o.ApplyT(func(v SandboxConfig) *SandboxConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SandboxConfig) *SandboxConfig {
 		return &v
 	}).(SandboxConfigPtrOutput)
 }
@@ -18509,7 +19107,13 @@ func (o SandboxConfigPtrOutput) ToSandboxConfigPtrOutputWithContext(ctx context.
 }
 
 func (o SandboxConfigPtrOutput) Elem() SandboxConfigOutput {
-	return o.ApplyT(func(v *SandboxConfig) SandboxConfig { return *v }).(SandboxConfigOutput)
+	return o.ApplyT(func(v *SandboxConfig) SandboxConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SandboxConfig
+		return ret
+	}).(SandboxConfigOutput)
 }
 
 // Type of the sandbox to use for the node.
@@ -18618,7 +19222,7 @@ func (o SandboxConfigResponseOutput) ToSandboxConfigResponsePtrOutput() SandboxC
 }
 
 func (o SandboxConfigResponseOutput) ToSandboxConfigResponsePtrOutputWithContext(ctx context.Context) SandboxConfigResponsePtrOutput {
-	return o.ApplyT(func(v SandboxConfigResponse) *SandboxConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SandboxConfigResponse) *SandboxConfigResponse {
 		return &v
 	}).(SandboxConfigResponsePtrOutput)
 }
@@ -18643,7 +19247,13 @@ func (o SandboxConfigResponsePtrOutput) ToSandboxConfigResponsePtrOutputWithCont
 }
 
 func (o SandboxConfigResponsePtrOutput) Elem() SandboxConfigResponseOutput {
-	return o.ApplyT(func(v *SandboxConfigResponse) SandboxConfigResponse { return *v }).(SandboxConfigResponseOutput)
+	return o.ApplyT(func(v *SandboxConfigResponse) SandboxConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SandboxConfigResponse
+		return ret
+	}).(SandboxConfigResponseOutput)
 }
 
 // Type of the sandbox to use for the node.
@@ -18756,7 +19366,7 @@ func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutput() Shield
 }
 
 func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfig) *ShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfig) *ShieldedInstanceConfig {
 		return &v
 	}).(ShieldedInstanceConfigPtrOutput)
 }
@@ -18786,7 +19396,13 @@ func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithCo
 }
 
 func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig { return *v }).(ShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfig
+		return ret
+	}).(ShieldedInstanceConfigOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
@@ -18909,7 +19525,7 @@ func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePt
 }
 
 func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
 		return &v
 	}).(ShieldedInstanceConfigResponsePtrOutput)
 }
@@ -18939,7 +19555,13 @@ func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigRespons
 }
 
 func (o ShieldedInstanceConfigResponsePtrOutput) Elem() ShieldedInstanceConfigResponseOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse { return *v }).(ShieldedInstanceConfigResponseOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfigResponse
+		return ret
+	}).(ShieldedInstanceConfigResponseOutput)
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
@@ -19058,7 +19680,7 @@ func (o ShieldedNodesOutput) ToShieldedNodesPtrOutput() ShieldedNodesPtrOutput {
 }
 
 func (o ShieldedNodesOutput) ToShieldedNodesPtrOutputWithContext(ctx context.Context) ShieldedNodesPtrOutput {
-	return o.ApplyT(func(v ShieldedNodes) *ShieldedNodes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedNodes) *ShieldedNodes {
 		return &v
 	}).(ShieldedNodesPtrOutput)
 }
@@ -19083,7 +19705,13 @@ func (o ShieldedNodesPtrOutput) ToShieldedNodesPtrOutputWithContext(ctx context.
 }
 
 func (o ShieldedNodesPtrOutput) Elem() ShieldedNodesOutput {
-	return o.ApplyT(func(v *ShieldedNodes) ShieldedNodes { return *v }).(ShieldedNodesOutput)
+	return o.ApplyT(func(v *ShieldedNodes) ShieldedNodes {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedNodes
+		return ret
+	}).(ShieldedNodesOutput)
 }
 
 // Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -19192,7 +19820,7 @@ func (o ShieldedNodesResponseOutput) ToShieldedNodesResponsePtrOutput() Shielded
 }
 
 func (o ShieldedNodesResponseOutput) ToShieldedNodesResponsePtrOutputWithContext(ctx context.Context) ShieldedNodesResponsePtrOutput {
-	return o.ApplyT(func(v ShieldedNodesResponse) *ShieldedNodesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedNodesResponse) *ShieldedNodesResponse {
 		return &v
 	}).(ShieldedNodesResponsePtrOutput)
 }
@@ -19217,7 +19845,13 @@ func (o ShieldedNodesResponsePtrOutput) ToShieldedNodesResponsePtrOutputWithCont
 }
 
 func (o ShieldedNodesResponsePtrOutput) Elem() ShieldedNodesResponseOutput {
-	return o.ApplyT(func(v *ShieldedNodesResponse) ShieldedNodesResponse { return *v }).(ShieldedNodesResponseOutput)
+	return o.ApplyT(func(v *ShieldedNodesResponse) ShieldedNodesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedNodesResponse
+		return ret
+	}).(ShieldedNodesResponseOutput)
 }
 
 // Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -19548,7 +20182,7 @@ func (o TimeWindowOutput) ToTimeWindowPtrOutput() TimeWindowPtrOutput {
 }
 
 func (o TimeWindowOutput) ToTimeWindowPtrOutputWithContext(ctx context.Context) TimeWindowPtrOutput {
-	return o.ApplyT(func(v TimeWindow) *TimeWindow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeWindow) *TimeWindow {
 		return &v
 	}).(TimeWindowPtrOutput)
 }
@@ -19578,7 +20212,13 @@ func (o TimeWindowPtrOutput) ToTimeWindowPtrOutputWithContext(ctx context.Contex
 }
 
 func (o TimeWindowPtrOutput) Elem() TimeWindowOutput {
-	return o.ApplyT(func(v *TimeWindow) TimeWindow { return *v }).(TimeWindowOutput)
+	return o.ApplyT(func(v *TimeWindow) TimeWindow {
+		if v != nil {
+			return *v
+		}
+		var ret TimeWindow
+		return ret
+	}).(TimeWindowOutput)
 }
 
 // The time that the window ends. The end time should take place after the start time.
@@ -19701,7 +20341,7 @@ func (o TimeWindowResponseOutput) ToTimeWindowResponsePtrOutput() TimeWindowResp
 }
 
 func (o TimeWindowResponseOutput) ToTimeWindowResponsePtrOutputWithContext(ctx context.Context) TimeWindowResponsePtrOutput {
-	return o.ApplyT(func(v TimeWindowResponse) *TimeWindowResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeWindowResponse) *TimeWindowResponse {
 		return &v
 	}).(TimeWindowResponsePtrOutput)
 }
@@ -19731,7 +20371,13 @@ func (o TimeWindowResponsePtrOutput) ToTimeWindowResponsePtrOutputWithContext(ct
 }
 
 func (o TimeWindowResponsePtrOutput) Elem() TimeWindowResponseOutput {
-	return o.ApplyT(func(v *TimeWindowResponse) TimeWindowResponse { return *v }).(TimeWindowResponseOutput)
+	return o.ApplyT(func(v *TimeWindowResponse) TimeWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TimeWindowResponse
+		return ret
+	}).(TimeWindowResponseOutput)
 }
 
 // The time that the window ends. The end time should take place after the start time.
@@ -19854,7 +20500,7 @@ func (o UpgradeSettingsOutput) ToUpgradeSettingsPtrOutput() UpgradeSettingsPtrOu
 }
 
 func (o UpgradeSettingsOutput) ToUpgradeSettingsPtrOutputWithContext(ctx context.Context) UpgradeSettingsPtrOutput {
-	return o.ApplyT(func(v UpgradeSettings) *UpgradeSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeSettings) *UpgradeSettings {
 		return &v
 	}).(UpgradeSettingsPtrOutput)
 }
@@ -19884,7 +20530,13 @@ func (o UpgradeSettingsPtrOutput) ToUpgradeSettingsPtrOutputWithContext(ctx cont
 }
 
 func (o UpgradeSettingsPtrOutput) Elem() UpgradeSettingsOutput {
-	return o.ApplyT(func(v *UpgradeSettings) UpgradeSettings { return *v }).(UpgradeSettingsOutput)
+	return o.ApplyT(func(v *UpgradeSettings) UpgradeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeSettings
+		return ret
+	}).(UpgradeSettingsOutput)
 }
 
 // The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
@@ -20007,7 +20659,7 @@ func (o UpgradeSettingsResponseOutput) ToUpgradeSettingsResponsePtrOutput() Upgr
 }
 
 func (o UpgradeSettingsResponseOutput) ToUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) UpgradeSettingsResponsePtrOutput {
-	return o.ApplyT(func(v UpgradeSettingsResponse) *UpgradeSettingsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeSettingsResponse) *UpgradeSettingsResponse {
 		return &v
 	}).(UpgradeSettingsResponsePtrOutput)
 }
@@ -20037,7 +20689,13 @@ func (o UpgradeSettingsResponsePtrOutput) ToUpgradeSettingsResponsePtrOutputWith
 }
 
 func (o UpgradeSettingsResponsePtrOutput) Elem() UpgradeSettingsResponseOutput {
-	return o.ApplyT(func(v *UpgradeSettingsResponse) UpgradeSettingsResponse { return *v }).(UpgradeSettingsResponseOutput)
+	return o.ApplyT(func(v *UpgradeSettingsResponse) UpgradeSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeSettingsResponse
+		return ret
+	}).(UpgradeSettingsResponseOutput)
 }
 
 // The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
@@ -20156,7 +20814,7 @@ func (o VerticalPodAutoscalingOutput) ToVerticalPodAutoscalingPtrOutput() Vertic
 }
 
 func (o VerticalPodAutoscalingOutput) ToVerticalPodAutoscalingPtrOutputWithContext(ctx context.Context) VerticalPodAutoscalingPtrOutput {
-	return o.ApplyT(func(v VerticalPodAutoscaling) *VerticalPodAutoscaling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerticalPodAutoscaling) *VerticalPodAutoscaling {
 		return &v
 	}).(VerticalPodAutoscalingPtrOutput)
 }
@@ -20181,7 +20839,13 @@ func (o VerticalPodAutoscalingPtrOutput) ToVerticalPodAutoscalingPtrOutputWithCo
 }
 
 func (o VerticalPodAutoscalingPtrOutput) Elem() VerticalPodAutoscalingOutput {
-	return o.ApplyT(func(v *VerticalPodAutoscaling) VerticalPodAutoscaling { return *v }).(VerticalPodAutoscalingOutput)
+	return o.ApplyT(func(v *VerticalPodAutoscaling) VerticalPodAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret VerticalPodAutoscaling
+		return ret
+	}).(VerticalPodAutoscalingOutput)
 }
 
 // Enables vertical pod autoscaling.
@@ -20290,7 +20954,7 @@ func (o VerticalPodAutoscalingResponseOutput) ToVerticalPodAutoscalingResponsePt
 }
 
 func (o VerticalPodAutoscalingResponseOutput) ToVerticalPodAutoscalingResponsePtrOutputWithContext(ctx context.Context) VerticalPodAutoscalingResponsePtrOutput {
-	return o.ApplyT(func(v VerticalPodAutoscalingResponse) *VerticalPodAutoscalingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VerticalPodAutoscalingResponse) *VerticalPodAutoscalingResponse {
 		return &v
 	}).(VerticalPodAutoscalingResponsePtrOutput)
 }
@@ -20315,7 +20979,13 @@ func (o VerticalPodAutoscalingResponsePtrOutput) ToVerticalPodAutoscalingRespons
 }
 
 func (o VerticalPodAutoscalingResponsePtrOutput) Elem() VerticalPodAutoscalingResponseOutput {
-	return o.ApplyT(func(v *VerticalPodAutoscalingResponse) VerticalPodAutoscalingResponse { return *v }).(VerticalPodAutoscalingResponseOutput)
+	return o.ApplyT(func(v *VerticalPodAutoscalingResponse) VerticalPodAutoscalingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VerticalPodAutoscalingResponse
+		return ret
+	}).(VerticalPodAutoscalingResponseOutput)
 }
 
 // Enables vertical pod autoscaling.
@@ -20424,7 +21094,7 @@ func (o VirtualNICOutput) ToVirtualNICPtrOutput() VirtualNICPtrOutput {
 }
 
 func (o VirtualNICOutput) ToVirtualNICPtrOutputWithContext(ctx context.Context) VirtualNICPtrOutput {
-	return o.ApplyT(func(v VirtualNIC) *VirtualNIC {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNIC) *VirtualNIC {
 		return &v
 	}).(VirtualNICPtrOutput)
 }
@@ -20449,7 +21119,13 @@ func (o VirtualNICPtrOutput) ToVirtualNICPtrOutputWithContext(ctx context.Contex
 }
 
 func (o VirtualNICPtrOutput) Elem() VirtualNICOutput {
-	return o.ApplyT(func(v *VirtualNIC) VirtualNIC { return *v }).(VirtualNICOutput)
+	return o.ApplyT(func(v *VirtualNIC) VirtualNIC {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNIC
+		return ret
+	}).(VirtualNICOutput)
 }
 
 // Whether gVNIC features are enabled in the node pool.
@@ -20558,7 +21234,7 @@ func (o VirtualNICResponseOutput) ToVirtualNICResponsePtrOutput() VirtualNICResp
 }
 
 func (o VirtualNICResponseOutput) ToVirtualNICResponsePtrOutputWithContext(ctx context.Context) VirtualNICResponsePtrOutput {
-	return o.ApplyT(func(v VirtualNICResponse) *VirtualNICResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNICResponse) *VirtualNICResponse {
 		return &v
 	}).(VirtualNICResponsePtrOutput)
 }
@@ -20583,7 +21259,13 @@ func (o VirtualNICResponsePtrOutput) ToVirtualNICResponsePtrOutputWithContext(ct
 }
 
 func (o VirtualNICResponsePtrOutput) Elem() VirtualNICResponseOutput {
-	return o.ApplyT(func(v *VirtualNICResponse) VirtualNICResponse { return *v }).(VirtualNICResponseOutput)
+	return o.ApplyT(func(v *VirtualNICResponse) VirtualNICResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNICResponse
+		return ret
+	}).(VirtualNICResponseOutput)
 }
 
 // Whether gVNIC features are enabled in the node pool.
@@ -20692,7 +21374,7 @@ func (o WorkloadIdentityConfigOutput) ToWorkloadIdentityConfigPtrOutput() Worklo
 }
 
 func (o WorkloadIdentityConfigOutput) ToWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) WorkloadIdentityConfigPtrOutput {
-	return o.ApplyT(func(v WorkloadIdentityConfig) *WorkloadIdentityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityConfig) *WorkloadIdentityConfig {
 		return &v
 	}).(WorkloadIdentityConfigPtrOutput)
 }
@@ -20717,7 +21399,13 @@ func (o WorkloadIdentityConfigPtrOutput) ToWorkloadIdentityConfigPtrOutputWithCo
 }
 
 func (o WorkloadIdentityConfigPtrOutput) Elem() WorkloadIdentityConfigOutput {
-	return o.ApplyT(func(v *WorkloadIdentityConfig) WorkloadIdentityConfig { return *v }).(WorkloadIdentityConfigOutput)
+	return o.ApplyT(func(v *WorkloadIdentityConfig) WorkloadIdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityConfig
+		return ret
+	}).(WorkloadIdentityConfigOutput)
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
@@ -20826,7 +21514,7 @@ func (o WorkloadIdentityConfigResponseOutput) ToWorkloadIdentityConfigResponsePt
 }
 
 func (o WorkloadIdentityConfigResponseOutput) ToWorkloadIdentityConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadIdentityConfigResponsePtrOutput {
-	return o.ApplyT(func(v WorkloadIdentityConfigResponse) *WorkloadIdentityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityConfigResponse) *WorkloadIdentityConfigResponse {
 		return &v
 	}).(WorkloadIdentityConfigResponsePtrOutput)
 }
@@ -20851,7 +21539,13 @@ func (o WorkloadIdentityConfigResponsePtrOutput) ToWorkloadIdentityConfigRespons
 }
 
 func (o WorkloadIdentityConfigResponsePtrOutput) Elem() WorkloadIdentityConfigResponseOutput {
-	return o.ApplyT(func(v *WorkloadIdentityConfigResponse) WorkloadIdentityConfigResponse { return *v }).(WorkloadIdentityConfigResponseOutput)
+	return o.ApplyT(func(v *WorkloadIdentityConfigResponse) WorkloadIdentityConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityConfigResponse
+		return ret
+	}).(WorkloadIdentityConfigResponseOutput)
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
@@ -20960,7 +21654,7 @@ func (o WorkloadMetadataConfigOutput) ToWorkloadMetadataConfigPtrOutput() Worklo
 }
 
 func (o WorkloadMetadataConfigOutput) ToWorkloadMetadataConfigPtrOutputWithContext(ctx context.Context) WorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func(v WorkloadMetadataConfig) *WorkloadMetadataConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadMetadataConfig) *WorkloadMetadataConfig {
 		return &v
 	}).(WorkloadMetadataConfigPtrOutput)
 }
@@ -20985,7 +21679,13 @@ func (o WorkloadMetadataConfigPtrOutput) ToWorkloadMetadataConfigPtrOutputWithCo
 }
 
 func (o WorkloadMetadataConfigPtrOutput) Elem() WorkloadMetadataConfigOutput {
-	return o.ApplyT(func(v *WorkloadMetadataConfig) WorkloadMetadataConfig { return *v }).(WorkloadMetadataConfigOutput)
+	return o.ApplyT(func(v *WorkloadMetadataConfig) WorkloadMetadataConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadMetadataConfig
+		return ret
+	}).(WorkloadMetadataConfigOutput)
 }
 
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
@@ -21094,7 +21794,7 @@ func (o WorkloadMetadataConfigResponseOutput) ToWorkloadMetadataConfigResponsePt
 }
 
 func (o WorkloadMetadataConfigResponseOutput) ToWorkloadMetadataConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadMetadataConfigResponsePtrOutput {
-	return o.ApplyT(func(v WorkloadMetadataConfigResponse) *WorkloadMetadataConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadMetadataConfigResponse) *WorkloadMetadataConfigResponse {
 		return &v
 	}).(WorkloadMetadataConfigResponsePtrOutput)
 }
@@ -21119,7 +21819,13 @@ func (o WorkloadMetadataConfigResponsePtrOutput) ToWorkloadMetadataConfigRespons
 }
 
 func (o WorkloadMetadataConfigResponsePtrOutput) Elem() WorkloadMetadataConfigResponseOutput {
-	return o.ApplyT(func(v *WorkloadMetadataConfigResponse) WorkloadMetadataConfigResponse { return *v }).(WorkloadMetadataConfigResponseOutput)
+	return o.ApplyT(func(v *WorkloadMetadataConfigResponse) WorkloadMetadataConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadMetadataConfigResponse
+		return ret
+	}).(WorkloadMetadataConfigResponseOutput)
 }
 
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.

@@ -106,7 +106,7 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput) To
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) ElementType() reflect.Type {
-	return googleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrType
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge)(nil)).Elem()
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput() GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput {
@@ -115,6 +115,16 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput)
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) ToGoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput {
 	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge) GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput)
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput)
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge) GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
-		var ret GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput)
 }
 
 // GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeArgs and GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput values.
@@ -277,7 +277,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenc
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) ElementType() reflect.Type {
-	return googleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrType
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference)(nil)).Elem()
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput() GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput {
@@ -286,6 +286,16 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenc
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput {
 	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference) GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput)
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -300,16 +310,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenc
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference) GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference {
-		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput)
 }
 
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput values.
@@ -448,7 +448,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput) ToS
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) ElementType() reflect.Type {
-	return googleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrType
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType)(nil)).Elem()
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput() GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput {
@@ -457,6 +457,16 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) 
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) ToGoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput {
 	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType) GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput)
 }
 
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -471,16 +481,6 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) 
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType) GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
-		var ret GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput)
 }
 
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput values.

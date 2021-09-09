@@ -324,7 +324,7 @@ func (o AutoscalingConfigOutput) ToAutoscalingConfigPtrOutput() AutoscalingConfi
 }
 
 func (o AutoscalingConfigOutput) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v AutoscalingConfig) *AutoscalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingConfig) *AutoscalingConfig {
 		return &v
 	}).(AutoscalingConfigPtrOutput)
 }
@@ -349,7 +349,13 @@ func (o AutoscalingConfigPtrOutput) ToAutoscalingConfigPtrOutputWithContext(ctx 
 }
 
 func (o AutoscalingConfigPtrOutput) Elem() AutoscalingConfigOutput {
-	return o.ApplyT(func(v *AutoscalingConfig) AutoscalingConfig { return *v }).(AutoscalingConfigOutput)
+	return o.ApplyT(func(v *AutoscalingConfig) AutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingConfig
+		return ret
+	}).(AutoscalingConfigOutput)
 }
 
 // Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -458,7 +464,7 @@ func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponsePtrOutput() 
 }
 
 func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) AutoscalingConfigResponsePtrOutput {
-	return o.ApplyT(func(v AutoscalingConfigResponse) *AutoscalingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingConfigResponse) *AutoscalingConfigResponse {
 		return &v
 	}).(AutoscalingConfigResponsePtrOutput)
 }
@@ -483,7 +489,13 @@ func (o AutoscalingConfigResponsePtrOutput) ToAutoscalingConfigResponsePtrOutput
 }
 
 func (o AutoscalingConfigResponsePtrOutput) Elem() AutoscalingConfigResponseOutput {
-	return o.ApplyT(func(v *AutoscalingConfigResponse) AutoscalingConfigResponse { return *v }).(AutoscalingConfigResponseOutput)
+	return o.ApplyT(func(v *AutoscalingConfigResponse) AutoscalingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingConfigResponse
+		return ret
+	}).(AutoscalingConfigResponseOutput)
 }
 
 // Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -596,7 +608,7 @@ func (o BasicAutoscalingAlgorithmOutput) ToBasicAutoscalingAlgorithmPtrOutput() 
 }
 
 func (o BasicAutoscalingAlgorithmOutput) ToBasicAutoscalingAlgorithmPtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmPtrOutput {
-	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *BasicAutoscalingAlgorithm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAutoscalingAlgorithm) *BasicAutoscalingAlgorithm {
 		return &v
 	}).(BasicAutoscalingAlgorithmPtrOutput)
 }
@@ -626,7 +638,13 @@ func (o BasicAutoscalingAlgorithmPtrOutput) ToBasicAutoscalingAlgorithmPtrOutput
 }
 
 func (o BasicAutoscalingAlgorithmPtrOutput) Elem() BasicAutoscalingAlgorithmOutput {
-	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) BasicAutoscalingAlgorithm { return *v }).(BasicAutoscalingAlgorithmOutput)
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) BasicAutoscalingAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAutoscalingAlgorithm
+		return ret
+	}).(BasicAutoscalingAlgorithmOutput)
 }
 
 // Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
@@ -749,7 +767,7 @@ func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResp
 }
 
 func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponsePtrOutput {
-	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) *BasicAutoscalingAlgorithmResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicAutoscalingAlgorithmResponse) *BasicAutoscalingAlgorithmResponse {
 		return &v
 	}).(BasicAutoscalingAlgorithmResponsePtrOutput)
 }
@@ -779,7 +797,13 @@ func (o BasicAutoscalingAlgorithmResponsePtrOutput) ToBasicAutoscalingAlgorithmR
 }
 
 func (o BasicAutoscalingAlgorithmResponsePtrOutput) Elem() BasicAutoscalingAlgorithmResponseOutput {
-	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) BasicAutoscalingAlgorithmResponse { return *v }).(BasicAutoscalingAlgorithmResponseOutput)
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) BasicAutoscalingAlgorithmResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicAutoscalingAlgorithmResponse
+		return ret
+	}).(BasicAutoscalingAlgorithmResponseOutput)
 }
 
 // Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
@@ -914,7 +938,7 @@ func (o BasicYarnAutoscalingConfigOutput) ToBasicYarnAutoscalingConfigPtrOutput(
 }
 
 func (o BasicYarnAutoscalingConfigOutput) ToBasicYarnAutoscalingConfigPtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v BasicYarnAutoscalingConfig) *BasicYarnAutoscalingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicYarnAutoscalingConfig) *BasicYarnAutoscalingConfig {
 		return &v
 	}).(BasicYarnAutoscalingConfigPtrOutput)
 }
@@ -959,7 +983,13 @@ func (o BasicYarnAutoscalingConfigPtrOutput) ToBasicYarnAutoscalingConfigPtrOutp
 }
 
 func (o BasicYarnAutoscalingConfigPtrOutput) Elem() BasicYarnAutoscalingConfigOutput {
-	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) BasicYarnAutoscalingConfig { return *v }).(BasicYarnAutoscalingConfigOutput)
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) BasicYarnAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BasicYarnAutoscalingConfig
+		return ret
+	}).(BasicYarnAutoscalingConfigOutput)
 }
 
 // Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
@@ -1124,7 +1154,7 @@ func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigRe
 }
 
 func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponsePtrOutput {
-	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) *BasicYarnAutoscalingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicYarnAutoscalingConfigResponse) *BasicYarnAutoscalingConfigResponse {
 		return &v
 	}).(BasicYarnAutoscalingConfigResponsePtrOutput)
 }
@@ -1169,7 +1199,13 @@ func (o BasicYarnAutoscalingConfigResponsePtrOutput) ToBasicYarnAutoscalingConfi
 }
 
 func (o BasicYarnAutoscalingConfigResponsePtrOutput) Elem() BasicYarnAutoscalingConfigResponseOutput {
-	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) BasicYarnAutoscalingConfigResponse { return *v }).(BasicYarnAutoscalingConfigResponseOutput)
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) BasicYarnAutoscalingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicYarnAutoscalingConfigResponse
+		return ret
+	}).(BasicYarnAutoscalingConfigResponseOutput)
 }
 
 // Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
@@ -1610,7 +1646,7 @@ func (o ClusterConfigOutput) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
 }
 
 func (o ClusterConfigOutput) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
-	return o.ApplyT(func(v ClusterConfig) *ClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterConfig) *ClusterConfig {
 		return &v
 	}).(ClusterConfigPtrOutput)
 }
@@ -1705,7 +1741,13 @@ func (o ClusterConfigPtrOutput) ToClusterConfigPtrOutputWithContext(ctx context.
 }
 
 func (o ClusterConfigPtrOutput) Elem() ClusterConfigOutput {
-	return o.ApplyT(func(v *ClusterConfig) ClusterConfig { return *v }).(ClusterConfigOutput)
+	return o.ApplyT(func(v *ClusterConfig) ClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterConfig
+		return ret
+	}).(ClusterConfigOutput)
 }
 
 // Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -2010,7 +2052,7 @@ func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutput() ClusterC
 }
 
 func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v ClusterConfigResponse) *ClusterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterConfigResponse) *ClusterConfigResponse {
 		return &v
 	}).(ClusterConfigResponsePtrOutput)
 }
@@ -2105,7 +2147,13 @@ func (o ClusterConfigResponsePtrOutput) ToClusterConfigResponsePtrOutputWithCont
 }
 
 func (o ClusterConfigResponsePtrOutput) Elem() ClusterConfigResponseOutput {
-	return o.ApplyT(func(v *ClusterConfigResponse) ClusterConfigResponse { return *v }).(ClusterConfigResponseOutput)
+	return o.ApplyT(func(v *ClusterConfigResponse) ClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterConfigResponse
+		return ret
+	}).(ClusterConfigResponseOutput)
 }
 
 // Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -2358,7 +2406,7 @@ func (o ClusterMetricsResponseOutput) ToClusterMetricsResponsePtrOutput() Cluste
 }
 
 func (o ClusterMetricsResponseOutput) ToClusterMetricsResponsePtrOutputWithContext(ctx context.Context) ClusterMetricsResponsePtrOutput {
-	return o.ApplyT(func(v ClusterMetricsResponse) *ClusterMetricsResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMetricsResponse) *ClusterMetricsResponse {
 		return &v
 	}).(ClusterMetricsResponsePtrOutput)
 }
@@ -2388,7 +2436,13 @@ func (o ClusterMetricsResponsePtrOutput) ToClusterMetricsResponsePtrOutputWithCo
 }
 
 func (o ClusterMetricsResponsePtrOutput) Elem() ClusterMetricsResponseOutput {
-	return o.ApplyT(func(v *ClusterMetricsResponse) ClusterMetricsResponse { return *v }).(ClusterMetricsResponseOutput)
+	return o.ApplyT(func(v *ClusterMetricsResponse) ClusterMetricsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMetricsResponse
+		return ret
+	}).(ClusterMetricsResponseOutput)
 }
 
 // The HDFS metrics.
@@ -2511,7 +2565,7 @@ func (o ClusterSelectorOutput) ToClusterSelectorPtrOutput() ClusterSelectorPtrOu
 }
 
 func (o ClusterSelectorOutput) ToClusterSelectorPtrOutputWithContext(ctx context.Context) ClusterSelectorPtrOutput {
-	return o.ApplyT(func(v ClusterSelector) *ClusterSelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSelector) *ClusterSelector {
 		return &v
 	}).(ClusterSelectorPtrOutput)
 }
@@ -2541,7 +2595,13 @@ func (o ClusterSelectorPtrOutput) ToClusterSelectorPtrOutputWithContext(ctx cont
 }
 
 func (o ClusterSelectorPtrOutput) Elem() ClusterSelectorOutput {
-	return o.ApplyT(func(v *ClusterSelector) ClusterSelector { return *v }).(ClusterSelectorOutput)
+	return o.ApplyT(func(v *ClusterSelector) ClusterSelector {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSelector
+		return ret
+	}).(ClusterSelectorOutput)
 }
 
 // The cluster labels. Cluster must have all labels to match.
@@ -2664,7 +2724,7 @@ func (o ClusterSelectorResponseOutput) ToClusterSelectorResponsePtrOutput() Clus
 }
 
 func (o ClusterSelectorResponseOutput) ToClusterSelectorResponsePtrOutputWithContext(ctx context.Context) ClusterSelectorResponsePtrOutput {
-	return o.ApplyT(func(v ClusterSelectorResponse) *ClusterSelectorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSelectorResponse) *ClusterSelectorResponse {
 		return &v
 	}).(ClusterSelectorResponsePtrOutput)
 }
@@ -2694,7 +2754,13 @@ func (o ClusterSelectorResponsePtrOutput) ToClusterSelectorResponsePtrOutputWith
 }
 
 func (o ClusterSelectorResponsePtrOutput) Elem() ClusterSelectorResponseOutput {
-	return o.ApplyT(func(v *ClusterSelectorResponse) ClusterSelectorResponse { return *v }).(ClusterSelectorResponseOutput)
+	return o.ApplyT(func(v *ClusterSelectorResponse) ClusterSelectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSelectorResponse
+		return ret
+	}).(ClusterSelectorResponseOutput)
 }
 
 // The cluster labels. Cluster must have all labels to match.
@@ -2850,7 +2916,7 @@ func (o ClusterStatusResponseOutput) ToClusterStatusResponsePtrOutput() ClusterS
 }
 
 func (o ClusterStatusResponseOutput) ToClusterStatusResponsePtrOutputWithContext(ctx context.Context) ClusterStatusResponsePtrOutput {
-	return o.ApplyT(func(v ClusterStatusResponse) *ClusterStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterStatusResponse) *ClusterStatusResponse {
 		return &v
 	}).(ClusterStatusResponsePtrOutput)
 }
@@ -2890,7 +2956,13 @@ func (o ClusterStatusResponsePtrOutput) ToClusterStatusResponsePtrOutputWithCont
 }
 
 func (o ClusterStatusResponsePtrOutput) Elem() ClusterStatusResponseOutput {
-	return o.ApplyT(func(v *ClusterStatusResponse) ClusterStatusResponse { return *v }).(ClusterStatusResponseOutput)
+	return o.ApplyT(func(v *ClusterStatusResponse) ClusterStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterStatusResponse
+		return ret
+	}).(ClusterStatusResponseOutput)
 }
 
 // Optional. Output only. Details of cluster's state.
@@ -3049,7 +3121,7 @@ func (o ConfidentialInstanceConfigOutput) ToConfidentialInstanceConfigPtrOutput(
 }
 
 func (o ConfidentialInstanceConfigOutput) ToConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigPtrOutput {
-	return o.ApplyT(func(v ConfidentialInstanceConfig) *ConfidentialInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialInstanceConfig) *ConfidentialInstanceConfig {
 		return &v
 	}).(ConfidentialInstanceConfigPtrOutput)
 }
@@ -3074,7 +3146,13 @@ func (o ConfidentialInstanceConfigPtrOutput) ToConfidentialInstanceConfigPtrOutp
 }
 
 func (o ConfidentialInstanceConfigPtrOutput) Elem() ConfidentialInstanceConfigOutput {
-	return o.ApplyT(func(v *ConfidentialInstanceConfig) ConfidentialInstanceConfig { return *v }).(ConfidentialInstanceConfigOutput)
+	return o.ApplyT(func(v *ConfidentialInstanceConfig) ConfidentialInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialInstanceConfig
+		return ret
+	}).(ConfidentialInstanceConfigOutput)
 }
 
 // Optional. Defines whether the instance should have confidential compute enabled.
@@ -3183,7 +3261,7 @@ func (o ConfidentialInstanceConfigResponseOutput) ToConfidentialInstanceConfigRe
 }
 
 func (o ConfidentialInstanceConfigResponseOutput) ToConfidentialInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigResponsePtrOutput {
-	return o.ApplyT(func(v ConfidentialInstanceConfigResponse) *ConfidentialInstanceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialInstanceConfigResponse) *ConfidentialInstanceConfigResponse {
 		return &v
 	}).(ConfidentialInstanceConfigResponsePtrOutput)
 }
@@ -3208,7 +3286,13 @@ func (o ConfidentialInstanceConfigResponsePtrOutput) ToConfidentialInstanceConfi
 }
 
 func (o ConfidentialInstanceConfigResponsePtrOutput) Elem() ConfidentialInstanceConfigResponseOutput {
-	return o.ApplyT(func(v *ConfidentialInstanceConfigResponse) ConfidentialInstanceConfigResponse { return *v }).(ConfidentialInstanceConfigResponseOutput)
+	return o.ApplyT(func(v *ConfidentialInstanceConfigResponse) ConfidentialInstanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialInstanceConfigResponse
+		return ret
+	}).(ConfidentialInstanceConfigResponseOutput)
 }
 
 // Optional. Defines whether the instance should have confidential compute enabled.
@@ -3325,7 +3409,7 @@ func (o DiskConfigOutput) ToDiskConfigPtrOutput() DiskConfigPtrOutput {
 }
 
 func (o DiskConfigOutput) ToDiskConfigPtrOutputWithContext(ctx context.Context) DiskConfigPtrOutput {
-	return o.ApplyT(func(v DiskConfig) *DiskConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskConfig) *DiskConfig {
 		return &v
 	}).(DiskConfigPtrOutput)
 }
@@ -3360,7 +3444,13 @@ func (o DiskConfigPtrOutput) ToDiskConfigPtrOutputWithContext(ctx context.Contex
 }
 
 func (o DiskConfigPtrOutput) Elem() DiskConfigOutput {
-	return o.ApplyT(func(v *DiskConfig) DiskConfig { return *v }).(DiskConfigOutput)
+	return o.ApplyT(func(v *DiskConfig) DiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DiskConfig
+		return ret
+	}).(DiskConfigOutput)
 }
 
 // Optional. Size in GB of the boot disk (default is 500GB).
@@ -3497,7 +3587,7 @@ func (o DiskConfigResponseOutput) ToDiskConfigResponsePtrOutput() DiskConfigResp
 }
 
 func (o DiskConfigResponseOutput) ToDiskConfigResponsePtrOutputWithContext(ctx context.Context) DiskConfigResponsePtrOutput {
-	return o.ApplyT(func(v DiskConfigResponse) *DiskConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskConfigResponse) *DiskConfigResponse {
 		return &v
 	}).(DiskConfigResponsePtrOutput)
 }
@@ -3532,7 +3622,13 @@ func (o DiskConfigResponsePtrOutput) ToDiskConfigResponsePtrOutputWithContext(ct
 }
 
 func (o DiskConfigResponsePtrOutput) Elem() DiskConfigResponseOutput {
-	return o.ApplyT(func(v *DiskConfigResponse) DiskConfigResponse { return *v }).(DiskConfigResponseOutput)
+	return o.ApplyT(func(v *DiskConfigResponse) DiskConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskConfigResponse
+		return ret
+	}).(DiskConfigResponseOutput)
 }
 
 // Optional. Size in GB of the boot disk (default is 500GB).
@@ -3661,7 +3757,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPt
 }
 
 func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
-	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
 		return &v
 	}).(EncryptionConfigPtrOutput)
 }
@@ -3686,7 +3782,13 @@ func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx co
 }
 
 func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
-	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
 }
 
 // Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -3795,7 +3897,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() En
 }
 
 func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
 	}).(EncryptionConfigResponsePtrOutput)
 }
@@ -3820,7 +3922,13 @@ func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWi
 }
 
 func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfigResponse
+		return ret
+	}).(EncryptionConfigResponseOutput)
 }
 
 // Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -3929,7 +4037,7 @@ func (o EndpointConfigOutput) ToEndpointConfigPtrOutput() EndpointConfigPtrOutpu
 }
 
 func (o EndpointConfigOutput) ToEndpointConfigPtrOutputWithContext(ctx context.Context) EndpointConfigPtrOutput {
-	return o.ApplyT(func(v EndpointConfig) *EndpointConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointConfig) *EndpointConfig {
 		return &v
 	}).(EndpointConfigPtrOutput)
 }
@@ -3954,7 +4062,13 @@ func (o EndpointConfigPtrOutput) ToEndpointConfigPtrOutputWithContext(ctx contex
 }
 
 func (o EndpointConfigPtrOutput) Elem() EndpointConfigOutput {
-	return o.ApplyT(func(v *EndpointConfig) EndpointConfig { return *v }).(EndpointConfigOutput)
+	return o.ApplyT(func(v *EndpointConfig) EndpointConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointConfig
+		return ret
+	}).(EndpointConfigOutput)
 }
 
 // Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
@@ -4067,7 +4181,7 @@ func (o EndpointConfigResponseOutput) ToEndpointConfigResponsePtrOutput() Endpoi
 }
 
 func (o EndpointConfigResponseOutput) ToEndpointConfigResponsePtrOutputWithContext(ctx context.Context) EndpointConfigResponsePtrOutput {
-	return o.ApplyT(func(v EndpointConfigResponse) *EndpointConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointConfigResponse) *EndpointConfigResponse {
 		return &v
 	}).(EndpointConfigResponsePtrOutput)
 }
@@ -4097,7 +4211,13 @@ func (o EndpointConfigResponsePtrOutput) ToEndpointConfigResponsePtrOutputWithCo
 }
 
 func (o EndpointConfigResponsePtrOutput) Elem() EndpointConfigResponseOutput {
-	return o.ApplyT(func(v *EndpointConfigResponse) EndpointConfigResponse { return *v }).(EndpointConfigResponseOutput)
+	return o.ApplyT(func(v *EndpointConfigResponse) EndpointConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointConfigResponse
+		return ret
+	}).(EndpointConfigResponseOutput)
 }
 
 // Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
@@ -4228,7 +4348,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -4268,7 +4388,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -4537,7 +4663,7 @@ func (o GceClusterConfigOutput) ToGceClusterConfigPtrOutput() GceClusterConfigPt
 }
 
 func (o GceClusterConfigOutput) ToGceClusterConfigPtrOutputWithContext(ctx context.Context) GceClusterConfigPtrOutput {
-	return o.ApplyT(func(v GceClusterConfig) *GceClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceClusterConfig) *GceClusterConfig {
 		return &v
 	}).(GceClusterConfigPtrOutput)
 }
@@ -4622,7 +4748,13 @@ func (o GceClusterConfigPtrOutput) ToGceClusterConfigPtrOutputWithContext(ctx co
 }
 
 func (o GceClusterConfigPtrOutput) Elem() GceClusterConfigOutput {
-	return o.ApplyT(func(v *GceClusterConfig) GceClusterConfig { return *v }).(GceClusterConfigOutput)
+	return o.ApplyT(func(v *GceClusterConfig) GceClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GceClusterConfig
+		return ret
+	}).(GceClusterConfigOutput)
 }
 
 // Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
@@ -4899,7 +5031,7 @@ func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponsePtrOutput() Gc
 }
 
 func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponsePtrOutputWithContext(ctx context.Context) GceClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v GceClusterConfigResponse) *GceClusterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceClusterConfigResponse) *GceClusterConfigResponse {
 		return &v
 	}).(GceClusterConfigResponsePtrOutput)
 }
@@ -4986,7 +5118,13 @@ func (o GceClusterConfigResponsePtrOutput) ToGceClusterConfigResponsePtrOutputWi
 }
 
 func (o GceClusterConfigResponsePtrOutput) Elem() GceClusterConfigResponseOutput {
-	return o.ApplyT(func(v *GceClusterConfigResponse) GceClusterConfigResponse { return *v }).(GceClusterConfigResponseOutput)
+	return o.ApplyT(func(v *GceClusterConfigResponse) GceClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GceClusterConfigResponse
+		return ret
+	}).(GceClusterConfigResponseOutput)
 }
 
 // Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
@@ -5215,7 +5353,7 @@ func (o GkeClusterConfigOutput) ToGkeClusterConfigPtrOutput() GkeClusterConfigPt
 }
 
 func (o GkeClusterConfigOutput) ToGkeClusterConfigPtrOutputWithContext(ctx context.Context) GkeClusterConfigPtrOutput {
-	return o.ApplyT(func(v GkeClusterConfig) *GkeClusterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterConfig) *GkeClusterConfig {
 		return &v
 	}).(GkeClusterConfigPtrOutput)
 }
@@ -5240,7 +5378,13 @@ func (o GkeClusterConfigPtrOutput) ToGkeClusterConfigPtrOutputWithContext(ctx co
 }
 
 func (o GkeClusterConfigPtrOutput) Elem() GkeClusterConfigOutput {
-	return o.ApplyT(func(v *GkeClusterConfig) GkeClusterConfig { return *v }).(GkeClusterConfigOutput)
+	return o.ApplyT(func(v *GkeClusterConfig) GkeClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterConfig
+		return ret
+	}).(GkeClusterConfigOutput)
 }
 
 // Optional. A target for the deployment.
@@ -5349,7 +5493,7 @@ func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponsePtrOutput() Gk
 }
 
 func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponsePtrOutputWithContext(ctx context.Context) GkeClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v GkeClusterConfigResponse) *GkeClusterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterConfigResponse) *GkeClusterConfigResponse {
 		return &v
 	}).(GkeClusterConfigResponsePtrOutput)
 }
@@ -5376,7 +5520,13 @@ func (o GkeClusterConfigResponsePtrOutput) ToGkeClusterConfigResponsePtrOutputWi
 }
 
 func (o GkeClusterConfigResponsePtrOutput) Elem() GkeClusterConfigResponseOutput {
-	return o.ApplyT(func(v *GkeClusterConfigResponse) GkeClusterConfigResponse { return *v }).(GkeClusterConfigResponseOutput)
+	return o.ApplyT(func(v *GkeClusterConfigResponse) GkeClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GkeClusterConfigResponse
+		return ret
+	}).(GkeClusterConfigResponseOutput)
 }
 
 // Optional. A target for the deployment.
@@ -5513,7 +5663,7 @@ func (o HadoopJobOutput) ToHadoopJobPtrOutput() HadoopJobPtrOutput {
 }
 
 func (o HadoopJobOutput) ToHadoopJobPtrOutputWithContext(ctx context.Context) HadoopJobPtrOutput {
-	return o.ApplyT(func(v HadoopJob) *HadoopJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HadoopJob) *HadoopJob {
 		return &v
 	}).(HadoopJobPtrOutput)
 }
@@ -5573,7 +5723,13 @@ func (o HadoopJobPtrOutput) ToHadoopJobPtrOutputWithContext(ctx context.Context)
 }
 
 func (o HadoopJobPtrOutput) Elem() HadoopJobOutput {
-	return o.ApplyT(func(v *HadoopJob) HadoopJob { return *v }).(HadoopJobOutput)
+	return o.ApplyT(func(v *HadoopJob) HadoopJob {
+		if v != nil {
+			return *v
+		}
+		var ret HadoopJob
+		return ret
+	}).(HadoopJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -5780,7 +5936,7 @@ func (o HadoopJobResponseOutput) ToHadoopJobResponsePtrOutput() HadoopJobRespons
 }
 
 func (o HadoopJobResponseOutput) ToHadoopJobResponsePtrOutputWithContext(ctx context.Context) HadoopJobResponsePtrOutput {
-	return o.ApplyT(func(v HadoopJobResponse) *HadoopJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HadoopJobResponse) *HadoopJobResponse {
 		return &v
 	}).(HadoopJobResponsePtrOutput)
 }
@@ -5840,7 +5996,13 @@ func (o HadoopJobResponsePtrOutput) ToHadoopJobResponsePtrOutputWithContext(ctx 
 }
 
 func (o HadoopJobResponsePtrOutput) Elem() HadoopJobResponseOutput {
-	return o.ApplyT(func(v *HadoopJobResponse) HadoopJobResponse { return *v }).(HadoopJobResponseOutput)
+	return o.ApplyT(func(v *HadoopJobResponse) HadoopJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HadoopJobResponse
+		return ret
+	}).(HadoopJobResponseOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -6039,7 +6201,7 @@ func (o HiveJobOutput) ToHiveJobPtrOutput() HiveJobPtrOutput {
 }
 
 func (o HiveJobOutput) ToHiveJobPtrOutputWithContext(ctx context.Context) HiveJobPtrOutput {
-	return o.ApplyT(func(v HiveJob) *HiveJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveJob) *HiveJob {
 		return &v
 	}).(HiveJobPtrOutput)
 }
@@ -6089,7 +6251,13 @@ func (o HiveJobPtrOutput) ToHiveJobPtrOutputWithContext(ctx context.Context) Hiv
 }
 
 func (o HiveJobPtrOutput) Elem() HiveJobOutput {
-	return o.ApplyT(func(v *HiveJob) HiveJob { return *v }).(HiveJobOutput)
+	return o.ApplyT(func(v *HiveJob) HiveJob {
+		if v != nil {
+			return *v
+		}
+		var ret HiveJob
+		return ret
+	}).(HiveJobOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -6268,7 +6436,7 @@ func (o HiveJobResponseOutput) ToHiveJobResponsePtrOutput() HiveJobResponsePtrOu
 }
 
 func (o HiveJobResponseOutput) ToHiveJobResponsePtrOutputWithContext(ctx context.Context) HiveJobResponsePtrOutput {
-	return o.ApplyT(func(v HiveJobResponse) *HiveJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveJobResponse) *HiveJobResponse {
 		return &v
 	}).(HiveJobResponsePtrOutput)
 }
@@ -6318,7 +6486,13 @@ func (o HiveJobResponsePtrOutput) ToHiveJobResponsePtrOutputWithContext(ctx cont
 }
 
 func (o HiveJobResponsePtrOutput) Elem() HiveJobResponseOutput {
-	return o.ApplyT(func(v *HiveJobResponse) HiveJobResponse { return *v }).(HiveJobResponseOutput)
+	return o.ApplyT(func(v *HiveJobResponse) HiveJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HiveJobResponse
+		return ret
+	}).(HiveJobResponseOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -6477,7 +6651,7 @@ func (o IdentityConfigOutput) ToIdentityConfigPtrOutput() IdentityConfigPtrOutpu
 }
 
 func (o IdentityConfigOutput) ToIdentityConfigPtrOutputWithContext(ctx context.Context) IdentityConfigPtrOutput {
-	return o.ApplyT(func(v IdentityConfig) *IdentityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityConfig) *IdentityConfig {
 		return &v
 	}).(IdentityConfigPtrOutput)
 }
@@ -6502,7 +6676,13 @@ func (o IdentityConfigPtrOutput) ToIdentityConfigPtrOutputWithContext(ctx contex
 }
 
 func (o IdentityConfigPtrOutput) Elem() IdentityConfigOutput {
-	return o.ApplyT(func(v *IdentityConfig) IdentityConfig { return *v }).(IdentityConfigOutput)
+	return o.ApplyT(func(v *IdentityConfig) IdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityConfig
+		return ret
+	}).(IdentityConfigOutput)
 }
 
 // Map of user to service account.
@@ -6611,7 +6791,7 @@ func (o IdentityConfigResponseOutput) ToIdentityConfigResponsePtrOutput() Identi
 }
 
 func (o IdentityConfigResponseOutput) ToIdentityConfigResponsePtrOutputWithContext(ctx context.Context) IdentityConfigResponsePtrOutput {
-	return o.ApplyT(func(v IdentityConfigResponse) *IdentityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityConfigResponse) *IdentityConfigResponse {
 		return &v
 	}).(IdentityConfigResponsePtrOutput)
 }
@@ -6636,7 +6816,13 @@ func (o IdentityConfigResponsePtrOutput) ToIdentityConfigResponsePtrOutputWithCo
 }
 
 func (o IdentityConfigResponsePtrOutput) Elem() IdentityConfigResponseOutput {
-	return o.ApplyT(func(v *IdentityConfigResponse) IdentityConfigResponse { return *v }).(IdentityConfigResponseOutput)
+	return o.ApplyT(func(v *IdentityConfigResponse) IdentityConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityConfigResponse
+		return ret
+	}).(IdentityConfigResponseOutput)
 }
 
 // Map of user to service account.
@@ -6753,7 +6939,7 @@ func (o InstanceGroupAutoscalingPolicyConfigOutput) ToInstanceGroupAutoscalingPo
 }
 
 func (o InstanceGroupAutoscalingPolicyConfigOutput) ToInstanceGroupAutoscalingPolicyConfigPtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigPtrOutput {
-	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfig) *InstanceGroupAutoscalingPolicyConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupAutoscalingPolicyConfig) *InstanceGroupAutoscalingPolicyConfig {
 		return &v
 	}).(InstanceGroupAutoscalingPolicyConfigPtrOutput)
 }
@@ -6788,7 +6974,13 @@ func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) ToInstanceGroupAutoscalin
 }
 
 func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) Elem() InstanceGroupAutoscalingPolicyConfigOutput {
-	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfig) InstanceGroupAutoscalingPolicyConfig { return *v }).(InstanceGroupAutoscalingPolicyConfigOutput)
+	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfig) InstanceGroupAutoscalingPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupAutoscalingPolicyConfig
+		return ret
+	}).(InstanceGroupAutoscalingPolicyConfigOutput)
 }
 
 // Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
@@ -6925,7 +7117,7 @@ func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutos
 }
 
 func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
-	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) *InstanceGroupAutoscalingPolicyConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupAutoscalingPolicyConfigResponse) *InstanceGroupAutoscalingPolicyConfigResponse {
 		return &v
 	}).(InstanceGroupAutoscalingPolicyConfigResponsePtrOutput)
 }
@@ -6961,7 +7153,11 @@ func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) ToInstanceGroupAu
 
 func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) Elem() InstanceGroupAutoscalingPolicyConfigResponseOutput {
 	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) InstanceGroupAutoscalingPolicyConfigResponse {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupAutoscalingPolicyConfigResponse
+		return ret
 	}).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
 }
 
@@ -7115,7 +7311,7 @@ func (o InstanceGroupConfigOutput) ToInstanceGroupConfigPtrOutput() InstanceGrou
 }
 
 func (o InstanceGroupConfigOutput) ToInstanceGroupConfigPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPtrOutput {
-	return o.ApplyT(func(v InstanceGroupConfig) *InstanceGroupConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupConfig) *InstanceGroupConfig {
 		return &v
 	}).(InstanceGroupConfigPtrOutput)
 }
@@ -7170,7 +7366,13 @@ func (o InstanceGroupConfigPtrOutput) ToInstanceGroupConfigPtrOutputWithContext(
 }
 
 func (o InstanceGroupConfigPtrOutput) Elem() InstanceGroupConfigOutput {
-	return o.ApplyT(func(v *InstanceGroupConfig) InstanceGroupConfig { return *v }).(InstanceGroupConfigOutput)
+	return o.ApplyT(func(v *InstanceGroupConfig) InstanceGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupConfig
+		return ret
+	}).(InstanceGroupConfigOutput)
 }
 
 // Optional. The Compute Engine accelerator configuration for these instances.
@@ -7379,7 +7581,7 @@ func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponsePtrOutpu
 }
 
 func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupConfigResponsePtrOutput {
-	return o.ApplyT(func(v InstanceGroupConfigResponse) *InstanceGroupConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupConfigResponse) *InstanceGroupConfigResponse {
 		return &v
 	}).(InstanceGroupConfigResponsePtrOutput)
 }
@@ -7454,7 +7656,13 @@ func (o InstanceGroupConfigResponsePtrOutput) ToInstanceGroupConfigResponsePtrOu
 }
 
 func (o InstanceGroupConfigResponsePtrOutput) Elem() InstanceGroupConfigResponseOutput {
-	return o.ApplyT(func(v *InstanceGroupConfigResponse) InstanceGroupConfigResponse { return *v }).(InstanceGroupConfigResponseOutput)
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) InstanceGroupConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupConfigResponse
+		return ret
+	}).(InstanceGroupConfigResponseOutput)
 }
 
 // Optional. The Compute Engine accelerator configuration for these instances.
@@ -7794,7 +8002,7 @@ func (o JobPlacementOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
 }
 
 func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
-	return o.ApplyT(func(v JobPlacement) *JobPlacement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPlacement) *JobPlacement {
 		return &v
 	}).(JobPlacementPtrOutput)
 }
@@ -7824,7 +8032,13 @@ func (o JobPlacementPtrOutput) ToJobPlacementPtrOutputWithContext(ctx context.Co
 }
 
 func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
-	return o.ApplyT(func(v *JobPlacement) JobPlacement { return *v }).(JobPlacementOutput)
+	return o.ApplyT(func(v *JobPlacement) JobPlacement {
+		if v != nil {
+			return *v
+		}
+		var ret JobPlacement
+		return ret
+	}).(JobPlacementOutput)
 }
 
 // Optional. Cluster labels to identify a cluster where the job will be submitted.
@@ -7951,7 +8165,7 @@ func (o JobPlacementResponseOutput) ToJobPlacementResponsePtrOutput() JobPlaceme
 }
 
 func (o JobPlacementResponseOutput) ToJobPlacementResponsePtrOutputWithContext(ctx context.Context) JobPlacementResponsePtrOutput {
-	return o.ApplyT(func(v JobPlacementResponse) *JobPlacementResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPlacementResponse) *JobPlacementResponse {
 		return &v
 	}).(JobPlacementResponsePtrOutput)
 }
@@ -7986,7 +8200,13 @@ func (o JobPlacementResponsePtrOutput) ToJobPlacementResponsePtrOutputWithContex
 }
 
 func (o JobPlacementResponsePtrOutput) Elem() JobPlacementResponseOutput {
-	return o.ApplyT(func(v *JobPlacementResponse) JobPlacementResponse { return *v }).(JobPlacementResponseOutput)
+	return o.ApplyT(func(v *JobPlacementResponse) JobPlacementResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobPlacementResponse
+		return ret
+	}).(JobPlacementResponseOutput)
 }
 
 // Optional. Cluster labels to identify a cluster where the job will be submitted.
@@ -8119,7 +8339,7 @@ func (o JobReferenceOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
 }
 
 func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
-	return o.ApplyT(func(v JobReference) *JobReference {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReference) *JobReference {
 		return &v
 	}).(JobReferencePtrOutput)
 }
@@ -8149,7 +8369,13 @@ func (o JobReferencePtrOutput) ToJobReferencePtrOutputWithContext(ctx context.Co
 }
 
 func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
-	return o.ApplyT(func(v *JobReference) JobReference { return *v }).(JobReferenceOutput)
+	return o.ApplyT(func(v *JobReference) JobReference {
+		if v != nil {
+			return *v
+		}
+		var ret JobReference
+		return ret
+	}).(JobReferenceOutput)
 }
 
 // Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
@@ -8272,7 +8498,7 @@ func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutput() JobReferen
 }
 
 func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
-	return o.ApplyT(func(v JobReferenceResponse) *JobReferenceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobReferenceResponse) *JobReferenceResponse {
 		return &v
 	}).(JobReferenceResponsePtrOutput)
 }
@@ -8302,7 +8528,13 @@ func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutputWithContex
 }
 
 func (o JobReferenceResponsePtrOutput) Elem() JobReferenceResponseOutput {
-	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse { return *v }).(JobReferenceResponseOutput)
+	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobReferenceResponse
+		return ret
+	}).(JobReferenceResponseOutput)
 }
 
 // Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
@@ -8425,7 +8657,7 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutput() JobSchedulingPtrOutput {
 }
 
 func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Context) JobSchedulingPtrOutput {
-	return o.ApplyT(func(v JobScheduling) *JobScheduling {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobScheduling) *JobScheduling {
 		return &v
 	}).(JobSchedulingPtrOutput)
 }
@@ -8455,7 +8687,13 @@ func (o JobSchedulingPtrOutput) ToJobSchedulingPtrOutputWithContext(ctx context.
 }
 
 func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
-	return o.ApplyT(func(v *JobScheduling) JobScheduling { return *v }).(JobSchedulingOutput)
+	return o.ApplyT(func(v *JobScheduling) JobScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret JobScheduling
+		return ret
+	}).(JobSchedulingOutput)
 }
 
 // Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
@@ -8578,7 +8816,7 @@ func (o JobSchedulingResponseOutput) ToJobSchedulingResponsePtrOutput() JobSched
 }
 
 func (o JobSchedulingResponseOutput) ToJobSchedulingResponsePtrOutputWithContext(ctx context.Context) JobSchedulingResponsePtrOutput {
-	return o.ApplyT(func(v JobSchedulingResponse) *JobSchedulingResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobSchedulingResponse) *JobSchedulingResponse {
 		return &v
 	}).(JobSchedulingResponsePtrOutput)
 }
@@ -8608,7 +8846,13 @@ func (o JobSchedulingResponsePtrOutput) ToJobSchedulingResponsePtrOutputWithCont
 }
 
 func (o JobSchedulingResponsePtrOutput) Elem() JobSchedulingResponseOutput {
-	return o.ApplyT(func(v *JobSchedulingResponse) JobSchedulingResponse { return *v }).(JobSchedulingResponseOutput)
+	return o.ApplyT(func(v *JobSchedulingResponse) JobSchedulingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobSchedulingResponse
+		return ret
+	}).(JobSchedulingResponseOutput)
 }
 
 // Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
@@ -8764,7 +9008,7 @@ func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusRespons
 }
 
 func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
-	return o.ApplyT(func(v JobStatusResponse) *JobStatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusResponse) *JobStatusResponse {
 		return &v
 	}).(JobStatusResponsePtrOutput)
 }
@@ -8804,7 +9048,13 @@ func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx 
 }
 
 func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
-	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse { return *v }).(JobStatusResponseOutput)
+	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatusResponse
+		return ret
+	}).(JobStatusResponseOutput)
 }
 
 // Optional. Output only. Job state details, such as an error description if the state is ERROR.
@@ -9019,7 +9269,7 @@ func (o KerberosConfigOutput) ToKerberosConfigPtrOutput() KerberosConfigPtrOutpu
 }
 
 func (o KerberosConfigOutput) ToKerberosConfigPtrOutputWithContext(ctx context.Context) KerberosConfigPtrOutput {
-	return o.ApplyT(func(v KerberosConfig) *KerberosConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfig) *KerberosConfig {
 		return &v
 	}).(KerberosConfigPtrOutput)
 }
@@ -9114,7 +9364,13 @@ func (o KerberosConfigPtrOutput) ToKerberosConfigPtrOutputWithContext(ctx contex
 }
 
 func (o KerberosConfigPtrOutput) Elem() KerberosConfigOutput {
-	return o.ApplyT(func(v *KerberosConfig) KerberosConfig { return *v }).(KerberosConfigOutput)
+	return o.ApplyT(func(v *KerberosConfig) KerberosConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KerberosConfig
+		return ret
+	}).(KerberosConfigOutput)
 }
 
 // Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
@@ -9419,7 +9675,7 @@ func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutput() Kerber
 }
 
 func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return o.ApplyT(func(v KerberosConfigResponse) *KerberosConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfigResponse) *KerberosConfigResponse {
 		return &v
 	}).(KerberosConfigResponsePtrOutput)
 }
@@ -9514,7 +9770,13 @@ func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutputWithCo
 }
 
 func (o KerberosConfigResponsePtrOutput) Elem() KerberosConfigResponseOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse { return *v }).(KerberosConfigResponseOutput)
+	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KerberosConfigResponse
+		return ret
+	}).(KerberosConfigResponseOutput)
 }
 
 // Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
@@ -9771,7 +10033,7 @@ func (o LifecycleConfigOutput) ToLifecycleConfigPtrOutput() LifecycleConfigPtrOu
 }
 
 func (o LifecycleConfigOutput) ToLifecycleConfigPtrOutputWithContext(ctx context.Context) LifecycleConfigPtrOutput {
-	return o.ApplyT(func(v LifecycleConfig) *LifecycleConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LifecycleConfig) *LifecycleConfig {
 		return &v
 	}).(LifecycleConfigPtrOutput)
 }
@@ -9806,7 +10068,13 @@ func (o LifecycleConfigPtrOutput) ToLifecycleConfigPtrOutputWithContext(ctx cont
 }
 
 func (o LifecycleConfigPtrOutput) Elem() LifecycleConfigOutput {
-	return o.ApplyT(func(v *LifecycleConfig) LifecycleConfig { return *v }).(LifecycleConfigOutput)
+	return o.ApplyT(func(v *LifecycleConfig) LifecycleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LifecycleConfig
+		return ret
+	}).(LifecycleConfigOutput)
 }
 
 // Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -9947,7 +10215,7 @@ func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponsePtrOutput() Life
 }
 
 func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponsePtrOutputWithContext(ctx context.Context) LifecycleConfigResponsePtrOutput {
-	return o.ApplyT(func(v LifecycleConfigResponse) *LifecycleConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LifecycleConfigResponse) *LifecycleConfigResponse {
 		return &v
 	}).(LifecycleConfigResponsePtrOutput)
 }
@@ -9987,7 +10255,13 @@ func (o LifecycleConfigResponsePtrOutput) ToLifecycleConfigResponsePtrOutputWith
 }
 
 func (o LifecycleConfigResponsePtrOutput) Elem() LifecycleConfigResponseOutput {
-	return o.ApplyT(func(v *LifecycleConfigResponse) LifecycleConfigResponse { return *v }).(LifecycleConfigResponseOutput)
+	return o.ApplyT(func(v *LifecycleConfigResponse) LifecycleConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LifecycleConfigResponse
+		return ret
+	}).(LifecycleConfigResponseOutput)
 }
 
 // Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -10126,7 +10400,7 @@ func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
 }
 
 func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *LoggingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
 		return &v
 	}).(LoggingConfigPtrOutput)
 }
@@ -10151,7 +10425,13 @@ func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.
 }
 
 func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
-	return o.ApplyT(func(v *LoggingConfig) LoggingConfig { return *v }).(LoggingConfigOutput)
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfig
+		return ret
+	}).(LoggingConfigOutput)
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -10260,7 +10540,7 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingC
 }
 
 func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfigResponse) *LoggingConfigResponse {
 		return &v
 	}).(LoggingConfigResponsePtrOutput)
 }
@@ -10285,7 +10565,13 @@ func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithCont
 }
 
 func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigResponse
+		return ret
+	}).(LoggingConfigResponseOutput)
 }
 
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -10402,7 +10688,7 @@ func (o ManagedClusterOutput) ToManagedClusterPtrOutput() ManagedClusterPtrOutpu
 }
 
 func (o ManagedClusterOutput) ToManagedClusterPtrOutputWithContext(ctx context.Context) ManagedClusterPtrOutput {
-	return o.ApplyT(func(v ManagedCluster) *ManagedCluster {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedCluster) *ManagedCluster {
 		return &v
 	}).(ManagedClusterPtrOutput)
 }
@@ -10437,7 +10723,13 @@ func (o ManagedClusterPtrOutput) ToManagedClusterPtrOutputWithContext(ctx contex
 }
 
 func (o ManagedClusterPtrOutput) Elem() ManagedClusterOutput {
-	return o.ApplyT(func(v *ManagedCluster) ManagedCluster { return *v }).(ManagedClusterOutput)
+	return o.ApplyT(func(v *ManagedCluster) ManagedCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedCluster
+		return ret
+	}).(ManagedClusterOutput)
 }
 
 // The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -10574,7 +10866,7 @@ func (o ManagedClusterResponseOutput) ToManagedClusterResponsePtrOutput() Manage
 }
 
 func (o ManagedClusterResponseOutput) ToManagedClusterResponsePtrOutputWithContext(ctx context.Context) ManagedClusterResponsePtrOutput {
-	return o.ApplyT(func(v ManagedClusterResponse) *ManagedClusterResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterResponse) *ManagedClusterResponse {
 		return &v
 	}).(ManagedClusterResponsePtrOutput)
 }
@@ -10609,7 +10901,13 @@ func (o ManagedClusterResponsePtrOutput) ToManagedClusterResponsePtrOutputWithCo
 }
 
 func (o ManagedClusterResponsePtrOutput) Elem() ManagedClusterResponseOutput {
-	return o.ApplyT(func(v *ManagedClusterResponse) ManagedClusterResponse { return *v }).(ManagedClusterResponseOutput)
+	return o.ApplyT(func(v *ManagedClusterResponse) ManagedClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedClusterResponse
+		return ret
+	}).(ManagedClusterResponseOutput)
 }
 
 // The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -10742,7 +11040,7 @@ func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponsePtrOutput(
 }
 
 func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedGroupConfigResponsePtrOutput {
-	return o.ApplyT(func(v ManagedGroupConfigResponse) *ManagedGroupConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedGroupConfigResponse) *ManagedGroupConfigResponse {
 		return &v
 	}).(ManagedGroupConfigResponsePtrOutput)
 }
@@ -10772,7 +11070,13 @@ func (o ManagedGroupConfigResponsePtrOutput) ToManagedGroupConfigResponsePtrOutp
 }
 
 func (o ManagedGroupConfigResponsePtrOutput) Elem() ManagedGroupConfigResponseOutput {
-	return o.ApplyT(func(v *ManagedGroupConfigResponse) ManagedGroupConfigResponse { return *v }).(ManagedGroupConfigResponseOutput)
+	return o.ApplyT(func(v *ManagedGroupConfigResponse) ManagedGroupConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedGroupConfigResponse
+		return ret
+	}).(ManagedGroupConfigResponseOutput)
 }
 
 // The name of the Instance Group Manager for this group.
@@ -10891,7 +11195,7 @@ func (o MetastoreConfigOutput) ToMetastoreConfigPtrOutput() MetastoreConfigPtrOu
 }
 
 func (o MetastoreConfigOutput) ToMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreConfigPtrOutput {
-	return o.ApplyT(func(v MetastoreConfig) *MetastoreConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreConfig) *MetastoreConfig {
 		return &v
 	}).(MetastoreConfigPtrOutput)
 }
@@ -10916,7 +11220,13 @@ func (o MetastoreConfigPtrOutput) ToMetastoreConfigPtrOutputWithContext(ctx cont
 }
 
 func (o MetastoreConfigPtrOutput) Elem() MetastoreConfigOutput {
-	return o.ApplyT(func(v *MetastoreConfig) MetastoreConfig { return *v }).(MetastoreConfigOutput)
+	return o.ApplyT(func(v *MetastoreConfig) MetastoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreConfig
+		return ret
+	}).(MetastoreConfigOutput)
 }
 
 // Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -11025,7 +11335,7 @@ func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponsePtrOutput() Meta
 }
 
 func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) MetastoreConfigResponsePtrOutput {
-	return o.ApplyT(func(v MetastoreConfigResponse) *MetastoreConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreConfigResponse) *MetastoreConfigResponse {
 		return &v
 	}).(MetastoreConfigResponsePtrOutput)
 }
@@ -11050,7 +11360,13 @@ func (o MetastoreConfigResponsePtrOutput) ToMetastoreConfigResponsePtrOutputWith
 }
 
 func (o MetastoreConfigResponsePtrOutput) Elem() MetastoreConfigResponseOutput {
-	return o.ApplyT(func(v *MetastoreConfigResponse) MetastoreConfigResponse { return *v }).(MetastoreConfigResponseOutput)
+	return o.ApplyT(func(v *MetastoreConfigResponse) MetastoreConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreConfigResponse
+		return ret
+	}).(MetastoreConfigResponseOutput)
 }
 
 // Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -11163,7 +11479,7 @@ func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetPtrO
 }
 
 func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetPtrOutput {
-	return o.ApplyT(func(v NamespacedGkeDeploymentTarget) *NamespacedGkeDeploymentTarget {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespacedGkeDeploymentTarget) *NamespacedGkeDeploymentTarget {
 		return &v
 	}).(NamespacedGkeDeploymentTargetPtrOutput)
 }
@@ -11193,7 +11509,13 @@ func (o NamespacedGkeDeploymentTargetPtrOutput) ToNamespacedGkeDeploymentTargetP
 }
 
 func (o NamespacedGkeDeploymentTargetPtrOutput) Elem() NamespacedGkeDeploymentTargetOutput {
-	return o.ApplyT(func(v *NamespacedGkeDeploymentTarget) NamespacedGkeDeploymentTarget { return *v }).(NamespacedGkeDeploymentTargetOutput)
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTarget) NamespacedGkeDeploymentTarget {
+		if v != nil {
+			return *v
+		}
+		var ret NamespacedGkeDeploymentTarget
+		return ret
+	}).(NamespacedGkeDeploymentTargetOutput)
 }
 
 // Optional. A namespace within the GKE cluster to deploy into.
@@ -11316,7 +11638,7 @@ func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTa
 }
 
 func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput {
-	return o.ApplyT(func(v NamespacedGkeDeploymentTargetResponse) *NamespacedGkeDeploymentTargetResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespacedGkeDeploymentTargetResponse) *NamespacedGkeDeploymentTargetResponse {
 		return &v
 	}).(NamespacedGkeDeploymentTargetResponsePtrOutput)
 }
@@ -11346,7 +11668,13 @@ func (o NamespacedGkeDeploymentTargetResponsePtrOutput) ToNamespacedGkeDeploymen
 }
 
 func (o NamespacedGkeDeploymentTargetResponsePtrOutput) Elem() NamespacedGkeDeploymentTargetResponseOutput {
-	return o.ApplyT(func(v *NamespacedGkeDeploymentTargetResponse) NamespacedGkeDeploymentTargetResponse { return *v }).(NamespacedGkeDeploymentTargetResponseOutput)
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTargetResponse) NamespacedGkeDeploymentTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NamespacedGkeDeploymentTargetResponse
+		return ret
+	}).(NamespacedGkeDeploymentTargetResponseOutput)
 }
 
 // Optional. A namespace within the GKE cluster to deploy into.
@@ -11465,7 +11793,7 @@ func (o NodeGroupAffinityOutput) ToNodeGroupAffinityPtrOutput() NodeGroupAffinit
 }
 
 func (o NodeGroupAffinityOutput) ToNodeGroupAffinityPtrOutputWithContext(ctx context.Context) NodeGroupAffinityPtrOutput {
-	return o.ApplyT(func(v NodeGroupAffinity) *NodeGroupAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupAffinity) *NodeGroupAffinity {
 		return &v
 	}).(NodeGroupAffinityPtrOutput)
 }
@@ -11490,7 +11818,13 @@ func (o NodeGroupAffinityPtrOutput) ToNodeGroupAffinityPtrOutputWithContext(ctx 
 }
 
 func (o NodeGroupAffinityPtrOutput) Elem() NodeGroupAffinityOutput {
-	return o.ApplyT(func(v *NodeGroupAffinity) NodeGroupAffinity { return *v }).(NodeGroupAffinityOutput)
+	return o.ApplyT(func(v *NodeGroupAffinity) NodeGroupAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupAffinity
+		return ret
+	}).(NodeGroupAffinityOutput)
 }
 
 // The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
@@ -11599,7 +11933,7 @@ func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponsePtrOutput() 
 }
 
 func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponsePtrOutputWithContext(ctx context.Context) NodeGroupAffinityResponsePtrOutput {
-	return o.ApplyT(func(v NodeGroupAffinityResponse) *NodeGroupAffinityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupAffinityResponse) *NodeGroupAffinityResponse {
 		return &v
 	}).(NodeGroupAffinityResponsePtrOutput)
 }
@@ -11624,7 +11958,13 @@ func (o NodeGroupAffinityResponsePtrOutput) ToNodeGroupAffinityResponsePtrOutput
 }
 
 func (o NodeGroupAffinityResponsePtrOutput) Elem() NodeGroupAffinityResponseOutput {
-	return o.ApplyT(func(v *NodeGroupAffinityResponse) NodeGroupAffinityResponse { return *v }).(NodeGroupAffinityResponseOutput)
+	return o.ApplyT(func(v *NodeGroupAffinityResponse) NodeGroupAffinityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupAffinityResponse
+		return ret
+	}).(NodeGroupAffinityResponseOutput)
 }
 
 // The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
@@ -12353,7 +12693,7 @@ func (o ParameterValidationOutput) ToParameterValidationPtrOutput() ParameterVal
 }
 
 func (o ParameterValidationOutput) ToParameterValidationPtrOutputWithContext(ctx context.Context) ParameterValidationPtrOutput {
-	return o.ApplyT(func(v ParameterValidation) *ParameterValidation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParameterValidation) *ParameterValidation {
 		return &v
 	}).(ParameterValidationPtrOutput)
 }
@@ -12383,7 +12723,13 @@ func (o ParameterValidationPtrOutput) ToParameterValidationPtrOutputWithContext(
 }
 
 func (o ParameterValidationPtrOutput) Elem() ParameterValidationOutput {
-	return o.ApplyT(func(v *ParameterValidation) ParameterValidation { return *v }).(ParameterValidationOutput)
+	return o.ApplyT(func(v *ParameterValidation) ParameterValidation {
+		if v != nil {
+			return *v
+		}
+		var ret ParameterValidation
+		return ret
+	}).(ParameterValidationOutput)
 }
 
 // Validation based on regular expressions.
@@ -12590,7 +12936,7 @@ func (o PigJobOutput) ToPigJobPtrOutput() PigJobPtrOutput {
 }
 
 func (o PigJobOutput) ToPigJobPtrOutputWithContext(ctx context.Context) PigJobPtrOutput {
-	return o.ApplyT(func(v PigJob) *PigJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PigJob) *PigJob {
 		return &v
 	}).(PigJobPtrOutput)
 }
@@ -12645,7 +12991,13 @@ func (o PigJobPtrOutput) ToPigJobPtrOutputWithContext(ctx context.Context) PigJo
 }
 
 func (o PigJobPtrOutput) Elem() PigJobOutput {
-	return o.ApplyT(func(v *PigJob) PigJob { return *v }).(PigJobOutput)
+	return o.ApplyT(func(v *PigJob) PigJob {
+		if v != nil {
+			return *v
+		}
+		var ret PigJob
+		return ret
+	}).(PigJobOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -12838,7 +13190,7 @@ func (o PigJobResponseOutput) ToPigJobResponsePtrOutput() PigJobResponsePtrOutpu
 }
 
 func (o PigJobResponseOutput) ToPigJobResponsePtrOutputWithContext(ctx context.Context) PigJobResponsePtrOutput {
-	return o.ApplyT(func(v PigJobResponse) *PigJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PigJobResponse) *PigJobResponse {
 		return &v
 	}).(PigJobResponsePtrOutput)
 }
@@ -12893,7 +13245,13 @@ func (o PigJobResponsePtrOutput) ToPigJobResponsePtrOutputWithContext(ctx contex
 }
 
 func (o PigJobResponsePtrOutput) Elem() PigJobResponseOutput {
-	return o.ApplyT(func(v *PigJobResponse) PigJobResponse { return *v }).(PigJobResponseOutput)
+	return o.ApplyT(func(v *PigJobResponse) PigJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PigJobResponse
+		return ret
+	}).(PigJobResponseOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -13086,7 +13444,7 @@ func (o PrestoJobOutput) ToPrestoJobPtrOutput() PrestoJobPtrOutput {
 }
 
 func (o PrestoJobOutput) ToPrestoJobPtrOutputWithContext(ctx context.Context) PrestoJobPtrOutput {
-	return o.ApplyT(func(v PrestoJob) *PrestoJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrestoJob) *PrestoJob {
 		return &v
 	}).(PrestoJobPtrOutput)
 }
@@ -13141,7 +13499,13 @@ func (o PrestoJobPtrOutput) ToPrestoJobPtrOutputWithContext(ctx context.Context)
 }
 
 func (o PrestoJobPtrOutput) Elem() PrestoJobOutput {
-	return o.ApplyT(func(v *PrestoJob) PrestoJob { return *v }).(PrestoJobOutput)
+	return o.ApplyT(func(v *PrestoJob) PrestoJob {
+		if v != nil {
+			return *v
+		}
+		var ret PrestoJob
+		return ret
+	}).(PrestoJobOutput)
 }
 
 // Optional. Presto client tags to attach to this query
@@ -13334,7 +13698,7 @@ func (o PrestoJobResponseOutput) ToPrestoJobResponsePtrOutput() PrestoJobRespons
 }
 
 func (o PrestoJobResponseOutput) ToPrestoJobResponsePtrOutputWithContext(ctx context.Context) PrestoJobResponsePtrOutput {
-	return o.ApplyT(func(v PrestoJobResponse) *PrestoJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrestoJobResponse) *PrestoJobResponse {
 		return &v
 	}).(PrestoJobResponsePtrOutput)
 }
@@ -13389,7 +13753,13 @@ func (o PrestoJobResponsePtrOutput) ToPrestoJobResponsePtrOutputWithContext(ctx 
 }
 
 func (o PrestoJobResponsePtrOutput) Elem() PrestoJobResponseOutput {
-	return o.ApplyT(func(v *PrestoJobResponse) PrestoJobResponse { return *v }).(PrestoJobResponseOutput)
+	return o.ApplyT(func(v *PrestoJobResponse) PrestoJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrestoJobResponse
+		return ret
+	}).(PrestoJobResponseOutput)
 }
 
 // Optional. Presto client tags to attach to this query
@@ -13586,7 +13956,7 @@ func (o PySparkJobOutput) ToPySparkJobPtrOutput() PySparkJobPtrOutput {
 }
 
 func (o PySparkJobOutput) ToPySparkJobPtrOutputWithContext(ctx context.Context) PySparkJobPtrOutput {
-	return o.ApplyT(func(v PySparkJob) *PySparkJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PySparkJob) *PySparkJob {
 		return &v
 	}).(PySparkJobPtrOutput)
 }
@@ -13646,7 +14016,13 @@ func (o PySparkJobPtrOutput) ToPySparkJobPtrOutputWithContext(ctx context.Contex
 }
 
 func (o PySparkJobPtrOutput) Elem() PySparkJobOutput {
-	return o.ApplyT(func(v *PySparkJob) PySparkJob { return *v }).(PySparkJobOutput)
+	return o.ApplyT(func(v *PySparkJob) PySparkJob {
+		if v != nil {
+			return *v
+		}
+		var ret PySparkJob
+		return ret
+	}).(PySparkJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -13853,7 +14229,7 @@ func (o PySparkJobResponseOutput) ToPySparkJobResponsePtrOutput() PySparkJobResp
 }
 
 func (o PySparkJobResponseOutput) ToPySparkJobResponsePtrOutputWithContext(ctx context.Context) PySparkJobResponsePtrOutput {
-	return o.ApplyT(func(v PySparkJobResponse) *PySparkJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PySparkJobResponse) *PySparkJobResponse {
 		return &v
 	}).(PySparkJobResponsePtrOutput)
 }
@@ -13913,7 +14289,13 @@ func (o PySparkJobResponsePtrOutput) ToPySparkJobResponsePtrOutputWithContext(ct
 }
 
 func (o PySparkJobResponsePtrOutput) Elem() PySparkJobResponseOutput {
-	return o.ApplyT(func(v *PySparkJobResponse) PySparkJobResponse { return *v }).(PySparkJobResponseOutput)
+	return o.ApplyT(func(v *PySparkJobResponse) PySparkJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PySparkJobResponse
+		return ret
+	}).(PySparkJobResponseOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -14092,7 +14474,7 @@ func (o QueryListOutput) ToQueryListPtrOutput() QueryListPtrOutput {
 }
 
 func (o QueryListOutput) ToQueryListPtrOutputWithContext(ctx context.Context) QueryListPtrOutput {
-	return o.ApplyT(func(v QueryList) *QueryList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryList) *QueryList {
 		return &v
 	}).(QueryListPtrOutput)
 }
@@ -14117,7 +14499,13 @@ func (o QueryListPtrOutput) ToQueryListPtrOutputWithContext(ctx context.Context)
 }
 
 func (o QueryListPtrOutput) Elem() QueryListOutput {
-	return o.ApplyT(func(v *QueryList) QueryList { return *v }).(QueryListOutput)
+	return o.ApplyT(func(v *QueryList) QueryList {
+		if v != nil {
+			return *v
+		}
+		var ret QueryList
+		return ret
+	}).(QueryListOutput)
 }
 
 // The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
@@ -14226,7 +14614,7 @@ func (o QueryListResponseOutput) ToQueryListResponsePtrOutput() QueryListRespons
 }
 
 func (o QueryListResponseOutput) ToQueryListResponsePtrOutputWithContext(ctx context.Context) QueryListResponsePtrOutput {
-	return o.ApplyT(func(v QueryListResponse) *QueryListResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryListResponse) *QueryListResponse {
 		return &v
 	}).(QueryListResponsePtrOutput)
 }
@@ -14251,7 +14639,13 @@ func (o QueryListResponsePtrOutput) ToQueryListResponsePtrOutputWithContext(ctx 
 }
 
 func (o QueryListResponsePtrOutput) Elem() QueryListResponseOutput {
-	return o.ApplyT(func(v *QueryListResponse) QueryListResponse { return *v }).(QueryListResponseOutput)
+	return o.ApplyT(func(v *QueryListResponse) QueryListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueryListResponse
+		return ret
+	}).(QueryListResponseOutput)
 }
 
 // The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
@@ -14360,7 +14754,7 @@ func (o RegexValidationOutput) ToRegexValidationPtrOutput() RegexValidationPtrOu
 }
 
 func (o RegexValidationOutput) ToRegexValidationPtrOutputWithContext(ctx context.Context) RegexValidationPtrOutput {
-	return o.ApplyT(func(v RegexValidation) *RegexValidation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegexValidation) *RegexValidation {
 		return &v
 	}).(RegexValidationPtrOutput)
 }
@@ -14385,7 +14779,13 @@ func (o RegexValidationPtrOutput) ToRegexValidationPtrOutputWithContext(ctx cont
 }
 
 func (o RegexValidationPtrOutput) Elem() RegexValidationOutput {
-	return o.ApplyT(func(v *RegexValidation) RegexValidation { return *v }).(RegexValidationOutput)
+	return o.ApplyT(func(v *RegexValidation) RegexValidation {
+		if v != nil {
+			return *v
+		}
+		var ret RegexValidation
+		return ret
+	}).(RegexValidationOutput)
 }
 
 // RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
@@ -14557,7 +14957,7 @@ func (o ReservationAffinityOutput) ToReservationAffinityPtrOutput() ReservationA
 }
 
 func (o ReservationAffinityOutput) ToReservationAffinityPtrOutputWithContext(ctx context.Context) ReservationAffinityPtrOutput {
-	return o.ApplyT(func(v ReservationAffinity) *ReservationAffinity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinity) *ReservationAffinity {
 		return &v
 	}).(ReservationAffinityPtrOutput)
 }
@@ -14594,7 +14994,13 @@ func (o ReservationAffinityPtrOutput) ToReservationAffinityPtrOutputWithContext(
 }
 
 func (o ReservationAffinityPtrOutput) Elem() ReservationAffinityOutput {
-	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity { return *v }).(ReservationAffinityOutput)
+	return o.ApplyT(func(v *ReservationAffinity) ReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinity
+		return ret
+	}).(ReservationAffinityOutput)
 }
 
 // Optional. Type of reservation to consume
@@ -14731,7 +15137,7 @@ func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutpu
 }
 
 func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
-	return o.ApplyT(func(v ReservationAffinityResponse) *ReservationAffinityResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinityResponse) *ReservationAffinityResponse {
 		return &v
 	}).(ReservationAffinityResponsePtrOutput)
 }
@@ -14766,7 +15172,13 @@ func (o ReservationAffinityResponsePtrOutput) ToReservationAffinityResponsePtrOu
 }
 
 func (o ReservationAffinityResponsePtrOutput) Elem() ReservationAffinityResponseOutput {
-	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse { return *v }).(ReservationAffinityResponseOutput)
+	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAffinityResponse
+		return ret
+	}).(ReservationAffinityResponseOutput)
 }
 
 // Optional. Type of reservation to consume
@@ -14899,7 +15311,7 @@ func (o SecurityConfigOutput) ToSecurityConfigPtrOutput() SecurityConfigPtrOutpu
 }
 
 func (o SecurityConfigOutput) ToSecurityConfigPtrOutputWithContext(ctx context.Context) SecurityConfigPtrOutput {
-	return o.ApplyT(func(v SecurityConfig) *SecurityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityConfig) *SecurityConfig {
 		return &v
 	}).(SecurityConfigPtrOutput)
 }
@@ -14929,7 +15341,13 @@ func (o SecurityConfigPtrOutput) ToSecurityConfigPtrOutputWithContext(ctx contex
 }
 
 func (o SecurityConfigPtrOutput) Elem() SecurityConfigOutput {
-	return o.ApplyT(func(v *SecurityConfig) SecurityConfig { return *v }).(SecurityConfigOutput)
+	return o.ApplyT(func(v *SecurityConfig) SecurityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityConfig
+		return ret
+	}).(SecurityConfigOutput)
 }
 
 // Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
@@ -15052,7 +15470,7 @@ func (o SecurityConfigResponseOutput) ToSecurityConfigResponsePtrOutput() Securi
 }
 
 func (o SecurityConfigResponseOutput) ToSecurityConfigResponsePtrOutputWithContext(ctx context.Context) SecurityConfigResponsePtrOutput {
-	return o.ApplyT(func(v SecurityConfigResponse) *SecurityConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityConfigResponse) *SecurityConfigResponse {
 		return &v
 	}).(SecurityConfigResponsePtrOutput)
 }
@@ -15082,7 +15500,13 @@ func (o SecurityConfigResponsePtrOutput) ToSecurityConfigResponsePtrOutputWithCo
 }
 
 func (o SecurityConfigResponsePtrOutput) Elem() SecurityConfigResponseOutput {
-	return o.ApplyT(func(v *SecurityConfigResponse) SecurityConfigResponse { return *v }).(SecurityConfigResponseOutput)
+	return o.ApplyT(func(v *SecurityConfigResponse) SecurityConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityConfigResponse
+		return ret
+	}).(SecurityConfigResponseOutput)
 }
 
 // Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
@@ -15209,7 +15633,7 @@ func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutput() Shield
 }
 
 func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfig) *ShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfig) *ShieldedInstanceConfig {
 		return &v
 	}).(ShieldedInstanceConfigPtrOutput)
 }
@@ -15244,7 +15668,13 @@ func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithCo
 }
 
 func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig { return *v }).(ShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfig
+		return ret
+	}).(ShieldedInstanceConfigOutput)
 }
 
 // Optional. Defines whether instances have integrity monitoring enabled.
@@ -15381,7 +15811,7 @@ func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePt
 }
 
 func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
-	return o.ApplyT(func(v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
 		return &v
 	}).(ShieldedInstanceConfigResponsePtrOutput)
 }
@@ -15416,7 +15846,13 @@ func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigRespons
 }
 
 func (o ShieldedInstanceConfigResponsePtrOutput) Elem() ShieldedInstanceConfigResponseOutput {
-	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse { return *v }).(ShieldedInstanceConfigResponseOutput)
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfigResponse
+		return ret
+	}).(ShieldedInstanceConfigResponseOutput)
 }
 
 // Optional. Defines whether instances have integrity monitoring enabled.
@@ -15553,7 +15989,7 @@ func (o SoftwareConfigOutput) ToSoftwareConfigPtrOutput() SoftwareConfigPtrOutpu
 }
 
 func (o SoftwareConfigOutput) ToSoftwareConfigPtrOutputWithContext(ctx context.Context) SoftwareConfigPtrOutput {
-	return o.ApplyT(func(v SoftwareConfig) *SoftwareConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfig) *SoftwareConfig {
 		return &v
 	}).(SoftwareConfigPtrOutput)
 }
@@ -15588,7 +16024,13 @@ func (o SoftwareConfigPtrOutput) ToSoftwareConfigPtrOutputWithContext(ctx contex
 }
 
 func (o SoftwareConfigPtrOutput) Elem() SoftwareConfigOutput {
-	return o.ApplyT(func(v *SoftwareConfig) SoftwareConfig { return *v }).(SoftwareConfigOutput)
+	return o.ApplyT(func(v *SoftwareConfig) SoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfig
+		return ret
+	}).(SoftwareConfigOutput)
 }
 
 // Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -15725,7 +16167,7 @@ func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutput() Softwa
 }
 
 func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return o.ApplyT(func(v SoftwareConfigResponse) *SoftwareConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfigResponse) *SoftwareConfigResponse {
 		return &v
 	}).(SoftwareConfigResponsePtrOutput)
 }
@@ -15760,7 +16202,13 @@ func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutputWithCo
 }
 
 func (o SoftwareConfigResponsePtrOutput) Elem() SoftwareConfigResponseOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse { return *v }).(SoftwareConfigResponseOutput)
+	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfigResponse
+		return ret
+	}).(SoftwareConfigResponseOutput)
 }
 
 // Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -15917,7 +16365,7 @@ func (o SparkJobOutput) ToSparkJobPtrOutput() SparkJobPtrOutput {
 }
 
 func (o SparkJobOutput) ToSparkJobPtrOutputWithContext(ctx context.Context) SparkJobPtrOutput {
-	return o.ApplyT(func(v SparkJob) *SparkJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkJob) *SparkJob {
 		return &v
 	}).(SparkJobPtrOutput)
 }
@@ -15977,7 +16425,13 @@ func (o SparkJobPtrOutput) ToSparkJobPtrOutputWithContext(ctx context.Context) S
 }
 
 func (o SparkJobPtrOutput) Elem() SparkJobOutput {
-	return o.ApplyT(func(v *SparkJob) SparkJob { return *v }).(SparkJobOutput)
+	return o.ApplyT(func(v *SparkJob) SparkJob {
+		if v != nil {
+			return *v
+		}
+		var ret SparkJob
+		return ret
+	}).(SparkJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -16184,7 +16638,7 @@ func (o SparkJobResponseOutput) ToSparkJobResponsePtrOutput() SparkJobResponsePt
 }
 
 func (o SparkJobResponseOutput) ToSparkJobResponsePtrOutputWithContext(ctx context.Context) SparkJobResponsePtrOutput {
-	return o.ApplyT(func(v SparkJobResponse) *SparkJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkJobResponse) *SparkJobResponse {
 		return &v
 	}).(SparkJobResponsePtrOutput)
 }
@@ -16244,7 +16698,13 @@ func (o SparkJobResponsePtrOutput) ToSparkJobResponsePtrOutputWithContext(ctx co
 }
 
 func (o SparkJobResponsePtrOutput) Elem() SparkJobResponseOutput {
-	return o.ApplyT(func(v *SparkJobResponse) SparkJobResponse { return *v }).(SparkJobResponseOutput)
+	return o.ApplyT(func(v *SparkJobResponse) SparkJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SparkJobResponse
+		return ret
+	}).(SparkJobResponseOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -16443,7 +16903,7 @@ func (o SparkRJobOutput) ToSparkRJobPtrOutput() SparkRJobPtrOutput {
 }
 
 func (o SparkRJobOutput) ToSparkRJobPtrOutputWithContext(ctx context.Context) SparkRJobPtrOutput {
-	return o.ApplyT(func(v SparkRJob) *SparkRJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkRJob) *SparkRJob {
 		return &v
 	}).(SparkRJobPtrOutput)
 }
@@ -16493,7 +16953,13 @@ func (o SparkRJobPtrOutput) ToSparkRJobPtrOutputWithContext(ctx context.Context)
 }
 
 func (o SparkRJobPtrOutput) Elem() SparkRJobOutput {
-	return o.ApplyT(func(v *SparkRJob) SparkRJob { return *v }).(SparkRJobOutput)
+	return o.ApplyT(func(v *SparkRJob) SparkRJob {
+		if v != nil {
+			return *v
+		}
+		var ret SparkRJob
+		return ret
+	}).(SparkRJobOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -16672,7 +17138,7 @@ func (o SparkRJobResponseOutput) ToSparkRJobResponsePtrOutput() SparkRJobRespons
 }
 
 func (o SparkRJobResponseOutput) ToSparkRJobResponsePtrOutputWithContext(ctx context.Context) SparkRJobResponsePtrOutput {
-	return o.ApplyT(func(v SparkRJobResponse) *SparkRJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkRJobResponse) *SparkRJobResponse {
 		return &v
 	}).(SparkRJobResponsePtrOutput)
 }
@@ -16722,7 +17188,13 @@ func (o SparkRJobResponsePtrOutput) ToSparkRJobResponsePtrOutputWithContext(ctx 
 }
 
 func (o SparkRJobResponsePtrOutput) Elem() SparkRJobResponseOutput {
-	return o.ApplyT(func(v *SparkRJobResponse) SparkRJobResponse { return *v }).(SparkRJobResponseOutput)
+	return o.ApplyT(func(v *SparkRJobResponse) SparkRJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SparkRJobResponse
+		return ret
+	}).(SparkRJobResponseOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -16901,7 +17373,7 @@ func (o SparkSqlJobOutput) ToSparkSqlJobPtrOutput() SparkSqlJobPtrOutput {
 }
 
 func (o SparkSqlJobOutput) ToSparkSqlJobPtrOutputWithContext(ctx context.Context) SparkSqlJobPtrOutput {
-	return o.ApplyT(func(v SparkSqlJob) *SparkSqlJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkSqlJob) *SparkSqlJob {
 		return &v
 	}).(SparkSqlJobPtrOutput)
 }
@@ -16951,7 +17423,13 @@ func (o SparkSqlJobPtrOutput) ToSparkSqlJobPtrOutputWithContext(ctx context.Cont
 }
 
 func (o SparkSqlJobPtrOutput) Elem() SparkSqlJobOutput {
-	return o.ApplyT(func(v *SparkSqlJob) SparkSqlJob { return *v }).(SparkSqlJobOutput)
+	return o.ApplyT(func(v *SparkSqlJob) SparkSqlJob {
+		if v != nil {
+			return *v
+		}
+		var ret SparkSqlJob
+		return ret
+	}).(SparkSqlJobOutput)
 }
 
 // Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -17130,7 +17608,7 @@ func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponsePtrOutput() SparkSqlJobR
 }
 
 func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponsePtrOutputWithContext(ctx context.Context) SparkSqlJobResponsePtrOutput {
-	return o.ApplyT(func(v SparkSqlJobResponse) *SparkSqlJobResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkSqlJobResponse) *SparkSqlJobResponse {
 		return &v
 	}).(SparkSqlJobResponsePtrOutput)
 }
@@ -17180,7 +17658,13 @@ func (o SparkSqlJobResponsePtrOutput) ToSparkSqlJobResponsePtrOutputWithContext(
 }
 
 func (o SparkSqlJobResponsePtrOutput) Elem() SparkSqlJobResponseOutput {
-	return o.ApplyT(func(v *SparkSqlJobResponse) SparkSqlJobResponse { return *v }).(SparkSqlJobResponseOutput)
+	return o.ApplyT(func(v *SparkSqlJobResponse) SparkSqlJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SparkSqlJobResponse
+		return ret
+	}).(SparkSqlJobResponseOutput)
 }
 
 // Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -17593,7 +18077,7 @@ func (o ValueValidationOutput) ToValueValidationPtrOutput() ValueValidationPtrOu
 }
 
 func (o ValueValidationOutput) ToValueValidationPtrOutputWithContext(ctx context.Context) ValueValidationPtrOutput {
-	return o.ApplyT(func(v ValueValidation) *ValueValidation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueValidation) *ValueValidation {
 		return &v
 	}).(ValueValidationPtrOutput)
 }
@@ -17618,7 +18102,13 @@ func (o ValueValidationPtrOutput) ToValueValidationPtrOutputWithContext(ctx cont
 }
 
 func (o ValueValidationPtrOutput) Elem() ValueValidationOutput {
-	return o.ApplyT(func(v *ValueValidation) ValueValidation { return *v }).(ValueValidationOutput)
+	return o.ApplyT(func(v *ValueValidation) ValueValidation {
+		if v != nil {
+			return *v
+		}
+		var ret ValueValidation
+		return ret
+	}).(ValueValidationOutput)
 }
 
 // List of allowed values for the parameter.
@@ -17786,7 +18276,7 @@ func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutput() 
 }
 
 func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementPtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacement) *WorkflowTemplatePlacement {
 		return &v
 	}).(WorkflowTemplatePlacementPtrOutput)
 }
@@ -17816,7 +18306,13 @@ func (o WorkflowTemplatePlacementPtrOutput) ToWorkflowTemplatePlacementPtrOutput
 }
 
 func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement { return *v }).(WorkflowTemplatePlacementOutput)
+	return o.ApplyT(func(v *WorkflowTemplatePlacement) WorkflowTemplatePlacement {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacement
+		return ret
+	}).(WorkflowTemplatePlacementOutput)
 }
 
 // Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
@@ -17939,7 +18435,7 @@ func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResp
 }
 
 func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponsePtrOutput {
-	return o.ApplyT(func(v WorkflowTemplatePlacementResponse) *WorkflowTemplatePlacementResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementResponse) *WorkflowTemplatePlacementResponse {
 		return &v
 	}).(WorkflowTemplatePlacementResponsePtrOutput)
 }
@@ -17969,7 +18465,13 @@ func (o WorkflowTemplatePlacementResponsePtrOutput) ToWorkflowTemplatePlacementR
 }
 
 func (o WorkflowTemplatePlacementResponsePtrOutput) Elem() WorkflowTemplatePlacementResponseOutput {
-	return o.ApplyT(func(v *WorkflowTemplatePlacementResponse) WorkflowTemplatePlacementResponse { return *v }).(WorkflowTemplatePlacementResponseOutput)
+	return o.ApplyT(func(v *WorkflowTemplatePlacementResponse) WorkflowTemplatePlacementResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementResponse
+		return ret
+	}).(WorkflowTemplatePlacementResponseOutput)
 }
 
 // Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.

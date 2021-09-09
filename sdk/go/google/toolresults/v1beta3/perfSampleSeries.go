@@ -121,9 +121,7 @@ func (i *PerfSampleSeries) ToPerfSampleSeriesOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PerfSampleSeriesOutput)
 }
 
-type PerfSampleSeriesOutput struct {
-	*pulumi.OutputState
-}
+type PerfSampleSeriesOutput struct{ *pulumi.OutputState }
 
 func (PerfSampleSeriesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PerfSampleSeries)(nil))

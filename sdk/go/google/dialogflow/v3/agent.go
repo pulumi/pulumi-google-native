@@ -176,9 +176,7 @@ func (i *Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentOutput)
 }
 
-type AgentOutput struct {
-	*pulumi.OutputState
-}
+type AgentOutput struct{ *pulumi.OutputState }
 
 func (AgentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Agent)(nil))

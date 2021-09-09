@@ -132,9 +132,7 @@ func (i *ReservationIamPolicy) ToReservationIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationIamPolicyOutput)
 }
 
-type ReservationIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ReservationIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ReservationIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReservationIamPolicy)(nil))

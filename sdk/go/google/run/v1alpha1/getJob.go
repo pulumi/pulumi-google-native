@@ -4,6 +4,9 @@
 package v1alpha1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,65 @@ type LookupJobResult struct {
 	Spec JobSpecResponse `pulumi:"spec"`
 	// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
 	Status JobStatusResponse `pulumi:"status"`
+}
+
+func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupJobResult, error) {
+			args := v.(LookupJobArgs)
+			r, err := LookupJob(ctx, &args, opts...)
+			return *r, err
+		}).(LookupJobResultOutput)
+}
+
+type LookupJobOutputArgs struct {
+	JobId       pulumi.StringInput `pulumi:"jobId"`
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+}
+
+func (LookupJobOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobArgs)(nil)).Elem()
+}
+
+type LookupJobResultOutput struct{ *pulumi.OutputState }
+
+func (LookupJobResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobResult)(nil)).Elem()
+}
+
+func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
+	return o
+}
+
+func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
+	return o
+}
+
+// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
+func (o LookupJobResultOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
+func (o LookupJobResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+func (o LookupJobResultOutput) Metadata() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+func (o LookupJobResultOutput) Spec() JobSpecResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) JobSpecResponse { return v.Spec }).(JobSpecResponseOutput)
+}
+
+// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+func (o LookupJobResultOutput) Status() JobStatusResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) JobStatusResponse { return v.Status }).(JobStatusResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupJobResultOutput{})
 }

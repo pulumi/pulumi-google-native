@@ -4,6 +4,9 @@
 package alpha
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,105 @@ type LookupHttpHealthCheckResult struct {
 	TimeoutSec int `pulumi:"timeoutSec"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
 	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+func LookupHttpHealthCheckOutput(ctx *pulumi.Context, args LookupHttpHealthCheckOutputArgs, opts ...pulumi.InvokeOption) LookupHttpHealthCheckResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHttpHealthCheckResult, error) {
+			args := v.(LookupHttpHealthCheckArgs)
+			r, err := LookupHttpHealthCheck(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHttpHealthCheckResultOutput)
+}
+
+type LookupHttpHealthCheckOutputArgs struct {
+	HttpHealthCheck pulumi.StringInput    `pulumi:"httpHealthCheck"`
+	Project         pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupHttpHealthCheckOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHttpHealthCheckArgs)(nil)).Elem()
+}
+
+type LookupHttpHealthCheckResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHttpHealthCheckResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHttpHealthCheckResult)(nil)).Elem()
+}
+
+func (o LookupHttpHealthCheckResultOutput) ToLookupHttpHealthCheckResultOutput() LookupHttpHealthCheckResultOutput {
+	return o
+}
+
+func (o LookupHttpHealthCheckResultOutput) ToLookupHttpHealthCheckResultOutputWithContext(ctx context.Context) LookupHttpHealthCheckResultOutput {
+	return o
+}
+
+// How often (in seconds) to send a health check. The default value is 5 seconds.
+func (o LookupHttpHealthCheckResultOutput) CheckIntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.CheckIntervalSec }).(pulumi.IntOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LookupHttpHealthCheckResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o LookupHttpHealthCheckResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+func (o LookupHttpHealthCheckResultOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
+func (o LookupHttpHealthCheckResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+func (o LookupHttpHealthCheckResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o LookupHttpHealthCheckResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The TCP port number for the HTTP health check request. The default value is 80.
+func (o LookupHttpHealthCheckResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+func (o LookupHttpHealthCheckResultOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LookupHttpHealthCheckResultOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o LookupHttpHealthCheckResultOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
+func (o LookupHttpHealthCheckResultOutput) TimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+func (o LookupHttpHealthCheckResultOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHttpHealthCheckResultOutput{})
 }

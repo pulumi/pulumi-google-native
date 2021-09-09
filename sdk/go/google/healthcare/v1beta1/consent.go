@@ -160,9 +160,7 @@ func (i *Consent) ToConsentOutputWithContext(ctx context.Context) ConsentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentOutput)
 }
 
-type ConsentOutput struct {
-	*pulumi.OutputState
-}
+type ConsentOutput struct{ *pulumi.OutputState }
 
 func (ConsentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Consent)(nil))

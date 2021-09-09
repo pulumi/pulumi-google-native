@@ -106,7 +106,7 @@ func (o AptRepositoryArchiveTypeOutput) ToStringPtrOutputWithContext(ctx context
 type AptRepositoryArchiveTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AptRepositoryArchiveTypePtrOutput) ElementType() reflect.Type {
-	return aptRepositoryArchiveTypePtrType
+	return reflect.TypeOf((**AptRepositoryArchiveType)(nil)).Elem()
 }
 
 func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput {
@@ -115,6 +115,16 @@ func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutput()
 
 func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
 	return o
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) Elem() AptRepositoryArchiveTypeOutput {
+	return o.ApplyT(func(v *AptRepositoryArchiveType) AptRepositoryArchiveType {
+		if v != nil {
+			return *v
+		}
+		var ret AptRepositoryArchiveType
+		return ret
+	}).(AptRepositoryArchiveTypeOutput)
 }
 
 func (o AptRepositoryArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -129,16 +139,6 @@ func (o AptRepositoryArchiveTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AptRepositoryArchiveTypePtrOutput) Elem() AptRepositoryArchiveTypeOutput {
-	return o.ApplyT(func(v *AptRepositoryArchiveType) AptRepositoryArchiveType {
-		var ret AptRepositoryArchiveType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AptRepositoryArchiveTypeOutput)
 }
 
 // AptRepositoryArchiveTypeInput is an input type that accepts AptRepositoryArchiveTypeArgs and AptRepositoryArchiveTypeOutput values.
@@ -275,7 +275,7 @@ func (o AptSettingsTypeOutput) ToStringPtrOutputWithContext(ctx context.Context)
 type AptSettingsTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AptSettingsTypePtrOutput) ElementType() reflect.Type {
-	return aptSettingsTypePtrType
+	return reflect.TypeOf((**AptSettingsType)(nil)).Elem()
 }
 
 func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput {
@@ -284,6 +284,16 @@ func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePt
 
 func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
 	return o
+}
+
+func (o AptSettingsTypePtrOutput) Elem() AptSettingsTypeOutput {
+	return o.ApplyT(func(v *AptSettingsType) AptSettingsType {
+		if v != nil {
+			return *v
+		}
+		var ret AptSettingsType
+		return ret
+	}).(AptSettingsTypeOutput)
 }
 
 func (o AptSettingsTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -298,16 +308,6 @@ func (o AptSettingsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AptSettingsTypePtrOutput) Elem() AptSettingsTypeOutput {
-	return o.ApplyT(func(v *AptSettingsType) AptSettingsType {
-		var ret AptSettingsType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AptSettingsTypeOutput)
 }
 
 // AptSettingsTypeInput is an input type that accepts AptSettingsTypeArgs and AptSettingsTypeOutput values.
@@ -444,7 +444,7 @@ func (o ExecStepConfigInterpreterOutput) ToStringPtrOutputWithContext(ctx contex
 type ExecStepConfigInterpreterPtrOutput struct{ *pulumi.OutputState }
 
 func (ExecStepConfigInterpreterPtrOutput) ElementType() reflect.Type {
-	return execStepConfigInterpreterPtrType
+	return reflect.TypeOf((**ExecStepConfigInterpreter)(nil)).Elem()
 }
 
 func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput {
@@ -453,6 +453,16 @@ func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutput
 
 func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
 	return o
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) Elem() ExecStepConfigInterpreterOutput {
+	return o.ApplyT(func(v *ExecStepConfigInterpreter) ExecStepConfigInterpreter {
+		if v != nil {
+			return *v
+		}
+		var ret ExecStepConfigInterpreter
+		return ret
+	}).(ExecStepConfigInterpreterOutput)
 }
 
 func (o ExecStepConfigInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -467,16 +477,6 @@ func (o ExecStepConfigInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx con
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ExecStepConfigInterpreterPtrOutput) Elem() ExecStepConfigInterpreterOutput {
-	return o.ApplyT(func(v *ExecStepConfigInterpreter) ExecStepConfigInterpreter {
-		var ret ExecStepConfigInterpreter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ExecStepConfigInterpreterOutput)
 }
 
 // ExecStepConfigInterpreterInput is an input type that accepts ExecStepConfigInterpreterArgs and ExecStepConfigInterpreterOutput values.
@@ -615,7 +615,7 @@ func (o PackageDesiredStateOutput) ToStringPtrOutputWithContext(ctx context.Cont
 type PackageDesiredStatePtrOutput struct{ *pulumi.OutputState }
 
 func (PackageDesiredStatePtrOutput) ElementType() reflect.Type {
-	return packageDesiredStatePtrType
+	return reflect.TypeOf((**PackageDesiredState)(nil)).Elem()
 }
 
 func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput {
@@ -624,6 +624,16 @@ func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutput() PackageDe
 
 func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
 	return o
+}
+
+func (o PackageDesiredStatePtrOutput) Elem() PackageDesiredStateOutput {
+	return o.ApplyT(func(v *PackageDesiredState) PackageDesiredState {
+		if v != nil {
+			return *v
+		}
+		var ret PackageDesiredState
+		return ret
+	}).(PackageDesiredStateOutput)
 }
 
 func (o PackageDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -638,16 +648,6 @@ func (o PackageDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PackageDesiredStatePtrOutput) Elem() PackageDesiredStateOutput {
-	return o.ApplyT(func(v *PackageDesiredState) PackageDesiredState {
-		var ret PackageDesiredState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PackageDesiredStateOutput)
 }
 
 // PackageDesiredStateInput is an input type that accepts PackageDesiredStateArgs and PackageDesiredStateOutput values.
@@ -790,7 +790,7 @@ func (o PackageManagerOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 type PackageManagerPtrOutput struct{ *pulumi.OutputState }
 
 func (PackageManagerPtrOutput) ElementType() reflect.Type {
-	return packageManagerPtrType
+	return reflect.TypeOf((**PackageManager)(nil)).Elem()
 }
 
 func (o PackageManagerPtrOutput) ToPackageManagerPtrOutput() PackageManagerPtrOutput {
@@ -799,6 +799,16 @@ func (o PackageManagerPtrOutput) ToPackageManagerPtrOutput() PackageManagerPtrOu
 
 func (o PackageManagerPtrOutput) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
 	return o
+}
+
+func (o PackageManagerPtrOutput) Elem() PackageManagerOutput {
+	return o.ApplyT(func(v *PackageManager) PackageManager {
+		if v != nil {
+			return *v
+		}
+		var ret PackageManager
+		return ret
+	}).(PackageManagerOutput)
 }
 
 func (o PackageManagerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -813,16 +823,6 @@ func (o PackageManagerPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PackageManagerPtrOutput) Elem() PackageManagerOutput {
-	return o.ApplyT(func(v *PackageManager) PackageManager {
-		var ret PackageManager
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PackageManagerOutput)
 }
 
 // PackageManagerInput is an input type that accepts PackageManagerArgs and PackageManagerOutput values.
@@ -961,7 +961,7 @@ func (o PatchConfigRebootConfigOutput) ToStringPtrOutputWithContext(ctx context.
 type PatchConfigRebootConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PatchConfigRebootConfigPtrOutput) ElementType() reflect.Type {
-	return patchConfigRebootConfigPtrType
+	return reflect.TypeOf((**PatchConfigRebootConfig)(nil)).Elem()
 }
 
 func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput {
@@ -970,6 +970,16 @@ func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutput() P
 
 func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
 	return o
+}
+
+func (o PatchConfigRebootConfigPtrOutput) Elem() PatchConfigRebootConfigOutput {
+	return o.ApplyT(func(v *PatchConfigRebootConfig) PatchConfigRebootConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PatchConfigRebootConfig
+		return ret
+	}).(PatchConfigRebootConfigOutput)
 }
 
 func (o PatchConfigRebootConfigPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -984,16 +994,6 @@ func (o PatchConfigRebootConfigPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PatchConfigRebootConfigPtrOutput) Elem() PatchConfigRebootConfigOutput {
-	return o.ApplyT(func(v *PatchConfigRebootConfig) PatchConfigRebootConfig {
-		var ret PatchConfigRebootConfig
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PatchConfigRebootConfigOutput)
 }
 
 // PatchConfigRebootConfigInput is an input type that accepts PatchConfigRebootConfigArgs and PatchConfigRebootConfigOutput values.
@@ -1130,7 +1130,7 @@ func (o PatchRolloutModeOutput) ToStringPtrOutputWithContext(ctx context.Context
 type PatchRolloutModePtrOutput struct{ *pulumi.OutputState }
 
 func (PatchRolloutModePtrOutput) ElementType() reflect.Type {
-	return patchRolloutModePtrType
+	return reflect.TypeOf((**PatchRolloutMode)(nil)).Elem()
 }
 
 func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput {
@@ -1139,6 +1139,16 @@ func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutput() PatchRolloutMod
 
 func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
 	return o
+}
+
+func (o PatchRolloutModePtrOutput) Elem() PatchRolloutModeOutput {
+	return o.ApplyT(func(v *PatchRolloutMode) PatchRolloutMode {
+		if v != nil {
+			return *v
+		}
+		var ret PatchRolloutMode
+		return ret
+	}).(PatchRolloutModeOutput)
 }
 
 func (o PatchRolloutModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1153,16 +1163,6 @@ func (o PatchRolloutModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o PatchRolloutModePtrOutput) Elem() PatchRolloutModeOutput {
-	return o.ApplyT(func(v *PatchRolloutMode) PatchRolloutMode {
-		var ret PatchRolloutMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(PatchRolloutModeOutput)
 }
 
 // PatchRolloutModeInput is an input type that accepts PatchRolloutModeArgs and PatchRolloutModeOutput values.
@@ -1299,7 +1299,7 @@ func (o RecurringScheduleFrequencyOutput) ToStringPtrOutputWithContext(ctx conte
 type RecurringScheduleFrequencyPtrOutput struct{ *pulumi.OutputState }
 
 func (RecurringScheduleFrequencyPtrOutput) ElementType() reflect.Type {
-	return recurringScheduleFrequencyPtrType
+	return reflect.TypeOf((**RecurringScheduleFrequency)(nil)).Elem()
 }
 
 func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput {
@@ -1308,6 +1308,16 @@ func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutp
 
 func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
 	return o
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) Elem() RecurringScheduleFrequencyOutput {
+	return o.ApplyT(func(v *RecurringScheduleFrequency) RecurringScheduleFrequency {
+		if v != nil {
+			return *v
+		}
+		var ret RecurringScheduleFrequency
+		return ret
+	}).(RecurringScheduleFrequencyOutput)
 }
 
 func (o RecurringScheduleFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1322,16 +1332,6 @@ func (o RecurringScheduleFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o RecurringScheduleFrequencyPtrOutput) Elem() RecurringScheduleFrequencyOutput {
-	return o.ApplyT(func(v *RecurringScheduleFrequency) RecurringScheduleFrequency {
-		var ret RecurringScheduleFrequency
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(RecurringScheduleFrequencyOutput)
 }
 
 // RecurringScheduleFrequencyInput is an input type that accepts RecurringScheduleFrequencyArgs and RecurringScheduleFrequencyOutput values.
@@ -1470,7 +1470,7 @@ func (o SoftwareRecipeDesiredStateOutput) ToStringPtrOutputWithContext(ctx conte
 type SoftwareRecipeDesiredStatePtrOutput struct{ *pulumi.OutputState }
 
 func (SoftwareRecipeDesiredStatePtrOutput) ElementType() reflect.Type {
-	return softwareRecipeDesiredStatePtrType
+	return reflect.TypeOf((**SoftwareRecipeDesiredState)(nil)).Elem()
 }
 
 func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput {
@@ -1479,6 +1479,16 @@ func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutp
 
 func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) Elem() SoftwareRecipeDesiredStateOutput {
+	return o.ApplyT(func(v *SoftwareRecipeDesiredState) SoftwareRecipeDesiredState {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeDesiredState
+		return ret
+	}).(SoftwareRecipeDesiredStateOutput)
 }
 
 func (o SoftwareRecipeDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1493,16 +1503,6 @@ func (o SoftwareRecipeDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SoftwareRecipeDesiredStatePtrOutput) Elem() SoftwareRecipeDesiredStateOutput {
-	return o.ApplyT(func(v *SoftwareRecipeDesiredState) SoftwareRecipeDesiredState {
-		var ret SoftwareRecipeDesiredState
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SoftwareRecipeDesiredStateOutput)
 }
 
 // SoftwareRecipeDesiredStateInput is an input type that accepts SoftwareRecipeDesiredStateArgs and SoftwareRecipeDesiredStateOutput values.
@@ -1647,7 +1647,7 @@ func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringPtrOutputWithContext
 type SoftwareRecipeStepExtractArchiveTypePtrOutput struct{ *pulumi.OutputState }
 
 func (SoftwareRecipeStepExtractArchiveTypePtrOutput) ElementType() reflect.Type {
-	return softwareRecipeStepExtractArchiveTypePtrType
+	return reflect.TypeOf((**SoftwareRecipeStepExtractArchiveType)(nil)).Elem()
 }
 
 func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput {
@@ -1656,6 +1656,16 @@ func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtra
 
 func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) Elem() SoftwareRecipeStepExtractArchiveTypeOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchiveType) SoftwareRecipeStepExtractArchiveType {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepExtractArchiveType
+		return ret
+	}).(SoftwareRecipeStepExtractArchiveTypeOutput)
 }
 
 func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1670,16 +1680,6 @@ func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToStringPtrOutputWithCont
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) Elem() SoftwareRecipeStepExtractArchiveTypeOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchiveType) SoftwareRecipeStepExtractArchiveType {
-		var ret SoftwareRecipeStepExtractArchiveType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SoftwareRecipeStepExtractArchiveTypeOutput)
 }
 
 // SoftwareRecipeStepExtractArchiveTypeInput is an input type that accepts SoftwareRecipeStepExtractArchiveTypeArgs and SoftwareRecipeStepExtractArchiveTypeOutput values.
@@ -1816,7 +1816,7 @@ func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringPtrOutputWithConte
 type SoftwareRecipeStepRunScriptInterpreterPtrOutput struct{ *pulumi.OutputState }
 
 func (SoftwareRecipeStepRunScriptInterpreterPtrOutput) ElementType() reflect.Type {
-	return softwareRecipeStepRunScriptInterpreterPtrType
+	return reflect.TypeOf((**SoftwareRecipeStepRunScriptInterpreter)(nil)).Elem()
 }
 
 func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
@@ -1825,6 +1825,16 @@ func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRun
 
 func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
 	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) Elem() SoftwareRecipeStepRunScriptInterpreterOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepRunScriptInterpreter) SoftwareRecipeStepRunScriptInterpreter {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareRecipeStepRunScriptInterpreter
+		return ret
+	}).(SoftwareRecipeStepRunScriptInterpreterOutput)
 }
 
 func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -1839,16 +1849,6 @@ func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToStringPtrOutputWithCo
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) Elem() SoftwareRecipeStepRunScriptInterpreterOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepRunScriptInterpreter) SoftwareRecipeStepRunScriptInterpreter {
-		var ret SoftwareRecipeStepRunScriptInterpreter
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(SoftwareRecipeStepRunScriptInterpreterOutput)
 }
 
 // SoftwareRecipeStepRunScriptInterpreterInput is an input type that accepts SoftwareRecipeStepRunScriptInterpreterArgs and SoftwareRecipeStepRunScriptInterpreterOutput values.
@@ -1995,7 +1995,7 @@ func (o WeekDayOfMonthDayOfWeekOutput) ToStringPtrOutputWithContext(ctx context.
 type WeekDayOfMonthDayOfWeekPtrOutput struct{ *pulumi.OutputState }
 
 func (WeekDayOfMonthDayOfWeekPtrOutput) ElementType() reflect.Type {
-	return weekDayOfMonthDayOfWeekPtrType
+	return reflect.TypeOf((**WeekDayOfMonthDayOfWeek)(nil)).Elem()
 }
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput {
@@ -2004,6 +2004,16 @@ func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() W
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) Elem() WeekDayOfMonthDayOfWeekOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthDayOfWeek) WeekDayOfMonthDayOfWeek {
+		if v != nil {
+			return *v
+		}
+		var ret WeekDayOfMonthDayOfWeek
+		return ret
+	}).(WeekDayOfMonthDayOfWeekOutput)
 }
 
 func (o WeekDayOfMonthDayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2018,16 +2028,6 @@ func (o WeekDayOfMonthDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WeekDayOfMonthDayOfWeekPtrOutput) Elem() WeekDayOfMonthDayOfWeekOutput {
-	return o.ApplyT(func(v *WeekDayOfMonthDayOfWeek) WeekDayOfMonthDayOfWeek {
-		var ret WeekDayOfMonthDayOfWeek
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WeekDayOfMonthDayOfWeekOutput)
 }
 
 // WeekDayOfMonthDayOfWeekInput is an input type that accepts WeekDayOfMonthDayOfWeekArgs and WeekDayOfMonthDayOfWeekOutput values.
@@ -2174,7 +2174,7 @@ func (o WeeklyScheduleDayOfWeekOutput) ToStringPtrOutputWithContext(ctx context.
 type WeeklyScheduleDayOfWeekPtrOutput struct{ *pulumi.OutputState }
 
 func (WeeklyScheduleDayOfWeekPtrOutput) ElementType() reflect.Type {
-	return weeklyScheduleDayOfWeekPtrType
+	return reflect.TypeOf((**WeeklyScheduleDayOfWeek)(nil)).Elem()
 }
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput {
@@ -2183,6 +2183,16 @@ func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutput() W
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
 	return o
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) Elem() WeeklyScheduleDayOfWeekOutput {
+	return o.ApplyT(func(v *WeeklyScheduleDayOfWeek) WeeklyScheduleDayOfWeek {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklyScheduleDayOfWeek
+		return ret
+	}).(WeeklyScheduleDayOfWeekOutput)
 }
 
 func (o WeeklyScheduleDayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2197,16 +2207,6 @@ func (o WeeklyScheduleDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx conte
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WeeklyScheduleDayOfWeekPtrOutput) Elem() WeeklyScheduleDayOfWeekOutput {
-	return o.ApplyT(func(v *WeeklyScheduleDayOfWeek) WeeklyScheduleDayOfWeek {
-		var ret WeeklyScheduleDayOfWeek
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WeeklyScheduleDayOfWeekOutput)
 }
 
 // WeeklyScheduleDayOfWeekInput is an input type that accepts WeeklyScheduleDayOfWeekArgs and WeeklyScheduleDayOfWeekOutput values.
@@ -2356,7 +2356,7 @@ func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringPtrOutputWithCon
 type WindowsUpdateSettingsClassificationsItemPtrOutput struct{ *pulumi.OutputState }
 
 func (WindowsUpdateSettingsClassificationsItemPtrOutput) ElementType() reflect.Type {
-	return windowsUpdateSettingsClassificationsItemPtrType
+	return reflect.TypeOf((**WindowsUpdateSettingsClassificationsItem)(nil)).Elem()
 }
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput {
@@ -2365,6 +2365,16 @@ func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettin
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
 	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) Elem() WindowsUpdateSettingsClassificationsItemOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsClassificationsItem) WindowsUpdateSettingsClassificationsItem {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsUpdateSettingsClassificationsItem
+		return ret
+	}).(WindowsUpdateSettingsClassificationsItemOutput)
 }
 
 func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -2379,16 +2389,6 @@ func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToStringPtrOutputWith
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o WindowsUpdateSettingsClassificationsItemPtrOutput) Elem() WindowsUpdateSettingsClassificationsItemOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettingsClassificationsItem) WindowsUpdateSettingsClassificationsItem {
-		var ret WindowsUpdateSettingsClassificationsItem
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(WindowsUpdateSettingsClassificationsItemOutput)
 }
 
 // WindowsUpdateSettingsClassificationsItemInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArgs and WindowsUpdateSettingsClassificationsItemOutput values.
@@ -2469,8 +2469,8 @@ func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSett
 }
 
 func (o WindowsUpdateSettingsClassificationsItemArrayOutput) Index(i pulumi.IntInput) WindowsUpdateSettingsClassificationsItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WindowsUpdateSettingsClassificationsItemOutput {
-		return vs[0].([]WindowsUpdateSettingsClassificationsItem)[vs[1].(int)].ToWindowsUpdateSettingsClassificationsItemOutput()
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WindowsUpdateSettingsClassificationsItem {
+		return vs[0].([]WindowsUpdateSettingsClassificationsItem)[vs[1].(int)]
 	}).(WindowsUpdateSettingsClassificationsItemOutput)
 }
 

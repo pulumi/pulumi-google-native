@@ -129,9 +129,7 @@ func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfi
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileOutput)
 }
 
-type AppProfileOutput struct {
-	*pulumi.OutputState
-}
+type AppProfileOutput struct{ *pulumi.OutputState }
 
 func (AppProfileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppProfile)(nil))

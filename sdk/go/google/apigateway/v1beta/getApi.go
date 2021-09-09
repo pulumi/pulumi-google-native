@@ -4,6 +4,9 @@
 package v1beta
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,76 @@ type LookupApiResult struct {
 	State string `pulumi:"state"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupApiOutput(ctx *pulumi.Context, args LookupApiOutputArgs, opts ...pulumi.InvokeOption) LookupApiResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupApiResult, error) {
+			args := v.(LookupApiArgs)
+			r, err := LookupApi(ctx, &args, opts...)
+			return *r, err
+		}).(LookupApiResultOutput)
+}
+
+type LookupApiOutputArgs struct {
+	ApiId    pulumi.StringInput    `pulumi:"apiId"`
+	Location pulumi.StringInput    `pulumi:"location"`
+	Project  pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupApiOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiArgs)(nil)).Elem()
+}
+
+type LookupApiResultOutput struct{ *pulumi.OutputState }
+
+func (LookupApiResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiResult)(nil)).Elem()
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
+	return o
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
+	return o
+}
+
+// Created time.
+func (o LookupApiResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Display name.
+func (o LookupApiResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+func (o LookupApiResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApiResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+func (o LookupApiResultOutput) ManagedService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ManagedService }).(pulumi.StringOutput)
+}
+
+// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+func (o LookupApiResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the API.
+func (o LookupApiResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Updated time.
+func (o LookupApiResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupApiResultOutput{})
 }

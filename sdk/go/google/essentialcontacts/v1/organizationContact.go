@@ -130,9 +130,7 @@ func (i *OrganizationContact) ToOrganizationContactOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationContactOutput)
 }
 
-type OrganizationContactOutput struct {
-	*pulumi.OutputState
-}
+type OrganizationContactOutput struct{ *pulumi.OutputState }
 
 func (OrganizationContactOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationContact)(nil))

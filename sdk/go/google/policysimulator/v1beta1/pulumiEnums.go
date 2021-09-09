@@ -104,7 +104,7 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringPt
 type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ElementType() reflect.Type {
-	return googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrType
+	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource)(nil)).Elem()
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
@@ -113,6 +113,16 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogl
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
 	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource
+		return ret
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput)
 }
 
 func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToStrin
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource {
-		var ret GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput)
 }
 
 // GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceArgs and GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput values.

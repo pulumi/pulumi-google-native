@@ -150,9 +150,7 @@ func (i *ConnectionProfile) ToConnectionProfileOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOutput)
 }
 
-type ConnectionProfileOutput struct {
-	*pulumi.OutputState
-}
+type ConnectionProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionProfile)(nil))

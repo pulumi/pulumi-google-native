@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,105 @@ type LookupEntitlementResult struct {
 	TrialSettings GoogleCloudChannelV1TrialSettingsResponse `pulumi:"trialSettings"`
 	// The time at which the entitlement is updated.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupEntitlementOutput(ctx *pulumi.Context, args LookupEntitlementOutputArgs, opts ...pulumi.InvokeOption) LookupEntitlementResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupEntitlementResult, error) {
+			args := v.(LookupEntitlementArgs)
+			r, err := LookupEntitlement(ctx, &args, opts...)
+			return *r, err
+		}).(LookupEntitlementResultOutput)
+}
+
+type LookupEntitlementOutputArgs struct {
+	AccountId     pulumi.StringInput `pulumi:"accountId"`
+	CustomerId    pulumi.StringInput `pulumi:"customerId"`
+	EntitlementId pulumi.StringInput `pulumi:"entitlementId"`
+}
+
+func (LookupEntitlementOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEntitlementArgs)(nil)).Elem()
+}
+
+type LookupEntitlementResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEntitlementResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEntitlementResult)(nil)).Elem()
+}
+
+func (o LookupEntitlementResultOutput) ToLookupEntitlementResultOutput() LookupEntitlementResultOutput {
+	return o
+}
+
+func (o LookupEntitlementResultOutput) ToLookupEntitlementResultOutputWithContext(ctx context.Context) LookupEntitlementResultOutput {
+	return o
+}
+
+// Association information to other entitlements.
+func (o LookupEntitlementResultOutput) AssociationInfo() GoogleCloudChannelV1AssociationInfoResponseOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) GoogleCloudChannelV1AssociationInfoResponse { return v.AssociationInfo }).(GoogleCloudChannelV1AssociationInfoResponseOutput)
+}
+
+// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+func (o LookupEntitlementResultOutput) CommitmentSettings() GoogleCloudChannelV1CommitmentSettingsResponseOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) GoogleCloudChannelV1CommitmentSettingsResponse {
+		return v.CommitmentSettings
+	}).(GoogleCloudChannelV1CommitmentSettingsResponseOutput)
+}
+
+// The time at which the entitlement is created.
+func (o LookupEntitlementResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
+func (o LookupEntitlementResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+func (o LookupEntitlementResultOutput) Offer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.Offer }).(pulumi.StringOutput)
+}
+
+// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+func (o LookupEntitlementResultOutput) Parameters() GoogleCloudChannelV1ParameterResponseArrayOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) []GoogleCloudChannelV1ParameterResponse { return v.Parameters }).(GoogleCloudChannelV1ParameterResponseArrayOutput)
+}
+
+// Service provisioning details for the entitlement.
+func (o LookupEntitlementResultOutput) ProvisionedService() GoogleCloudChannelV1ProvisionedServiceResponseOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) GoogleCloudChannelV1ProvisionedServiceResponse {
+		return v.ProvisionedService
+	}).(GoogleCloudChannelV1ProvisionedServiceResponseOutput)
+}
+
+// Current provisioning state of the entitlement.
+func (o LookupEntitlementResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+func (o LookupEntitlementResultOutput) PurchaseOrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.PurchaseOrderId }).(pulumi.StringOutput)
+}
+
+// Enumerable of all current suspension reasons for an entitlement.
+func (o LookupEntitlementResultOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) []string { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
+}
+
+// Settings for trial offers.
+func (o LookupEntitlementResultOutput) TrialSettings() GoogleCloudChannelV1TrialSettingsResponseOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) GoogleCloudChannelV1TrialSettingsResponse { return v.TrialSettings }).(GoogleCloudChannelV1TrialSettingsResponseOutput)
+}
+
+// The time at which the entitlement is updated.
+func (o LookupEntitlementResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEntitlementResultOutput{})
 }

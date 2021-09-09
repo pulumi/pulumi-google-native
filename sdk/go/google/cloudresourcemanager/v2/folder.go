@@ -107,9 +107,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderOutput)
 }
 
-type FolderOutput struct {
-	*pulumi.OutputState
-}
+type FolderOutput struct{ *pulumi.OutputState }
 
 func (FolderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Folder)(nil))

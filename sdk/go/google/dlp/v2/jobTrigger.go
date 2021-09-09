@@ -140,9 +140,7 @@ func (i *JobTrigger) ToJobTriggerOutputWithContext(ctx context.Context) JobTrigg
 	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerOutput)
 }
 
-type JobTriggerOutput struct {
-	*pulumi.OutputState
-}
+type JobTriggerOutput struct{ *pulumi.OutputState }
 
 func (JobTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobTrigger)(nil))

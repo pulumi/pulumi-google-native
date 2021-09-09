@@ -103,9 +103,7 @@ func (i *BillingAccount) ToBillingAccountOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountOutput)
 }
 
-type BillingAccountOutput struct {
-	*pulumi.OutputState
-}
+type BillingAccountOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccount)(nil))

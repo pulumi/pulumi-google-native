@@ -104,7 +104,7 @@ func (o DomainRedirectTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type DomainRedirectTypePtrOutput struct{ *pulumi.OutputState }
 
 func (DomainRedirectTypePtrOutput) ElementType() reflect.Type {
-	return domainRedirectTypePtrType
+	return reflect.TypeOf((**DomainRedirectType)(nil)).Elem()
 }
 
 func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput {
@@ -113,6 +113,16 @@ func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutput() DomainRedir
 
 func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
 	return o
+}
+
+func (o DomainRedirectTypePtrOutput) Elem() DomainRedirectTypeOutput {
+	return o.ApplyT(func(v *DomainRedirectType) DomainRedirectType {
+		if v != nil {
+			return *v
+		}
+		var ret DomainRedirectType
+		return ret
+	}).(DomainRedirectTypeOutput)
 }
 
 func (o DomainRedirectTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -127,16 +137,6 @@ func (o DomainRedirectTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DomainRedirectTypePtrOutput) Elem() DomainRedirectTypeOutput {
-	return o.ApplyT(func(v *DomainRedirectType) DomainRedirectType {
-		var ret DomainRedirectType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DomainRedirectTypeOutput)
 }
 
 // DomainRedirectTypeInput is an input type that accepts DomainRedirectTypeArgs and DomainRedirectTypeOutput values.

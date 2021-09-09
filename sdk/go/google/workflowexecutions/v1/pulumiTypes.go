@@ -114,7 +114,7 @@ func (o ErrorResponseOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
 }
 
 func (o ErrorResponseOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o.ApplyT(func(v ErrorResponse) *ErrorResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorResponse) *ErrorResponse {
 		return &v
 	}).(ErrorResponsePtrOutput)
 }
@@ -149,7 +149,13 @@ func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.
 }
 
 func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
-	return o.ApplyT(func(v *ErrorResponse) ErrorResponse { return *v }).(ErrorResponseOutput)
+	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorResponse
+		return ret
+	}).(ErrorResponseOutput)
 }
 
 // Human readable stack trace string.
@@ -469,7 +475,7 @@ func (o StackTraceResponseOutput) ToStackTraceResponsePtrOutput() StackTraceResp
 }
 
 func (o StackTraceResponseOutput) ToStackTraceResponsePtrOutputWithContext(ctx context.Context) StackTraceResponsePtrOutput {
-	return o.ApplyT(func(v StackTraceResponse) *StackTraceResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackTraceResponse) *StackTraceResponse {
 		return &v
 	}).(StackTraceResponsePtrOutput)
 }
@@ -494,7 +500,13 @@ func (o StackTraceResponsePtrOutput) ToStackTraceResponsePtrOutputWithContext(ct
 }
 
 func (o StackTraceResponsePtrOutput) Elem() StackTraceResponseOutput {
-	return o.ApplyT(func(v *StackTraceResponse) StackTraceResponse { return *v }).(StackTraceResponseOutput)
+	return o.ApplyT(func(v *StackTraceResponse) StackTraceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StackTraceResponse
+		return ret
+	}).(StackTraceResponseOutput)
 }
 
 // An array of Stack elements.

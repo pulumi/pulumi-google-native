@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,61 @@ type LookupProductSetResult struct {
 	IndexTime string `pulumi:"indexTime"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name string `pulumi:"name"`
+}
+
+func LookupProductSetOutput(ctx *pulumi.Context, args LookupProductSetOutputArgs, opts ...pulumi.InvokeOption) LookupProductSetResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProductSetResult, error) {
+			args := v.(LookupProductSetArgs)
+			r, err := LookupProductSet(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProductSetResultOutput)
+}
+
+type LookupProductSetOutputArgs struct {
+	Location     pulumi.StringInput    `pulumi:"location"`
+	ProductSetId pulumi.StringInput    `pulumi:"productSetId"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupProductSetOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProductSetArgs)(nil)).Elem()
+}
+
+type LookupProductSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProductSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProductSetResult)(nil)).Elem()
+}
+
+func (o LookupProductSetResultOutput) ToLookupProductSetResultOutput() LookupProductSetResultOutput {
+	return o
+}
+
+func (o LookupProductSetResultOutput) ToLookupProductSetResultOutputWithContext(ctx context.Context) LookupProductSetResultOutput {
+	return o
+}
+
+// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+func (o LookupProductSetResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductSetResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+func (o LookupProductSetResultOutput) IndexError() StatusResponseOutput {
+	return o.ApplyT(func(v LookupProductSetResult) StatusResponse { return v.IndexError }).(StatusResponseOutput)
+}
+
+// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+func (o LookupProductSetResultOutput) IndexTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductSetResult) string { return v.IndexTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+func (o LookupProductSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductSetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProductSetResultOutput{})
 }

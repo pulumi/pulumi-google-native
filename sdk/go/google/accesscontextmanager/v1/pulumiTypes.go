@@ -328,7 +328,7 @@ func (o BasicLevelOutput) ToBasicLevelPtrOutput() BasicLevelPtrOutput {
 }
 
 func (o BasicLevelOutput) ToBasicLevelPtrOutputWithContext(ctx context.Context) BasicLevelPtrOutput {
-	return o.ApplyT(func(v BasicLevel) *BasicLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicLevel) *BasicLevel {
 		return &v
 	}).(BasicLevelPtrOutput)
 }
@@ -358,7 +358,13 @@ func (o BasicLevelPtrOutput) ToBasicLevelPtrOutputWithContext(ctx context.Contex
 }
 
 func (o BasicLevelPtrOutput) Elem() BasicLevelOutput {
-	return o.ApplyT(func(v *BasicLevel) BasicLevel { return *v }).(BasicLevelOutput)
+	return o.ApplyT(func(v *BasicLevel) BasicLevel {
+		if v != nil {
+			return *v
+		}
+		var ret BasicLevel
+		return ret
+	}).(BasicLevelOutput)
 }
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -481,7 +487,7 @@ func (o BasicLevelResponseOutput) ToBasicLevelResponsePtrOutput() BasicLevelResp
 }
 
 func (o BasicLevelResponseOutput) ToBasicLevelResponsePtrOutputWithContext(ctx context.Context) BasicLevelResponsePtrOutput {
-	return o.ApplyT(func(v BasicLevelResponse) *BasicLevelResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicLevelResponse) *BasicLevelResponse {
 		return &v
 	}).(BasicLevelResponsePtrOutput)
 }
@@ -511,7 +517,13 @@ func (o BasicLevelResponsePtrOutput) ToBasicLevelResponsePtrOutputWithContext(ct
 }
 
 func (o BasicLevelResponsePtrOutput) Elem() BasicLevelResponseOutput {
-	return o.ApplyT(func(v *BasicLevelResponse) BasicLevelResponse { return *v }).(BasicLevelResponseOutput)
+	return o.ApplyT(func(v *BasicLevelResponse) BasicLevelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BasicLevelResponse
+		return ret
+	}).(BasicLevelResponseOutput)
 }
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -920,7 +932,7 @@ func (o CustomLevelOutput) ToCustomLevelPtrOutput() CustomLevelPtrOutput {
 }
 
 func (o CustomLevelOutput) ToCustomLevelPtrOutputWithContext(ctx context.Context) CustomLevelPtrOutput {
-	return o.ApplyT(func(v CustomLevel) *CustomLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomLevel) *CustomLevel {
 		return &v
 	}).(CustomLevelPtrOutput)
 }
@@ -945,7 +957,13 @@ func (o CustomLevelPtrOutput) ToCustomLevelPtrOutputWithContext(ctx context.Cont
 }
 
 func (o CustomLevelPtrOutput) Elem() CustomLevelOutput {
-	return o.ApplyT(func(v *CustomLevel) CustomLevel { return *v }).(CustomLevelOutput)
+	return o.ApplyT(func(v *CustomLevel) CustomLevel {
+		if v != nil {
+			return *v
+		}
+		var ret CustomLevel
+		return ret
+	}).(CustomLevelOutput)
 }
 
 // A Cloud CEL expression evaluating to a boolean.
@@ -1054,7 +1072,7 @@ func (o CustomLevelResponseOutput) ToCustomLevelResponsePtrOutput() CustomLevelR
 }
 
 func (o CustomLevelResponseOutput) ToCustomLevelResponsePtrOutputWithContext(ctx context.Context) CustomLevelResponsePtrOutput {
-	return o.ApplyT(func(v CustomLevelResponse) *CustomLevelResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomLevelResponse) *CustomLevelResponse {
 		return &v
 	}).(CustomLevelResponsePtrOutput)
 }
@@ -1079,7 +1097,13 @@ func (o CustomLevelResponsePtrOutput) ToCustomLevelResponsePtrOutputWithContext(
 }
 
 func (o CustomLevelResponsePtrOutput) Elem() CustomLevelResponseOutput {
-	return o.ApplyT(func(v *CustomLevelResponse) CustomLevelResponse { return *v }).(CustomLevelResponseOutput)
+	return o.ApplyT(func(v *CustomLevelResponse) CustomLevelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomLevelResponse
+		return ret
+	}).(CustomLevelResponseOutput)
 }
 
 // A Cloud CEL expression evaluating to a boolean.
@@ -1208,7 +1232,7 @@ func (o DevicePolicyOutput) ToDevicePolicyPtrOutput() DevicePolicyPtrOutput {
 }
 
 func (o DevicePolicyOutput) ToDevicePolicyPtrOutputWithContext(ctx context.Context) DevicePolicyPtrOutput {
-	return o.ApplyT(func(v DevicePolicy) *DevicePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevicePolicy) *DevicePolicy {
 		return &v
 	}).(DevicePolicyPtrOutput)
 }
@@ -1260,7 +1284,13 @@ func (o DevicePolicyPtrOutput) ToDevicePolicyPtrOutputWithContext(ctx context.Co
 }
 
 func (o DevicePolicyPtrOutput) Elem() DevicePolicyOutput {
-	return o.ApplyT(func(v *DevicePolicy) DevicePolicy { return *v }).(DevicePolicyOutput)
+	return o.ApplyT(func(v *DevicePolicy) DevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DevicePolicy
+		return ret
+	}).(DevicePolicyOutput)
 }
 
 // Allowed device management levels, an empty list allows all management levels.
@@ -1523,7 +1553,7 @@ func (o EgressFromOutput) ToEgressFromPtrOutput() EgressFromPtrOutput {
 }
 
 func (o EgressFromOutput) ToEgressFromPtrOutputWithContext(ctx context.Context) EgressFromPtrOutput {
-	return o.ApplyT(func(v EgressFrom) *EgressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EgressFrom) *EgressFrom {
 		return &v
 	}).(EgressFromPtrOutput)
 }
@@ -1553,7 +1583,13 @@ func (o EgressFromPtrOutput) ToEgressFromPtrOutputWithContext(ctx context.Contex
 }
 
 func (o EgressFromPtrOutput) Elem() EgressFromOutput {
-	return o.ApplyT(func(v *EgressFrom) EgressFrom { return *v }).(EgressFromOutput)
+	return o.ApplyT(func(v *EgressFrom) EgressFrom {
+		if v != nil {
+			return *v
+		}
+		var ret EgressFrom
+		return ret
+	}).(EgressFromOutput)
 }
 
 // A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
@@ -1958,7 +1994,7 @@ func (o EgressToOutput) ToEgressToPtrOutput() EgressToPtrOutput {
 }
 
 func (o EgressToOutput) ToEgressToPtrOutputWithContext(ctx context.Context) EgressToPtrOutput {
-	return o.ApplyT(func(v EgressTo) *EgressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EgressTo) *EgressTo {
 		return &v
 	}).(EgressToPtrOutput)
 }
@@ -1988,7 +2024,13 @@ func (o EgressToPtrOutput) ToEgressToPtrOutputWithContext(ctx context.Context) E
 }
 
 func (o EgressToPtrOutput) Elem() EgressToOutput {
-	return o.ApplyT(func(v *EgressTo) EgressTo { return *v }).(EgressToOutput)
+	return o.ApplyT(func(v *EgressTo) EgressTo {
+		if v != nil {
+			return *v
+		}
+		var ret EgressTo
+		return ret
+	}).(EgressToOutput)
 }
 
 // A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
@@ -2183,7 +2225,7 @@ func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
 }
 
 func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyT(func(v Expr) *Expr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
 		return &v
 	}).(ExprPtrOutput)
 }
@@ -2223,7 +2265,13 @@ func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOu
 }
 
 func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr { return *v }).(ExprOutput)
+	return o.ApplyT(func(v *Expr) Expr {
+		if v != nil {
+			return *v
+		}
+		var ret Expr
+		return ret
+	}).(ExprOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2374,7 +2422,7 @@ func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
 }
 
 func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o.ApplyT(func(v ExprResponse) *ExprResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExprResponse) *ExprResponse {
 		return &v
 	}).(ExprResponsePtrOutput)
 }
@@ -2414,7 +2462,13 @@ func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Co
 }
 
 func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
-	return o.ApplyT(func(v *ExprResponse) ExprResponse { return *v }).(ExprResponseOutput)
+	return o.ApplyT(func(v *ExprResponse) ExprResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExprResponse
+		return ret
+	}).(ExprResponseOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2561,7 +2615,7 @@ func (o IngressFromOutput) ToIngressFromPtrOutput() IngressFromPtrOutput {
 }
 
 func (o IngressFromOutput) ToIngressFromPtrOutputWithContext(ctx context.Context) IngressFromPtrOutput {
-	return o.ApplyT(func(v IngressFrom) *IngressFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressFrom) *IngressFrom {
 		return &v
 	}).(IngressFromPtrOutput)
 }
@@ -2596,7 +2650,13 @@ func (o IngressFromPtrOutput) ToIngressFromPtrOutputWithContext(ctx context.Cont
 }
 
 func (o IngressFromPtrOutput) Elem() IngressFromOutput {
-	return o.ApplyT(func(v *IngressFrom) IngressFrom { return *v }).(IngressFromOutput)
+	return o.ApplyT(func(v *IngressFrom) IngressFrom {
+		if v != nil {
+			return *v
+		}
+		var ret IngressFrom
+		return ret
+	}).(IngressFromOutput)
 }
 
 // A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
@@ -3238,7 +3298,7 @@ func (o IngressToOutput) ToIngressToPtrOutput() IngressToPtrOutput {
 }
 
 func (o IngressToOutput) ToIngressToPtrOutputWithContext(ctx context.Context) IngressToPtrOutput {
-	return o.ApplyT(func(v IngressTo) *IngressTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngressTo) *IngressTo {
 		return &v
 	}).(IngressToPtrOutput)
 }
@@ -3268,7 +3328,13 @@ func (o IngressToPtrOutput) ToIngressToPtrOutputWithContext(ctx context.Context)
 }
 
 func (o IngressToPtrOutput) Elem() IngressToOutput {
-	return o.ApplyT(func(v *IngressTo) IngressTo { return *v }).(IngressToOutput)
+	return o.ApplyT(func(v *IngressTo) IngressTo {
+		if v != nil {
+			return *v
+		}
+		var ret IngressTo
+		return ret
+	}).(IngressToOutput)
 }
 
 // A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
@@ -3925,7 +3991,7 @@ func (o ServicePerimeterConfigOutput) ToServicePerimeterConfigPtrOutput() Servic
 }
 
 func (o ServicePerimeterConfigOutput) ToServicePerimeterConfigPtrOutputWithContext(ctx context.Context) ServicePerimeterConfigPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterConfig) *ServicePerimeterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterConfig) *ServicePerimeterConfig {
 		return &v
 	}).(ServicePerimeterConfigPtrOutput)
 }
@@ -3975,7 +4041,13 @@ func (o ServicePerimeterConfigPtrOutput) ToServicePerimeterConfigPtrOutputWithCo
 }
 
 func (o ServicePerimeterConfigPtrOutput) Elem() ServicePerimeterConfigOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfig) ServicePerimeterConfig { return *v }).(ServicePerimeterConfigOutput)
+	return o.ApplyT(func(v *ServicePerimeterConfig) ServicePerimeterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterConfig
+		return ret
+	}).(ServicePerimeterConfigOutput)
 }
 
 // A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
@@ -4154,7 +4226,7 @@ func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponsePt
 }
 
 func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponsePtrOutputWithContext(ctx context.Context) ServicePerimeterConfigResponsePtrOutput {
-	return o.ApplyT(func(v ServicePerimeterConfigResponse) *ServicePerimeterConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterConfigResponse) *ServicePerimeterConfigResponse {
 		return &v
 	}).(ServicePerimeterConfigResponsePtrOutput)
 }
@@ -4204,7 +4276,13 @@ func (o ServicePerimeterConfigResponsePtrOutput) ToServicePerimeterConfigRespons
 }
 
 func (o ServicePerimeterConfigResponsePtrOutput) Elem() ServicePerimeterConfigResponseOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) ServicePerimeterConfigResponse { return *v }).(ServicePerimeterConfigResponseOutput)
+	return o.ApplyT(func(v *ServicePerimeterConfigResponse) ServicePerimeterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterConfigResponse
+		return ret
+	}).(ServicePerimeterConfigResponseOutput)
 }
 
 // A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
@@ -4367,7 +4445,7 @@ func (o VpcAccessibleServicesOutput) ToVpcAccessibleServicesPtrOutput() VpcAcces
 }
 
 func (o VpcAccessibleServicesOutput) ToVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) VpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v VpcAccessibleServices) *VpcAccessibleServices {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccessibleServices) *VpcAccessibleServices {
 		return &v
 	}).(VpcAccessibleServicesPtrOutput)
 }
@@ -4397,7 +4475,13 @@ func (o VpcAccessibleServicesPtrOutput) ToVpcAccessibleServicesPtrOutputWithCont
 }
 
 func (o VpcAccessibleServicesPtrOutput) Elem() VpcAccessibleServicesOutput {
-	return o.ApplyT(func(v *VpcAccessibleServices) VpcAccessibleServices { return *v }).(VpcAccessibleServicesOutput)
+	return o.ApplyT(func(v *VpcAccessibleServices) VpcAccessibleServices {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAccessibleServices
+		return ret
+	}).(VpcAccessibleServicesOutput)
 }
 
 // The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
@@ -4520,7 +4604,7 @@ func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponsePtrO
 }
 
 func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx context.Context) VpcAccessibleServicesResponsePtrOutput {
-	return o.ApplyT(func(v VpcAccessibleServicesResponse) *VpcAccessibleServicesResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccessibleServicesResponse) *VpcAccessibleServicesResponse {
 		return &v
 	}).(VpcAccessibleServicesResponsePtrOutput)
 }
@@ -4550,7 +4634,13 @@ func (o VpcAccessibleServicesResponsePtrOutput) ToVpcAccessibleServicesResponseP
 }
 
 func (o VpcAccessibleServicesResponsePtrOutput) Elem() VpcAccessibleServicesResponseOutput {
-	return o.ApplyT(func(v *VpcAccessibleServicesResponse) VpcAccessibleServicesResponse { return *v }).(VpcAccessibleServicesResponseOutput)
+	return o.ApplyT(func(v *VpcAccessibleServicesResponse) VpcAccessibleServicesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VpcAccessibleServicesResponse
+		return ret
+	}).(VpcAccessibleServicesResponseOutput)
 }
 
 // The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.

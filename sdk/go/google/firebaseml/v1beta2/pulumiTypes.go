@@ -106,7 +106,7 @@ func (o ModelStateTypeOutput) ToModelStateTypePtrOutput() ModelStateTypePtrOutpu
 }
 
 func (o ModelStateTypeOutput) ToModelStateTypePtrOutputWithContext(ctx context.Context) ModelStateTypePtrOutput {
-	return o.ApplyT(func(v ModelStateType) *ModelStateType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelStateType) *ModelStateType {
 		return &v
 	}).(ModelStateTypePtrOutput)
 }
@@ -131,7 +131,13 @@ func (o ModelStateTypePtrOutput) ToModelStateTypePtrOutputWithContext(ctx contex
 }
 
 func (o ModelStateTypePtrOutput) Elem() ModelStateTypeOutput {
-	return o.ApplyT(func(v *ModelStateType) ModelStateType { return *v }).(ModelStateTypeOutput)
+	return o.ApplyT(func(v *ModelStateType) ModelStateType {
+		if v != nil {
+			return *v
+		}
+		var ret ModelStateType
+		return ret
+	}).(ModelStateTypeOutput)
 }
 
 // Indicates if this model has been published.
@@ -244,7 +250,7 @@ func (o ModelStateResponseOutput) ToModelStateResponsePtrOutput() ModelStateResp
 }
 
 func (o ModelStateResponseOutput) ToModelStateResponsePtrOutputWithContext(ctx context.Context) ModelStateResponsePtrOutput {
-	return o.ApplyT(func(v ModelStateResponse) *ModelStateResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelStateResponse) *ModelStateResponse {
 		return &v
 	}).(ModelStateResponsePtrOutput)
 }
@@ -274,7 +280,13 @@ func (o ModelStateResponsePtrOutput) ToModelStateResponsePtrOutputWithContext(ct
 }
 
 func (o ModelStateResponsePtrOutput) Elem() ModelStateResponseOutput {
-	return o.ApplyT(func(v *ModelStateResponse) ModelStateResponse { return *v }).(ModelStateResponseOutput)
+	return o.ApplyT(func(v *ModelStateResponse) ModelStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelStateResponse
+		return ret
+	}).(ModelStateResponseOutput)
 }
 
 // Indicates if this model has been published.
@@ -537,7 +549,7 @@ func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutpu
 }
 
 func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
 		return &v
 	}).(StatusResponsePtrOutput)
 }
@@ -572,7 +584,13 @@ func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx contex
 }
 
 func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -705,7 +723,7 @@ func (o TfLiteModelOutput) ToTfLiteModelPtrOutput() TfLiteModelPtrOutput {
 }
 
 func (o TfLiteModelOutput) ToTfLiteModelPtrOutputWithContext(ctx context.Context) TfLiteModelPtrOutput {
-	return o.ApplyT(func(v TfLiteModel) *TfLiteModel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TfLiteModel) *TfLiteModel {
 		return &v
 	}).(TfLiteModelPtrOutput)
 }
@@ -735,7 +753,13 @@ func (o TfLiteModelPtrOutput) ToTfLiteModelPtrOutputWithContext(ctx context.Cont
 }
 
 func (o TfLiteModelPtrOutput) Elem() TfLiteModelOutput {
-	return o.ApplyT(func(v *TfLiteModel) TfLiteModel { return *v }).(TfLiteModelOutput)
+	return o.ApplyT(func(v *TfLiteModel) TfLiteModel {
+		if v != nil {
+			return *v
+		}
+		var ret TfLiteModel
+		return ret
+	}).(TfLiteModelOutput)
 }
 
 // The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
@@ -862,7 +886,7 @@ func (o TfLiteModelResponseOutput) ToTfLiteModelResponsePtrOutput() TfLiteModelR
 }
 
 func (o TfLiteModelResponseOutput) ToTfLiteModelResponsePtrOutputWithContext(ctx context.Context) TfLiteModelResponsePtrOutput {
-	return o.ApplyT(func(v TfLiteModelResponse) *TfLiteModelResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TfLiteModelResponse) *TfLiteModelResponse {
 		return &v
 	}).(TfLiteModelResponsePtrOutput)
 }
@@ -897,7 +921,13 @@ func (o TfLiteModelResponsePtrOutput) ToTfLiteModelResponsePtrOutputWithContext(
 }
 
 func (o TfLiteModelResponsePtrOutput) Elem() TfLiteModelResponseOutput {
-	return o.ApplyT(func(v *TfLiteModelResponse) TfLiteModelResponse { return *v }).(TfLiteModelResponseOutput)
+	return o.ApplyT(func(v *TfLiteModelResponse) TfLiteModelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TfLiteModelResponse
+		return ret
+	}).(TfLiteModelResponseOutput)
 }
 
 // The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)

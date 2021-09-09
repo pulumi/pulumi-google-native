@@ -134,9 +134,7 @@ func (i *ServiceDatabaseTableIamPolicy) ToServiceDatabaseTableIamPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceDatabaseTableIamPolicyOutput)
 }
 
-type ServiceDatabaseTableIamPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ServiceDatabaseTableIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceDatabaseTableIamPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceDatabaseTableIamPolicy)(nil))

@@ -108,7 +108,7 @@ func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Co
 type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
-	return auditLogConfigLogTypePtrType
+	return reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
@@ -117,6 +117,16 @@ func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() Audit
 
 func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret AuditLogConfigLogType
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
 }
 
 func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -131,16 +141,6 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
-	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
-		var ret AuditLogConfigLogType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(AuditLogConfigLogTypeOutput)
 }
 
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
@@ -276,7 +276,7 @@ func (o DomainMappingSpecCertificateModeOutput) ToStringPtrOutputWithContext(ctx
 type DomainMappingSpecCertificateModePtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSpecCertificateModePtrOutput) ElementType() reflect.Type {
-	return domainMappingSpecCertificateModePtrType
+	return reflect.TypeOf((**DomainMappingSpecCertificateMode)(nil)).Elem()
 }
 
 func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificateModePtrOutput() DomainMappingSpecCertificateModePtrOutput {
@@ -285,6 +285,16 @@ func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificat
 
 func (o DomainMappingSpecCertificateModePtrOutput) ToDomainMappingSpecCertificateModePtrOutputWithContext(ctx context.Context) DomainMappingSpecCertificateModePtrOutput {
 	return o
+}
+
+func (o DomainMappingSpecCertificateModePtrOutput) Elem() DomainMappingSpecCertificateModeOutput {
+	return o.ApplyT(func(v *DomainMappingSpecCertificateMode) DomainMappingSpecCertificateMode {
+		if v != nil {
+			return *v
+		}
+		var ret DomainMappingSpecCertificateMode
+		return ret
+	}).(DomainMappingSpecCertificateModeOutput)
 }
 
 func (o DomainMappingSpecCertificateModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -299,16 +309,6 @@ func (o DomainMappingSpecCertificateModePtrOutput) ToStringPtrOutputWithContext(
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o DomainMappingSpecCertificateModePtrOutput) Elem() DomainMappingSpecCertificateModeOutput {
-	return o.ApplyT(func(v *DomainMappingSpecCertificateMode) DomainMappingSpecCertificateMode {
-		var ret DomainMappingSpecCertificateMode
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(DomainMappingSpecCertificateModeOutput)
 }
 
 // DomainMappingSpecCertificateModeInput is an input type that accepts DomainMappingSpecCertificateModeArgs and DomainMappingSpecCertificateModeOutput values.
@@ -447,7 +447,7 @@ func (o ResourceRecordTypeOutput) ToStringPtrOutputWithContext(ctx context.Conte
 type ResourceRecordTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordTypePtrOutput) ElementType() reflect.Type {
-	return resourceRecordTypePtrType
+	return reflect.TypeOf((**ResourceRecordType)(nil)).Elem()
 }
 
 func (o ResourceRecordTypePtrOutput) ToResourceRecordTypePtrOutput() ResourceRecordTypePtrOutput {
@@ -456,6 +456,16 @@ func (o ResourceRecordTypePtrOutput) ToResourceRecordTypePtrOutput() ResourceRec
 
 func (o ResourceRecordTypePtrOutput) ToResourceRecordTypePtrOutputWithContext(ctx context.Context) ResourceRecordTypePtrOutput {
 	return o
+}
+
+func (o ResourceRecordTypePtrOutput) Elem() ResourceRecordTypeOutput {
+	return o.ApplyT(func(v *ResourceRecordType) ResourceRecordType {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRecordType
+		return ret
+	}).(ResourceRecordTypeOutput)
 }
 
 func (o ResourceRecordTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
@@ -470,16 +480,6 @@ func (o ResourceRecordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 		v := string(*e)
 		return &v
 	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRecordTypePtrOutput) Elem() ResourceRecordTypeOutput {
-	return o.ApplyT(func(v *ResourceRecordType) ResourceRecordType {
-		var ret ResourceRecordType
-		if v != nil {
-			ret = *v
-		}
-		return ret
-	}).(ResourceRecordTypeOutput)
 }
 
 // ResourceRecordTypeInput is an input type that accepts ResourceRecordTypeArgs and ResourceRecordTypeOutput values.

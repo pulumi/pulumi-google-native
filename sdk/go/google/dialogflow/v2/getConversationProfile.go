@@ -4,6 +4,9 @@
 package v2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,115 @@ type LookupConversationProfileResult struct {
 	SttConfig GoogleCloudDialogflowV2SpeechToTextConfigResponse `pulumi:"sttConfig"`
 	// Update time of the conversation profile.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupConversationProfileOutput(ctx *pulumi.Context, args LookupConversationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupConversationProfileResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupConversationProfileResult, error) {
+			args := v.(LookupConversationProfileArgs)
+			r, err := LookupConversationProfile(ctx, &args, opts...)
+			return *r, err
+		}).(LookupConversationProfileResultOutput)
+}
+
+type LookupConversationProfileOutputArgs struct {
+	ConversationProfileId pulumi.StringInput    `pulumi:"conversationProfileId"`
+	Location              pulumi.StringInput    `pulumi:"location"`
+	Project               pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupConversationProfileOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConversationProfileArgs)(nil)).Elem()
+}
+
+type LookupConversationProfileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConversationProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConversationProfileResult)(nil)).Elem()
+}
+
+func (o LookupConversationProfileResultOutput) ToLookupConversationProfileResultOutput() LookupConversationProfileResultOutput {
+	return o
+}
+
+func (o LookupConversationProfileResultOutput) ToLookupConversationProfileResultOutputWithContext(ctx context.Context) LookupConversationProfileResultOutput {
+	return o
+}
+
+// Configuration for an automated agent to use with this profile.
+func (o LookupConversationProfileResultOutput) AutomatedAgentConfig() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
+		return v.AutomatedAgentConfig
+	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
+}
+
+// Create time of the conversation profile.
+func (o LookupConversationProfileResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable name for this profile. Max length 1024 bytes.
+func (o LookupConversationProfileResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for agent assistance to use with this profile.
+func (o LookupConversationProfileResultOutput) HumanAgentAssistantConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
+		return v.HumanAgentAssistantConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput)
+}
+
+// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+func (o LookupConversationProfileResultOutput) HumanAgentHandoffConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
+		return v.HumanAgentHandoffConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
+}
+
+// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+func (o LookupConversationProfileResultOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Configuration for logging conversation lifecycle events.
+func (o LookupConversationProfileResultOutput) LoggingConfig() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2LoggingConfigResponse {
+		return v.LoggingConfig
+	}).(GoogleCloudDialogflowV2LoggingConfigResponseOutput)
+}
+
+// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+func (o LookupConversationProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+func (o LookupConversationProfileResultOutput) NewMessageEventNotificationConfig() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2NotificationConfigResponse {
+		return v.NewMessageEventNotificationConfig
+	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
+}
+
+// Configuration for publishing conversation lifecycle events.
+func (o LookupConversationProfileResultOutput) NotificationConfig() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2NotificationConfigResponse {
+		return v.NotificationConfig
+	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
+}
+
+// Settings for speech transcription.
+func (o LookupConversationProfileResultOutput) SttConfig() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2SpeechToTextConfigResponse {
+		return v.SttConfig
+	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
+}
+
+// Update time of the conversation profile.
+func (o LookupConversationProfileResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConversationProfileResultOutput{})
 }

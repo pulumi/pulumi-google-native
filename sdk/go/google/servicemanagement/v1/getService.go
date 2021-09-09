@@ -4,6 +4,9 @@
 package v1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,4 +29,49 @@ type LookupServiceResult struct {
 	ProducerProjectId string `pulumi:"producerProjectId"`
 	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+			args := v.(LookupServiceArgs)
+			r, err := LookupService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceResultOutput)
+}
+
+type LookupServiceOutputArgs struct {
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (LookupServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+// ID of the project that produces and owns this service.
+func (o LookupServiceResultOutput) ProducerProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ProducerProjectId }).(pulumi.StringOutput)
+}
+
+// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+func (o LookupServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

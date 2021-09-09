@@ -219,7 +219,7 @@ func (o SchedulingConfigOutput) ToSchedulingConfigPtrOutput() SchedulingConfigPt
 }
 
 func (o SchedulingConfigOutput) ToSchedulingConfigPtrOutputWithContext(ctx context.Context) SchedulingConfigPtrOutput {
-	return o.ApplyT(func(v SchedulingConfig) *SchedulingConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingConfig) *SchedulingConfig {
 		return &v
 	}).(SchedulingConfigPtrOutput)
 }
@@ -249,7 +249,13 @@ func (o SchedulingConfigPtrOutput) ToSchedulingConfigPtrOutputWithContext(ctx co
 }
 
 func (o SchedulingConfigPtrOutput) Elem() SchedulingConfigOutput {
-	return o.ApplyT(func(v *SchedulingConfig) SchedulingConfig { return *v }).(SchedulingConfigOutput)
+	return o.ApplyT(func(v *SchedulingConfig) SchedulingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingConfig
+		return ret
+	}).(SchedulingConfigOutput)
 }
 
 // Defines whether the node is preemptible.
@@ -372,7 +378,7 @@ func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutput() Sc
 }
 
 func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
-	return o.ApplyT(func(v SchedulingConfigResponse) *SchedulingConfigResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingConfigResponse) *SchedulingConfigResponse {
 		return &v
 	}).(SchedulingConfigResponsePtrOutput)
 }
@@ -402,7 +408,13 @@ func (o SchedulingConfigResponsePtrOutput) ToSchedulingConfigResponsePtrOutputWi
 }
 
 func (o SchedulingConfigResponsePtrOutput) Elem() SchedulingConfigResponseOutput {
-	return o.ApplyT(func(v *SchedulingConfigResponse) SchedulingConfigResponse { return *v }).(SchedulingConfigResponseOutput)
+	return o.ApplyT(func(v *SchedulingConfigResponse) SchedulingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingConfigResponse
+		return ret
+	}).(SchedulingConfigResponseOutput)
 }
 
 // Defines whether the node is preemptible.

@@ -4,6 +4,9 @@
 package v1beta1
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,4 +34,60 @@ type LookupAttestorResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
 	UserOwnedDrydockNote UserOwnedDrydockNoteResponse `pulumi:"userOwnedDrydockNote"`
+}
+
+func LookupAttestorOutput(ctx *pulumi.Context, args LookupAttestorOutputArgs, opts ...pulumi.InvokeOption) LookupAttestorResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAttestorResult, error) {
+			args := v.(LookupAttestorArgs)
+			r, err := LookupAttestor(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAttestorResultOutput)
+}
+
+type LookupAttestorOutputArgs struct {
+	AttestorId pulumi.StringInput    `pulumi:"attestorId"`
+	Project    pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (LookupAttestorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAttestorArgs)(nil)).Elem()
+}
+
+type LookupAttestorResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAttestorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAttestorResult)(nil)).Elem()
+}
+
+func (o LookupAttestorResultOutput) ToLookupAttestorResultOutput() LookupAttestorResultOutput {
+	return o
+}
+
+func (o LookupAttestorResultOutput) ToLookupAttestorResultOutputWithContext(ctx context.Context) LookupAttestorResultOutput {
+	return o
+}
+
+// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+func (o LookupAttestorResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+func (o LookupAttestorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestorResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time when the attestor was last updated.
+func (o LookupAttestorResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestorResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
+func (o LookupAttestorResultOutput) UserOwnedDrydockNote() UserOwnedDrydockNoteResponseOutput {
+	return o.ApplyT(func(v LookupAttestorResult) UserOwnedDrydockNoteResponse { return v.UserOwnedDrydockNote }).(UserOwnedDrydockNoteResponseOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAttestorResultOutput{})
 }

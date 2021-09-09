@@ -125,9 +125,7 @@ func (i *Feature) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureOutput)
 }
 
-type FeatureOutput struct {
-	*pulumi.OutputState
-}
+type FeatureOutput struct{ *pulumi.OutputState }
 
 func (FeatureOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Feature)(nil))

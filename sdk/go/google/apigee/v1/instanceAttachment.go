@@ -106,9 +106,7 @@ func (i *InstanceAttachment) ToInstanceAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAttachmentOutput)
 }
 
-type InstanceAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type InstanceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InstanceAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceAttachment)(nil))
